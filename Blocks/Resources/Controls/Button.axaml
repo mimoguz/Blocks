@@ -1,0 +1,118 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Background="{DynamicResource BlockWindowBackgroundColor}" Padding="20">
+            <WrapPanel Width="300" ItemSpacing="10" LineSpacing="10">
+                <Button>Basic Button</Button>
+                <Button Classes="image-button">
+                    <Path Data="{StaticResource BlockTestIcon}"
+                          Width="{DynamicResource BlockIconSize}"
+                          Height="{DynamicResource BlockIconSize}"
+                          Stretch="Uniform"
+                          Fill="{Binding $parent[Button].Foreground}"  />
+                </Button>
+                <Button Classes="image-button flat">
+                    <Path Data="{StaticResource BlockTestIcon}"
+                          Width="{DynamicResource BlockIconSize}"
+                          Height="{DynamicResource BlockIconSize}"
+                          Stretch="Uniform"
+                          Fill="{Binding $parent[Button].Foreground}" />
+                </Button>
+            </WrapPanel>
+        </Border>
+    </Design.PreviewWith>
+
+    <ControlTheme x:Key="{x:Type Button}"
+                  TargetType="Button">
+
+        <Setter Property="Background" Value="{DynamicResource BlockButtonBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Foreground" Value="{DynamicResource BlockButtonForegroundBrush}" />
+        <Setter Property="Padding" Value="{DynamicResource BlockButtonPadding}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource BlockButtonCornerRadius}" />
+        <Setter Property="FontWeight" Value="{DynamicResource BlockButtonFontWeight}" />
+        <Setter Property="MinWidth" Value="{DynamicResource BlockMinButtonSize}" />
+        <Setter Property="MinHeight" Value="{DynamicResource BlockMinButtonSize}" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="FocusAdorner" Value="{x:Null}" />
+
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel>
+                    <Border Name="ButtonBackground"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            IsHitTestVisible="True" />
+                    <Border Name="ShadeBorder"
+                            Background="{DynamicResource BlockButtonShadeBrush}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            Opacity="0"
+                            IsHitTestVisible="False">
+                        <Border.Transitions>
+                            <Transitions>
+                                <DoubleTransition Property="Opacity"
+                                                  Duration="{DynamicResource BlockButtonStateTransitionDuration}" />
+                            </Transitions>
+                        </Border.Transitions>
+                    </Border>
+                    <Border Name="HighlightBorder"
+                            Background="{DynamicResource BlockButtonHighlightBrush}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            Opacity="0"
+                            IsHitTestVisible="False">
+                        <Border.Transitions>
+                            <Transitions>
+                                <DoubleTransition Property="Opacity"
+                                                  Duration="{DynamicResource BlockButtonStateTransitionDuration}" />
+                            </Transitions>
+                        </Border.Transitions>
+                    </Border>
+                    <ContentPresenter Name="PART_ContentPresenter"
+                                      IsHitTestVisible="False"
+                                      CornerRadius="{TemplateBinding CornerRadius}"
+                                      Padding="{TemplateBinding Padding}"
+                                      HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                      VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                      Content="{TemplateBinding Content}"
+                                      ContentTemplate="{TemplateBinding ContentTemplate}"
+                                      RecognizesAccessKey="True"
+                                      TextElement.Foreground="{TemplateBinding Foreground}">
+                    </ContentPresenter>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:pointerover /template/ Border#HighlightBorder">
+            <Setter Property="Opacity" Value="{DynamicResource BlockButtonHighlightOpacity}" />
+        </Style>
+        <Style Selector="^:pressed">
+            <Style Selector="^ /template/ Border#HighlightBorder">
+                <Setter Property="Opacity" Value="0" />
+            </Style>
+            <Style Selector="^ /template/ Border#ShadeBorder">
+                <Setter Property="Opacity" Value="{DynamicResource BlockButtonShadeOpacity}" />
+            </Style>
+        </Style>
+        <Style Selector="^:disabled">
+            <Setter Property="Opacity" Value="{DynamicResource BlockDisabledOpacity}" />
+        </Style>
+        <Style Selector="^:focus-visible /template/ Border#ButtonBackground">
+            <Setter Property="Background" Value="{DynamicResource BlockFocusBrush}" />
+        </Style>
+
+        <!-- Classes -->
+        <Style Selector="^.image-button">
+            <Setter Property="Padding" Value="{DynamicResource BlockImageButtonPadding}" />
+        </Style>
+        <Style Selector="^.flat">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="{DynamicResource BlockFlatButtonForegroundBrush}" />
+            <Style Selector="^ /template/ Border#HighlightBorder">
+                <Setter Property="Background" Value="{DynamicResource BlockFlatButtonHighlightBrush}" />
+            </Style>
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

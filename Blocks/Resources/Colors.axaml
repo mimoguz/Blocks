@@ -1,0 +1,16 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Default">
+            <Color x:Key="BlockWindowBackgroundColor">WhiteSmoke</Color>
+            <Color x:Key="BlockWindowForegroundColor">#203035</Color>
+            <Color x:Key="BlockButtonBackgroundColor">SlateGray</Color>
+            <Color x:Key="BlockButtonForegroundColor">White</Color>
+            <Color x:Key="BlockFlatButtonForegroundColor">CornflowerBlue</Color>
+            <Color x:Key="BlockButtonHighlightColor">AliceBlue</Color>
+            <Color x:Key="BlockFlatButtonHighlightColor">LightSlateGray</Color>
+            <Color x:Key="BlockButtonShadeColor">CornflowerBlue</Color>
+            <Color x:Key="BlockFocusColor">DeepSkyBlue</Color>
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
+</ResourceDictionary>

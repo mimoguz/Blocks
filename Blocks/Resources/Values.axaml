@@ -1,0 +1,16 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="using:System">
+    <Thickness x:Key="BlockButtonPadding">24,8</Thickness>
+    <Thickness x:Key="BlockImageButtonPadding">8</Thickness>
+    <sys:Double x:Key="BlockIconSize">20</sys:Double>
+    <sys:TimeSpan x:Key="BlockButtonStateTransitionDuration">0:0:0.05</sys:TimeSpan>
+    <Thickness x:Key="BlockFocusBorderThickness">1</Thickness>
+    <CornerRadius x:Key="BlockButtonCornerRadius">9999</CornerRadius>
+    <FontWeight x:Key="BlockButtonFontWeight">Bold</FontWeight>
+    <sys:Double x:Key="BlockMinButtonSize">36</sys:Double>
+    
+    <sys:Double x:Key="BlockButtonHighlightOpacity">0.33</sys:Double>
+    <sys:Double x:Key="BlockButtonShadeOpacity">0.67</sys:Double>
+    <sys:Double x:Key="BlockDisabledOpacity">0.5</sys:Double>
+</ResourceDictionary>

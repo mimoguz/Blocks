@@ -1,0 +1,4 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <StreamGeometry x:Key="BlockTestIcon">M 1 1L 19 19H 1L 19 1Z</StreamGeometry>
+</ResourceDictionary>
