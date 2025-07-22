@@ -1,12 +1,18 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <SolidColorBrush x:Key="BlockWindowBackgroundBrush" Color="{DynamicResource BlockWindowBackgroundColor}" />
+    <SolidColorBrush x:Key="BlockBaseViewBackgroundBrush" Color="{DynamicResource BlockBaseViewBackgroundColor}" />
+    <SolidColorBrush x:Key="BlockViewBackgroundBrush"
+                     Color="{DynamicResource BlockButtonForegroundColor}"
+                     Opacity="{DynamicResource BlockViewBackgroundOpacity}" />
     <SolidColorBrush x:Key="BlockWindowForegroundBrush" Color="{DynamicResource BlockWindowForegroundColor}" />
     <SolidColorBrush x:Key="BlockButtonBackgroundBrush" Color="{DynamicResource BlockButtonBackgroundColor}" />
     <SolidColorBrush x:Key="BlockButtonForegroundBrush" Color="{DynamicResource BlockButtonForegroundColor}" />
     <SolidColorBrush x:Key="BlockFlatButtonForegroundBrush" Color="{DynamicResource BlockFlatButtonForegroundColor}" />
-    <SolidColorBrush x:Key="BlockButtonHighlightBrush" Color="{DynamicResource BlockButtonHighlightColor}" />
+    <SolidColorBrush x:Key="BlockButtonHighlightBrush" 
+                     Color="{DynamicResource BlockButtonHighlightColor}" />
     <SolidColorBrush x:Key="BlockFlatButtonHighlightBrush" Color="{DynamicResource BlockFlatButtonHighlightColor}" />
     <SolidColorBrush x:Key="BlockButtonShadeBrush" Color="{DynamicResource BlockButtonShadeColor}" />
     <SolidColorBrush x:Key="BlockFocusBrush" Color="{DynamicResource BlockFocusColor}" />
+    <SolidColorBrush x:Key="BlockViewFocusBrush" Color="{DynamicResource BlockViewFocusColor}" />
 </ResourceDictionary>

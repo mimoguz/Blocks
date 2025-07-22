@@ -35,6 +35,10 @@
                           Fill="{Binding $parent[Button].Foreground}" />
                 </Button>
             </StackPanel>
+            <StackPanel Spacing="20" Orientation="Horizontal">
+                <ButtonSpinner MinWidth="120" VerticalAlignment="Top">Button Spinner</ButtonSpinner>
+                <ButtonSpinner MinHeight="120" Classes="vertical" VerticalAlignment="Top">10</ButtonSpinner>
+            </StackPanel>
         </StackPanel>
     </Border>
 
