@@ -5,7 +5,7 @@
     <Thickness x:Key="BlockImageButtonPadding">8</Thickness>
     <Thickness x:Key="BlockInputPadding">8</Thickness>
     <sys:Double x:Key="BlockIconSize">16</sys:Double>
-    <sys:TimeSpan x:Key="BlockButtonStateTransitionDuration">0:0:0.05</sys:TimeSpan>
+    <sys:TimeSpan x:Key="BlockButtonStateTransitionDuration">0:0:0.075</sys:TimeSpan>
     <Thickness x:Key="BlockControlBorderThickness">2</Thickness>
     <CornerRadius x:Key="BlockButtonCornerRadius">9999</CornerRadius>
     <FontWeight x:Key="BlockButtonFontWeight">Bold</FontWeight>
