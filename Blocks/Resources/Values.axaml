@@ -10,9 +10,10 @@
     <CornerRadius x:Key="BlockButtonCornerRadius">9999</CornerRadius>
     <FontWeight x:Key="BlockButtonFontWeight">Bold</FontWeight>
     <sys:Double x:Key="BlockMinButtonSize">36</sys:Double>
-    <sys:Double x:Key="BlockRadioButtonSize">32</sys:Double>
+    <sys:Double x:Key="BlockRadioButtonSize">28</sys:Double>
     <sys:Double x:Key="BlockRadioDotSize">16</sys:Double>
     <Thickness x:Key="BlockRadioButtonGap">8,4</Thickness>
+    <CornerRadius x:Key="BlockCheckBoxCornerRadius">6</CornerRadius>
     
     <sys:Double x:Key="BlockButtonBorderOpacity">0.5</sys:Double>
     <sys:Double x:Key="BlockButtonBorderHighlightOpacity">0.9</sys:Double>

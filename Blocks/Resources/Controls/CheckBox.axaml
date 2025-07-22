@@ -1,0 +1,147 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:blk="clr-namespace:Blocks.Controls">
+    <Design.PreviewWith>
+        <Border Background="{DynamicResource BlockWindowBackgroundBrush}" Padding="20">
+            <StackPanel Spacing="10">
+                <CheckBox>Check Box</CheckBox>
+                <CheckBox IsChecked="True" Classes="left-label" HorizontalAlignment="Left">Checked</CheckBox>
+                <CheckBox IsChecked="{x:Null}" IsThreeState="True">Indeterminate</CheckBox>
+                <CheckBox IsEnabled="False" Classes="top-label">Disabled</CheckBox>
+                <CheckBox IsChecked="True" IsEnabled="False" Classes="bottom-label">Disabled - Checked</CheckBox>
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+    <ControlTheme x:Key="{x:Type CheckBox}"
+                  TargetType="CheckBox">
+        <Setter Property="BorderThickness" Value="{DynamicResource BlockControlBorderThickness}" />
+        <Setter Property="Foreground" Value="{DynamicResource BlockWindowForegroundBrush}" />
+        <Setter Property="blk:Block.Gap" Value="{DynamicResource BlockRadioButtonGap}"></Setter>
+        <Setter Property="Padding" Value="{DynamicResource BlockRadioButtonGap}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource BlockCheckBoxCornerRadius}" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Background="Transparent" Padding="{TemplateBinding Padding}">
+                    <DockPanel Background="Transparent">
+                        <Panel Name="Radio" DockPanel.Dock="Left"
+                               HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                               Width="{DynamicResource BlockRadioButtonSize}"
+                               Height="{DynamicResource BlockRadioButtonSize}">
+                            <Border Name="BoxBorder"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    BorderBrush="{DynamicResource BlockButtonBorderBrush}"
+                                    CornerRadius="{TemplateBinding CornerRadius}">
+                                <Border.Transitions>
+                                    <Transitions>
+                                        <BrushTransition Property="Background"
+                                                         Duration="{DynamicResource BlockButtonStateTransitionDuration}" />
+                                        <BrushTransition Property="BorderBrush"
+                                                         Duration="{DynamicResource BlockButtonStateTransitionDuration}" />
+                                    </Transitions>
+                                </Border.Transitions>
+                            </Border>
+                            <Border Name="EffectBorder"
+                                    CornerRadius="{TemplateBinding CornerRadius}"
+                                    Background="Transparent">
+                                <Border.Transitions>
+                                    <Transitions>
+                                        <BrushTransition Property="Background"
+                                                         Duration="{DynamicResource BlockButtonStateTransitionDuration}" />
+                                    </Transitions>
+                                </Border.Transitions>
+                            </Border>
+                            <Viewbox Name="CheckMark"
+                                     Width="{DynamicResource BlockIconSize}"
+                                     Height="{DynamicResource BlockIconSize}"
+                                     Opacity="0"
+                                     ClipToBounds="False">
+                                <Path Data="{StaticResource BlockCheckMark}"
+                                      Stroke="{DynamicResource BlockButtonForegroundBrush}"
+                                      StrokeThickness="2"
+                                      Stretch="None" />
+                            </Viewbox>
+                            <Viewbox Name="IndeterminateMark"
+                                     Width="{DynamicResource BlockIconSize}"
+                                     Height="{DynamicResource BlockIconSize}"
+                                     Opacity="0">
+                                <Rectangle Width="14"
+                                           Height="2"
+                                           Fill="{DynamicResource BlockWindowForegroundBrush}"
+                                           Stretch="None" />
+                            </Viewbox>
+
+                        </Panel>
+                        <ContentPresenter Name="PART_ContentPresenter"
+                                          Margin="{TemplateBinding blk:Block.Gap, Converter={StaticResource LeftThickness}}"
+                                          VerticalAlignment="Center"
+                                          HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                          Content="{TemplateBinding Content}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          RecognizesAccessKey="True" />
+                    </DockPanel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^ /template/ Viewbox">
+            <Setter Property="Transitions">
+                <Transitions>
+                    <DoubleTransition Property="Opacity"
+                                      Duration="{DynamicResource BlockButtonStateTransitionDuration}" />
+                </Transitions>
+            </Setter>
+        </Style>
+        <Style Selector="^:pointerover:not(:checked) /template/ Border#BoxBorder">
+            <Setter Property="BorderBrush" Value="{DynamicResource BlockButtonBorderHighlightBrush}" />
+        </Style>
+        <Style Selector="^:checked">
+            <Style Selector="^ /template/ Border#BoxBorder">
+                <Setter Property="Background" Value="{DynamicResource BlockButtonBackgroundColor}" />
+                <Setter Property="BorderBrush" Value="Transparent" />
+            </Style>
+            <Style Selector="^ /template/ Viewbox#CheckMark">
+                <Setter Property="Opacity" Value="1" />
+            </Style>
+            <Style Selector="^:pointerover:not(:pressed) /template/ Border#EffectBorder">
+                <Setter Property="Background" Value="{DynamicResource BlockButtonHighlightBrush}" />
+            </Style>
+        </Style>
+        <Style Selector="^:indeterminate">
+            <Style Selector="^ /template/ Viewbox#IndeterminateMark">
+                <Setter Property="Opacity" Value="1" />
+            </Style>
+        </Style>
+        <Style Selector="^:disabled">
+            <Setter Property="Opacity" Value="{DynamicResource BlockDisabledOpacity}" />
+        </Style>
+
+        <Style Selector="^.left-label">
+            <Style Selector="^ /template/ Panel#Radio">
+                <Setter Property="DockPanel.Dock" Value="Right" />
+            </Style>
+            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Margin"
+                        Value="{TemplateBinding blk:Block.Gap, Converter={StaticResource RightThickness}}" />
+            </Style>
+        </Style>
+        <Style Selector="^.top-label">
+            <Style Selector="^ /template/ Panel#Radio">
+                <Setter Property="DockPanel.Dock" Value="Bottom" />
+            </Style>
+            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Margin"
+                        Value="{TemplateBinding blk:Block.Gap, Converter={StaticResource BottomThickness}}" />
+            </Style>
+        </Style>
+        <Style Selector="^.bottom-label">
+            <Style Selector="^ /template/ Panel#Radio">
+                <Setter Property="DockPanel.Dock" Value="Top" />
+            </Style>
+            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Margin"
+                        Value="{TemplateBinding blk:Block.Gap, Converter={StaticResource TopThickness}}" />
+            </Style>
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

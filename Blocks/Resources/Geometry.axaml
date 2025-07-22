@@ -5,4 +5,5 @@
     <StreamGeometry x:Key="BlockRightChevron">M 5 1L 13 8L 5 15</StreamGeometry>
     <StreamGeometry x:Key="BlockUpChevron">M 1 11L 8 3L 15 11</StreamGeometry>
     <StreamGeometry x:Key="BlockDownChevron">M 1 5L 8 13L 15 5</StreamGeometry>
+    <StreamGeometry x:Key="BlockCheckMark">M1 7 6 13 15 2</StreamGeometry>
 </ResourceDictionary>
