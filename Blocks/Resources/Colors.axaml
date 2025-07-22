@@ -8,6 +8,7 @@
             <Color x:Key="BlockButtonBackgroundColor">SlateGray</Color>
             <Color x:Key="BlockButtonForegroundColor">White</Color>
             <Color x:Key="BlockFlatButtonForegroundColor">CornflowerBlue</Color>
+            <Color x:Key="BlockButtonBorderColor">CornflowerBlue</Color>
             <Color x:Key="BlockButtonHighlightColor">AliceBlue</Color>
             <Color x:Key="BlockFlatButtonHighlightColor">LightSlateGray</Color>
             <Color x:Key="BlockButtonShadeColor">CornflowerBlue</Color>

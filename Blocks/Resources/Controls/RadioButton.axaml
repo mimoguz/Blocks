@@ -1,0 +1,96 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:blk="clr-namespace:Blocks.Controls">
+    <Design.PreviewWith>
+        <Border Background="{DynamicResource BlockWindowBackgroundBrush}" Padding="20">
+            <StackPanel Spacing="10">
+                <RadioButton>Radio</RadioButton>
+                <RadioButton IsChecked="True" Classes="left-label" HorizontalAlignment="Left">Checked</RadioButton>
+                <RadioButton IsEnabled="False" GroupName="Disabled" Classes="top-label">Disabled</RadioButton>
+                <RadioButton IsChecked="True" IsEnabled="False" GroupName="Disabled" Classes="bottom-label">Disabled - Checked</RadioButton>
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+    <ControlTheme x:Key="{x:Type RadioButton}"
+                  TargetType="RadioButton">
+        <Setter Property="BorderThickness" Value="{DynamicResource BlockControlBorderThickness}" />
+        <Setter Property="Foreground" Value="{DynamicResource BlockWindowForegroundBrush}" />
+        <Setter Property="blk:Block.Gap" Value="{DynamicResource BlockRadioButtonGap}"></Setter>
+        <Setter Property="Padding" Value="{DynamicResource BlockRadioButtonGap}" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Background="Transparent" Padding="{TemplateBinding Padding}">
+                    <DockPanel Background="Transparent">
+                        <Panel Name="Radio" DockPanel.Dock="Left" HorizontalAlignment="{TemplateBinding HorizontalAlignment}">
+                            <Ellipse Name="Border"
+                                     Width="{DynamicResource BlockRadioButtonSize}"
+                                     Height="{DynamicResource BlockRadioButtonSize}"
+                                     Stroke="{DynamicResource BlockButtonBorderBrush}"
+                                     StrokeThickness="{Binding BorderThickness.Left, RelativeSource={RelativeSource TemplatedParent}}" />
+                            <Ellipse Name="Dot"
+                                     Width="{DynamicResource BlockRadioDotSize}"
+                                     Height="{DynamicResource BlockRadioDotSize}"
+                                     Stroke="{DynamicResource BlockButtonBackgroundBrush}"
+                                     StrokeThickness="{Binding BorderThickness.Left, RelativeSource={RelativeSource TemplatedParent}}" />
+                        </Panel>
+                        <ContentPresenter Name="PART_ContentPresenter"
+                                          Margin="{TemplateBinding blk:Block.Gap, Converter={StaticResource LeftThickness}}"
+                                          VerticalAlignment="Center"
+                                          HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                          Content="{TemplateBinding Content}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          RecognizesAccessKey="True" />
+                    </DockPanel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^ /template/ Ellipse">
+            <Setter Property="Transitions">
+                <Transitions>
+                    <BrushTransition Property="Stroke" Duration="{DynamicResource BlockButtonStateTransitionDuration}" />
+                    <BrushTransition Property="Fill" Duration="{DynamicResource BlockButtonStateTransitionDuration}" />
+                </Transitions>
+            </Setter>
+        </Style>
+        <Style Selector="^:pointerover /template/ Ellipse#Border">
+            <Setter Property="Stroke" Value="{DynamicResource BlockButtonBorderHighlightBrush}" />
+        </Style>
+        <Style Selector="^:pressed /template/ Ellipse#Border">
+            <Setter Property="Fill" Value="{DynamicResource BlockButtonShadeBrush}" />
+        </Style>
+        <Style Selector="^:checked /template/ Ellipse#Dot">
+            <Setter Property="Fill" Value="{DynamicResource BlockButtonBackgroundColor}" />
+            <Setter Property="Stroke" Value="Transparent" />
+        </Style>
+        <Style Selector="^:disabled">
+            <Setter Property="Opacity" Value="{DynamicResource BlockDisabledOpacity}" />
+        </Style>
+        
+        <Style Selector="^.left-label">
+            <Style Selector="^ /template/ Panel#Radio">
+                <Setter Property="DockPanel.Dock" Value="Right" />
+            </Style>
+            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Margin" Value="{TemplateBinding blk:Block.Gap, Converter={StaticResource RightThickness}}" />
+            </Style>
+        </Style>
+        <Style Selector="^.top-label">
+            <Style Selector="^ /template/ Panel#Radio">
+                <Setter Property="DockPanel.Dock" Value="Bottom" />
+            </Style>
+            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Margin" Value="{TemplateBinding blk:Block.Gap, Converter={StaticResource BottomThickness}}" />
+            </Style>
+        </Style>
+        <Style Selector="^.bottom-label">
+            <Style Selector="^ /template/ Panel#Radio">
+                <Setter Property="DockPanel.Dock" Value="Top" />
+            </Style>
+            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Margin" Value="{TemplateBinding blk:Block.Gap, Converter={StaticResource TopThickness}}" />
+            </Style>
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

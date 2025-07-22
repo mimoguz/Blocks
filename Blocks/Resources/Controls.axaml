@@ -4,5 +4,6 @@
         <ResourceInclude Source="Controls/Button.axaml" />
         <ResourceInclude Source="Controls/ButtonSpinner.axaml" />
         <ResourceInclude Source="Controls/RepeatButton.axaml" />
+        <ResourceInclude Source="Controls/RadioButton.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

@@ -16,6 +16,12 @@
     <SolidColorBrush x:Key="BlockButtonShadeBrush" 
                      Color="{DynamicResource BlockButtonShadeColor}" 
                      Opacity="{DynamicResource BlockButtonShadeOpacity}"/>
+    <SolidColorBrush x:Key="BlockButtonBorderBrush" 
+                     Color="{DynamicResource BlockButtonBorderColor}"
+                     Opacity="{DynamicResource BlockButtonBorderOpacity}" />
+    <SolidColorBrush x:Key="BlockButtonBorderHighlightBrush" 
+                     Color="{DynamicResource BlockButtonBorderColor}"
+                     Opacity="{DynamicResource BlockButtonBorderHighlightOpacity}" />
     <SolidColorBrush x:Key="BlockViewBackgroundBrush" Color="{DynamicResource BlockButtonForegroundColor}" />
     <SolidColorBrush x:Key="BlockFocusBrush" Color="{DynamicResource BlockFocusColor}" />
     <SolidColorBrush x:Key="BlockViewFocusBrush" Color="{DynamicResource BlockViewFocusColor}" />

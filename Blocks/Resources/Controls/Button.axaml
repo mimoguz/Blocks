@@ -4,6 +4,7 @@
         <Border Background="{DynamicResource BlockWindowBackgroundColor}" Padding="20">
             <WrapPanel Width="300" ItemSpacing="10" LineSpacing="10">
                 <Button>Basic Button</Button>
+                <Button Classes="outline">Outline Button</Button>
                 <Button Classes="image-button">
                     <Path Data="{StaticResource BlockTestIcon}"
                           Width="{DynamicResource BlockIconSize}"
@@ -91,6 +92,20 @@
             <Setter Property="Foreground" Value="{DynamicResource BlockFlatButtonForegroundBrush}" />
             <Style Selector="^:pointerover:not(:pressed) /template/ ContentPresenter#PART_ContentPresenter">
                 <Setter Property="Background" Value="{DynamicResource BlockFlatButtonHighlightBrush}" />
+            </Style>
+        </Style>
+        <Style Selector="^.outline">
+            <Setter Property="BorderBrush" Value="{DynamicResource BlockButtonBorderBrush}" />
+            <Setter Property="BorderThickness" Value="{DynamicResource BlockControlBorderThickness}" />
+            <Setter Property="Foreground" Value="{DynamicResource BlockFlatButtonForegroundBrush}" />
+            <Style Selector="^ /template/ Border#ButtonBackground">
+                <Setter Property="Background" Value="Transparent" />
+            </Style>
+            <Style Selector="^:pointerover:not(:pressed) /template/ ContentPresenter#PART_ContentPresenter" >
+                <Setter Property="Background" Value="Transparent" />
+            </Style>
+            <Style Selector="^:pointerover /template/ Border#ButtonBackground" >
+                <Setter Property="BorderBrush" Value="{DynamicResource BlockButtonBorderHighlightBrush}" />
             </Style>
         </Style>
     </ControlTheme>

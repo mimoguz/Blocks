@@ -10,12 +10,17 @@
     <CornerRadius x:Key="BlockButtonCornerRadius">9999</CornerRadius>
     <FontWeight x:Key="BlockButtonFontWeight">Bold</FontWeight>
     <sys:Double x:Key="BlockMinButtonSize">36</sys:Double>
+    <sys:Double x:Key="BlockRadioButtonSize">32</sys:Double>
+    <sys:Double x:Key="BlockRadioDotSize">16</sys:Double>
+    <Thickness x:Key="BlockRadioButtonGap">8,4</Thickness>
     
+    <sys:Double x:Key="BlockButtonBorderOpacity">0.5</sys:Double>
+    <sys:Double x:Key="BlockButtonBorderHighlightOpacity">0.9</sys:Double>
     <sys:Double x:Key="BlockButtonHighlightOpacity">0.33</sys:Double>
-    <sys:Double x:Key="BlockButtonShadeOpacity">0.67</sys:Double>
+    <sys:Double x:Key="BlockButtonShadeOpacity">0.5</sys:Double>
     <sys:Double x:Key="BlockDisabledOpacity">0.5</sys:Double>
     <sys:Double x:Key="BlockViewBackgroundOpacity">0.2</sys:Double>
     <sys:Double x:Key="BlockViewHighlightOpacity">0.3</sys:Double>
     <sys:Double x:Key="BlockViewFocusOpacity">0.75</sys:Double>
-    <sys:Double x:Key="BlockViewFocusHighlightOpacity">0.85</sys:Double>
+    <sys:Double x:Key="BlockViewFocusHighlightOpacity">0.9</sys:Double>
 </ResourceDictionary>
