@@ -1,0 +1,118 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Blocks.Views.ButtonsPanel">
+    <StackPanel Spacing="20" Margin="8">
+        <StackPanel Spacing="20" Orientation="Horizontal">
+            <StackPanel Spacing="10">
+                <Button HorizontalAlignment="Left" VerticalAlignment="Top">Basic Button</Button>
+                <Button HorizontalAlignment="Left" IsEnabled="False" VerticalAlignment="Top">Basic Button</Button>
+            </StackPanel>
+            <StackPanel Spacing="10">
+                <Button HorizontalAlignment="Left" VerticalAlignment="Top"
+                        Theme="{DynamicResource BlockOutlineButton}">
+                    Outlined Button
+                </Button>
+                <Button HorizontalAlignment="Left" IsEnabled="False" VerticalAlignment="Top"
+                        Theme="{DynamicResource BlockOutlineButton}">
+                    Outlined Button
+                </Button>
+            </StackPanel>
+            <StackPanel Spacing="10">
+                <Button Classes="image-button" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Path Data="{StaticResource BlockTestIcon}"
+                          Width="{DynamicResource BlockIconSize}"
+                          Height="{DynamicResource BlockIconSize}"
+                          Stretch="Uniform"
+                          Fill="{Binding $parent[Button].Foreground}" />
+                </Button>
+                <Button Classes="image-button" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="False">
+                    <Path Data="{StaticResource BlockTestIcon}"
+                          Width="{DynamicResource BlockIconSize}"
+                          Height="{DynamicResource BlockIconSize}"
+                          Stretch="Uniform"
+                          Fill="{Binding $parent[Button].Foreground}" />
+                </Button>
+            </StackPanel>
+            <StackPanel Spacing="10">
+                <Button HorizontalAlignment="Left" VerticalAlignment="Top" Classes="flat">Flat Button</Button>
+                <Button HorizontalAlignment="Left" IsEnabled="False" VerticalAlignment="Top" Classes="flat">Flat Button</Button>
+            </StackPanel>
+            <StackPanel Spacing="10">
+                <Button Classes="flat image-button" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Path Data="{StaticResource BlockTestIcon}"
+                          Width="{DynamicResource BlockIconSize}"
+                          Height="{DynamicResource BlockIconSize}"
+                          Stretch="Uniform"
+                          Fill="{Binding $parent[Button].Foreground}" />
+                </Button>
+                <Button Classes="flat image-button" HorizontalAlignment="Left" VerticalAlignment="Top"
+                        IsEnabled="False">
+                    <Path Data="{StaticResource BlockTestIcon}"
+                          Width="{DynamicResource BlockIconSize}"
+                          Height="{DynamicResource BlockIconSize}"
+                          Stretch="Uniform"
+                          Fill="{Binding $parent[Button].Foreground}" />
+                </Button>
+            </StackPanel>
+        </StackPanel>
+            
+        <Separator />
+            
+        <StackPanel Spacing="20" Orientation="Horizontal">
+            <StackPanel Spacing="10">
+                <ToggleButton HorizontalAlignment="Left" VerticalAlignment="Top">Basic Toggle</ToggleButton>
+                <ToggleButton HorizontalAlignment="Left" IsChecked="True" VerticalAlignment="Top">Basic Toggle</ToggleButton>
+            </StackPanel>
+            <StackPanel Spacing="10">
+                <ToggleButton HorizontalAlignment="Left" VerticalAlignment="Top"
+                              Theme="{DynamicResource BlockOutlineToggleButton}">
+                    Outlined Toggle
+                </ToggleButton>
+                <ToggleButton HorizontalAlignment="Left" IsChecked="True" VerticalAlignment="Top"
+                              Theme="{DynamicResource BlockOutlineToggleButton}">
+                    Outlined Toggle
+                </ToggleButton>
+            </StackPanel>
+            <StackPanel Spacing="10">
+                <ToggleButton Classes="image-button" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Path Data="{StaticResource BlockTestIcon}"
+                          Width="{DynamicResource BlockIconSize}"
+                          Height="{DynamicResource BlockIconSize}"
+                          Stretch="Uniform"
+                          Fill="{Binding $parent[Button].Foreground}" />
+                </ToggleButton>
+                <ToggleButton Classes="image-button" HorizontalAlignment="Left" VerticalAlignment="Top" IsChecked="True">
+                    <Path Data="{StaticResource BlockTestIcon}"
+                          Width="{DynamicResource BlockIconSize}"
+                          Height="{DynamicResource BlockIconSize}"
+                          Stretch="Uniform"
+                          Fill="{Binding $parent[Button].Foreground}" />
+                </ToggleButton>
+            </StackPanel>
+            <StackPanel Spacing="10">
+                <ToggleButton HorizontalAlignment="Left" VerticalAlignment="Top" Classes="flat">Flat Toggle</ToggleButton>
+                <ToggleButton HorizontalAlignment="Left" IsChecked="True" VerticalAlignment="Top" Classes="flat">Flat Toggle</ToggleButton>
+            </StackPanel>
+            <StackPanel Spacing="10">
+                <ToggleButton Classes="flat image-button" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Path Data="{StaticResource BlockTestIcon}"
+                          Width="{DynamicResource BlockIconSize}"
+                          Height="{DynamicResource BlockIconSize}"
+                          Stretch="Uniform"
+                          Fill="{Binding $parent[Button].Foreground}" />
+                </ToggleButton>
+                <ToggleButton Classes="flat image-button" HorizontalAlignment="Left" VerticalAlignment="Top"
+                              IsChecked="True">
+                    <Path Data="{StaticResource BlockTestIcon}"
+                          Width="{DynamicResource BlockIconSize}"
+                          Height="{DynamicResource BlockIconSize}"
+                          Stretch="Uniform"
+                          Fill="{Binding $parent[Button].Foreground}" />
+                </ToggleButton>
+            </StackPanel>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

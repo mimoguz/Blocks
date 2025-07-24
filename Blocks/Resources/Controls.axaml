@@ -6,5 +6,9 @@
         <ResourceInclude Source="Controls/RepeatButton.axaml" />
         <ResourceInclude Source="Controls/RadioButton.axaml" />
         <ResourceInclude Source="Controls/CheckBox.axaml" />
+        <ResourceInclude Source="Controls/PopupRoot.axaml" />
+        <ResourceInclude Source="Controls/ToggleButton.axaml" />
+        <ResourceInclude Source="Controls/TabItem.axaml" />
+        <ResourceInclude Source="Controls/TabControl.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

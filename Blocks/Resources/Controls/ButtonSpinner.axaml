@@ -11,7 +11,7 @@
     </Design.PreviewWith>
     <ControlTheme x:Key="{x:Type ButtonSpinner}"
                   TargetType="ButtonSpinner">
-        <Setter Property="Background" Value="{DynamicResource BlockBaseViewBackgroundBrush}" />
+        <Setter Property="Background" Value="{DynamicResource BlockButtonBackgroundBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource BlockWindowForegroundBrush}" />
         <Setter Property="CornerRadius" Value="{DynamicResource BlockButtonCornerRadius}" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -24,14 +24,11 @@
             <ControlTemplate>
                 <DataValidationErrors>
                     <Panel>
-                        <Border Name="ButtonBorder"
-                                Background="{TemplateBinding Background}"
-                                Opacity="{DynamicResource BlockViewBackgroundOpacity}"
+                        <Border Name="ButtonBackground"
+                                Background="{DynamicResource BlockViewBackgroundBrush}"
                                 CornerRadius="{TemplateBinding CornerRadius}">
                             <Border.Transitions>
                                 <Transitions>
-                                    <DoubleTransition Property="Opacity"
-                                                      Duration="{DynamicResource BlockButtonStateTransitionDuration}" />
                                     <BrushTransition Property="Background"
                                                       Duration="{DynamicResource BlockButtonStateTransitionDuration}" />
                                 </Transitions>
@@ -41,6 +38,7 @@
                             <RepeatButton Name="PART_DecreaseButton"
                                           IsTabStop="{TemplateBinding IsTabStop}"
                                           DockPanel.Dock="Left"
+                                          Background="{TemplateBinding Background}"
                                           VerticalAlignment="Stretch"
                                           MinHeight="0"
                                           Padding="0"
@@ -60,6 +58,7 @@
                             <RepeatButton Name="PART_IncreaseButton"
                                           IsTabStop="{TemplateBinding IsTabStop}"
                                           DockPanel.Dock="Right"
+                                          Background="{TemplateBinding Background}"
                                           VerticalAlignment="Stretch"
                                           MinHeight="0"
                                           Padding="0"
@@ -89,18 +88,15 @@
                 </DataValidationErrors>
             </ControlTemplate>
         </Setter>
-        <Style Selector="^:pointerover /template/ Border#ButtonBorder">
-            <Setter Property="Opacity" Value="{DynamicResource BlockViewHighlightOpacity}" />
+        <Style Selector="^:pointerover /template/ Border#ButtonBackground">
+            <Setter Property="Background" Value="{DynamicResource BlockViewHighlightBrush}" />
         </Style>
         <Style Selector="^:focus-visible">
-            <Style Selector="^ /template/ Border#ButtonBorder">
-                <Setter Property="Background" Value="{DynamicResource BlockFocusBrush}" />
+            <Style Selector="^ /template/ Border#ButtonBackground">
+                <Setter Property="Background" Value="{DynamicResource BlockBaseViewFocusBrush}" />
                 <Setter Property="Opacity" Value="{DynamicResource BlockViewFocusOpacity}" />
-                <Style Selector="^:pointerover /template/ Border#ButtonBorder">
-                    <Setter Property="Opacity" Value="{DynamicResource BlockViewHighlightOpacity}" />
-                </Style>
             </Style>
-            <Style Selector="^:pointerover /template/ Border#ButtonBorder">
+            <Style Selector="^:pointerover /template/ Border#ButtonBackground">
                 <Setter Property="Opacity" Value="{DynamicResource BlockViewFocusHighlightOpacity}" />
             </Style>
         </Style>

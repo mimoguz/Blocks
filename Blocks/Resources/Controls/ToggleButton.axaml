@@ -3,28 +3,28 @@
     <Design.PreviewWith>
         <Border Background="{DynamicResource BlockWindowBackgroundColor}" Padding="20">
             <WrapPanel Width="300" ItemSpacing="10" LineSpacing="10">
-                <Button>Basic Button</Button>
-                <Button Theme="{DynamicResource BlockOutlineButton}">Outline Button</Button>
-                <Button Classes="image-button">
+                <ToggleButton>Basic Toggle Button</ToggleButton>
+                <ToggleButton Theme="{DynamicResource BlockOutlineToggleButton}">Outline Toggle Button</ToggleButton>
+                <ToggleButton Classes="image-button">
                     <Path Data="{StaticResource BlockTestIcon}"
                           Width="{DynamicResource BlockIconSize}"
                           Height="{DynamicResource BlockIconSize}"
                           Stretch="Uniform"
-                          Fill="{Binding $parent[Button].Foreground}" />
-                </Button>
-                <Button Classes="image-button flat">
+                          Fill="{Binding $parent[ToggleButton].Foreground}" />
+                </ToggleButton>
+                <ToggleButton Classes="image-button flat">
                     <Path Data="{StaticResource BlockTestIcon}"
                           Width="{DynamicResource BlockIconSize}"
                           Height="{DynamicResource BlockIconSize}"
                           Stretch="Uniform"
-                          Fill="{Binding $parent[Button].Foreground}" />
-                </Button>
+                          Fill="{Binding $parent[ToggleButton].Foreground}" />
+                </ToggleButton>
             </WrapPanel>
         </Border>
     </Design.PreviewWith>
 
-    <ControlTheme x:Key="{x:Type Button}"
-                  TargetType="Button">
+    <ControlTheme x:Key="{x:Type ToggleButton}"
+                  TargetType="ToggleButton">
 
         <Setter Property="Background" Value="{DynamicResource BlockButtonBackgroundBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource BlockButtonBorderBrush}" />
@@ -62,26 +62,37 @@
                                 <BrushTransition Property="Background"
                                                  Duration="{DynamicResource BlockButtonStateTransitionDuration}"
                                                  Easing="CubicEaseOut" />
+                                <BrushTransition Property="Foreground"
+                                                 Duration="{DynamicResource BlockButtonStateTransitionDuration}"
+                                                 Easing="CubicEaseOut" />
                             </Transitions>
                         </ContentPresenter.Transitions>
                     </ContentPresenter>
                 </Panel>
             </ControlTemplate>
         </Setter>
-        
+
         <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
             <Setter Property="Background" Value="{DynamicResource BlockButtonHighlightBrush}" />
         </Style>
-        
+
         <Style Selector="^:pressed /template/ ContentPresenter#PART_ContentPresenter">
             <Setter Property="Background" Value="{DynamicResource BlockButtonShadeBrush}" />
         </Style>
-        
+
+        <Style Selector="^:checked">
+            <Setter Property="Background" Value="{DynamicResource BlockSelectedButtonBackgroundColor}" />
+            <Setter Property="Foreground" Value="{DynamicResource BlockSelectedButtonForegroundColor}" />
+            <Style Selector="^:focus-visible">
+                <Setter Property="Background" Value="{DynamicResource BlockSelectedButtonFocusColor}" />
+            </Style>
+        </Style>
+
         <Style Selector="^:disabled">
             <Setter Property="Opacity" Value="{DynamicResource BlockDisabledOpacity}" />
         </Style>
-        
-        <Style Selector="^:focus-visible /template/ Border#ButtonBackground">
+
+        <Style Selector="^:focus-visible">
             <Setter Property="Background" Value="{DynamicResource BlockFocusBrush}" />
         </Style>
 
@@ -89,7 +100,7 @@
         <Style Selector="^.image-button">
             <Setter Property="Padding" Value="{DynamicResource BlockImageButtonPadding}" />
         </Style>
-        
+
         <Style Selector="^.flat">
             <Setter Property="Background" Value="Transparent" />
             <Setter Property="Foreground" Value="{DynamicResource BlockFlatButtonForegroundBrush}" />
@@ -106,11 +117,19 @@
                     <Setter Property="Opacity" Value="{DynamicResource BlockViewFocusHighlightOpacity}" />
                 </Style>
             </Style>
+            <Style Selector="^:checked">
+                <Setter Property="Background" Value="{DynamicResource BlockSelectedButtonBackgroundColor}" />
+                <Setter Property="Foreground" Value="{DynamicResource BlockSelectedButtonForegroundColor}" />
+                <Style Selector="^:focus-visible">
+                    <Setter Property="Background" Value="{DynamicResource BlockSelectedButtonFocusColor}" />
+                </Style>
+            </Style>
         </Style>
     </ControlTheme>
 
-    <ControlTheme x:Key="BlockOutlineButton"
-                  TargetType="Button">
+    <ControlTheme x:Key="BlockOutlineToggleButton"
+                  TargetType="ToggleButton">
+        
         <Setter Property="BorderBrush" Value="{DynamicResource BlockButtonBorderBrush}" />
         <Setter Property="BorderThickness" Value="{DynamicResource BlockControlBorderThickness}" />
         <Setter Property="Foreground" Value="{DynamicResource BlockFlatButtonForegroundBrush}" />
@@ -174,17 +193,39 @@
                 </Panel>
             </ControlTemplate>
         </Setter>
+        
         <Style Selector="^:pointerover /template/ Border#ButtonBorder">
             <Setter Property="Opacity" Value="{DynamicResource BlockButtonBorderHighlightOpacity}" />
         </Style>
+        
         <Style Selector="^:pressed /template/ ContentPresenter#PART_ContentPresenter">
             <Setter Property="Background" Value="{DynamicResource BlockViewShadeBrush}" />
         </Style>
+        
         <Style Selector="^:disabled">
             <Setter Property="Opacity" Value="{DynamicResource BlockDisabledOpacity}" />
         </Style>
+        
         <Style Selector="^:focus-visible /template/ Border#ButtonFocusVisual">
             <Setter Property="Opacity" Value="{DynamicResource BlockViewFocusOpacity}" />
+        </Style>
+
+        <Style Selector="^:checked">
+            <Setter Property="Foreground" Value="{DynamicResource BlockSelectedButtonForegroundColor}" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Background" Value="{DynamicResource BlockButtonHighlightBrush}" />
+            </Style>
+            <Style Selector="^:pressed /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Background" Value="{DynamicResource BlockButtonShadeBrush}" />
+            </Style>
+            <Style Selector="^ /template/ Border#ButtonFocusVisual">
+                <Setter Property="Opacity" Value="1" />
+                <Setter Property="Background" Value="{DynamicResource BlockSelectedButtonBackgroundColor}" />
+            </Style>
+            <Style Selector="^:focus-visible /template/ Border#ButtonFocusVisual">
+                <Setter Property="Background" Value="{DynamicResource BlockSelectedButtonFocusBrush}" />
+            </Style>
         </Style>
 
         <!-- Classes -->

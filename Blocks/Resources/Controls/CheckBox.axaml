@@ -15,11 +15,14 @@
     <ControlTheme x:Key="{x:Type CheckBox}"
                   TargetType="CheckBox">
         <Setter Property="BorderThickness" Value="{DynamicResource BlockControlBorderThickness}" />
+        <Setter Property="Background" Value="{DynamicResource BlockButtonBackgroundColor}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BlockButtonBorderBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource BlockWindowForegroundBrush}" />
         <Setter Property="blk:Block.Gap" Value="{DynamicResource BlockRadioButtonGap}"></Setter>
         <Setter Property="Padding" Value="{DynamicResource BlockRadioButtonGap}" />
         <Setter Property="CornerRadius" Value="{DynamicResource BlockCheckBoxCornerRadius}" />
         <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="FocusAdorner" Value="{x:Null}" />
         <Setter Property="Template">
             <ControlTemplate>
                 <Border Background="Transparent" Padding="{TemplateBinding Padding}">
@@ -28,26 +31,44 @@
                                HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
                                Width="{DynamicResource BlockRadioButtonSize}"
                                Height="{DynamicResource BlockRadioButtonSize}">
-                            <Border Name="BoxBorder"
+                            <Border Name="ButtonFocusVisual"
+                                    CornerRadius="{TemplateBinding CornerRadius}"
+                                    Background="{DynamicResource BlockBaseViewFocusBrush}"
+                                    Opacity="0">
+                                <Border.Transitions>
+                                    <Transitions>
+                                        <DoubleTransition Property="Opacity"
+                                                          Duration="{DynamicResource BlockButtonStateTransitionDuration}"
+                                                          Easing="CubicEaseOut" />
+                                        <BrushTransition Property="Background"
+                                                         Duration="{DynamicResource BlockButtonStateTransitionDuration}"
+                                                         Easing="CubicEaseOut" />
+                                    </Transitions>
+                                </Border.Transitions>
+                            </Border>
+                            <Border Name="ButtonBorder"
                                     BorderThickness="{TemplateBinding BorderThickness}"
-                                    BorderBrush="{DynamicResource BlockButtonBorderBrush}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
                                     CornerRadius="{TemplateBinding CornerRadius}">
                                 <Border.Transitions>
                                     <Transitions>
                                         <BrushTransition Property="Background"
-                                                         Duration="{DynamicResource BlockButtonStateTransitionDuration}" />
+                                                         Duration="{DynamicResource BlockButtonStateTransitionDuration}"
+                                                         Easing="CubicEaseOut" />
                                         <BrushTransition Property="BorderBrush"
-                                                         Duration="{DynamicResource BlockButtonStateTransitionDuration}" />
+                                                         Duration="{DynamicResource BlockButtonStateTransitionDuration}"
+                                                         Easing="CubicEaseOut" />
                                     </Transitions>
                                 </Border.Transitions>
                             </Border>
-                            <Border Name="EffectBorder"
+                            <Border Name="ButtonBackground"
                                     CornerRadius="{TemplateBinding CornerRadius}"
                                     Background="Transparent">
                                 <Border.Transitions>
                                     <Transitions>
                                         <BrushTransition Property="Background"
-                                                         Duration="{DynamicResource BlockButtonStateTransitionDuration}" />
+                                                         Duration="{DynamicResource BlockButtonStateTransitionDuration}"
+                                                         Easing="CubicEaseOut" />
                                     </Transitions>
                                 </Border.Transitions>
                             </Border>
@@ -92,26 +113,50 @@
                 </Transitions>
             </Setter>
         </Style>
-        <Style Selector="^:pointerover:not(:checked) /template/ Border#BoxBorder">
-            <Setter Property="BorderBrush" Value="{DynamicResource BlockButtonBorderHighlightBrush}" />
+
+        <Style Selector="^:not(:checked)">
+            <Style Selector="^ /template/ Border#ButtonBorder">
+                <Setter Property="Opacity" Value="{DynamicResource BlockButtonBorderOpacity}" />
+            </Style>
+            <Style Selector="^:pointerover /template/ Border#ButtonBorder">
+                <Setter Property="Opacity" Value="{DynamicResource BlockButtonBorderHighlightOpacity}" />
+            </Style>
+            <Style Selector="^:pressed /template/ Border#ButtonBackground">
+                <Setter Property="Background" Value="{DynamicResource BlockViewShadeBrush}" />
+            </Style>
+            <Style Selector="^:focus-visible /template/ Border#ButtonFocusVisual">
+                <Setter Property="Opacity" Value="{DynamicResource BlockViewFocusOpacity}" />
+            </Style>
         </Style>
+
         <Style Selector="^:checked">
-            <Style Selector="^ /template/ Border#BoxBorder">
-                <Setter Property="Background" Value="{DynamicResource BlockButtonBackgroundColor}" />
+            <Style Selector="^ /template/ Border#ButtonFocusVisual">
+                <Setter Property="Background" Value="{TemplateBinding Background}" />
+                <Setter Property="Opacity" Value="1" />
+            </Style>
+            <Style Selector="^ /template/ Border#ButtonBorder">
                 <Setter Property="BorderBrush" Value="Transparent" />
             </Style>
             <Style Selector="^ /template/ Viewbox#CheckMark">
                 <Setter Property="Opacity" Value="1" />
             </Style>
-            <Style Selector="^:pointerover:not(:pressed) /template/ Border#EffectBorder">
+            <Style Selector="^:pointerover /template/ Border#ButtonBackground">
                 <Setter Property="Background" Value="{DynamicResource BlockButtonHighlightBrush}" />
             </Style>
+            <Style Selector="^:pressed /template/ Border#ButtonBackground">
+                <Setter Property="Background" Value="{DynamicResource BlockButtonShadeBrush}" />
+            </Style>
+            <Style Selector="^:focus-visible /template/ Border#ButtonFocusVisual">
+                <Setter Property="Background" Value="{DynamicResource BlockFocusBrush}" />
+            </Style>
         </Style>
+
         <Style Selector="^:indeterminate">
             <Style Selector="^ /template/ Viewbox#IndeterminateMark">
                 <Setter Property="Opacity" Value="1" />
             </Style>
         </Style>
+
         <Style Selector="^:disabled">
             <Setter Property="Opacity" Value="{DynamicResource BlockDisabledOpacity}" />
         </Style>
@@ -125,6 +170,7 @@
                         Value="{TemplateBinding blk:Block.Gap, Converter={StaticResource RightThickness}}" />
             </Style>
         </Style>
+
         <Style Selector="^.top-label">
             <Style Selector="^ /template/ Panel#Radio">
                 <Setter Property="DockPanel.Dock" Value="Bottom" />
@@ -134,6 +180,7 @@
                         Value="{TemplateBinding blk:Block.Gap, Converter={StaticResource BottomThickness}}" />
             </Style>
         </Style>
+
         <Style Selector="^.bottom-label">
             <Style Selector="^ /template/ Panel#Radio">
                 <Setter Property="DockPanel.Dock" Value="Top" />
