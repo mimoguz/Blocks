@@ -2,13 +2,16 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <!-- Opaque brushes -->
     <SolidColorBrush x:Key="BlockWindowBackgroundBrush" Color="{DynamicResource BlockWindowBackgroundColor}" />
+    <SolidColorBrush x:Key="BlockBaseButtonBackgroundBrush" Color="{DynamicResource BlockBaseButtonBackgroundColor}" />
     <SolidColorBrush x:Key="BlockBaseViewBackgroundBrush" Color="{DynamicResource BlockBaseViewBackgroundColor}" />
-    <SolidColorBrush x:Key="BlockButtonBackgroundBrush" Color="{DynamicResource BlockButtonBackgroundColor}" />
-    <SolidColorBrush x:Key="BlockButtonBorderBrush" Color="{DynamicResource BlockButtonBorderColor}"/>
-    <SolidColorBrush x:Key="BlockFocusBrush" Color="{DynamicResource BlockButtonFocusColor}" />
-    <SolidColorBrush x:Key="BlockBaseViewFocusBrush" Color="{DynamicResource BlockViewFocusColor}" />
+    <SolidColorBrush x:Key="BlockBaseViewBorderBrush" Color="{DynamicResource BlockBaseViewBorderColor}" />
+    <SolidColorBrush x:Key="BlockBaseFocusBrush" Color="{DynamicResource BlockBaseFocusColor}" />
+    
+    
     <SolidColorBrush x:Key="BlockSelectedButtonBackgroundBrush" Color="{DynamicResource BlockSelectedButtonBackgroundColor}" />
     <SolidColorBrush x:Key="BlockSelectedButtonFocusBrush" Color="{DynamicResource BlockSelectedButtonFocusColor}" />
+    
+    <SolidColorBrush x:Key="BlockButtonBorderBrush" Color="{DynamicResource BlockButtonBorderColor}"/>
     
     <!-- Baked-in transparency -->
     <SolidColorBrush x:Key="BlockButtonHighlightBrush" Color="{DynamicResource BlockButtonHighlightColor}" Opacity="{DynamicResource BlockButtonHighlightOpacity}"/>

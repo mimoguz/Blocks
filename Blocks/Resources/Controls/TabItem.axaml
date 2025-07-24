@@ -21,11 +21,10 @@
     <ControlTheme x:Key="{x:Type TabItem}"
                   TargetType="TabItem">
 
-        <Setter Property="Background" Value="{DynamicResource BlockViewBackgroundBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource BlockButtonBorderBrush}" />
-        <Setter Property="BorderThickness" Value="{DynamicResource BlockControlBorderThickness}" />
-        <Setter Property="Foreground" Value="{DynamicResource BlockWindowForegroundBrush}" />
-        <Setter Property="Padding" Value="{DynamicResource BlockTabItemPadding}" />
+        <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource BlockButtonForegroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BlockBaseFocusBrush}" />
+        <Setter Property="Padding" Value="{DynamicResource BlockButtonPadding}" />
         <Setter Property="CornerRadius" Value="{DynamicResource BlockButtonCornerRadius}" />
         <Setter Property="FontWeight" Value="{DynamicResource BlockButtonFontWeight}" />
         <Setter Property="MinWidth" Value="{DynamicResource BlockMinButtonSize}" />
@@ -40,37 +39,33 @@
                     <Border Name="ButtonBackground"
                             Background="{TemplateBinding Background}"
                             CornerRadius="{TemplateBinding CornerRadius}"
+                            Opacity="{DynamicResource BlockButtonBackgroundOpacity}"
                             IsHitTestVisible="True" />
-                    <Border Name="EffectBorder" 
-                            Background="Transparent"
+                    <Border Name="FocusVisual"
                             CornerRadius="{TemplateBinding CornerRadius}"
-                            IsHitTestVisible="False" />
-                    <Grid ColumnDefinitions="24,*">
-                        <Ellipse Name="Dot" 
-                                 Grid.Column="0"
-                                 Width="12"
-                                 Height="12"
-                                 StrokeThickness="2"
-                                 HorizontalAlignment="Right"
-                                 Opacity="{DynamicResource BlockButtonBorderOpacity}"
-                                 Stroke="{TemplateBinding Foreground}" >
-                            <Ellipse.Transitions>
-                                <Transitions>
-                                    <DoubleTransition Property="Opacity"
-                                                      Duration="{DynamicResource BlockLongStateTransitionDuration}"
-                                                      Easing="CubicEaseOut" />
-                                    <BrushTransition Property="Fill"
-                                                      Duration="{DynamicResource BlockLongStateTransitionDuration}"
-                                                      Easing="CubicEaseOut" />
-                                    <BrushTransition Property="Stroke"
-                                                     Duration="{DynamicResource BlockLongStateTransitionDuration}"
-                                                     Easing="CubicEaseOut" />
-                                </Transitions>
-                            </Ellipse.Transitions>
-                        </Ellipse>
+                            BorderBrush="{DynamicResource BlockBaseFocusBrush}"
+                            BorderThickness="{DynamicResource BlockFocusBorderThickness}"
+                            Opacity="0" />
+                    <DockPanel>
+                        <Panel DockPanel.Dock="Left" Margin="8,0, 0,0">
+                            <Rectangle Height="20" Width="3" Fill="#60FFFFFF"/>
+                            <Rectangle Name="Mark"
+                                       DockPanel.Dock="Left"
+                                       HorizontalAlignment="Left"
+                                       Height="0"
+                                       Width="3"
+                                       Fill="{TemplateBinding BorderBrush}"
+                                       Opacity="0.9">
+                                <Rectangle.Transitions>
+                                    <Transitions>
+                                        <DoubleTransition Property="Height"
+                                                          Duration="{DynamicResource BlockLongStateTransitionDuration}"
+                                                          Easing="CubicEaseOut" />
+                                    </Transitions>
+                                </Rectangle.Transitions>
+                            </Rectangle>
+                        </Panel>
                         <ContentPresenter Name="PART_ContentPresenter"
-                                          Grid.Column="1"
-                                          Background="Transparent"
                                           CornerRadius="{TemplateBinding CornerRadius}"
                                           Padding="{TemplateBinding Padding}"
                                           HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
@@ -83,62 +78,55 @@
                             <ContentPresenter.Transitions>
                                 <Transitions>
                                     <DoubleTransition Property="Opacity"
-                                                     Duration="{DynamicResource BlockButtonStateTransitionDuration}"
-                                                     Easing="CubicEaseOut" />
+                                                      Duration="{DynamicResource BlockLongStateTransitionDuration}"
+                                                      Easing="CubicEaseOut" />
                                 </Transitions>
                             </ContentPresenter.Transitions>
                         </ContentPresenter>
-                    </Grid>
+                    </DockPanel>
                 </Panel>
             </ControlTemplate>
         </Setter>
 
+        <Style Selector="^ /template/ Border">
+            <Setter Property="Transitions">
+                <Transitions>
+                    <BrushTransition Property="Background"
+                                     Duration="{DynamicResource BlockButtonStateTransitionDuration}"
+                                     Easing="CubicEaseOut" />
+                    <BrushTransition Property="BorderBrush"
+                                     Duration="{DynamicResource BlockButtonStateTransitionDuration}"
+                                     Easing="CubicEaseOut" />
+                    <DoubleTransition Property="Opacity"
+                                      Duration="{DynamicResource BlockButtonStateTransitionDuration}"
+                                      Easing="CubicEaseOut" />
+                </Transitions>
+            </Setter>
+        </Style>
+
         <Style Selector="^:pointerover /template/ Border#ButtonBackground">
-            <Setter Property="Background" Value="{DynamicResource BlockViewHighlightBrush}" />
+            <Setter Property="Opacity" Value="{DynamicResource BlockButtonHighlightOpacity}" />
         </Style>
 
         <Style Selector="^:pressed /template/ Border#ButtonBackground">
-            <Setter Property="Background" Value="{DynamicResource BlockViewShadeBrush}" />
-        </Style>
-        
-        <Style Selector="^:focus-visible">
-            <Style Selector="^ /template/ Border#ButtonBackground">
-                <Setter Property="Background" Value="{DynamicResource BlockBaseViewFocusBrush}" />
-                <Setter Property="Opacity" Value="{DynamicResource BlockViewFocusOpacity}" />
-            </Style>
-            <Style Selector="^:pointerover /template/ Border#ButtonBackground">
-                <Setter Property="Opacity" Value="{DynamicResource BlockViewHighlightOpacity}" />
-            </Style>
-            <Style Selector="^:pressed /template/ Border#ButtonBackground">
-                <Setter Property="Opacity" Value="{DynamicResource BlockViewShadeOpacity}" />
-            </Style>
-        </Style>
-
-        <Style Selector="^:selected">
-            <Style Selector="^ /template/ Ellipse#Dot">
-                <Setter Property="Stroke" Value="{x:Null}" />
-                <Setter Property="Fill" Value="{TemplateBinding Foreground}" />
-                <Setter Property="Opacity" Value="0.9" />
-            </Style>
-            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="Opacity" Value="1" />
-            </Style>
-            <Style Selector="^ /template/ Border#ButtonBackground">
-                <Setter Property="Background" Value="{DynamicResource BlockViewHighlightBrush}" />
-            </Style>
-            <Style Selector="^:pointerover /template/ Border#EffectBorder">
-                <Setter Property="Background" Value="{DynamicResource BlockButtonHighlightBrush}" />
-            </Style>
-            <Style Selector="^:pressed /template/ Border#EffectBorder">
-                <Setter Property="Background" Value="{DynamicResource BlockButtonShadeBrush}" />
-            </Style>
-            <Style Selector="^:focus-visible">
-                <Setter Property="Background" Value="{DynamicResource BlockSelectedButtonFocusColor}" />
-            </Style>
+            <Setter Property="Opacity" Value="{DynamicResource BlockButtonShadeOpacity}" />
         </Style>
 
         <Style Selector="^:disabled">
             <Setter Property="Opacity" Value="{DynamicResource BlockDisabledOpacity}" />
+        </Style>
+
+        <Style Selector="^:focus-visible /template/ Border#FocusVisual">
+            <Setter Property="Opacity" Value="{DynamicResource BlockViewBorderOpacity}" />
+        </Style>
+
+        <Style Selector="^:selected">
+            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Opacity" Value="1" />
+            </Style>
+            <Style Selector="^ /template/ Rectangle#Mark">
+                <Setter Property="Height" Value="20" />
+            </Style>
         </Style>
     </ControlTheme>
 </ResourceDictionary>

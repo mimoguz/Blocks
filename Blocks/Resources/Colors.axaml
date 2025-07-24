@@ -7,7 +7,16 @@
             
             <Color x:Key="BlockWindowBackgroundColor">#F7F7FF</Color>
             <Color x:Key="BlockWindowForegroundColor">#203035</Color>
-            <Color x:Key="BlockBaseViewBackgroundColor">#203035</Color>
+            <Color x:Key="BlockBaseViewBackgroundColor">#F0203035</Color>
+            <Color x:Key="BlockBaseViewBorderColor">#F0203035</Color>
+            <Color x:Key="BlockBaseButtonBackgroundColor">#F0203035</Color>
+            <Color x:Key="BlockBaseFocusColor">#007FFF</Color>
+            <Color x:Key="BlockBaseSelectedBackgroundColor">#AFFC41</Color>
+            <Color x:Key="BlockBaseSelectedFocusBackgroundColor">DeepSkyBlue</Color>
+            
+            <Color x:Key="BlockButtonForegroundColor">#102025</Color>
+            
+            
             <Color x:Key="BlockFlatButtonForegroundColor">CornflowerBlue</Color>
             <Color x:Key="BlockButtonBorderColor">CornflowerBlue</Color>
             <Color x:Key="BlockButtonHighlightColor">AliceBlue</Color>
@@ -19,7 +28,6 @@
             <Color x:Key="BlockSelectedButtonBackgroundColor">#AFFC41</Color>
             <Color x:Key="BlockButtonBackgroundColor">#36494E</Color>
             <Color x:Key="BlockSelectedButtonForegroundColor">#102025</Color>
-            <Color x:Key="BlockButtonForegroundColor">White</Color>
             <Color x:Key="BlockSelectedButtonFocusColor">DeepSkyBlue</Color>
             <Color x:Key="BlockButtonFocusColor">#007FFF</Color>
         </ResourceDictionary>
