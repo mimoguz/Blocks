@@ -2,6 +2,10 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:conv="clr-namespace:Blocks.Converters">
     <conv:InnerRadiusConverter x:Key="InnerRadius" />
+    <conv:TopRadiusConverter x:Key="TopRadius" />
+    <conv:BottomRadiusConverter x:Key="BottomRadius" />
+    <conv:LeftRadiusConverter x:Key="LeftRadius" />
+    <conv:RightRadiusConverter x:Key="RightRadius" />
     <conv:BottomThicknessConverter x:Key="BottomThickness" />
     <conv:TopThicknessConverter x:Key="TopThickness" />
     <conv:LeftThicknessConverter x:Key="LeftThickness" />

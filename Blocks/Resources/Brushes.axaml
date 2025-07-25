@@ -1,29 +1,24 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <!-- Opaque brushes -->
+    <!-- Direct brushes -->
     <SolidColorBrush x:Key="BlockWindowBackgroundBrush" Color="{DynamicResource BlockWindowBackgroundColor}" />
     <SolidColorBrush x:Key="BlockBaseButtonBackgroundBrush" Color="{DynamicResource BlockBaseButtonBackgroundColor}" />
+    <SolidColorBrush x:Key="BlockBaseInputButtonBackgroundBrush" Color="{DynamicResource BlockBaseInputButtonBackgroundColor}" />
     <SolidColorBrush x:Key="BlockBaseViewBackgroundBrush" Color="{DynamicResource BlockBaseViewBackgroundColor}" />
     <SolidColorBrush x:Key="BlockBaseViewBorderBrush" Color="{DynamicResource BlockBaseViewBorderColor}" />
     <SolidColorBrush x:Key="BlockBaseFocusBrush" Color="{DynamicResource BlockBaseFocusColor}" />
     <SolidColorBrush x:Key="BlockBaseAccentBrush" Color="{DynamicResource BlockBaseAccentColor}" />
-    
-    
-    <SolidColorBrush x:Key="BlockSelectedButtonBackgroundBrush" Color="{DynamicResource BlockSelectedButtonBackgroundColor}" />
-    <SolidColorBrush x:Key="BlockSelectedButtonFocusBrush" Color="{DynamicResource BlockSelectedButtonFocusColor}" />
-    
-    <SolidColorBrush x:Key="BlockButtonBorderBrush" Color="{DynamicResource BlockButtonBorderColor}"/>
+    <SolidColorBrush x:Key="BlockBaseDestructiveBackgroundBrush" Color="{DynamicResource BlockBaseDestructiveBackgroundColor}" />
     
     <!-- Baked-in transparency -->
-    <SolidColorBrush x:Key="BlockButtonHighlightBrush" Color="{DynamicResource BlockButtonHighlightColor}" Opacity="{DynamicResource BlockButtonHighlightOpacity}"/>
-    <SolidColorBrush x:Key="BlockButtonShadeBrush" Color="{DynamicResource BlockButtonShadeColor}" Opacity="{DynamicResource BlockButtonShadeOpacity}"/>
-    <SolidColorBrush x:Key="BlockViewBackgroundBrush" Color="{DynamicResource BlockBaseViewBackgroundColor}" Opacity="{DynamicResource BlockViewBackgroundOpacity}"/>
-    <SolidColorBrush x:Key="BlockViewHighlightBrush" Color="{DynamicResource BlockViewHighlightColor}" Opacity="{DynamicResource BlockViewHighlightOpacity}"/>
-    <SolidColorBrush x:Key="BlockViewShadeBrush" Color="{DynamicResource BlockButtonShadeColor}" Opacity="{DynamicResource BlockViewShadeOpacity}"/>
+    <SolidColorBrush x:Key="BlockDotBgBrush">#60FFFFFF</SolidColorBrush>
+    <SolidColorBrush x:Key="BlockHighlightBrush" Color="{DynamicResource BlockBaseHighlightColor}" Opacity="{DynamicResource BlockButtonHighlightOpacity}" />
+    <SolidColorBrush x:Key="BlockShadeBrush" Color="{DynamicResource BlockBaseShadeColor}" Opacity="{DynamicResource BlockButtonShadeOpacity}" />
     
     <!-- Foreground -->
     <SolidColorBrush x:Key="BlockWindowForegroundBrush" Color="{DynamicResource BlockWindowForegroundColor}" />
+    <SolidColorBrush x:Key="BlockAccentForegroundBrush" Color="{DynamicResource BlockAccentForegroundColor}" />
     <SolidColorBrush x:Key="BlockButtonForegroundBrush" Color="{DynamicResource BlockButtonForegroundColor}" />
-    <SolidColorBrush x:Key="BlockSelectedButtonForegroundBrush" Color="{DynamicResource BlockSelectedButtonForegroundColor}" />
+    <SolidColorBrush x:Key="BlockDestructiveForegroundBrush" Color="{DynamicResource BlockDestructiveForegroundColor}" />
     <SolidColorBrush x:Key="BlockFlatButtonForegroundBrush" Color="{DynamicResource BlockFlatButtonForegroundColor}" />
 </ResourceDictionary>

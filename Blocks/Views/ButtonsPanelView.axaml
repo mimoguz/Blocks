@@ -17,8 +17,9 @@
             <CheckBox IsChecked="{Binding AllChecked, Mode=TwoWay}">Check All</CheckBox>
         </StackPanel>
         <StackPanel.Styles>
-            <Style Selector="StackPanel">
-                <Setter Property="Spacing" Value="10" />
+            <Style Selector="WrapPanel">
+                <Setter Property="ItemSpacing" Value="10" />
+                <Setter Property="LineSpacing" Value="20" />
             </Style>
             <Style Selector="Button">
                 <Setter Property="HorizontalAlignment" Value="Left" />
@@ -35,15 +36,34 @@
         </StackPanel.Styles>
 
         <!-- ************** Buttons ************** -->
-        <StackPanel Orientation="Horizontal">
+        <WrapPanel>
             <Button IsEnabled="{Binding AllEnabled}">
                 Basic Button
+            </Button>
+            <Button IsEnabled="{Binding AllEnabled}" IsDefault="True">
+                Default Button
+            </Button>
+            <Button IsEnabled="{Binding AllEnabled}"
+                    Classes="destructive">
+                Destructive Button
             </Button>
             <Button Classes="flat"
                     IsEnabled="{Binding AllEnabled}">
                 Flat Button
             </Button>
+            <Button IsEnabled="{Binding AllEnabled}"
+                    Classes="destructive flat">
+                Destructive Flat Button
+            </Button>
             <Button Classes="image-button"
+                    IsEnabled="{Binding AllEnabled}">
+                <Path Data="{StaticResource BlockTestIcon}"
+                      Width="{DynamicResource BlockIconSize}"
+                      Height="{DynamicResource BlockIconSize}"
+                      Stretch="Uniform"
+                      Fill="{Binding $parent[Button].Foreground}" />
+            </Button>
+            <Button Classes="destructive image-button"
                     IsEnabled="{Binding AllEnabled}">
                 <Path Data="{StaticResource BlockTestIcon}"
                       Width="{DynamicResource BlockIconSize}"
@@ -59,12 +79,20 @@
                       Stretch="Uniform"
                       Fill="{Binding $parent[Button].Foreground}" />
             </Button>
-        </StackPanel>
+            <Button Classes="destructive flat image-button"
+                    IsEnabled="{Binding AllEnabled}">
+                <Path Data="{StaticResource BlockTestIcon}"
+                      Width="{DynamicResource BlockIconSize}"
+                      Height="{DynamicResource BlockIconSize}"
+                      Stretch="Uniform"
+                      Fill="{Binding $parent[Button].Foreground}" />
+            </Button>
+        </WrapPanel>
 
         <Separator />
 
         <!-- ************** Repeat Buttons ************** -->
-        <StackPanel Orientation="Horizontal">
+        <WrapPanel>
             <RepeatButton IsEnabled="{Binding AllEnabled}">
                 Basic Repeat Button
             </RepeatButton>
@@ -88,18 +116,19 @@
                       Stretch="Uniform"
                       Fill="{Binding $parent[Button].Foreground}" />
             </RepeatButton>
-        </StackPanel>
+        </WrapPanel>
 
         <Separator />
 
 
         <!-- ************** Toggle Buttons ************** -->
-        <StackPanel Orientation="Horizontal">
+        <WrapPanel>
             <ToggleButton IsChecked="{Binding AllChecked, Mode=TwoWay}"
                           IsEnabled="{Binding AllEnabled}">
                 Basic Toggle Button
             </ToggleButton>
             <ToggleButton Classes="flat"
+                          Padding="{DynamicResource BlockFlatToggleButtonPadding}"
                           IsChecked="{Binding AllChecked, Mode=TwoWay}"
                           IsEnabled="{Binding AllEnabled}">
                 Flat Toggle Button
@@ -122,6 +151,6 @@
                       Stretch="Uniform"
                       Fill="{Binding $parent[Button].Foreground}" />
             </ToggleButton>
-        </StackPanel>
+        </WrapPanel>
     </StackPanel>
 </UserControl>

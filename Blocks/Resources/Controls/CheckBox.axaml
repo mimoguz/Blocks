@@ -35,42 +35,23 @@
                                Width="{DynamicResource BlockRadioButtonSize}"
                                Height="{DynamicResource BlockRadioButtonSize}"
                                HorizontalAlignment="{TemplateBinding HorizontalAlignment}">
+                            <Border Name="ButtonBackground"
+                                    Background="{DynamicResource BlockBaseButtonBackgroundBrush}"
+                                    Opacity="{DynamicResource BlockButtonBackgroundOpacity}"
+                                    CornerRadius="{TemplateBinding CornerRadius}">
+                                <Border.Transitions>
+                                    <Transitions>
+                                        <DoubleTransition Property="Opacity"
+                                                          Duration="{DynamicResource BlockButtonStateTransitionDuration}"
+                                                          Easing="CubicEaseOut" />
+                                    </Transitions>
+                                </Border.Transitions>
+                            </Border>
                             <Border Name="ButtonFocusVisual"
-                                    Margin="{TemplateBinding BorderThickness}"
                                     BorderBrush="{DynamicResource BlockBaseFocusBrush}"
                                     BorderThickness="{DynamicResource BlockFocusBorderThickness}"
+                                    CornerRadius="{TemplateBinding CornerRadius}"
                                     Opacity="0">
-                                <Border.Transitions>
-                                    <Transitions>
-                                        <DoubleTransition Property="Opacity"
-                                                          Duration="{DynamicResource BlockButtonStateTransitionDuration}"
-                                                          Easing="CubicEaseOut" />
-                                    </Transitions>
-                                </Border.Transitions>
-                                <Border.CornerRadius>
-                                    <MultiBinding Converter="{StaticResource InnerRadius}">
-                                        <TemplateBinding Property="CornerRadius" />
-                                        <TemplateBinding Property="BorderThickness" />
-                                    </MultiBinding>
-                                </Border.CornerRadius>
-                            </Border>
-                            <Border Name="ButtonBorder"
-                                    Opacity="{DynamicResource BlockViewBorderOpacity}"
-                                    BorderBrush="{TemplateBinding BorderBrush}"
-                                    BorderThickness="{TemplateBinding BorderThickness}"
-                                    CornerRadius="{TemplateBinding CornerRadius}">
-                                <Border.Transitions>
-                                    <Transitions>
-                                        <DoubleTransition Property="Opacity"
-                                                          Duration="{DynamicResource BlockButtonStateTransitionDuration}"
-                                                          Easing="CubicEaseOut" />
-                                    </Transitions>
-                                </Border.Transitions>
-                            </Border>
-                            <Border Name="ButtonBackground"
-                                    Background="{DynamicResource BlockBaseViewBackgroundBrush}"
-                                    Opacity="{DynamicResource BlockViewBackgroundOpacity}"
-                                    CornerRadius="{TemplateBinding CornerRadius}">
                                 <Border.Transitions>
                                     <Transitions>
                                         <DoubleTransition Property="Opacity"
@@ -126,12 +107,12 @@
             </ControlTemplate>
         </Setter>
 
-        <Style Selector="^:pointerover /template/ Border#ButtonBorder">
-            <Setter Property="Opacity" Value="{DynamicResource BlockViewHighlightOpacity}" />
+        <Style Selector="^:pointerover /template/ Border#ButtonBackground">
+            <Setter Property="Opacity" Value="{DynamicResource BlockButtonHighlightOpacity}" />
         </Style>
 
         <Style Selector="^:pressed /template/ Border#ButtonBackground">
-            <Setter Property="Opacity" Value="{DynamicResource BlockViewShadeOpacity}" />
+            <Setter Property="Opacity" Value="{DynamicResource BlockButtonShadeOpacity}" />
         </Style>
 
         <Style Selector="^:not(:checked) /template/ Viewbox#CheckMark">
@@ -146,7 +127,7 @@
         </Style>
 
         <Style Selector="^:focus-visible /template/ Border#ButtonFocusVisual">
-            <Setter Property="Opacity" Value="{DynamicResource BlockViewFocusOpacity}" />
+            <Setter Property="Opacity" Value="{DynamicResource BlockButtonFocusOpacity}" />
         </Style>
 
         <Style Selector="^:disabled">

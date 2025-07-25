@@ -4,6 +4,8 @@
         <Border Background="{DynamicResource BlockWindowBackgroundColor}" Padding="20">
             <WrapPanel Width="300" ItemSpacing="10" LineSpacing="10">
                 <Button>Basic Button</Button>
+                <Button Classes="destructive">Destructive Button</Button>
+                <Button IsDefault="True">Default Button</Button>
                 <Button Classes="image-button">
                     <Path Data="{StaticResource BlockTestIcon}"
                           Width="{DynamicResource BlockIconSize}"
@@ -12,6 +14,13 @@
                           Fill="{Binding $parent[Button].Foreground}" />
                 </Button>
                 <Button Classes="image-button flat">
+                    <Path Data="{StaticResource BlockTestIcon}"
+                          Width="{DynamicResource BlockIconSize}"
+                          Height="{DynamicResource BlockIconSize}"
+                          Stretch="Uniform"
+                          Fill="{Binding $parent[Button].Foreground}" />
+                </Button>
+                <Button Classes="image-button flat destructive">
                     <Path Data="{StaticResource BlockTestIcon}"
                           Width="{DynamicResource BlockIconSize}"
                           Height="{DynamicResource BlockIconSize}"
@@ -43,12 +52,28 @@
                             Background="{TemplateBinding Background}"
                             CornerRadius="{TemplateBinding CornerRadius}"
                             Opacity="{DynamicResource BlockButtonBackgroundOpacity}"
-                            IsHitTestVisible="True" />
+                            IsHitTestVisible="True" >
+                        <Border.Transitions>
+                            <Transitions>
+                                <DoubleTransition Property="Opacity"
+                                                  Duration="{DynamicResource BlockButtonStateTransitionDuration}"
+                                                  Easing="CubicEaseOut" />
+                            </Transitions>
+                        </Border.Transitions>
+                    </Border>
                     <Border Name="FocusVisual"
                             CornerRadius="{TemplateBinding CornerRadius}"
                             BorderBrush="{DynamicResource BlockBaseFocusBrush}"
                             BorderThickness="{DynamicResource BlockFocusBorderThickness}" 
-                            Opacity="0"/>
+                            Opacity="0">
+                        <Border.Transitions>
+                            <Transitions>
+                                <DoubleTransition Property="Opacity"
+                                                  Duration="{DynamicResource BlockButtonStateTransitionDuration}"
+                                                  Easing="CubicEaseOut" />
+                            </Transitions>
+                        </Border.Transitions>
+                    </Border>
                     <ContentPresenter Name="PART_ContentPresenter"
                                       IsHitTestVisible="False"
                                       CornerRadius="{TemplateBinding CornerRadius}"
@@ -59,26 +84,17 @@
                                       ContentTemplate="{TemplateBinding ContentTemplate}"
                                       RecognizesAccessKey="True"
                                       TextElement.Foreground="{TemplateBinding Foreground}">
+                        <ContentPresenter.Transitions>
+                            <Transitions>
+                                <BrushTransition Property="Background"
+                                                 Duration="{DynamicResource BlockButtonStateTransitionDuration}"
+                                                 Easing="CubicEaseOut" />
+                            </Transitions>
+                        </ContentPresenter.Transitions>
                     </ContentPresenter>
                 </Panel>
             </ControlTemplate>
         </Setter>
-
-        <Style Selector="^ /template/ Border">
-            <Setter Property="Transitions">
-                <Transitions>
-                    <BrushTransition Property="Background"
-                                     Duration="{DynamicResource BlockButtonStateTransitionDuration}"
-                                     Easing="CubicEaseOut" />
-                    <BrushTransition Property="BorderBrush"
-                                     Duration="{DynamicResource BlockButtonStateTransitionDuration}"
-                                     Easing="CubicEaseOut" />
-                    <DoubleTransition Property="Opacity"
-                                      Duration="{DynamicResource BlockButtonStateTransitionDuration}"
-                                      Easing="CubicEaseOut" />
-                </Transitions>
-            </Setter>
-        </Style>
 
         <Style Selector="^:pointerover /template/ Border#ButtonBackground">
             <Setter Property="Opacity" Value="{DynamicResource BlockButtonHighlightOpacity}" />
@@ -100,14 +116,53 @@
         <Style Selector="^.image-button">
             <Setter Property="Padding" Value="{DynamicResource BlockImageButtonPadding}" />
         </Style>
-
+        
         <Style Selector="^.flat">
-            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="{DynamicResource BlockFlatButtonForegroundBrush}" />
+            <Style Selector="^ /template/ Border#ButtonBackground">
+                <Setter Property="Background" Value="Transparent" />
+            </Style>
             <Style Selector="^:pointerover /template/ Border#ButtonBackground">
-                <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
+                <Setter Property="Background" Value="{TemplateBinding Background}" />
+                <Setter Property="Opacity" Value="{DynamicResource BlockButtonBackgroundOpacity}" />
             </Style>
             <Style Selector="^:pressed /template/ Border#ButtonBackground">
-                <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
+                <Setter Property="Background" Value="{TemplateBinding Background}" />
+                <Setter Property="Opacity" Value="{DynamicResource BlockButtonHighlightOpacity}" />
+            </Style>
+        </Style>
+        
+        <Style Selector="^.destructive">
+            <Setter Property="Background" Value="{DynamicResource BlockBaseDestructiveBackgroundBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource BlockDestructiveForegroundBrush}" />
+            <Style Selector="^ /template/ Border#FocusVisual">
+                <Setter Property="BorderBrush" Value="{DynamicResource BlockDestructiveForegroundBrush}" />
+            </Style>
+        </Style>
+        
+        <Style Selector="^[IsDefault=True]">
+            <Setter Property="Foreground" Value="{DynamicResource BlockAccentForegroundBrush}" />
+            <Style Selector="^ /template/ Border#ButtonBackground">
+                <Setter Property="Background" Value="{DynamicResource BlockBaseAccentBrush}" />
+                <Setter Property="Opacity" Value="1" />
+            </Style>
+            <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Background" Value="{DynamicResource BlockHighlightBrush}" />
+            </Style>
+            <Style Selector="^:pressed /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Background" Value="{DynamicResource BlockShadeBrush}" />
+            </Style>
+            <Style Selector="^ /template/ Border#FocusVisual">
+                <Setter Property="Margin" Value="{DynamicResource BlockFocusBorderThickness}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource BlockAccentForegroundBrush}" />
+                <Setter Property="CornerRadius">
+                    <Setter.Value>
+                        <MultiBinding Converter="{StaticResource InnerRadius}">
+                            <TemplateBinding Property="CornerRadius" />
+                            <DynamicResource ResourceKey="BlockFocusBorderThickness" />
+                        </MultiBinding>
+                    </Setter.Value>
+                </Setter>
             </Style>
         </Style>
     </ControlTheme>

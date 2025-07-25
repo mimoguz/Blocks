@@ -9,12 +9,7 @@ public abstract class SelectThicknessConverter : IValueConverter
 {
     public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
     {
-        if (value is not Thickness thickness)
-        {
-            return new Thickness();
-        }
-
-        return Select(thickness);
+        return value is not Thickness thickness ? null : Select(thickness);
     }
 
     public object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
@@ -27,30 +22,30 @@ public abstract class SelectThicknessConverter : IValueConverter
 
 public class LeftThicknessConverter : SelectThicknessConverter
 {
-    protected override Thickness Select(Thickness thickness) => new Thickness(thickness.Left, 0, 0, 0);
+    protected override Thickness Select(Thickness thickness) => new(thickness.Left, 0, 0, 0);
 }
 
 public class RightThicknessConverter : SelectThicknessConverter
 {
-    protected override Thickness Select(Thickness thickness) => new Thickness(0, 0, thickness.Right, 0);
+    protected override Thickness Select(Thickness thickness) => new(0, 0, thickness.Right, 0);
 }
 
 public class TopThicknessConverter : SelectThicknessConverter
 {
-    protected override Thickness Select(Thickness thickness) => new Thickness(0, thickness.Top, 0, 0);
+    protected override Thickness Select(Thickness thickness) => new(0, thickness.Top, 0, 0);
 }
 
 public class BottomThicknessConverter : SelectThicknessConverter
 {
-    protected override Thickness Select(Thickness thickness) => new Thickness(0, 0, 0, thickness.Bottom);
+    protected override Thickness Select(Thickness thickness) => new(0, 0, 0, thickness.Bottom);
 }
 
 public class HorizontalThicknessConverter : SelectThicknessConverter
 {
-    protected override Thickness Select(Thickness thickness) => new Thickness(thickness.Left, 0, thickness.Right, 0);
+    protected override Thickness Select(Thickness thickness) => new(thickness.Left, 0, thickness.Right, 0);
 }
 
 public class VerticalThicknessConverter : SelectThicknessConverter
 {
-    protected override Thickness Select(Thickness thickness) => new Thickness(0, thickness.Top, 0, thickness.Bottom);
+    protected override Thickness Select(Thickness thickness) => new(0, thickness.Top, 0, thickness.Bottom);
 }

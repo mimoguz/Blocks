@@ -44,18 +44,34 @@
                             Background="{TemplateBinding Background}"
                             CornerRadius="{TemplateBinding CornerRadius}"
                             Opacity="{DynamicResource BlockButtonBackgroundOpacity}"
-                            IsHitTestVisible="True" />
+                            IsHitTestVisible="True" >
+                        <Border.Transitions>
+                            <Transitions>
+                                <DoubleTransition Property="Opacity"
+                                                  Duration="{DynamicResource BlockButtonStateTransitionDuration}"
+                                                  Easing="CubicEaseOut" />
+                            </Transitions>
+                        </Border.Transitions>
+                    </Border>
                     <Border Name="FocusVisual"
                             CornerRadius="{TemplateBinding CornerRadius}"
                             BorderBrush="{DynamicResource BlockBaseFocusBrush}"
                             BorderThickness="{DynamicResource BlockFocusBorderThickness}"
-                            Opacity="0" />
+                            Opacity="0" >
+                        <Border.Transitions>
+                            <Transitions>
+                                <DoubleTransition Property="Opacity"
+                                                  Duration="{DynamicResource BlockButtonStateTransitionDuration}"
+                                                  Easing="CubicEaseOut" />
+                            </Transitions>
+                        </Border.Transitions>
+                    </Border>
                     <DockPanel>
                         <Panel DockPanel.Dock="Left"
                                Margin="8,0, 0, 0">
                             <Ellipse Name="DotBg" 
                                      Width="12" Height="12" 
-                                     Fill="#60FFFFFF" />
+                                     Fill="{DynamicResource BlockDotBgBrush}" />
                             <Ellipse Name="Dot"
                                      Width="0" Height="0"
                                      Fill="{TemplateBinding BorderBrush}"
@@ -81,7 +97,7 @@
                                           Content="{TemplateBinding Content}"
                                           ContentTemplate="{TemplateBinding ContentTemplate}"
                                           RecognizesAccessKey="True"
-                                          Opacity="0.667"
+                                          Opacity="0.8"
                                           TextElement.Foreground="{TemplateBinding Foreground}">
                             <ContentPresenter.Transitions>
                                 <Transitions>
@@ -95,23 +111,7 @@
                 </Panel>
             </ControlTemplate>
         </Setter>
-
-        <Style Selector="^ /template/ Border">
-            <Setter Property="Transitions">
-                <Transitions>
-                    <BrushTransition Property="Background"
-                                     Duration="{DynamicResource BlockButtonStateTransitionDuration}"
-                                     Easing="CubicEaseOut" />
-                    <BrushTransition Property="BorderBrush"
-                                     Duration="{DynamicResource BlockButtonStateTransitionDuration}"
-                                     Easing="CubicEaseOut" />
-                    <DoubleTransition Property="Opacity"
-                                      Duration="{DynamicResource BlockButtonStateTransitionDuration}"
-                                      Easing="CubicEaseOut" />
-                </Transitions>
-            </Setter>
-        </Style>
-
+        
         <Style Selector="^:pointerover /template/ Border#ButtonBackground">
             <Setter Property="Opacity" Value="{DynamicResource BlockButtonHighlightOpacity}" />
         </Style>
@@ -142,16 +142,19 @@
         <Style Selector="^.image-button">
             <Setter Property="Padding" Value="{DynamicResource BlockImageButtonPadding}" />
         </Style>
-
+        
         <Style Selector="^.flat">
+            <Setter Property="Foreground" Value="{DynamicResource BlockFlatButtonForegroundBrush}" />
             <Style Selector="^ /template/ Border#ButtonBackground">
                 <Setter Property="Background" Value="Transparent" />
             </Style>
             <Style Selector="^:pointerover /template/ Border#ButtonBackground">
-                <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
+                <Setter Property="Background" Value="{TemplateBinding Background}" />
+                <Setter Property="Opacity" Value="{DynamicResource BlockButtonBackgroundOpacity}" />
             </Style>
             <Style Selector="^:pressed /template/ Border#ButtonBackground">
-                <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
+                <Setter Property="Background" Value="{TemplateBinding Background}" />
+                <Setter Property="Opacity" Value="{DynamicResource BlockButtonHighlightOpacity}" />
             </Style>
             <Style Selector="^ /template/ Ellipse#DotBg">
                 <Setter Property="Fill" Value="{TemplateBinding Background}" />
