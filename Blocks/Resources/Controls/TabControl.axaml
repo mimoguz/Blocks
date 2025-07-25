@@ -4,45 +4,80 @@
     <Design.PreviewWith>
         <Border Background="{DynamicResource BlockWindowBackgroundColor}" Padding="20">
             <StackPanel Spacing="20">
-                
+
                 <TabControl Width="300">
                     <TabControl.Items>
-                        <TabItem Header="Tab Item"> <TextBlock Margin="10">Tab 1</TextBlock> </TabItem>
-                        <TabItem Header="Tab Item" IsSelected="True"> <TextBlock Margin="10">Tab 2</TextBlock> </TabItem>
-                        <TabItem Header="Tab Item"> <TextBlock Margin="10">Tab 3</TextBlock> </TabItem>
+                        <TabItem Header="Tab Item">
+                            <TextBlock Margin="10">Tab 1</TextBlock>
+                        </TabItem>
+                        <TabItem Header="Tab Item" IsSelected="True">
+                            <TextBlock Margin="10">Tab 2</TextBlock>
+                        </TabItem>
+                        <TabItem Header="Tab Item">
+                            <TextBlock Margin="10">Tab 3</TextBlock>
+                        </TabItem>
                     </TabControl.Items>
                 </TabControl>
-                
+
                 <Separator />
-                
+
                 <TabControl Width="300" TabStripPlacement="Bottom">
                     <TabControl.Items>
-                        <TabItem Header="Tab Item"> <TextBlock Margin="10">Tab 1</TextBlock> </TabItem>
-                        <TabItem Header="Tab Item" IsSelected="True"> <TextBlock Margin="10">Tab 2</TextBlock> </TabItem>
-                        <TabItem Header="Tab Item"> <TextBlock Margin="10">Tab 3</TextBlock> </TabItem>
+                        <TabItem Header="Tab Item">
+                            <TextBlock Margin="10">Tab 1</TextBlock>
+                        </TabItem>
+                        <TabItem Header="Tab Item" IsSelected="True">
+                            <TextBlock Margin="10">Tab 2</TextBlock>
+                        </TabItem>
+                        <TabItem Header="Tab Item">
+                            <TextBlock Margin="10">Tab 3</TextBlock>
+                        </TabItem>
                     </TabControl.Items>
                 </TabControl>
-                
+
                 <Separator />
-                
-                <TabControl Width="300" TabStripPlacement="Left">
+
+                <TabControl Width="300" 
+                            TabStripPlacement="Left" 
+                            Background="Cornsilk"
+                            BorderBrush="Crimson">
+                    <TabControl.Styles>
+                        <Style Selector="TabItem">
+                            <Setter Property="Background" Value="HotPink" />
+                            <Setter Property="BorderBrush" Value="MediumVioletRed" />
+                        </Style>
+                    </TabControl.Styles>
                     <TabControl.Items>
-                        <TabItem Header="Tab Item"> <TextBlock Margin="10">Tab 1</TextBlock> </TabItem>
-                        <TabItem Header="Tab Item" IsSelected="True"> <TextBlock Margin="10">Tab 2</TextBlock> </TabItem>
-                        <TabItem Header="Tab Item"> <TextBlock Margin="10">Tab 3</TextBlock> </TabItem>
+                        <TabItem Header="Tab Item" BorderBrush="BlueViolet">
+                            <TextBlock Margin="10">Tab 1</TextBlock>
+                        </TabItem>
+                        <TabItem Header="Tab Item" IsSelected="True">
+                            <Border Background="Bisque" Padding="10">
+                                <TextBlock>Tab 2</TextBlock>
+                            </Border>
+                        </TabItem>
+                        <TabItem Header="Tab Item" IsEnabled="False">
+                            <TextBlock Margin="10">Tab 3</TextBlock>
+                        </TabItem>
                     </TabControl.Items>
                 </TabControl>
-                
+
                 <Separator />
-                
+
                 <TabControl Width="300" TabStripPlacement="Right">
                     <TabControl.Items>
-                        <TabItem Header="Tab Item"> <TextBlock Margin="10">Tab 1</TextBlock> </TabItem>
-                        <TabItem Header="Tab Item" IsSelected="True"> <TextBlock Margin="10">Tab 2</TextBlock> </TabItem>
-                        <TabItem Header="Tab Item"> <TextBlock Margin="10">Tab 3</TextBlock> </TabItem>
+                        <TabItem Header="Tab Item">
+                            <TextBlock Margin="10">Tab 1</TextBlock>
+                        </TabItem>
+                        <TabItem Header="Tab Item" IsSelected="True">
+                            <TextBlock Margin="10">Tab 2</TextBlock>
+                        </TabItem>
+                        <TabItem Header="Tab Item">
+                            <TextBlock Margin="10">Tab 3</TextBlock>
+                        </TabItem>
                     </TabControl.Items>
                 </TabControl>
-                
+
             </StackPanel>
         </Border>
     </Design.PreviewWith>
@@ -50,27 +85,27 @@
     <ControlTheme x:Key="{x:Type TabControl}"
                   TargetType="TabControl">
         <Setter Property="Padding" Value="8" />
-        <Setter Property="BorderThickness" Value="2" />
-        <Setter Property="BorderBrush" Value="{DynamicResource BlockViewBackgroundBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BlockBaseViewBorderBrush}" />
         <Setter Property="Template">
             <ControlTemplate>
-                <Border HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
-                        VerticalAlignment="{TemplateBinding VerticalAlignment}"
-                        Background="{TemplateBinding Background}"
+                <Border Background="{TemplateBinding Background}"
                         CornerRadius="{TemplateBinding CornerRadius}">
                     <DockPanel>
-                        <ItemsPresenter Name="PART_ItemsPresenter"
-                                        Margin="{TemplateBinding Padding}"
-                                        ItemsPanel="{TemplateBinding ItemsPanel}"
-                                        DockPanel.Dock="Top" />
+                        <Border Name="TabsBorder" DockPanel.Dock="Top" Background="{TemplateBinding Background}">
+                            <ItemsPresenter Name="PART_ItemsPresenter"
+                                            Margin="{TemplateBinding Padding}"
+                                            ItemsPanel="{TemplateBinding ItemsPanel}" />
+                        </Border>
                         <Rectangle Name="Divider"
                                    Fill="{TemplateBinding BorderBrush}"
-                                   DockPanel.Dock="Top"/>
+                                   Opacity="{DynamicResource BlockViewBorderOpacity}"
+                                   DockPanel.Dock="Top" />
                         <ContentPresenter Name="PART_SelectedContentHost"
-                                          HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                          VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                                           Content="{TemplateBinding SelectedContent}"
-                                          ContentTemplate="{TemplateBinding SelectedContentTemplate}" />
+                                          ContentTemplate="{TemplateBinding SelectedContentTemplate}"
+                                          VerticalContentAlignment="Stretch"
+                                          HorizontalContentAlignment="Stretch" />
                     </DockPanel>
                 </Border>
             </ControlTemplate>
@@ -78,47 +113,53 @@
         <Setter Property="ItemsPanel">
             <ItemsPanelTemplate>
                 <WrapPanel ItemSpacing="{DynamicResource BlockTabSpacing}"
-                           LineSpacing="{DynamicResource BlockTabSpacing}" />
+                           LineSpacing="{DynamicResource BlockTabSpacing}"
+                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
             </ItemsPanelTemplate>
         </Setter>
         <Style Selector="^[TabStripPlacement=Top]">
-            <Style Selector="^ /template/ ItemsPresenter#PART_ItemsPresenter">
+            <Style Selector="^ /template/ Border#TabsBorder">
                 <Setter Property="DockPanel.Dock" Value="Top" />
             </Style>
             <Style Selector="^ /template/ Rectangle#Divider">
                 <Setter Property="DockPanel.Dock" Value="Top" />
-                <Setter Property="Height" Value="{Binding BorderThickness.Bottom, RelativeSource={RelativeSource TemplatedParent}}" />
-                
+                <Setter Property="Height"
+                        Value="{Binding BorderThickness.Bottom, RelativeSource={RelativeSource TemplatedParent}}" />
+
             </Style>
         </Style>
         <Style Selector="^[TabStripPlacement=Bottom]">
-            <Style Selector="^ /template/ ItemsPresenter#PART_ItemsPresenter">
+            <Style Selector="^ /template/ Border#TabsBorder">
                 <Setter Property="DockPanel.Dock" Value="Bottom" />
             </Style>
             <Style Selector="^ /template/ Rectangle#Divider">
                 <Setter Property="DockPanel.Dock" Value="Bottom" />
-                <Setter Property="Height" Value="{Binding BorderThickness.Top, RelativeSource={RelativeSource TemplatedParent}}" />
+                <Setter Property="Height"
+                        Value="{Binding BorderThickness.Top, RelativeSource={RelativeSource TemplatedParent}}" />
             </Style>
         </Style>
         <Style Selector="^[TabStripPlacement=Left]">
-            <Style Selector="^ /template/ ItemsPresenter#PART_ItemsPresenter">
+            <Style Selector="^ /template/ Border#TabsBorder">
                 <Setter Property="DockPanel.Dock" Value="Left" />
             </Style>
             <Style Selector="^ /template/ Rectangle#Divider">
                 <Setter Property="DockPanel.Dock" Value="Left" />
-                <Setter Property="Width" Value="{Binding BorderThickness.Right, RelativeSource={RelativeSource TemplatedParent}}" />
+                <Setter Property="Width"
+                        Value="{Binding BorderThickness.Right, RelativeSource={RelativeSource TemplatedParent}}" />
             </Style>
         </Style>
         <Style Selector="^[TabStripPlacement=Left] /template/ ItemsPresenter#PART_ItemsPresenter > WrapPanel">
             <Setter Property="Orientation" Value="Vertical" />
         </Style>
         <Style Selector="^[TabStripPlacement=Right]">
-            <Style Selector="^ /template/ ItemsPresenter#PART_ItemsPresenter">
+            <Style Selector="^ /template/ Border#TabsBorder">
                 <Setter Property="DockPanel.Dock" Value="Right" />
             </Style>
             <Style Selector="^ /template/ Rectangle#Divider">
                 <Setter Property="DockPanel.Dock" Value="Right" />
-                <Setter Property="Width" Value="{Binding BorderThickness.Left, RelativeSource={RelativeSource TemplatedParent}}" />
+                <Setter Property="Width"
+                        Value="{Binding BorderThickness.Left, RelativeSource={RelativeSource TemplatedParent}}" />
             </Style>
         </Style>
         <Style Selector="^[TabStripPlacement=Right] /template/ ItemsPresenter#PART_ItemsPresenter > WrapPanel">

@@ -23,7 +23,7 @@
 
         <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource BlockButtonForegroundBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource BlockBaseFocusBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BlockBaseAccentBrush}" />
         <Setter Property="Padding" Value="{DynamicResource BlockButtonPadding}" />
         <Setter Property="CornerRadius" Value="{DynamicResource BlockButtonCornerRadius}" />
         <Setter Property="FontWeight" Value="{DynamicResource BlockButtonFontWeight}" />
@@ -117,7 +117,7 @@
         </Style>
 
         <Style Selector="^:focus-visible /template/ Border#FocusVisual">
-            <Setter Property="Opacity" Value="{DynamicResource BlockViewBorderOpacity}" />
+            <Setter Property="Opacity" Value="{DynamicResource BlockButtonFocusOpacity}" />
         </Style>
 
         <Style Selector="^:selected">

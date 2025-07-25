@@ -13,6 +13,8 @@
             <Color x:Key="BlockBaseFocusColor">#007FFF</Color>
             <Color x:Key="BlockBaseSelectedBackgroundColor">#AFFC41</Color>
             <Color x:Key="BlockBaseSelectedFocusBackgroundColor">DeepSkyBlue</Color>
+            <Color x:Key="BlockBaseAccentColor">#007FFF</Color>
+            
             
             <Color x:Key="BlockButtonForegroundColor">#102025</Color>
             

@@ -6,6 +6,7 @@
     <SolidColorBrush x:Key="BlockBaseViewBackgroundBrush" Color="{DynamicResource BlockBaseViewBackgroundColor}" />
     <SolidColorBrush x:Key="BlockBaseViewBorderBrush" Color="{DynamicResource BlockBaseViewBorderColor}" />
     <SolidColorBrush x:Key="BlockBaseFocusBrush" Color="{DynamicResource BlockBaseFocusColor}" />
+    <SolidColorBrush x:Key="BlockBaseAccentBrush" Color="{DynamicResource BlockBaseAccentColor}" />
     
     
     <SolidColorBrush x:Key="BlockSelectedButtonBackgroundBrush" Color="{DynamicResource BlockSelectedButtonBackgroundColor}" />

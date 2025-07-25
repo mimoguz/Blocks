@@ -4,9 +4,9 @@ using Avalonia.Markup.Xaml;
 
 namespace Blocks.Views;
 
-public partial class ButtonsPanel : UserControl
+public partial class ButtonsPanelView : UserControl
 {
-    public ButtonsPanel()
+    public ButtonsPanelView()
     {
         InitializeComponent();
     }

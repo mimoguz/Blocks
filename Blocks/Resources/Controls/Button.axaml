@@ -93,7 +93,7 @@
         </Style>
 
         <Style Selector="^:focus-visible /template/ Border#FocusVisual">
-            <Setter Property="Opacity" Value="{DynamicResource BlockViewBorderOpacity}" />
+            <Setter Property="Opacity" Value="{DynamicResource BlockButtonFocusOpacity}" />
         </Style>
 
         <!-- Classes -->
