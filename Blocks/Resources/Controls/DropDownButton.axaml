@@ -58,6 +58,7 @@
                         </Border.Transitions>
                     </Border>
                     <Border Name="FocusVisual"
+                            IsHitTestVisible="False"
                             CornerRadius="{TemplateBinding CornerRadius}"
                             BorderBrush="{DynamicResource BlockBaseFocusBrush}"
                             BorderThickness="{DynamicResource BlockFocusBorderThickness}"
@@ -70,7 +71,8 @@
                             </Transitions>
                         </Border.Transitions>
                     </Border>
-                    <Grid ColumnDefinitions="*, Auto">
+                    <Grid ColumnDefinitions="*, Auto"
+                          IsHitTestVisible="False">
                         <blk:AnimatedMenuIcon Name="MenuIcon"
                                               Grid.Column="1"
                                               Foreground="{TemplateBinding Foreground}"
@@ -110,8 +112,13 @@
             <Setter Property="Opacity" Value="{DynamicResource BlockButtonFocusOpacity}" />
         </Style>
 
-        <Style Selector="^:flyout-open /template/ blk|AnimatedMenuIcon">
-            <Setter Property="DrawExpanded" Value="True" />
+        <Style Selector="^:flyout-open">
+            <Style Selector="^ /template/ blk|AnimatedMenuIcon">
+                <Setter Property="DrawExpanded" Value="True" />
+            </Style>
+            <Style Selector="^ /template/ Border#ButtonBackground">
+                <Setter Property="Opacity" Value="{DynamicResource BlockButtonShadeOpacity}" />
+            </Style>
         </Style>
 
         <!-- Classes -->
@@ -122,15 +129,16 @@
         <Style Selector="^.flat">
             <Setter Property="Foreground" Value="{DynamicResource BlockFlatButtonForegroundBrush}" />
             <Style Selector="^ /template/ Border#ButtonBackground">
-                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="Opacity" Value="0" />
             </Style>
             <Style Selector="^:pointerover /template/ Border#ButtonBackground">
-                <Setter Property="Background" Value="{TemplateBinding Background}" />
                 <Setter Property="Opacity" Value="{DynamicResource BlockButtonBackgroundOpacity}" />
             </Style>
             <Style Selector="^:pressed /template/ Border#ButtonBackground">
-                <Setter Property="Background" Value="{TemplateBinding Background}" />
                 <Setter Property="Opacity" Value="{DynamicResource BlockButtonHighlightOpacity}" />
+            </Style>
+            <Style Selector="^:flyout-open /template/ Border#ButtonBackground">
+                <Setter Property="Opacity" Value="{DynamicResource BlockButtonShadeOpacity}" />
             </Style>
         </Style>
 

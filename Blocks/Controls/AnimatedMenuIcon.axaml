@@ -14,9 +14,7 @@
         <Style Selector="^[MenuIconStyle=Burger]">
             <Setter Property="Template">
                 <ControlTemplate>
-                    <Panel Width="16"
-                           Height="16"
-                           ClipToBounds="False">
+                    <Panel Width="16" Height="16">
                         <Rectangle Name="TopLine"
                                    Width="16"
                                    Height="2"
@@ -95,9 +93,7 @@
         <Style Selector="^[MenuIconStyle=Chevron]">
             <Setter Property="Template">
                 <ControlTemplate>
-                    <Panel Width="16"
-                           Height="16"
-                           ClipToBounds="False">
+                    <Panel Width="16" Height="16">
                         <Rectangle Name="Left"
                                    Margin="-0.5,8,0,0"
                                    Width="10.6"

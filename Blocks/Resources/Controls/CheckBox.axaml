@@ -62,7 +62,9 @@
                             </Border>
                             <Viewbox Name="CheckMark"
                                      Width="{DynamicResource BlockIconSize}"
-                                     Height="{DynamicResource BlockIconSize}">
+                                     Height="{DynamicResource BlockIconSize}"
+                                     Opacity="0"
+                                     RenderTransform="skewX(15deg)">
                                 <Viewbox.Transitions>
                                     <Transitions>
                                         <TransformOperationsTransition Property="RenderTransform"
@@ -85,7 +87,7 @@
                                        Width="0"
                                        Height="{DynamicResource BlockIconStrokeThickness}"
                                        Fill="{TemplateBinding BorderBrush}"
-                                       IsVisible="False">
+                                       Opacity="0">
                                 <Rectangle.Transitions>
                                     <Transitions>
                                         <DoubleTransition Property="Width"
@@ -115,15 +117,15 @@
             <Setter Property="Opacity" Value="{DynamicResource BlockButtonShadeOpacity}" />
         </Style>
 
-        <Style Selector="^:not(:checked) /template/ Viewbox#CheckMark">
-            <Setter Property="IsVisible" Value="False" />
-            <Setter Property="RenderTransform" Value="rotate(-90deg)" />
-            <Setter Property="Opacity" Value="0" />
+        <Style Selector="^:checked /template/ Viewbox#CheckMark">
+            <!-- <Setter Property="IsVisible" Value="False" /> -->
+            <Setter Property="RenderTransform" Value="{x:Null}" />
+            <Setter Property="Opacity" Value="1" />
         </Style>
         
         <Style Selector="^:indeterminate /template/ Rectangle#IndeterminateMark">
             <Setter Property="Width" Value="{DynamicResource BlockIconSize}" />
-            <Setter Property="IsVisible" Value="True" />
+            <Setter Property="Opacity" Value="1"></Setter>
         </Style>
 
         <Style Selector="^:focus-visible /template/ Border#ButtonFocusVisual">

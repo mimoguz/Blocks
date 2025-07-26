@@ -74,7 +74,8 @@
                             CornerRadius="{TemplateBinding CornerRadius}"
                             BorderBrush="{DynamicResource BlockBaseFocusBrush}"
                             BorderThickness="{DynamicResource BlockFocusBorderThickness}"
-                            Opacity="0">
+                            Opacity="0"
+                            IsHitTestVisible="False">
                         <Border.Transitions>
                             <Transitions>
                                 <DoubleTransition Property="Opacity"
@@ -83,7 +84,8 @@
                             </Transitions>
                         </Border.Transitions>
                     </Border>
-                    <DockPanel>
+                    <DockPanel
+                        IsHitTestVisible="False">
                         <blk:AnimatedDot Name="Dot"
                                          DockPanel.Dock="Left"
                                          Margin="8,0, 0, 0"
@@ -91,7 +93,6 @@
                                          Background="{DynamicResource BlockBaseDotBackgroundBrush}"
                                          BackgroundOpacity="0.3" />
                         <ContentPresenter Name="PART_ContentPresenter"
-                                          IsHitTestVisible="False"
                                           CornerRadius="{TemplateBinding CornerRadius}"
                                           Padding="{TemplateBinding Padding}"
                                           HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
@@ -147,14 +148,12 @@
         <Style Selector="^.flat">
             <Setter Property="Foreground" Value="{DynamicResource BlockFlatButtonForegroundBrush}" />
             <Style Selector="^ /template/ Border#ButtonBackground">
-                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="Opacity" Value="0" />
             </Style>
             <Style Selector="^:pointerover /template/ Border#ButtonBackground">
-                <Setter Property="Background" Value="{TemplateBinding Background}" />
                 <Setter Property="Opacity" Value="{DynamicResource BlockButtonBackgroundOpacity}" />
             </Style>
             <Style Selector="^:pressed /template/ Border#ButtonBackground">
-                <Setter Property="Background" Value="{TemplateBinding Background}" />
                 <Setter Property="Opacity" Value="{DynamicResource BlockButtonHighlightOpacity}" />
             </Style>
             <Style Selector="^ /template/ blk|AnimatedDot">
