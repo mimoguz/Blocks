@@ -19,6 +19,22 @@
                           Stretch="Uniform"
                           Fill="{Binding $parent[ToggleButton].Foreground}" />
                 </ToggleButton>
+                <ToggleButton Classes="image-button flat dotless">
+                    <Panel>
+                        <Path Data="{StaticResource BlockTestIcon}"
+                              Width="{DynamicResource BlockIconSize}"
+                              Height="{DynamicResource BlockIconSize}"
+                              Stretch="Uniform"
+                              Fill="{Binding $parent[ToggleButton].Foreground}"
+                              IsVisible="{Binding !$parent[ToggleButton].IsChecked}" />
+                        <Path Data="{StaticResource BlockTestIconH}"
+                              Width="{DynamicResource BlockIconSize}"
+                              Height="{DynamicResource BlockIconSize}"
+                              Stretch="Uniform"
+                              Fill="{Binding $parent[ToggleButton].Foreground}"
+                              IsVisible="{Binding $parent[ToggleButton].IsChecked}" />
+                    </Panel>
+                </ToggleButton>
             </WrapPanel>
         </Border>
     </Design.PreviewWith>
@@ -68,12 +84,12 @@
                         </Border.Transitions>
                     </Border>
                     <DockPanel>
-                        <blk:AnimatedDot Name="Dot" 
+                        <blk:AnimatedDot Name="Dot"
                                          DockPanel.Dock="Left"
-                                         Margin="8,0, 0, 0" 
+                                         Margin="8,0, 0, 0"
                                          Foreground="{TemplateBinding BorderBrush}"
                                          Background="{DynamicResource BlockBaseDotBackgroundBrush}"
-                                         BackgroundOpacity="0.3"/>
+                                         BackgroundOpacity="0.3" />
                         <ContentPresenter Name="PART_ContentPresenter"
                                           IsHitTestVisible="False"
                                           CornerRadius="{TemplateBinding CornerRadius}"
@@ -83,7 +99,7 @@
                                           Content="{TemplateBinding Content}"
                                           ContentTemplate="{TemplateBinding ContentTemplate}"
                                           RecognizesAccessKey="True"
-                                          Opacity="0.8"
+                                          Opacity="1"
                                           TextElement.Foreground="{TemplateBinding Foreground}">
                             <ContentPresenter.Transitions>
                                 <Transitions>
@@ -115,9 +131,9 @@
         </Style>
 
         <Style Selector="^:checked">
-            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+            <!--<Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
                 <Setter Property="Opacity" Value="1" />
-            </Style>
+            </Style>-->
             <Style Selector="^ /template/ blk|AnimatedDot#Dot">
                 <Setter Property="DrawExpanded" Value="True" />
             </Style>
@@ -144,6 +160,12 @@
             <Style Selector="^ /template/ blk|AnimatedDot">
                 <Setter Property="Background" Value="{TemplateBinding Background}" />
                 <Setter Property="BackgroundOpacity" Value="{DynamicResource BlockButtonBackgroundOpacity}" />
+            </Style>
+        </Style>
+
+        <Style Selector="^.dotless">
+            <Style Selector="^ /template/ blk|AnimatedDot">
+                <Setter Property="IsVisible" Value="False" />
             </Style>
         </Style>
     </ControlTheme>

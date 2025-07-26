@@ -19,7 +19,7 @@
                            ClipToBounds="False">
                         <Rectangle Name="TopLine"
                                    Width="16"
-                                   Height="{DynamicResource BlockIconStrokeThickness}"
+                                   Height="2"
                                    Fill="{TemplateBinding Foreground}"
                                    Margin="0,0,0,10">
                             <Rectangle.Transitions>
@@ -38,7 +38,7 @@
                         </Rectangle>
                         <Rectangle Name="BottomLine"
                                    Width="16"
-                                   Height="{DynamicResource BlockIconStrokeThickness}"
+                                   Height="2"
                                    Fill="{TemplateBinding Foreground}"
                                    Margin="0,10,0,0">
                             <Rectangle.Transitions>
@@ -57,7 +57,7 @@
                         </Rectangle>
                         <Rectangle Name="CenterLine"
                                    Width="16"
-                                   Height="{DynamicResource BlockIconStrokeThickness}"
+                                   Height="2"
                                    Fill="{TemplateBinding Foreground}">
                             <Rectangle.Transitions>
                                 <Transitions>
@@ -100,7 +100,7 @@
                            ClipToBounds="False">
                         <Rectangle Name="Left"
                                    Margin="-0.5,8,0,0"
-                                   Width="10.5"
+                                   Width="10.6"
                                    Height="2"
                                    Fill="{TemplateBinding Foreground}"
                                    VerticalAlignment="Top"
@@ -126,7 +126,7 @@
                         </Rectangle>
                         <Rectangle Name="Right"
                                    Margin="0,8,-0.5,0"
-                                   Width="10.5"
+                                   Width="10.6"
                                    Height="2"
                                    Fill="{TemplateBinding Foreground}"
                                    VerticalAlignment="Top"

@@ -1,6 +1,7 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <StreamGeometry x:Key="BlockTestIcon">M 1 1L 15 15H 1L 15 1Z</StreamGeometry>
+    <StreamGeometry x:Key="BlockTestIconH">M 1 1V 15L 15 1V 15Z</StreamGeometry>
     <StreamGeometry x:Key="BlockLeftChevron">M 11 1L 4 8L 11 15</StreamGeometry>
     <StreamGeometry x:Key="BlockRightChevron">M 6 1L 13 8L 6 15</StreamGeometry>
     <StreamGeometry x:Key="BlockUpChevron">M 1 11L 8 4L 15 11</StreamGeometry>

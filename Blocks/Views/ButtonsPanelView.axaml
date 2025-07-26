@@ -167,6 +167,35 @@
                       Stretch="Uniform"
                       Fill="{Binding $parent[Button].Foreground}" />
             </ToggleButton>
+            <ToggleButton Classes="dotless" Width="200"
+                          IsChecked="{Binding AllChecked, Mode=TwoWay}">
+                <Panel>
+                    <TextBlock Text="Dotless - Unchecked"
+                               IsVisible="{Binding !$parent[ToggleButton].IsChecked}"
+                               TextAlignment="Center" />
+                    <TextBlock Text="Dotless - Checked"
+                               Width="150"
+                               IsVisible="{Binding $parent[ToggleButton].IsChecked}"
+                               TextAlignment="Center" />
+                </Panel>
+            </ToggleButton>
+            <ToggleButton Classes="image-button flat dotless"
+                          IsChecked="{Binding AllChecked, Mode=TwoWay}">
+                <Panel>
+                    <Path Data="{StaticResource BlockTestIcon}"
+                          Width="{DynamicResource BlockIconSize}"
+                          Height="{DynamicResource BlockIconSize}"
+                          Stretch="Uniform"
+                          Fill="{Binding $parent[ToggleButton].Foreground}"
+                          IsVisible="{Binding !$parent[ToggleButton].IsChecked}" />
+                    <Path Data="{StaticResource BlockTestIconH}"
+                          Width="{DynamicResource BlockIconSize}"
+                          Height="{DynamicResource BlockIconSize}"
+                          Stretch="Uniform"
+                          Fill="{Binding $parent[ToggleButton].Foreground}"
+                          IsVisible="{Binding $parent[ToggleButton].IsChecked}" />
+                </Panel>
+            </ToggleButton>
         </WrapPanel>
 
         <Separator />
@@ -258,7 +287,7 @@
             </SplitButton>
             <SplitButton IsEnabled="{Binding AllEnabled}"
                          Classes="flat"
-                         Padding="{DynamicResource BlockFlatButtonPadding}" >
+                         Padding="{DynamicResource BlockFlatButtonPadding}">
                 <SplitButton.Flyout>
                     <Flyout>
                         <TextBlock Margin="10">Flyout</TextBlock>

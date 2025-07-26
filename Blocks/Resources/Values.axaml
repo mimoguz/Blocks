@@ -31,14 +31,14 @@
     <sys:Double x:Key="BlockIconStrokeThickness">2</sys:Double>
     
     <sys:Double x:Key="BlockButtonBackgroundOpacity">0.17</sys:Double>
-    <sys:Double x:Key="BlockButtonHighlightOpacity">0.25</sys:Double>
-    <sys:Double x:Key="BlockButtonShadeOpacity">0.35</sys:Double>
+    <sys:Double x:Key="BlockButtonHighlightOpacity">0.30</sys:Double>
+    <sys:Double x:Key="BlockButtonShadeOpacity">0.45</sys:Double>
     <sys:Double x:Key="BlockButtonFocusOpacity">0.80</sys:Double>
     
     <sys:Double x:Key="BlockViewBackgroundOpacity">0.08</sys:Double>
     <sys:Double x:Key="BlockViewBorderOpacity">0.18</sys:Double>
     <sys:Double x:Key="BlockViewHighlightOpacity">0.35</sys:Double>
-    <sys:Double x:Key="BlockViewShadeOpacity">0.35</sys:Double>
+    <sys:Double x:Key="BlockViewShadeOpacity">0.45</sys:Double>
     <sys:Double x:Key="BlockViewFocusOpacity">0.80</sys:Double>
     
     <sys:Double x:Key="BlockButtonBorderOpacity">0.667</sys:Double>
