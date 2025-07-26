@@ -19,5 +19,7 @@
 
     <Application.Styles>
         <FluentTheme />
+        <StyleInclude Source="Controls/AnimatedMenuIcon.axaml" />
+        <StyleInclude Source="Controls/AnimatedDot.axaml" />
     </Application.Styles>
 </Application>

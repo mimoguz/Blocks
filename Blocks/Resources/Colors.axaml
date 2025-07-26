@@ -16,6 +16,7 @@
             <Color x:Key="BlockBaseHighlightColor">DarkSlateGray</Color>
             <Color x:Key="BlockBaseShadeColor">#203045</Color>
             <Color x:Key="BlockAccentForegroundColor">#F0FFFFFF</Color>
+            <Color x:Key="BlockBaseDotBackgroundBrush">White</Color>
             
             <Color x:Key="BlockButtonForegroundColor">#102025</Color>
             <Color x:Key="BlockFlatButtonForegroundColor">RoyalBlue</Color>

@@ -1,0 +1,239 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:blk="clr-namespace:Blocks.Controls">
+    <Design.PreviewWith>
+        <Border Background="{DynamicResource BlockWindowBackgroundBrush}"
+                Padding="10" Height="300">
+            <WrapPanel ItemSpacing="10" LineSpacing="10">
+                <SplitButton VerticalAlignment="Top">
+                    <SplitButton.Flyout>
+                        <Flyout>
+                            <TextBlock Margin="10">Flyout</TextBlock>
+                        </Flyout>
+                    </SplitButton.Flyout>
+                    Split Button
+                </SplitButton>
+                <SplitButton VerticalAlignment="Top" Classes="split-toggle">
+                    <SplitButton.Flyout>
+                        <Flyout>
+                            <TextBlock Margin="10">Flyout</TextBlock>
+                        </Flyout>
+                    </SplitButton.Flyout>
+                    Split Toggle
+                </SplitButton>
+                <SplitButton VerticalAlignment="Top" Classes="flat">
+                    <SplitButton.Flyout>
+                        <Flyout>
+                            <TextBlock Margin="10">Flyout</TextBlock>
+                        </Flyout>
+                    </SplitButton.Flyout>
+                    Flat
+                </SplitButton>
+            </WrapPanel>
+        </Border>
+    </Design.PreviewWith>
+
+    <ControlTheme x:Key="{x:Type SplitButton}" TargetType="SplitButton">
+
+        <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
+        <Setter Property="BorderThickness" Value="{DynamicResource BlockControlBorderThickness}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BlockBaseAccentBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource BlockButtonForegroundBrush}" />
+        <Setter Property="Padding" Value="{DynamicResource BlockButtonPadding}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource BlockButtonCornerRadius}" />
+        <Setter Property="FontWeight" Value="{DynamicResource BlockButtonFontWeight}" />
+        <Setter Property="MinWidth" Value="{DynamicResource BlockMinButtonSize}" />
+        <Setter Property="MinHeight" Value="{DynamicResource BlockMinButtonSize}" />
+        <Setter Property="blk:Block.MenuIconStyle" Value="Chevron" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="FocusAdorner" Value="{x:Null}" />
+
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Button x:Name="PART_PrimaryButton"
+                            Grid.Column="0"
+                            Background="{TemplateBinding Background}"
+                            Command="{TemplateBinding Command}"
+                            CommandParameter="{TemplateBinding CommandParameter}"
+                            CornerRadius="{TemplateBinding CornerRadius, Converter={StaticResource LeftRadius}}"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Padding="0"
+                            KeyboardNavigation.IsTabStop="True">
+                        <Button.Content>
+                            <Grid ColumnDefinitions="Auto,*">
+                                <blk:AnimatedDot Name="Dot"
+                                                 Grid.Column="0"
+                                                 IsVisible="False"
+                                                 Margin="8,0,0,0"
+                                                 Background="{DynamicResource BlockBaseDotBackgroundBrush}"
+                                                 Foreground="{TemplateBinding BorderBrush}"
+                                                 BackgroundOpacity="0.3" />
+                                <ContentPresenter Name="PART_ContentPresenter"
+                                                  Grid.Column="0"
+                                                  Grid.ColumnSpan="2"
+                                                  Content="{TemplateBinding Content}"
+                                                  ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                  FontFamily="{TemplateBinding FontFamily}"
+                                                  FontSize="{TemplateBinding FontSize}"
+                                                  FontWeight="{TemplateBinding FontWeight}"
+                                                  Foreground="{TemplateBinding Foreground}"
+                                                  Padding="{TemplateBinding Padding}" />
+                            </Grid>
+                        </Button.Content>
+                    </Button>
+
+                    <Rectangle x:Name="SeparatorBorder"
+                               Grid.Column="1"
+                               Fill="Transparent"
+                               Width="{Binding BorderThickness.Left, RelativeSource={RelativeSource TemplatedParent}}" />
+
+                    <Button x:Name="PART_SecondaryButton"
+                            Grid.Column="2"
+                            MinWidth="{Binding $self.Bounds.Height}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            Foreground="{TemplateBinding Foreground}"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="{TemplateBinding CornerRadius, Converter={StaticResource RightRadius}}"
+                            Padding="0"
+                            VerticalContentAlignment="Stretch"
+                            HorizontalContentAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            KeyboardNavigation.IsTabStop="True">
+                        <blk:AnimatedMenuIcon Name="MenuIcon"
+                                              MenuIconStyle="{TemplateBinding blk:Block.MenuIconStyle}"
+                                              Foreground="{TemplateBinding Foreground}"
+                                              BorderBrush="{TemplateBinding BorderBrush}" />
+                    </Button>
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+        
+        <!-- Classes -->
+        
+        <Style Selector="^.flat">
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Grid ColumnDefinitions="*,Auto,Auto">
+
+                        <Button x:Name="PART_PrimaryButton"
+                                Grid.Column="0"
+                                Classes="flat"
+                                Background="{TemplateBinding Background}"
+                                Command="{TemplateBinding Command}"
+                                CommandParameter="{TemplateBinding CommandParameter}"
+                                CornerRadius="{TemplateBinding CornerRadius, Converter={StaticResource LeftRadius}}"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Padding="0"
+                                KeyboardNavigation.IsTabStop="True">
+                            <Button.Content>
+                                <Grid ColumnDefinitions="Auto,*">
+                                    <blk:AnimatedDot Name="Dot"
+                                                     Grid.Column="0"
+                                                     IsVisible="False"
+                                                     Margin="8,0,0,0"
+                                                     Background="{DynamicResource BlockBaseDotBackgroundBrush}"
+                                                     Foreground="{TemplateBinding BorderBrush}"
+                                                     BackgroundOpacity="0.3" />
+                                    <ContentPresenter Name="PART_ContentPresenter"
+                                                      Grid.Column="0"
+                                                      Grid.ColumnSpan="2"
+                                                      Content="{TemplateBinding Content}"
+                                                      ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                      FontFamily="{TemplateBinding FontFamily}"
+                                                      FontSize="{TemplateBinding FontSize}"
+                                                      FontWeight="{TemplateBinding FontWeight}"
+                                                      Foreground="{TemplateBinding Foreground}"
+                                                      Padding="{TemplateBinding Padding}" />
+                                </Grid>
+                            </Button.Content>
+                        </Button>
+
+                        <Rectangle x:Name="SeparatorBorder"
+                                   Grid.Column="1"
+                                   Fill="{DynamicResource BlockBaseButtonBackgroundBrush}"
+                                   Opacity="{DynamicResource BlockButtonBackgroundOpacity}"
+                                   Width="{Binding BorderThickness.Left, RelativeSource={RelativeSource TemplatedParent}}" />
+
+                        <Button x:Name="PART_SecondaryButton"
+                                Grid.Column="2"
+                                Classes="flat"
+                                Padding="0"
+                                MinWidth="{Binding $self.Bounds.Height}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                Foreground="{TemplateBinding Foreground}"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="{TemplateBinding CornerRadius, Converter={StaticResource RightRadius}}"
+                                VerticalContentAlignment="Stretch"
+                                HorizontalContentAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                KeyboardNavigation.IsTabStop="True">
+                            <blk:AnimatedMenuIcon Name="MenuIcon"
+                                                  MenuIconStyle="Chevron"
+                                                  Foreground="{TemplateBinding Foreground}"
+                                                  BorderBrush="{TemplateBinding BorderBrush}" />
+                        </Button>
+                    </Grid>
+                </ControlTemplate>
+            </Setter>
+            
+            <Setter Property="Foreground" Value="{DynamicResource BlockFlatButtonForegroundBrush}" />
+            <Style Selector="^ /template/ Border#ButtonBackground">
+                <Setter Property="Background" Value="Transparent" />
+            </Style>
+            
+            <Style Selector="^:pointerover /template/ Border#ButtonBackground">
+                <Setter Property="Background" Value="{TemplateBinding Background}" />
+                <Setter Property="Opacity" Value="{DynamicResource BlockButtonBackgroundOpacity}" />
+            </Style>
+            
+            <Style Selector="^:pressed /template/ Border#ButtonBackground">
+                <Setter Property="Background" Value="{TemplateBinding Background}" />
+                <Setter Property="Opacity" Value="{DynamicResource BlockButtonHighlightOpacity}" />
+            </Style>
+            
+            <Style Selector="^ /template/ blk|AnimatedDot">
+                <Setter Property="Background" Value="{TemplateBinding Background}" />
+                <Setter Property="BackgroundOpacity" Value="{DynamicResource BlockButtonBackgroundOpacity}" />
+            </Style>
+        </Style>
+
+        <Style Selector="^:flyout-open /template/ blk|AnimatedMenuIcon#MenuIcon">
+            <Setter Property="DrawExpanded" Value="True" />
+        </Style>
+        
+        <Style Selector="^.image-button">
+            <Setter Property="Padding" Value="{DynamicResource BlockImageButtonPadding}" />
+        </Style>
+
+        <Style Selector="^.split-toggle">
+            <Style Selector="^ /template/ blk|AnimatedDot#Dot">
+                <Setter Property="IsVisible" Value="True" />
+            </Style>
+            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Grid.Column" Value="1" />
+                <Setter Property="Grid.ColumnSpan" Value="1" />
+                <Setter Property="Opacity" Value="0.8" />
+            </Style>
+            <Style Selector="^:checked /template/ blk|AnimatedDot#Dot">
+                <Setter Property="DrawExpanded" Value="True" />
+            </Style>
+            <Style Selector="^:checked /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Opacity" Value="1" />
+            </Style>
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

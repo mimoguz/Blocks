@@ -27,7 +27,6 @@
                 <RadioButton IsChecked="True" Classes="left-label" HorizontalAlignment="Left" GroupName="Radio">Checked - Label on the Left</RadioButton>
                 <RadioButton IsEnabled="False" GroupName="DisabledRadio">Disabled</RadioButton>
                 <RadioButton IsChecked="True" IsEnabled="False" GroupName="DisabledRadio">Disabled - Checked</RadioButton>
-                <TextBox Width="150">Text</TextBox>
             </StackPanel>
             <StackPanel Spacing="10">
                 <CheckBox>Check Box</CheckBox>

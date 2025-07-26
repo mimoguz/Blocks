@@ -1,5 +1,6 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:blk="clr-namespace:Blocks.Controls">
     <Design.PreviewWith>
         <Border Background="{DynamicResource BlockWindowBackgroundColor}" Padding="20">
             <WrapPanel Width="300" ItemSpacing="10" LineSpacing="10">
@@ -44,7 +45,7 @@
                             Background="{TemplateBinding Background}"
                             CornerRadius="{TemplateBinding CornerRadius}"
                             Opacity="{DynamicResource BlockButtonBackgroundOpacity}"
-                            IsHitTestVisible="True" >
+                            IsHitTestVisible="True">
                         <Border.Transitions>
                             <Transitions>
                                 <DoubleTransition Property="Opacity"
@@ -57,7 +58,7 @@
                             CornerRadius="{TemplateBinding CornerRadius}"
                             BorderBrush="{DynamicResource BlockBaseFocusBrush}"
                             BorderThickness="{DynamicResource BlockFocusBorderThickness}"
-                            Opacity="0" >
+                            Opacity="0">
                         <Border.Transitions>
                             <Transitions>
                                 <DoubleTransition Property="Opacity"
@@ -67,27 +68,12 @@
                         </Border.Transitions>
                     </Border>
                     <DockPanel>
-                        <Panel DockPanel.Dock="Left"
-                               Margin="8,0, 0, 0">
-                            <Ellipse Name="DotBg" 
-                                     Width="12" Height="12" 
-                                     Fill="{DynamicResource BlockDotBgBrush}" />
-                            <Ellipse Name="Dot"
-                                     Width="0" Height="0"
-                                     Fill="{TemplateBinding BorderBrush}"
-                                     Opacity="0.9">
-                                <Ellipse.Transitions>
-                                    <Transitions>
-                                        <DoubleTransition Property="Width"
-                                                          Duration="{DynamicResource BlockLongStateTransitionDuration}"
-                                                          Easing="CubicEaseOut" />
-                                        <DoubleTransition Property="Height"
-                                                          Duration="{DynamicResource BlockLongStateTransitionDuration}"
-                                                          Easing="CubicEaseOut" />
-                                    </Transitions>
-                                </Ellipse.Transitions>
-                            </Ellipse>
-                        </Panel>
+                        <blk:AnimatedDot Name="Dot" 
+                                         DockPanel.Dock="Left"
+                                         Margin="8,0, 0, 0" 
+                                         Foreground="{TemplateBinding BorderBrush}"
+                                         Background="{DynamicResource BlockBaseDotBackgroundBrush}"
+                                         BackgroundOpacity="0.3"/>
                         <ContentPresenter Name="PART_ContentPresenter"
                                           IsHitTestVisible="False"
                                           CornerRadius="{TemplateBinding CornerRadius}"
@@ -111,7 +97,7 @@
                 </Panel>
             </ControlTemplate>
         </Setter>
-        
+
         <Style Selector="^:pointerover /template/ Border#ButtonBackground">
             <Setter Property="Opacity" Value="{DynamicResource BlockButtonHighlightOpacity}" />
         </Style>
@@ -127,14 +113,13 @@
         <Style Selector="^:focus-visible /template/ Border#FocusVisual">
             <Setter Property="Opacity" Value="{DynamicResource BlockButtonFocusOpacity}" />
         </Style>
-        
+
         <Style Selector="^:checked">
             <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
                 <Setter Property="Opacity" Value="1" />
             </Style>
-            <Style Selector="^ /template/ Ellipse#Dot">
-                <Setter Property="Width" Value="12" />
-                <Setter Property="Height" Value="12" />
+            <Style Selector="^ /template/ blk|AnimatedDot#Dot">
+                <Setter Property="DrawExpanded" Value="True" />
             </Style>
         </Style>
 
@@ -142,9 +127,8 @@
         <Style Selector="^.image-button">
             <Setter Property="Padding" Value="{DynamicResource BlockImageButtonPadding}" />
         </Style>
-        
+
         <Style Selector="^.flat">
-            <Setter Property="Padding" Value="{DynamicResource BlockFlatButtonPadding}"></Setter>
             <Setter Property="Foreground" Value="{DynamicResource BlockFlatButtonForegroundBrush}" />
             <Style Selector="^ /template/ Border#ButtonBackground">
                 <Setter Property="Background" Value="Transparent" />
@@ -157,9 +141,9 @@
                 <Setter Property="Background" Value="{TemplateBinding Background}" />
                 <Setter Property="Opacity" Value="{DynamicResource BlockButtonHighlightOpacity}" />
             </Style>
-            <Style Selector="^ /template/ Ellipse#DotBg">
-                <Setter Property="Fill" Value="{TemplateBinding Background}" />
-                <Setter Property="Opacity" Value="{DynamicResource BlockButtonBackgroundOpacity}" />
+            <Style Selector="^ /template/ blk|AnimatedDot">
+                <Setter Property="Background" Value="{TemplateBinding Background}" />
+                <Setter Property="BackgroundOpacity" Value="{DynamicResource BlockButtonBackgroundOpacity}" />
             </Style>
         </Style>
     </ControlTheme>

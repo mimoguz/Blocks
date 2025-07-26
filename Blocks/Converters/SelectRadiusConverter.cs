@@ -27,7 +27,7 @@ public class LeftRadiusConverter : SelectRadiusConverter
 
 public class RightRadiusConverter : SelectRadiusConverter
 {
-    protected override CornerRadius Select(CornerRadius radius) => new(0, 0, radius.TopRight, radius.BottomRight);
+    protected override CornerRadius Select(CornerRadius radius) => new(0, radius.TopRight, radius.BottomRight, 0.0);
 }
 
 public class TopRadiusConverter : SelectRadiusConverter

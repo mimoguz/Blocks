@@ -3,7 +3,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:Blocks.ViewModels"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:blk="clr-namespace:Blocks.Controls"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="800"
              x:Class="Blocks.Views.ButtonsPanelView"
              x:DataType="vm:ButtonsPanelViewModel">
 
@@ -12,7 +13,7 @@
     </Design.DataContext>
 
     <StackPanel Spacing="20" Margin="8">
-        
+
         <StackPanel.Styles>
             <Style Selector="WrapPanel">
                 <Setter Property="ItemSpacing" Value="10" />
@@ -30,13 +31,21 @@
                 <Setter Property="HorizontalAlignment" Value="Left" />
                 <Setter Property="VerticalAlignment" Value="Top" />
             </Style>
+            <Style Selector="DropDownButton">
+                <Setter Property="HorizontalAlignment" Value="Left" />
+                <Setter Property="VerticalAlignment" Value="Top" />
+            </Style>
+            <Style Selector="SplitButton">
+                <Setter Property="HorizontalAlignment" Value="Left" />
+                <Setter Property="VerticalAlignment" Value="Top" />
+            </Style>
         </StackPanel.Styles>
-        
+
         <StackPanel Orientation="Horizontal">
             <CheckBox IsChecked="{Binding AllEnabled, Mode=TwoWay}">Enable All</CheckBox>
             <CheckBox IsChecked="{Binding AllChecked, Mode=TwoWay}">Check All</CheckBox>
         </StackPanel>
-        
+
         <Separator />
 
         <!-- ************** Buttons ************** -->
@@ -52,10 +61,12 @@
                 Destructive Button
             </Button>
             <Button Classes="flat"
+                    Padding="{DynamicResource BlockFlatButtonPadding}"
                     IsEnabled="{Binding AllEnabled}">
                 Flat Button
             </Button>
             <Button IsEnabled="{Binding AllEnabled}"
+                    Padding="{DynamicResource BlockFlatButtonPadding}"
                     Classes="destructive flat">
                 Destructive Flat Button
             </Button>
@@ -101,6 +112,7 @@
                 Basic Repeat Button
             </RepeatButton>
             <RepeatButton Classes="flat"
+                          Padding="{DynamicResource BlockFlatButtonPadding}"
                           IsEnabled="{Binding AllEnabled}">
                 Flat Repeat Button
             </RepeatButton>
@@ -132,6 +144,7 @@
                 Basic Toggle Button
             </ToggleButton>
             <ToggleButton Classes="flat"
+                          Padding="{DynamicResource BlockFlatButtonPadding}"
                           IsChecked="{Binding AllChecked, Mode=TwoWay}"
                           IsEnabled="{Binding AllEnabled}">
                 Flat Toggle Button
@@ -157,7 +170,7 @@
         </WrapPanel>
 
         <Separator />
-        
+
         <!-- ************** Flyout buttons ************** -->
         <WrapPanel>
             <DropDownButton IsEnabled="{Binding AllEnabled}">
@@ -226,6 +239,33 @@
                     </Flyout>
                 </DropDownButton.Flyout>
             </DropDownButton>
+            <SplitButton IsEnabled="{Binding AllEnabled}">
+                <SplitButton.Flyout>
+                    <Flyout>
+                        <TextBlock Margin="10">Flyout</TextBlock>
+                    </Flyout>
+                </SplitButton.Flyout>
+                Basic Split Button
+            </SplitButton>
+            <SplitButton IsEnabled="{Binding AllEnabled}"
+                         blk:Block.MenuIconStyle="Burger">
+                <SplitButton.Flyout>
+                    <Flyout>
+                        <TextBlock Margin="10">Flyout</TextBlock>
+                    </Flyout>
+                </SplitButton.Flyout>
+                Burger Split Button
+            </SplitButton>
+            <SplitButton IsEnabled="{Binding AllEnabled}"
+                         Classes="flat"
+                         Padding="{DynamicResource BlockFlatButtonPadding}" >
+                <SplitButton.Flyout>
+                    <Flyout>
+                        <TextBlock Margin="10">Flyout</TextBlock>
+                    </Flyout>
+                </SplitButton.Flyout>
+                Flat Split Button
+            </SplitButton>
         </WrapPanel>
     </StackPanel>
 </UserControl>

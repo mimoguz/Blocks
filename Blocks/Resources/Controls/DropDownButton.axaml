@@ -1,5 +1,6 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:blk="clr-namespace:Blocks.Controls">
     <Design.PreviewWith>
         <Border Background="{DynamicResource BlockWindowBackgroundBrush}"
                 Padding="10" Height="300">
@@ -35,6 +36,7 @@
         <Setter Property="FontWeight" Value="{DynamicResource BlockButtonFontWeight}" />
         <Setter Property="MinWidth" Value="{DynamicResource BlockMinButtonSize}" />
         <Setter Property="MinHeight" Value="{DynamicResource BlockMinButtonSize}" />
+        <Setter Property="blk:Block.MenuIconStyle" Value="Chevron" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="FocusAdorner" Value="{x:Null}" />
@@ -69,64 +71,12 @@
                         </Border.Transitions>
                     </Border>
                     <Grid ColumnDefinitions="*, Auto">
-                        <Panel Name="IconPanel"
-                               Grid.Column="1"
-                               Width="{DynamicResource BlockIconSize}"
-                               Margin="0,0,8,0">
-                            <Rectangle Name="TopLine"
-                                       Width="{DynamicResource BlockIconSize}"
-                                       Height="{DynamicResource BlockIconStrokeThickness}"
-                                       Fill="{TemplateBinding Foreground}"
-                                       Margin="0,0,0,10">
-                                <Rectangle.Transitions>
-                                    <Transitions>
-                                        <BrushTransition Property="Fill"
-                                                         Duration="{DynamicResource BlockButtonStateTransitionDuration}"
-                                                         Easing="CubicEaseOut" />
-                                        <ThicknessTransition Property="Margin"
-                                                             Duration="{DynamicResource BlockButtonStateTransitionDuration}"
-                                                             Easing="CubicEaseOut" />
-                                        <TransformOperationsTransition Property="RenderTransform"
-                                                                       Duration="{DynamicResource BlockButtonStateTransitionDuration}"
-                                                                       Easing="CubicEaseOut" />
-                                    </Transitions>
-                                </Rectangle.Transitions>
-                            </Rectangle>
-                            <Rectangle Name="BottomLine"
-                                       Width="{DynamicResource BlockIconSize}"
-                                       Height="{DynamicResource BlockIconStrokeThickness}"
-                                       Fill="{TemplateBinding Foreground}"
-                                       Margin="0,10,0,0">
-                                <Rectangle.Transitions>
-                                    <Transitions>
-                                        <BrushTransition Property="Fill"
-                                                         Duration="{DynamicResource BlockButtonStateTransitionDuration}"
-                                                         Easing="CubicEaseOut" />
-                                        <ThicknessTransition Property="Margin"
-                                                             Duration="{DynamicResource BlockButtonStateTransitionDuration}"
-                                                             Easing="CubicEaseOut" />
-                                        <TransformOperationsTransition Property="RenderTransform"
-                                                                       Duration="{DynamicResource BlockButtonStateTransitionDuration}"
-                                                                       Easing="CubicEaseOut" />
-                                    </Transitions>
-                                </Rectangle.Transitions>
-                            </Rectangle>
-                            <Rectangle Name="CenterLine"
-                                       Width="{DynamicResource BlockIconSize}"
-                                       Height="{DynamicResource BlockIconStrokeThickness}"
-                                       Fill="{TemplateBinding Foreground}">
-                                <Rectangle.Transitions>
-                                    <Transitions>
-                                        <DoubleTransition Property="Width"
-                                                          Duration="{DynamicResource BlockButtonStateTransitionDuration}"
-                                                          Easing="CubicEaseOut" />
-                                        <DoubleTransition Property="Opacity"
-                                                          Duration="{DynamicResource BlockLongStateTransitionDuration}"
-                                                          Easing="CubicEaseOut" />
-                                    </Transitions>
-                                </Rectangle.Transitions>
-                            </Rectangle>
-                        </Panel>
+                        <blk:AnimatedMenuIcon Name="MenuIcon"
+                                              Grid.Column="1"
+                                              Foreground="{TemplateBinding Foreground}"
+                                              BorderBrush="{TemplateBinding BorderBrush}"
+                                              Margin="0,0,8,0"
+                                              MenuIconStyle="{TemplateBinding blk:Block.MenuIconStyle}" />
                         <ContentPresenter Name="PART_ContentPresenter"
                                           Grid.Column="0"
                                           IsHitTestVisible="False"
@@ -160,21 +110,8 @@
             <Setter Property="Opacity" Value="{DynamicResource BlockButtonFocusOpacity}" />
         </Style>
 
-        <Style Selector="^:flyout-open">
-            <Style Selector="^ /template/ Rectangle#TopLine">
-                <Setter Property="Margin" Value="0" />
-                <Setter Property="RenderTransform" Value="rotate(45deg)" />
-                <Setter Property="Fill" Value="{DynamicResource BlockBaseAccentBrush}" />
-            </Style>
-            <Style Selector="^ /template/ Rectangle#BottomLine">
-                <Setter Property="Margin" Value="0" />
-                <Setter Property="RenderTransform" Value="rotate(-45deg)" />
-                <Setter Property="Fill" Value="{DynamicResource BlockBaseAccentBrush}" />
-            </Style>
-            <Style Selector="^ /template/ Rectangle#CenterLine">
-                <Setter Property="Opacity" Value="0" />
-                <Setter Property="Width" Value="0" />
-            </Style>
+        <Style Selector="^:flyout-open /template/ blk|AnimatedMenuIcon">
+            <Setter Property="DrawExpanded" Value="True" />
         </Style>
 
         <!-- Classes -->
@@ -183,7 +120,6 @@
         </Style>
 
         <Style Selector="^.flat">
-            <Setter Property="Padding" Value="{DynamicResource BlockFlatButtonPadding}"></Setter>
             <Setter Property="Foreground" Value="{DynamicResource BlockFlatButtonForegroundBrush}" />
             <Style Selector="^ /template/ Border#ButtonBackground">
                 <Setter Property="Background" Value="Transparent" />
@@ -200,12 +136,13 @@
 
         <Style Selector="^.menu-button">
             <Setter Property="Padding" Value="{DynamicResource BlockImageButtonPadding}" />
-            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="IsVisible" Value="False" />
-            </Style>
-            <Style Selector="^ /template/ Panel#IconPanel">
+            <Style Selector="^ /template/ blk|AnimatedMenuIcon">
+                <Setter Property="MenuIconStyle" Value="Burger" />
                 <Setter Property="Margin" Value="{TemplateBinding Padding}" />
                 <Setter Property="Grid.Column" Value="0" />
+            </Style>
+            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="IsVisible" Value="False" />
             </Style>
         </Style>
     </ControlTheme>

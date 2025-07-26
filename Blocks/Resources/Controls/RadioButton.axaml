@@ -17,7 +17,6 @@
         <Setter Property="BorderThickness" Value="{DynamicResource BlockControlBorderThickness}" />
         <Setter Property="Foreground" Value="{DynamicResource BlockWindowForegroundBrush}" />
         <Setter Property="Background" Value="{DynamicResource BlockBaseAccentBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource BlockBaseViewBorderBrush}" />
         <Setter Property="blk:Block.Gap" Value="{DynamicResource BlockRadioButtonGap}"></Setter>
         <Setter Property="Padding" Value="{DynamicResource BlockRadioButtonGap}" />
         <Setter Property="FocusAdorner" Value="{x:Null}" />
@@ -55,25 +54,10 @@
                                     </Transitions>
                                 </Ellipse.Transitions>
                             </Ellipse>
-                            <Ellipse Name="DotBg"
-                                     Width="{DynamicResource BlockRadioDotSize}"
-                                     Height="{DynamicResource BlockRadioDotSize}"
-                                     Fill="{DynamicResource BlockDotBgBrush}" />
-                            <Ellipse Name="Dot"
-                                     Width="0"
-                                     Height="0"
-                                     Fill="{TemplateBinding Background}">
-                                <Ellipse.Transitions>
-                                    <Transitions>
-                                        <DoubleTransition Property="Width"
-                                                          Duration="{DynamicResource BlockLongStateTransitionDuration}"
-                                                          Easing="CubicEaseOut" />
-                                        <DoubleTransition Property="Height"
-                                                          Duration="{DynamicResource BlockLongStateTransitionDuration}"
-                                                          Easing="CubicEaseOut" />
-                                    </Transitions>
-                                </Ellipse.Transitions>
-                            </Ellipse>
+                            <blk:AnimatedDot Name="Dot"
+                                             Foreground="{TemplateBinding Background}"
+                                             Background="{DynamicResource BlockBaseDotBackgroundBrush}"
+                                             BackgroundOpacity="0.3"/>
                         </Panel>
                         <ContentPresenter Name="PART_ContentPresenter"
                                           Margin="{TemplateBinding blk:Block.Gap, Converter={StaticResource LeftThickness}}"
@@ -96,9 +80,8 @@
         </Style>
 
         <Style Selector="^:checked">
-            <Style Selector="^ /template/ Ellipse#Dot">
-                <Setter Property="Width" Value="{DynamicResource BlockRadioDotSize}" />
-                <Setter Property="Height" Value="{DynamicResource BlockRadioDotSize}" />
+            <Style Selector="^ /template/ blk|AnimatedDot#Dot">
+                <Setter Property="DrawExpanded" Value="True" />
             </Style>
         </Style>
 
