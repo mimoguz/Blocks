@@ -2,7 +2,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:controls="using:Blocks.Controls">
     <Design.PreviewWith>
-        <controls:AnimatedMenuIcon MenuIconStyle="Chevron" DrawExpanded="False" />
+        <Border Background="BurlyWood">
+            <controls:AnimatedMenuIcon MenuIconStyle="Chevron" DrawExpanded="False" />
+        </Border>
     </Design.PreviewWith>
 
     <Style Selector="controls|AnimatedMenuIcon">
@@ -96,23 +98,15 @@
                     <Panel Width="16"
                            Height="16"
                            ClipToBounds="False">
-                        <Path Name="Chevron"
-                              Data="M 1 5L 8 13L 15 5"
-                              StrokeThickness="2"
-                              Stroke="{TemplateBinding Foreground}"
-                              Stretch="None"
-                              IsVisible="True">
-                        </Path>
                         <Rectangle Name="Left"
-                                   Margin="-1.2,8.3,0,0"
-                                   Width="11.5"
+                                   Margin="-0.5,8,0,0"
+                                   Width="10.5"
                                    Height="2"
                                    Fill="{TemplateBinding Foreground}"
-                                   Opacity="1"
                                    VerticalAlignment="Top"
                                    HorizontalAlignment="Left"
-                                   RenderTransform="rotate(49deg)"
-                                   IsVisible="False">
+                                   RenderTransform="rotate(45deg)"
+                                   UseLayoutRounding="False">
                             <Rectangle.Transitions>
                                 <Transitions>
                                     <DoubleTransition Property="Width"
@@ -131,15 +125,14 @@
                             </Rectangle.Transitions>
                         </Rectangle>
                         <Rectangle Name="Right"
-                                   Margin="5.2,8.3,0,0"
-                                   Width="11.5"
+                                   Margin="0,8,-0.5,0"
+                                   Width="10.5"
                                    Height="2"
                                    Fill="{TemplateBinding Foreground}"
-                                   Opacity="1"
                                    VerticalAlignment="Top"
-                                   HorizontalAlignment="Left"
-                                   RenderTransform="rotate(-49deg)"
-                                   IsVisible="False">
+                                   HorizontalAlignment="Right"
+                                   RenderTransform="rotate(-45deg)" 
+                                   UseLayoutRounding="False">
                             <Rectangle.Transitions>
                                 <Transitions>
                                     <DoubleTransition Property="Width"
@@ -174,9 +167,6 @@
                     <Setter Property="Width" Value="16"></Setter>
                     <Setter Property="RenderTransform" Value="rotate(-45deg)" />
                     <Setter Property="Fill" Value="{TemplateBinding BorderBrush}" />
-                </Style>
-                <Style Selector="^ /template/ Path#Chevron">
-                    <Setter Property="IsVisible" Value="False" />
                 </Style>
             </Style>
         </Style>
