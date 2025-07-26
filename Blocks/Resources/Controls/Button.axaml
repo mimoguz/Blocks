@@ -4,6 +4,7 @@
         <Border Background="{DynamicResource BlockWindowBackgroundColor}" Padding="20">
             <WrapPanel Width="300" ItemSpacing="10" LineSpacing="10">
                 <Button>Basic Button</Button>
+                <Button Classes="flat">Flat Button</Button>
                 <Button Classes="destructive">Destructive Button</Button>
                 <Button IsDefault="True">Default Button</Button>
                 <Button Classes="image-button">
@@ -118,6 +119,7 @@
         </Style>
         
         <Style Selector="^.flat">
+            <Setter Property="Padding" Value="{DynamicResource BlockFlatButtonPadding}"></Setter>
             <Setter Property="Foreground" Value="{DynamicResource BlockFlatButtonForegroundBrush}" />
             <Style Selector="^ /template/ Border#ButtonBackground">
                 <Setter Property="Background" Value="Transparent" />

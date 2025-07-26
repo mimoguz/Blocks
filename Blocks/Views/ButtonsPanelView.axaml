@@ -6,16 +6,13 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Blocks.Views.ButtonsPanelView"
              x:DataType="vm:ButtonsPanelViewModel">
-    
+
     <Design.DataContext>
         <vm:ButtonsPanelViewModel />
     </Design.DataContext>
-    
+
     <StackPanel Spacing="20" Margin="8">
-        <StackPanel Orientation="Horizontal">
-            <CheckBox IsChecked="{Binding AllEnabled, Mode=TwoWay}">Enable All</CheckBox>
-            <CheckBox IsChecked="{Binding AllChecked, Mode=TwoWay}">Check All</CheckBox>
-        </StackPanel>
+        
         <StackPanel.Styles>
             <Style Selector="WrapPanel">
                 <Setter Property="ItemSpacing" Value="10" />
@@ -34,6 +31,13 @@
                 <Setter Property="VerticalAlignment" Value="Top" />
             </Style>
         </StackPanel.Styles>
+        
+        <StackPanel Orientation="Horizontal">
+            <CheckBox IsChecked="{Binding AllEnabled, Mode=TwoWay}">Enable All</CheckBox>
+            <CheckBox IsChecked="{Binding AllChecked, Mode=TwoWay}">Check All</CheckBox>
+        </StackPanel>
+        
+        <Separator />
 
         <!-- ************** Buttons ************** -->
         <WrapPanel>
@@ -128,7 +132,6 @@
                 Basic Toggle Button
             </ToggleButton>
             <ToggleButton Classes="flat"
-                          Padding="{DynamicResource BlockFlatToggleButtonPadding}"
                           IsChecked="{Binding AllChecked, Mode=TwoWay}"
                           IsEnabled="{Binding AllEnabled}">
                 Flat Toggle Button
@@ -151,6 +154,78 @@
                       Stretch="Uniform"
                       Fill="{Binding $parent[Button].Foreground}" />
             </ToggleButton>
+        </WrapPanel>
+
+        <Separator />
+        
+        <!-- ************** Flyout buttons ************** -->
+        <WrapPanel>
+            <DropDownButton IsEnabled="{Binding AllEnabled}">
+                <DropDownButton.Flyout>
+                    <Flyout>
+                        <TextBlock Margin="10">Flyout</TextBlock>
+                    </Flyout>
+                </DropDownButton.Flyout>
+                Basic Drop-Down Button
+            </DropDownButton>
+            <DropDownButton Classes="flat"
+                            Padding="{DynamicResource BlockFlatButtonPadding}"
+                            IsEnabled="{Binding AllEnabled}">
+                <DropDownButton.Flyout>
+                    <Flyout>
+                        <TextBlock Margin="10">Flyout</TextBlock>
+                    </Flyout>
+                </DropDownButton.Flyout>
+                Flat Drop-Down Button
+            </DropDownButton>
+            <DropDownButton Classes="image-button"
+                            IsEnabled="{Binding AllEnabled}">
+                <DropDownButton.Flyout>
+                    <Flyout>
+                        <TextBlock Margin="10">Flyout</TextBlock>
+                    </Flyout>
+                </DropDownButton.Flyout>
+                <Path Data="{StaticResource BlockTestIcon}"
+                      Width="{DynamicResource BlockIconSize}"
+                      Height="{DynamicResource BlockIconSize}"
+                      Stretch="Uniform"
+                      Fill="{Binding $parent[Button].Foreground}" />
+            </DropDownButton>
+            <DropDownButton Classes="flat image-button"
+                            IsEnabled="{Binding AllEnabled}">
+                <DropDownButton.Flyout>
+                    <Flyout>
+                        <TextBlock Margin="10">Flyout</TextBlock>
+                    </Flyout>
+                </DropDownButton.Flyout>
+                <Path Data="{StaticResource BlockTestIcon}"
+                      Width="{DynamicResource BlockIconSize}"
+                      Height="{DynamicResource BlockIconSize}"
+                      Stretch="Uniform"
+                      Fill="{Binding $parent[Button].Foreground}" />
+            </DropDownButton>
+            <DropDownButton Classes="menu-button"
+                            IsEnabled="{Binding AllEnabled}"
+                            Padding="0"
+                            MinHeight="{DynamicResource BlockMinButtonSize}"
+                            MinWidth="{Binding $self.Bounds.Height}">
+                <DropDownButton.Flyout>
+                    <Flyout>
+                        <TextBlock Margin="10">Flyout</TextBlock>
+                    </Flyout>
+                </DropDownButton.Flyout>
+            </DropDownButton>
+            <DropDownButton Classes="flat menu-button"
+                            IsEnabled="{Binding AllEnabled}"
+                            Padding="0"
+                            MinHeight="{DynamicResource BlockMinButtonSize}"
+                            MinWidth="{Binding $self.Bounds.Height}">
+                <DropDownButton.Flyout>
+                    <Flyout>
+                        <TextBlock Margin="10">Flyout</TextBlock>
+                    </Flyout>
+                </DropDownButton.Flyout>
+            </DropDownButton>
         </WrapPanel>
     </StackPanel>
 </UserControl>

@@ -3,6 +3,7 @@
                     xmlns:sys="using:System">
     <sys:TimeSpan x:Key="BlockButtonStateTransitionDuration">0:0:0.1</sys:TimeSpan>
     <sys:TimeSpan x:Key="BlockLongStateTransitionDuration">0:0:0.25</sys:TimeSpan>
+    <sys:TimeSpan x:Key="BlockExtendedStateTransitionDuration">0:0:0.30</sys:TimeSpan>
     <FontWeight x:Key="BlockButtonFontWeight">Bold</FontWeight>
     <sys:Double x:Key="BlockMinButtonSize">36</sys:Double>
     <sys:Double x:Key="BlockRadioButtonSize">28</sys:Double>
@@ -21,7 +22,7 @@
     <Thickness x:Key="BlockImageButtonPadding">8</Thickness>
     <Thickness x:Key="BlockTabItemPadding">8,4,20,4</Thickness>
     <Thickness x:Key="BlockButtonPadding">24,8</Thickness>
-    <Thickness x:Key="BlockFlatToggleButtonPadding">8</Thickness>
+    <Thickness x:Key="BlockFlatButtonPadding">8</Thickness>
     <CornerRadius x:Key="BlockCheckBoxCornerRadius">6</CornerRadius>
     
     <Thickness x:Key="BlockControlBorderThickness">1</Thickness>
@@ -34,9 +35,9 @@
     <sys:Double x:Key="BlockButtonShadeOpacity">0.35</sys:Double>
     <sys:Double x:Key="BlockButtonFocusOpacity">0.80</sys:Double>
     
-    <sys:Double x:Key="BlockViewBackgroundOpacity">0.02</sys:Double>
-    <sys:Double x:Key="BlockViewBorderOpacity">0.35</sys:Double>
-    <sys:Double x:Key="BlockViewHighlightOpacity">0.50</sys:Double>
+    <sys:Double x:Key="BlockViewBackgroundOpacity">0.08</sys:Double>
+    <sys:Double x:Key="BlockViewBorderOpacity">0.18</sys:Double>
+    <sys:Double x:Key="BlockViewHighlightOpacity">0.35</sys:Double>
     <sys:Double x:Key="BlockViewShadeOpacity">0.35</sys:Double>
     <sys:Double x:Key="BlockViewFocusOpacity">0.80</sys:Double>
     
