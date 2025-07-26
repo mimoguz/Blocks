@@ -18,6 +18,14 @@
                     10
                 </ButtonSpinner>
                 <ButtonSpinner MinHeight="120" Classes="vertical" VerticalAlignment="Top" IsEnabled="False">10</ButtonSpinner>
+                
+                <ComboBox PlaceholderText="Select an item" VerticalAlignment="Top" Width="150">
+                    <ComboBoxItem>Item 1</ComboBoxItem>
+                    <ComboBoxItem>Item 2</ComboBoxItem>
+                    <ComboBoxItem IsEnabled="False">Item 3</ComboBoxItem>
+                    <ComboBoxItem>Item 4</ComboBoxItem>
+                    <ComboBoxItem>Item 5</ComboBoxItem>
+                </ComboBox>
             </StackPanel>
         </StackPanel>
         <Separator />

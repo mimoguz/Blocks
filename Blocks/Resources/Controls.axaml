@@ -12,5 +12,8 @@
         <ResourceInclude Source="Controls/TabControl.axaml" />
         <ResourceInclude Source="Controls/DropDownButton.axaml" />
         <ResourceInclude Source="Controls/SplitButton.axaml" />
+        <ResourceInclude Source="Controls/FlyoutPresenter.axaml" />
+        <ResourceInclude Source="Controls/ComboBoxItem.axaml" />
+        <ResourceInclude Source="Controls/ComboBox.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

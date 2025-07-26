@@ -10,6 +10,7 @@
     <SolidColorBrush x:Key="BlockBaseAccentBrush" Color="{DynamicResource BlockBaseAccentColor}" />
     <SolidColorBrush x:Key="BlockBaseDestructiveBackgroundBrush" Color="{DynamicResource BlockBaseDestructiveBackgroundColor}" />
     <SolidColorBrush x:Key="BlockBaseDotBgBrush" Color="{DynamicResource BlockBaseDotBackgroundBrush}" />
+    <SolidColorBrush x:Key="BlockRaisedBackgroundBrush" Color="{DynamicResource BlockRaisedBackgroundColor}" />
     
     <!-- Baked-in transparency -->
     <SolidColorBrush x:Key="BlockHighlightBrush" Color="{DynamicResource BlockBaseHighlightColor}" Opacity="{DynamicResource BlockButtonHighlightOpacity}" />

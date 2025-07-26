@@ -1,0 +1,193 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="using:System"
+                    xmlns:blk="clr-namespace:Blocks.Controls">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <StackPanel Spacing="10">
+                <ComboBox PlaceholderText="Select an item">
+                    <ComboBoxItem>Item 1</ComboBoxItem>
+                    <ComboBoxItem>Item 2</ComboBoxItem>
+                </ComboBox>
+                <ComboBox IsEnabled="False"
+                          Width="200"
+                          SelectedIndex="1"
+                          HorizontalContentAlignment="Center">
+                    <ComboBoxItem>Item 1</ComboBoxItem>
+                    <ComboBoxItem>Item 2</ComboBoxItem>
+                </ComboBox>
+                <ComboBox PlaceholderText="Error">
+                    <DataValidationErrors.Error>
+                        <sys:Exception>
+                            <x:Arguments>
+                                <x:String>Error</x:String>
+                            </x:Arguments>
+                        </sys:Exception>
+                    </DataValidationErrors.Error>
+                </ComboBox>
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+
+    <sys:Int32 x:Key="ComboBoxPopupMaxNumberOfItems">15</sys:Int32>
+    <sys:Int32 x:Key="ComboBoxPopupMaxNumberOfItemsThatCanBeShownOnOneSide">7</sys:Int32>
+
+    <ControlTheme x:Key="{x:Type ComboBox}" TargetType="ComboBox">
+
+        <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource BlockButtonForegroundBrush}" />
+        <Setter Property="PlaceholderForeground" Value="{DynamicResource BlockButtonForegroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BlockBaseAccentBrush}" />
+        <Setter Property="Padding" Value="{DynamicResource BlockComboBoxPadding}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource BlockButtonCornerRadius}" />
+        <Setter Property="FontWeight" Value="{DynamicResource BlockButtonFontWeight}" />
+        <Setter Property="MinWidth" Value="{DynamicResource BlockMinButtonSize}" />
+        <Setter Property="MinHeight" Value="{DynamicResource BlockMinButtonSize}" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+        <Setter Property="MaxDropDownHeight" Value="490"></Setter>
+        <Setter Property="blk:Block.MenuIconStyle" Value="Chevron" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="FocusAdorner" Value="{x:Null}" />
+
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel>
+                    <Border Name="ButtonBackground"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            Opacity="{DynamicResource BlockButtonBackgroundOpacity}"
+                            IsHitTestVisible="True">
+                        <Border.Transitions>
+                            <Transitions>
+                                <DoubleTransition Property="Opacity"
+                                                  Duration="{DynamicResource BlockButtonStateTransitionDuration}"
+                                                  Easing="CubicEaseOut" />
+                            </Transitions>
+                        </Border.Transitions>
+                    </Border>
+                    <Border Name="FocusVisual"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            BorderBrush="{DynamicResource BlockBaseFocusBrush}"
+                            BorderThickness="{DynamicResource BlockFocusBorderThickness}"
+                            Opacity="0">
+                        <Border.Transitions>
+                            <Transitions>
+                                <DoubleTransition Property="Opacity"
+                                                  Duration="{DynamicResource BlockButtonStateTransitionDuration}"
+                                                  Easing="CubicEaseOut" />
+                            </Transitions>
+                        </Border.Transitions>
+                    </Border>
+                    <Grid ColumnDefinitions="*, Auto">
+                        <blk:AnimatedMenuIcon Name="MenuIcon"
+                                              Grid.Column="1"
+                                              Foreground="{TemplateBinding Foreground}"
+                                              BorderBrush="{TemplateBinding BorderBrush}"
+                                              Margin="0,0,8,0"
+                                              MenuIconStyle="{TemplateBinding blk:Block.MenuIconStyle}" />
+                        <TextBlock x:Name="PlaceholderTextBlock"
+                                   Grid.Column="0"
+                                   Padding="{TemplateBinding Padding}"
+                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                   Text="{TemplateBinding PlaceholderText}"
+                                   Foreground="{TemplateBinding PlaceholderForeground}"
+                                   Opacity="{DynamicResource BlockPlaceholderOpacity}"
+                                   IsVisible="{TemplateBinding SelectionBoxItem, Converter={x:Static ObjectConverters.IsNull}}" />
+                        <ContentControl x:Name="ContentPresenter"
+                                        Grid.Column="0"
+                                        Content="{TemplateBinding SelectionBoxItem}"
+                                        Padding="{TemplateBinding Padding}"
+                                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                        ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}">
+                        </ContentControl>
+                    </Grid>
+                    <Popup Name="PART_Popup"
+                           WindowManagerAddShadowHint="False"
+                           IsOpen="{TemplateBinding IsDropDownOpen, Mode=TwoWay}"
+                           MaxHeight="{TemplateBinding MaxDropDownHeight}"
+                           PlacementTarget="ButtonBackground"
+                           IsLightDismissEnabled="True"
+                           InheritsTransform="True">
+                        <Popup.MinWidth>
+                            <MultiBinding Converter="{StaticResource AddAll}">
+                                <Binding Path="Bounds.Width" RelativeSource="{RelativeSource TemplatedParent}" />
+                                <DynamicResource ResourceKey="BlockPopupWidthFix" />
+                            </MultiBinding>
+                        </Popup.MinWidth>
+                        <Panel>
+                            <Border x:Name="PopupBorder"
+                                    BorderBrush="{DynamicResource BlockBaseViewBorderBrush}"
+                                    BorderThickness="{DynamicResource BlockFlyoutBorderThickness}"
+                                    Opacity="{DynamicResource BlockFlyoutBorderOpacity}"
+                                    CornerRadius="{DynamicResource BlockFlyoutCornerRadius}" />
+                            <Border Name="BoxBackground"
+                                    Margin="{DynamicResource BlockFlyoutBorderThickness}"
+                                    Background="{DynamicResource BlockRaisedBackgroundBrush}"
+                                    Padding="{DynamicResource BlockFlyoutPadding}">
+                                <Border.CornerRadius>
+                                    <MultiBinding Converter="{StaticResource InnerRadius}">
+                                        <DynamicResource ResourceKey="BlockFlyoutCornerRadius" />
+                                        <DynamicResource ResourceKey="BlockFlyoutBorderThickness" />
+                                    </MultiBinding>
+                                </Border.CornerRadius>
+                                <ScrollViewer
+                                    HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
+                                    VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}"
+                                    IsDeferredScrollingEnabled="{TemplateBinding (ScrollViewer.IsDeferredScrollingEnabled)}">
+                                    <ItemsPresenter Name="PART_ItemsPresenter"
+                                                    Margin="{DynamicResource BlockFlyoutPadding}"
+                                                    ItemsPanel="{TemplateBinding ItemsPanel}" />
+                                </ScrollViewer>
+                            </Border>
+                        </Panel>
+                    </Popup>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+
+        <Setter Property="ItemsPanel">
+            <ItemsPanelTemplate>
+                <StackPanel Spacing="{DynamicResource BlockMenuItemSpacing}" />
+            </ItemsPanelTemplate>
+        </Setter>
+
+        <Style Selector="^:pointerover /template/ Border#ButtonBackground">
+            <Setter Property="Opacity" Value="{DynamicResource BlockButtonHighlightOpacity}" />
+        </Style>
+
+        <Style Selector="^:pressed /template/ Border#ButtonBackground">
+            <Setter Property="Opacity" Value="{DynamicResource BlockButtonShadeOpacity}" />
+        </Style>
+
+        <Style Selector="^:disabled">
+            <Setter Property="Opacity" Value="{DynamicResource BlockDisabledOpacity}" />
+        </Style>
+
+        <Style Selector="^:focus-visible /template/ Border#FocusVisual">
+            <Setter Property="Opacity" Value="{DynamicResource BlockButtonFocusOpacity}" />
+        </Style>
+
+        <Style Selector="^[IsDropDownOpen=True] /template/ blk|AnimatedMenuIcon">
+            <Setter Property="DrawExpanded" Value="True" />
+        </Style>
+
+        <Style Selector="^.flat">
+            <Setter Property="Foreground" Value="{DynamicResource BlockFlatButtonForegroundBrush}" />
+            <Style Selector="^ /template/ Border#ButtonBackground">
+                <Setter Property="Background" Value="Transparent" />
+            </Style>
+            <Style Selector="^:pointerover /template/ Border#ButtonBackground">
+                <Setter Property="Background" Value="{TemplateBinding Background}" />
+                <Setter Property="Opacity" Value="{DynamicResource BlockButtonBackgroundOpacity}" />
+            </Style>
+            <Style Selector="^:pressed /template/ Border#ButtonBackground">
+                <Setter Property="Background" Value="{TemplateBinding Background}" />
+                <Setter Property="Opacity" Value="{DynamicResource BlockButtonHighlightOpacity}" />
+            </Style>
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

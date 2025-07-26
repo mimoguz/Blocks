@@ -6,6 +6,7 @@
             <Color x:Key="BlockYellow">#FFE66D</Color>
             
             <Color x:Key="BlockWindowBackgroundColor">#F7F7FF</Color>
+            <Color x:Key="BlockRaisedBackgroundColor">#FAFAFF</Color>
             <Color x:Key="BlockWindowForegroundColor">#203035</Color>
             <Color x:Key="BlockBaseViewBackgroundColor">#F0203045</Color>
             <Color x:Key="BlockBaseViewBorderColor">#F0203040</Color>
