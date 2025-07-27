@@ -9,7 +9,7 @@ public abstract class SelectRadiusConverter : IValueConverter
 {
     public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
     {
-        return value is not CornerRadius radius ? null : Select(radius);
+        return value is  CornerRadius radius ? Select(radius) : null;
     }
 
     public object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)

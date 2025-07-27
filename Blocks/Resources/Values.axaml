@@ -19,8 +19,9 @@
     <sys:Double x:Key="BlockScrollBarTrackOpacity">0.08</sys:Double>
     <sys:Double x:Key="BlockScrollBarPageButtonHighlightOpacity">0.1</sys:Double>
     <sys:Double x:Key="BlockScrollBarPageButtonShadeOpacity">0.15</sys:Double>
-    <CornerRadius x:Key="BlockScrollBarCompactThumbCornerRadius">3</CornerRadius>
+    <CornerRadius x:Key="BlockScrollBarCompactThumbCornerRadius">9999</CornerRadius>
     <CornerRadius x:Key="BlockScrollBarThumbCornerRadius">0</CornerRadius>
+    <CornerRadius x:Key="BlockScrollBarCornerRadius">0</CornerRadius>
     
     
     <Thickness x:Key="BlockRadioButtonGap">8,4</Thickness>
