@@ -12,11 +12,17 @@ public abstract class Block : AvaloniaObject
     public static Thickness? GetGap(Control control) => control.GetValue(GapProperty);
     public static void SetGap(Control control, Thickness? value) => control.SetValue(GapProperty, value);
 
-    public static readonly AttachedProperty<bool> CheckedProperty =
-        AvaloniaProperty.RegisterAttached<Block, Control, bool>("Checked");
+    public static readonly AttachedProperty<IBrush?> ScrollBarBackgroundProperty =
+        AvaloniaProperty.RegisterAttached<Block, Control, IBrush?>("ScrollBarBackground");
 
-    public static bool GetChecked(Control control) => control.GetValue(CheckedProperty);
-    public static void SetChecked(Control control, bool value) => control.SetValue(CheckedProperty, value);
+    public static IBrush? GetScrollBarBackground(Control control) => control.GetValue(ScrollBarBackgroundProperty);
+    public static void SetScrollBarBackground(Control control, IBrush? value) => control.SetValue(ScrollBarBackgroundProperty, value);
+    
+    public static readonly AttachedProperty<IBrush?> ScrollBarForegroundProperty =
+        AvaloniaProperty.RegisterAttached<Block, Control, IBrush?>("ScrollBarForeground");
+
+    public static IBrush? GetScrollBarForeground(Control control) => control.GetValue(ScrollBarForegroundProperty);
+    public static void SetScrollBarForeground(Control control, IBrush? value) => control.SetValue(ScrollBarForegroundProperty, value);
 
     public static readonly AttachedProperty<AnimatedMenuIcon.IconStyle> MenuIconStyleProperty =
         AvaloniaProperty.RegisterAttached<Block, Control, AnimatedMenuIcon.IconStyle>("MenuIconStyle");

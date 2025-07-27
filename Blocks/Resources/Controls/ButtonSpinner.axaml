@@ -8,8 +8,9 @@
                 <ButtonSpinner Height="120" 
                                Classes="vertical"
                                HorizontalAlignment="Center"
-                               Background="Green"
-                               Foreground="DeepPink">
+                               Background="ForestGreen"
+                               Foreground="DeepPink"
+                               CornerRadius="999">
                     10
                 </ButtonSpinner>
             </StackPanel>
@@ -83,8 +84,30 @@
                         </Border>
                         <Border Margin="{TemplateBinding BorderThickness}">
                             <DockPanel Margin="{TemplateBinding BorderThickness}">
+                                <RepeatButton Name="PART_IncreaseButton"
+                                              Classes="flat"
+                                              IsTabStop="{TemplateBinding IsTabStop}"
+                                              Background="{TemplateBinding Background}"
+                                              DockPanel.Dock="Right"
+                                              VerticalAlignment="Stretch"
+                                              MinHeight="0"
+                                              Padding="0"
+                                              MinWidth="{Binding $self.Bounds.Height}"
+                                              HorizontalContentAlignment="Center">
+                                    <RepeatButton.CornerRadius>
+                                        <MultiBinding Converter="{StaticResource InnerRadius}">
+                                            <TemplateBinding Property="CornerRadius" />
+                                            <TemplateBinding Property="BorderThickness" />
+                                            <TemplateBinding Property="BorderThickness" />
+                                        </MultiBinding>
+                                    </RepeatButton.CornerRadius>
+                                    <PathIcon Name="IncreaseIcon"
+                                              Data="{StaticResource BlockChevronRight}"
+                                              Foreground="{TemplateBinding Foreground}" />
+                                </RepeatButton>
                                 <RepeatButton Name="PART_DecreaseButton"
                                               Classes="flat"
+                                              Background="{TemplateBinding Background}"
                                               IsTabStop="{TemplateBinding IsTabStop}"
                                               DockPanel.Dock="Left"
                                               VerticalAlignment="Stretch"
@@ -101,26 +124,6 @@
                                     </RepeatButton.CornerRadius>
                                     <PathIcon Name="DecreaseIcon"
                                               Data="{StaticResource BlockChevronLeft}"
-                                              Foreground="{TemplateBinding Foreground}" />
-                                </RepeatButton>
-                                <RepeatButton Name="PART_IncreaseButton"
-                                              Classes="flat"
-                                              IsTabStop="{TemplateBinding IsTabStop}"
-                                              DockPanel.Dock="Right"
-                                              VerticalAlignment="Stretch"
-                                              MinHeight="0"
-                                              Padding="0"
-                                              MinWidth="{Binding $self.Bounds.Height}"
-                                              HorizontalContentAlignment="Center">
-                                    <RepeatButton.CornerRadius>
-                                        <MultiBinding Converter="{StaticResource InnerRadius}">
-                                            <TemplateBinding Property="CornerRadius" />
-                                            <TemplateBinding Property="BorderThickness" />
-                                            <TemplateBinding Property="BorderThickness" />
-                                        </MultiBinding>
-                                    </RepeatButton.CornerRadius>
-                                    <PathIcon Name="IncreaseIcon"
-                                              Data="{StaticResource BlockChevronRight}"
                                               Foreground="{TemplateBinding Foreground}" />
                                 </RepeatButton>
                                 <ContentPresenter Name="PART_ContentPresenter"

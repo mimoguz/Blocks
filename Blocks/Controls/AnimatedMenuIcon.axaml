@@ -9,7 +9,7 @@
 
     <Style Selector="controls|AnimatedMenuIcon">
         <Setter Property="Foreground" Value="{DynamicResource BlockButtonForegroundBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource BlockBaseAccentBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BlockBasePrimaryBrush}" />
 
         <Style Selector="^[MenuIconStyle=Burger]">
             <Setter Property="Template">

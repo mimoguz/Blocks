@@ -168,7 +168,8 @@
                       Fill="{Binding $parent[Button].Foreground}" />
             </ToggleButton>
             <ToggleButton Classes="dotless" Width="200"
-                          IsChecked="{Binding AllChecked, Mode=TwoWay}">
+                          IsChecked="{Binding AllChecked, Mode=TwoWay}"
+                          IsEnabled="{Binding AllEnabled}">
                 <Panel>
                     <TextBlock Text="Dotless - Unchecked"
                                IsVisible="{Binding !$parent[ToggleButton].IsChecked}"
@@ -180,7 +181,8 @@
                 </Panel>
             </ToggleButton>
             <ToggleButton Classes="image-button flat dotless"
-                          IsChecked="{Binding AllChecked, Mode=TwoWay}">
+                          IsChecked="{Binding AllChecked, Mode=TwoWay}"
+                          IsEnabled="{Binding AllEnabled}">
                 <Panel>
                     <Path Data="{StaticResource BlockTestIcon}"
                           Width="{DynamicResource BlockIconSize}"
@@ -297,5 +299,48 @@
                 Flat Split Button
             </SplitButton>
         </WrapPanel>
+
+        <Separator />
+
+        <!-- ************** Pill ************** -->
+        <StackPanel Spacing="1" Orientation="Horizontal">
+            <Button Classes="pill-left"
+                    IsEnabled="{Binding AllEnabled}"
+                    Padding="{DynamicResource BlockComboBoxPadding}">
+                Button - Left
+            </Button>
+            <RepeatButton Classes="pill-center"
+                          Padding="{DynamicResource BlockComboBoxPadding}"
+                          IsEnabled="{Binding AllEnabled}">
+                Repeat - Center
+            </RepeatButton>
+            <ComboBox PlaceholderText="Combo Box - Center"
+                      Classes="pill-center"
+                      MinWidth="200"
+                      Padding="{DynamicResource BlockComboBoxPadding}"
+                      IsEnabled="{Binding AllEnabled}">
+                <ComboBox.Items>
+                    <ComboBoxItem>Item</ComboBoxItem>
+                    <ComboBoxItem>Item</ComboBoxItem>
+                    <ComboBoxItem>Item</ComboBoxItem>
+                </ComboBox.Items>
+            </ComboBox>
+            <ToggleButton Classes="pill-center"
+                          Padding="{DynamicResource BlockComboBoxPadding}"
+                          IsChecked="{Binding AllChecked, Mode=TwoWay}"
+                          IsEnabled="{Binding AllEnabled}">
+                Toggle - Center
+            </ToggleButton>
+            <DropDownButton Classes="pill-right"
+                            Padding="{DynamicResource BlockComboBoxPadding}"
+                            IsEnabled="{Binding AllEnabled}">
+                <DropDownButton.Flyout>
+                    <Flyout>
+                        <TextBlock Margin="10">Flyout</TextBlock>
+                    </Flyout>
+                </DropDownButton.Flyout>
+                Drop Down - Right
+            </DropDownButton>
+        </StackPanel>
     </StackPanel>
 </UserControl>

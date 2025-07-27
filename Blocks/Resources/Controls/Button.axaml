@@ -28,6 +28,11 @@
                           Stretch="Uniform"
                           Fill="{Binding $parent[Button].Foreground}" />
                 </Button>
+                <StackPanel Orientation="Horizontal" Spacing="1">
+                    <Button Classes="pill-left">Left</Button>
+                    <Button Classes="pill-center">Center</Button>
+                    <Button Classes="pill-right">Right</Button>
+                </StackPanel>
             </WrapPanel>
         </Border>
     </Design.PreviewWith>
@@ -134,9 +139,10 @@
             <Style Selector="^:pressed /template/ Border#ButtonBackground">
                 <Setter Property="Opacity" Value="{DynamicResource BlockButtonHighlightOpacity}" />
             </Style>
-            <Style Selector="^[Tag=flyout-open] /template/ Border#ButtonBackground">
-                <Setter Property="Opacity" Value="{DynamicResource BlockButtonHighlightOpacity}" />
-            </Style>
+        </Style>
+        
+        <Style Selector="^[Tag=flyout-open].flat /template/ Border#ButtonBackground">
+            <Setter Property="Opacity" Value="{DynamicResource BlockButtonHighlightOpacity}" />
         </Style>
 
         <Style Selector="^.destructive">
@@ -147,21 +153,84 @@
             </Style>
         </Style>
 
+        <Style Selector="^.pill-left">
+            <Style Selector="^ /template/ Border">
+                <Setter Property="CornerRadius"
+                        Value="{TemplateBinding CornerRadius, Converter={StaticResource LeftRadius}}">
+                </Setter>
+            </Style>
+            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="CornerRadius"
+                        Value="{TemplateBinding CornerRadius, Converter={StaticResource LeftRadius}}">
+                </Setter>
+            </Style>
+        </Style>
+        
+        <Style Selector="^.pill-center">
+            <Style Selector="^ /template/ Border">
+                <Setter Property="CornerRadius" Value="0">
+                </Setter>
+            </Style>
+            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="CornerRadius" Value="0">
+                </Setter>
+            </Style>
+        </Style>
+        
+        <Style Selector="^.pill-right">
+            <Style Selector="^ /template/ Border">
+                <Setter Property="CornerRadius"
+                        Value="{TemplateBinding CornerRadius, Converter={StaticResource RightRadius}}">
+                </Setter>
+            </Style>
+            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="CornerRadius"
+                        Value="{TemplateBinding CornerRadius, Converter={StaticResource RightRadius}}">
+                </Setter>
+            </Style>
+        </Style>
+        
+        <Style Selector="^.pill-top">
+            <Style Selector="^ /template/ Border">
+                <Setter Property="CornerRadius"
+                        Value="{TemplateBinding CornerRadius, Converter={StaticResource TopRadius}}">
+                </Setter>
+            </Style>
+            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="CornerRadius"
+                        Value="{TemplateBinding CornerRadius, Converter={StaticResource TopRadius}}">
+                </Setter>
+            </Style>
+        </Style>
+        
+        <Style Selector="^.pill-bottom">
+            <Style Selector="^ /template/ Border">
+                <Setter Property="CornerRadius"
+                        Value="{TemplateBinding CornerRadius, Converter={StaticResource BottomRadius}}">
+                </Setter>
+            </Style>
+            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="CornerRadius"
+                        Value="{TemplateBinding CornerRadius, Converter={StaticResource BottomRadius}}">
+                </Setter>
+            </Style>
+        </Style>
+
         <Style Selector="^[IsDefault=True]">
-            <Setter Property="Foreground" Value="{DynamicResource BlockAccentForegroundBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource BlockOnPrimaryBrush}" />
             <Style Selector="^ /template/ Border#ButtonBackground">
-                <Setter Property="Background" Value="{DynamicResource BlockBaseAccentBrush}" />
+                <Setter Property="Background" Value="{DynamicResource BlockBasePrimaryBrush}" />
                 <Setter Property="Opacity" Value="1" />
             </Style>
             <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="Background" Value="{DynamicResource BlockHighlightBrush}" />
+                <Setter Property="Background" Value="{DynamicResource BlockTransparentHighlightBrush}" />
             </Style>
             <Style Selector="^:pressed /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="Background" Value="{DynamicResource BlockShadeBrush}" />
+                <Setter Property="Background" Value="{DynamicResource BlockTransparentShadeBrush}" />
             </Style>
             <Style Selector="^ /template/ Border#FocusVisual">
                 <Setter Property="Margin" Value="{DynamicResource BlockFocusBorderThickness}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource BlockAccentForegroundBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource BlockOnPrimaryBrush}" />
                 <Setter Property="CornerRadius">
                     <Setter.Value>
                         <MultiBinding Converter="{StaticResource InnerRadius}">

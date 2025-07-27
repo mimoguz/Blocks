@@ -13,7 +13,7 @@
                     </DropDownButton.Flyout>
                     Drop-down button
                 </DropDownButton>
-                <DropDownButton VerticalAlignment="Top" Classes="menu-button">
+                <DropDownButton VerticalAlignment="Top" Classes="menu-button flat">
                     <DropDownButton.Flyout>
                         <Flyout>
                             <TextBlock Margin="10">Flyout</TextBlock>
@@ -30,7 +30,7 @@
 
         <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource BlockButtonForegroundBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource BlockBaseAccentBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BlockBasePrimaryBrush}" />
         <Setter Property="Padding" Value="{DynamicResource BlockButtonPadding}" />
         <Setter Property="CornerRadius" Value="{DynamicResource BlockButtonCornerRadius}" />
         <Setter Property="FontWeight" Value="{DynamicResource BlockButtonFontWeight}" />
@@ -138,7 +138,7 @@
                 <Setter Property="Opacity" Value="{DynamicResource BlockButtonHighlightOpacity}" />
             </Style>
             <Style Selector="^:flyout-open /template/ Border#ButtonBackground">
-                <Setter Property="Opacity" Value="{DynamicResource BlockButtonShadeOpacity}" />
+                <Setter Property="Opacity" Value="{DynamicResource BlockButtonHighlightOpacity}" />
             </Style>
         </Style>
 
@@ -151,6 +151,69 @@
             </Style>
             <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
                 <Setter Property="IsVisible" Value="False" />
+            </Style>
+        </Style>
+        
+        <Style Selector="^.pill-left">
+            <Style Selector="^ /template/ Border">
+                <Setter Property="CornerRadius"
+                        Value="{TemplateBinding CornerRadius, Converter={StaticResource LeftRadius}}">
+                </Setter>
+            </Style>
+            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="CornerRadius"
+                        Value="{TemplateBinding CornerRadius, Converter={StaticResource LeftRadius}}">
+                </Setter>
+            </Style>
+        </Style>
+        
+        <Style Selector="^.pill-center">
+            <Style Selector="^ /template/ Border">
+                <Setter Property="CornerRadius" Value="0">
+                </Setter>
+            </Style>
+            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="CornerRadius" Value="0">
+                </Setter>
+            </Style>
+        </Style>
+        
+        <Style Selector="^.pill-right">
+            <Style Selector="^ /template/ Border">
+                <Setter Property="CornerRadius"
+                        Value="{TemplateBinding CornerRadius, Converter={StaticResource RightRadius}}">
+                </Setter>
+            </Style>
+            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="CornerRadius"
+                        Value="{TemplateBinding CornerRadius, Converter={StaticResource RightRadius}}">
+                </Setter>
+            </Style>
+        </Style>
+        
+        <Style Selector="^.pill-top">
+            <Style Selector="^ /template/ Border">
+                <Setter Property="CornerRadius"
+                        Value="{TemplateBinding CornerRadius, Converter={StaticResource TopRadius}}">
+                </Setter>
+            </Style>
+            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="CornerRadius"
+                        Value="{TemplateBinding CornerRadius, Converter={StaticResource TopRadius}}">
+                </Setter>
+            </Style>
+        </Style>
+        
+        <Style Selector="^.pill-bottom">
+            <Style Selector="^ /template/ Border">
+                <Setter Property="CornerRadius"
+                        Value="{TemplateBinding CornerRadius, Converter={StaticResource BottomRadius}}">
+                </Setter>
+            </Style>
+            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="CornerRadius"
+                        Value="{TemplateBinding CornerRadius, Converter={StaticResource BottomRadius}}">
+                </Setter>
             </Style>
         </Style>
     </ControlTheme>
