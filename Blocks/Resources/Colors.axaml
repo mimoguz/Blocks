@@ -4,25 +4,55 @@
         <ResourceDictionary x:Key="Default">
             <Color x:Key="BlockRed">#FF6B6B</Color>
             <Color x:Key="BlockYellow">#FFE66D</Color>
-            
-            <Color x:Key="BlockBaseButtonBackgroundColor">#F0203045</Color>
+
+            <Color x:Key="BlockWindowBackgroundColor">#F7F7FF</Color>
+            <Color x:Key="BlockRaisedBackgroundColor">#FAFAFF</Color>
+            <Color x:Key="BlockBaseButtonBackgroundColor">#203045</Color>
+            <Color x:Key="BlockBaseViewBackgroundColor">#203045</Color>
             <Color x:Key="BlockBaseDestructiveBackgroundColor">#FF3B3B</Color>
             <Color x:Key="BlockBaseDotBackgroundBrush">White</Color>
-            <Color x:Key="BlockBaseFocusColor">#007FFF</Color>
-            <Color x:Key="BlockBaseHighlightColor">DarkSlateGray</Color>
-            <Color x:Key="BlockBaseInputButtonBackgroundColor">#F0203045</Color>
-            <Color x:Key="BlockBasePrimaryColor">#007FFF</Color>
-            <Color x:Key="BlockBaseSecondaryColor">#A4036F</Color>
-            <Color x:Key="BlockBaseShadeColor">#203045</Color>
-            <Color x:Key="BlockBaseViewBackgroundColor">#F0203045</Color>
-            <Color x:Key="BlockBaseViewBorderColor">#F0203040</Color>
+
+            <Color x:Key="BlockBaseViewBorderColor">#203045</Color>
+
+            <Color x:Key="BlockWindowForegroundColor">#203035</Color>
             <Color x:Key="BlockButtonForegroundColor">#102025</Color>
-            <Color x:Key="BlockDestructiveForegroundColor">DarkRed</Color>
             <Color x:Key="BlockFlatButtonForegroundColor">RoyalBlue</Color>
             <Color x:Key="BlockOnPrimaryColor">#F0FFFFFF</Color>
-            <Color x:Key="BlockRaisedBackgroundColor">#FAFAFF</Color>
-            <Color x:Key="BlockWindowBackgroundColor">#F7F7FF</Color>
-            <Color x:Key="BlockWindowForegroundColor">#203035</Color>
+            <Color x:Key="BlockDestructiveForegroundColor">DarkRed</Color>
+
+            <Color x:Key="BlockBasePrimaryColor">#007FFF</Color>
+            <Color x:Key="BlockBaseSecondaryColor">#A4036F</Color>
+            <Color x:Key="BlockBaseFocusColor">#007FFF</Color>
+
+            <Color x:Key="BlockBaseHighlightColor">DarkSlateGray</Color>
+            <Color x:Key="BlockBaseShadeColor">#203045</Color>
+        </ResourceDictionary>
+        
+        <ResourceDictionary x:Key="Dark">
+            <Color x:Key="BlockRed">#FF6B6B</Color>
+            <Color x:Key="BlockYellow">#FFE66D</Color>
+
+            <Color x:Key="BlockWindowBackgroundColor">#222226</Color>
+            <Color x:Key="BlockRaisedBackgroundColor">#2E2E32</Color> 
+            <Color x:Key="BlockBaseButtonBackgroundColor">#FCFCFF</Color>
+            <Color x:Key="BlockBaseViewBackgroundColor">#FCFCFF</Color>
+            <Color x:Key="BlockBaseDestructiveBackgroundColor">#FF8080</Color>
+            <Color x:Key="BlockBaseDotBackgroundBrush">Black</Color>
+
+            <Color x:Key="BlockBaseViewBorderColor">#FCFCFF</Color>
+
+            <Color x:Key="BlockWindowForegroundColor">#FCFCFF</Color>
+            <Color x:Key="BlockButtonForegroundColor">#FCFCFF</Color>
+            <Color x:Key="BlockFlatButtonForegroundColor">#99C1F1</Color>
+            <Color x:Key="BlockOnPrimaryColor">#F0FFFFFF</Color>
+            <Color x:Key="BlockDestructiveForegroundColor">#FFA0A0</Color>
+
+            <Color x:Key="BlockBasePrimaryColor">#3584E4</Color>
+            <Color x:Key="BlockBaseSecondaryColor">#DC8ADD</Color>
+            <Color x:Key="BlockBaseFocusColor">#62A0EA</Color>
+
+            <Color x:Key="BlockBaseHighlightColor">#FCFCFF</Color>
+            <Color x:Key="BlockBaseShadeColor">#FCFCFF</Color>
         </ResourceDictionary>
     </ResourceDictionary.ThemeDictionaries>
 </ResourceDictionary>

@@ -28,7 +28,7 @@
     </Design.PreviewWith>
 
     <ControlTheme x:Key="BlockScrollBarThumb" TargetType="Thumb">
-        <Setter Property="Background" Value="{DynamicResource BlockBaseInputButtonBackgroundBrush}" />
+        <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
         <Setter Property="Opacity" Value="{DynamicResource BlockDisabledOpacity}" />
         <Setter Property="Template">
             <Setter.Value>
@@ -107,7 +107,7 @@
 
     <ControlTheme x:Key="BlockScrollBarLineButton" TargetType="RepeatButton">
         <Setter Property="Opacity" Value="0" />
-        <Setter Property="Background" Value="{DynamicResource BlockBaseInputButtonBackgroundBrush}" />
+        <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
         <Setter Property="Template">
             <ControlTemplate>
                 <Panel>

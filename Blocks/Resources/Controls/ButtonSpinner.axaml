@@ -142,7 +142,7 @@
         </Setter>
 
         <Style Selector="^:pointerover /template/ Border#ViewBorder">
-            <Setter Property="Opacity" Value="{DynamicResource BlockViewHighlightOpacity}" />
+            <Setter Property="Opacity" Value="{DynamicResource BlockViewBorderHighlightOpacity}" />
         </Style>
 
         <Style Selector="^:focus-visible">

@@ -9,7 +9,6 @@
     <SolidColorBrush x:Key="BlockBaseDestructiveBackgroundBrush" Color="{DynamicResource BlockBaseDestructiveBackgroundColor}" />
     <SolidColorBrush x:Key="BlockBaseDotBgBrush" Color="{DynamicResource BlockBaseDotBackgroundBrush}" />
     <SolidColorBrush x:Key="BlockBaseFocusBrush" Color="{DynamicResource BlockBaseFocusColor}" />
-    <SolidColorBrush x:Key="BlockBaseInputButtonBackgroundBrush" Color="{DynamicResource BlockBaseInputButtonBackgroundColor}" />
     <SolidColorBrush x:Key="BlockBasePrimaryBrush" Color="{DynamicResource BlockBasePrimaryColor}" />
     <SolidColorBrush x:Key="BlockBaseSecondaryBrush" Color="{DynamicResource BlockBaseSecondaryColor}" />
     <SolidColorBrush x:Key="BlockBaseViewBackgroundBrush" Color="{DynamicResource BlockBaseViewBackgroundColor}" />
