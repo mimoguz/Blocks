@@ -1,5 +1,29 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Background="{DynamicResource BlockWindowBackgroundBrush}" Padding="16">
+            <WrapPanel ItemSpacing="16" LineSpacing="16" MaxWidth="250">
+                <WrapPanel.Styles>
+                    <Style Selector="PathIcon">
+                        <Setter Property="Background" Value="Bisque" />
+                    </Style>
+                </WrapPanel.Styles>
+                <PathIcon Data="{DynamicResource BlockCheckMark}" />
+                <PathIcon Data="{DynamicResource BlockChevronDown}" />
+                <PathIcon Data="{DynamicResource BlockChevronUp}" />
+                <PathIcon Data="{DynamicResource BlockChevronLeft}" />
+                <PathIcon Data="{DynamicResource BlockChevronRight}" />
+                <PathIcon Data="{DynamicResource BlockArrowUp8X5}" Width="8" Height="5" />
+                <PathIcon Data="{DynamicResource BlockArrowDown8X5}" Width="8" Height="5" />
+                <PathIcon Data="{DynamicResource BlockArrowRight5X8}" Width="5" Height="8" />
+                <PathIcon Data="{DynamicResource BlockArrowLeft5X8}" Width="5" Height="8" />
+                <PathIcon Data="{DynamicResource BlockCrossIcon}" />
+                <PathIcon Data="{DynamicResource BlockEyeOpenIcon}" />
+                <PathIcon Data="{DynamicResource BlockEyeClosedIcon}" />
+                <PathIcon Data="{DynamicResource BlockErrorIcon24}" Width="24" Height="24" />
+            </WrapPanel>
+        </Border>
+    </Design.PreviewWith>
     <StreamGeometry x:Key="BlockTestIcon">M 1 1L 15 15H 1L 15 1Z</StreamGeometry>
     <StreamGeometry x:Key="BlockTestIconH">M 1 1V 15L 15 1V 15Z</StreamGeometry>
     <StreamGeometry x:Key="BlockCheckMark">M 14.227,1.367 5.994,11.43 1.768,6.359 0.232,7.641 6.008,14.57 15.773,2.633Z</StreamGeometry>
@@ -7,10 +31,10 @@
     <StreamGeometry x:Key="BlockChevronUp">M 1.707,11.707 0.293,10.293 8,2.586 15.707,10.293 14.293,11.707 8,5.414Z</StreamGeometry>
     <StreamGeometry x:Key="BlockChevronLeft">M 11.707,14.293 10.293,15.707 2.586,8 10.293,0.293 11.707,1.707 5.414,8Z</StreamGeometry>
     <StreamGeometry x:Key="BlockChevronRight">M 4.293,1.707 5.707,0.293 13.414,8 5.707,15.707 4.293,14.293 10.586,8Z</StreamGeometry>
-    <StreamGeometry x:Key="BlockArrowUp8X4">M 0 4L 4 0L 8 4Z</StreamGeometry>
-    <StreamGeometry x:Key="BlockArrowDown8X4">H 8L 4 4Z</StreamGeometry>
-    <StreamGeometry x:Key="BlockArrowRight4X8">L 4 4L 0 8Z</StreamGeometry>
-    <StreamGeometry x:Key="BlockArrowLeft4X8">M 4 0V 8L 0 4Z</StreamGeometry>
+    <StreamGeometry x:Key="BlockArrowUp8X5">M 0 4L 4 0L 8 4Z</StreamGeometry>
+    <StreamGeometry x:Key="BlockArrowDown8X5">M0 1H 8L 4 5Z</StreamGeometry>
+    <StreamGeometry x:Key="BlockArrowRight5X8">M1 0L 5 4L 1 8Z</StreamGeometry>
+    <StreamGeometry x:Key="BlockArrowLeft5X8">M 4 0V 8L 0 4Z</StreamGeometry>
     <StreamGeometry x:Key="BlockCrossIcon">
         M 2.707 1.293
         L 1.293 2.707
@@ -55,6 +79,32 @@
         Z
         M 4.59,6.004 9.457,10.871
         C 9.013,10.982 8.528,11.049 8,11.055 4.913,11.086 3.288,8.895 2.781,8 3.051,7.525 3.637,6.684 4.59,6.004
+        Z
+    </StreamGeometry>
+    <StreamGeometry x:Key="BlockErrorIcon24">
+        M 12 1.213
+        A 1.043 1.043 0 0 0 11.074 1.773
+        L 0.926 21.227
+        A 1.212 1.212 0 0 0 2 23
+        L 22 23
+        A 1.212 1.212 0 0 0 23.074 21.227
+        L 12.926 1.773
+        A 1.043 1.043 0 0 0 12 1.213
+        Z
+        M 12 8
+        C 12.774 8 13.4 8.627 13.4 9.4
+        C 13.4 9.4 13.428 10.879 13.4 12
+        C 13.373 13.124 12.703 16 12.703 16
+        L 11.297 16
+        C 11.297 16 10.6 13.124 10.6 12
+        L 10.6 9.4
+        C 10.6 8.627 11.226 8 12 8
+        Z
+        M 12 17.5
+        A 1.5 1.5 0 0 1 13.5 19
+        A 1.5 1.5 0 0 1 12 20.5
+        A 1.5 1.5 0 0 1 10.5 19
+        A 1.5 1.5 0 0 1 12 17.5
         Z
     </StreamGeometry>
 </ResourceDictionary>

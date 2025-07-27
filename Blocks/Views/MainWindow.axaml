@@ -16,7 +16,7 @@
         <vm:MainWindowViewModel />
     </Design.DataContext>
     <Border Background="{DynamicResource BlockWindowBackgroundBrush}">
-        <TabControl>
+        <TabControl TabStripPlacement="Left">
             <TabControl.Items>
                 <TabItem Header="Buttons">
                     <local:ButtonsPanelView />

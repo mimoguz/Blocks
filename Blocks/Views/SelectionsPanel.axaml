@@ -25,6 +25,14 @@
                     <ComboBoxItem IsEnabled="False">Item 3</ComboBoxItem>
                     <ComboBoxItem>Item 4</ComboBoxItem>
                     <ComboBoxItem>Item 5</ComboBoxItem>
+                    <ComboBoxItem>Item 6</ComboBoxItem>
+                    <ComboBoxItem>Item 7</ComboBoxItem>
+                    <ComboBoxItem>Item 8</ComboBoxItem>
+                    <ComboBoxItem>Item 9</ComboBoxItem>
+                    <ComboBoxItem>Item 10</ComboBoxItem>
+                    <ComboBoxItem>Item 11</ComboBoxItem>
+                    <ComboBoxItem>Item 12</ComboBoxItem>
+                    <ComboBoxItem>Item 13</ComboBoxItem>
                 </ComboBox>
             </StackPanel>
         </StackPanel>

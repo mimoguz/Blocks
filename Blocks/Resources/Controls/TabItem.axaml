@@ -24,12 +24,12 @@
         <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource BlockButtonForegroundBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource BlockBasePrimaryBrush}" />
-        <Setter Property="Padding" Value="{DynamicResource BlockButtonPadding}" />
+        <Setter Property="Padding" Value="{DynamicResource BlockTabItemPadding}" />
         <Setter Property="CornerRadius" Value="{DynamicResource BlockButtonCornerRadius}" />
         <Setter Property="FontWeight" Value="{DynamicResource BlockButtonFontWeight}" />
         <Setter Property="MinWidth" Value="{DynamicResource BlockMinButtonSize}" />
         <Setter Property="MinHeight" Value="{DynamicResource BlockMinButtonSize}" />
-        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="FocusAdorner" Value="{x:Null}" />
 
@@ -39,8 +39,8 @@
                     <Border Name="ButtonBackground"
                             Background="{TemplateBinding Background}"
                             CornerRadius="{TemplateBinding CornerRadius}"
-                            Opacity="{DynamicResource BlockButtonBackgroundOpacity}"
-                            IsHitTestVisible="True" >
+                            Opacity="0"
+                            IsHitTestVisible="True">
                         <Border.Transitions>
                             <Transitions>
                                 <DoubleTransition Property="Opacity"
@@ -53,7 +53,7 @@
                             CornerRadius="{TemplateBinding CornerRadius}"
                             BorderBrush="{DynamicResource BlockBaseFocusBrush}"
                             BorderThickness="{DynamicResource BlockFocusBorderThickness}"
-                            Opacity="0" >
+                            Opacity="0">
                         <Border.Transitions>
                             <Transitions>
                                 <DoubleTransition Property="Opacity"
@@ -63,13 +63,15 @@
                         </Border.Transitions>
                     </Border>
                     <DockPanel>
-                        <Panel DockPanel.Dock="Left" Margin="8,0, 0,0">
-                            <Rectangle Height="20" Width="3" Fill="#60FFFFFF"/>
+                        <Decorator DockPanel.Dock="Left"
+                                   Margin="8,0, 0,0"
+                                   Height="{DynamicResource BlockTabVerticalLineHeight}"
+                                   Width="{DynamicResource BlockTabLineThickness}">
                             <Rectangle Name="Mark"
                                        DockPanel.Dock="Left"
                                        HorizontalAlignment="Left"
                                        Height="0"
-                                       Width="3"
+                                       Width="{DynamicResource BlockTabLineThickness}"
                                        Fill="{TemplateBinding BorderBrush}"
                                        Opacity="0.9">
                                 <Rectangle.Transitions>
@@ -80,7 +82,7 @@
                                     </Transitions>
                                 </Rectangle.Transitions>
                             </Rectangle>
-                        </Panel>
+                        </Decorator>
                         <ContentPresenter Name="PART_ContentPresenter"
                                           CornerRadius="{TemplateBinding CornerRadius}"
                                           Padding="{TemplateBinding Padding}"
@@ -105,11 +107,11 @@
         </Setter>
 
         <Style Selector="^:pointerover /template/ Border#ButtonBackground">
-            <Setter Property="Opacity" Value="{DynamicResource BlockButtonHighlightOpacity}" />
+            <Setter Property="Opacity" Value="{DynamicResource BlockButtonBackgroundOpacity}" />
         </Style>
 
         <Style Selector="^:pressed /template/ Border#ButtonBackground">
-            <Setter Property="Opacity" Value="{DynamicResource BlockButtonShadeOpacity}" />
+            <Setter Property="Opacity" Value="{DynamicResource BlockButtonHighlightOpacity}" />
         </Style>
 
         <Style Selector="^:disabled">
@@ -121,11 +123,22 @@
         </Style>
 
         <Style Selector="^:selected">
+            <Style Selector="^ /template/ Border#ButtonBackground">
+                <Setter Property="Opacity" Value="{DynamicResource BlockButtonBackgroundOpacity}" />
+            </Style>
             <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
                 <Setter Property="Opacity" Value="1" />
             </Style>
             <Style Selector="^ /template/ Rectangle#Mark">
-                <Setter Property="Height" Value="20" />
+                <Setter Property="Height" Value="{DynamicResource BlockTabVerticalLineHeight}" />
+            </Style>
+
+            <Style Selector="^:pointerover /template/ Border#ButtonBackground">
+                <Setter Property="Opacity" Value="{DynamicResource BlockButtonHighlightOpacity}" />
+            </Style>
+
+            <Style Selector="^:pressed /template/ Border#ButtonBackground">
+                <Setter Property="Opacity" Value="{DynamicResource BlockButtonShadeOpacity}" />
             </Style>
         </Style>
     </ControlTheme>

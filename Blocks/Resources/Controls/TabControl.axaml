@@ -1,27 +1,13 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    x:ClassModifier="internal">
+                    xmlns:blk="clr-namespace:Blocks.Controls">
     <Design.PreviewWith>
         <Border Background="{DynamicResource BlockWindowBackgroundColor}" Padding="20">
             <StackPanel Spacing="20">
 
-                <TabControl Width="300">
-                    <TabControl.Items>
-                        <TabItem Header="Tab Item">
-                            <TextBlock Margin="10">Tab 1</TextBlock>
-                        </TabItem>
-                        <TabItem Header="Tab Item" IsSelected="True">
-                            <TextBlock Margin="10">Tab 2</TextBlock>
-                        </TabItem>
-                        <TabItem Header="Tab Item">
-                            <TextBlock Margin="10">Tab 3</TextBlock>
-                        </TabItem>
-                    </TabControl.Items>
-                </TabControl>
-
-                <Separator />
-
-                <TabControl Width="300" TabStripPlacement="Bottom">
+                <TabControl Width="300" 
+                            blk:Block.ScrollBarVisibility="Auto"
+                            Padding="8,16">
                     <TabControl.Items>
                         <TabItem Header="Tab Item">
                             <TextBlock Margin="10">Tab 1</TextBlock>
@@ -38,9 +24,27 @@
                 <Separator />
 
                 <TabControl Width="300" 
+                            TabStripPlacement="Bottom">
+                    <TabControl.Items>
+                        <TabItem Header="Tab Item">
+                            <TextBlock Margin="10">Tab 1</TextBlock>
+                        </TabItem>
+                        <TabItem Header="Tab Item" IsSelected="True">
+                            <TextBlock Margin="10">Tab 2</TextBlock>
+                        </TabItem>
+                        <TabItem Header="Tab Item">
+                            <TextBlock Margin="10">Tab 3</TextBlock>
+                        </TabItem>
+                    </TabControl.Items>
+                </TabControl>
+
+                <Separator />
+
+                <TabControl Width="300" Height="200"
                             TabStripPlacement="Left" 
                             Background="Cornsilk"
-                            BorderBrush="Crimson">
+                            BorderBrush="Crimson"
+                            blk:Block.ScrollBarVisibility="Auto">
                     <TabControl.Styles>
                         <Style Selector="TabItem">
                             <Setter Property="Background" Value="HotPink" />
@@ -57,6 +61,12 @@
                             </Border>
                         </TabItem>
                         <TabItem Header="Tab Item" IsEnabled="False">
+                            <TextBlock Margin="10">Tab 3</TextBlock>
+                        </TabItem>
+                        <TabItem Header="Tab Item">
+                            <TextBlock Margin="10">Tab 3</TextBlock>
+                        </TabItem>
+                        <TabItem Header="Tab Item">
                             <TextBlock Margin="10">Tab 3</TextBlock>
                         </TabItem>
                     </TabControl.Items>
@@ -87,15 +97,23 @@
         <Setter Property="Padding" Value="8" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="BorderBrush" Value="{DynamicResource BlockBaseViewBorderBrush}" />
+        <Setter Property="blk:Block.ScrollBarVisibility" Value="Disabled" />
         <Setter Property="Template">
             <ControlTemplate>
                 <Border Background="{TemplateBinding Background}"
                         CornerRadius="{TemplateBinding CornerRadius}">
                     <DockPanel>
                         <Border Name="TabsBorder" DockPanel.Dock="Top" Background="{TemplateBinding Background}">
-                            <ItemsPresenter Name="PART_ItemsPresenter"
-                                            Margin="{TemplateBinding Padding}"
-                                            ItemsPanel="{TemplateBinding ItemsPanel}" />
+                            <!-- TODO: Better horizontal scrolling -->
+                            <ScrollViewer Name="TabsScroll"
+                                          Background="{TemplateBinding Background}"
+                                          Foreground="{TemplateBinding Foreground}"
+                                          HorizontalScrollBarVisibility="Disabled"
+                                          VerticalScrollBarVisibility="Disabled">
+                                <ItemsPresenter Name="PART_ItemsPresenter"
+                                                Margin="{TemplateBinding Padding}"
+                                                ItemsPanel="{TemplateBinding ItemsPanel}" />
+                            </ScrollViewer>
                         </Border>
                         <Rectangle Name="Divider"
                                    Fill="{TemplateBinding BorderBrush}"
@@ -118,7 +136,11 @@
                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
             </ItemsPanelTemplate>
         </Setter>
+        
         <Style Selector="^[TabStripPlacement=Top]">
+            <Style Selector="^ /template/ ScrollViewer#TabsScroll">
+                <Setter Property="HorizontalScrollBarVisibility" Value="{TemplateBinding blk:Block.ScrollBarVisibility}" />
+            </Style>
             <Style Selector="^ /template/ Border#TabsBorder">
                 <Setter Property="DockPanel.Dock" Value="Top" />
             </Style>
@@ -129,7 +151,11 @@
 
             </Style>
         </Style>
+        
         <Style Selector="^[TabStripPlacement=Bottom]">
+            <Style Selector="^ /template/ ScrollViewer#TabsScroll">
+                <Setter Property="HorizontalScrollBarVisibility" Value="{TemplateBinding blk:Block.ScrollBarVisibility}" />
+            </Style>
             <Style Selector="^ /template/ Border#TabsBorder">
                 <Setter Property="DockPanel.Dock" Value="Bottom" />
             </Style>
@@ -139,7 +165,11 @@
                         Value="{Binding BorderThickness.Top, RelativeSource={RelativeSource TemplatedParent}}" />
             </Style>
         </Style>
+        
         <Style Selector="^[TabStripPlacement=Left]">
+            <Style Selector="^ /template/ ScrollViewer#TabsScroll">
+                <Setter Property="VerticalScrollBarVisibility" Value="{TemplateBinding blk:Block.ScrollBarVisibility}" />
+            </Style>
             <Style Selector="^ /template/ Border#TabsBorder">
                 <Setter Property="DockPanel.Dock" Value="Left" />
             </Style>
@@ -149,10 +179,15 @@
                         Value="{Binding BorderThickness.Right, RelativeSource={RelativeSource TemplatedParent}}" />
             </Style>
         </Style>
+        
         <Style Selector="^[TabStripPlacement=Left] /template/ ItemsPresenter#PART_ItemsPresenter > WrapPanel">
             <Setter Property="Orientation" Value="Vertical" />
         </Style>
+        
         <Style Selector="^[TabStripPlacement=Right]">
+            <Style Selector="^ /template/ ScrollViewer#TabsScroll">
+                <Setter Property="VerticalScrollBarVisibility" Value="{TemplateBinding blk:Block.ScrollBarVisibility}" />
+            </Style>
             <Style Selector="^ /template/ Border#TabsBorder">
                 <Setter Property="DockPanel.Dock" Value="Right" />
             </Style>
@@ -162,6 +197,7 @@
                         Value="{Binding BorderThickness.Left, RelativeSource={RelativeSource TemplatedParent}}" />
             </Style>
         </Style>
+        
         <Style Selector="^[TabStripPlacement=Right] /template/ ItemsPresenter#PART_ItemsPresenter > WrapPanel">
             <Setter Property="Orientation" Value="Vertical" />
         </Style>
