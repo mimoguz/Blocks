@@ -1,0 +1,24 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:blk="clr-namespace:Blocks.Controls">
+    <Design.PreviewWith>
+        <PathIcon Background="AntiqueWhite" Data="{StaticResource BlockChevronUp}" />
+    </Design.PreviewWith>
+    <ControlTheme x:Key="{x:Type PathIcon}" TargetType="PathIcon">
+        <Setter Property="Foreground" Value="{DynamicResource BlockWindowForegroundBrush}" />
+        <Setter Property="Height" Value="{DynamicResource BlockIconSize}" />
+        <Setter Property="Width" Value="{DynamicResource BlockIconSize}" />
+        <Setter Property="blk:Block.Stretch" Value="None" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Background="{TemplateBinding Background}">
+                    <Viewbox Height="{TemplateBinding Height}" Width="{TemplateBinding Width}">
+                        <Path Fill="{TemplateBinding Foreground}" Data="{TemplateBinding Data}"
+                              Width="{TemplateBinding Width}" Height="{TemplateBinding Height}"
+                              Stretch="{TemplateBinding blk:Block.Stretch}" />
+                    </Viewbox>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+</ResourceDictionary>

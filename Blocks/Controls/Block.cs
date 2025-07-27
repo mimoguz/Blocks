@@ -1,5 +1,6 @@
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Media;
 
 namespace Blocks.Controls;
 
@@ -25,4 +26,13 @@ public abstract class Block : AvaloniaObject
 
     public static void SetMenuIconStyle(Control control, AnimatedMenuIcon.IconStyle value) =>
         control.SetValue(MenuIconStyleProperty, value);
+    
+    public static readonly AttachedProperty<Stretch> StretchProperty =
+        AvaloniaProperty.RegisterAttached<Block, Control, Stretch>("Stretch");
+
+    public static Stretch GetStretch(Control control) =>
+        control.GetValue(StretchProperty);
+
+    public static void SetStretch(Control control, Stretch value) =>
+        control.SetValue(StretchProperty, value);
 }

@@ -277,7 +277,8 @@
                 Basic Split Button
             </SplitButton>
             <SplitButton IsEnabled="{Binding AllEnabled}"
-                         blk:Block.MenuIconStyle="Burger">
+                         blk:Block.MenuIconStyle="Burger"
+                         IsTabStop="False">
                 <SplitButton.Flyout>
                     <Flyout>
                         <TextBlock Margin="10">Flyout</TextBlock>

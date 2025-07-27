@@ -5,10 +5,20 @@
         <Border Background="{DynamicResource BlockWindowBackgroundBrush}" Padding="20">
             <StackPanel Spacing="10">
                 <CheckBox>Check Box</CheckBox>
-                <CheckBox IsChecked="True" Classes="left-label" HorizontalAlignment="Left">Checked</CheckBox>
-                <CheckBox IsChecked="{x:Null}" IsThreeState="True">Indeterminate</CheckBox>
+                <CheckBox IsChecked="True"
+                          Classes="left-label"
+                          HorizontalAlignment="Left">
+                    Checked
+                </CheckBox>
+                <CheckBox IsChecked="{x:Null}" IsThreeState="True"
+                          Background="DarkMagenta"
+                          BorderBrush="Fuchsia"
+                          Foreground="BlueViolet"
+                          blk:Block.Gap="20,100">
+                    Indeterminate
+                </CheckBox>
                 <CheckBox IsEnabled="False" Classes="top-label">Disabled</CheckBox>
-                <CheckBox IsChecked="True" IsEnabled="False" Classes="bottom-label">Disabled - Checked</CheckBox>
+                <CheckBox IsChecked="True" blk:Block.Gap="100,12" IsEnabled="False" Classes="bottom-label">Disabled - Checked</CheckBox>
             </StackPanel>
         </Border>
     </Design.PreviewWith>
@@ -18,8 +28,8 @@
 
         <Setter Property="BorderThickness" Value="{DynamicResource BlockControlBorderThickness}" />
         <Setter Property="Foreground" Value="{DynamicResource BlockWindowForegroundBrush}" />
-        <Setter Property="Background" Value="{DynamicResource BlockBaseAccentBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource BlockBaseViewBorderBrush}" />
+        <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BlockBaseAccentBrush}" />
         <Setter Property="blk:Block.Gap" Value="{DynamicResource BlockRadioButtonGap}"></Setter>
         <Setter Property="CornerRadius" Value="{DynamicResource BlockCheckBoxCornerRadius}" />
         <Setter Property="Padding" Value="{DynamicResource BlockRadioButtonGap}" />
@@ -36,7 +46,7 @@
                                Height="{DynamicResource BlockRadioButtonSize}"
                                HorizontalAlignment="{TemplateBinding HorizontalAlignment}">
                             <Border Name="ButtonBackground"
-                                    Background="{DynamicResource BlockBaseButtonBackgroundBrush}"
+                                    Background="{TemplateBinding Background}"
                                     Opacity="{DynamicResource BlockButtonBackgroundOpacity}"
                                     CornerRadius="{TemplateBinding CornerRadius}">
                                 <Border.Transitions>
@@ -60,12 +70,12 @@
                                     </Transitions>
                                 </Border.Transitions>
                             </Border>
-                            <Viewbox Name="CheckMark"
-                                     Width="{DynamicResource BlockIconSize}"
-                                     Height="{DynamicResource BlockIconSize}"
-                                     Opacity="0"
-                                     RenderTransform="skewX(15deg)">
-                                <Viewbox.Transitions>
+                            <PathIcon Name="CheckMark"
+                                      Data="{DynamicResource BlockCheckMark}"
+                                      Foreground="{TemplateBinding BorderBrush}"
+                                      Opacity="0"
+                                      RenderTransform="skewX(20deg)">
+                                <PathIcon.Transitions>
                                     <Transitions>
                                         <TransformOperationsTransition Property="RenderTransform"
                                                                        Duration="{DynamicResource BlockButtonStateTransitionDuration}"
@@ -74,19 +84,12 @@
                                                           Duration="{DynamicResource BlockLongStateTransitionDuration}"
                                                           Easing="CubicEaseOut" />
                                     </Transitions>
-                                </Viewbox.Transitions>
-                                <Path Width="{DynamicResource BlockIconSize}"
-                                      Height="{DynamicResource BlockIconSize}"
-                                      Data="{DynamicResource BlockCheckMark}"
-                                      Stroke="{TemplateBinding Background}"
-                                      StrokeThickness="{DynamicResource BlockIconStrokeThickness}">
-
-                                </Path>
-                            </Viewbox>
+                                </PathIcon.Transitions>
+                            </PathIcon>
                             <Rectangle Name="IndeterminateMark"
                                        Width="0"
                                        Height="{DynamicResource BlockIconStrokeThickness}"
-                                       Fill="{TemplateBinding BorderBrush}"
+                                       Fill="{TemplateBinding Foreground}"
                                        Opacity="0">
                                 <Rectangle.Transitions>
                                     <Transitions>
@@ -117,12 +120,12 @@
             <Setter Property="Opacity" Value="{DynamicResource BlockButtonShadeOpacity}" />
         </Style>
 
-        <Style Selector="^:checked /template/ Viewbox#CheckMark">
+        <Style Selector="^:checked /template/ PathIcon#CheckMark">
             <!-- <Setter Property="IsVisible" Value="False" /> -->
             <Setter Property="RenderTransform" Value="{x:Null}" />
             <Setter Property="Opacity" Value="1" />
         </Style>
-        
+
         <Style Selector="^:indeterminate /template/ Rectangle#IndeterminateMark">
             <Setter Property="Width" Value="{DynamicResource BlockIconSize}" />
             <Setter Property="Opacity" Value="1"></Setter>

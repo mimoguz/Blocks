@@ -11,6 +11,17 @@
     <sys:Double x:Key="BlockFontSizeLarge">15</sys:Double>
     <FontWeight x:Key="BlockButtonFontWeight">Bold</FontWeight>
     
+    <sys:Double x:Key="BlockScrollBarCompactThumbSize">6</sys:Double>
+    <sys:Double x:Key="BlockScrollBarThumbSize">16</sys:Double>
+    <sys:Double x:Key="BlockScrollBarThumbOpacity">0.4</sys:Double>
+    <sys:Double x:Key="BlockScrollBarThumbHighlightOpacity">0.6</sys:Double>
+    <sys:Double x:Key="BlockScrollBarThumbShadeOpacity">0.8</sys:Double>
+    <sys:Double x:Key="BlockScrollBarPageButtonHighlightOpacity">0.1</sys:Double>
+    <sys:Double x:Key="BlockScrollBarPageButtonShadeOpacity">0.15</sys:Double>
+    <CornerRadius x:Key="BlockScrollBarCompactThumbCornerRadius">3</CornerRadius>
+    <CornerRadius x:Key="BlockScrollBarThumbCornerRadius">0</CornerRadius>
+    
+    
     <Thickness x:Key="BlockRadioButtonGap">8,4</Thickness>
     <sys:Double x:Key="BlockTabSpacing">8</sys:Double>
     <sys:Double x:Key="BlockMenuItemSpacing">4</sys:Double>

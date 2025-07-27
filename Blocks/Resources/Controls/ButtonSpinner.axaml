@@ -5,13 +5,19 @@
         <Border Padding="20" Background="{DynamicResource BlockWindowBackgroundBrush}">
             <StackPanel Spacing="10">
                 <ButtonSpinner Width="200">Content</ButtonSpinner>
-                <ButtonSpinner Height="120" Classes="vertical" HorizontalAlignment="Center">10</ButtonSpinner>
+                <ButtonSpinner Height="120" 
+                               Classes="vertical"
+                               HorizontalAlignment="Center"
+                               Background="Green"
+                               Foreground="DeepPink">
+                    10
+                </ButtonSpinner>
             </StackPanel>
         </Border>
     </Design.PreviewWith>
     <ControlTheme x:Key="{x:Type ButtonSpinner}"
                   TargetType="ButtonSpinner">
-        <Setter Property="Background" Value="{DynamicResource BlockBaseInputButtonBackgroundBrush}" />
+        <Setter Property="Background" Value="{DynamicResource BlockBaseViewBackgroundBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource BlockBaseViewBorderBrush}" />
         <Setter Property="BorderThickness" Value="{DynamicResource BlockControlBorderThickness}" />
         <Setter Property="Foreground" Value="{DynamicResource BlockWindowForegroundBrush}" />
@@ -36,12 +42,12 @@
                                     <DoubleTransition Property="Opacity"
                                                       Duration="{DynamicResource BlockButtonStateTransitionDuration}" />
                                     <BrushTransition Property="BorderBrush"
-                                                      Duration="{DynamicResource BlockButtonStateTransitionDuration}" />
+                                                     Duration="{DynamicResource BlockButtonStateTransitionDuration}" />
                                 </Transitions>
                             </Border.Transitions>
                         </Border>
                         <Border Name="ViewBackground"
-                                Background="{DynamicResource BlockBaseViewBackgroundBrush}"
+                                Background="{TemplateBinding Background}"
                                 Opacity="{DynamicResource BlockViewBackgroundOpacity}"
                                 Margin="{TemplateBinding BorderThickness}">
                             <Border.Transitions>
@@ -81,7 +87,6 @@
                                               Classes="flat"
                                               IsTabStop="{TemplateBinding IsTabStop}"
                                               DockPanel.Dock="Left"
-                                              Background="{TemplateBinding Background}"
                                               VerticalAlignment="Stretch"
                                               MinHeight="0"
                                               Padding="0"
@@ -94,21 +99,14 @@
                                             <TemplateBinding Property="BorderThickness" />
                                         </MultiBinding>
                                     </RepeatButton.CornerRadius>
-                                    <Path Name="DecreaseIcon"
-                                          Width="{DynamicResource BlockIconSize}"
-                                          Height="{DynamicResource BlockIconSize}"
-                                          HorizontalAlignment="Center"
-                                          VerticalAlignment="Center"
-                                          Data="{StaticResource BlockLeftChevron}"
-                                          Stroke="{DynamicResource BlockButtonForegroundBrush}"
-                                          StrokeThickness="{DynamicResource BlockIconStrokeThickness}"
-                                          Stretch="None" />
+                                    <PathIcon Name="DecreaseIcon"
+                                              Data="{StaticResource BlockChevronLeft}"
+                                              Foreground="{TemplateBinding Foreground}" />
                                 </RepeatButton>
                                 <RepeatButton Name="PART_IncreaseButton"
                                               Classes="flat"
                                               IsTabStop="{TemplateBinding IsTabStop}"
                                               DockPanel.Dock="Right"
-                                              Background="{TemplateBinding Background}"
                                               VerticalAlignment="Stretch"
                                               MinHeight="0"
                                               Padding="0"
@@ -121,15 +119,9 @@
                                             <TemplateBinding Property="BorderThickness" />
                                         </MultiBinding>
                                     </RepeatButton.CornerRadius>
-                                    <Path Name="IncreaseIcon"
-                                          Width="{DynamicResource BlockIconSize}"
-                                          Height="{DynamicResource BlockIconSize}"
-                                          HorizontalAlignment="Center"
-                                          VerticalAlignment="Center"
-                                          Data="{StaticResource BlockRightChevron}"
-                                          Stroke="{DynamicResource BlockButtonForegroundBrush}"
-                                          StrokeThickness="{DynamicResource BlockIconStrokeThickness}"
-                                          Stretch="None" />
+                                    <PathIcon Name="IncreaseIcon"
+                                              Data="{StaticResource BlockChevronRight}"
+                                              Foreground="{TemplateBinding Foreground}" />
                                 </RepeatButton>
                                 <ContentPresenter Name="PART_ContentPresenter"
                                                   Background="Transparent"
@@ -145,17 +137,17 @@
                 </DataValidationErrors>
             </ControlTemplate>
         </Setter>
-        
+
         <Style Selector="^:pointerover /template/ Border#ViewBorder">
             <Setter Property="Opacity" Value="{DynamicResource BlockViewHighlightOpacity}" />
         </Style>
-        
+
         <Style Selector="^:focus-visible">
             <Style Selector="^ /template/ Border#FocusVisual">
                 <Setter Property="Opacity" Value="{DynamicResource BlockViewFocusOpacity}" />
             </Style>
         </Style>
-        
+
         <Style Selector="^:disabled">
             <Setter Property="Opacity" Value="{DynamicResource BlockDisabledOpacity}" />
         </Style>
@@ -178,11 +170,11 @@
                 <Setter Property="VerticalAlignment" Value="Bottom" />
                 <Setter Property="MinHeight" Value="{Binding $self.Bounds.Width}" />
             </Style>
-            <Style Selector="^ /template/ Path#IncreaseIcon">
-                <Setter Property="Data" Value="{StaticResource BlockUpChevron}" />
+            <Style Selector="^ /template/ PathIcon#IncreaseIcon">
+                <Setter Property="Data" Value="{StaticResource BlockChevronUp}" />
             </Style>
-            <Style Selector="^ /template/ Path#DecreaseIcon">
-                <Setter Property="Data" Value="{StaticResource BlockDownChevron}" />
+            <Style Selector="^ /template/ PathIcon#DecreaseIcon">
+                <Setter Property="Data" Value="{StaticResource BlockChevronDown}" />
             </Style>
         </Style>
     </ControlTheme>

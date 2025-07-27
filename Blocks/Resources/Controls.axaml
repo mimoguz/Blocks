@@ -15,5 +15,7 @@
         <ResourceInclude Source="Controls/FlyoutPresenter.axaml" />
         <ResourceInclude Source="Controls/ComboBoxItem.axaml" />
         <ResourceInclude Source="Controls/ComboBox.axaml" />
+        <ResourceInclude Source="Controls/PathIcon.axaml" />
+        <ResourceInclude Source="Controls/ScrollBar.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

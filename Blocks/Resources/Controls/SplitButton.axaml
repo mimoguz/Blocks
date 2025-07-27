@@ -48,6 +48,7 @@
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="FocusAdorner" Value="{x:Null}" />
+        <Setter Property="IsTabStop" Value="True" />
 
         <Setter Property="Template">
             <ControlTemplate>
@@ -74,7 +75,7 @@
                                 FontWeight="{TemplateBinding FontWeight}"
                                 Foreground="{TemplateBinding Foreground}"
                                 Padding="{TemplateBinding Padding}"
-                                KeyboardNavigation.IsTabStop="True">
+                                KeyboardNavigation.IsTabStop="{TemplateBinding IsTabStop}">
                         </Button>
 
                         <Rectangle x:Name="SeparatorBorder"
@@ -93,7 +94,7 @@
                                 VerticalContentAlignment="Stretch"
                                 HorizontalContentAlignment="Stretch"
                                 VerticalAlignment="Stretch"
-                                KeyboardNavigation.IsTabStop="True">
+                                KeyboardNavigation.IsTabStop="{TemplateBinding IsTabStop}">
                             <blk:AnimatedMenuIcon Name="MenuIcon"
                                                   MenuIconStyle="{TemplateBinding blk:Block.MenuIconStyle}"
                                                   Foreground="{TemplateBinding Foreground}"
@@ -133,7 +134,7 @@
                                     FontWeight="{TemplateBinding FontWeight}"
                                     Foreground="{TemplateBinding Foreground}"
                                     Padding="{TemplateBinding Padding}"
-                                    KeyboardNavigation.IsTabStop="True">
+                                    KeyboardNavigation.IsTabStop="{TemplateBinding KeyboardNavigation.IsTabStop}">
                             </Button>
 
                             <Rectangle x:Name="SeparatorBorder"
@@ -154,7 +155,7 @@
                                     VerticalContentAlignment="Stretch"
                                     HorizontalContentAlignment="Stretch"
                                     VerticalAlignment="Stretch"
-                                    KeyboardNavigation.IsTabStop="True">
+                                    KeyboardNavigation.IsTabStop="{TemplateBinding KeyboardNavigation.IsTabStop}">
                                 <blk:AnimatedMenuIcon Name="MenuIcon"
                                                       MenuIconStyle="Chevron"
                                                       Foreground="{TemplateBinding Foreground}"

@@ -5,8 +5,8 @@
         <Border Background="{DynamicResource BlockWindowBackgroundBrush}" Padding="20">
             <StackPanel Spacing="10">
                 <RadioButton>Radio</RadioButton>
-                <RadioButton IsChecked="True" Classes="left-label" HorizontalAlignment="Left">Checked</RadioButton>
-                <RadioButton IsEnabled="False" GroupName="Disabled" Classes="top-label">Disabled</RadioButton>
+                <RadioButton IsChecked="True" Background="BlueViolet" Classes="left-label" HorizontalAlignment="Left">Checked</RadioButton>
+                <RadioButton IsEnabled="False"  GroupName="Disabled" Classes="top-label">Disabled</RadioButton>
                 <RadioButton IsChecked="True" IsEnabled="False" GroupName="Disabled" Classes="bottom-label">Disabled - Checked</RadioButton>
             </StackPanel>
         </Border>
@@ -16,7 +16,8 @@
 
         <Setter Property="BorderThickness" Value="{DynamicResource BlockControlBorderThickness}" />
         <Setter Property="Foreground" Value="{DynamicResource BlockWindowForegroundBrush}" />
-        <Setter Property="Background" Value="{DynamicResource BlockBaseAccentBrush}" />
+        <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BlockBaseAccentBrush}" />
         <Setter Property="blk:Block.Gap" Value="{DynamicResource BlockRadioButtonGap}"></Setter>
         <Setter Property="Padding" Value="{DynamicResource BlockRadioButtonGap}" />
         <Setter Property="FocusAdorner" Value="{x:Null}" />
@@ -32,7 +33,7 @@
                                Height="{DynamicResource BlockRadioButtonSize}"
                                HorizontalAlignment="{TemplateBinding HorizontalAlignment}">
                             <Ellipse Name="ButtonBackground"
-                                     Fill="{DynamicResource BlockBaseButtonBackgroundBrush}"
+                                     Fill="{TemplateBinding Background}"
                                      Opacity="{DynamicResource BlockButtonBackgroundOpacity}">
                                 <Ellipse.Transitions>
                                     <Transitions>
@@ -55,7 +56,7 @@
                                 </Ellipse.Transitions>
                             </Ellipse>
                             <blk:AnimatedDot Name="Dot"
-                                             Foreground="{TemplateBinding Background}"
+                                             Foreground="{TemplateBinding BorderBrush}"
                                              Background="{DynamicResource BlockBaseDotBackgroundBrush}"
                                              BackgroundOpacity="0.3"/>
                         </Panel>
