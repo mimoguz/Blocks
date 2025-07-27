@@ -11,7 +11,10 @@
                     <ScrollBar Orientation="Horizontal" AllowAutoHide="True" VerticalAlignment="Center" Width="100"
                                IsEnabled="False" />
                 </StackPanel>
-                <ScrollBar Orientation="Vertical" AllowAutoHide="False" HorizontalAlignment="Center" Height="100" />
+                <ScrollBar Orientation="Vertical" 
+                           Background="Chocolate" Foreground="Brown"
+                           AllowAutoHide="False"
+                           HorizontalAlignment="Center" Height="100" />
                 <ScrollBar Orientation="Vertical" AllowAutoHide="False" HorizontalAlignment="Center" Height="100"
                            IsEnabled="False" />
                 <ScrollBar Orientation="Vertical" AllowAutoHide="True" HorizontalAlignment="Center" Height="100" />
@@ -124,7 +127,7 @@
     <ControlTheme x:Key="{x:Type ScrollBar}" TargetType="ScrollBar">
         <Setter Property="MinWidth" Value="{DynamicResource BlockScrollBarThumbSize}" />
         <Setter Property="MinHeight" Value="{DynamicResource BlockScrollBarThumbSize}" />
-        <Setter Property="Background" Value="{DynamicResource BlockBaseViewBackgroundBrush}" />
+        <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource BlockButtonForegroundBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource BlockButtonForegroundBrush}" />
 
@@ -151,6 +154,7 @@
                                 <RepeatButton Name="PART_LineUpButton"
                                               HorizontalAlignment="Center"
                                               Theme="{StaticResource BlockScrollBarLineButton}"
+                                              Background="{TemplateBinding Background}"
                                               Grid.Row="0"
                                               Focusable="False"
                                               MinWidth="{DynamicResource BlockScrollBarThumbSize}"
@@ -172,22 +176,26 @@
                                     <Track.DecreaseButton>
                                         <RepeatButton Name="PART_PageUpButton"
                                                       Theme="{StaticResource BlockScrollBarPageButton}"
+                                                      Background="{TemplateBinding Background}"
                                                       Focusable="False" />
                                     </Track.DecreaseButton>
                                     <Track.IncreaseButton>
                                         <RepeatButton Name="PART_PageDownButton"
                                                       Theme="{StaticResource BlockScrollBarPageButton}"
+                                                      Background="{TemplateBinding Background}"
                                                       Focusable="False" />
                                     </Track.IncreaseButton>
                                     <Thumb Theme="{StaticResource BlockScrollBarThumb}"
                                            Width="{DynamicResource BlockScrollBarCompactThumbSize}"
                                            MinHeight="{DynamicResource BlockScrollBarThumbSize}"
+                                           Background="{TemplateBinding Background}"
                                            CornerRadius="{DynamicResource BlockScrollBarCompactThumbCornerRadius}" />
                                 </Track>
 
                                 <RepeatButton Name="PART_LineDownButton"
                                               HorizontalAlignment="Center"
                                               Theme="{StaticResource BlockScrollBarLineButton}"
+                                              Background="{TemplateBinding Background}"
                                               Grid.Row="2"
                                               Focusable="False"
                                               MinWidth="{DynamicResource BlockScrollBarThumbSize}"
@@ -226,6 +234,7 @@
 
                                 <RepeatButton Name="PART_LineUpButton"
                                               Theme="{StaticResource BlockScrollBarLineButton}"
+                                              Background="{TemplateBinding Background}"
                                               VerticalAlignment="Center"
                                               Grid.Column="0"
                                               Focusable="False"
@@ -247,21 +256,25 @@
                                     <Track.DecreaseButton>
                                         <RepeatButton Name="PART_PageUpButton"
                                                       Theme="{StaticResource BlockScrollBarPageButton}"
+                                                      Background="{TemplateBinding Background}"
                                                       Focusable="False" />
                                     </Track.DecreaseButton>
                                     <Track.IncreaseButton>
                                         <RepeatButton Name="PART_PageDownButton"
                                                       Theme="{StaticResource BlockScrollBarPageButton}"
+                                                      Background="{TemplateBinding Background}"
                                                       Focusable="False" />
                                     </Track.IncreaseButton>
                                     <Thumb Theme="{StaticResource BlockScrollBarThumb}"
                                            Height="{DynamicResource BlockScrollBarCompactThumbSize}"
                                            MinWidth="{DynamicResource BlockScrollBarThumbSize}"
+                                           Background="{TemplateBinding Background}"
                                            CornerRadius="{DynamicResource BlockScrollBarCompactThumbCornerRadius}" />
                                 </Track>
 
                                 <RepeatButton Name="PART_LineDownButton"
                                               Theme="{StaticResource BlockScrollBarLineButton}"
+                                              Background="{TemplateBinding Background}"
                                               VerticalAlignment="Center"
                                               Grid.Column="2"
                                               Focusable="False"
@@ -281,7 +294,7 @@
 
         <Style Selector="^[IsExpanded=true]">
             <Style Selector="^ /template/ Rectangle#TrackRect">
-                <Setter Property="Opacity" Value="{DynamicResource BlockViewBackgroundOpacity}" />
+                <Setter Property="Opacity" Value="{DynamicResource BlockScrollBarTrackOpacity}" />
             </Style>
             <Style Selector="^ /template/ Thumb">
                 <Setter Property="CornerRadius" Value="{DynamicResource BlockScrollBarThumbCornerRadius}" />

@@ -16,6 +16,7 @@
     <sys:Double x:Key="BlockScrollBarThumbOpacity">0.4</sys:Double>
     <sys:Double x:Key="BlockScrollBarThumbHighlightOpacity">0.6</sys:Double>
     <sys:Double x:Key="BlockScrollBarThumbShadeOpacity">0.8</sys:Double>
+    <sys:Double x:Key="BlockScrollBarTrackOpacity">0.08</sys:Double>
     <sys:Double x:Key="BlockScrollBarPageButtonHighlightOpacity">0.1</sys:Double>
     <sys:Double x:Key="BlockScrollBarPageButtonShadeOpacity">0.15</sys:Double>
     <CornerRadius x:Key="BlockScrollBarCompactThumbCornerRadius">3</CornerRadius>
