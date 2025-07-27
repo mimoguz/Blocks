@@ -12,5 +12,6 @@
     <conv:RightThicknessConverter x:Key="RightThickness" />
     <conv:HorizontalThicknessConverter x:Key="HorizontalThickness" />
     <conv:VerticalThicknessConverter x:Key="VerticalThickness" />
+    <conv:ClearBottomThicknessConverter x:Key="ClearBottomThickness" />
     <conv:AddConverter x:Key="AddAll" />
 </ResourceDictionary>

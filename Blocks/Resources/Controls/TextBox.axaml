@@ -1,0 +1,335 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="using:System">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <StackPanel Spacing="20">
+                <TextBox>Left</TextBox>
+                <TextBox TextAlignment="Center" IsEnabled="False">Center</TextBox>
+                <TextBox Classes="clearButton" Background="BlueViolet" Foreground="DeepPink" BorderBrush="DarkRed">Clear</TextBox>
+                <TextBox PasswordChar="*" Classes="revealPasswordButton">Reveal Password</TextBox>
+                <TextBox PasswordChar="*" Classes="revealPasswordButton" RevealPassword="True" Foreground="DarkOrchid">Password Revealed</TextBox>
+                <TextBox Watermark="Watermark" />
+                <TextBox Watermark="Watermark">
+                    Error
+                    <DataValidationErrors.Error>
+                        <sys:Exception />
+                    </DataValidationErrors.Error>
+                </TextBox>
+                <TextBox Watermark="Floating Watermark" UseFloatingWatermark="True"></TextBox>
+                <TextBox Watermark="Floating Watermark" UseFloatingWatermark="True">Content</TextBox>
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+    
+    <MenuFlyout x:Key="DefaultTextBoxContextFlyout" ShowMode="{OnFormFactor Desktop=Standard, Mobile=Transient}">
+        <MenuItem Header="{DynamicResource StringTextFlyoutCutText}" Command="{Binding $parent[TextBox].Cut}"
+                  IsEnabled="{Binding $parent[TextBox].CanCut}" InputGesture="{x:Static TextBox.CutGesture}" />
+        <MenuItem Header="{DynamicResource StringTextFlyoutCopyText}" Command="{Binding $parent[TextBox].Copy}"
+                  IsEnabled="{Binding $parent[TextBox].CanCopy}" InputGesture="{x:Static TextBox.CopyGesture}" />
+        <MenuItem Header="{DynamicResource StringTextFlyoutPasteText}" Command="{Binding $parent[TextBox].Paste}"
+                  IsEnabled="{Binding $parent[TextBox].CanPaste}" InputGesture="{x:Static TextBox.PasteGesture}" />
+    </MenuFlyout>
+    
+    <!-- TODO: Horizontal menu -->
+    <MenuFlyout x:Key="HorizontalTextBoxContextFlyout" ShowMode="{OnFormFactor Desktop=Standard, Mobile=Transient}"
+                FlyoutPresenterTheme="{StaticResource HorizontalMenuFlyoutPresenter}"
+                ItemContainerTheme="{StaticResource HorizontalMenuItem}">
+        <MenuItem Header="{DynamicResource StringTextFlyoutCutText}" Command="{Binding $parent[TextBox].Cut}"
+                  IsEnabled="{Binding $parent[TextBox].CanCut}" IsVisible="{Binding $parent[TextBox].CanCut}" />
+        <MenuItem Header="{DynamicResource StringTextFlyoutCopyText}" Command="{Binding $parent[TextBox].Copy}"
+                  IsEnabled="{Binding $parent[TextBox].CanCopy}" IsVisible="{Binding $parent[TextBox].CanCopy}" />
+        <MenuItem Header="{DynamicResource StringTextFlyoutPasteText}" Command="{Binding $parent[TextBox].Paste}"
+                  IsEnabled="{Binding $parent[TextBox].CanPaste}" />
+    </MenuFlyout>
+
+    <ControlTheme x:Key="BlockTextBoxButton" TargetType="Button">
+
+        <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource BlockButtonForegroundBrush}" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="MinHeight" Value="0" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Focusable" Value="False" />
+
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel>
+                    <Border Name="ButtonBackground"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            Opacity="0"
+                            IsHitTestVisible="True">
+                        <Border.Transitions>
+                            <Transitions>
+                                <DoubleTransition Property="Opacity"
+                                                  Duration="{DynamicResource BlockButtonStateTransitionDuration}"
+                                                  Easing="CubicEaseOut" />
+                            </Transitions>
+                        </Border.Transitions>
+                    </Border>
+                    <ContentPresenter x:Name="PART_ContentPresenter"
+                                      IsHitTestVisible="False"
+                                      CornerRadius="{TemplateBinding CornerRadius}"
+                                      Padding="{TemplateBinding Padding}"
+                                      HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                      VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                      Content="{TemplateBinding Content}"
+                                      ContentTemplate="{TemplateBinding ContentTemplate}">
+                    </ContentPresenter>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^:pointerover /template/ Border#ButtonBackground">
+            <Setter Property="Opacity" Value="{DynamicResource BlockButtonBackgroundOpacity}" />
+        </Style>
+
+        <Style Selector="^:pressed /template/ Border#ButtonBackground">
+            <Setter Property="Opacity" Value="{DynamicResource BlockButtonHighlightOpacity}" />
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme x:Key="BlockTextBoxToggleButton" 
+                  TargetType="ToggleButton" 
+                  BasedOn="{StaticResource BlockTextBoxButton}" />
+
+    <ControlTheme x:Key="{x:Type TextBox}" TargetType="TextBox">
+        
+        <Setter Property="Foreground" Value="{DynamicResource BlockWindowForegroundBrush}" />
+        <Setter Property="Background" Value="{DynamicResource BlockBaseViewBackgroundBrush}" />
+        <Setter Property="CaretBrush" Value="{DynamicResource BlockWindowForegroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BlockBaseViewBorderBrush}" />
+        <Setter Property="SelectionBrush" Value="{DynamicResource BlockTransparentSelectionBrush}" />
+        <Setter Property="BorderThickness" Value="{DynamicResource BlockControlBorderThickness}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource BlockInputCornerRadius}" />
+        <Setter Property="MinHeight" Value="{DynamicResource BlockMinButtonSize}" />
+        <Setter Property="MinWidth" Value="{DynamicResource BlockMinButtonSize}" />
+        <Setter Property="Padding" Value="{DynamicResource BlockInputPadding}" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="FocusAdorner" Value="{x:Null}" />
+        <Setter Property="ScrollViewer.IsScrollChainingEnabled" Value="True" />
+        <Setter Property="ContextFlyout"
+                Value="{OnFormFactor Desktop={StaticResource DefaultTextBoxContextFlyout}, Mobile={StaticResource HorizontalTextBoxContextFlyout}}" />
+
+        <Setter Property="Template">
+            <ControlTemplate>
+                <DataValidationErrors>
+                    <Panel>
+                        <Border Name="ViewBorder"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Opacity="{DynamicResource BlockViewBorderOpacity}"
+                                CornerRadius="{TemplateBinding CornerRadius}">
+                            <Border.Transitions>
+                                <Transitions>
+                                    <DoubleTransition Property="Opacity"
+                                                      Duration="{DynamicResource BlockButtonStateTransitionDuration}" />
+                                    <BrushTransition Property="BorderBrush"
+                                                     Duration="{DynamicResource BlockButtonStateTransitionDuration}" />
+                                </Transitions>
+                            </Border.Transitions>
+                        </Border>
+                        <Border Name="ViewBackground"
+                                Background="{TemplateBinding Background}"
+                                Opacity="{DynamicResource BlockViewBackgroundOpacity}"
+                                Margin="{TemplateBinding BorderThickness}">
+                            <Border.Transitions>
+                                <Transitions>
+                                    <DoubleTransition Property="Opacity"
+                                                      Duration="{DynamicResource BlockButtonStateTransitionDuration}" />
+                                </Transitions>
+                            </Border.Transitions>
+                            <Border.CornerRadius>
+                                <MultiBinding Converter="{StaticResource InnerRadius}">
+                                    <TemplateBinding Property="CornerRadius" />
+                                    <TemplateBinding Property="BorderThickness" />
+                                </MultiBinding>
+                            </Border.CornerRadius>
+                        </Border>
+                        <Border Name="FocusVisual"
+                                Opacity="0"
+                                Margin="{TemplateBinding BorderThickness}"
+                                BorderBrush="{DynamicResource BlockBaseFocusBrush}"
+                                BorderThickness="{DynamicResource BlockFocusBorderThickness}">
+                            <Border.Transitions>
+                                <Transitions>
+                                    <DoubleTransition Property="Opacity"
+                                                      Duration="{DynamicResource BlockButtonStateTransitionDuration}" />
+                                </Transitions>
+                            </Border.Transitions>
+                            <Border.CornerRadius>
+                                <MultiBinding Converter="{StaticResource InnerRadius}">
+                                    <TemplateBinding Property="CornerRadius" />
+                                    <TemplateBinding Property="BorderThickness" />
+                                </MultiBinding>
+                            </Border.CornerRadius>
+                        </Border>
+                        <Border Margin="{TemplateBinding BorderThickness}">
+                            <DockPanel Margin="{TemplateBinding BorderThickness}">
+
+                                <TextBlock Name="PART_FloatingWatermark"
+                                           Foreground="{TemplateBinding Foreground}"
+                                           Opacity="{DynamicResource BlockPlaceholderOpacity}"
+                                           IsVisible="False"
+                                           Text="{TemplateBinding Watermark}"
+                                           DockPanel.Dock="Top"
+                                           Padding="{TemplateBinding Padding, Converter={StaticResource ClearBottomThickness}}" />
+
+                                <Grid ColumnDefinitions="Auto, *, Auto">
+
+                                    <ContentPresenter Grid.Column="0"
+                                                      VerticalContentAlignment="Stretch"
+                                                      Content="{TemplateBinding InnerLeftContent}" />
+
+                                    <ScrollViewer Name="PART_ScrollViewer"
+                                                  Grid.Column="1"
+                                                  Margin="{TemplateBinding Padding}"
+                                                  HorizontalScrollBarVisibility="{TemplateBinding (ScrollViewer.HorizontalScrollBarVisibility)}"
+                                                  VerticalScrollBarVisibility="{TemplateBinding (ScrollViewer.VerticalScrollBarVisibility)}"
+                                                  IsScrollChainingEnabled="{TemplateBinding (ScrollViewer.IsScrollChainingEnabled)}"
+                                                  AllowAutoHide="{TemplateBinding (ScrollViewer.AllowAutoHide)}"
+                                                  BringIntoViewOnFocusChange="{TemplateBinding (ScrollViewer.BringIntoViewOnFocusChange)}">
+                                        <Panel>
+                                            <TextBlock Name="PART_Watermark"
+                                                       Opacity="{DynamicResource BlockPlaceholderOpacity}"
+                                                       Foreground="{TemplateBinding Foreground}"
+                                                       Text="{TemplateBinding Watermark}"
+                                                       TextAlignment="{TemplateBinding TextAlignment}"
+                                                       TextWrapping="{TemplateBinding TextWrapping}"
+                                                       HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                                <TextBlock.IsVisible>
+                                                    <MultiBinding Converter="{x:Static BoolConverters.And}">
+                                                        <Binding ElementName="PART_TextPresenter" Path="PreeditText"
+                                                                 Converter="{x:Static StringConverters.IsNullOrEmpty}" />
+                                                        <Binding RelativeSource="{RelativeSource TemplatedParent}"
+                                                                 Path="Text"
+                                                                 Converter="{x:Static StringConverters.IsNullOrEmpty}" />
+                                                    </MultiBinding>
+                                                </TextBlock.IsVisible>
+                                            </TextBlock>
+                                            <TextPresenter Name="PART_TextPresenter"
+                                                           Text="{TemplateBinding Text, Mode=TwoWay}"
+                                                           CaretBlinkInterval="{TemplateBinding CaretBlinkInterval}"
+                                                           CaretIndex="{TemplateBinding CaretIndex}"
+                                                           SelectionStart="{TemplateBinding SelectionStart}"
+                                                           SelectionEnd="{TemplateBinding SelectionEnd}"
+                                                           TextAlignment="{TemplateBinding TextAlignment}"
+                                                           TextWrapping="{TemplateBinding TextWrapping}"
+                                                           LineHeight="{TemplateBinding LineHeight}"
+                                                           LetterSpacing="{TemplateBinding LetterSpacing}"
+                                                           PasswordChar="{TemplateBinding PasswordChar}"
+                                                           RevealPassword="{TemplateBinding RevealPassword}"
+                                                           SelectionBrush="{TemplateBinding SelectionBrush}"
+                                                           SelectionForegroundBrush="{TemplateBinding SelectionForegroundBrush}"
+                                                           CaretBrush="{TemplateBinding CaretBrush}"
+                                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                        </Panel>
+                                        <ScrollViewer.Styles>
+                                            <Style Selector="ScrollContentPresenter#PART_ContentPresenter">
+                                                <Setter Property="Cursor" Value="IBeam" />
+                                            </Style>
+                                        </ScrollViewer.Styles>
+                                    </ScrollViewer>
+
+                                    <ContentPresenter Grid.Column="2"
+                                                      VerticalContentAlignment="Stretch"
+                                                      Content="{TemplateBinding InnerRightContent}" />
+                                </Grid>
+                            </DockPanel>
+                        </Border>
+                    </Panel>
+                </DataValidationErrors>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^:disabled">
+            <Setter Property="Opacity" Value="{DynamicResource BlockDisabledOpacity}" />
+        </Style>
+
+        <Style Selector="^:pointerover /template/ Border#ViewBorder">
+            <Setter Property="Opacity" Value="{DynamicResource BlockViewHighlightOpacity}" />
+        </Style>
+
+        <Style Selector="^:focus-visible">
+            <Style Selector="^ /template/ Border#FocusVisual">
+                <Setter Property="Opacity" Value="{DynamicResource BlockViewFocusOpacity}" />
+            </Style>
+        </Style>
+
+        <Style Selector="^:error /template/ Border#ViewBorder">
+            <Setter Property="BorderBrush" Value="{DynamicResource BlockRedBrush}" />
+            <Setter Property="Opacity" Value="{DynamicResource BlockViewErrorBorderOpacity}" />
+        </Style>
+
+        <Style Selector="^:error:pointerover /template/ Border#ViewBorder">
+            <Setter Property="Opacity" Value="{DynamicResource BlockViewErrorBorderHighlightOpacity}" />
+        </Style>
+
+        <Style Selector="^[UseFloatingWatermark=true]:not(:empty) /template/ TextBlock#PART_FloatingWatermark">
+            <Setter Property="IsVisible" Value="True" />
+        </Style>
+
+        <Style Selector="^.clearButton[AcceptsReturn=False][IsReadOnly=False]:focus:not(TextBox:empty)">
+            <Setter Property="InnerRightContent">
+                <Template>
+                    <Button Theme="{StaticResource BlockTextBoxButton}"
+                            Command="{Binding $parent[TextBox].Clear}"
+                            VerticalAlignment="Stretch"
+                            MinWidth="{Binding $self.Bounds.Height}"
+                            Background="{Binding $parent[TextBox].Background}"
+                            ClipToBounds="True">
+                        <Button.CornerRadius>
+                            <MultiBinding Converter="{StaticResource InnerRadius}">
+                                <Binding Path="$parent[TextBox].CornerRadius" />
+                                <Binding Path="$parent[TextBox].BorderThickness" />
+                                <Binding Path="$parent[TextBox].BorderThickness" />
+                            </MultiBinding>
+                        </Button.CornerRadius>
+                        <PathIcon Data="{StaticResource BlockCrossIcon}"
+                                  Height="{DynamicResource BlockIconSize}"
+                                  Width="{DynamicResource BlockIconSize}"
+                                  Foreground="{Binding $parent[TextBox].Foreground}" />
+                    </Button>
+                </Template>
+            </Setter>
+        </Style>
+        
+        <Style Selector="^.revealPasswordButton[AcceptsReturn=False][IsReadOnly=False]:not(TextBox:empty)">
+            <Setter Property="InnerRightContent">
+                <Template>
+                    <ToggleButton Theme="{StaticResource BlockTextBoxToggleButton}"
+                                  IsChecked="{Binding $parent[TextBox].RevealPassword, Mode=TwoWay}"
+                                  MinWidth="{Binding $self.Bounds.Height}"
+                                  Background="{Binding $parent[TextBox].Background}"
+                                  ClipToBounds="True">
+                        <ToggleButton.CornerRadius>
+                            <MultiBinding Converter="{StaticResource InnerRadius}">
+                                <Binding Path="$parent[TextBox].CornerRadius" />
+                                <Binding Path="$parent[TextBox].BorderThickness" />
+                                <Binding Path="$parent[TextBox].BorderThickness" />
+                            </MultiBinding>
+                        </ToggleButton.CornerRadius>
+                        <Panel>
+                            <PathIcon Data="{StaticResource BlockEyeOpenIcon}"
+                                      Height="{DynamicResource BlockIconSize}"
+                                      Width="{DynamicResource BlockIconSize}"
+                                      Foreground="{Binding $parent[TextBox].Foreground}"
+                                      IsVisible="{Binding $parent[ToggleButton].IsChecked}"/>
+                            <PathIcon Data="{StaticResource BlockEyeClosedIcon}"
+                                      Height="{DynamicResource BlockIconSize}"
+                                      Width="{DynamicResource BlockIconSize}"
+                                      Foreground="{Binding $parent[TextBox].Foreground}"
+                                      IsVisible="{Binding !$parent[ToggleButton].IsChecked}"/>
+                        </Panel>
+                    </ToggleButton>
+                </Template>
+            </Setter>
+        </Style>
+
+
+    </ControlTheme>
+</ResourceDictionary>

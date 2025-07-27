@@ -14,12 +14,14 @@
     <SolidColorBrush x:Key="BlockBaseSecondaryBrush" Color="{DynamicResource BlockBaseSecondaryColor}" />
     <SolidColorBrush x:Key="BlockBaseViewBackgroundBrush" Color="{DynamicResource BlockBaseViewBackgroundColor}" />
     <SolidColorBrush x:Key="BlockBaseViewBorderBrush" Color="{DynamicResource BlockBaseViewBorderColor}" />
+    <SolidColorBrush x:Key="BlockRedBrush" Color="{DynamicResource BlockRed}" />
     
     <!-- Baked-in transparency -->
     <SolidColorBrush x:Key="BlockTransparentHighlightBrush" Color="{DynamicResource BlockBaseHighlightColor}" Opacity="{DynamicResource BlockButtonHighlightOpacity}" />
+    <SolidColorBrush x:Key="BlockTransparentSelectionBrush" Color="{DynamicResource BlockBasePrimaryColor}" Opacity="{DynamicResource BlockViewSelectionOpacity}"/>
     <SolidColorBrush x:Key="BlockTransparentShadeBrush" Color="{DynamicResource BlockBaseShadeColor}" Opacity="{DynamicResource BlockButtonShadeOpacity}" />
     <SolidColorBrush x:Key="BlockTransparentViewBackgroundBrush" Color="{DynamicResource BlockBaseViewBackgroundColor}" Opacity="{DynamicResource BlockViewBackgroundOpacity}"/>
-    
+
     <!-- Foreground -->
     <SolidColorBrush x:Key="BlockButtonForegroundBrush" Color="{DynamicResource BlockButtonForegroundColor}" />
     <SolidColorBrush x:Key="BlockDestructiveForegroundBrush" Color="{DynamicResource BlockDestructiveForegroundColor}" />

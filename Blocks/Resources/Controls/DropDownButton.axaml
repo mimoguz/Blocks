@@ -155,7 +155,12 @@
         </Style>
         
         <Style Selector="^.pill-left">
-            <Style Selector="^ /template/ Border">
+            <Style Selector="^ /template/ Border#ButtonBackground">
+                <Setter Property="CornerRadius"
+                        Value="{TemplateBinding CornerRadius, Converter={StaticResource LeftRadius}}">
+                </Setter>
+            </Style>
+            <Style Selector="^ /template/ Border#FocusVisual">
                 <Setter Property="CornerRadius"
                         Value="{TemplateBinding CornerRadius, Converter={StaticResource LeftRadius}}">
                 </Setter>
@@ -168,7 +173,11 @@
         </Style>
         
         <Style Selector="^.pill-center">
-            <Style Selector="^ /template/ Border">
+            <Style Selector="^ /template/ Border#ButtonBackground">
+                <Setter Property="CornerRadius" Value="0">
+                </Setter>
+            </Style>
+            <Style Selector="^ /template/ Border#FocusVisual">
                 <Setter Property="CornerRadius" Value="0">
                 </Setter>
             </Style>
@@ -179,7 +188,12 @@
         </Style>
         
         <Style Selector="^.pill-right">
-            <Style Selector="^ /template/ Border">
+            <Style Selector="^ /template/ Border#ButtonBackground">
+                <Setter Property="CornerRadius"
+                        Value="{TemplateBinding CornerRadius, Converter={StaticResource RightRadius}}">
+                </Setter>
+            </Style>
+            <Style Selector="^ /template/ Border#FocusVisual">
                 <Setter Property="CornerRadius"
                         Value="{TemplateBinding CornerRadius, Converter={StaticResource RightRadius}}">
                 </Setter>
@@ -192,7 +206,12 @@
         </Style>
         
         <Style Selector="^.pill-top">
-            <Style Selector="^ /template/ Border">
+            <Style Selector="^ /template/ Border#ButtonBackground">
+                <Setter Property="CornerRadius"
+                        Value="{TemplateBinding CornerRadius, Converter={StaticResource TopRadius}}">
+                </Setter>
+            </Style>
+            <Style Selector="^ /template/ Border#FocusVisual">
                 <Setter Property="CornerRadius"
                         Value="{TemplateBinding CornerRadius, Converter={StaticResource TopRadius}}">
                 </Setter>
@@ -205,7 +224,12 @@
         </Style>
         
         <Style Selector="^.pill-bottom">
-            <Style Selector="^ /template/ Border">
+            <Style Selector="^ /template/ Border#ButtonBackground">
+                <Setter Property="CornerRadius"
+                        Value="{TemplateBinding CornerRadius, Converter={StaticResource BottomRadius}}">
+                </Setter>
+            </Style>
+            <Style Selector="^ /template/ Border#FocusVisual">
                 <Setter Property="CornerRadius"
                         Value="{TemplateBinding CornerRadius, Converter={StaticResource BottomRadius}}">
                 </Setter>

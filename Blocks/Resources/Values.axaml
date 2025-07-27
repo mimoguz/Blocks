@@ -3,14 +3,14 @@
                     xmlns:sys="using:System">
     <sys:TimeSpan x:Key="BlockButtonStateTransitionDuration">0:0:0.1</sys:TimeSpan>
     <sys:TimeSpan x:Key="BlockLongStateTransitionDuration">0:0:0.2</sys:TimeSpan>
-    
+
     <sys:Double x:Key="BlockMinButtonSize">36</sys:Double>
     <sys:Double x:Key="BlockRadioButtonSize">28</sys:Double>
     <sys:Double x:Key="BlockFontSizeNormal">13</sys:Double>
     <sys:Double x:Key="BlockFontSizeSmall">11</sys:Double>
     <sys:Double x:Key="BlockFontSizeLarge">15</sys:Double>
     <FontWeight x:Key="BlockButtonFontWeight">Bold</FontWeight>
-    
+
     <sys:Double x:Key="BlockScrollBarCompactThumbSize">6</sys:Double>
     <sys:Double x:Key="BlockScrollBarThumbSize">16</sys:Double>
     <sys:Double x:Key="BlockScrollBarThumbOpacity">0.4</sys:Double>
@@ -22,12 +22,12 @@
     <CornerRadius x:Key="BlockScrollBarCompactThumbCornerRadius">9999</CornerRadius>
     <CornerRadius x:Key="BlockScrollBarThumbCornerRadius">0</CornerRadius>
     <CornerRadius x:Key="BlockScrollBarCornerRadius">0</CornerRadius>
-    
-    
+
+
     <Thickness x:Key="BlockRadioButtonGap">8,4</Thickness>
     <sys:Double x:Key="BlockTabSpacing">8</sys:Double>
     <sys:Double x:Key="BlockMenuItemSpacing">4</sys:Double>
-    
+
     <Thickness x:Key="BlockInputPadding">8,6</Thickness>
     <Thickness x:Key="BlockVerticalInputPadding">6</Thickness>
     <CornerRadius x:Key="BlockButtonCornerRadius">9</CornerRadius>
@@ -35,38 +35,41 @@
     <sys:Double x:Key="BlockIconSize">16</sys:Double>
     <Thickness x:Key="BlockImageButtonPadding">8</Thickness>
     <Thickness x:Key="BlockTabItemPadding">8,4,20,4</Thickness>
-    <Thickness x:Key="BlockButtonPadding">24,8</Thickness>
+    <Thickness x:Key="BlockButtonPadding">16,8</Thickness>
     <Thickness x:Key="BlockComboBoxPadding">16,8</Thickness>
     <Thickness x:Key="BlockFlatButtonPadding">8</Thickness>
     <CornerRadius x:Key="BlockCheckBoxCornerRadius">6</CornerRadius>
     <Thickness x:Key="BlockFlyoutPadding">6</Thickness>
     <CornerRadius x:Key="BlockFlyoutCornerRadius">15</CornerRadius>
-    
+
     <Thickness x:Key="BlockControlBorderThickness">1</Thickness>
     <Thickness x:Key="BlockFlyoutBorderThickness">1</Thickness>
     <Thickness x:Key="BlockFocusBorderThickness">2</Thickness>
     <sys:Double x:Key="BlockFocusStrokeThickness">2</sys:Double>
     <sys:Double x:Key="BlockIconStrokeThickness">2</sys:Double>
-    
+
     <sys:Double x:Key="BlockButtonBackgroundOpacity">0.15</sys:Double>
     <sys:Double x:Key="BlockButtonHighlightOpacity">0.22</sys:Double>
     <sys:Double x:Key="BlockButtonShadeOpacity">0.30</sys:Double>
     <sys:Double x:Key="BlockButtonFocusOpacity">0.90</sys:Double>
-    
+
     <sys:Double x:Key="BlockViewBackgroundOpacity">0.08</sys:Double>
     <sys:Double x:Key="BlockViewBorderOpacity">0.18</sys:Double>
+    <sys:Double x:Key="BlockViewErrorBorderOpacity">0.70</sys:Double>
     <sys:Double x:Key="BlockViewHighlightOpacity">0.35</sys:Double>
+    <sys:Double x:Key="BlockViewErrorBorderHighlightOpacity">1</sys:Double>
     <sys:Double x:Key="BlockViewShadeOpacity">0.45</sys:Double>
     <sys:Double x:Key="BlockViewFocusOpacity">0.90</sys:Double>
+    <sys:Double x:Key="BlockViewSelectionOpacity">0.2</sys:Double>
     <sys:Double x:Key="BlockFlyoutBorderOpacity">0.08</sys:Double>
-    
+
     <sys:Double x:Key="BlockDisabledOpacity">0.5</sys:Double>
     <sys:Double x:Key="BlockPlaceholderOpacity">0.667</sys:Double>
-    
-    <DropShadowEffect x:Key="BlockPopupDropShadow" 
-                      Color="Black" 
+
+    <DropShadowEffect x:Key="BlockPopupDropShadow"
+                      Color="Black"
                       Opacity="0.15"
-                      BlurRadius="12" 
+                      BlurRadius="12"
                       OffsetX="0" OffsetY="4" />
     <Thickness x:Key="BlockPopupShadowMargin">12,8,12,16</Thickness>
     <sys:Double x:Key="BlockPopupWidthFix">24</sys:Double>
