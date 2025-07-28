@@ -108,6 +108,7 @@
         <!-- Classes -->
 
         <Style Selector="^.flat">
+            <Setter Property="Foreground" Value="{DynamicResource BlockFlatButtonForegroundBrush}" />
             <Setter Property="Template">
                 <ControlTemplate>
                     <!-- I had strange rendering artefacts surfacing when you repeatedly press the primary button.
@@ -165,26 +166,6 @@
                     </Border>
                 </ControlTemplate>
             </Setter>
-
-            <Setter Property="Foreground" Value="{DynamicResource BlockFlatButtonForegroundBrush}" />
-            <Style Selector="^ /template/ Border#ButtonBackground">
-                <Setter Property="Background" Value="Transparent" />
-            </Style>
-
-            <Style Selector="^:pointerover /template/ Border#ButtonBackground">
-                <Setter Property="Background" Value="{TemplateBinding Background}" />
-                <Setter Property="Opacity" Value="{DynamicResource BlockButtonBackgroundOpacity}" />
-            </Style>
-
-            <Style Selector="^:pressed /template/ Border#ButtonBackground">
-                <Setter Property="Background" Value="{TemplateBinding Background}" />
-                <Setter Property="Opacity" Value="{DynamicResource BlockButtonHighlightOpacity}" />
-            </Style>
-
-            <Style Selector="^ /template/ blk|AnimatedDot">
-                <Setter Property="Background" Value="{TemplateBinding Background}" />
-                <Setter Property="BackgroundOpacity" Value="{DynamicResource BlockButtonBackgroundOpacity}" />
-            </Style>
         </Style>
 
         <Style Selector="^:flyout-open /template/ blk|AnimatedMenuIcon#MenuIcon">

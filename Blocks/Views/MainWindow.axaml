@@ -16,9 +16,9 @@
         <vm:MainWindowViewModel />
     </Design.DataContext>
     <Border Background="{DynamicResource BlockWindowBackgroundBrush}">
-        <TabControl TabStripPlacement="Left">
+        <TabControl TabStripPlacement="Top" >
             <TabControl.Items>
-                <TabItem Header="Buttons">
+                <TabItem Header="Buttons" Width="180">
                     <local:ButtonsPanelView />
                 </TabItem>
                 <TabItem Header="Selections">

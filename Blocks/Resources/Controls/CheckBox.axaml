@@ -38,38 +38,18 @@
 
         <Setter Property="Template">
             <ControlTemplate>
-                <Border Background="Transparent" Padding="{TemplateBinding Padding}">
+                <Border Background="Transparent" 
+                        Padding="{TemplateBinding Padding}"
+                        Name="BaseContainer">
                     <DockPanel Background="Transparent">
                         <Panel Name="Radio"
                                DockPanel.Dock="Left"
                                Width="{DynamicResource BlockRadioButtonSize}"
                                Height="{DynamicResource BlockRadioButtonSize}"
                                HorizontalAlignment="{TemplateBinding HorizontalAlignment}">
-                            <Border Name="ButtonBackground"
-                                    Background="{TemplateBinding Background}"
-                                    Opacity="{DynamicResource BlockButtonBackgroundOpacity}"
-                                    CornerRadius="{TemplateBinding CornerRadius}">
-                                <Border.Transitions>
-                                    <Transitions>
-                                        <DoubleTransition Property="Opacity"
-                                                          Duration="{DynamicResource BlockButtonStateTransitionDuration}"
-                                                          Easing="CubicEaseOut" />
-                                    </Transitions>
-                                </Border.Transitions>
-                            </Border>
-                            <Border Name="ButtonFocusVisual"
-                                    BorderBrush="{DynamicResource BlockBaseFocusBrush}"
-                                    BorderThickness="{DynamicResource BlockFocusBorderThickness}"
-                                    CornerRadius="{TemplateBinding CornerRadius}"
-                                    Opacity="0">
-                                <Border.Transitions>
-                                    <Transitions>
-                                        <DoubleTransition Property="Opacity"
-                                                          Duration="{DynamicResource BlockButtonStateTransitionDuration}"
-                                                          Easing="CubicEaseOut" />
-                                    </Transitions>
-                                </Border.Transitions>
-                            </Border>
+                            <blk:BlockButton Name="ButtonBackground"
+                                             Background="{TemplateBinding Background}"
+                                             CornerRadius="{TemplateBinding CornerRadius}" />
                             <PathIcon Name="CheckMark"
                                       Data="{DynamicResource BlockCheckMark}"
                                       Foreground="{TemplateBinding BorderBrush}"
@@ -112,12 +92,20 @@
             </ControlTemplate>
         </Setter>
 
-        <Style Selector="^:pointerover /template/ Border#ButtonBackground">
-            <Setter Property="Opacity" Value="{DynamicResource BlockButtonHighlightOpacity}" />
+        <Style Selector="^:pointerover /template/ blk|BlockButton#ButtonBackground">
+            <Setter Property="Highlighted" Value="True" />
         </Style>
 
-        <Style Selector="^:pressed /template/ Border#ButtonBackground">
-            <Setter Property="Opacity" Value="{DynamicResource BlockButtonShadeOpacity}" />
+        <Style Selector="^:pressed /template/ blk|BlockButton#ButtonBackground">
+            <Setter Property="Shaded" Value="True" />
+        </Style>
+
+        <Style Selector="^:disabled /template/ Border#BaseContainer">
+            <Setter Property="Opacity" Value="{DynamicResource BlockDisabledOpacity}" />
+        </Style>
+
+        <Style Selector="^:focus-visible /template/ blk|BlockButton#ButtonBackground">
+            <Setter Property="Focused" Value="True" />
         </Style>
 
         <Style Selector="^:checked /template/ PathIcon#CheckMark">
@@ -129,14 +117,6 @@
         <Style Selector="^:indeterminate /template/ Rectangle#IndeterminateMark">
             <Setter Property="Width" Value="{DynamicResource BlockIconSize}" />
             <Setter Property="Opacity" Value="1"></Setter>
-        </Style>
-
-        <Style Selector="^:focus-visible /template/ Border#ButtonFocusVisual">
-            <Setter Property="Opacity" Value="{DynamicResource BlockButtonFocusOpacity}" />
-        </Style>
-
-        <Style Selector="^:disabled">
-            <Setter Property="Opacity" Value="{DynamicResource BlockDisabledOpacity}" />
         </Style>
 
         <Style Selector="^.left-label">

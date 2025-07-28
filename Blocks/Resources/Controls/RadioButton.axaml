@@ -25,36 +25,18 @@
 
         <Setter Property="Template">
             <ControlTemplate>
-                <Border Background="Transparent" Padding="{TemplateBinding Padding}">
+                <Border Name="BaseContainer" 
+                        Background="Transparent" 
+                        Padding="{TemplateBinding Padding}">
                     <DockPanel Background="Transparent">
                         <Panel Name="Radio"
                                DockPanel.Dock="Left"
                                Width="{DynamicResource BlockRadioButtonSize}"
                                Height="{DynamicResource BlockRadioButtonSize}"
                                HorizontalAlignment="{TemplateBinding HorizontalAlignment}">
-                            <Ellipse Name="ButtonBackground"
-                                     Fill="{TemplateBinding Background}"
-                                     Opacity="{DynamicResource BlockButtonBackgroundOpacity}">
-                                <Ellipse.Transitions>
-                                    <Transitions>
-                                        <DoubleTransition Property="Opacity"
-                                                          Duration="{DynamicResource BlockButtonStateTransitionDuration}"
-                                                          Easing="CubicEaseOut" />
-                                    </Transitions>
-                                </Ellipse.Transitions>
-                            </Ellipse>
-                            <Ellipse Name="ButtonFocusVisual"
-                                     Stroke="{DynamicResource BlockBaseFocusBrush}"
-                                     StrokeThickness="{DynamicResource BlockFocusStrokeThickness}"
-                                     Opacity="0">
-                                <Ellipse.Transitions>
-                                    <Transitions>
-                                        <DoubleTransition Property="Opacity"
-                                                          Duration="{DynamicResource BlockButtonStateTransitionDuration}"
-                                                          Easing="CubicEaseOut" />
-                                    </Transitions>
-                                </Ellipse.Transitions>
-                            </Ellipse>
+                            <blk:BlockButton Name="ButtonBackground"
+                                             Background="{TemplateBinding Background}"
+                                             CornerRadius="999" />
                             <blk:AnimatedDot Name="Dot"
                                              Foreground="{TemplateBinding BorderBrush}"
                                              Background="{DynamicResource BlockBaseDotBackgroundBrush}"
@@ -72,26 +54,26 @@
             </ControlTemplate>
         </Setter>
 
-        <Style Selector="^:pointerover /template/ Ellipse#ButtonBackground">
-            <Setter Property="Opacity" Value="{DynamicResource BlockButtonHighlightOpacity}" />
+        <Style Selector="^:pointerover /template/ blk|BlockButton#ButtonBackground">
+            <Setter Property="Highlighted" Value="True" />
         </Style>
 
-        <Style Selector="^:pressed /template/ Ellipse#ButtonBackground">
-            <Setter Property="Opacity" Value="{DynamicResource BlockViewShadeOpacity}" />
+        <Style Selector="^:pressed /template/ blk|BlockButton#ButtonBackground">
+            <Setter Property="Shaded" Value="True" />
+        </Style>
+
+        <Style Selector="^:disabled /template/ Border#BaseContainer">
+            <Setter Property="Opacity" Value="{DynamicResource BlockDisabledOpacity}" />
+        </Style>
+
+        <Style Selector="^:focus-visible /template/ blk|BlockButton#ButtonBackground">
+            <Setter Property="Focused" Value="True" />
         </Style>
 
         <Style Selector="^:checked">
             <Style Selector="^ /template/ blk|AnimatedDot#Dot">
                 <Setter Property="DrawExpanded" Value="True" />
             </Style>
-        </Style>
-
-        <Style Selector="^:focus-visible /template/ Ellipse#ButtonFocusVisual">
-            <Setter Property="Opacity" Value="{DynamicResource BlockButtonFocusOpacity}" />
-        </Style>
-
-        <Style Selector="^:disabled">
-            <Setter Property="Opacity" Value="{DynamicResource BlockDisabledOpacity}" />
         </Style>
 
         <Style Selector="^.left-label">

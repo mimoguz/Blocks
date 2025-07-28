@@ -5,7 +5,6 @@
         <Border Background="{DynamicResource BlockWindowBackgroundColor}" Padding="20">
             <WrapPanel Width="300" ItemSpacing="10" LineSpacing="10">
                 <ToggleButton>Basic Toggle Button</ToggleButton>
-                <ToggleButton Classes="dotless">Dotless Toggle Button</ToggleButton>
                 <ToggleButton Classes="image-button">
                     <Path Data="{StaticResource BlockTestIcon}"
                           Width="{DynamicResource BlockIconSize}"
@@ -20,20 +19,14 @@
                           Stretch="Uniform"
                           Fill="{Binding $parent[ToggleButton].Foreground}" />
                 </ToggleButton>
-                <ToggleButton Classes="image-button flat dotless">
+                <ToggleButton Classes="image-button flat hide-checked">
                     <Panel>
-                        <Path Data="{StaticResource BlockTestIcon}"
-                              Width="{DynamicResource BlockIconSize}"
-                              Height="{DynamicResource BlockIconSize}"
-                              Stretch="Uniform"
-                              Fill="{Binding $parent[ToggleButton].Foreground}"
-                              IsVisible="{Binding !$parent[ToggleButton].IsChecked}" />
-                        <Path Data="{StaticResource BlockTestIconH}"
-                              Width="{DynamicResource BlockIconSize}"
-                              Height="{DynamicResource BlockIconSize}"
-                              Stretch="Uniform"
-                              Fill="{Binding $parent[ToggleButton].Foreground}"
-                              IsVisible="{Binding $parent[ToggleButton].IsChecked}" />
+                        <PathIcon Data="{StaticResource BlockTestIcon}"
+                                  Foreground="{Binding $parent[ToggleButton].Foreground}"
+                                  IsVisible="{Binding $parent[ToggleButton].IsChecked}" />
+                        <PathIcon Data="{StaticResource BlockTestIconH}"
+                                  Foreground="{Binding $parent[ToggleButton].Foreground}"
+                                  IsVisible="{Binding !$parent[ToggleButton].IsChecked}" />
                     </Panel>
                 </ToggleButton>
             </WrapPanel>
@@ -57,88 +50,39 @@
 
         <Setter Property="Template">
             <ControlTemplate>
-                <Panel>
-                    <Border Name="ButtonBackground"
-                            Background="{TemplateBinding Background}"
-                            CornerRadius="{TemplateBinding CornerRadius}"
-                            Opacity="{DynamicResource BlockButtonBackgroundOpacity}"
-                            IsHitTestVisible="True">
-                        <Border.Transitions>
-                            <Transitions>
-                                <DoubleTransition Property="Opacity"
-                                                  Duration="{DynamicResource BlockButtonStateTransitionDuration}"
-                                                  Easing="CubicEaseOut" />
-                            </Transitions>
-                        </Border.Transitions>
-                    </Border>
-                    <Border Name="FocusVisual"
-                            CornerRadius="{TemplateBinding CornerRadius}"
-                            BorderBrush="{DynamicResource BlockBaseFocusBrush}"
-                            BorderThickness="{DynamicResource BlockFocusBorderThickness}"
-                            Opacity="0"
-                            IsHitTestVisible="False">
-                        <Border.Transitions>
-                            <Transitions>
-                                <DoubleTransition Property="Opacity"
-                                                  Duration="{DynamicResource BlockButtonStateTransitionDuration}"
-                                                  Easing="CubicEaseOut" />
-                            </Transitions>
-                        </Border.Transitions>
-                    </Border>
-                    <DockPanel
-                        IsHitTestVisible="False">
-                        <blk:AnimatedDot Name="Dot"
-                                         DockPanel.Dock="Left"
-                                         Margin="8,0, 0, 0"
-                                         Foreground="{TemplateBinding BorderBrush}"
-                                         Background="{DynamicResource BlockBaseDotBackgroundBrush}"
-                                         BackgroundOpacity="0.3" />
-                        <ContentPresenter Name="PART_ContentPresenter"
-                                          CornerRadius="{TemplateBinding CornerRadius}"
-                                          Padding="{TemplateBinding Padding}"
-                                          HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                          VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                                          Content="{TemplateBinding Content}"
-                                          ContentTemplate="{TemplateBinding ContentTemplate}"
-                                          RecognizesAccessKey="True"
-                                          Opacity="1"
-                                          TextElement.Foreground="{TemplateBinding Foreground}">
-                            <ContentPresenter.Transitions>
-                                <Transitions>
-                                    <DoubleTransition Property="Opacity"
-                                                      Duration="{DynamicResource BlockLongStateTransitionDuration}"
-                                                      Easing="CubicEaseOut" />
-                                </Transitions>
-                            </ContentPresenter.Transitions>
-                        </ContentPresenter>
-                    </DockPanel>
+                <Panel Name="BaseContainer">
+                    <blk:BlockButton Name="ButtonBackground"
+                                     Background="{TemplateBinding Background}"
+                                     CornerRadius="{TemplateBinding CornerRadius}" />
+                    <ContentPresenter Name="PART_ContentPresenter"
+                                      IsHitTestVisible="False"
+                                      CornerRadius="{TemplateBinding CornerRadius}"
+                                      Padding="{TemplateBinding Padding}"
+                                      HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                      VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                      Content="{TemplateBinding Content}"
+                                      ContentTemplate="{TemplateBinding ContentTemplate}"
+                                      RecognizesAccessKey="True"
+                                      TextElement.Foreground="{TemplateBinding Foreground}">
+                    </ContentPresenter>
                 </Panel>
             </ControlTemplate>
         </Setter>
 
-        <Style Selector="^:pointerover /template/ Border#ButtonBackground">
-            <Setter Property="Opacity" Value="{DynamicResource BlockButtonHighlightOpacity}" />
+        <Style Selector="^:pointerover /template/ blk|BlockButton#ButtonBackground">
+            <Setter Property="Highlighted" Value="True" />
         </Style>
 
-        <Style Selector="^:pressed /template/ Border#ButtonBackground">
-            <Setter Property="Opacity" Value="{DynamicResource BlockButtonShadeOpacity}" />
+        <Style Selector="^:pressed /template/ blk|BlockButton#ButtonBackground">
+            <Setter Property="Shaded" Value="True" />
         </Style>
 
-        <Style Selector="^:disabled">
+        <Style Selector="^:disabled /template/ Panel#BaseContainer">
             <Setter Property="Opacity" Value="{DynamicResource BlockDisabledOpacity}" />
         </Style>
 
-        <Style Selector="^:focus-visible /template/ Border#FocusVisual">
-            <Setter Property="Opacity" Value="{DynamicResource BlockButtonFocusOpacity}" />
-        </Style>
-
-        <Style Selector="^:checked">
-            <!--<Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="Opacity" Value="1" />
-            </Style>-->
-            <Style Selector="^ /template/ blk|AnimatedDot#Dot">
-                <Setter Property="DrawExpanded" Value="True" />
-            </Style>
+        <Style Selector="^:focus-visible /template/ blk|BlockButton#ButtonBackground">
+            <Setter Property="Focused" Value="True" />
         </Style>
 
         <!-- Classes -->
@@ -147,128 +91,53 @@
         </Style>
 
         <Style Selector="^.flat">
+            <Style Selector="^ /template/ blk|BlockButton#ButtonBackground">
+                <Setter Property="Flat" Value="True" />
+            </Style>
             <Setter Property="Foreground" Value="{DynamicResource BlockFlatButtonForegroundBrush}" />
-            <Style Selector="^ /template/ Border#ButtonBackground">
-                <Setter Property="Opacity" Value="0" />
-            </Style>
-            <Style Selector="^:pointerover /template/ Border#ButtonBackground">
-                <Setter Property="Opacity" Value="{DynamicResource BlockButtonBackgroundOpacity}" />
-            </Style>
-            <Style Selector="^:pressed /template/ Border#ButtonBackground">
-                <Setter Property="Opacity" Value="{DynamicResource BlockButtonHighlightOpacity}" />
-            </Style>
-            <Style Selector="^ /template/ blk|AnimatedDot">
-                <Setter Property="Background" Value="{TemplateBinding Background}" />
-                <Setter Property="BackgroundOpacity" Value="{DynamicResource BlockButtonBackgroundOpacity}" />
-            </Style>
         </Style>
 
-        <Style Selector="^.dotless">
-            <Style Selector="^ /template/ blk|AnimatedDot">
-                <Setter Property="IsVisible" Value="False" />
-            </Style>
-            <Style Selector="^:checked /template/ Border#ButtonBackground">
+        <Style Selector="^.hide-checked"></Style>
+
+        <Style Selector="^:checked:not(.hide-checked)">
+            <Setter Property="Foreground" Value="{DynamicResource BlockOnPrimaryBrush}" />
+            <Style Selector="^ /template/ blk|BlockButton#ButtonBackground">
+                <Setter Property="Opaque" Value="True" />
                 <Setter Property="Background" Value="{DynamicResource BlockBasePrimaryBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource BlockOnPrimaryBrush}" />
+            </Style>
+            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Foreground" Value="{DynamicResource BlockOnPrimaryBrush}" />
             </Style>
         </Style>
 
-        <Style Selector="^.dotless.flat:checked">
-            <Style Selector="^ /template/ Border#ButtonBackground">
-                <Setter Property="Opacity" Value="{DynamicResource BlockButtonBackgroundOpacity}" />
-            </Style>
-            <Style Selector="^:pointerover /template/ Border#ButtonBackground">
-                    <Setter Property="Opacity" Value="{DynamicResource BlockButtonHighlightOpacity}" />
-            </Style>
-            <Style Selector="^:pressed /template/ Border#ButtonBackground">
-                <Setter Property="Opacity" Value="{DynamicResource BlockButtonShadeOpacity}" />
-            </Style>
+        <Style Selector="^.pill-left /template/ blk|BlockButton#ButtonBackground">
+            <Setter Property="CornerRadius"
+                    Value="{TemplateBinding CornerRadius, Converter={StaticResource LeftRadius}}">
+            </Setter>
         </Style>
-        
-        <Style Selector="^.pill-left">
-            <Style Selector="^ /template/ Border#ButtonBackground">
-                <Setter Property="CornerRadius"
-                        Value="{TemplateBinding CornerRadius, Converter={StaticResource LeftRadius}}">
-                </Setter>
-            </Style>
-            <Style Selector="^ /template/ Border#FocusVisual">
-                <Setter Property="CornerRadius"
-                        Value="{TemplateBinding CornerRadius, Converter={StaticResource LeftRadius}}">
-                </Setter>
-            </Style>
-            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="CornerRadius"
-                        Value="{TemplateBinding CornerRadius, Converter={StaticResource LeftRadius}}">
-                </Setter>
-            </Style>
+
+        <Style Selector="^.pill-center /template/ blk|BlockButton#ButtonBackground">
+            <Setter Property="CornerRadius" Value="0">
+            </Setter>
         </Style>
-        
-        <Style Selector="^.pill-center">
-            <Style Selector="^ /template/ Border#ButtonBackground">
-                <Setter Property="CornerRadius" Value="0">
-                </Setter>
-            </Style>
-            <Style Selector="^ /template/ Border#FocusVisual">
-                <Setter Property="CornerRadius" Value="0">
-                </Setter>
-            </Style>
-            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="CornerRadius" Value="0">
-                </Setter>
-            </Style>
+
+        <Style Selector="^.pill-right /template/ blk|BlockButton#ButtonBackground">
+            <Setter Property="CornerRadius"
+                    Value="{TemplateBinding CornerRadius, Converter={StaticResource RightRadius}}">
+            </Setter>
         </Style>
-        
-        <Style Selector="^.pill-right">
-            <Style Selector="^ /template/ Border#ButtonBackground">
-                <Setter Property="CornerRadius"
-                        Value="{TemplateBinding CornerRadius, Converter={StaticResource RightRadius}}">
-                </Setter>
-            </Style>
-            <Style Selector="^ /template/ Border#FocusVisual">
-                <Setter Property="CornerRadius"
-                        Value="{TemplateBinding CornerRadius, Converter={StaticResource RightRadius}}">
-                </Setter>
-            </Style>
-            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="CornerRadius"
-                        Value="{TemplateBinding CornerRadius, Converter={StaticResource RightRadius}}">
-                </Setter>
-            </Style>
+
+        <Style Selector="^.pill-top /template/ blk|BlockButton#ButtonBackground">
+            <Setter Property="CornerRadius"
+                    Value="{TemplateBinding CornerRadius, Converter={StaticResource TopRadius}}">
+            </Setter>
         </Style>
-        
-        <Style Selector="^.pill-top">
-            <Style Selector="^ /template/ Border#ButtonBackground">
-                <Setter Property="CornerRadius"
-                        Value="{TemplateBinding CornerRadius, Converter={StaticResource TopRadius}}">
-                </Setter>
-            </Style>
-            <Style Selector="^ /template/ Border#FocusVisual">
-                <Setter Property="CornerRadius"
-                        Value="{TemplateBinding CornerRadius, Converter={StaticResource TopRadius}}">
-                </Setter>
-            </Style>
-            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="CornerRadius"
-                        Value="{TemplateBinding CornerRadius, Converter={StaticResource TopRadius}}">
-                </Setter>
-            </Style>
-        </Style>
-        
-        <Style Selector="^.pill-bottom">
-            <Style Selector="^ /template/ Border#ButtonBackground">
-                <Setter Property="CornerRadius"
-                        Value="{TemplateBinding CornerRadius, Converter={StaticResource BottomRadius}}">
-                </Setter>
-            </Style>
-            <Style Selector="^ /template/ Border#FocusVisual">
-                <Setter Property="CornerRadius"
-                        Value="{TemplateBinding CornerRadius, Converter={StaticResource BottomRadius}}">
-                </Setter>
-            </Style>
-            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="CornerRadius"
-                        Value="{TemplateBinding CornerRadius, Converter={StaticResource BottomRadius}}">
-                </Setter>
-            </Style>
+
+        <Style Selector="^.pill-bottom /template/ blk|BlockButton#ButtonBackground">
+            <Setter Property="CornerRadius"
+                    Value="{TemplateBinding CornerRadius, Converter={StaticResource BottomRadius}}">
+            </Setter>
         </Style>
     </ControlTheme>
 </ResourceDictionary>

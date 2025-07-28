@@ -54,3 +54,8 @@ public class ClearBottomThicknessConverter : SelectThicknessConverter
 {
     protected override Thickness Select(Thickness thickness) => new(thickness.Left, thickness.Top, thickness.Right, 0.0);
 }
+
+public class ClearLeftThicknessConverter : SelectThicknessConverter
+{
+    protected override Thickness Select(Thickness thickness) => new(0, thickness.Top, thickness.Right, thickness.Bottom);
+}

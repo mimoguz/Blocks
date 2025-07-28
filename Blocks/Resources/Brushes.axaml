@@ -3,6 +3,7 @@
 
     <SolidColorBrush x:Key="BlockRaisedBackgroundBrush" Color="{DynamicResource BlockRaisedBackgroundColor}" />
     <SolidColorBrush x:Key="BlockWindowBackgroundBrush" Color="{DynamicResource BlockWindowBackgroundColor}" />
+    <SolidColorBrush x:Key="BlockPaneBackgroundBrush" Color="{DynamicResource BlockPaneBackgroundColor}" />
 
     <!-- Base brushes. They will usually be used for a semi-transparent container. -->
     <SolidColorBrush x:Key="BlockBaseButtonBackgroundBrush" Color="{DynamicResource BlockBaseButtonBackgroundColor}" />
@@ -26,5 +27,6 @@
     <SolidColorBrush x:Key="BlockDestructiveForegroundBrush" Color="{DynamicResource BlockDestructiveForegroundColor}" />
     <SolidColorBrush x:Key="BlockFlatButtonForegroundBrush" Color="{DynamicResource BlockFlatButtonForegroundColor}" />
     <SolidColorBrush x:Key="BlockOnPrimaryBrush" Color="{DynamicResource BlockOnPrimaryColor}" />
+    <SolidColorBrush x:Key="BlockOnSecondaryBrush" Color="{DynamicResource BlockOnPrimaryColor}" />
     <SolidColorBrush x:Key="BlockWindowForegroundBrush" Color="{DynamicResource BlockWindowForegroundColor}" />
 </ResourceDictionary>

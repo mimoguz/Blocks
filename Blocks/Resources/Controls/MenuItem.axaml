@@ -1,0 +1,253 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:conv="using:Avalonia.Controls.Converters"
+                    xmlns:blk="clr-namespace:Blocks.Controls">
+    <Design.PreviewWith>
+        <Border Padding="20" Width="320">
+            <StackPanel Spacing="20" HorizontalAlignment="Left">
+                <MenuItem Header="_Standard" />
+                <MenuItem IsSelected="True" Header="Selected" />
+                <MenuItem Header="With Icon">
+                    <MenuItem.Icon>
+                        <TextBlock>😊</TextBlock>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="With CheckBox">
+                    <MenuItem.Icon>
+                        <CheckBox IsChecked="True" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Input Gesture" InputGesture="Ctrl+G" />
+                <MenuItem Header="Disabled" IsEnabled="False" />
+                <MenuItem Header="-" />
+                <MenuItem Header="Parent" IsSubMenuOpen="True">
+                    <MenuItem Header="Child 1" />
+                    <MenuItem Header="Child 2" />
+                    <MenuItem Header="Child 3" />
+                    <Separator />
+                    <MenuItem Header="Child 4" />
+                    <MenuItem Header="Child 5" />
+                    <MenuItem Header="Child 6" />
+                    <MenuItem Header="Child 7" />
+                    <MenuItem Header="Child 8" />
+                    <MenuItem Header="Child 9" />
+                    <MenuItem Header="Child 10" />
+                    <MenuItem Header="Child 11" />
+                    <MenuItem Header="Child 12" />
+                    <MenuItem Header="Child 13" />
+                    <MenuItem Header="Child 14" />
+                    <MenuItem Header="Child 15" />
+                    <MenuItem Header="Child 16" />
+                    <MenuItem Header="Child 17" />
+                    <MenuItem Header="Child 18" />
+                    <MenuItem Header="Child 19" />
+                </MenuItem>
+                <MenuItem Header="Disabled Parent" IsEnabled="False">
+                    <MenuItem Header="Child" />
+                </MenuItem>
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+
+    <conv:PlatformKeyGestureConverter x:Key="KeyGestureConverter" />
+    <x:Double x:Key="MenuFlyoutSubItemPopupHorizontalOffset">-4</x:Double>
+    <Thickness x:Key="MenuIconPresenterMargin">0,0,12,0</Thickness>
+    <Thickness x:Key="MenuInputGestureTextMargin">24,0,0,0</Thickness>
+
+    <ControlTheme x:Key="BlockMenuItemIconTheme"
+                  TargetType="ContentControl">
+        <Setter Property="Width" Value="{DynamicResource BlockIconSize}" />
+        <Setter Property="Height" Value="{DynamicResource BlockIconSize}" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Viewbox
+                    Stretch="None"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+                    <ContentPresenter x:Name="PART_ContentPresenter" Content="{TemplateBinding Content}" />
+                </Viewbox>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+    <ControlTheme x:Key="{x:Type MenuItem}" TargetType="MenuItem">
+
+        <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource BlockButtonForegroundBrush}" />
+        <Setter Property="Padding" Value="{DynamicResource BlockButtonPadding}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource BlockButtonCornerRadius}" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="MinWidth" Value="{DynamicResource BlockMinButtonSize}" />
+        <Setter Property="MinHeight" Value="{DynamicResource BlockMinButtonSize}" />
+        <Setter Property="FocusAdorner" Value="{x:Null}" />
+
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel Name="PART_LayoutRoot">
+                    <blk:BlockButton Name="ButtonBackground"
+                                     Background="{TemplateBinding Background}"
+                                     CornerRadius="{TemplateBinding CornerRadius}"
+                                     Flat="True" />
+                    <Grid Margin="{TemplateBinding Padding}" IsHitTestVisible="False">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="ToggleIcon" />
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="MenuItemIcon" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="MenuItemIGT" />
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="MenuItemChevron" />
+                        </Grid.ColumnDefinitions>
+
+                        <ContentControl Grid.Column="0"
+                                        x:Name="PART_ToggleIconPresenter"
+                                        IsVisible="False"
+                                        Theme="{StaticResource BlockMenuItemIconTheme}"
+                                        Margin="{DynamicResource MenuIconPresenterMargin}" />
+
+                        <ContentControl Grid.Column="1"
+                                        x:Name="PART_IconPresenter"
+                                        IsVisible="False"
+                                        Theme="{StaticResource BlockMenuItemIconTheme}"
+                                        Content="{TemplateBinding Icon}"
+                                        Margin="{DynamicResource MenuIconPresenterMargin}" />
+
+                        <ContentPresenter Name="PART_HeaderPresenter"
+                                          Content="{TemplateBinding Header}"
+                                          ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                          VerticalAlignment="Center"
+                                          HorizontalAlignment="Stretch"
+                                          RecognizesAccessKey="True"
+                                          Grid.Column="2" />
+
+                        <TextBlock x:Name="PART_InputGestureText"
+                                   Grid.Column="3"
+                                   Margin="{DynamicResource MenuInputGestureTextMargin}"
+                                   Text="{TemplateBinding InputGesture, Converter={StaticResource KeyGestureConverter}}"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   Foreground="{DynamicResource MenuFlyoutItemKeyboardAcceleratorTextForeground}" />
+
+                        <PathIcon Name="PART_ChevronPath"
+                                  Width="{DynamicResource BlockIconSize}"
+                                  Height="{DynamicResource BlockIconSize}"
+                                  Data="{StaticResource BlockChevronRight}"
+                                  Foreground="{TemplateBinding Foreground}"
+                                  Opacity="{DynamicResource BlockDisabledOpacity}"
+                                  Margin="{DynamicResource MenuFlyoutItemChevronMargin}"
+                                  VerticalAlignment="Center"
+                                  Grid.Column="4" />
+                    </Grid>
+
+                    <Popup Name="PART_Popup"
+                           WindowManagerAddShadowHint="False"
+                           Placement="RightEdgeAlignedTop"
+                           HorizontalOffset="{DynamicResource MenuFlyoutSubItemPopupHorizontalOffset}"
+                           IsLightDismissEnabled="False"
+                           IsOpen="{TemplateBinding IsSubMenuOpen, Mode=TwoWay}">
+                        <Panel>
+                            <Border x:Name="PopupBorder"
+                                    BorderBrush="{DynamicResource BlockBaseViewBorderBrush}"
+                                    BorderThickness="{DynamicResource BlockFlyoutBorderThickness}"
+                                    Opacity="{DynamicResource BlockFlyoutBorderOpacity}"
+                                    CornerRadius="{DynamicResource BlockFlyoutCornerRadius}" />
+                            <Border Name="BoxBackground"
+                                    Margin="{DynamicResource BlockFlyoutBorderThickness}"
+                                    Background="{DynamicResource BlockRaisedBackgroundBrush}"
+                                    Padding="{DynamicResource BlockFlyoutPadding}">
+                                <Border.CornerRadius>
+                                    <MultiBinding Converter="{StaticResource InnerRadius}">
+                                        <DynamicResource ResourceKey="BlockFlyoutCornerRadius" />
+                                        <DynamicResource ResourceKey="BlockFlyoutBorderThickness" />
+                                    </MultiBinding>
+                                </Border.CornerRadius>
+                                <ScrollViewer
+                                    HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
+                                    VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}"
+                                    IsDeferredScrollingEnabled="{TemplateBinding (ScrollViewer.IsDeferredScrollingEnabled)}">
+                                    <ItemsPresenter Name="PART_ItemsPresenter"
+                                                    ItemsPanel="{TemplateBinding ItemsPanel}"
+                                                    Margin="{DynamicResource BlockFlyoutPadding}"
+                                                    Grid.IsSharedSizeScope="True" />
+                                </ScrollViewer>
+                            </Border>
+                        </Panel>
+                    </Popup>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+
+        <Setter Property="ItemsPanel">
+            <ItemsPanelTemplate>
+                <StackPanel Spacing="{DynamicResource BlockMenuItemSpacing}" />
+            </ItemsPanelTemplate>
+        </Setter>
+        
+        <Style Selector="^:icon /template/ ContentControl#PART_IconPresenter">
+            <Setter Property="IsVisible" Value="True" />
+        </Style>
+
+        <Style Selector="^:pointerover /template/ blk|BlockButton#ButtonBackground">
+            <Setter Property="Highlighted" Value="True" />
+        </Style>
+
+        <Style Selector="^:pressed /template/ blk|BlockButton#ButtonBackground:pointerover">
+            <Setter Property="Shaded" Value="True" />
+        </Style>
+
+        <Style Selector="^:disabled /template/ Panel#PART_LayoutRoot">
+            <Setter Property="Opacity" Value="{DynamicResource BlockDisabledOpacity}" />
+        </Style>
+
+        <Style Selector="^:focus-visible /template/ blk|BlockButton#ButtonBackground">
+            <Setter Property="Focused" Value="True" />
+        </Style>
+
+        <Style Selector="^:selected /template/ blk|BlockButton#ButtonBackground">
+            <Setter Property="Flat" Value="False" />
+        </Style>
+
+        <Style Selector="^:open /template/ PathIcon#PART_ChevronPath">
+            <Setter Property="Opacity" Value="1" />
+        </Style>
+
+        <Style Selector="^:empty /template/ PathIcon#PART_ChevronPath">
+            <Setter Property="IsVisible" Value="False" />
+        </Style>
+
+        <Style Selector="^:separator">
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Separator />
+                </ControlTemplate>
+            </Setter>
+        </Style>
+
+        <Style Selector="^ /template/ Image#PART_ToggleIconImage">
+            <Setter Property="IsVisible" Value="True" />
+        </Style>
+
+        <Style Selector="^:checked:toggle /template/ ContentControl#PART_ToggleIconPresenter">
+            <Setter Property="IsVisible" Value="True" />
+            <Setter Property="Content">
+                <Template>
+                    <PathIcon Foreground="{Binding $parent[MenuItem].Foreground}"
+                              Width="{DynamicResource BlockIconSize}"
+                              Height="{DynamicResource BlockIconSize}"
+                              Data="{StaticResource BlockCheckMark}" />
+                </Template>
+            </Setter>
+        </Style>
+        <Style Selector="^:checked:radio /template/ ContentControl#PART_ToggleIconPresenter">
+            <Setter Property="IsVisible" Value="True" />
+            <Setter Property="Content">
+                <Template>
+                    <Ellipse Fill="{Binding $parent[MenuItem].Foreground}"
+                             Margin="4" Width="12" Height="12" />
+                </Template>
+            </Setter>
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme x:Key="HorizontalMenuItem" TargetType="MenuItem" BasedOn="{StaticResource FluentTopLevelMenuItem}">
+    </ControlTheme>
+
+</ResourceDictionary>

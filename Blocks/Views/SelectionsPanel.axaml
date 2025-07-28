@@ -4,53 +4,55 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Blocks.Views.SelectionsPanel">
-    <StackPanel Spacing="20" Margin="8">
-        <StackPanel Spacing="20" Orientation="Horizontal">
-            <StackPanel Spacing="10" Orientation="Vertical">
-                <ButtonSpinner MinWidth="120" VerticalAlignment="Top">Button Spinner</ButtonSpinner>
-                <ButtonSpinner MinWidth="120" VerticalAlignment="Top" IsEnabled="False">Button Spinner</ButtonSpinner>
+    <Border Background="{DynamicResource BlockWindowBackgroundBrush}">
+        <StackPanel Spacing="20" Margin="8">
+            <StackPanel Spacing="20" Orientation="Horizontal">
+                <StackPanel Spacing="10" Orientation="Vertical">
+                    <ButtonSpinner MinWidth="120" VerticalAlignment="Top">Button Spinner</ButtonSpinner>
+                    <ButtonSpinner MinWidth="120" VerticalAlignment="Top" IsEnabled="False">Button Spinner</ButtonSpinner>
+                </StackPanel>
+                <StackPanel Spacing="10" Orientation="Horizontal">
+                    <ButtonSpinner MinHeight="120"
+                                   Classes="vertical" VerticalAlignment="Top"
+                                   Background="DarkMagenta"
+                                   CornerRadius="100">
+                        10
+                    </ButtonSpinner>
+                    <ButtonSpinner MinHeight="120" Classes="vertical" VerticalAlignment="Top" IsEnabled="False">10</ButtonSpinner>
+
+                    <ComboBox PlaceholderText="Select an item" VerticalAlignment="Top" Width="150">
+                        <ComboBoxItem>Item 1</ComboBoxItem>
+                        <ComboBoxItem>Item 2</ComboBoxItem>
+                        <ComboBoxItem IsEnabled="False">Item 3</ComboBoxItem>
+                        <ComboBoxItem>Item 4</ComboBoxItem>
+                        <ComboBoxItem>Item 5</ComboBoxItem>
+                        <ComboBoxItem>Item 6</ComboBoxItem>
+                        <ComboBoxItem>Item 7</ComboBoxItem>
+                        <ComboBoxItem>Item 8</ComboBoxItem>
+                        <ComboBoxItem>Item 9</ComboBoxItem>
+                        <ComboBoxItem>Item 10</ComboBoxItem>
+                        <ComboBoxItem>Item 11</ComboBoxItem>
+                        <ComboBoxItem>Item 12</ComboBoxItem>
+                        <ComboBoxItem>Item 13</ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
             </StackPanel>
-            <StackPanel Spacing="10" Orientation="Horizontal">
-                <ButtonSpinner MinHeight="120" 
-                               Classes="vertical" VerticalAlignment="Top"
-                               Background="DarkMagenta"
-                               CornerRadius="100">
-                    10
-                </ButtonSpinner>
-                <ButtonSpinner MinHeight="120" Classes="vertical" VerticalAlignment="Top" IsEnabled="False">10</ButtonSpinner>
-                
-                <ComboBox PlaceholderText="Select an item" VerticalAlignment="Top" Width="150">
-                    <ComboBoxItem>Item 1</ComboBoxItem>
-                    <ComboBoxItem>Item 2</ComboBoxItem>
-                    <ComboBoxItem IsEnabled="False">Item 3</ComboBoxItem>
-                    <ComboBoxItem>Item 4</ComboBoxItem>
-                    <ComboBoxItem>Item 5</ComboBoxItem>
-                    <ComboBoxItem>Item 6</ComboBoxItem>
-                    <ComboBoxItem>Item 7</ComboBoxItem>
-                    <ComboBoxItem>Item 8</ComboBoxItem>
-                    <ComboBoxItem>Item 9</ComboBoxItem>
-                    <ComboBoxItem>Item 10</ComboBoxItem>
-                    <ComboBoxItem>Item 11</ComboBoxItem>
-                    <ComboBoxItem>Item 12</ComboBoxItem>
-                    <ComboBoxItem>Item 13</ComboBoxItem>
-                </ComboBox>
+            <Separator />
+            <StackPanel Spacing="20" Orientation="Horizontal">
+                <StackPanel Spacing="10">
+                    <RadioButton GroupName="Radio">Radio</RadioButton>
+                    <RadioButton IsChecked="True" Classes="left-label" HorizontalAlignment="Left" GroupName="Radio">Checked - Label on the Left</RadioButton>
+                    <RadioButton IsEnabled="False" GroupName="DisabledRadio">Disabled</RadioButton>
+                    <RadioButton IsChecked="True" IsEnabled="False" GroupName="DisabledRadio">Disabled - Checked</RadioButton>
+                </StackPanel>
+                <StackPanel Spacing="10">
+                    <CheckBox>Check Box</CheckBox>
+                    <CheckBox IsThreeState="True" IsChecked="{x:Null}">Indeterminate</CheckBox>
+                    <CheckBox IsChecked="True" Classes="top-label" HorizontalAlignment="Left">Checked - Label on the top</CheckBox>
+                    <CheckBox IsEnabled="False">Disabled</CheckBox>
+                    <CheckBox IsChecked="True" IsEnabled="False">Disabled - Checked</CheckBox>
+                </StackPanel>
             </StackPanel>
         </StackPanel>
-        <Separator />
-        <StackPanel Spacing="20" Orientation="Horizontal">
-            <StackPanel Spacing="10">
-                <RadioButton GroupName="Radio">Radio</RadioButton>
-                <RadioButton IsChecked="True" Classes="left-label" HorizontalAlignment="Left" GroupName="Radio">Checked - Label on the Left</RadioButton>
-                <RadioButton IsEnabled="False" GroupName="DisabledRadio">Disabled</RadioButton>
-                <RadioButton IsChecked="True" IsEnabled="False" GroupName="DisabledRadio">Disabled - Checked</RadioButton>
-            </StackPanel>
-            <StackPanel Spacing="10">
-                <CheckBox>Check Box</CheckBox>
-                <CheckBox IsThreeState="True" IsChecked="{x:Null}">Indeterminate</CheckBox>
-                <CheckBox IsChecked="True" Classes="top-label" HorizontalAlignment="Left">Checked - Label on the top</CheckBox>
-                <CheckBox IsEnabled="False">Disabled</CheckBox>
-                <CheckBox IsChecked="True" IsEnabled="False">Disabled - Checked</CheckBox>
-            </StackPanel>
-        </StackPanel>
-    </StackPanel>
+    </Border>
 </UserControl>

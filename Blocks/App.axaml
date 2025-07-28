@@ -21,5 +21,6 @@
         <FluentTheme />
         <StyleInclude Source="Controls/AnimatedMenuIcon.axaml" />
         <StyleInclude Source="Controls/AnimatedDot.axaml" />
+        <StyleInclude Source="Controls/BlockButton.axaml" />
     </Application.Styles>
 </Application>

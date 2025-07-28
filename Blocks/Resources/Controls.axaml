@@ -19,5 +19,6 @@
         <ResourceInclude Source="Controls/TabItem.axaml" />
         <ResourceInclude Source="Controls/ToggleButton.axaml" />
         <ResourceInclude Source="Controls/TextBox.axaml" />
+        <ResourceInclude Source="Controls/Separator.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
