@@ -22,5 +22,6 @@
         <StyleInclude Source="Controls/AnimatedMenuIcon.axaml" />
         <StyleInclude Source="Controls/AnimatedDot.axaml" />
         <StyleInclude Source="Controls/BlockButton.axaml" />
+        <StyleInclude Source="Controls/BlockView.axaml" />
     </Application.Styles>
 </Application>

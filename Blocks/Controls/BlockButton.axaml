@@ -1,26 +1,26 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:controls="using:Blocks.Controls">
+        xmlns:blk="using:Blocks.Controls">
     <Design.PreviewWith>
         <WrapPanel ItemSpacing="4" LineSpacing="4" Width="120">
 
-            <controls:BlockButton Width="36" Height="36" />
-            <controls:BlockButton Width="36" Height="36" Highlighted="True" />
-            <controls:BlockButton Width="36" Height="36" Shaded="True" />
-            <controls:BlockButton Width="36" Height="36" Focused="True" />
-            <controls:BlockButton Width="36" Height="36" Flat="True" />
-            <controls:BlockButton Width="36" Height="36" Flat="True" Highlighted="True" />
-            <controls:BlockButton Width="36" Height="36" Flat="True" Shaded="True" />
-            <controls:BlockButton Width="36" Height="36" Flat="True" Focused="True" />
-            <controls:BlockButton Width="36" Height="36" Opaque="True" />
-            <controls:BlockButton Width="36" Height="36" Opaque="True" Highlighted="True" />
-            <controls:BlockButton Width="36" Height="36" Opaque="True" Shaded="True" />
-            <controls:BlockButton Width="36" Height="36" Opaque="True" Focused="True" />
+            <blk:BlockButton Width="36" Height="36" />
+            <blk:BlockButton Width="36" Height="36" Highlighted="True" />
+            <blk:BlockButton Width="36" Height="36" Shaded="True" />
+            <blk:BlockButton Width="36" Height="36" Focused="True" />
+            <blk:BlockButton Width="36" Height="36" Flat="True" />
+            <blk:BlockButton Width="36" Height="36" Flat="True" Highlighted="True" />
+            <blk:BlockButton Width="36" Height="36" Flat="True" Shaded="True" />
+            <blk:BlockButton Width="36" Height="36" Flat="True" Focused="True" />
+            <blk:BlockButton Width="36" Height="36" Opaque="True" />
+            <blk:BlockButton Width="36" Height="36" Opaque="True" Highlighted="True" />
+            <blk:BlockButton Width="36" Height="36" Opaque="True" Shaded="True" />
+            <blk:BlockButton Width="36" Height="36" Opaque="True" Focused="True" />
 
         </WrapPanel>
     </Design.PreviewWith>
 
-    <Style Selector="controls|BlockButton">
+    <Style Selector="blk|BlockButton">
 
         <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource BlockBaseFocusBrush}" />

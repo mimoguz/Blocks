@@ -4,7 +4,7 @@
     <CornerRadius x:Key="BlockButtonCornerRadius">9</CornerRadius>
     <CornerRadius x:Key="BlockCheckBoxCornerRadius">6</CornerRadius>
     <CornerRadius x:Key="BlockFlyoutCornerRadius">15</CornerRadius>
-    <CornerRadius x:Key="BlockInputCornerRadius">9</CornerRadius>
+    <CornerRadius x:Key="BlockViewCornerRadius">9</CornerRadius>
     <CornerRadius x:Key="BlockScrollBarCompactThumbCornerRadius">9999</CornerRadius>
     <CornerRadius x:Key="BlockScrollBarCornerRadius">0</CornerRadius>
     <CornerRadius x:Key="BlockScrollBarThumbCornerRadius">0</CornerRadius>

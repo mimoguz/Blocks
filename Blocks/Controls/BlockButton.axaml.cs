@@ -7,7 +7,7 @@ namespace Blocks.Controls;
 public class BlockButton : TemplatedControl
 {
     public static readonly StyledProperty<bool> HighlightedProperty =
-        AvaloniaProperty.Register<AnimatedDot, bool>(nameof(Highlighted));
+        AvaloniaProperty.Register<BlockButton, bool>(nameof(Highlighted));
 
     public bool Highlighted
     {
@@ -16,7 +16,7 @@ public class BlockButton : TemplatedControl
     }
     
     public static readonly StyledProperty<bool> ShadedProperty =
-        AvaloniaProperty.Register<AnimatedDot, bool>(nameof(Shaded));
+        AvaloniaProperty.Register<BlockButton, bool>(nameof(Shaded));
 
     public bool Shaded
     {
@@ -25,7 +25,7 @@ public class BlockButton : TemplatedControl
     }
     
     public static readonly StyledProperty<bool> FocusedProperty =
-        AvaloniaProperty.Register<AnimatedDot, bool>(nameof(Focused));
+        AvaloniaProperty.Register<BlockButton, bool>(nameof(Focused));
 
     public bool Focused
     {
@@ -34,7 +34,7 @@ public class BlockButton : TemplatedControl
     }
     
     public static readonly StyledProperty<bool> OpaqueProperty =
-        AvaloniaProperty.Register<AnimatedDot, bool>(nameof(Opaque));
+        AvaloniaProperty.Register<BlockButton, bool>(nameof(Opaque));
 
     public bool Opaque
     {
@@ -43,7 +43,7 @@ public class BlockButton : TemplatedControl
     }
     
     public static readonly StyledProperty<bool> FlatProperty =
-        AvaloniaProperty.Register<AnimatedDot, bool>(nameof(Flat));
+        AvaloniaProperty.Register<BlockButton, bool>(nameof(Flat));
 
     public bool Flat
     {

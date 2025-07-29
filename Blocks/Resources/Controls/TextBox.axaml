@@ -1,6 +1,7 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:sys="using:System">
+                    xmlns:sys="using:System"
+                    xmlns:blk="clr-namespace:Blocks.Controls">
     <Design.PreviewWith>
         <Border Padding="20">
             <StackPanel Spacing="20">
@@ -104,7 +105,7 @@
         <Setter Property="BorderBrush" Value="{DynamicResource BlockBaseViewBorderBrush}" />
         <Setter Property="SelectionBrush" Value="{DynamicResource BlockTransparentSelectionBrush}" />
         <Setter Property="BorderThickness" Value="{DynamicResource BlockControlBorderThickness}" />
-        <Setter Property="CornerRadius" Value="{DynamicResource BlockInputCornerRadius}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource BlockViewCornerRadius}" />
         <Setter Property="MinHeight" Value="{DynamicResource BlockMinButtonSize}" />
         <Setter Property="MinWidth" Value="{DynamicResource BlockMinButtonSize}" />
         <Setter Property="Padding" Value="{DynamicResource BlockInputPadding}" />
@@ -117,57 +118,13 @@
         <Setter Property="Template">
             <ControlTemplate>
                 <DataValidationErrors>
-                    <Panel>
-                        <Border Name="ViewBorder"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}"
-                                Opacity="{DynamicResource BlockViewBorderOpacity}"
-                                CornerRadius="{TemplateBinding CornerRadius}">
-                            <Border.Transitions>
-                                <Transitions>
-                                    <DoubleTransition Property="Opacity"
-                                                      Duration="{DynamicResource BlockButtonStateTransitionDuration}" />
-                                    <BrushTransition Property="BorderBrush"
-                                                     Duration="{DynamicResource BlockButtonStateTransitionDuration}" />
-                                </Transitions>
-                            </Border.Transitions>
-                        </Border>
-                        <Border Name="ViewBackground"
-                                Background="{TemplateBinding Background}"
-                                Opacity="{DynamicResource BlockViewBackgroundOpacity}"
-                                Margin="{TemplateBinding BorderThickness}">
-                            <Border.Transitions>
-                                <Transitions>
-                                    <DoubleTransition Property="Opacity"
-                                                      Duration="{DynamicResource BlockButtonStateTransitionDuration}" />
-                                </Transitions>
-                            </Border.Transitions>
-                            <Border.CornerRadius>
-                                <MultiBinding Converter="{StaticResource InnerRadius}">
-                                    <TemplateBinding Property="CornerRadius" />
-                                    <TemplateBinding Property="BorderThickness" />
-                                </MultiBinding>
-                            </Border.CornerRadius>
-                        </Border>
-                        <Border Name="FocusVisual"
-                                Opacity="0"
-                                Margin="{TemplateBinding BorderThickness}"
-                                BorderBrush="{DynamicResource BlockBaseFocusBrush}"
-                                BorderThickness="{DynamicResource BlockFocusBorderThickness}">
-                            <Border.Transitions>
-                                <Transitions>
-                                    <DoubleTransition Property="Opacity"
-                                                      Duration="{DynamicResource BlockButtonStateTransitionDuration}" />
-                                </Transitions>
-                            </Border.Transitions>
-                            <Border.CornerRadius>
-                                <MultiBinding Converter="{StaticResource InnerRadius}">
-                                    <TemplateBinding Property="CornerRadius" />
-                                    <TemplateBinding Property="BorderThickness" />
-                                </MultiBinding>
-                            </Border.CornerRadius>
-                        </Border>
-                        <Border Margin="{TemplateBinding BorderThickness}">
+                    <Panel Name="BaseContainer">
+                        <blk:BlockView Name="ViewBackground" 
+                                       CornerRadius="{TemplateBinding CornerRadius}"
+                                       BorderBrush="{TemplateBinding BorderBrush}"
+                                       BorderThickness="{TemplateBinding BorderThickness}"
+                                       Background="{TemplateBinding Background}"/>
+                        <Decorator Margin="{TemplateBinding BorderThickness}">
                             <DockPanel Margin="{TemplateBinding BorderThickness}">
 
                                 <TextBlock Name="PART_FloatingWatermark"
@@ -241,33 +198,26 @@
                                                       Content="{TemplateBinding InnerRightContent}" />
                                 </Grid>
                             </DockPanel>
-                        </Border>
+                        </Decorator>
                     </Panel>
                 </DataValidationErrors>
             </ControlTemplate>
         </Setter>
 
-        <Style Selector="^:disabled">
+        <Style Selector="^:disabled /template/ Panel#BaseContainer">
             <Setter Property="Opacity" Value="{DynamicResource BlockDisabledOpacity}" />
         </Style>
 
-        <Style Selector="^:pointerover /template/ Border#ViewBorder">
-            <Setter Property="Opacity" Value="{DynamicResource BlockViewBorderHighlightOpacity}" />
+        <Style Selector="^:pointerover /template/ blk|BlockView#ViewBackground">
+            <Setter Property="Highlighted" Value="True" />
         </Style>
 
-        <Style Selector="^:focus-visible">
-            <Style Selector="^ /template/ Border#FocusVisual">
-                <Setter Property="Opacity" Value="{DynamicResource BlockViewFocusOpacity}" />
-            </Style>
+        <Style Selector="^:focus-visible /template/ blk|BlockView#ViewBackground">
+            <Setter Property="Focused" Value="True" />
         </Style>
-
-        <Style Selector="^:error /template/ Border#ViewBorder">
-            <Setter Property="BorderBrush" Value="{DynamicResource BlockRedBrush}" />
-            <Setter Property="Opacity" Value="{DynamicResource BlockViewErrorBorderOpacity}" />
-        </Style>
-
-        <Style Selector="^:error:pointerover /template/ Border#ViewBorder">
-            <Setter Property="Opacity" Value="{DynamicResource BlockViewErrorBorderHighlightOpacity}" />
+        
+        <Style Selector="^:error /template/ blk|BlockView#ViewBackground">
+            <Setter Property="Error" Value="True" />
         </Style>
 
         <Style Selector="^[UseFloatingWatermark=true]:not(:empty) /template/ TextBlock#PART_FloatingWatermark">

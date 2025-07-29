@@ -22,7 +22,7 @@
         <Setter Property="BorderBrush" Value="{DynamicResource BlockBaseViewBorderBrush}" />
         <Setter Property="BorderThickness" Value="{DynamicResource BlockControlBorderThickness}" />
         <Setter Property="Foreground" Value="{DynamicResource BlockWindowForegroundBrush}" />
-        <Setter Property="CornerRadius" Value="{DynamicResource BlockInputCornerRadius}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource BlockViewCornerRadius}" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="MinHeight" Value="{DynamicResource BlockMinButtonSize}" />
