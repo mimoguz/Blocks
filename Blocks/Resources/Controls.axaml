@@ -20,5 +20,6 @@
         <ResourceInclude Source="Controls/ToggleButton.axaml" />
         <ResourceInclude Source="Controls/TextBox.axaml" />
         <ResourceInclude Source="Controls/Separator.axaml" />
+        <ResourceInclude Source="Controls/NumericUpDown.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

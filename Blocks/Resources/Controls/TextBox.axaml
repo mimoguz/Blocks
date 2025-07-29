@@ -19,7 +19,14 @@
                 </TextBox>
                 <TextBox Watermark="Floating Watermark" UseFloatingWatermark="True"></TextBox>
                 <TextBox Watermark="Floating Watermark" UseFloatingWatermark="True">Content</TextBox>
-                <TextBox Watermark="Watermark" Theme="{DynamicResource BlockEmbeddedTextBox}">Embedded</TextBox>
+                <TextBox Watermark="Watermark" 
+                         Theme="{DynamicResource BlockEmbeddedTextBox}"
+                         AcceptsReturn="False">
+                    <TextBox.InnerRightContent>
+                        <PathIcon Data="{DynamicResource BlockTestIcon}" />
+                    </TextBox.InnerRightContent>
+                    Embedded
+                </TextBox>
             </StackPanel>
         </Border>
     </Design.PreviewWith>

@@ -18,11 +18,14 @@
     <Border Background="{DynamicResource BlockWindowBackgroundBrush}">
         <TabControl TabStripPlacement="Top" >
             <TabControl.Items>
-                <TabItem Header="Buttons" Width="180">
+                <TabItem Header="Buttons">
                     <local:ButtonsPanelView />
                 </TabItem>
                 <TabItem Header="Selections">
                     <local:SelectionsPanel />
+                </TabItem>
+                <TabItem Header="Inputs &amp; Selections">
+                    <local:InputsPanelView />
                 </TabItem>
             </TabControl.Items>
         </TabControl>

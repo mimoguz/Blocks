@@ -65,7 +65,7 @@
 
             <!-- Border -->
             <sys:Double x:Key="BlockFlyoutBorderOpacity">0.06</sys:Double>
-            <sys:Double x:Key="BlockViewBorderOpacity">0.14</sys:Double>
+            <sys:Double x:Key="BlockViewBorderOpacity">0.08</sys:Double>
             <sys:Double x:Key="BlockViewErrorBorderOpacity">0.70</sys:Double>
 
             <!-- Highlight -->

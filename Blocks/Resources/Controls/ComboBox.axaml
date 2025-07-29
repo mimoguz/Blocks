@@ -165,6 +165,7 @@
                 <Setter Property="Flat" Value="True" />
             </Style>
             <Setter Property="Foreground" Value="{DynamicResource BlockFlatButtonForegroundBrush}" />
+            <Setter Property="PlaceholderForeground" Value="{DynamicResource BlockFlatButtonForegroundBrush}" />
         </Style>
 
         <Style Selector="^.pill-left /template/ blk|BlockButton#ButtonBackground">
