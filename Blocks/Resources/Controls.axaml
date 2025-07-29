@@ -21,5 +21,6 @@
         <ResourceInclude Source="Controls/TextBox.axaml" />
         <ResourceInclude Source="Controls/Separator.axaml" />
         <ResourceInclude Source="Controls/NumericUpDown.axaml" />
+        <ResourceInclude Source="Controls/Slider.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

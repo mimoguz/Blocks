@@ -12,308 +12,320 @@
         <vm:ButtonsPanelViewModel />
     </Design.DataContext>
     <Border Background="{DynamicResource BlockWindowBackgroundBrush}">
-        <StackPanel Spacing="20" Margin="8">
-            <StackPanel.Styles>
-                <Style Selector="WrapPanel.demo">
-                    <Setter Property="ItemSpacing" Value="10" />
-                    <Setter Property="LineSpacing" Value="20" />
-                </Style>
-                <Style Selector="Button.demo">
-                    <Setter Property="HorizontalAlignment" Value="Left" />
-                    <Setter Property="VerticalAlignment" Value="Top" />
-                    <Setter Property="IsEnabled" Value="{Binding AllEnabled}" />
-                </Style>
-                <Style Selector="RepeatButton.demo">
-                    <Setter Property="HorizontalAlignment" Value="Left" />
-                    <Setter Property="VerticalAlignment" Value="Top" />
-                    <Setter Property="IsEnabled" Value="{Binding AllEnabled}" />
-                </Style>
-                <Style Selector="ToggleButton.demo">
-                    <Setter Property="HorizontalAlignment" Value="Left" />
-                    <Setter Property="VerticalAlignment" Value="Top" />
-                    <Setter Property="IsEnabled" Value="{Binding AllEnabled}" />
-                    <Setter Property="IsChecked" Value="{Binding AllChecked, Mode=TwoWay}" />
-                </Style>
-                <Style Selector="DropDownButton.demo">
-                    <Setter Property="HorizontalAlignment" Value="Left" />
-                    <Setter Property="VerticalAlignment" Value="Top" />
-                    <Setter Property="IsEnabled" Value="{Binding AllEnabled}" />
-                </Style>
-                <Style Selector="SplitButton.demo">
-                    <Setter Property="HorizontalAlignment" Value="Left" />
-                    <Setter Property="VerticalAlignment" Value="Top" />
-                    <Setter Property="IsEnabled" Value="{Binding AllEnabled}" />
-                </Style>
-            </StackPanel.Styles>
-
-            <StackPanel Orientation="Horizontal">
-                <CheckBox IsChecked="{Binding AllEnabled, Mode=TwoWay}">Enable All</CheckBox>
-                <CheckBox IsChecked="{Binding AllChecked, Mode=TwoWay}">Check All</CheckBox>
-            </StackPanel>
-
-            <Separator />
-
-            <!-- ************** Buttons ************** -->
-            <WrapPanel Classes="demo">
-                <Button Classes="demo">
-                    Basic Button
-                </Button>
-                <Button IsDefault="True"
-                        Classes="demo">
-                    Default Button
-                </Button>
-                <Button Classes="demo destructive">
-                    Destructive Button
-                </Button>
-                <Button Classes="demo flat"
-                        Padding="{DynamicResource BlockFlatButtonPadding}">
-                    Flat Button
-                </Button>
-                <Button Padding="{DynamicResource BlockFlatButtonPadding}"
-                        Classes="demo destructive flat">
-                    Destructive Flat Button
-                </Button>
-                <Button Classes="demo image-button">
-                    <Path Data="{StaticResource BlockTestIcon}"
-                          Width="{DynamicResource BlockIconSize}"
-                          Height="{DynamicResource BlockIconSize}"
-                          Stretch="Uniform"
-                          Fill="{Binding $parent[Button].Foreground}" />
-                </Button>
-                <Button Classes="demo destructive image-button">
-                    <Path Data="{StaticResource BlockTestIcon}"
-                          Width="{DynamicResource BlockIconSize}"
-                          Height="{DynamicResource BlockIconSize}"
-                          Stretch="Uniform"
-                          Fill="{Binding $parent[Button].Foreground}" />
-                </Button>
-                <Button Classes="demo flat image-button">
-                    <Path Data="{StaticResource BlockTestIcon}"
-                          Width="{DynamicResource BlockIconSize}"
-                          Height="{DynamicResource BlockIconSize}"
-                          Stretch="Uniform"
-                          Fill="{Binding $parent[Button].Foreground}" />
-                </Button>
-                <Button Classes="demo destructive flat image-button">
-                    <Path Data="{StaticResource BlockTestIcon}"
-                          Width="{DynamicResource BlockIconSize}"
-                          Height="{DynamicResource BlockIconSize}"
-                          Stretch="Uniform"
-                          Fill="{Binding $parent[Button].Foreground}" />
-                </Button>
+        <DockPanel >
+            <WrapPanel ItemSpacing="40" LineSpacing="10" 
+                       Margin="8" DockPanel.Dock="Top">
+                <CheckBox IsChecked="{Binding AllEnabled, Mode=TwoWay}"
+                          VerticalAlignment="Center">
+                    Enable All
+                </CheckBox>
+                <CheckBox IsChecked="{Binding AllChecked, Mode=TwoWay}"
+                          VerticalAlignment="Center">
+                    Check All
+                </CheckBox>
             </WrapPanel>
-
-            <Separator />
-
-            <!-- ************** Repeat Buttons ************** -->
-            <WrapPanel Classes="demo">
-                <RepeatButton Classes="demo">
-                    Basic Repeat Button
-                </RepeatButton>
-                <RepeatButton Classes="demo flat"
-                              Padding="{DynamicResource BlockFlatButtonPadding}">
-                    Flat Repeat Button
-                </RepeatButton>
-                <RepeatButton Classes="demo image-button">
-                    <Path Data="{StaticResource BlockTestIcon}"
-                          Width="{DynamicResource BlockIconSize}"
-                          Height="{DynamicResource BlockIconSize}"
-                          Stretch="Uniform"
-                          Fill="{Binding $parent[Button].Foreground}" />
-                </RepeatButton>
-                <RepeatButton Classes="demo flat image-button">
-                    <Path Data="{StaticResource BlockTestIcon}"
-                          Width="{DynamicResource BlockIconSize}"
-                          Height="{DynamicResource BlockIconSize}"
-                          Stretch="Uniform"
-                          Fill="{Binding $parent[Button].Foreground}" />
-                </RepeatButton>
-            </WrapPanel>
-
-            <Separator />
-
-            <!-- ************** Toggle Buttons ************** -->
-            <WrapPanel Classes="demo">
-                <ToggleButton Classes="demo">
-                    Basic Toggle Button
-                </ToggleButton>
-                <ToggleButton Classes="demo flat"
-                              Padding="{DynamicResource BlockFlatButtonPadding}">
-                    Flat Toggle Button
-                </ToggleButton>
-                <ToggleButton Classes="demo image-button">
-                    <Path Data="{StaticResource BlockTestIcon}"
-                          Width="{DynamicResource BlockIconSize}"
-                          Height="{DynamicResource BlockIconSize}"
-                          Stretch="Uniform"
-                          Fill="{Binding $parent[Button].Foreground}" />
-                </ToggleButton>
-                <ToggleButton Classes="demo flat image-button">
-                    <Path Data="{StaticResource BlockTestIcon}"
-                          Width="{DynamicResource BlockIconSize}"
-                          Height="{DynamicResource BlockIconSize}"
-                          Stretch="Uniform"
-                          Fill="{Binding $parent[Button].Foreground}" />
-                </ToggleButton>
-                <ToggleButton Classes="demo hide-checked" Width="200">
-                    <Panel>
-                        <TextBlock Text="Hidden - Unchecked"
-                                   IsVisible="{Binding !$parent[ToggleButton].IsChecked}"
-                                   TextAlignment="Center" />
-                        <TextBlock Text="Hidden - Checked"
-                                   Width="150"
-                                   IsVisible="{Binding $parent[ToggleButton].IsChecked}"
-                                   TextAlignment="Center" />
-                    </Panel>
-                </ToggleButton>
-                <ToggleButton Classes="demo image-button flat hide-checked">
-                    <Panel>
-                        <Path Data="{StaticResource BlockTestIcon}"
-                              Width="{DynamicResource BlockIconSize}"
-                              Height="{DynamicResource BlockIconSize}"
-                              Stretch="Uniform"
-                              Fill="{Binding $parent[ToggleButton].Foreground}"
-                              IsVisible="{Binding !$parent[ToggleButton].IsChecked}" />
-                        <Path Data="{StaticResource BlockTestIconH}"
-                              Width="{DynamicResource BlockIconSize}"
-                              Height="{DynamicResource BlockIconSize}"
-                              Stretch="Uniform"
-                              Fill="{Binding $parent[ToggleButton].Foreground}"
-                              IsVisible="{Binding $parent[ToggleButton].IsChecked}" />
-                    </Panel>
-                </ToggleButton>
-            </WrapPanel>
-
-            <Separator />
-
-            <!-- ************** Flyout buttons ************** -->
-            <WrapPanel Classes="demo">
-                <DropDownButton Classes="demo">
-                    <DropDownButton.Flyout>
-                        <Flyout>
-                            <TextBlock Margin="10">Flyout</TextBlock>
-                        </Flyout>
-                    </DropDownButton.Flyout>
-                    Basic Drop-Down Button
-                </DropDownButton>
-                <DropDownButton Classes="demo flat"
+            <Separator DockPanel.Dock="Top"/>
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled">
+                <StackPanel Margin="8">
+                    <StackPanel.Styles>
+                        <Style Selector="WrapPanel.demo">
+                            <Setter Property="ItemSpacing" Value="10" />
+                            <Setter Property="LineSpacing" Value="20" />
+                        </Style>
+                        <Style Selector="Separator.demo">
+                            <Setter Property="Margin" Value="0,8" />
+                        </Style>
+                        <Style Selector="Button.demo">
+                            <Setter Property="HorizontalAlignment" Value="Left" />
+                            <Setter Property="VerticalAlignment" Value="Top" />
+                            <Setter Property="IsEnabled" Value="{Binding AllEnabled}" />
+                        </Style>
+                        <Style Selector="RepeatButton.demo">
+                            <Setter Property="HorizontalAlignment" Value="Left" />
+                            <Setter Property="VerticalAlignment" Value="Top" />
+                            <Setter Property="IsEnabled" Value="{Binding AllEnabled}" />
+                        </Style>
+                        <Style Selector="ToggleButton.demo">
+                            <Setter Property="HorizontalAlignment" Value="Left" />
+                            <Setter Property="VerticalAlignment" Value="Top" />
+                            <Setter Property="IsEnabled" Value="{Binding AllEnabled}" />
+                            <Setter Property="IsChecked" Value="{Binding AllChecked, Mode=TwoWay}" />
+                        </Style>
+                        <Style Selector="DropDownButton.demo">
+                            <Setter Property="HorizontalAlignment" Value="Left" />
+                            <Setter Property="VerticalAlignment" Value="Top" />
+                            <Setter Property="IsEnabled" Value="{Binding AllEnabled}" />
+                        </Style>
+                        <Style Selector="SplitButton.demo">
+                            <Setter Property="HorizontalAlignment" Value="Left" />
+                            <Setter Property="VerticalAlignment" Value="Top" />
+                            <Setter Property="IsEnabled" Value="{Binding AllEnabled}" />
+                        </Style>
+                    </StackPanel.Styles>
+                    
+                    <!-- ************** Buttons ************** -->
+                    <WrapPanel Classes="demo">
+                        <Button Classes="demo">
+                            Basic Button
+                        </Button>
+                        <Button IsDefault="True"
+                                Classes="demo">
+                            Default Button
+                        </Button>
+                        <Button Classes="demo destructive">
+                            Destructive Button
+                        </Button>
+                        <Button Classes="demo flat"
                                 Padding="{DynamicResource BlockFlatButtonPadding}">
-                    <DropDownButton.Flyout>
-                        <Flyout>
-                            <TextBlock Margin="10">Flyout</TextBlock>
-                        </Flyout>
-                    </DropDownButton.Flyout>
-                    Flat Drop-Down Button
-                </DropDownButton>
-                <DropDownButton Classes="demo image-button">
-                    <DropDownButton.Flyout>
-                        <Flyout>
-                            <TextBlock Margin="10">Flyout</TextBlock>
-                        </Flyout>
-                    </DropDownButton.Flyout>
-                    <Path Data="{StaticResource BlockTestIcon}"
-                          Width="{DynamicResource BlockIconSize}"
-                          Height="{DynamicResource BlockIconSize}"
-                          Stretch="Uniform"
-                          Fill="{Binding $parent[Button].Foreground}" />
-                </DropDownButton>
-                <DropDownButton Classes="demo flat image-button">
-                    <DropDownButton.Flyout>
-                        <Flyout>
-                            <TextBlock Margin="10">Flyout</TextBlock>
-                        </Flyout>
-                    </DropDownButton.Flyout>
-                    <Path Data="{StaticResource BlockTestIcon}"
-                          Width="{DynamicResource BlockIconSize}"
-                          Height="{DynamicResource BlockIconSize}"
-                          Stretch="Uniform"
-                          Fill="{Binding $parent[Button].Foreground}" />
-                </DropDownButton>
-                <DropDownButton Classes="demo menu-button"
-                                Padding="0"
-                                MinHeight="{DynamicResource BlockMinButtonSize}"
-                                MinWidth="{Binding $self.Bounds.Height}">
-                    <DropDownButton.Flyout>
-                        <Flyout>
-                            <TextBlock Margin="10">Flyout</TextBlock>
-                        </Flyout>
-                    </DropDownButton.Flyout>
-                </DropDownButton>
-                <DropDownButton Classes="demo flat menu-button"
-                                Padding="0"
-                                MinHeight="{DynamicResource BlockMinButtonSize}"
-                                MinWidth="{Binding $self.Bounds.Height}">
-                    <DropDownButton.Flyout>
-                        <Flyout>
-                            <TextBlock Margin="10">Flyout</TextBlock>
-                        </Flyout>
-                    </DropDownButton.Flyout>
-                </DropDownButton>
-                <SplitButton Classes="demo">
-                    <SplitButton.Flyout>
-                        <Flyout>
-                            <TextBlock Margin="10">Flyout</TextBlock>
-                        </Flyout>
-                    </SplitButton.Flyout>
-                    Basic Split Button
-                </SplitButton>
-                <SplitButton blk:Block.MenuIconStyle="Burger"
-                             IsTabStop="False"
-                             Classes="demo">
-                    <SplitButton.Flyout>
-                        <Flyout>
-                            <TextBlock Margin="10">Flyout</TextBlock>
-                        </Flyout>
-                    </SplitButton.Flyout>
-                    Burger Split Button
-                </SplitButton>
-                <SplitButton Classes="demo flat"
-                             Padding="{DynamicResource BlockFlatButtonPadding}">
-                    <SplitButton.Flyout>
-                        <Flyout>
-                            <TextBlock Margin="10">Flyout</TextBlock>
-                        </Flyout>
-                    </SplitButton.Flyout>
-                    Flat Split Button
-                </SplitButton>
-            </WrapPanel>
+                            Flat Button
+                        </Button>
+                        <Button Padding="{DynamicResource BlockFlatButtonPadding}"
+                                Classes="demo destructive flat">
+                            Destructive Flat Button
+                        </Button>
+                        <Button Classes="demo image-button">
+                            <Path Data="{StaticResource BlockTestIcon}"
+                                  Width="{DynamicResource BlockIconSize}"
+                                  Height="{DynamicResource BlockIconSize}"
+                                  Stretch="Uniform"
+                                  Fill="{Binding $parent[Button].Foreground}" />
+                        </Button>
+                        <Button Classes="demo destructive image-button">
+                            <Path Data="{StaticResource BlockTestIcon}"
+                                  Width="{DynamicResource BlockIconSize}"
+                                  Height="{DynamicResource BlockIconSize}"
+                                  Stretch="Uniform"
+                                  Fill="{Binding $parent[Button].Foreground}" />
+                        </Button>
+                        <Button Classes="demo flat image-button">
+                            <Path Data="{StaticResource BlockTestIcon}"
+                                  Width="{DynamicResource BlockIconSize}"
+                                  Height="{DynamicResource BlockIconSize}"
+                                  Stretch="Uniform"
+                                  Fill="{Binding $parent[Button].Foreground}" />
+                        </Button>
+                        <Button Classes="demo destructive flat image-button">
+                            <Path Data="{StaticResource BlockTestIcon}"
+                                  Width="{DynamicResource BlockIconSize}"
+                                  Height="{DynamicResource BlockIconSize}"
+                                  Stretch="Uniform"
+                                  Fill="{Binding $parent[Button].Foreground}" />
+                        </Button>
+                    </WrapPanel>
 
-            <Separator />
+                    <Separator Classes="demo"/>
 
-            <!-- ************** Pill ************** -->
-            <StackPanel Spacing="1" Orientation="Horizontal">
-                <Button Classes="demo pill-left"
-                        Padding="{DynamicResource BlockComboBoxPadding}">
-                    Button - Left
-                </Button>
-                <RepeatButton Classes="demo pill-center"
-                              Padding="{DynamicResource BlockComboBoxPadding}">
-                    Repeat - Center
-                </RepeatButton>
-                <ComboBox PlaceholderText="Combo Box - Center"
-                          Classes="demo pill-center"
-                          MinWidth="200"
-                          Padding="{DynamicResource BlockComboBoxPadding}">
-                    <ComboBox.Items>
-                        <ComboBoxItem>Item</ComboBoxItem>
-                        <ComboBoxItem>Item</ComboBoxItem>
-                        <ComboBoxItem>Item</ComboBoxItem>
-                    </ComboBox.Items>
-                </ComboBox>
-                <ToggleButton Classes="demo pill-center"
-                              Padding="{DynamicResource BlockComboBoxPadding}">
-                    Toggle - Center
-                </ToggleButton>
-                <DropDownButton Classes="demo pill-right"
+                    <!-- ************** Repeat Buttons ************** -->
+                    <WrapPanel Classes="demo">
+                        <RepeatButton Classes="demo">
+                            Basic Repeat Button
+                        </RepeatButton>
+                        <RepeatButton Classes="demo flat"
+                                      Padding="{DynamicResource BlockFlatButtonPadding}">
+                            Flat Repeat Button
+                        </RepeatButton>
+                        <RepeatButton Classes="demo image-button">
+                            <Path Data="{StaticResource BlockTestIcon}"
+                                  Width="{DynamicResource BlockIconSize}"
+                                  Height="{DynamicResource BlockIconSize}"
+                                  Stretch="Uniform"
+                                  Fill="{Binding $parent[Button].Foreground}" />
+                        </RepeatButton>
+                        <RepeatButton Classes="demo flat image-button">
+                            <Path Data="{StaticResource BlockTestIcon}"
+                                  Width="{DynamicResource BlockIconSize}"
+                                  Height="{DynamicResource BlockIconSize}"
+                                  Stretch="Uniform"
+                                  Fill="{Binding $parent[Button].Foreground}" />
+                        </RepeatButton>
+                    </WrapPanel>
+
+                    <Separator Classes="demo"/>
+
+                    <!-- ************** Toggle Buttons ************** -->
+                    <WrapPanel Classes="demo">
+                        <ToggleButton Classes="demo">
+                            Basic Toggle Button
+                        </ToggleButton>
+                        <ToggleButton Classes="demo flat"
+                                      Padding="{DynamicResource BlockFlatButtonPadding}">
+                            Flat Toggle Button
+                        </ToggleButton>
+                        <ToggleButton Classes="demo image-button">
+                            <Path Data="{StaticResource BlockTestIcon}"
+                                  Width="{DynamicResource BlockIconSize}"
+                                  Height="{DynamicResource BlockIconSize}"
+                                  Stretch="Uniform"
+                                  Fill="{Binding $parent[Button].Foreground}" />
+                        </ToggleButton>
+                        <ToggleButton Classes="demo flat image-button">
+                            <Path Data="{StaticResource BlockTestIcon}"
+                                  Width="{DynamicResource BlockIconSize}"
+                                  Height="{DynamicResource BlockIconSize}"
+                                  Stretch="Uniform"
+                                  Fill="{Binding $parent[Button].Foreground}" />
+                        </ToggleButton>
+                        <ToggleButton Classes="demo hide-checked" Width="200">
+                            <Panel>
+                                <TextBlock Text="Hidden - Unchecked"
+                                           IsVisible="{Binding !$parent[ToggleButton].IsChecked}"
+                                           TextAlignment="Center" />
+                                <TextBlock Text="Hidden - Checked"
+                                           Width="150"
+                                           IsVisible="{Binding $parent[ToggleButton].IsChecked}"
+                                           TextAlignment="Center" />
+                            </Panel>
+                        </ToggleButton>
+                        <ToggleButton Classes="demo image-button flat hide-checked">
+                            <Panel>
+                                <Path Data="{StaticResource BlockTestIcon}"
+                                      Width="{DynamicResource BlockIconSize}"
+                                      Height="{DynamicResource BlockIconSize}"
+                                      Stretch="Uniform"
+                                      Fill="{Binding $parent[ToggleButton].Foreground}"
+                                      IsVisible="{Binding !$parent[ToggleButton].IsChecked}" />
+                                <Path Data="{StaticResource BlockTestIconH}"
+                                      Width="{DynamicResource BlockIconSize}"
+                                      Height="{DynamicResource BlockIconSize}"
+                                      Stretch="Uniform"
+                                      Fill="{Binding $parent[ToggleButton].Foreground}"
+                                      IsVisible="{Binding $parent[ToggleButton].IsChecked}" />
+                            </Panel>
+                        </ToggleButton>
+                    </WrapPanel>
+
+                    <Separator Classes="demo" />
+
+                    <!-- ************** Flyout buttons ************** -->
+                    <WrapPanel Classes="demo">
+                        <DropDownButton Classes="demo">
+                            <DropDownButton.Flyout>
+                                <Flyout>
+                                    <TextBlock Margin="10">Flyout</TextBlock>
+                                </Flyout>
+                            </DropDownButton.Flyout>
+                            Basic Drop-Down Button
+                        </DropDownButton>
+                        <DropDownButton Classes="demo flat"
+                                        Padding="{DynamicResource BlockFlatButtonPadding}">
+                            <DropDownButton.Flyout>
+                                <Flyout>
+                                    <TextBlock Margin="10">Flyout</TextBlock>
+                                </Flyout>
+                            </DropDownButton.Flyout>
+                            Flat Drop-Down Button
+                        </DropDownButton>
+                        <DropDownButton Classes="demo image-button">
+                            <DropDownButton.Flyout>
+                                <Flyout>
+                                    <TextBlock Margin="10">Flyout</TextBlock>
+                                </Flyout>
+                            </DropDownButton.Flyout>
+                            <Path Data="{StaticResource BlockTestIcon}"
+                                  Width="{DynamicResource BlockIconSize}"
+                                  Height="{DynamicResource BlockIconSize}"
+                                  Stretch="Uniform"
+                                  Fill="{Binding $parent[Button].Foreground}" />
+                        </DropDownButton>
+                        <DropDownButton Classes="demo flat image-button">
+                            <DropDownButton.Flyout>
+                                <Flyout>
+                                    <TextBlock Margin="10">Flyout</TextBlock>
+                                </Flyout>
+                            </DropDownButton.Flyout>
+                            <Path Data="{StaticResource BlockTestIcon}"
+                                  Width="{DynamicResource BlockIconSize}"
+                                  Height="{DynamicResource BlockIconSize}"
+                                  Stretch="Uniform"
+                                  Fill="{Binding $parent[Button].Foreground}" />
+                        </DropDownButton>
+                        <DropDownButton Classes="demo menu-button"
+                                        Padding="0"
+                                        MinHeight="{DynamicResource BlockMinButtonSize}"
+                                        MinWidth="{Binding $self.Bounds.Height}">
+                            <DropDownButton.Flyout>
+                                <Flyout>
+                                    <TextBlock Margin="10">Flyout</TextBlock>
+                                </Flyout>
+                            </DropDownButton.Flyout>
+                        </DropDownButton>
+                        <DropDownButton Classes="demo flat menu-button"
+                                        Padding="0"
+                                        MinHeight="{DynamicResource BlockMinButtonSize}"
+                                        MinWidth="{Binding $self.Bounds.Height}">
+                            <DropDownButton.Flyout>
+                                <Flyout>
+                                    <TextBlock Margin="10">Flyout</TextBlock>
+                                </Flyout>
+                            </DropDownButton.Flyout>
+                        </DropDownButton>
+                        <SplitButton Classes="demo">
+                            <SplitButton.Flyout>
+                                <Flyout>
+                                    <TextBlock Margin="10">Flyout</TextBlock>
+                                </Flyout>
+                            </SplitButton.Flyout>
+                            Basic Split Button
+                        </SplitButton>
+                        <SplitButton blk:Block.MenuIconStyle="Burger"
+                                     IsTabStop="False"
+                                     Classes="demo">
+                            <SplitButton.Flyout>
+                                <Flyout>
+                                    <TextBlock Margin="10">Flyout</TextBlock>
+                                </Flyout>
+                            </SplitButton.Flyout>
+                            Burger Split Button
+                        </SplitButton>
+                        <SplitButton Classes="demo flat"
+                                     Padding="{DynamicResource BlockFlatButtonPadding}">
+                            <SplitButton.Flyout>
+                                <Flyout>
+                                    <TextBlock Margin="10">Flyout</TextBlock>
+                                </Flyout>
+                            </SplitButton.Flyout>
+                            Flat Split Button
+                        </SplitButton>
+                    </WrapPanel>
+
+                    <Separator Classes="demo"/>
+
+                    <!-- ************** Pill ************** -->
+                    <StackPanel Spacing="1" Orientation="Horizontal">
+                        <Button Classes="demo pill-left"
                                 Padding="{DynamicResource BlockComboBoxPadding}">
-                    <DropDownButton.Flyout>
-                        <Flyout>
-                            <TextBlock Margin="10">Flyout</TextBlock>
-                        </Flyout>
-                    </DropDownButton.Flyout>
-                    Drop Down - Right
-                </DropDownButton>
-            </StackPanel>
-        </StackPanel>
+                            Button - Left
+                        </Button>
+                        <RepeatButton Classes="demo pill-center"
+                                      Padding="{DynamicResource BlockComboBoxPadding}">
+                            Repeat - Center
+                        </RepeatButton>
+                        <ComboBox PlaceholderText="Combo Box - Center"
+                                  Classes="demo pill-center"
+                                  MinWidth="200"
+                                  Padding="{DynamicResource BlockComboBoxPadding}">
+                            <ComboBox.Items>
+                                <ComboBoxItem>Item</ComboBoxItem>
+                                <ComboBoxItem>Item</ComboBoxItem>
+                                <ComboBoxItem>Item</ComboBoxItem>
+                            </ComboBox.Items>
+                        </ComboBox>
+                        <ToggleButton Classes="demo pill-center"
+                                      Padding="{DynamicResource BlockComboBoxPadding}">
+                            Toggle - Center
+                        </ToggleButton>
+                        <DropDownButton Classes="demo pill-right"
+                                        Padding="{DynamicResource BlockComboBoxPadding}">
+                            <DropDownButton.Flyout>
+                                <Flyout>
+                                    <TextBlock Margin="10">Flyout</TextBlock>
+                                </Flyout>
+                            </DropDownButton.Flyout>
+                            Drop Down - Right
+                        </DropDownButton>
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
+        </DockPanel>
     </Border>
 </UserControl>

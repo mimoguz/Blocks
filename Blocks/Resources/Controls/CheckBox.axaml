@@ -30,9 +30,9 @@
         <Setter Property="Foreground" Value="{DynamicResource BlockWindowForegroundBrush}" />
         <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource BlockBasePrimaryBrush}" />
-        <Setter Property="blk:Block.Gap" Value="{DynamicResource BlockRadioButtonGap}"></Setter>
+        <Setter Property="blk:Block.Gap" Value="{DynamicResource BlockRadioButtonGap}" />
         <Setter Property="CornerRadius" Value="{DynamicResource BlockCheckBoxCornerRadius}" />
-        <Setter Property="Padding" Value="{DynamicResource BlockRadioButtonGap}" />
+        <Setter Property="Padding" Value="{DynamicResource BlockRadioButtonPadding}" />
         <Setter Property="FocusAdorner" Value="{x:Null}" />
         <Setter Property="HorizontalAlignment" Value="Left" />
 

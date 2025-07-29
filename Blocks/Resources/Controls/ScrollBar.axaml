@@ -29,7 +29,6 @@
 
     <ControlTheme x:Key="BlockScrollBarThumb" TargetType="Thumb">
         <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
-        <Setter Property="Opacity" Value="{DynamicResource BlockDisabledOpacity}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
@@ -145,12 +144,14 @@
     </ControlTheme>
 
     <ControlTheme x:Key="{x:Type ScrollBar}" TargetType="ScrollBar">
+        
         <Setter Property="MinWidth" Value="{DynamicResource BlockScrollBarThumbSize}" />
         <Setter Property="MinHeight" Value="{DynamicResource BlockScrollBarThumbSize}" />
         <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource BlockButtonForegroundBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource BlockButtonForegroundBrush}" />
         <Setter Property="CornerRadius" Value="{DynamicResource BlockScrollBarCornerRadius}" />
+        <Setter Property="ShowDelay" Value="0:0:0.001" />
 
         <Style Selector="^:vertical">
             <Setter Property="Template">

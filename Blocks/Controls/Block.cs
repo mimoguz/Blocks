@@ -13,7 +13,8 @@ public abstract class Block : AvaloniaObject
     public static readonly AttachedProperty<AnimatedMenuIcon.IconStyle> MenuIconStyleProperty = AvaloniaProperty.RegisterAttached<Block, Control, AnimatedMenuIcon.IconStyle>("MenuIconStyle");
     public static readonly AttachedProperty<Stretch> StretchProperty = AvaloniaProperty.RegisterAttached<Block, Control, Stretch>("Stretch");
     public static readonly AttachedProperty<ScrollBarVisibility> ScrollBarVisibilityProperty = AvaloniaProperty.RegisterAttached<Block, Control, ScrollBarVisibility>("ScrollBarVisibility");
-
+    public static readonly AttachedProperty<bool> DrawFocusProperty = AvaloniaProperty.RegisterAttached<Block, Control, bool>("DrawFocus");
+    
     public static Thickness? GetGap(Control control) => control.GetValue(GapProperty);
     public static void SetGap(Control control, Thickness? value) => control.SetValue(GapProperty, value);
 
@@ -31,4 +32,7 @@ public abstract class Block : AvaloniaObject
 
     public static ScrollBarVisibility GetScrollBarVisibility(Control control) => control.GetValue(ScrollBarVisibilityProperty);
     public static void SetScrollBarVisibility(Control control, ScrollBarVisibility value) => control.SetValue(ScrollBarVisibilityProperty, value);
+    
+    public static bool GetDrawFocus(Control control) => control.GetValue(DrawFocusProperty);
+    public static void SetDrawFocus(Control control, bool value) => control.SetValue(DrawFocusProperty, value);
 }

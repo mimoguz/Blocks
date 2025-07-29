@@ -7,7 +7,7 @@ namespace Blocks.ViewModels;
 public partial class InputsPanelViewModel : ViewModelBase
 {
     [ObservableProperty] private bool allEnabled = true;
-    [ObservableProperty] private bool allChecked;
+    [ObservableProperty] private bool? allChecked = false;
     [ObservableProperty] private string text = "";
     [ObservableProperty] private double currentDoubleValue = 5.0;
 
