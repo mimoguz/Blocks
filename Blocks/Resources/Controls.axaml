@@ -23,5 +23,8 @@
         <ResourceInclude Source="Controls/NumericUpDown.axaml" />
         <ResourceInclude Source="Controls/Slider.axaml" />
         <ResourceInclude Source="Controls/DataValidationErrors.axaml" />
+        <ResourceInclude Source="Controls/ListBoxItem.axaml" />
+        <ResourceInclude Source="Controls/ListBox.axaml" />
+        <ResourceInclude Source="Controls/AutoCompleteBox.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

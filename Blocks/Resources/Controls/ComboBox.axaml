@@ -29,8 +29,6 @@
         </Border>
     </Design.PreviewWith>
 
-    <sys:Int32 x:Key="ComboBoxPopupMaxNumberOfItems">15</sys:Int32>
-    <sys:Int32 x:Key="ComboBoxPopupMaxNumberOfItemsThatCanBeShownOnOneSide">7</sys:Int32>
 
     <ControlTheme x:Key="{x:Type ComboBox}" TargetType="ComboBox">
 
@@ -45,7 +43,7 @@
         <Setter Property="MinHeight" Value="{DynamicResource BlockMinButtonSize}" />
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
-        <Setter Property="MaxDropDownHeight" Value="490"></Setter>
+        <Setter Property="MaxDropDownHeight" Value="{DynamicResource BlockMaxDropDownHeight}" />
         <Setter Property="blk:Block.MenuIconStyle" Value="Chevron" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="VerticalContentAlignment" Value="Center" />

@@ -13,17 +13,17 @@
 
     <Border Background="{DynamicResource BlockWindowBackgroundBrush}">
         <DockPanel>
-            <WrapPanel ItemSpacing="40" LineSpacing="10" DockPanel.Dock="Top" Margin="8" >
+            <WrapPanel ItemSpacing="40" LineSpacing="10" DockPanel.Dock="Top" Margin="8">
 
                 <CheckBox IsChecked="{Binding AllEnabled, Mode=TwoWay}" VerticalAlignment="Center">
                     Enable All
                 </CheckBox>
 
-                <CheckBox IsChecked="{Binding AllChecked, Mode=TwoWay}" 
+                <CheckBox IsChecked="{Binding AllChecked, Mode=TwoWay}"
                           VerticalAlignment="Center" IsThreeState="True">
                     Check All
                 </CheckBox>
-                
+
                 <StackPanel HorizontalAlignment="Center" Spacing="8" Orientation="Horizontal">
                     <TextBlock VerticalAlignment="Center">
                         String Value
@@ -33,7 +33,7 @@
                              HorizontalAlignment="Left" VerticalAlignment="Center"
                              Text="{Binding Text}" />
                 </StackPanel>
-                
+
                 <StackPanel HorizontalAlignment="Center" Spacing="8" Orientation="Horizontal">
                     <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left">
                         Numeric Value
@@ -46,7 +46,7 @@
                                    VerticalAlignment="Center"
                                    HorizontalContentAlignment="Center" />
                 </StackPanel>
-                
+
                 <StackPanel HorizontalAlignment="Center" Spacing="8" Orientation="Horizontal">
                     <TextBlock VerticalAlignment="Center">
                         Selected Item
@@ -57,40 +57,62 @@
                               ItemsSource="{Binding StringValues}" />
                 </StackPanel>
             </WrapPanel>
-            
+
             <Separator DockPanel.Dock="Top" />
 
             <ScrollViewer HorizontalScrollBarVisibility="Disabled">
                 <StackPanel Margin="8">
+                    
                     <StackPanel.Styles>
+                        
                         <Style Selector="WrapPanel.demo">
-                            <Setter Property="ItemSpacing" Value="10" />
-                            <Setter Property="LineSpacing" Value="20" />
+                            <Setter Property="ItemSpacing" Value="16" />
+                            <Setter Property="LineSpacing" Value="24" />
                         </Style>
+                        
                         <Style Selector="Separator.demo">
                             <Setter Property="Margin" Value="0,8" />
                         </Style>
+                        
                         <Style Selector=":is(Control).demo">
                             <Setter Property="HorizontalAlignment" Value="Left" />
                             <Setter Property="VerticalAlignment" Value="Top" />
                             <Setter Property="IsEnabled" Value="{Binding AllEnabled}" />
                         </Style>
+                        
                         <Style Selector="CheckBox.demo">
                             <Setter Property="IsChecked" Value="{Binding AllChecked}" />
                             <Setter Property="IsThreeState" Value="True" />
                         </Style>
+                        
                         <Style Selector="TextBox.demo">
                             <Setter Property="Text" Value="{Binding Text, Mode=TwoWay}" />
                         </Style>
+                        
                         <Style Selector="NumericUpDown.demo">
                             <Setter Property="Value" Value="{Binding CurrentDoubleValue, Mode=TwoWay}" />
                             <Setter Property="Minimum" Value="{Binding MinDoubleValue, Mode=OneTime}" />
                             <Setter Property="Maximum" Value="{Binding MaxDoubleValue, Mode=OneTime}" />
                             <Setter Property="Increment" Value="0.5" />
                         </Style>
+                        
                         <Style Selector="ComboBox.demo">
-                            <Setter Property="IsEnabled" Value="{Binding AllEnabled}" />
+                            <Setter Property="ItemsSource" Value="{Binding StringValues}" />
                         </Style>
+                        
+                        <Style Selector="AutoCompleteBox.demo">
+                            <Setter Property="ItemsSource" Value="{Binding StringValues}" />
+                        </Style>
+                        
+                        
+                        <Style Selector="ListBox.demo">
+                            <Setter Property="ItemsSource" Value="{Binding StringValues}" />
+                            <Setter Property="Height" Value="200" />
+                            <Setter Property="Width" Value="240" />
+                            <Setter Property="Background" Value="{DynamicResource BlockTransparentViewBackgroundBrush}" />
+                            <Setter Property="CornerRadius" Value="{DynamicResource BlockButtonCornerRadius}" />
+                        </Style>
+                        
                         <Style Selector="Slider.demo">
                             <Setter Property="Value" Value="{Binding CurrentDoubleValue, Mode=TwoWay}" />
                             <Setter Property="Minimum" Value="{Binding MinDoubleValue, Mode=OneTime}" />
@@ -99,37 +121,48 @@
                             <Setter Property="IsSnapToTickEnabled" Value="True" />
                         </Style>
                     </StackPanel.Styles>
-                    
-                    <WrapPanel Classes="demo">
-                        <ButtonSpinner Classes="demo" Width="200"
-                                       Spin="Spinner_OnSpin"
-                                       ValidSpinDirection="{Binding Spin}">
-                            <Panel>
-                                <TextBlock Text="Button Spinner"
-                                           IsVisible="{Binding CurrentStringValue, Converter={x:Static ObjectConverters.IsNull}}"
-                                           Opacity="{DynamicResource BlockPlaceholderOpacity}" />
-                                <TextBlock Text="{Binding CurrentStringValue}" />
-                            </Panel>
-                        </ButtonSpinner>
 
-                        <ComboBox Classes="demo"
-                                  SelectedItem="{Binding CurrentStringValue}"
-                                  Width="200" PlaceholderText="Combo Box" />
-                        <ComboBox Classes="demo flat"
-                                  SelectedItem="{Binding CurrentStringValue}"
-                                  Width="200" PlaceholderText="Flat Combo Box" />
+                    <WrapPanel Classes="demo">
+                        <StackPanel Spacing="16">
+
+                            <ButtonSpinner Classes="demo" Width="200"
+                                           Spin="Spinner_OnSpin"
+                                           ValidSpinDirection="{Binding Spin}">
+                                <Panel>
+                                    <TextBlock Text="Button Spinner"
+                                               IsVisible="{Binding CurrentStringValue, Converter={x:Static ObjectConverters.IsNull}}"
+                                               Opacity="{DynamicResource BlockPlaceholderOpacity}" />
+                                    <TextBlock Text="{Binding CurrentStringValue}" />
+                                </Panel>
+                            </ButtonSpinner>
+
+                            <ComboBox Classes="demo"
+                                      SelectedItem="{Binding CurrentStringValue}"
+                                      Width="200" PlaceholderText="Combo Box" />
+
+                            <ComboBox Classes="demo flat"
+                                      SelectedItem="{Binding CurrentStringValue}"
+                                      Width="200" PlaceholderText="Flat Combo Box" />
+
+                            <AutoCompleteBox Classes="demo clearButton"
+                                             SelectedItem="{Binding CurrentStringValue}"
+                                             Width="200" Watermark="Auto-Complete Box" />
+                        </StackPanel>
+                        <ListBox Classes="demo" SelectedItem="{Binding CurrentStringValue}"/>
                     </WrapPanel>
 
                     <Separator Classes="demo" />
 
                     <WrapPanel Classes="demo">
                         <NumericUpDown Classes="demo" Width="140" />
+                        
                         <NumericUpDown Classes="vertical demo" Height="140" Width="48" CornerRadius="999" />
 
                         <StackPanel Spacing="10" VerticalAlignment="Top">
                             <Slider Classes="demo" Width="300" />
                             <Slider Classes="demo" Width="300" TickPlacement="TopLeft" />
                         </StackPanel>
+                        
                         <StackPanel Spacing="10" VerticalAlignment="Top">
                             <Slider Classes="demo" Width="300" TickPlacement="TopLeft" />
                             <Slider Classes="demo" Width="300" TickPlacement="Outside" />
@@ -149,15 +182,19 @@
                         <RadioButton Classes="demo top-label">Top Label</RadioButton>
                         <RadioButton Classes="demo bottom-label">Bottom Label</RadioButton>
                     </WrapPanel>
-                    
+
                     <Separator Classes="demo" />
-                    
+
                     <WrapPanel Classes="demo">
-                        <TextBox Classes="demo" Width="200" Watermark="Basic Text Box"/>
-                        <TextBox Classes="demo" Width="200" Watermark="Use Floating Watermark" UseFloatingWatermark="True"/>
-                        <TextBox Classes="demo clearButton" Width="200" Watermark="With Clear Button" />
-                        <TextBox Classes="demo revealPasswordButton" PasswordChar="*" Width="200" Watermark="Password" />
+                        <TextBox Classes="demo" Width="200" Watermark="Basic Text Box" />
                         
+                        <TextBox Classes="demo" Width="200" Watermark="Use Floating Watermark"
+                                 UseFloatingWatermark="True" />
+                        
+                        <TextBox Classes="demo clearButton" Width="200" Watermark="With Clear Button" />
+                        
+                        <TextBox Classes="demo revealPasswordButton" PasswordChar="*" Width="200" Watermark="Password" />
+
                         <TextBox Watermark="Error" Width="200" VerticalAlignment="Top"
                                  IsEnabled="{Binding AllEnabled}">
                             <TextBox.Styles>
@@ -170,7 +207,7 @@
                             </DataValidationErrors.Error>
                             Expanded Error
                         </TextBox>
-                        
+
                         <TextBox Watermark="Error" Width="200" VerticalAlignment="Top"
                                  IsEnabled="{Binding AllEnabled}">
                             <DataValidationErrors.Error>

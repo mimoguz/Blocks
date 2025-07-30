@@ -275,7 +275,7 @@
                             <PathIcon Data="{StaticResource BlockEyeOpenIcon}"
                                       Height="{DynamicResource BlockIconSize}"
                                       Width="{DynamicResource BlockIconSize}"
-                                      Foreground="{Binding $parent[TextBox].Foreground}"
+                                      Foreground="{DynamicResource BlockRedBrush}"
                                       IsVisible="{Binding $parent[ToggleButton].IsChecked}" />
                             <PathIcon Data="{StaticResource BlockEyeClosedIcon}"
                                       Height="{DynamicResource BlockIconSize}"
