@@ -1,6 +1,7 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:sys="using:System">
+                    xmlns:sys="using:System"
+                    xmlns:blk="clr-namespace:Blocks.Controls">
     <Design.PreviewWith>
         <Border Padding="20">
             <StackPanel Spacing="20">
@@ -84,7 +85,9 @@
                                    VerticalContentAlignment="Stretch"
                                    AllowSpin="{TemplateBinding AllowSpin}"
                                    ShowButtonSpinner="{TemplateBinding ShowButtonSpinner}"
-                                   ButtonSpinnerLocation="{TemplateBinding ButtonSpinnerLocation}">
+                                   ButtonSpinnerLocation="{TemplateBinding ButtonSpinnerLocation}"
+                                   Focusable="True"
+                                   TabIndex="1">
                         <TextBox Name="PART_TextBox"
                                  Theme="{StaticResource BlockEmbeddedTextBox}"
                                  Background="Transparent"
@@ -150,6 +153,10 @@
                     </DataValidationErrors>
                 </ControlTemplate>
             </Setter>
+        </Style>
+        
+        <Style Selector="^:focus-within /template/ TextBox#PART_TextBox:focus-visible">
+            <Setter Property="blk:Block.DrawFocus" Value="True" />
         </Style>
     </ControlTheme>
 </ResourceDictionary>

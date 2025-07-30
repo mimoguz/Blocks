@@ -31,6 +31,7 @@
         <Setter Property="Padding" Value="{DynamicResource BlockInputPadding}" />
         <Setter Property="Focusable" Value="True" />
         <Setter Property="FocusAdorner" Value="{x:Null}" />
+        
         <Setter Property="Template">
             <ControlTemplate>
                 <DataValidationErrors>
@@ -104,6 +105,10 @@
         </Style>
 
         <Style Selector="^:focus-visible /template/ blk|BlockView#ViewBackground">
+            <Setter Property="Focused" Value="True" />
+        </Style>
+        
+        <Style Selector="^[IsKeyboardFocusWithin=True]:focus-visible /template/ blk|BlockView#ViewBackground">
             <Setter Property="Focused" Value="True" />
         </Style>
 

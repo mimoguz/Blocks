@@ -19,7 +19,7 @@
                 </TextBox>
                 <TextBox Watermark="Floating Watermark" UseFloatingWatermark="True"></TextBox>
                 <TextBox Watermark="Floating Watermark" UseFloatingWatermark="True">Content</TextBox>
-                <TextBox Watermark="Watermark" 
+                <TextBox Watermark="Watermark"
                          Theme="{DynamicResource BlockEmbeddedTextBox}"
                          AcceptsReturn="False">
                     <TextBox.InnerRightContent>
@@ -30,7 +30,7 @@
             </StackPanel>
         </Border>
     </Design.PreviewWith>
-    
+
     <MenuFlyout x:Key="DefaultTextBoxContextFlyout" ShowMode="{OnFormFactor Desktop=Standard, Mobile=Transient}">
         <MenuItem Header="{DynamicResource StringTextFlyoutCutText}" Command="{Binding $parent[TextBox].Cut}"
                   IsEnabled="{Binding $parent[TextBox].CanCut}" InputGesture="{x:Static TextBox.CutGesture}" />
@@ -39,7 +39,7 @@
         <MenuItem Header="{DynamicResource StringTextFlyoutPasteText}" Command="{Binding $parent[TextBox].Paste}"
                   IsEnabled="{Binding $parent[TextBox].CanPaste}" InputGesture="{x:Static TextBox.PasteGesture}" />
     </MenuFlyout>
-    
+
     <!-- TODO: Horizontal menu -->
     <MenuFlyout x:Key="HorizontalTextBoxContextFlyout" ShowMode="{OnFormFactor Desktop=Standard, Mobile=Transient}"
                 FlyoutPresenterTheme="{StaticResource HorizontalMenuFlyoutPresenter}"
@@ -100,12 +100,12 @@
         </Style>
     </ControlTheme>
 
-    <ControlTheme x:Key="BlockTextBoxToggleButton" 
-                  TargetType="ToggleButton" 
+    <ControlTheme x:Key="BlockTextBoxToggleButton"
+                  TargetType="ToggleButton"
                   BasedOn="{StaticResource BlockTextBoxButton}" />
 
     <ControlTheme x:Key="{x:Type TextBox}" TargetType="TextBox">
-        
+
         <Setter Property="Foreground" Value="{DynamicResource BlockWindowForegroundBrush}" />
         <Setter Property="Background" Value="{DynamicResource BlockBaseViewBackgroundBrush}" />
         <Setter Property="CaretBrush" Value="{DynamicResource BlockWindowForegroundBrush}" />
@@ -126,11 +126,11 @@
             <ControlTemplate>
                 <DataValidationErrors>
                     <Panel Name="BaseContainer">
-                        <blk:BlockView Name="ViewBackground" 
+                        <blk:BlockView Name="ViewBackground"
                                        CornerRadius="{TemplateBinding CornerRadius}"
                                        BorderBrush="{TemplateBinding BorderBrush}"
                                        BorderThickness="{TemplateBinding BorderThickness}"
-                                       Background="{TemplateBinding Background}"/>
+                                       Background="{TemplateBinding Background}" />
                         <Decorator Margin="{TemplateBinding BorderThickness}">
                             <DockPanel Margin="{TemplateBinding BorderThickness}">
 
@@ -222,7 +222,7 @@
         <Style Selector="^:focus-visible /template/ blk|BlockView#ViewBackground">
             <Setter Property="Focused" Value="True" />
         </Style>
-        
+
         <Style Selector="^:error /template/ blk|BlockView#ViewBackground">
             <Setter Property="Error" Value="True" />
         </Style>
@@ -255,7 +255,7 @@
                 </Template>
             </Setter>
         </Style>
-        
+
         <Style Selector="^.revealPasswordButton[AcceptsReturn=False][IsReadOnly=False]:not(TextBox:empty)">
             <Setter Property="InnerRightContent">
                 <Template>
@@ -276,21 +276,21 @@
                                       Height="{DynamicResource BlockIconSize}"
                                       Width="{DynamicResource BlockIconSize}"
                                       Foreground="{Binding $parent[TextBox].Foreground}"
-                                      IsVisible="{Binding $parent[ToggleButton].IsChecked}"/>
+                                      IsVisible="{Binding $parent[ToggleButton].IsChecked}" />
                             <PathIcon Data="{StaticResource BlockEyeClosedIcon}"
                                       Height="{DynamicResource BlockIconSize}"
                                       Width="{DynamicResource BlockIconSize}"
                                       Foreground="{Binding $parent[TextBox].Foreground}"
-                                      IsVisible="{Binding !$parent[ToggleButton].IsChecked}"/>
+                                      IsVisible="{Binding !$parent[ToggleButton].IsChecked}" />
                         </Panel>
                     </ToggleButton>
                 </Template>
             </Setter>
         </Style>
     </ControlTheme>
-    
+
     <ControlTheme x:Key="BlockEmbeddedTextBox" TargetType="TextBox">
-        
+
         <Setter Property="Foreground" Value="{DynamicResource BlockWindowForegroundBrush}" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="CaretBrush" Value="{DynamicResource BlockWindowForegroundBrush}" />
@@ -298,6 +298,7 @@
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="FocusAdorner" Value="{x:Null}" />
         <Setter Property="ScrollViewer.IsScrollChainingEnabled" Value="True" />
+        <Setter Property="blk:Block.DrawFocus" Value="False" />
         <Setter Property="ContextFlyout"
                 Value="{OnFormFactor Desktop={StaticResource DefaultTextBoxContextFlyout}, Mobile={StaticResource HorizontalTextBoxContextFlyout}}" />
 
@@ -305,11 +306,10 @@
             <ControlTemplate>
                 <Panel>
                     <Grid ColumnDefinitions="Auto, *, Auto">
-                        
                         <ContentPresenter Grid.Column="0"
                                           VerticalContentAlignment="Stretch"
                                           Content="{TemplateBinding InnerLeftContent}" />
-                        
+
                         <ScrollViewer Name="PART_ScrollViewer"
                                       Grid.Column="1"
                                       Margin="{TemplateBinding Padding}"
@@ -319,7 +319,12 @@
                                       AllowAutoHide="{TemplateBinding (ScrollViewer.AllowAutoHide)}"
                                       BringIntoViewOnFocusChange="{TemplateBinding (ScrollViewer.BringIntoViewOnFocusChange)}">
                             <Panel>
+                                <Border BorderBrush="{DynamicResource BlockBaseFocusBrush}"
+                                        BorderThickness="{DynamicResource BlockFocusBorderThickness}"
+                                        Name="FocusBorder"
+                                        IsVisible="{TemplateBinding blk:Block.DrawFocus}" />
                                 <TextBlock Name="PART_Watermark"
+                                           Margin="{TemplateBinding Padding}"
                                            Opacity="{DynamicResource BlockPlaceholderOpacity}"
                                            Foreground="{TemplateBinding Foreground}"
                                            Text="{TemplateBinding Watermark}"
@@ -338,6 +343,7 @@
                                     </TextBlock.IsVisible>
                                 </TextBlock>
                                 <TextPresenter Name="PART_TextPresenter"
+                                               Margin="{TemplateBinding Padding}"
                                                Text="{TemplateBinding Text, Mode=TwoWay}"
                                                CaretBlinkInterval="{TemplateBinding CaretBlinkInterval}"
                                                CaretIndex="{TemplateBinding CaretIndex}"

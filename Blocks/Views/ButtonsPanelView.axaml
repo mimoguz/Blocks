@@ -35,31 +35,13 @@
                         <Style Selector="Separator.demo">
                             <Setter Property="Margin" Value="0,8" />
                         </Style>
-                        <Style Selector="Button.demo">
-                            <Setter Property="HorizontalAlignment" Value="Left" />
-                            <Setter Property="VerticalAlignment" Value="Top" />
-                            <Setter Property="IsEnabled" Value="{Binding AllEnabled}" />
-                        </Style>
-                        <Style Selector="RepeatButton.demo">
+                        <Style Selector=":is(Button), ComboBox">
                             <Setter Property="HorizontalAlignment" Value="Left" />
                             <Setter Property="VerticalAlignment" Value="Top" />
                             <Setter Property="IsEnabled" Value="{Binding AllEnabled}" />
                         </Style>
                         <Style Selector="ToggleButton.demo">
-                            <Setter Property="HorizontalAlignment" Value="Left" />
-                            <Setter Property="VerticalAlignment" Value="Top" />
-                            <Setter Property="IsEnabled" Value="{Binding AllEnabled}" />
                             <Setter Property="IsChecked" Value="{Binding AllChecked, Mode=TwoWay}" />
-                        </Style>
-                        <Style Selector="DropDownButton.demo">
-                            <Setter Property="HorizontalAlignment" Value="Left" />
-                            <Setter Property="VerticalAlignment" Value="Top" />
-                            <Setter Property="IsEnabled" Value="{Binding AllEnabled}" />
-                        </Style>
-                        <Style Selector="SplitButton.demo">
-                            <Setter Property="HorizontalAlignment" Value="Left" />
-                            <Setter Property="VerticalAlignment" Value="Top" />
-                            <Setter Property="IsEnabled" Value="{Binding AllEnabled}" />
                         </Style>
                     </StackPanel.Styles>
                     

@@ -3,7 +3,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:Blocks.ViewModels"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:sys="using:System"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="800"
              x:Class="Blocks.Views.InputsPanelView"
              x:DataType="vm:InputsPanelViewModel">
     <Design.DataContext>
@@ -69,53 +70,33 @@
                         <Style Selector="Separator.demo">
                             <Setter Property="Margin" Value="0,8" />
                         </Style>
-                        <Style Selector="CheckBox.demo">
+                        <Style Selector=":is(Control).demo">
                             <Setter Property="HorizontalAlignment" Value="Left" />
                             <Setter Property="VerticalAlignment" Value="Top" />
                             <Setter Property="IsEnabled" Value="{Binding AllEnabled}" />
+                        </Style>
+                        <Style Selector="CheckBox.demo">
                             <Setter Property="IsChecked" Value="{Binding AllChecked}" />
                             <Setter Property="IsThreeState" Value="True" />
                         </Style>
-                        <Style Selector="RadioButton.demo">
-                            <Setter Property="HorizontalAlignment" Value="Left" />
-                            <Setter Property="VerticalAlignment" Value="Top" />
-                            <Setter Property="IsEnabled" Value="{Binding AllEnabled}" />
-                        </Style>
                         <Style Selector="TextBox.demo">
-                            <Setter Property="HorizontalAlignment" Value="Left" />
-                            <Setter Property="VerticalAlignment" Value="Top" />
-                            <Setter Property="IsEnabled" Value="{Binding AllEnabled}" />
                             <Setter Property="Text" Value="{Binding Text, Mode=TwoWay}" />
                         </Style>
                         <Style Selector="NumericUpDown.demo">
-                            <Setter Property="HorizontalAlignment" Value="Left" />
-                            <Setter Property="VerticalAlignment" Value="Top" />
-                            <Setter Property="IsEnabled" Value="{Binding AllEnabled}" />
                             <Setter Property="Value" Value="{Binding CurrentDoubleValue, Mode=TwoWay}" />
                             <Setter Property="Minimum" Value="{Binding MinDoubleValue, Mode=OneTime}" />
                             <Setter Property="Maximum" Value="{Binding MaxDoubleValue, Mode=OneTime}" />
                             <Setter Property="Increment" Value="0.5" />
                         </Style>
                         <Style Selector="ComboBox.demo">
-                            <Setter Property="HorizontalAlignment" Value="Left" />
-                            <Setter Property="VerticalAlignment" Value="Top" />
-                            <Setter Property="IsEnabled" Value="{Binding AllEnabled}" />
-                            <Setter Property="ItemsSource" Value="{Binding StringValues}" />
-                        </Style>
-                        <Style Selector="ButtonSpinner.demo">
-                            <Setter Property="HorizontalAlignment" Value="Left" />
-                            <Setter Property="VerticalAlignment" Value="Top" />
                             <Setter Property="IsEnabled" Value="{Binding AllEnabled}" />
                         </Style>
                         <Style Selector="Slider.demo">
-                            <Setter Property="HorizontalAlignment" Value="Left" />
-                            <Setter Property="VerticalAlignment" Value="Top" />
-                            <Setter Property="IsEnabled" Value="{Binding AllEnabled}" />
                             <Setter Property="Value" Value="{Binding CurrentDoubleValue, Mode=TwoWay}" />
                             <Setter Property="Minimum" Value="{Binding MinDoubleValue, Mode=OneTime}" />
                             <Setter Property="Maximum" Value="{Binding MaxDoubleValue, Mode=OneTime}" />
                             <Setter Property="TickFrequency" Value="0.5" />
-                            <Setter Property="IsSnapToTickEnabled" Value="True"></Setter>
+                            <Setter Property="IsSnapToTickEnabled" Value="True" />
                         </Style>
                     </StackPanel.Styles>
                     
@@ -167,6 +148,36 @@
                         <RadioButton Classes="demo left-label">Left Label</RadioButton>
                         <RadioButton Classes="demo top-label">Top Label</RadioButton>
                         <RadioButton Classes="demo bottom-label">Bottom Label</RadioButton>
+                    </WrapPanel>
+                    
+                    <Separator Classes="demo" />
+                    
+                    <WrapPanel Classes="demo">
+                        <TextBox Classes="demo" Width="200" Watermark="Basic Text Box"/>
+                        <TextBox Classes="demo" Width="200" Watermark="Use Floating Watermark" UseFloatingWatermark="True"/>
+                        <TextBox Classes="demo clearButton" Width="200" Watermark="With Clear Button" />
+                        <TextBox Classes="demo revealPasswordButton" PasswordChar="*" Width="200" Watermark="Password" />
+                        
+                        <TextBox Watermark="Error" Width="200" VerticalAlignment="Top"
+                                 IsEnabled="{Binding AllEnabled}">
+                            <TextBox.Styles>
+                                <Style Selector="DataValidationErrors">
+                                    <Setter Property="Theme" Value="{StaticResource ExpandedDataValidationErrors}" />
+                                </Style>
+                            </TextBox.Styles>
+                            <DataValidationErrors.Error>
+                                <sys:Exception />
+                            </DataValidationErrors.Error>
+                            Expanded Error
+                        </TextBox>
+                        
+                        <TextBox Watermark="Error" Width="200" VerticalAlignment="Top"
+                                 IsEnabled="{Binding AllEnabled}">
+                            <DataValidationErrors.Error>
+                                <sys:Exception />
+                            </DataValidationErrors.Error>
+                            Tooltip Error (Default)
+                        </TextBox>
                     </WrapPanel>
                 </StackPanel>
             </ScrollViewer>

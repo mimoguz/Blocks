@@ -95,16 +95,16 @@
     <ControlTheme x:Key="BlockSliderThumbTheme" TargetType="Thumb">
         <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource BlockBasePrimaryBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource BlockBasePrimaryBrush}" />
-        <Setter Property="blk:Block.DrawFocus" Value="False" />
+        <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="Template">
             <ControlTemplate>
                 <Panel>
-                    <blk:BlockButton Background="{TemplateBinding Background}"
+                    <blk:BlockButton Name="ButtonBackground"
+                                     Background="{TemplateBinding Background}"
                                      BorderBrush="{TemplateBinding BorderBrush}"
                                      CornerRadius="999"
-                                     Focused="{TemplateBinding blk:Block.DrawFocus}"
-                                     Flat="True"/>
+                                     Focused="True"
+                                     Flat="True" />
                     <Ellipse Fill="{TemplateBinding Foreground}"
                              Width="{DynamicResource BlockSliderThumbDotDiameter}"
                              Height="{DynamicResource BlockSliderThumbDotDiameter}" />
@@ -119,13 +119,20 @@
         <Style Selector="^:pressed /template/ blk|BlockButton">
             <Setter Property="Shaded" Value="True" />
         </Style>
+
+        <Style Selector="^:focus-visible /template/ blk|BlockButton#ButtonBackground">
+            <Setter Property="Focused" Value="True" />
+        </Style>
     </ControlTheme>
 
     <ControlTheme x:Key="{x:Type Slider}" TargetType="Slider">
+
         <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource BlockBasePrimaryBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource BlockBasePrimaryBrush}"></Setter>
         <Setter Property="CornerRadius" Value="{DynamicResource BlockSliderTrackCornerRadius}" />
+        <Setter Property="Focusable" Value="True" />
+        <Setter Property="FocusAdorner" Value="{x:Null}" />
 
         <Style Selector="^:horizontal">
             <Setter Property="Template">
@@ -210,7 +217,7 @@
                                            Padding="0"
                                            Background="{TemplateBinding Background}"
                                            Foreground="{TemplateBinding Foreground}"
-                                           BorderBrush="{TemplateBinding BorderBrush}"
+                                           BorderBrush="Transparent"
                                            Theme="{StaticResource BlockSliderThumbTheme}"
                                            DataContext="{TemplateBinding Value}" />
                                 </Track>
@@ -220,7 +227,7 @@
                 </ControlTemplate>
             </Setter>
         </Style>
-        
+
         <Style Selector="^:vertical">
             <Setter Property="Template">
                 <ControlTemplate>
@@ -299,21 +306,34 @@
                                             Focusable="False" />
                                     </Track.IncreaseButton>
                                     <Thumb Name="SliderThumb"
-                                        Width="{DynamicResource BlockSliderThumbDiameter}"
-                                        Height="{DynamicResource BlockSliderThumbDiameter}"
-                                        Padding="0"
-                                        Background="{TemplateBinding Background}"
-                                        Foreground="{TemplateBinding Foreground}"
-                                        BorderBrush="{TemplateBinding BorderBrush}"
-                                        BorderThickness="0"
-                                        Theme="{StaticResource BlockSliderThumbTheme}"
-                                        DataContext="{TemplateBinding Value}" />
+                                           Width="{DynamicResource BlockSliderThumbDiameter}"
+                                           Height="{DynamicResource BlockSliderThumbDiameter}"
+                                           Padding="0"
+                                           Background="{TemplateBinding Background}"
+                                           Foreground="{TemplateBinding Foreground}"
+                                           BorderBrush="Transparent"
+                                           BorderThickness="0"
+                                           Theme="{StaticResource BlockSliderThumbTheme}"
+                                           DataContext="{TemplateBinding Value}" />
                                 </Track>
                             </Grid>
                         </Grid>
                     </DataValidationErrors>
                 </ControlTemplate>
             </Setter>
+        </Style>
+
+        <Style Selector="^:disabled /template/ Grid#SliderContainer">
+            <Setter Property="Opacity" Value="{DynamicResource BlockDisabledOpacity}" />
+        </Style>
+
+        <Style Selector="^:error">
+            <Setter Property="Foreground" Value="{DynamicResource BlockRedBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource BlockRedBrush}" />
+        </Style>
+
+        <Style Selector="^:focus-visible /template/ Thumb">
+            <Setter Property="BorderBrush" Value="{TemplateBinding BorderBrush}" />
         </Style>
 
         <!--  TickBar Placement States  -->
@@ -337,21 +357,5 @@
             Selector="^[TickPlacement=BottomRight] /template/ TickBar#RightTickBar, ^[TickPlacement=Outside] /template/ TickBar#RightTickBar">
             <Setter Property="IsVisible" Value="True" />
         </Style>
-
-
-        <!--  Disabled State  -->
-        <Style Selector="^:disabled /template/ Grid#SliderContainer">
-            <Setter Property="Opacity" Value="{DynamicResource BlockDisabledOpacity}" />
-        </Style>
-
-        <Style Selector="^:error">
-            <Setter Property="Foreground" Value="{DynamicResource BlockRedBrush}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource BlockRedBrush}" />
-        </Style>
-        
-        <Style Selector="^:focus-visible /template/ Thumb#SliderThumb">
-            <Setter Property="blk:Block.DrawFocus" Value="True" />
-        </Style>
-
     </ControlTheme>
 </ResourceDictionary>

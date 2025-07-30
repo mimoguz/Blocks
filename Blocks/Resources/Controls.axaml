@@ -22,5 +22,6 @@
         <ResourceInclude Source="Controls/Separator.axaml" />
         <ResourceInclude Source="Controls/NumericUpDown.axaml" />
         <ResourceInclude Source="Controls/Slider.axaml" />
+        <ResourceInclude Source="Controls/DataValidationErrors.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
