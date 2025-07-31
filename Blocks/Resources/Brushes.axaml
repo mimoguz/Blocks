@@ -21,6 +21,7 @@
     <SolidColorBrush x:Key="BlockTransparentSelectionBrush" Color="{DynamicResource BlockBasePrimaryColor}" Opacity="{DynamicResource BlockViewSelectionOpacity}"/>
     <SolidColorBrush x:Key="BlockTransparentShadeBrush" Color="{DynamicResource BlockBaseShadeColor}" Opacity="{DynamicResource BlockButtonShadeOpacity}" />
     <SolidColorBrush x:Key="BlockTransparentViewBackgroundBrush" Color="{DynamicResource BlockBaseViewBackgroundColor}" Opacity="{DynamicResource BlockViewBackgroundOpacity}"/>
+    <SolidColorBrush x:Key="BlockTransparentFlyoutBorderBrush" Color="{DynamicResource BlockBaseViewBorderColor}" Opacity="{DynamicResource BlockFlyoutBorderOpacity}"/>
 
     <!-- Foreground -->
     <SolidColorBrush x:Key="BlockButtonForegroundBrush" Color="{DynamicResource BlockButtonForegroundColor}" />

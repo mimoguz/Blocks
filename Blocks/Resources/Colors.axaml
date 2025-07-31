@@ -7,7 +7,7 @@
 
             <Color x:Key="BlockWindowBackgroundColor">#F7F7FF</Color>
             <Color x:Key="BlockRaisedBackgroundColor">#FAFAFF</Color>
-            <Color x:Key="BlockPaneBackgroundColor">#F0F0F8</Color>
+            <Color x:Key="BlockPaneBackgroundColor">#DEE0E9</Color>
             <Color x:Key="BlockBaseButtonBackgroundColor">#203045</Color>
             <Color x:Key="BlockBaseViewBackgroundColor">#203045</Color>
             <Color x:Key="BlockBaseDestructiveBackgroundColor">#FF3B3B</Color>
@@ -36,7 +36,7 @@
 
             <Color x:Key="BlockWindowBackgroundColor">#222226</Color>
             <Color x:Key="BlockRaisedBackgroundColor">#2E2E32</Color> 
-            <Color x:Key="BlockPaneBackgroundColor">#2E2E32</Color>
+            <Color x:Key="BlockPaneBackgroundColor">#353542</Color>
             <Color x:Key="BlockBaseButtonBackgroundColor">#DCDCDF</Color>
             <Color x:Key="BlockBaseViewBackgroundColor">#DCDCDF</Color>
             <Color x:Key="BlockBaseDestructiveBackgroundColor">#FF8080</Color>

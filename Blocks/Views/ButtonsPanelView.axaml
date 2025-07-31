@@ -306,6 +306,34 @@
                             Drop Down - Right
                         </DropDownButton>
                     </StackPanel>
+                    
+                    <Separator Classes="demo" />
+                    
+                    <WrapPanel Classes="demo">
+                        <Expander ExpandDirection="Up" Header="Expand Up" VerticalAlignment="Top">
+                            <Border Padding="9" Background="{DynamicResource BlockRaisedBackgroundBrush}">
+                                <TextBlock>Expanded content</TextBlock>
+                            </Border>
+                        </Expander>
+                        <Expander ExpandDirection="Down" Header="Expand Down" VerticalAlignment="Top"
+                                  Classes="flat">
+                            <Border Padding="9" Background="{DynamicResource BlockRaisedBackgroundBrush}">
+                                <TextBlock>Expanded content</TextBlock>
+                            </Border>
+                        </Expander>
+                        <Expander ExpandDirection="Left" Header="Expand Left" VerticalAlignment="Top">
+                            <Border Padding="9" Background="{DynamicResource BlockRaisedBackgroundBrush}">
+                                <TextBlock VerticalAlignment="Center">Expanded content</TextBlock>
+                            </Border>
+                        </Expander>
+                        <Expander ExpandDirection="Right" Header="Expand Right" VerticalAlignment="Top"
+                                  Background="{DynamicResource BlockBaseSecondaryBrush}"
+                                  Foreground="{DynamicResource BlockOnSecondaryBrush}">
+                            <Border Padding="9" Background="{DynamicResource BlockRaisedBackgroundBrush}">
+                                <TextBlock VerticalAlignment="Center" Foreground="{DynamicResource BlockWindowForegroundBrush}">Expanded content</TextBlock>
+                            </Border>
+                        </Expander>
+                    </WrapPanel>
                 </StackPanel>
             </ScrollViewer>
         </DockPanel>
