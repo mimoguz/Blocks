@@ -56,21 +56,18 @@
                       OffsetX="0" OffsetY="4" />
     <Thickness x:Key="BlockPopupShadowMargin">12,8,12,16</Thickness>
     <sys:Double x:Key="BlockPopupWidthFix">24</sys:Double>
-    
-    <DropShadowEffect x:Key="BlockExpanderDropShadow"
-                      Color="Black"
-                      Opacity="0.333"
-                      BlurRadius="2"
-                      OffsetX="0" OffsetY="1" />
-    <DropShadowEffect x:Key="BlockExpanderHighlightDropShadow"
-                      Color="Black"
-                      Opacity="0.5"
-                      BlurRadius="3"
-                      OffsetX="0" OffsetY="1" />
-    <Thickness x:Key="BlockExpanderShadowMargin">3,1,3,4</Thickness>
-    
+
+
     <ResourceDictionary.ThemeDictionaries>
         <ResourceDictionary x:Key="Default">
+
+            <Thickness x:Key="BlockExpanderShadowMargin">2,1,2,3</Thickness>
+            <DropShadowEffect x:Key="BlockExpanderDropShadow"
+                              Color="Black"
+                              Opacity="0.333"
+                              BlurRadius="2"
+                              OffsetX="0" OffsetY="1" />
+
             <!-- *************************************** -->
             <!-- ************** Opacities ************** -->
             <!-- *************************************** -->
@@ -98,7 +95,7 @@
             <sys:Double x:Key="BlockViewBorderHighlightOpacity">0.30</sys:Double>
             <sys:Double x:Key="BlockViewErrorBorderHighlightOpacity">1</sys:Double>
             <sys:Double x:Key="BlockSliderTrackHighlightOpacity">0.88</sys:Double>
-            
+
             <!-- Shade -->
             <sys:Double x:Key="BlockButtonShadeOpacity">0.28</sys:Double>
             <sys:Double x:Key="BlockScrollBarPageButtonShadeOpacity">0.12</sys:Double>
@@ -109,8 +106,15 @@
             <sys:Double x:Key="BlockPlaceholderOpacity">0.6</sys:Double>
             <sys:Double x:Key="BlockViewSelectionOpacity">0.2</sys:Double>
         </ResourceDictionary>
-        
+
         <ResourceDictionary x:Key="Dark">
+            <Thickness x:Key="BlockExpanderShadowMargin">2,1,2,3</Thickness>
+            <DropShadowEffect x:Key="BlockExpanderDropShadow"
+                              Color="Black"
+                              Opacity="0.6"
+                              BlurRadius="2"
+                              OffsetX="0" OffsetY="1" />
+            
             <!-- *************************************** -->
             <!-- ************** Opacities ************** -->
             <!-- *************************************** -->
@@ -138,7 +142,7 @@
             <sys:Double x:Key="BlockViewBorderHighlightOpacity">0.35</sys:Double>
             <sys:Double x:Key="BlockViewErrorBorderHighlightOpacity">1</sys:Double>
             <sys:Double x:Key="BlockSliderTrackHighlightOpacity">0.88</sys:Double>
-            
+
             <!-- Shade -->
             <sys:Double x:Key="BlockButtonShadeOpacity">0.40</sys:Double>
             <sys:Double x:Key="BlockScrollBarPageButtonShadeOpacity">0.15</sys:Double>

@@ -35,7 +35,7 @@
                         <Style Selector="Separator.demo">
                             <Setter Property="Margin" Value="0,8" />
                         </Style>
-                        <Style Selector=":is(Button), ComboBox">
+                        <Style Selector=":is(Control).demo">
                             <Setter Property="HorizontalAlignment" Value="Left" />
                             <Setter Property="VerticalAlignment" Value="Top" />
                             <Setter Property="IsEnabled" Value="{Binding AllEnabled}" />
@@ -250,6 +250,7 @@
                             Basic Split Button
                         </SplitButton>
                         <SplitButton blk:Block.MenuIconStyle="Burger"
+                                     blk:Block.ActiveIconForeground="DeepPink"
                                      IsTabStop="False"
                                      Classes="demo">
                             <SplitButton.Flyout>
@@ -310,27 +311,41 @@
                     <Separator Classes="demo" />
                     
                     <WrapPanel Classes="demo">
-                        <Expander ExpandDirection="Up" Header="Expand Up" VerticalAlignment="Top">
+                        
+                        <Expander ExpandDirection="Up" Header="Expand Up" VerticalAlignment="Top" Classes="demo">
                             <Border Padding="9" Background="{DynamicResource BlockRaisedBackgroundBrush}">
                                 <TextBlock>Expanded content</TextBlock>
                             </Border>
                         </Expander>
-                        <Expander ExpandDirection="Down" Header="Expand Down" VerticalAlignment="Top"
-                                  Classes="flat">
+                        
+                        <Expander ExpandDirection="Down" Header="Expand Down - Flat" 
+                                  VerticalAlignment="Top"
+                                  Classes="demo flat">
                             <Border Padding="9" Background="{DynamicResource BlockRaisedBackgroundBrush}">
                                 <TextBlock>Expanded content</TextBlock>
                             </Border>
                         </Expander>
-                        <Expander ExpandDirection="Left" Header="Expand Left" VerticalAlignment="Top">
+                        
+                        <Expander ExpandDirection="Left" 
+                                  Header="Expand Left" 
+                                  VerticalAlignment="Top"
+                                  Classes="demo">
                             <Border Padding="9" Background="{DynamicResource BlockRaisedBackgroundBrush}">
                                 <TextBlock VerticalAlignment="Center">Expanded content</TextBlock>
                             </Border>
                         </Expander>
-                        <Expander ExpandDirection="Right" Header="Expand Right" VerticalAlignment="Top"
-                                  Background="{DynamicResource BlockBaseSecondaryBrush}"
-                                  Foreground="{DynamicResource BlockOnSecondaryBrush}">
-                            <Border Padding="9" Background="{DynamicResource BlockRaisedBackgroundBrush}">
-                                <TextBlock VerticalAlignment="Center" Foreground="{DynamicResource BlockWindowForegroundBrush}">Expanded content</TextBlock>
+                        
+                        <Expander ExpandDirection="Right" Header="Expand Right - Custom Colors" VerticalAlignment="Top"
+                                  Background="LightGreen"
+                                  Foreground="SeaGreen"
+                                  blk:Block.ButtonBackground="DarkGreen"
+                                  blk:Block.ActiveIconForeground="LightYellow"
+                                  BorderBrush="LightGreen"
+                                  Classes="demo">
+                            <Border Padding="9" Background="LemonChiffon">
+                                <TextBlock VerticalAlignment="Center" Foreground="Indigo">
+                                    Expanded content
+                                </TextBlock>
                             </Border>
                         </Expander>
                     </WrapPanel>

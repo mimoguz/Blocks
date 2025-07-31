@@ -13,7 +13,7 @@
                     </DropDownButton.Flyout>
                     Drop-down button
                 </DropDownButton>
-                <DropDownButton VerticalAlignment="Top" Classes="menu-button flat">
+                <DropDownButton VerticalAlignment="Top" Classes="menu-button flat" blk:Block.ActiveIconForeground="DeepPink">
                     <DropDownButton.Flyout>
                         <Flyout>
                             <TextBlock Margin="10">Flyout</TextBlock>
@@ -30,13 +30,13 @@
         
         <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource BlockButtonForegroundBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource BlockBasePrimaryBrush}" />
         <Setter Property="Padding" Value="{DynamicResource BlockButtonPadding}" />
         <Setter Property="CornerRadius" Value="{DynamicResource BlockButtonCornerRadius}" />
         <Setter Property="FontWeight" Value="{DynamicResource BlockButtonFontWeight}" />
         <Setter Property="MinWidth" Value="{DynamicResource BlockMinButtonSize}" />
         <Setter Property="MinHeight" Value="{DynamicResource BlockMinButtonSize}" />
         <Setter Property="blk:Block.MenuIconStyle" Value="Chevron" />
+        <Setter Property="blk:Block.ActiveIconForeground" Value="{DynamicResource BlockBasePrimaryBrush}" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="FocusAdorner" Value="{x:Null}" />
@@ -52,7 +52,7 @@
                         <blk:AnimatedMenuIcon Name="MenuIcon"
                                               Grid.Column="1"
                                               Foreground="{TemplateBinding Foreground}"
-                                              BorderBrush="{TemplateBinding BorderBrush}"
+                                              BorderBrush="{TemplateBinding blk:Block.ActiveIconForeground}"
                                               Margin="0,0,8,0"
                                               MenuIconStyle="{TemplateBinding blk:Block.MenuIconStyle}" />
                         <ContentPresenter Name="PART_ContentPresenter"

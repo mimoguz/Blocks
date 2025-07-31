@@ -5,7 +5,7 @@
         <Border Padding="20">
             <StackPanel Orientation="Vertical" Spacing="20" Width="350" Height="600">
                 <Expander ExpandDirection="Up" Header="Expand Up">
-                    <Border Padding="8" Background="{DynamicResource BlockWindowBackgroundColor}">
+                    <Border Padding="16" Background="{DynamicResource BlockWindowBackgroundColor}">
                         <TextBlock>Expanded content</TextBlock>
                     </Border>
                 </Expander>
@@ -19,9 +19,15 @@
                         <TextBlock VerticalAlignment="Center">Expanded content</TextBlock>
                     </Border>
                 </Expander>
-                <Expander ExpandDirection="Right" Header="Expand Right" Background="DeepPink">
+                <Expander ExpandDirection="Right" Header="Expand Right"
+                          Background="HotPink"
+                          blk:Block.ButtonBackground="Crimson"
+                          Foreground="White"
+                          blk:Block.ActiveIconForeground="DeepPink">
                     <Border Padding="8" Background="{DynamicResource BlockWindowBackgroundColor}">
-                        <TextBlock VerticalAlignment="Center">Expanded content</TextBlock>
+                        <TextBlock VerticalAlignment="Center" Foreground="{DynamicResource BlockWindowForegroundBrush}">
+                            Expanded content
+                        </TextBlock>
                     </Border>
                 </Expander>
                 <Expander ExpandDirection="Up" Classes="flat">
@@ -35,11 +41,9 @@
                         <TextBlock>Expanded content</TextBlock>
                     </Border>
                 </Expander>
-                <Expander ExpandDirection="Up" Header="Rounded" CornerRadius="25">
-                    <Border Padding="8" Background="{DynamicResource BlockWindowBackgroundColor}">
-                        <TextBlock>Expanded content</TextBlock>
-                    </Border>
-                </Expander>
+                <ToggleButton Theme="{DynamicResource BlockExpanderToggleButtonLeftTheme}">
+                    Toggle Left
+                </ToggleButton>
             </StackPanel>
         </Border>
     </Design.PreviewWith>
@@ -64,43 +68,47 @@
     <Thickness x:Key="ExpanderContentDownBorderThickness">1,0,1,1</Thickness>
 
     <ControlTheme x:Key="BlockExpanderToggleButtonTheme" TargetType="ToggleButton">
-        
+
         <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource BlockWindowForegroundBrush}" />
         <Setter Property="Padding" Value="{DynamicResource BlockExpanderHeaderPadding}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource BlockButtonCornerRadius}" />
+        <Setter Property="blk:Block.ActiveIconForeground" Value="{DynamicResource BlockBasePrimaryBrush}" />
         <Setter Property="blk:Block.Gap" Value="8"></Setter>
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
-        
+
         <Setter Property="Template">
             <ControlTemplate>
-                <Border x:Name="ToggleButtonBackground" Background="Transparent">
+                <Panel Name="BaseContainer">
+                    <blk:BlockButton Name="ButtonBackground"
+                                     CornerRadius="{TemplateBinding CornerRadius}"
+                                     Background="{TemplateBinding Background}"
+                                     Flat="True"
+                                     HorizontalAlignment="Stretch"
+                                     VerticalAlignment="Stretch"/>
+
                     <Grid x:Name="ToggleButtonGrid"
                           ColumnDefinitions="Auto,*" VerticalAlignment="Center"
                           Margin="{TemplateBinding Padding}">
 
-                        <Panel Grid.Column="0" VerticalAlignment="Center">
-                            <blk:BlockButton Name="ChevronBackground"
-                                             CornerRadius="999"
-                                             Background="{TemplateBinding Background}"
-                                             Flat="True" />
-                            <Decorator Margin="4">
-                                <PathIcon Name="ExpandCollapseChevron"
-                                          Foreground="{TemplateBinding Foreground}">
-                                    <PathIcon.Transitions>
-                                        <Transitions>
-                                            <TransformOperationsTransition Property="RenderTransform"
-                                                                           Duration="{DynamicResource BlockLongStateTransitionDuration}"
-                                                                           Easing="CubicEaseOut" />
-                                            <BrushTransition Property="Foreground"
-                                                             Duration="{DynamicResource BlockLongStateTransitionDuration}"
-                                                             Easing="CubicEaseOut" />
-                                        </Transitions>
-                                    </PathIcon.Transitions>
-                                </PathIcon>
-                            </Decorator>
-                        </Panel>
+                        <PathIcon Name="ExpandCollapseChevron"
+                                  Grid.Column="0"
+                                  Foreground="{TemplateBinding Foreground}"
+                                  Margin="4">
+                            <PathIcon.Transitions>
+                                <Transitions>
+                                    <TransformOperationsTransition Property="RenderTransform"
+                                                                   Duration="{DynamicResource BlockLongStateTransitionDuration}"
+                                                                   Easing="CubicEaseOut" />
+                                    <BrushTransition Property="Foreground"
+                                                     Duration="{DynamicResource BlockLongStateTransitionDuration}"
+                                                     Easing="CubicEaseOut" />
+                                </Transitions>
+                            </PathIcon.Transitions>
+                        </PathIcon>
+
                         <ContentPresenter x:Name="PART_ContentPresenter"
                                           Grid.Column="1"
                                           Margin="{TemplateBinding blk:Block.Gap, 
@@ -112,25 +120,39 @@
                                           Foreground="{TemplateBinding Foreground}"
                                           FontWeight="{TemplateBinding FontWeight}" />
                     </Grid>
-                </Border>
+                </Panel>
             </ControlTemplate>
         </Setter>
 
-        <Style Selector="^:pointerover /template/ blk|BlockButton#ChevronBackground">
+        <Setter Property="Transitions">
+            <Setter.Value>
+                <Transitions>
+                    <CornerRadiusTransition Property="CornerRadius"
+                                            Duration="{DynamicResource BlockLongStateTransitionDuration}"
+                                            Easing="CubicEaseOut" />
+                </Transitions>
+            </Setter.Value>
+        </Setter>
+
+        <Style Selector="^:pointerover  /template/ blk|BlockButton#ButtonBackground">
             <Setter Property="Highlighted" Value="True" />
         </Style>
 
-        <Style Selector="^:pressed /template/ blk|BlockButton#ChevronBackground">
+        <Style Selector="^:pressed /template/ blk|BlockButton#ButtonBackground">
             <Setter Property="Shaded" Value="True" />
         </Style>
+        
+        <Style Selector="^:disabled /template/ Panel#BaseContainer">
+            <Setter Property="Opacity" Value="{DynamicResource BlockDisabledOpacity}" />
+        </Style>
 
-        <Style Selector="^:focus-visible /template/ blk|BlockButton#ChevronBackground">
+        <Style Selector="^:focus-visible /template/ blk|BlockButton#ButtonBackground">
             <Setter Property="Focused" Value="True" />
         </Style>
 
         <Style Selector="^[Tag=expanded] /template/ PathIcon#ExpandCollapseChevron">
             <Setter Property="RenderTransform" Value="rotate(-180deg)" />
-            <Setter Property="Foreground" Value="{DynamicResource BlockBasePrimaryBrush}" />
+            <Setter Property="Foreground" Value="{TemplateBinding blk:Block.ActiveIconForeground}" />
         </Style>
     </ControlTheme>
 
@@ -167,14 +189,15 @@
         <Setter Property="IsTabStop" Value="False" />
         <Setter Property="MinHeight" Value="{DynamicResource BlockMinButtonSize}" />
         <Setter Property="Background" Value="{DynamicResource BlockRaisedBackgroundBrush}" />
-        <Setter Property="Padding" Value="{DynamicResource ExpanderContentPadding}" />
+        <Setter Property="blk:Block.ActiveIconForeground" Value="{DynamicResource BlockBasePrimaryBrush}" />
+        <Setter Property="blk:Block.ButtonBackground" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
+        <Setter Property="Padding" Value="{DynamicResource BlockExpanderHeaderPadding}" />
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="CornerRadius" Value="{DynamicResource BlockViewCornerRadius}" />
         <Setter Property="FontWeight" Value="{DynamicResource BlockButtonFontWeight}" />
-        <Setter Property="BorderBrush"  Value="{DynamicResource BlockTransparentFlyoutBorderBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource BlockTransparentFlyoutBorderBrush}" />
         <Setter Property="BorderThickness" Value="{DynamicResource BlockControlBorderThickness}" />
-        
 
         <Setter Property="Template">
             <ControlTemplate>
@@ -189,26 +212,25 @@
                                               Easing="CubicEaseOut" />
                         </Transitions>
                     </Border.Transitions>
-                    <Panel>
 
+                    <Panel>
                         <Border CornerRadius="{TemplateBinding CornerRadius}"
                                 Background="{TemplateBinding Background}"
                                 ClipToBounds="True">
                             <Panel MinHeight="{TemplateBinding MinHeight}">
-                                <blk:BlockView Name="ExpanderBackground"
-                                               Background="Transparent"
-                                               BorderThickness="{TemplateBinding BorderThickness}"
-                                               BorderBrush="{TemplateBinding BorderBrush}" />
                                 <DockPanel MinWidth="{TemplateBinding MinWidth}"
                                            MaxWidth="{TemplateBinding MaxWidth}">
                                     <ToggleButton x:Name="ExpanderHeader"
+                                                  Padding="{TemplateBinding Padding}"
                                                   MinHeight="{TemplateBinding MinHeight}"
                                                   IsEnabled="{TemplateBinding IsEnabled}"
                                                   Content="{TemplateBinding Header}"
                                                   ContentTemplate="{TemplateBinding HeaderTemplate}"
                                                   IsChecked="{TemplateBinding IsExpanded, Mode=TwoWay}"
                                                   FontWeight="{TemplateBinding FontWeight}"
-                                                  Foreground="{TemplateBinding Foreground}" />
+                                                  Foreground="{TemplateBinding Foreground}"
+                                                  Background="{TemplateBinding blk:Block.ButtonBackground}"
+                                                  blk:Block.ActiveIconForeground="{TemplateBinding blk:Block.ActiveIconForeground}" />
                                     <Border x:Name="ExpanderContent"
                                             IsVisible="{TemplateBinding IsExpanded, Mode=TwoWay}"
                                             HorizontalAlignment="Stretch"
@@ -230,7 +252,7 @@
                         </Border>
                         <Border BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="{TemplateBinding CornerRadius}"/>
+                                CornerRadius="{TemplateBinding CornerRadius}" />
                     </Panel>
                 </Border>
             </ControlTemplate>
@@ -249,15 +271,19 @@
         </Style>
         <Style Selector="^:left /template/ ToggleButton#ExpanderHeader">
             <Setter Property="DockPanel.Dock" Value="Right" />
+            <Setter Property="VerticalAlignment" Value="Stretch" />
         </Style>
         <Style Selector="^:up /template/ ToggleButton#ExpanderHeader">
             <Setter Property="DockPanel.Dock" Value="Bottom" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
         </Style>
         <Style Selector="^:right /template/ ToggleButton#ExpanderHeader">
             <Setter Property="DockPanel.Dock" Value="Left" />
+            <Setter Property="VerticalAlignment" Value="Stretch" />
         </Style>
         <Style Selector="^:down /template/ ToggleButton#ExpanderHeader">
             <Setter Property="DockPanel.Dock" Value="Top" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
         </Style>
 
         <Style Selector="^:left /template/ ToggleButton#ExpanderHeader">
@@ -271,6 +297,26 @@
         </Style>
         <Style Selector="^:down /template/ ToggleButton#ExpanderHeader">
             <Setter Property="Theme" Value="{DynamicResource BlockExpanderToggleButtonDownTheme}" />
+        </Style>
+
+        <Style Selector="^[IsExpanded=True]:left /template/ ToggleButton#ExpanderHeader">
+            <Setter Property="CornerRadius"
+                    Value="{TemplateBinding CornerRadius, Converter={StaticResource RightRadius}}" />
+        </Style>
+        <Style Selector="^[IsExpanded=True]:up /template/ ToggleButton#ExpanderHeader">
+            <Setter Property="CornerRadius"
+                    Value="{TemplateBinding CornerRadius, Converter={StaticResource BottomRadius}}" />
+
+        </Style>
+        <Style Selector="^[IsExpanded=True]:right /template/ ToggleButton#ExpanderHeader">
+            <Setter Property="CornerRadius"
+                    Value="{TemplateBinding CornerRadius, Converter={StaticResource LeftRadius}}" />
+
+        </Style>
+        <Style Selector="^[IsExpanded=True]:down /template/ ToggleButton#ExpanderHeader">
+            <Setter Property="CornerRadius"
+                    Value="{TemplateBinding CornerRadius, Converter={StaticResource TopRadius}}" />
+
         </Style>
 
         <Style Selector="^:left /template/ Border#ExpanderContent">
@@ -289,10 +335,6 @@
         <Style Selector="^.flat /template/ Border#ShadowBorder">
             <Setter Property="Margin" Value="0" />
             <Setter Property="Effect" Value="{x:Null}" />
-        </Style>
-        
-        <Style Selector="^:not(.flat):pointerover /template/ Border#ShadowBorder">
-            <Setter Property="Effect" Value="{DynamicResource BlockExpanderHighlightDropShadow}" />
         </Style>
     </ControlTheme>
 </ResourceDictionary>

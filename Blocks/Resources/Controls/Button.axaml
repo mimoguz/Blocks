@@ -104,6 +104,13 @@
             </Style>
             <Setter Property="Foreground" Value="{DynamicResource BlockFlatButtonForegroundBrush}" />
         </Style>
+        
+        <Style Selector="^[(blk|Block.IsFlat)=True]">
+            <Style Selector="^ /template/ blk|BlockButton#ButtonBackground">
+                <Setter Property="Flat" Value="True" />
+            </Style>
+            <Setter Property="Foreground" Value="{DynamicResource BlockFlatButtonForegroundBrush}" />
+        </Style>
 
         <Style Selector="^.pill-left /template/ blk|BlockButton#ButtonBackground">
             <Setter Property="CornerRadius"
