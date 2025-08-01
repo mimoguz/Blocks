@@ -4,7 +4,7 @@
     <ControlTheme x:Key="{x:Type MenuFlyoutPresenter}" TargetType="MenuFlyoutPresenter">
         
         <Setter Property="Background" Value="{DynamicResource BlockRaisedBackgroundBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource BlockBaseViewBorderBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BlockTransparentFlyoutBorderBrush}" />
         <Setter Property="BorderThickness" Value="{DynamicResource BlockControlBorderThickness}" />
         <Setter Property="Padding" Value="{DynamicResource BlockFlyoutPadding}" />
         <Setter Property="MaxWidth" Value="{DynamicResource BlockMaxFlyoutWidth}" />
@@ -17,20 +17,11 @@
             <ControlTemplate>
                 <Panel>
                     <Border x:Name="PopupBorder"
-                            BorderBrush="{DynamicResource BlockBaseViewBorderBrush}"
-                            BorderThickness="{DynamicResource BlockFlyoutBorderThickness}"
-                            Opacity="{DynamicResource BlockFlyoutBorderOpacity}"
-                            CornerRadius="{DynamicResource BlockFlyoutCornerRadius}" />
-                    <Border Name="BoxBackground"
-                            Margin="{DynamicResource BlockFlyoutBorderThickness}"
-                            Background="{DynamicResource BlockRaisedBackgroundBrush}"
-                            Padding="{DynamicResource BlockFlyoutPadding}">
-                        <Border.CornerRadius>
-                            <MultiBinding Converter="{StaticResource InnerRadius}">
-                                <DynamicResource ResourceKey="BlockFlyoutCornerRadius" />
-                                <DynamicResource ResourceKey="BlockFlyoutBorderThickness" />
-                            </MultiBinding>
-                        </Border.CornerRadius>
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}" 
+                            Background="{TemplateBinding Background}"
+                            Padding="{TemplateBinding Padding}">
                         <ScrollViewer
                             HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
                             VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}"

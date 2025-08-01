@@ -23,6 +23,7 @@
     </Design.PreviewWith>
 
     <ControlTheme x:Key="{x:Type AutoCompleteBox}" TargetType="AutoCompleteBox">
+        
         <Setter Property="VerticalAlignment" Value="Top" />
         <Setter Property="Foreground" Value="{DynamicResource BlockWindowForegroundBrush}" />
         <Setter Property="Background" Value="{DynamicResource BlockBaseViewBackgroundBrush}" />
@@ -31,6 +32,7 @@
         <Setter Property="CornerRadius" Value="{DynamicResource BlockViewCornerRadius}" />
         <Setter Property="Padding" Value="{DynamicResource BlockInputPadding}" />
         <Setter Property="MaxDropDownHeight" Value="{DynamicResource BlockMaxDropDownHeight}" />
+        
         <Setter Property="Template">
             <ControlTemplate>
                 <Grid Name="PART_LayoutRoot">
@@ -49,6 +51,7 @@
                              MaxLength="{TemplateBinding MaxLength}"
                              InnerLeftContent="{TemplateBinding InnerLeftContent}"
                              InnerRightContent="{TemplateBinding InnerRightContent}" />
+                    
                     <Popup Name="PART_Popup"
                            WindowManagerAddShadowHint="False"
                            MaxHeight="{TemplateBinding MaxDropDownHeight}"
@@ -60,29 +63,18 @@
                                 <DynamicResource ResourceKey="BlockPopupWidthFix" />
                             </MultiBinding>
                         </Popup.MinWidth>
-                        <Panel>
-                            <Border x:Name="PopupBorder"
-                                    BorderBrush="{DynamicResource BlockBaseViewBorderBrush}"
-                                    BorderThickness="{DynamicResource BlockFlyoutBorderThickness}"
-                                    Opacity="{DynamicResource BlockFlyoutBorderOpacity}"
-                                    CornerRadius="{DynamicResource BlockFlyoutCornerRadius}" />
-                            <Border Name="BoxBackground"
-                                    Margin="{DynamicResource BlockFlyoutBorderThickness}"
-                                    Background="{DynamicResource BlockRaisedBackgroundBrush}"
-                                    Padding="{DynamicResource BlockFlyoutPadding}">
-                                <Border.CornerRadius>
-                                    <MultiBinding Converter="{StaticResource InnerRadius}">
-                                        <DynamicResource ResourceKey="BlockFlyoutCornerRadius" />
-                                        <DynamicResource ResourceKey="BlockFlyoutBorderThickness" />
-                                    </MultiBinding>
-                                </Border.CornerRadius>
-                                <ListBox Name="PART_SelectingItemsControl"
-                                         BorderThickness="0"
-                                         Background="Transparent"
-                                         ItemTemplate="{TemplateBinding ItemTemplate}"
-                                         Margin="{DynamicResource AutoCompleteListPadding}" />
-                            </Border>
-                        </Panel>
+                        <Border x:Name="PopupBorder"
+                                BorderBrush="{DynamicResource BlockTransparentFlyoutBorderBrush}"
+                                BorderThickness="{DynamicResource BlockFlyoutBorderThickness}"
+                                Background="{DynamicResource BlockRaisedBackgroundBrush}"
+                                Padding="{DynamicResource BlockFlyoutPadding}"
+                                CornerRadius="{TemplateBinding CornerRadius}">
+                            <ListBox Name="PART_SelectingItemsControl"
+                                     BorderThickness="0"
+                                     Background="Transparent"
+                                     ItemTemplate="{TemplateBinding ItemTemplate}"
+                                     Margin="{DynamicResource AutoCompleteListPadding}" />
+                        </Border>
                     </Popup>
                 </Grid>
             </ControlTemplate>

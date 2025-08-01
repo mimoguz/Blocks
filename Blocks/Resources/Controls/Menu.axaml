@@ -48,32 +48,21 @@
                            HorizontalOffset="{DynamicResource BlockPopupPlacementFix}"
                            IsLightDismissEnabled="False"
                            IsOpen="{TemplateBinding IsSubMenuOpen, Mode=TwoWay}">
-                        <Panel>
-                            <Border x:Name="PopupBorder"
-                                    BorderBrush="{DynamicResource BlockBaseViewBorderBrush}"
-                                    BorderThickness="{DynamicResource BlockFlyoutBorderThickness}"
-                                    Opacity="{DynamicResource BlockFlyoutBorderOpacity}"
-                                    CornerRadius="{DynamicResource BlockFlyoutCornerRadius}" />
-                            <Border Name="BoxBackground"
-                                    Margin="{DynamicResource BlockFlyoutBorderThickness}"
-                                    Background="{DynamicResource BlockRaisedBackgroundBrush}"
-                                    Padding="{DynamicResource BlockFlyoutPadding}">
-                                <Border.CornerRadius>
-                                    <MultiBinding Converter="{StaticResource InnerRadius}">
-                                        <DynamicResource ResourceKey="BlockFlyoutCornerRadius" />
-                                        <DynamicResource ResourceKey="BlockFlyoutBorderThickness" />
-                                    </MultiBinding>
-                                </Border.CornerRadius>
-                                <ScrollViewer
-                                    HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
-                                    VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}"
-                                    IsDeferredScrollingEnabled="{TemplateBinding (ScrollViewer.IsDeferredScrollingEnabled)}">
-                                    <ItemsPresenter Name="PART_ItemsPresenter"
-                                                    ItemsPanel="{TemplateBinding ItemsPanel}"
-                                                    Grid.IsSharedSizeScope="True" />
-                                </ScrollViewer>
-                            </Border>
-                        </Panel>
+                        <Border x:Name="PopupBorder"
+                                BorderBrush="{DynamicResource BlockTransparentFlyoutBorderBrush}"
+                                BorderThickness="{DynamicResource BlockFlyoutBorderThickness}"
+                                CornerRadius="{DynamicResource BlockFlyoutCornerRadius}"
+                                Background="{DynamicResource BlockRaisedBackgroundBrush}"
+                                Padding="{DynamicResource BlockFlyoutPadding}">
+                            <ScrollViewer
+                                HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
+                                VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}"
+                                IsDeferredScrollingEnabled="{TemplateBinding (ScrollViewer.IsDeferredScrollingEnabled)}">
+                                <ItemsPresenter Name="PART_ItemsPresenter"
+                                                ItemsPanel="{TemplateBinding ItemsPanel}"
+                                                Grid.IsSharedSizeScope="True" />
+                            </ScrollViewer>
+                        </Border>
                     </Popup>
                 </Panel>
             </ControlTemplate>
