@@ -148,7 +148,8 @@
                                 BorderThickness="{DynamicResource BlockFlyoutBorderThickness}"
                                 CornerRadius="{DynamicResource BlockFlyoutCornerRadius}"
                                 Background="{DynamicResource BlockRaisedBackgroundBrush}"
-                                Padding="{DynamicResource BlockFlyoutPadding}" >
+                                Padding="{DynamicResource BlockFlyoutPadding}"
+                                ClipToBounds="True">
                             <ScrollViewer
                                 HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
                                 VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}"
@@ -168,7 +169,7 @@
                 <StackPanel Spacing="{DynamicResource BlockMenuItemSpacing}" />
             </ItemsPanelTemplate>
         </Setter>
-        
+
         <Style Selector="^:icon /template/ ContentControl#PART_IconPresenter">
             <Setter Property="IsVisible" Value="True" />
         </Style>

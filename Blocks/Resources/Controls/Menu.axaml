@@ -53,7 +53,8 @@
                                 BorderThickness="{DynamicResource BlockFlyoutBorderThickness}"
                                 CornerRadius="{DynamicResource BlockFlyoutCornerRadius}"
                                 Background="{DynamicResource BlockRaisedBackgroundBrush}"
-                                Padding="{DynamicResource BlockFlyoutPadding}">
+                                Padding="{DynamicResource BlockFlyoutPadding}"
+                                ClipToBounds="True">
                             <ScrollViewer
                                 HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
                                 VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}"
