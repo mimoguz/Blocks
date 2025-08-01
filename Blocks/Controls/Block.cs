@@ -15,6 +15,7 @@ public abstract class Block : AvaloniaObject
     public static readonly AttachedProperty<ScrollBarVisibility> ScrollBarVisibilityProperty = AvaloniaProperty.RegisterAttached<Block, Control, ScrollBarVisibility>("ScrollBarVisibility");
     public static readonly AttachedProperty<bool> DrawFocusProperty = AvaloniaProperty.RegisterAttached<Block, Control, bool>("DrawFocus");
     public static readonly AttachedProperty<bool> IsFlatProperty = AvaloniaProperty.RegisterAttached<Block, Control, bool>("IsFlat");
+    public static readonly AttachedProperty<bool> ShowClearButtonProperty = AvaloniaProperty.RegisterAttached<Block, Control, bool>("ShowClearButton");
     public static readonly AttachedProperty<IBrush?> ButtonBackgroundProperty = AvaloniaProperty.RegisterAttached<Block, Control, IBrush?>("ButtonBackground");
     public static readonly AttachedProperty<IBrush?> ActiveIconForegroundProperty = AvaloniaProperty.RegisterAttached<Block, Control, IBrush?>("ActiveIconForeground");
     
@@ -41,7 +42,9 @@ public abstract class Block : AvaloniaObject
     
     public static bool GetIsFlat(Control control) => control.GetValue(IsFlatProperty);
     public static void SetIsFlat(Control control, bool value) => control.SetValue(IsFlatProperty, value);
-
+    
+    public static bool GetShowClearButton(Control control) => control.GetValue(ShowClearButtonProperty);
+    public static void SetShowClearButton(Control control, bool value) => control.SetValue(ShowClearButtonProperty, value);
     
     public static IBrush? GetButtonBackground(Control control) => control.GetValue(ButtonBackgroundProperty);
     public static void SetButtonBackground(Control control, IBrush? value) => control.SetValue(ButtonBackgroundProperty, value);

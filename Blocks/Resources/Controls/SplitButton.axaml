@@ -58,6 +58,7 @@
                         ClipToBounds="True"
                         Background="Transparent">
                     <Grid ColumnDefinitions="*,Auto,Auto">
+                        
                         <Button x:Name="PART_PrimaryButton"
                                 Grid.Column="0"
                                 Background="{TemplateBinding Background}"
@@ -80,8 +81,9 @@
 
                         <Rectangle x:Name="SeparatorBorder"
                                    Grid.Column="1"
-                                   Fill="Transparent"
-                                   Width="{Binding BorderThickness.Left, RelativeSource={RelativeSource TemplatedParent}}" />
+                                   Fill="{TemplateBinding Background}"
+                                   Opacity="0"
+                                   Width="{DynamicResource BlockSplitButtonGap}" />
 
                         <Button x:Name="PART_SecondaryButton"
                                 Grid.Column="2"
@@ -109,63 +111,15 @@
 
         <Style Selector="^.flat">
             <Setter Property="Foreground" Value="{DynamicResource BlockFlatButtonForegroundBrush}" />
-            <Setter Property="Template">
-                <ControlTemplate>
-                    <!-- I had strange rendering artefacts surfacing when you repeatedly press the primary button.
-                    That clip border fixes it. -->
-                    <Border CornerRadius="{TemplateBinding CornerRadius}"
-                            ClipToBounds="True"
-                            Background="Transparent">
-                        <Grid ColumnDefinitions="*,Auto,Auto">
-                            <Button x:Name="PART_PrimaryButton"
-                                    Grid.Column="0"
-                                    Classes="flat"
-                                    Background="{TemplateBinding Background}"
-                                    Command="{TemplateBinding Command}"
-                                    CommandParameter="{TemplateBinding CommandParameter}"
-                                    CornerRadius="{TemplateBinding CornerRadius, Converter={StaticResource LeftRadius}}"
-                                    HorizontalAlignment="Stretch"
-                                    VerticalAlignment="Stretch"
-                                    HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                    VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                                    Content="{TemplateBinding Content}"
-                                    ContentTemplate="{TemplateBinding ContentTemplate}"
-                                    FontFamily="{TemplateBinding FontFamily}"
-                                    FontSize="{TemplateBinding FontSize}"
-                                    FontWeight="{TemplateBinding FontWeight}"
-                                    Foreground="{TemplateBinding Foreground}"
-                                    Padding="{TemplateBinding Padding}"
-                                    KeyboardNavigation.IsTabStop="{TemplateBinding KeyboardNavigation.IsTabStop}">
-                            </Button>
-
-                            <Rectangle x:Name="SeparatorBorder"
-                                       Grid.Column="1"
-                                       Fill="{DynamicResource BlockBaseButtonBackgroundBrush}"
-                                       Opacity="{DynamicResource BlockButtonBackgroundOpacity}"
-                                       Width="{Binding BorderThickness.Left, RelativeSource={RelativeSource TemplatedParent}}" />
-
-                            <Button x:Name="PART_SecondaryButton"
-                                    Grid.Column="2"
-                                    Classes="flat"
-                                    Padding="0"
-                                    MinWidth="{Binding $self.Bounds.Height}"
-                                    BorderBrush="{TemplateBinding BorderBrush}"
-                                    Foreground="{TemplateBinding Foreground}"
-                                    Background="{TemplateBinding Background}"
-                                    CornerRadius="{TemplateBinding CornerRadius, Converter={StaticResource RightRadius}}"
-                                    VerticalContentAlignment="Stretch"
-                                    HorizontalContentAlignment="Stretch"
-                                    VerticalAlignment="Stretch"
-                                    KeyboardNavigation.IsTabStop="{TemplateBinding KeyboardNavigation.IsTabStop}">
-                                <blk:AnimatedMenuIcon Name="MenuIcon"
-                                                      MenuIconStyle="Chevron"
-                                                      Foreground="{TemplateBinding Foreground}"
-                                                      BorderBrush="{TemplateBinding blk:Block.ActiveIconForeground}" />
-                            </Button>
-                        </Grid>
-                    </Border>
-                </ControlTemplate>
-            </Setter>
+            <Style Selector="^ /template/ Rectangle#SeparatorBorder">
+                <Setter Property="Opacity" Value="{DynamicResource BlockButtonBackgroundOpacity}" />
+            </Style>
+            <Style Selector="^ /template/ Button#PART_PrimaryButton">
+                <Setter Property="blk:Block.IsFlat" Value="True" />
+            </Style>
+            <Style Selector="^ /template/ Button#PART_SecondaryButton">
+                <Setter Property="blk:Block.IsFlat" Value="True" />
+            </Style>
         </Style>
 
         <Style Selector="^:flyout-open /template/ blk|AnimatedMenuIcon#MenuIcon">

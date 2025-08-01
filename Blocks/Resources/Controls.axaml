@@ -27,5 +27,6 @@
         <ResourceInclude Source="Controls/ListBox.axaml" />
         <ResourceInclude Source="Controls/AutoCompleteBox.axaml" />
         <ResourceInclude Source="Controls/Expander.axaml" />
+        <ResourceInclude Source="Controls/MenuFlyoutPresenter.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

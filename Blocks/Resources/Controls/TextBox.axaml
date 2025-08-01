@@ -230,8 +230,12 @@
         <Style Selector="^[UseFloatingWatermark=true]:not(:empty) /template/ TextBlock#PART_FloatingWatermark">
             <Setter Property="IsVisible" Value="True" />
         </Style>
+        
+        <Style Selector="^.clearButton">
+            <Setter Property="blk:Block.ShowClearButton" Value="True" />
+        </Style>
 
-        <Style Selector="^.clearButton[AcceptsReturn=False][IsReadOnly=False]:focus:not(TextBox:empty)">
+        <Style Selector="^[AcceptsReturn=False][IsReadOnly=False][(blk|Block.ShowClearButton)=True]:focus:not(TextBox:empty)">
             <Setter Property="InnerRightContent">
                 <Template>
                     <Button Theme="{StaticResource BlockTextBoxButton}"

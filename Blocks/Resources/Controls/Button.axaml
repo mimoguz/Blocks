@@ -99,10 +99,7 @@
         </Style>
 
         <Style Selector="^.flat">
-            <Style Selector="^ /template/ blk|BlockButton#ButtonBackground">
-                <Setter Property="Flat" Value="True" />
-            </Style>
-            <Setter Property="Foreground" Value="{DynamicResource BlockFlatButtonForegroundBrush}" />
+            <Setter Property="blk:Block.IsFlat" Value="True" />
         </Style>
         
         <Style Selector="^[(blk|Block.IsFlat)=True]">

@@ -115,7 +115,6 @@
                                     VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}"
                                     IsDeferredScrollingEnabled="{TemplateBinding (ScrollViewer.IsDeferredScrollingEnabled)}">
                                     <ItemsPresenter Name="PART_ItemsPresenter"
-                                                    Margin="{DynamicResource BlockFlyoutPadding}"
                                                     ItemsPanel="{TemplateBinding ItemsPanel}" />
                                 </ScrollViewer>
                             </Border>

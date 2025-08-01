@@ -1,10 +1,11 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:generic="clr-namespace:System.Collections.Generic;assembly=mscorlib">
+                    xmlns:generic="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+                    xmlns:blk="clr-namespace:Blocks.Controls">
 
     <Design.PreviewWith>
         <Border Padding="20" Background="{DynamicResource BlockWindowBackgroundBrush}">
-            <AutoCompleteBox Width="200">
+            <AutoCompleteBox Width="200" Classes="clearButton">
                 <AutoCompleteBox.ItemsSource>
                     <generic:List x:TypeArguments="x:String">
                         Alabama
@@ -87,29 +88,8 @@
             </ControlTemplate>
         </Setter>
         
-        <Style Selector="^.clearButton /template/  TextBox#PART_TextBox:focus:not(TextBox:empty)">
-            <Setter Property="InnerRightContent">
-                <Template>
-                    <Button Theme="{StaticResource BlockTextBoxButton}"
-                            Command="{Binding $parent[TextBox].Clear}"
-                            VerticalAlignment="Stretch"
-                            MinWidth="{Binding $self.Bounds.Height}"
-                            Background="{Binding $parent[TextBox].Background}"
-                            ClipToBounds="True">
-                        <Button.CornerRadius>
-                            <MultiBinding Converter="{StaticResource InnerRadius}">
-                                <Binding Path="$parent[TextBox].CornerRadius" />
-                                <Binding Path="$parent[TextBox].BorderThickness" />
-                                <Binding Path="$parent[TextBox].BorderThickness" />
-                            </MultiBinding>
-                        </Button.CornerRadius>
-                        <PathIcon Data="{StaticResource BlockCrossIcon}"
-                                  Height="{DynamicResource BlockIconSize}"
-                                  Width="{DynamicResource BlockIconSize}"
-                                  Foreground="{Binding $parent[TextBox].Foreground}" />
-                    </Button>
-                </Template>
-            </Setter>
+        <Style Selector="^.clearButton /template/  TextBox#PART_TextBox">
+            <Setter Property="blk:Block.ShowClearButton" Value="True" />
         </Style>
     </ControlTheme>
 </ResourceDictionary>

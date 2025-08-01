@@ -44,6 +44,8 @@
     <sys:Double x:Key="BlockSliderTickHeight">4</sys:Double>
     <sys:Double x:Key="BlockSliderHeight">32</sys:Double>
     <sys:Double x:Key="BlockMaxDropDownHeight">490</sys:Double>
+    <sys:Double x:Key="BlockSplitButtonGap">1</sys:Double>
+    <sys:Double x:Key="BlockMaxFlyoutWidth">400</sys:Double>
     <GridLength x:Key="BlockSliderContentMargin">16</GridLength>
     <CornerRadius x:Key="BlockSliderTrackCornerRadius">9999</CornerRadius>
     <sys:TimeSpan x:Key="BlockButtonStateTransitionDuration">0:0:0.1</sys:TimeSpan>

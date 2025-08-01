@@ -1,0 +1,57 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <ControlTheme x:Key="{x:Type MenuFlyoutPresenter}" TargetType="MenuFlyoutPresenter">
+        
+        <Setter Property="Background" Value="{DynamicResource BlockRaisedBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BlockBaseViewBorderBrush}" />
+        <Setter Property="BorderThickness" Value="{DynamicResource BlockControlBorderThickness}" />
+        <Setter Property="Padding" Value="{DynamicResource BlockFlyoutPadding}" />
+        <Setter Property="MaxWidth" Value="{DynamicResource BlockMaxFlyoutWidth}" />
+        <Setter Property="MinHeight" Value="{DynamicResource BlockMinButtonSize}" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+        <Setter Property="CornerRadius" Value="{DynamicResource BlockFlyoutCornerRadius}" />
+        
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel>
+                    <Border x:Name="PopupBorder"
+                            BorderBrush="{DynamicResource BlockBaseViewBorderBrush}"
+                            BorderThickness="{DynamicResource BlockFlyoutBorderThickness}"
+                            Opacity="{DynamicResource BlockFlyoutBorderOpacity}"
+                            CornerRadius="{DynamicResource BlockFlyoutCornerRadius}" />
+                    <Border Name="BoxBackground"
+                            Margin="{DynamicResource BlockFlyoutBorderThickness}"
+                            Background="{DynamicResource BlockRaisedBackgroundBrush}"
+                            Padding="{DynamicResource BlockFlyoutPadding}">
+                        <Border.CornerRadius>
+                            <MultiBinding Converter="{StaticResource InnerRadius}">
+                                <DynamicResource ResourceKey="BlockFlyoutCornerRadius" />
+                                <DynamicResource ResourceKey="BlockFlyoutBorderThickness" />
+                            </MultiBinding>
+                        </Border.CornerRadius>
+                        <ScrollViewer
+                            HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
+                            VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}"
+                            IsDeferredScrollingEnabled="{TemplateBinding (ScrollViewer.IsDeferredScrollingEnabled)}">
+                            <ItemsPresenter Name="PART_ItemsPresenter"
+                                            ItemsPanel="{TemplateBinding ItemsPanel}"
+                                            KeyboardNavigation.TabNavigation="Continue"
+                                            Grid.IsSharedSizeScope="True" />
+                        </ScrollViewer>
+                    </Border>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+    <ControlTheme x:Key="HorizontalMenuFlyoutPresenter" TargetType="MenuFlyoutPresenter"
+                  BasedOn="{StaticResource {x:Type MenuFlyoutPresenter}}">
+        <Setter Property="MinWidth" Value="{DynamicResource HorizontalMenuFlyoutThemeMinWidth}" />
+        <Setter Property="ItemsPanel">
+            <ItemsPanelTemplate>
+                <StackPanel Orientation="Horizontal" />
+            </ItemsPanelTemplate>
+        </Setter>
+    </ControlTheme>
+</ResourceDictionary>
