@@ -1,0 +1,143 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:blk="clr-namespace:Blocks.Controls">
+
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <Menu>
+                <MenuItem Header="_Standard" />
+                <MenuItem Header="Selected" IsSelected="True" />
+                <MenuItem Header="Disabled" IsEnabled="False" />
+            </Menu>
+        </Border>
+    </Design.PreviewWith>
+
+    <ControlTheme x:Key="BlockTopLevelMenuItem" TargetType="MenuItem">
+
+        <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource BlockButtonForegroundBrush}" />
+        <Setter Property="Padding" Value="{DynamicResource BlockMenuItemPadding}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource BlockButtonCornerRadius}" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="MinWidth" Value="{DynamicResource BlockMinButtonSize}" />
+        <Setter Property="MinHeight" Value="{DynamicResource BlockMinMenuItemHeight}" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="FocusAdorner" Value="{x:Null}" />
+
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel Name="PART_LayoutRoot">
+
+                    <blk:BlockButton Name="ButtonBackground"
+                                     Background="{TemplateBinding Background}"
+                                     CornerRadius="{TemplateBinding CornerRadius}"
+                                     Flat="True" />
+
+                    <ContentPresenter Name="PART_HeaderPresenter"
+                                      Padding="{TemplateBinding Padding}"
+                                      Content="{TemplateBinding Header}"
+                                      ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                      VerticalAlignment="Center"
+                                      HorizontalAlignment="Stretch"
+                                      RecognizesAccessKey="True" 
+                                      IsHitTestVisible="False" />
+
+                    <Popup Name="PART_Popup"
+                           WindowManagerAddShadowHint="False"
+                           Placement="BottomEdgeAlignedLeft"
+                           HorizontalOffset="{DynamicResource BlockPopupPlacementFix}"
+                           IsLightDismissEnabled="False"
+                           IsOpen="{TemplateBinding IsSubMenuOpen, Mode=TwoWay}">
+                        <Panel>
+                            <Border x:Name="PopupBorder"
+                                    BorderBrush="{DynamicResource BlockBaseViewBorderBrush}"
+                                    BorderThickness="{DynamicResource BlockFlyoutBorderThickness}"
+                                    Opacity="{DynamicResource BlockFlyoutBorderOpacity}"
+                                    CornerRadius="{DynamicResource BlockFlyoutCornerRadius}" />
+                            <Border Name="BoxBackground"
+                                    Margin="{DynamicResource BlockFlyoutBorderThickness}"
+                                    Background="{DynamicResource BlockRaisedBackgroundBrush}"
+                                    Padding="{DynamicResource BlockFlyoutPadding}">
+                                <Border.CornerRadius>
+                                    <MultiBinding Converter="{StaticResource InnerRadius}">
+                                        <DynamicResource ResourceKey="BlockFlyoutCornerRadius" />
+                                        <DynamicResource ResourceKey="BlockFlyoutBorderThickness" />
+                                    </MultiBinding>
+                                </Border.CornerRadius>
+                                <ScrollViewer
+                                    HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
+                                    VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}"
+                                    IsDeferredScrollingEnabled="{TemplateBinding (ScrollViewer.IsDeferredScrollingEnabled)}">
+                                    <ItemsPresenter Name="PART_ItemsPresenter"
+                                                    ItemsPanel="{TemplateBinding ItemsPanel}"
+                                                    Grid.IsSharedSizeScope="True" />
+                                </ScrollViewer>
+                            </Border>
+                        </Panel>
+                    </Popup>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+
+        <Setter Property="ItemsPanel">
+            <ItemsPanelTemplate>
+                <StackPanel Spacing="{DynamicResource BlockMenuItemSpacing}" />
+            </ItemsPanelTemplate>
+        </Setter>
+
+        <Style Selector="^:pointerover /template/ blk|BlockButton#ButtonBackground">
+            <Setter Property="Highlighted" Value="True" />
+        </Style>
+
+        <Style Selector="^:pressed /template/ blk|BlockButton#ButtonBackground:pointerover">
+            <Setter Property="Shaded" Value="True" />
+        </Style>
+
+        <Style Selector="^:disabled /template/ Panel#PART_LayoutRoot">
+            <Setter Property="Opacity" Value="{DynamicResource BlockDisabledOpacity}" />
+        </Style>
+
+        <Style Selector="^:focus-visible /template/ blk|BlockButton#ButtonBackground">
+            <Setter Property="Focused" Value="True" />
+        </Style>
+
+        <Style Selector="^:selected /template/ blk|BlockButton#ButtonBackground">
+            <Setter Property="Flat" Value="False" />
+        </Style>
+
+        <Style Selector="^:open /template/ PathIcon#PART_ChevronPath">
+            <Setter Property="Opacity" Value="1" />
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme x:Key="{x:Type Menu}" TargetType="Menu">
+        
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Height" Value="{DynamicResource BlockMenuBarHeight}" />
+        <Setter Property="ItemContainerTheme" Value="{StaticResource BlockTopLevelMenuItem}" />
+        <Setter Property="Padding" Value="{DynamicResource BlockMenuBarPadding}" />
+        
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        HorizontalAlignment="Stretch"
+                        Padding="{TemplateBinding Padding}">
+                    <ItemsPresenter Name="PART_ItemsPresenter"
+                                    ItemsPanel="{TemplateBinding ItemsPanel}"
+                                    VerticalAlignment="Stretch"
+                                    KeyboardNavigation.TabNavigation="Continue" />
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <Setter Property="ItemsPanel">
+            <ItemsPanelTemplate>
+                <StackPanel Orientation="Horizontal"
+                            Spacing="{DynamicResource BlockMenuItemSpacing}" />
+            </ItemsPanelTemplate>
+        </Setter>
+    </ControlTheme>
+</ResourceDictionary>

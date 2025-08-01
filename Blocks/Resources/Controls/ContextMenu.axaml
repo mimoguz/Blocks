@@ -1,7 +1,38 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    
-    <ControlTheme x:Key="{x:Type MenuFlyoutPresenter}" TargetType="MenuFlyoutPresenter">
+    <Design.PreviewWith>
+        <Border Background="{DynamicResource BlockBasePrimaryBrush}"
+                Margin="16"
+                Padding="48"
+                Width="400"
+                Height="200">
+            <Border.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Standard _Menu Item" />
+                    <MenuItem Header="Disabled" IsEnabled="False" />
+                    <Separator />
+                    <MenuItem Header="Menu with _Submenu">
+                        <MenuItem Header="Submenu _1" />
+                        <MenuItem Header="Submenu _2" />
+                    </MenuItem>
+                    <MenuItem Header="Menu Item with _Icon" />
+                    <MenuItem Header="Menu Item with _Checkbox">
+                        <MenuItem.Icon>
+                            <CheckBox BorderThickness="0"
+                                      IsHitTestVisible="False"
+                                      IsChecked="True" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </Border.ContextMenu>
+            <TextBlock Text="Defined in XAML" Foreground="{DynamicResource BlockOnPrimaryBrush}"/>
+        </Border>
+    </Design.PreviewWith>
+
+    <!--  Added missing resource  -->
+    <Thickness x:Key="MenuFlyoutScrollerMargin">0,4,0,4</Thickness>
+
+    <ControlTheme x:Key="{x:Type ContextMenu}" TargetType="ContextMenu">
         
         <Setter Property="Background" Value="{DynamicResource BlockRaisedBackgroundBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource BlockBaseViewBorderBrush}" />
@@ -12,6 +43,9 @@
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
         <Setter Property="CornerRadius" Value="{DynamicResource BlockFlyoutCornerRadius}" />
+        <Setter Property="Focusable" Value="True" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="WindowManagerAddShadowHint" Value="False" />
         
         <Setter Property="Template">
             <ControlTemplate>
@@ -37,21 +71,13 @@
                             IsDeferredScrollingEnabled="{TemplateBinding (ScrollViewer.IsDeferredScrollingEnabled)}">
                             <ItemsPresenter Name="PART_ItemsPresenter"
                                             ItemsPanel="{TemplateBinding ItemsPanel}"
+                                            Margin="{DynamicResource MenuFlyoutScrollerMargin}"
                                             KeyboardNavigation.TabNavigation="Continue"
                                             Grid.IsSharedSizeScope="True" />
                         </ScrollViewer>
                     </Border>
                 </Panel>
             </ControlTemplate>
-        </Setter>
-    </ControlTheme>
-    <ControlTheme x:Key="HorizontalMenuFlyoutPresenter" TargetType="MenuFlyoutPresenter"
-                  BasedOn="{StaticResource {x:Type MenuFlyoutPresenter}}">
-        <Setter Property="MinWidth" Value="{DynamicResource BlockMinMenuFlyoutWidth}" />
-        <Setter Property="ItemsPanel">
-            <ItemsPanelTemplate>
-                <StackPanel Orientation="Horizontal" />
-            </ItemsPanelTemplate>
         </Setter>
     </ControlTheme>
 </ResourceDictionary>

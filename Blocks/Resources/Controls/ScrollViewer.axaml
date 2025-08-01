@@ -4,9 +4,11 @@
     <Design.PreviewWith>
         <Border Padding="20" Background="{DynamicResource BlockWindowBackgroundBrush}">
             <ScrollViewer Width="200" Height="200"
-                          HorizontalScrollBarVisibility="Auto"
+                          HorizontalScrollBarVisibility="Disabled"
+                          VerticalScrollBarVisibility="Auto"
                           blk:Block.ScrollBarBackground="CadetBlue"
                           blk:Block.ScrollBarForeground="Chocolate"
+                          Background="Aqua"
                           CornerRadius="10"
                           Padding="10">
                 <StackPanel Spacing="20" Width="210">

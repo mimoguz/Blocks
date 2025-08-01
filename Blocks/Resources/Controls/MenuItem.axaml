@@ -74,11 +74,11 @@
 
         <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource BlockButtonForegroundBrush}" />
-        <Setter Property="Padding" Value="{DynamicResource BlockButtonPadding}" />
+        <Setter Property="Padding" Value="{DynamicResource BlockMenuItemPadding}" />
         <Setter Property="CornerRadius" Value="{DynamicResource BlockButtonCornerRadius}" />
         <Setter Property="FontWeight" Value="Normal" />
         <Setter Property="MinWidth" Value="{DynamicResource BlockMinButtonSize}" />
-        <Setter Property="MinHeight" Value="{DynamicResource BlockMinButtonSize}" />
+        <Setter Property="MinHeight" Value="{DynamicResource BlockMinMenuItemHeight}" />
         <Setter Property="FocusAdorner" Value="{x:Null}" />
 
         <Setter Property="Template">
@@ -165,7 +165,6 @@
                                     IsDeferredScrollingEnabled="{TemplateBinding (ScrollViewer.IsDeferredScrollingEnabled)}">
                                     <ItemsPresenter Name="PART_ItemsPresenter"
                                                     ItemsPanel="{TemplateBinding ItemsPanel}"
-                                                    Margin="{DynamicResource BlockFlyoutPadding}"
                                                     Grid.IsSharedSizeScope="True" />
                                 </ScrollViewer>
                             </Border>
@@ -214,6 +213,8 @@
         </Style>
 
         <Style Selector="^:separator">
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="MinHeight" Value="0"></Setter>
             <Setter Property="Template">
                 <ControlTemplate>
                     <Separator />

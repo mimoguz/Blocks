@@ -316,7 +316,6 @@
         <Style Selector="^[IsExpanded=True]:down /template/ ToggleButton#ExpanderHeader">
             <Setter Property="CornerRadius"
                     Value="{TemplateBinding CornerRadius, Converter={StaticResource TopRadius}}" />
-
         </Style>
 
         <Style Selector="^:left /template/ Border#ExpanderContent">

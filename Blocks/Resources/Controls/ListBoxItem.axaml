@@ -17,11 +17,11 @@
         
         <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource BlockButtonForegroundBrush}" />
-        <Setter Property="Padding" Value="{DynamicResource BlockButtonPadding}" />
+        <Setter Property="Padding" Value="{DynamicResource BlockListBoxItemPadding}" />
         <Setter Property="CornerRadius" Value="{DynamicResource BlockButtonCornerRadius}" />
         <Setter Property="FontWeight" Value="Normal" />
-        <Setter Property="MinWidth" Value="{DynamicResource BlockMinButtonSize}" />
-        <Setter Property="MinHeight" Value="{DynamicResource BlockMinButtonSize}" />
+        <Setter Property="MinWidth" Value="{DynamicResource BlockMinListBoxItemHeight}" />
+        <Setter Property="MinHeight" Value="{DynamicResource BlockMinListBoxItemHeight}" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="FocusAdorner" Value="{x:Null}" />

@@ -1,32 +1,35 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ResourceDictionary.MergedDictionaries>
+        <ResourceInclude Source="Controls/AutoCompleteBox.axaml" />
         <ResourceInclude Source="Controls/Button.axaml" />
         <ResourceInclude Source="Controls/ButtonSpinner.axaml" />
         <ResourceInclude Source="Controls/CheckBox.axaml" />
         <ResourceInclude Source="Controls/ComboBox.axaml" />
         <ResourceInclude Source="Controls/ComboBoxItem.axaml" />
+        <ResourceInclude Source="Controls/ContextMenu.axaml" />
+        <ResourceInclude Source="Controls/DataValidationErrors.axaml" />
         <ResourceInclude Source="Controls/DropDownButton.axaml" />
+        <ResourceInclude Source="Controls/Expander.axaml" />
         <ResourceInclude Source="Controls/FlyoutPresenter.axaml" />
+        <ResourceInclude Source="Controls/ListBox.axaml" />
+        <ResourceInclude Source="Controls/ListBoxItem.axaml" />
+        <ResourceInclude Source="Controls/Menu.axaml" />
+        <ResourceInclude Source="Controls/MenuFlyoutPresenter.axaml" />
+        <ResourceInclude Source="Controls/MenuItem.axaml" />
+        <ResourceInclude Source="Controls/NumericUpDown.axaml" />
         <ResourceInclude Source="Controls/PathIcon.axaml" />
         <ResourceInclude Source="Controls/PopupRoot.axaml" />
         <ResourceInclude Source="Controls/RadioButton.axaml" />
         <ResourceInclude Source="Controls/RepeatButton.axaml" />
         <ResourceInclude Source="Controls/ScrollBar.axaml" />
         <ResourceInclude Source="Controls/ScrollViewer.axaml" />
+        <ResourceInclude Source="Controls/Separator.axaml" />
+        <ResourceInclude Source="Controls/Slider.axaml" />
         <ResourceInclude Source="Controls/SplitButton.axaml" />
         <ResourceInclude Source="Controls/TabControl.axaml" />
         <ResourceInclude Source="Controls/TabItem.axaml" />
-        <ResourceInclude Source="Controls/ToggleButton.axaml" />
         <ResourceInclude Source="Controls/TextBox.axaml" />
-        <ResourceInclude Source="Controls/Separator.axaml" />
-        <ResourceInclude Source="Controls/NumericUpDown.axaml" />
-        <ResourceInclude Source="Controls/Slider.axaml" />
-        <ResourceInclude Source="Controls/DataValidationErrors.axaml" />
-        <ResourceInclude Source="Controls/ListBoxItem.axaml" />
-        <ResourceInclude Source="Controls/ListBox.axaml" />
-        <ResourceInclude Source="Controls/AutoCompleteBox.axaml" />
-        <ResourceInclude Source="Controls/Expander.axaml" />
-        <ResourceInclude Source="Controls/MenuFlyoutPresenter.axaml" />
+        <ResourceInclude Source="Controls/ToggleButton.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

@@ -1,78 +1,88 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="using:System">
+    
     <CornerRadius x:Key="BlockButtonCornerRadius">9</CornerRadius>
     <CornerRadius x:Key="BlockCheckBoxCornerRadius">6</CornerRadius>
     <CornerRadius x:Key="BlockFlyoutCornerRadius">15</CornerRadius>
-    <CornerRadius x:Key="BlockViewCornerRadius">9</CornerRadius>
     <CornerRadius x:Key="BlockScrollBarCompactThumbCornerRadius">9999</CornerRadius>
     <CornerRadius x:Key="BlockScrollBarCornerRadius">0</CornerRadius>
     <CornerRadius x:Key="BlockScrollBarThumbCornerRadius">0</CornerRadius>
+    <CornerRadius x:Key="BlockSliderTrackCornerRadius">9999</CornerRadius>
+    <CornerRadius x:Key="BlockViewCornerRadius">9</CornerRadius>
     <FontWeight x:Key="BlockButtonFontWeight">Bold</FontWeight>
+    <GridLength x:Key="BlockSliderContentMargin">16</GridLength>
     <Thickness x:Key="BlockButtonPadding">16,8</Thickness>
     <Thickness x:Key="BlockComboBoxPadding">16,8</Thickness>
     <Thickness x:Key="BlockControlBorderThickness">1</Thickness>
+    <Thickness x:Key="BlockExpanderHeaderPadding">8,8,16,8</Thickness>
+    <Thickness x:Key="BlockExpanderShadowMargin">2,1,2,3</Thickness>
     <Thickness x:Key="BlockFlatButtonPadding">8</Thickness>
     <Thickness x:Key="BlockFlyoutBorderThickness">1</Thickness>
     <Thickness x:Key="BlockFlyoutPadding">6</Thickness>
     <Thickness x:Key="BlockFocusBorderThickness">2</Thickness>
     <Thickness x:Key="BlockImageButtonPadding">8</Thickness>
     <Thickness x:Key="BlockInputPadding">8,6</Thickness>
+    <Thickness x:Key="BlockListBoxItemPadding">12,6</Thickness>
+    <Thickness x:Key="BlockMenuBarPadding">8,4</Thickness>
+    <Thickness x:Key="BlockMenuItemPadding">12,6</Thickness>
+    <Thickness x:Key="BlockPopupShadowMargin">12,8,12,16</Thickness>
     <Thickness x:Key="BlockRadioButtonGap">8,4</Thickness>
+    <Thickness x:Key="BlockRadioButtonPadding">0,4</Thickness>
     <Thickness x:Key="BlockTabItemPadding">9,8,20,8</Thickness>
     <Thickness x:Key="BlockVerticalInputPadding">6</Thickness>
-    <Thickness x:Key="BlockExpanderHeaderPadding">8,8,16,8</Thickness>
     <sys:Double x:Key="BlockFocusStrokeThickness">2</sys:Double>
     <sys:Double x:Key="BlockFontSizeLarge">15</sys:Double>
     <sys:Double x:Key="BlockFontSizeNormal">13</sys:Double>
     <sys:Double x:Key="BlockFontSizeSmall">11</sys:Double>
     <sys:Double x:Key="BlockIconSize">16</sys:Double>
     <sys:Double x:Key="BlockIconStrokeThickness">2</sys:Double>
-    <sys:Double x:Key="BlockMenuItemSpacing">4</sys:Double>
+    <sys:Double x:Key="BlockMaxDropDownHeight">490</sys:Double>
+    <sys:Double x:Key="BlockMaxFlyoutWidth">400</sys:Double>
+    <sys:Double x:Key="BlockMenuBarHeight">40</sys:Double>
+    <sys:Double x:Key="BlockMenuItemSpacing">2</sys:Double>
     <sys:Double x:Key="BlockMinButtonSize">36</sys:Double>
+    <sys:Double x:Key="BlockMinListBoxItemHeight">32</sys:Double>
+    <sys:Double x:Key="BlockMinMenuFlyoutWidth">60</sys:Double>
+    <sys:Double x:Key="BlockMinMenuItemHeight">32</sys:Double>
+    <sys:Double x:Key="BlockPopupPlacementFix">-12</sys:Double>
+    <sys:Double x:Key="BlockPopupWidthFix">24</sys:Double>
     <sys:Double x:Key="BlockRadioButtonSize">28</sys:Double>
-    <Thickness x:Key="BlockRadioButtonPadding">0,4</Thickness>
     <sys:Double x:Key="BlockScrollBarCompactThumbSize">4</sys:Double>
     <sys:Double x:Key="BlockScrollBarThumbSize">16</sys:Double>
-    <sys:Double x:Key="BlockTabSpacing">2</sys:Double>
+    <sys:Double x:Key="BlockSliderHeight">32</sys:Double>
+    <sys:Double x:Key="BlockSliderThumbDiameter">32</sys:Double>
+    <sys:Double x:Key="BlockSliderThumbDotDiameter">16</sys:Double>
+    <sys:Double x:Key="BlockSliderTickHeight">4</sys:Double>
+    <sys:Double x:Key="BlockSliderTrackHeight">4</sys:Double>
+    <sys:Double x:Key="BlockSplitButtonGap">1</sys:Double>
     <sys:Double x:Key="BlockTabLineThickness">3</sys:Double>
+    <sys:Double x:Key="BlockTabSpacing">4</sys:Double>
     <sys:Double x:Key="BlockTabVerticalLineHeight">20</sys:Double>
     <sys:Double x:Key="BlockViewShadeOpacity">0.45</sys:Double>
-    <sys:Double x:Key="BlockSliderTrackHeight">4</sys:Double>
-    <sys:Double x:Key="BlockSliderThumbDotDiameter">16</sys:Double>
-    <sys:Double x:Key="BlockSliderThumbDiameter">32</sys:Double>
-    <sys:Double x:Key="BlockSliderTickHeight">4</sys:Double>
-    <sys:Double x:Key="BlockSliderHeight">32</sys:Double>
-    <sys:Double x:Key="BlockMaxDropDownHeight">490</sys:Double>
-    <sys:Double x:Key="BlockSplitButtonGap">1</sys:Double>
-    <sys:Double x:Key="BlockMaxFlyoutWidth">400</sys:Double>
-    <GridLength x:Key="BlockSliderContentMargin">16</GridLength>
-    <CornerRadius x:Key="BlockSliderTrackCornerRadius">9999</CornerRadius>
     <sys:TimeSpan x:Key="BlockButtonStateTransitionDuration">0:0:0.1</sys:TimeSpan>
     <sys:TimeSpan x:Key="BlockLongStateTransitionDuration">0:0:0.2</sys:TimeSpan>
-
-    <DropShadowEffect x:Key="BlockPopupDropShadow"
-                      Color="Black"
-                      Opacity="0.15"
-                      BlurRadius="12"
-                      OffsetX="0" OffsetY="4" />
-    <Thickness x:Key="BlockPopupShadowMargin">12,8,12,16</Thickness>
-    <sys:Double x:Key="BlockPopupWidthFix">24</sys:Double>
 
 
     <ResourceDictionary.ThemeDictionaries>
         <ResourceDictionary x:Key="Default">
 
-            <Thickness x:Key="BlockExpanderShadowMargin">2,1,2,3</Thickness>
             <DropShadowEffect x:Key="BlockExpanderDropShadow"
                               Color="Black"
                               Opacity="0.333"
                               BlurRadius="2"
                               OffsetX="0" OffsetY="1" />
 
+            <DropShadowEffect x:Key="BlockPopupDropShadow"
+                              Color="Black"
+                              Opacity="0.15"
+                              BlurRadius="12"
+                              OffsetX="0" OffsetY="4" />
+
             <!-- *************************************** -->
             <!-- ************** Opacities ************** -->
             <!-- *************************************** -->
+
 
             <!-- Background -->
             <sys:Double x:Key="BlockButtonBackgroundOpacity">0.12</sys:Double>
@@ -86,12 +96,13 @@
             <sys:Double x:Key="BlockViewFocusOpacity">0.90</sys:Double>
 
             <!-- Border -->
-            <sys:Double x:Key="BlockFlyoutBorderOpacity">0.06</sys:Double>
+            <sys:Double x:Key="BlockFlyoutBorderOpacity">0.08</sys:Double>
             <sys:Double x:Key="BlockViewBorderOpacity">0.15</sys:Double>
             <sys:Double x:Key="BlockViewErrorBorderOpacity">0.70</sys:Double>
 
             <!-- Highlight -->
             <sys:Double x:Key="BlockButtonHighlightOpacity">0.18</sys:Double>
+            <sys:Double x:Key="BlockFlatButtonHighlightOpacity">0.08</sys:Double>
             <sys:Double x:Key="BlockScrollBarPageButtonHighlightOpacity">0.08</sys:Double>
             <sys:Double x:Key="BlockScrollBarThumbHighlightOpacity">0.45</sys:Double>
             <sys:Double x:Key="BlockViewBorderHighlightOpacity">0.30</sys:Double>
@@ -100,6 +111,7 @@
 
             <!-- Shade -->
             <sys:Double x:Key="BlockButtonShadeOpacity">0.28</sys:Double>
+            <sys:Double x:Key="BlockFlatButtonShadeOpacity">0.15</sys:Double>
             <sys:Double x:Key="BlockScrollBarPageButtonShadeOpacity">0.12</sys:Double>
             <sys:Double x:Key="BlockScrollBarThumbShadeOpacity">0.6</sys:Double>
             <sys:Double x:Key="BlockSliderTrackShadeOpacity">1</sys:Double>
@@ -110,13 +122,19 @@
         </ResourceDictionary>
 
         <ResourceDictionary x:Key="Dark">
-            <Thickness x:Key="BlockExpanderShadowMargin">2,1,2,3</Thickness>
+            
             <DropShadowEffect x:Key="BlockExpanderDropShadow"
                               Color="Black"
                               Opacity="0.6"
                               BlurRadius="2"
                               OffsetX="0" OffsetY="1" />
             
+            <DropShadowEffect x:Key="BlockPopupDropShadow"
+                              Color="Black"
+                              Opacity="0.33"
+                              BlurRadius="12"
+                              OffsetX="0" OffsetY="4" />
+
             <!-- *************************************** -->
             <!-- ************** Opacities ************** -->
             <!-- *************************************** -->
@@ -128,12 +146,15 @@
             <sys:Double x:Key="BlockScrollBarThumbOpacity">0.50</sys:Double>
             <sys:Double x:Key="BlockSliderTrackOpacity">0.75</sys:Double>
 
+            <sys:Double x:Key="BlockFlatButtonHighlightOpacity">0.08</sys:Double>
+            <sys:Double x:Key="BlockFlatButtonShadeOpacity">0.12</sys:Double>
+
             <!-- Focus -->
             <sys:Double x:Key="BlockButtonFocusOpacity">0.90</sys:Double>
             <sys:Double x:Key="BlockViewFocusOpacity">0.90</sys:Double>
 
             <!-- Border -->
-            <sys:Double x:Key="BlockFlyoutBorderOpacity">0.08</sys:Double>
+            <sys:Double x:Key="BlockFlyoutBorderOpacity">0.1</sys:Double>
             <sys:Double x:Key="BlockViewBorderOpacity">0.2</sys:Double>
             <sys:Double x:Key="BlockViewErrorBorderOpacity">0.75</sys:Double>
 

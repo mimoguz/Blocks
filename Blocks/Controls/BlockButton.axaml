@@ -129,13 +129,13 @@
 
             <Style Selector="^[Highlighted=True]">
                 <Style Selector="^ /template/ Border#BaseBorder">
-                    <Setter Property="Opacity" Value="{DynamicResource BlockButtonBackgroundOpacity}" />
+                    <Setter Property="Opacity" Value="{DynamicResource BlockFlatButtonHighlightOpacity}" />
                 </Style>
             </Style>
 
             <Style Selector="^[Shaded=True]">
                 <Style Selector="^ /template/ Border#BaseBorder">
-                    <Setter Property="Opacity" Value="{DynamicResource BlockButtonHighlightOpacity}" />
+                    <Setter Property="Opacity" Value="{DynamicResource BlockFlatButtonShadeOpacity}" />
                 </Style>
             </Style>
 

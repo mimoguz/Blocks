@@ -16,16 +16,42 @@
         <vm:MainWindowViewModel />
     </Design.DataContext>
     <Border Background="{DynamicResource BlockWindowBackgroundBrush}">
-        <TabControl TabStripPlacement="Top" >
-            <TabControl.Items>
-                <TabItem Header="Buttons">
-                    <local:ButtonsPanelView />
-                </TabItem>
-                <TabItem Header="Inputs &amp; Selections">
-                    <local:InputsPanelView />
-                </TabItem>
-            </TabControl.Items>
-        </TabControl>
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_File">
+                    <MenuItem Header="New" InputGesture="Ctrl+N" />
+                    <MenuItem Header="Open" InputGesture="Ctrl+O" />
+                    <MenuItem Header="Open Recent">
+                        <MenuItem Header="File really finished.dat" />
+                        <MenuItem Header="File finished.dat" />
+                        <MenuItem Header="File lastest.dat" />
+                        <MenuItem Header="File.dat" />
+                    </MenuItem>
+                    <MenuItem Header="Save" InputGesture="Ctrl+S" />
+                    <MenuItem Header="Save As..." />
+                    <MenuItem Header="-"/>
+                    <MenuItem Header="Exit" InputGesture="Ctrl+Q" />
+                </MenuItem>
+                <MenuItem Header="_Edit">
+                    <MenuItem Header="Undo" InputGesture="Ctrl+Z" />
+                    <MenuItem Header="Redo" InputGesture="Ctrl+Y" />
+                    <MenuItem Header="-"/>
+                    <MenuItem Header="Cut" InputGesture="Ctrl+X" />
+                    <MenuItem Header="Copy" InputGesture="Ctrl+C" />
+                    <MenuItem Header="Paste" InputGesture="Ctrl+V" />
+                </MenuItem>
+            </Menu>
+            <TabControl TabStripPlacement="Top">
+                <TabControl.Items>
+                    <TabItem Header="Buttons">
+                        <local:ButtonsPanelView />
+                    </TabItem>
+                    <TabItem Header="Inputs &amp; Selections">
+                        <local:InputsPanelView />
+                    </TabItem>
+                </TabControl.Items>
+            </TabControl>
+        </DockPanel>
     </Border>
 
 </Window>

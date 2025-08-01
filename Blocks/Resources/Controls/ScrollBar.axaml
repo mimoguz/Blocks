@@ -185,7 +185,7 @@
                                               Height="{DynamicResource BlockScrollBarThumbSize}">
                                     <PathIcon Data="{DynamicResource BlockArrowUp8X5}"
                                               Width="8"
-                                              Height="4"
+                                              Height="5"
                                               Foreground="{TemplateBinding Foreground}" />
                                 </RepeatButton>
 
@@ -229,7 +229,7 @@
                                               Height="{DynamicResource BlockScrollBarThumbSize}">
                                     <PathIcon Data="{DynamicResource BlockArrowDown8X5}"
                                               Width="8"
-                                              Height="4"
+                                              Height="5"
                                               Foreground="{TemplateBinding Foreground}" />
                                 </RepeatButton>
                             </Grid>
