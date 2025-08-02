@@ -140,6 +140,11 @@
                                 TabStripPlacement="{Binding Dock}"
                                 blk:Block.ScrollBarVisibility="Auto"
                                 Padding="8, 16">
+                        <TabControl.Styles>
+                            <Style Selector="TabControl[TabStripPlacement=Left] TabItem, TabControl[TabStripPlacement=Right] TabItem">
+                                <Setter Property="MinWidth" Value="140" />
+                            </Style>
+                        </TabControl.Styles>
                         <TabItem Header="Tab Item 1">
                             <Rectangle Margin="8" Fill="#FA0050" />
                         </TabItem>
@@ -168,14 +173,14 @@
                                DisplayMode="{Binding SplitViewDisplayMode}"
                                CompactPaneLength="50"
                                OpenPaneLength="250"
-                               UseLightDismissOverlayMode="True">
+                               UseLightDismissOverlayMode="False">
                         <SplitView.Styles>
                             <Style Selector="SplitView[DisplayMode=Overlay], SplitView[DisplayMode=Inline]">
                                 <Setter Property="IsPaneOpen" Value="True" />
                             </Style>
                         </SplitView.Styles>
                         <SplitView.Pane>
-                            <TextBlock>Panel</TextBlock>
+                            <blk:PlaceHoleder Margin="12" />
                         </SplitView.Pane>
 
                         <SplitView.Content>

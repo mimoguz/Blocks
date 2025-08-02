@@ -5,6 +5,7 @@
     <CornerRadius x:Key="BlockButtonCornerRadius">9</CornerRadius>
     <CornerRadius x:Key="BlockCheckBoxCornerRadius">6</CornerRadius>
     <CornerRadius x:Key="BlockFlyoutCornerRadius">15</CornerRadius>
+    <CornerRadius x:Key="BlockProgressBarCornerRadius">9</CornerRadius>
     <CornerRadius x:Key="BlockScrollBarCompactThumbCornerRadius">9999</CornerRadius>
     <CornerRadius x:Key="BlockScrollBarCornerRadius">0</CornerRadius>
     <CornerRadius x:Key="BlockScrollBarThumbCornerRadius">0</CornerRadius>
@@ -45,6 +46,9 @@
     <sys:Double x:Key="BlockMinListBoxItemHeight">32</sys:Double>
     <sys:Double x:Key="BlockMinMenuFlyoutWidth">60</sys:Double>
     <sys:Double x:Key="BlockMinMenuItemHeight">32</sys:Double>
+    <sys:Double x:Key="BlockMinProgressBarHeight">4</sys:Double>
+    <sys:Double x:Key="BlockMinProgressBarWidth">200</sys:Double>
+    <sys:Double x:Key="BlockProgressBarIndeterminateIndicatorWidth">200</sys:Double>
     <sys:Double x:Key="BlockPopupPlacementFix">-14</sys:Double>
     <sys:Double x:Key="BlockPopupWidthFix">24</sys:Double>
     <sys:Double x:Key="BlockRadioButtonSize">28</sys:Double>
@@ -57,9 +61,8 @@
     <sys:Double x:Key="BlockSliderTrackHeight">4</sys:Double>
     <sys:Double x:Key="BlockSplitButtonGap">1</sys:Double>
     <sys:Double x:Key="BlockTabLineThickness">3</sys:Double>
-    <sys:Double x:Key="BlockTabSpacing">4</sys:Double>
+    <sys:Double x:Key="BlockTabSpacing">2</sys:Double>
     <sys:Double x:Key="BlockTabVerticalLineHeight">20</sys:Double>
-    <sys:Double x:Key="BlockViewShadeOpacity">0.45</sys:Double>
     <sys:TimeSpan x:Key="BlockButtonStateTransitionDuration">0:0:0.1</sys:TimeSpan>
     <sys:TimeSpan x:Key="BlockLongStateTransitionDuration">0:0:0.2</sys:TimeSpan>
 
@@ -87,6 +90,7 @@
             <!-- Background -->
             <sys:Double x:Key="BlockButtonBackgroundOpacity">0.12</sys:Double>
             <sys:Double x:Key="BlockViewBackgroundOpacity">0.06</sys:Double>
+            <sys:Double x:Key="BlockProgressBarBackgroundOpacity">0.1</sys:Double>
             <sys:Double x:Key="BlockScrollBarTrackOpacity">0.06</sys:Double>
             <sys:Double x:Key="BlockScrollBarThumbOpacity">0.35</sys:Double>
             <sys:Double x:Key="BlockSliderTrackOpacity">0.75</sys:Double>
@@ -142,6 +146,7 @@
             <!-- Background -->
             <sys:Double x:Key="BlockButtonBackgroundOpacity">0.2</sys:Double>
             <sys:Double x:Key="BlockViewBackgroundOpacity">0.08</sys:Double>
+            <sys:Double x:Key="BlockProgressBarBackgroundOpacity">0.1</sys:Double>
             <sys:Double x:Key="BlockScrollBarTrackOpacity">0.08</sys:Double>
             <sys:Double x:Key="BlockScrollBarThumbOpacity">0.50</sys:Double>
             <sys:Double x:Key="BlockSliderTrackOpacity">0.75</sys:Double>

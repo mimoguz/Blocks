@@ -30,4 +30,12 @@
     <SolidColorBrush x:Key="BlockOnPrimaryBrush" Color="{DynamicResource BlockOnPrimaryColor}" />
     <SolidColorBrush x:Key="BlockOnSecondaryBrush" Color="{DynamicResource BlockOnPrimaryColor}" />
     <SolidColorBrush x:Key="BlockWindowForegroundBrush" Color="{DynamicResource BlockWindowForegroundColor}" />
+    
+    
+    <DrawingBrush x:Key="BlockSpripedPrimaryBrush" TileMode="Tile" Stretch="None" DestinationRect="0,0,36,120">
+        <DrawingBrush.Drawing>
+            <GeometryDrawing Geometry="{StaticResource BlockStripePattern36X120}"
+                             Brush="{DynamicResource BlockBasePrimaryBrush}"/>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
 </ResourceDictionary>

@@ -1,5 +1,6 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:blk="clr-namespace:Blocks.Controls">
     <Design.PreviewWith>
         <Border Background="{DynamicResource BlockWindowBackgroundBrush}" Padding="16">
             <WrapPanel ItemSpacing="16" LineSpacing="16" MaxWidth="250">
@@ -21,6 +22,8 @@
                 <PathIcon Data="{DynamicResource BlockEyeOpenIcon}" />
                 <PathIcon Data="{DynamicResource BlockEyeClosedIcon}" />
                 <PathIcon Data="{DynamicResource BlockErrorIcon24}" Width="24" Height="24" />
+                <Rectangle Fill="{DynamicResource BlockSpripedPrimaryBrush}" 
+                          Width="80" Height="12" />
             </WrapPanel>
         </Border>
     </Design.PreviewWith>
@@ -117,5 +120,42 @@
         A 1.5 1.5 0 0 1 10.5 19
         A 1.5 1.5 0 0 1 12 17.5
         Z
+    </StreamGeometry>
+    <StreamGeometry x:Key="BlockStripePattern36X120">
+        M 0,0
+        V 12
+        L 12,0
+        Z
+        M 18,0 0,18
+        V 30
+        L 30,0
+        Z
+        M 36,0 0,36
+        V 48
+        L 36,12
+        Z
+        M 36,18 0,54
+        V 66
+        L 36,30
+        Z
+        M 36,36 0,72
+        V 84
+        L 36,48
+        Z
+        M 36,54 0,90
+        v 12
+        L 36,66
+        Z
+        m 0,18 -36,36
+        v 12
+        L 36,84
+        Z
+        m 0,18 -30,30
+        h 12
+        l 18,-18
+        z
+        m 0,18 -12,12
+        h 12
+        z
     </StreamGeometry>
 </ResourceDictionary>
