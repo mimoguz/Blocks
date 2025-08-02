@@ -106,7 +106,7 @@
                         </TreeViewItem>
                     </TreeView>
 
-                    <GridSplitter Grid.Row="1" ResizeBehavior="PreviousAndNext" />
+                    <GridSplitter Grid.Row="1" ResizeDirection="Rows" Padding="0,8"/>
 
                     <!-- Bottom-left -->
                     <Expander Classes="demo" Grid.Row="2" Header="Expander"
@@ -130,7 +130,7 @@
                     </Expander>
                 </Grid>
 
-                <GridSplitter Grid.Column="1" Padding="8,0" />
+                <GridSplitter Grid.Column="1" Padding="8,0" ResizeDirection="Columns"/>
 
                 <!-- Right -->
                 <Grid Grid.Column="2" RowDefinitions="*, Auto, *">
@@ -146,26 +146,26 @@
                             </Style>
                         </TabControl.Styles>
                         <TabItem Header="Tab Item 1">
-                            <Rectangle Margin="8" Fill="#FA0050" />
+                            <blk:PlaceHoleder Margin="8" StrokeBrush="#FA0050" />
                         </TabItem>
                         <TabItem Header="Tab Item 2">
-                            <Rectangle Margin="8" Fill="DarkOrange" />
+                            <blk:PlaceHoleder Margin="8" StrokeBrush="DarkOrange" />
                         </TabItem>
                         <TabItem Header="Tab Item 3">
-                            <Rectangle Margin="8" Fill="Gold" />
+                            <blk:PlaceHoleder Margin="8" StrokeBrush="Gold" />
                         </TabItem>
                         <TabItem Header="Tab Item 4">
-                            <Rectangle Margin="8" Fill="LimeGreen" />
+                            <blk:PlaceHoleder Margin="8" StrokeBrush="LimeGreen" />
                         </TabItem>
                         <TabItem Header="Tab Item 5">
-                            <Rectangle Margin="8" Fill="Turquoise" />
+                            <blk:PlaceHoleder Margin="8" StrokeBrush="Turquoise" />
                         </TabItem>
                         <TabItem Header="Tab Item 6">
-                            <Rectangle Margin="8" Fill="DeepSkyBlue" />
+                            <blk:PlaceHoleder Margin="8" StrokeBrush="DeepSkyBlue" />
                         </TabItem>
                     </TabControl>
 
-                    <GridSplitter Grid.Row="1" Padding="0,8" />
+                    <GridSplitter Grid.Row="1" Padding="0,8" ResizeDirection="Rows"/>
 
                     <!-- Bottom-left -->
                     <SplitView Classes="demo" Grid.Row="2"

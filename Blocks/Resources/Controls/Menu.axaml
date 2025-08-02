@@ -91,7 +91,7 @@
             <Setter Property="Focused" Value="True" />
         </Style>
 
-        <Style Selector="^:selected /template/ blk|BlockButton#ButtonBackground">
+        <Style Selector="^[IsSubMenuOpen=True] /template/ blk|BlockButton#ButtonBackground">
             <Setter Property="Flat" Value="False" />
         </Style>
 

@@ -1,0 +1,102 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Background="{DynamicResource BlockWindowBackgroundBrush}" 
+                Padding="10"
+                Width="400"
+                Height="400">
+            <Grid ColumnDefinitions="*, Auto, *">
+                
+                <Grid Grid.Column="0" RowDefinitions="*, Auto, *">
+                    <Rectangle Grid.Row="0" 
+                               HorizontalAlignment="Stretch"
+                               VerticalAlignment="Stretch"
+                               Fill="CornflowerBlue" />
+                    
+                    <GridSplitter Grid.Row="1" Padding="0,4" Background="Aqua"
+                                  ResizeDirection="Rows"/>
+                    
+                    <Rectangle Grid.Row="2" 
+                               HorizontalAlignment="Stretch"
+                               VerticalAlignment="Stretch"
+                               Fill="Chartreuse" />
+                </Grid>
+                
+                <GridSplitter Grid.Column="1" Padding="4,0" ResizeDirection="Columns" />
+                
+                <Rectangle Grid.Column="2" 
+                           HorizontalAlignment="Stretch"
+                           VerticalAlignment="Stretch"
+                           Fill="DeepPink" />
+            </Grid>
+        </Border>
+    </Design.PreviewWith>
+    
+    <ControlTheme x:Key="{x:Type GridSplitter}" TargetType="GridSplitter">
+        
+        <Setter Property="BorderBrush" Value="{DynamicResource BlockTransparentViewBorderBrush}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Focusable" Value="True" />
+        
+        <Setter Property="PreviewContent">
+            <Template>
+                <Rectangle Fill="{DynamicResource BlockBasePrimaryBrush}" />
+            </Template>
+        </Setter>
+        
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Padding="{TemplateBinding Padding}"
+                        Background="{TemplateBinding Background}"
+                        HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                        Cursor="{TemplateBinding Cursor}">
+                    <Panel>
+                        <Border Name="Line"
+                                Background="{TemplateBinding BorderBrush}" />
+                        <Border Name="Overlay"
+                                Background="Transparent">
+                            <Border.Transitions>
+                                <Transitions>
+                                    <BrushTransition Property="Background"
+                                                      Duration="{DynamicResource BlockButtonStateTransitionDuration}"
+                                                      Easing="CubicEaseOut" />
+                                </Transitions>
+                            </Border.Transitions>
+                        </Border>
+                    </Panel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+        
+        <Style Selector="^[ResizeDirection=Rows]">
+            <Style Selector="^ /template/ Border#Line">
+                <Setter Property="Height" Value="1" />
+                <Setter Property="HorizontalAlignment" Value="Stretch" />
+            </Style>
+            <Style Selector="^ /template/ Border#Overlay">
+                <Setter Property="Height" Value="1" />
+                <Setter Property="HorizontalAlignment" Value="Stretch" />
+            </Style>
+        </Style>
+        
+        <Style Selector="^[ResizeDirection=Columns]">
+            <Style Selector="^ /template/ Border#Line">
+                <Setter Property="Width" Value="1" />
+                <Setter Property="VerticalAlignment" Value="Stretch" />
+            </Style>
+            <Style Selector="^ /template/ Border#Overlay">
+                <Setter Property="Width" Value="1" />
+                <Setter Property="VerticalAlignment" Value="Stretch" />
+            </Style>
+        </Style>
+        
+        <Style Selector="^:pointerover /template/ Border#Overlay">
+            <Setter Property="Background" Value="{DynamicResource BlockTransparentHighlightBrush}" />
+        </Style>
+        
+        <Style Selector="^:pressed /template/ Border#Overlay">
+            <Setter Property="Background" Value="{DynamicResource BlockTransparentShadeBrush}" />
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

@@ -307,48 +307,6 @@
                             Drop Down - Right
                         </DropDownButton>
                     </StackPanel>
-                    
-                    <Separator Classes="demo" />
-                    
-                    <WrapPanel Classes="demo">
-                        
-                        <Expander ExpandDirection="Up" Header="Expand Up" VerticalAlignment="Top" Classes="demo">
-                            <Border Padding="9" Background="{DynamicResource BlockRaisedBackgroundBrush}">
-                                <TextBlock>Expanded content</TextBlock>
-                            </Border>
-                        </Expander>
-                        
-                        <Expander ExpandDirection="Down" Header="Expand Down - Flat" 
-                                  VerticalAlignment="Top"
-                                  Classes="demo flat">
-                            <Border Padding="9" Background="{DynamicResource BlockRaisedBackgroundBrush}">
-                                <TextBlock>Expanded content</TextBlock>
-                            </Border>
-                        </Expander>
-                        
-                        <Expander ExpandDirection="Left" 
-                                  Header="Expand Left" 
-                                  VerticalAlignment="Top"
-                                  Classes="demo">
-                            <Border Padding="9" Background="{DynamicResource BlockRaisedBackgroundBrush}">
-                                <TextBlock VerticalAlignment="Center">Expanded content</TextBlock>
-                            </Border>
-                        </Expander>
-                        
-                        <Expander ExpandDirection="Right" Header="Expand Right - Custom Colors" VerticalAlignment="Top"
-                                  Background="LightGreen"
-                                  Foreground="SeaGreen"
-                                  blk:Block.ButtonBackground="DarkGreen"
-                                  blk:Block.ActiveIconForeground="LightYellow"
-                                  BorderBrush="LightGreen"
-                                  Classes="demo">
-                            <Border Padding="9" Background="LemonChiffon">
-                                <TextBlock VerticalAlignment="Center" Foreground="Indigo">
-                                    Expanded content
-                                </TextBlock>
-                            </Border>
-                        </Expander>
-                    </WrapPanel>
                 </StackPanel>
             </ScrollViewer>
         </DockPanel>
