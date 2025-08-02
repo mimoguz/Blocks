@@ -8,7 +8,7 @@
             <ScrollViewer Height="64"
                           HorizontalScrollBarVisibility="Auto"
                           AllowAutoHide="False"
-                          Theme="{DynamicResource BlockHorizontalTabControlScrollViewer}">
+                          Theme="{DynamicResource BlockTabControlScrollViewer}">
                 <StackPanel Orientation="Horizontal" Spacing="2">
                     <Button>Item 1</Button>
                     <Button>Item 2</Button>
@@ -24,10 +24,10 @@
         </Border>
     </Design.PreviewWith>
     
-    <Thickness x:Key="BlockHorizontalTabControlScrollMargin">20,0</Thickness>
+    <Thickness x:Key="BlockHorizontalTabControlScrollMargin">24,0</Thickness>
     <Thickness x:Key="BlockThicknessZero">0</Thickness>
 
-    <ControlTheme x:Key="BlockHorizontalTabControlScrollViewer" TargetType="ScrollViewer">
+    <ControlTheme x:Key="BlockTabControlScrollViewer" TargetType="ScrollViewer">
 
         <Setter Property="VerticalScrollBarVisibility" Value="Disabled" />
         <Setter Property="HorizontalScrollBarVisibility" Value="Visible" />
@@ -37,15 +37,18 @@
 
         <Setter Property="Template">
             <ControlTemplate>
-                <Panel>
+                <Grid ColumnDefinitions="*, Auto">
                     <ScrollContentPresenter Name="PART_ContentPresenter"
+                                            Grid.Column="0"
                                             HorizontalSnapPointsType="{TemplateBinding HorizontalSnapPointsType}"
+                                            VerticalSnapPointsType="{TemplateBinding VerticalSnapPointsType}"
                                             HorizontalSnapPointsAlignment="{TemplateBinding HorizontalSnapPointsAlignment}"
+                                            VerticalSnapPointsAlignment="{TemplateBinding VerticalSnapPointsAlignment}"
                                             ScrollViewer.IsScrollInertiaEnabled="{TemplateBinding IsScrollInertiaEnabled}">
                         <ScrollContentPresenter.GestureRecognizers>
                             <ScrollGestureRecognizer
-                                CanHorizontallyScroll="True"
-                                CanVerticallyScroll="False"
+                                CanHorizontallyScroll="{Binding CanHorizontallyScroll, ElementName=PART_ContentPresenter}"
+                                CanVerticallyScroll="{Binding CanVerticallyScroll, ElementName=PART_ContentPresenter}"
                                 IsScrollInertiaEnabled="{Binding (ScrollViewer.IsScrollInertiaEnabled), ElementName=PART_ContentPresenter}" />
                         </ScrollContentPresenter.GestureRecognizers>
                         <ScrollContentPresenter.Margin>
@@ -63,6 +66,7 @@
                     </ScrollContentPresenter>
                     
                     <ScrollBar Name="PART_HorizontalScrollBar"
+                               Grid.Column="0"
                                Margin="2,0"
                                Orientation="Horizontal"
                                Theme="{DynamicResource BlockHorizontalTabControlScrollBar}"
@@ -70,7 +74,11 @@
                                Foreground="{TemplateBinding Foreground}"
                                HorizontalAlignment="Stretch"
                                VerticalAlignment="Center" />
-                </Panel>
+                    
+                    <ScrollBar Name="PART_VerticalScrollBar"
+                               Grid.Column="1"
+                               Orientation="Vertical"/>
+                </Grid>
             </ControlTemplate>
         </Setter>
     </ControlTheme>

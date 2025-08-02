@@ -34,6 +34,6 @@
         <ResourceInclude Source="Controls/ProgressBar.axaml" />
         <ResourceInclude Source="Controls/GridSplitter.axaml" />
         <ResourceInclude Source="Controls/HorizontalTabControlScrollBar.axaml" />
-        <ResourceInclude Source="Controls/HorizontalTabControlScrollViewer.axaml" />
+        <ResourceInclude Source="Controls/TabControlScrollViewer.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
