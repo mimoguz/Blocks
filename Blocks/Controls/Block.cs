@@ -8,16 +8,28 @@ namespace Blocks.Controls;
 public abstract class Block : AvaloniaObject
 {
     public static readonly AttachedProperty<Thickness?> GapProperty = AvaloniaProperty.RegisterAttached<Block, Control, Thickness?>("Gap");
+    
     public static readonly AttachedProperty<IBrush?> ScrollBarBackgroundProperty = AvaloniaProperty.RegisterAttached<Block, Control, IBrush?>("ScrollBarBackground");
+    
     public static readonly AttachedProperty<IBrush?> ScrollBarForegroundProperty = AvaloniaProperty.RegisterAttached<Block, Control, IBrush?>("ScrollBarForeground");
+    
     public static readonly AttachedProperty<AnimatedMenuIcon.IconStyle> MenuIconStyleProperty = AvaloniaProperty.RegisterAttached<Block, Control, AnimatedMenuIcon.IconStyle>("MenuIconStyle");
+    
     public static readonly AttachedProperty<Stretch> StretchProperty = AvaloniaProperty.RegisterAttached<Block, Control, Stretch>("Stretch");
+    
     public static readonly AttachedProperty<ScrollBarVisibility> ScrollBarVisibilityProperty = AvaloniaProperty.RegisterAttached<Block, Control, ScrollBarVisibility>("ScrollBarVisibility");
+    
     public static readonly AttachedProperty<bool> DrawFocusProperty = AvaloniaProperty.RegisterAttached<Block, Control, bool>("DrawFocus");
+    
     public static readonly AttachedProperty<bool> IsFlatProperty = AvaloniaProperty.RegisterAttached<Block, Control, bool>("IsFlat");
+    
     public static readonly AttachedProperty<bool> ShowClearButtonProperty = AvaloniaProperty.RegisterAttached<Block, Control, bool>("ShowClearButton");
+    
     public static readonly AttachedProperty<IBrush?> ButtonBackgroundProperty = AvaloniaProperty.RegisterAttached<Block, Control, IBrush?>("ButtonBackground");
+    
     public static readonly AttachedProperty<IBrush?> ActiveIconForegroundProperty = AvaloniaProperty.RegisterAttached<Block, Control, IBrush?>("ActiveIconForeground");
+    
+    public static readonly AttachedProperty<bool> HideDecorationProperty = AvaloniaProperty.RegisterAttached<Block, Control, bool>("HideDecoration");
     
     public static Thickness? GetGap(Control control) => control.GetValue(GapProperty);
     public static void SetGap(Control control, Thickness? value) => control.SetValue(GapProperty, value);
@@ -51,4 +63,7 @@ public abstract class Block : AvaloniaObject
     
     public static IBrush? GetActiveIconForeground(Control control) => control.GetValue(ActiveIconForegroundProperty);
     public static void SetActiveIconForeground(Control control, IBrush? value) => control.SetValue(ActiveIconForegroundProperty, value);
+    
+    public static bool GetHideDecoration(Control control) => control.GetValue(HideDecorationProperty);
+    public static void SetHideDecoration(Control control, bool value) => control.SetValue(HideDecorationProperty, value);
 }

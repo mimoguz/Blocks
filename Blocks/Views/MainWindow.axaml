@@ -52,6 +52,9 @@
                     <TabItem Header="Views &amp; Containers">
                         <local:ContainersPanelView />
                     </TabItem>
+                    <TabItem Header="Bits &amp; Pieces">
+                        <local:BitsPanelView />
+                    </TabItem>
                 </TabControl.Items>
             </TabControl>
         </DockPanel>

@@ -1,0 +1,84 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:blk="clr-namespace:Blocks.Controls"
+                    xmlns:sys="using:System">
+    <Design.PreviewWith>
+        <StackPanel Spacing="20" Width="300">
+
+            <blk:Group Header="Header">
+                <TextBlock>Group Content</TextBlock>
+            </blk:Group>
+
+            <blk:Group Classes="flat">
+                <TextBlock>Content</TextBlock>
+            </blk:Group>
+        </StackPanel>
+    </Design.PreviewWith>
+
+    <Thickness x:Key="BlockGroupHeaderMargin">0,0,0,12</Thickness>
+    <Thickness x:Key="BlockGroupHeaderShadowOffset">2,0,0,0</Thickness>
+    <FontWeight x:Key="BlockGroupHeaderFontWeight">Bold</FontWeight>
+    <sys:Double x:Key="BlockHeaderedControlHeaderFontSize">14</sys:Double>
+    <Thickness x:Key="BlockGroupPadding">8</Thickness>
+
+    <ControlTheme x:Key="{x:Type blk:Group}" TargetType="blk:Group">
+
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="MinHeight" Value="{DynamicResource BlockMinButtonSize}" />
+        <Setter Property="Background" Value="{DynamicResource BlockRaisedBackgroundBrush}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource BlockViewCornerRadius}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BlockTransparentFlyoutBorderBrush}" />
+        <Setter Property="BorderThickness" Value="{DynamicResource BlockControlBorderThickness}" />
+        <Setter Property="Padding" Value="{DynamicResource BlockGroupPadding}" />
+
+        <Setter Property="Template">
+            <ControlTemplate>
+                <DockPanel Name="BaseContainer">
+                    <Decorator Margin="{DynamicResource BlockGroupHeaderMargin}"
+                               DockPanel.Dock="Top">
+                        <ContentPresenter Name="PART_HeaderPresenter"
+                                          IsVisible="{TemplateBinding Header, Converter={x:Static ObjectConverters.IsNotNull}}"
+                                          Margin="{DynamicResource BlockGroupHeaderShadowOffset}"
+                                          FontSize="{DynamicResource BlockHeaderedControlHeaderFontSize}"
+                                          FontWeight="{DynamicResource BlockGroupHeaderFontWeight}"
+                                          Content="{TemplateBinding Header}"
+                                          RecognizesAccessKey="True"
+                                          ContentTemplate="{TemplateBinding HeaderTemplate}" />
+                    </Decorator>
+                    <Border Name="ContentContainer"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            Margin="{DynamicResource BlockExpanderShadowMargin}"
+                            Effect="{DynamicResource BlockExpanderDropShadow}"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            ClipToBounds="True">
+                        <Border.Transitions>
+                            <Transitions>
+                                <EffectTransition Property="Effect"
+                                                  Duration="{DynamicResource BlockButtonStateTransitionDuration}"
+                                                  Easing="CubicEaseOut" />
+                            </Transitions>
+                        </Border.Transitions>
+
+                        <ContentPresenter Name="PART_ContentPresenter"
+                                          Margin="{TemplateBinding Padding}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          Content="{TemplateBinding Content}"
+                                          RecognizesAccessKey="True"
+                                          VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" />
+                    </Border>
+                </DockPanel>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^.flat /template/ Border#ContentContainer">
+            <Setter Property="Margin" Value="0" />
+            <Setter Property="Effect" Value="{x:Null}" />
+        </Style>
+        <Style Selector="^.flat /template/ ContentPresenter#PART_HeaderPresenter">
+            <Setter Property="Margin" Value="0" />
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

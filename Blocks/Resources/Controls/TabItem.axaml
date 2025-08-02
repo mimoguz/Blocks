@@ -42,7 +42,8 @@
                                      CornerRadius="{TemplateBinding CornerRadius}" 
                                      Flat="True"/>
                     <DockPanel>
-                        <Decorator DockPanel.Dock="Left"
+                        <Decorator Name="Decoration" 
+                                   DockPanel.Dock="Left"
                                    Margin="8,0, 0,0"
                                    Height="{DynamicResource BlockTabVerticalLineHeight}"
                                    Width="{DynamicResource BlockTabLineThickness}">
@@ -111,6 +112,14 @@
             <Style Selector="^ /template/ blk|BlockButton#ButtonBackground">
                 <Setter Property="Flat" Value="False" />
             </Style>
+        </Style>
+        
+        <Style Selector="^[(blk|Block.HideDecoration)=True] /template/ Decorator#Decoration">
+            <Setter Property="IsVisible" Value="False" />
+        </Style>
+        
+        <Style Selector="^.hide-decoration /template/ Decorator#Decoration">
+            <Setter Property="IsVisible" Value="False" />
         </Style>
     </ControlTheme>
 </ResourceDictionary>

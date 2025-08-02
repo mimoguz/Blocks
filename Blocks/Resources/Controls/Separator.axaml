@@ -2,13 +2,12 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:blk="clr-namespace:Blocks.Controls">
     <ControlTheme x:Key="{x:Type Separator}" TargetType="Separator">
-        <Setter Property="Background" Value="{DynamicResource BlockTransparentFlyoutBorderBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BlockTransparentViewBorderBrush}" />
         <Setter Property="Focusable" Value="False" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="VerticalAlignment" Value="Center"></Setter>
         <Setter Property="Margin" Value="0" />
         <Setter Property="Height" Value="5" />
-        <Setter Property="Opacity" Value="{DynamicResource BlockViewBorderOpacity}" />
         <Setter Property="Template">
             <ControlTemplate>
                 <Border Height="{TemplateBinding Height}"

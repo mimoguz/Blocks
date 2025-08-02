@@ -30,6 +30,7 @@
                               SelectedItem="{Binding Dock}" />
                 </StackPanel>
 
+                <!--
                 <StackPanel HorizontalAlignment="Center" Spacing="8" Orientation="Horizontal">
                     <TextBlock VerticalAlignment="Center">
                         Split View Panel Placement
@@ -48,7 +49,8 @@
                               HorizontalAlignment="Left" VerticalAlignment="Center"
                               ItemsSource="{Binding SplitViewDisplayModes}"
                               SelectedItem="{Binding SplitViewDisplayMode}" />
-                </StackPanel>
+                </StackPanel>-->
+                
             </WrapPanel>
 
             <Separator DockPanel.Dock="Top" />
@@ -65,6 +67,10 @@
                 <Grid Grid.Column="0" RowDefinitions="*, Auto, *">
 
                     <!-- Top-left -->
+                    
+                    <blk:PlaceHoleder Grid.Row="0" />
+                    
+                    <!--
                     <TreeView Classes="demo" Grid.Row="0" Padding="0,8"
                               HorizontalAlignment="Stretch"
                               VerticalAlignment="Stretch">
@@ -105,32 +111,44 @@
                             </TreeViewItem>
                         </TreeViewItem>
                     </TreeView>
+                    -->
 
-                    <GridSplitter Grid.Row="1" ResizeDirection="Rows" Padding="0,8"/>
+                    <GridSplitter Grid.Row="1" ResizeDirection="Rows" Padding="0,8" />
 
                     <!-- Bottom-left -->
-                    <Expander Classes="demo" Grid.Row="2" Header="Expander"
-                              ExpandDirection="Down"
-                              HorizontalAlignment="Stretch" VerticalAlignment="Top">
-                        <Expander.Content>
-                            <ScrollViewer Margin="8" VerticalScrollBarVisibility="Auto"
-                                          VerticalAlignment="Stretch">
-                                <StackPanel Spacing="16">
-                                    <TextBlock TextWrapping="Wrap"
-                                               Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Proin tortor purus platea sit eu id nisi litora libero. Neque vulputate consequat ac amet augue blandit maximus aliquet congue. Pharetra vestibulum posuere ornare faucibus fusce dictumst orci aenean eu facilisis ut volutpat commodo senectus purus himenaeos fames primis convallis nisi." />
-                                    <TextBlock TextWrapping="Wrap"
-                                               Text="Phasellus fermentum malesuada phasellus netus dictum aenean placerat egestas amet. Ornare taciti semper dolor tristique morbi. Sem leo tincidunt aliquet semper eu lectus scelerisque quis. Sagittis vivamus mollis nisi mollis enim fermentum laoreet." />
-                                    <TextBlock TextWrapping="Wrap"
-                                               Text="Curabitur semper venenatis lectus viverra ex dictumst nulla maximus. Primis iaculis elementum conubia feugiat venenatis dolor augue ac blandit nullam ac phasellus turpis feugiat mollis. Duis lectus porta mattis imperdiet vivamus augue litora lectus arcu. Justo torquent pharetra volutpat ad blandit bibendum accumsan nec elit cras luctus primis ipsum gravida class congue." />
-                                    <TextBlock TextWrapping="Wrap"
-                                               Text="Vehicula etiam elementum finibus enim duis feugiat commodo adipiscing tortor tempor elit. Et mollis consectetur habitant turpis tortor consectetur adipiscing vulputate dolor lectus iaculis convallis adipiscing. Nam hendrerit dignissim condimentum ullamcorper diam morbi eget consectetur odio in sagittis." />
-                                </StackPanel>
-                            </ScrollViewer>
-                        </Expander.Content>
-                    </Expander>
+                    <DockPanel Grid.Row="2">
+                        <blk:Group Header="Group" Padding="0" DockPanel.Dock="Bottom" Margin="0,16,0,0">
+                            <StackPanel>
+                                <TextBlock Text="Group Item 1" Margin="8" />
+                                <Separator />
+                                <TextBlock Text="Group Item 1" Margin="8" />
+                            </StackPanel>
+                        </blk:Group>
+                        <Expander Classes="demo" Header="Expander"
+                                  ExpandDirection="Down"
+                                  HorizontalAlignment="Stretch" VerticalAlignment="Top">
+                            <Expander.Content>
+                                <ScrollViewer Margin="8" VerticalScrollBarVisibility="Auto"
+                                              VerticalAlignment="Stretch">
+                                    <StackPanel Spacing="16">
+                                        <TextBlock TextWrapping="Wrap"
+                                                   Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Proin tortor purus platea sit eu id nisi litora libero. Neque vulputate consequat ac amet augue blandit maximus aliquet congue. Pharetra vestibulum posuere ornare faucibus fusce dictumst orci aenean eu facilisis ut volutpat commodo senectus purus himenaeos fames primis convallis nisi." />
+                                        <TextBlock TextWrapping="Wrap"
+                                                   Text="Phasellus fermentum malesuada phasellus netus dictum aenean placerat egestas amet. Ornare taciti semper dolor tristique morbi. Sem leo tincidunt aliquet semper eu lectus scelerisque quis. Sagittis vivamus mollis nisi mollis enim fermentum laoreet." />
+                                        <TextBlock TextWrapping="Wrap"
+                                                   Text="Curabitur semper venenatis lectus viverra ex dictumst nulla maximus. Primis iaculis elementum conubia feugiat venenatis dolor augue ac blandit nullam ac phasellus turpis feugiat mollis. Duis lectus porta mattis imperdiet vivamus augue litora lectus arcu. Justo torquent pharetra volutpat ad blandit bibendum accumsan nec elit cras luctus primis ipsum gravida class congue." />
+                                        <TextBlock TextWrapping="Wrap"
+                                                   Text="Vehicula etiam elementum finibus enim duis feugiat commodo adipiscing tortor tempor elit. Et mollis consectetur habitant turpis tortor consectetur adipiscing vulputate dolor lectus iaculis convallis adipiscing. Nam hendrerit dignissim condimentum ullamcorper diam morbi eget consectetur odio in sagittis." />
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </Expander.Content>
+                        </Expander>
+
+                        
+                    </DockPanel>
                 </Grid>
 
-                <GridSplitter Grid.Column="1" Padding="8,0" ResizeDirection="Columns"/>
+                <GridSplitter Grid.Column="1" Padding="8,0" ResizeDirection="Columns" />
 
                 <!-- Right -->
                 <Grid Grid.Column="2" RowDefinitions="*, Auto, *">
@@ -140,14 +158,22 @@
                                 TabStripPlacement="{Binding Dock}"
                                 blk:Block.ScrollBarVisibility="Auto">
                         <TabControl.Styles>
-                            <Style Selector="TabControl[TabStripPlacement=Left] TabItem, TabControl[TabStripPlacement=Right] TabItem">
+                            <Style Selector="TabItem.hide-decoration">
+                                <Setter Property="Padding" Value="20,8" />
+                            </Style>
+                            <Style
+                                Selector="TabControl[TabStripPlacement=Left] TabItem, TabControl[TabStripPlacement=Right] TabItem">
                                 <Setter Property="MinWidth" Value="140" />
+                            </Style>
+                            <Style
+                                Selector="TabControl[TabStripPlacement=Left] TabItem.hide-decoration, TabControl[TabStripPlacement=Right] TabItem.hide-decoration">
+                                <Setter Property="Padding" Value="19,8,20,8" />
                             </Style>
                         </TabControl.Styles>
                         <TabItem Header="Tab Item 1">
                             <blk:PlaceHoleder Margin="8" StrokeBrush="#FA0050" />
                         </TabItem>
-                        <TabItem Header="Tab Item 2">
+                        <TabItem Header="Tab Item 2 - Decorless" Classes="hide-decoration">
                             <blk:PlaceHoleder Margin="8" StrokeBrush="DarkOrange" />
                         </TabItem>
                         <TabItem Header="Tab Item 3">
@@ -164,9 +190,13 @@
                         </TabItem>
                     </TabControl>
 
-                    <GridSplitter Grid.Row="1" Padding="0,8" ResizeDirection="Rows"/>
+                    <GridSplitter Grid.Row="1" Padding="0,8" ResizeDirection="Rows" />
 
                     <!-- Bottom-left -->
+                    
+                    <blk:PlaceHoleder Grid.Row="2" />
+                    
+                    <!--
                     <SplitView Classes="demo" Grid.Row="2"
                                PanePlacement="{Binding SplitViewPanePlacement}"
                                DisplayMode="{Binding SplitViewDisplayMode}"
@@ -198,6 +228,8 @@
                             </ScrollViewer>
                         </SplitView.Content>
                     </SplitView>
+                    -->
+                    
                 </Grid>
             </Grid>
         </DockPanel>

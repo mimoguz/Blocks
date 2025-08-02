@@ -35,5 +35,6 @@
         <ResourceInclude Source="Controls/GridSplitter.axaml" />
         <ResourceInclude Source="Controls/HorizontalTabControlScrollBar.axaml" />
         <ResourceInclude Source="Controls/TabControlScrollViewer.axaml" />
+        <ResourceInclude Source="Controls/Group.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
