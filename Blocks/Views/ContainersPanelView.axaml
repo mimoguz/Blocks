@@ -1,0 +1,201 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:Blocks.ViewModels"
+             xmlns:blk="clr-namespace:Blocks.Controls"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Blocks.Views.ContainersPanelView"
+             x:DataType="vm:ContainersPanelViewModel">
+    <Design.DataContext>
+        <vm:ContainersPanelViewModel />
+    </Design.DataContext>
+
+
+    <Border Background="{DynamicResource BlockWindowBackgroundBrush}">
+        <DockPanel>
+            <WrapPanel ItemSpacing="40" LineSpacing="10" DockPanel.Dock="Top" Margin="8">
+
+                <CheckBox IsChecked="{Binding AllEnabled, Mode=TwoWay}" VerticalAlignment="Center">
+                    Enable All
+                </CheckBox>
+
+                <StackPanel HorizontalAlignment="Center" Spacing="8" Orientation="Horizontal">
+                    <TextBlock VerticalAlignment="Center">
+                        Tab Strip Placement
+                    </TextBlock>
+                    <ComboBox Width="200"
+                              HorizontalAlignment="Left" VerticalAlignment="Center"
+                              ItemsSource="{Binding DockOptions}"
+                              SelectedItem="{Binding Dock}" />
+                </StackPanel>
+
+                <StackPanel HorizontalAlignment="Center" Spacing="8" Orientation="Horizontal">
+                    <TextBlock VerticalAlignment="Center">
+                        Split View Panel Placement
+                    </TextBlock>
+                    <ComboBox Width="200"
+                              HorizontalAlignment="Left" VerticalAlignment="Center"
+                              ItemsSource="{Binding SplitViewPanePlacements}"
+                              SelectedItem="{Binding SplitViewPanePlacement}" />
+                </StackPanel>
+
+                <StackPanel HorizontalAlignment="Center" Spacing="8" Orientation="Horizontal">
+                    <TextBlock VerticalAlignment="Center">
+                        Split View Panel Display Mode
+                    </TextBlock>
+                    <ComboBox Width="200"
+                              HorizontalAlignment="Left" VerticalAlignment="Center"
+                              ItemsSource="{Binding SplitViewDisplayModes}"
+                              SelectedItem="{Binding SplitViewDisplayMode}" />
+                </StackPanel>
+            </WrapPanel>
+
+            <Separator DockPanel.Dock="Top" />
+
+            <Grid ColumnDefinitions="*, Auto, *" Margin="8">
+
+                <Grid.Styles>
+                    <Style Selector=":is(Control).demo">
+                        <Setter Property="IsEnabled" Value="{Binding AllEnabled}" />
+                    </Style>
+                </Grid.Styles>
+
+                <!-- Left -->
+                <Grid Grid.Column="0" RowDefinitions="*, Auto, *">
+
+                    <!-- Top-left -->
+                    <TreeView Classes="demo" Grid.Row="0" Padding="0,8"
+                              HorizontalAlignment="Stretch"
+                              VerticalAlignment="Stretch">
+                        <TreeViewItem Header="Tree View Item">
+                            <TreeViewItem Header="Tree View Item">
+                                <TreeViewItem Header="Tree View Item" />
+                                <TreeViewItem Header="Tree View Item" />
+                                <TreeViewItem Header="Tree View Item" />
+                            </TreeViewItem>
+                            <TreeViewItem Header="Tree View Item">
+                                <TreeViewItem Header="Tree View Item" />
+                                <TreeViewItem Header="Tree View Item" />
+                                <TreeViewItem Header="Tree View Item" />
+                            </TreeViewItem>
+                        </TreeViewItem>
+                        <TreeViewItem Header="Tree View Item">
+                            <TreeViewItem Header="Tree View Item">
+                                <TreeViewItem Header="Tree View Item" />
+                                <TreeViewItem Header="Tree View Item" />
+                                <TreeViewItem Header="Tree View Item" />
+                            </TreeViewItem>
+                            <TreeViewItem Header="Tree View Item">
+                                <TreeViewItem Header="Tree View Item" />
+                                <TreeViewItem Header="Tree View Item" />
+                                <TreeViewItem Header="Tree View Item" />
+                            </TreeViewItem>
+                        </TreeViewItem>
+                        <TreeViewItem Header="Tree View Item">
+                            <TreeViewItem Header="Tree View Item">
+                                <TreeViewItem Header="Tree View Item" />
+                                <TreeViewItem Header="Tree View Item" />
+                                <TreeViewItem Header="Tree View Item" />
+                            </TreeViewItem>
+                            <TreeViewItem Header="Tree View Item">
+                                <TreeViewItem Header="Tree View Item" />
+                                <TreeViewItem Header="Tree View Item" />
+                                <TreeViewItem Header="Tree View Item" />
+                            </TreeViewItem>
+                        </TreeViewItem>
+                    </TreeView>
+
+                    <GridSplitter Grid.Row="1" ResizeBehavior="PreviousAndNext" />
+
+                    <!-- Bottom-left -->
+                    <Expander Classes="demo" Grid.Row="2" Header="Expander"
+                              ExpandDirection="Down"
+                              HorizontalAlignment="Stretch" VerticalAlignment="Top">
+                        <Expander.Content>
+                            <ScrollViewer Margin="8" VerticalScrollBarVisibility="Auto"
+                                          VerticalAlignment="Stretch">
+                                <StackPanel Spacing="16">
+                                    <TextBlock TextWrapping="Wrap"
+                                               Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Proin tortor purus platea sit eu id nisi litora libero. Neque vulputate consequat ac amet augue blandit maximus aliquet congue. Pharetra vestibulum posuere ornare faucibus fusce dictumst orci aenean eu facilisis ut volutpat commodo senectus purus himenaeos fames primis convallis nisi." />
+                                    <TextBlock TextWrapping="Wrap"
+                                               Text="Phasellus fermentum malesuada phasellus netus dictum aenean placerat egestas amet. Ornare taciti semper dolor tristique morbi. Sem leo tincidunt aliquet semper eu lectus scelerisque quis. Sagittis vivamus mollis nisi mollis enim fermentum laoreet." />
+                                    <TextBlock TextWrapping="Wrap"
+                                               Text="Curabitur semper venenatis lectus viverra ex dictumst nulla maximus. Primis iaculis elementum conubia feugiat venenatis dolor augue ac blandit nullam ac phasellus turpis feugiat mollis. Duis lectus porta mattis imperdiet vivamus augue litora lectus arcu. Justo torquent pharetra volutpat ad blandit bibendum accumsan nec elit cras luctus primis ipsum gravida class congue." />
+                                    <TextBlock TextWrapping="Wrap"
+                                               Text="Vehicula etiam elementum finibus enim duis feugiat commodo adipiscing tortor tempor elit. Et mollis consectetur habitant turpis tortor consectetur adipiscing vulputate dolor lectus iaculis convallis adipiscing. Nam hendrerit dignissim condimentum ullamcorper diam morbi eget consectetur odio in sagittis." />
+                                </StackPanel>
+                            </ScrollViewer>
+                        </Expander.Content>
+                    </Expander>
+                </Grid>
+
+                <GridSplitter Grid.Column="1" Padding="8,0" />
+
+                <!-- Right -->
+                <Grid Grid.Column="2" RowDefinitions="*, Auto, *">
+
+                    <!-- Top-left -->
+                    <TabControl Classes="demo" Grid.Row="0"
+                                TabStripPlacement="{Binding Dock}"
+                                blk:Block.ScrollBarVisibility="Auto"
+                                Padding="8, 16">
+                        <TabItem Header="Tab Item 1">
+                            <Rectangle Margin="8" Fill="#FA0050" />
+                        </TabItem>
+                        <TabItem Header="Tab Item 2">
+                            <Rectangle Margin="8" Fill="DarkOrange" />
+                        </TabItem>
+                        <TabItem Header="Tab Item 3">
+                            <Rectangle Margin="8" Fill="Gold" />
+                        </TabItem>
+                        <TabItem Header="Tab Item 4">
+                            <Rectangle Margin="8" Fill="LimeGreen" />
+                        </TabItem>
+                        <TabItem Header="Tab Item 5">
+                            <Rectangle Margin="8" Fill="Turquoise" />
+                        </TabItem>
+                        <TabItem Header="Tab Item 6">
+                            <Rectangle Margin="8" Fill="DeepSkyBlue" />
+                        </TabItem>
+                    </TabControl>
+
+                    <GridSplitter Grid.Row="1" Padding="0,8" />
+
+                    <!-- Bottom-left -->
+                    <SplitView Classes="demo" Grid.Row="2"
+                               PanePlacement="{Binding SplitViewPanePlacement}"
+                               DisplayMode="{Binding SplitViewDisplayMode}"
+                               CompactPaneLength="50"
+                               OpenPaneLength="250"
+                               UseLightDismissOverlayMode="True">
+                        <SplitView.Styles>
+                            <Style Selector="SplitView[DisplayMode=Overlay], SplitView[DisplayMode=Inline]">
+                                <Setter Property="IsPaneOpen" Value="True" />
+                            </Style>
+                        </SplitView.Styles>
+                        <SplitView.Pane>
+                            <TextBlock>Panel</TextBlock>
+                        </SplitView.Pane>
+
+                        <SplitView.Content>
+                            <ScrollViewer Margin="8" VerticalScrollBarVisibility="Auto"
+                                          VerticalAlignment="Stretch">
+                                <StackPanel Spacing="16">
+                                    <TextBlock TextWrapping="Wrap"
+                                               Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Proin tortor purus platea sit eu id nisi litora libero. Neque vulputate consequat ac amet augue blandit maximus aliquet congue. Pharetra vestibulum posuere ornare faucibus fusce dictumst orci aenean eu facilisis ut volutpat commodo senectus purus himenaeos fames primis convallis nisi." />
+                                    <TextBlock TextWrapping="Wrap"
+                                               Text="Phasellus fermentum malesuada phasellus netus dictum aenean placerat egestas amet. Ornare taciti semper dolor tristique morbi. Sem leo tincidunt aliquet semper eu lectus scelerisque quis. Sagittis vivamus mollis nisi mollis enim fermentum laoreet." />
+                                    <TextBlock TextWrapping="Wrap"
+                                               Text="Curabitur semper venenatis lectus viverra ex dictumst nulla maximus. Primis iaculis elementum conubia feugiat venenatis dolor augue ac blandit nullam ac phasellus turpis feugiat mollis. Duis lectus porta mattis imperdiet vivamus augue litora lectus arcu. Justo torquent pharetra volutpat ad blandit bibendum accumsan nec elit cras luctus primis ipsum gravida class congue." />
+                                    <TextBlock TextWrapping="Wrap"
+                                               Text="Vehicula etiam elementum finibus enim duis feugiat commodo adipiscing tortor tempor elit. Et mollis consectetur habitant turpis tortor consectetur adipiscing vulputate dolor lectus iaculis convallis adipiscing. Nam hendrerit dignissim condimentum ullamcorper diam morbi eget consectetur odio in sagittis." />
+                                </StackPanel>
+                            </ScrollViewer>
+                        </SplitView.Content>
+                    </SplitView>
+                </Grid>
+            </Grid>
+        </DockPanel>
+    </Border>
+</UserControl>

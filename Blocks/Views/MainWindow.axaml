@@ -49,6 +49,9 @@
                     <TabItem Header="Inputs &amp; Selections">
                         <local:InputsPanelView />
                     </TabItem>
+                    <TabItem Header="Views &amp; Containers">
+                        <local:ContainersPanelView />
+                    </TabItem>
                 </TabControl.Items>
             </TabControl>
         </DockPanel>

@@ -2,8 +2,29 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:controls="using:Blocks.Controls">
     <Design.PreviewWith>
-        <Border Background="BurlyWood">
-            <controls:AnimatedMenuIcon MenuIconStyle="Chevron" DrawExpanded="False" />
+        <Border>
+            <WrapPanel ItemSpacing="20" LineSpacing="20" Margin="20" Width="52">
+                <Border Background="BurlyWood">
+                    <controls:AnimatedMenuIcon MenuIconStyle="Burger" DrawExpanded="False" />
+                </Border>
+                <Border Background="BurlyWood">
+                    <controls:AnimatedMenuIcon MenuIconStyle="Burger" DrawExpanded="True" />
+                </Border>
+                
+                <Border Background="BurlyWood">
+                    <controls:AnimatedMenuIcon MenuIconStyle="Chevron" DrawExpanded="False" />
+                </Border>
+                <Border Background="BurlyWood">
+                    <controls:AnimatedMenuIcon MenuIconStyle="Chevron" DrawExpanded="True" />
+                </Border>
+                
+                <Border Background="BurlyWood">
+                    <controls:AnimatedMenuIcon MenuIconStyle="RightChevron" DrawExpanded="False" />
+                </Border>
+                <Border Background="BurlyWood">
+                    <controls:AnimatedMenuIcon MenuIconStyle="RightChevron" DrawExpanded="True" />
+                </Border>
+            </WrapPanel>
         </Border>
     </Design.PreviewWith>
 
@@ -127,7 +148,7 @@
                                    Fill="{TemplateBinding Foreground}"
                                    VerticalAlignment="Top"
                                    HorizontalAlignment="Right"
-                                   RenderTransform="rotate(-45deg)" 
+                                   RenderTransform="rotate(-45deg)"
                                    UseLayoutRounding="False">
                             <Rectangle.Transitions>
                                 <Transitions>
@@ -149,6 +170,7 @@
                     </Panel>
                 </ControlTemplate>
             </Setter>
+            
             <Style Selector="^[DrawExpanded=True]">
                 <Style Selector="^ /template/ Rectangle#Left">
                     <Setter Property="IsVisible" Value="True" />
@@ -162,6 +184,84 @@
                     <Setter Property="Margin" Value="0,7,0,0" />
                     <Setter Property="Width" Value="16"></Setter>
                     <Setter Property="RenderTransform" Value="rotate(-45deg)" />
+                    <Setter Property="Fill" Value="{TemplateBinding BorderBrush}" />
+                </Style>
+            </Style>
+        </Style>
+
+        <Style Selector="^[MenuIconStyle=RightChevron]">
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Panel Width="16" Height="16">
+                        <Rectangle Name="Top"
+                                   Margin="4, 4,0, 0"
+                                   Width="10.6"
+                                   Height="2"
+                                   Fill="{TemplateBinding Foreground}"
+                                   VerticalAlignment="Top"
+                                   HorizontalAlignment="Left"
+                                   RenderTransform="rotate(45deg)"
+                                   UseLayoutRounding="False">
+                            <Rectangle.Transitions>
+                                <Transitions>
+                                    <DoubleTransition Property="Width"
+                                                      Duration="{DynamicResource BlockLongStateTransitionDuration}"
+                                                      Easing="CubicEaseOut" />
+                                    <BrushTransition Property="Fill"
+                                                     Duration="{DynamicResource BlockLongStateTransitionDuration}"
+                                                     Easing="CubicEaseOut" />
+                                    <ThicknessTransition Property="Margin"
+                                                         Duration="{DynamicResource BlockLongStateTransitionDuration}"
+                                                         Easing="CubicEaseOut" />
+                                    <TransformOperationsTransition Property="RenderTransform"
+                                                                   Duration="{DynamicResource BlockLongStateTransitionDuration}"
+                                                                   Easing="CubicEaseOut" />
+                                </Transitions>
+                            </Rectangle.Transitions>
+                        </Rectangle>
+                        <Rectangle Name="Bottom"
+                                   Margin="4,0,0,4"
+                                   Width="10.6"
+                                   Height="2"
+                                   Fill="{TemplateBinding Foreground}"
+                                   VerticalAlignment="Bottom"
+                                   HorizontalAlignment="Left"
+                                   RenderTransform="rotate(-45deg)"
+                                   UseLayoutRounding="False">
+                            <Rectangle.Transitions>
+                                <Transitions>
+                                    <DoubleTransition Property="Width"
+                                                      Duration="{DynamicResource BlockLongStateTransitionDuration}"
+                                                      Easing="CubicEaseOut" />
+                                    <BrushTransition Property="Fill"
+                                                     Duration="{DynamicResource BlockLongStateTransitionDuration}"
+                                                     Easing="CubicEaseOut" />
+                                    <ThicknessTransition Property="Margin"
+                                                         Duration="{DynamicResource BlockLongStateTransitionDuration}"
+                                                         Easing="CubicEaseOut" />
+                                    <TransformOperationsTransition Property="RenderTransform"
+                                                                   Duration="{DynamicResource BlockLongStateTransitionDuration}"
+                                                                   Easing="CubicEaseOut" />
+                                </Transitions>
+                            </Rectangle.Transitions>
+                        </Rectangle>
+                    </Panel>
+                </ControlTemplate>
+            </Setter>
+            
+            <Style Selector="^[DrawExpanded=True]">
+                <Style Selector="^ /template/ Rectangle#Top">
+                    <Setter Property="IsVisible" Value="True" />
+                    <Setter Property="Margin" Value="0,4,0,0" />
+                    <Setter Property="Width" Value="12"></Setter>
+                    <Setter Property="RenderTransform" Value="rotate(0deg)" />
+                    <Setter Property="Fill" Value="{TemplateBinding BorderBrush}" />
+                </Style>
+                <Style Selector="^ /template/ Rectangle#Bottom">
+                    <Setter Property="IsVisible" Value="True" />
+                    <Setter Property="Margin" Value="4,0,0,4" />
+                    <Setter Property="Width" Value="12"></Setter>
+                    <Setter Property="RenderTransform" Value="rotate(0deg)" />
                     <Setter Property="Fill" Value="{TemplateBinding BorderBrush}" />
                 </Style>
             </Style>

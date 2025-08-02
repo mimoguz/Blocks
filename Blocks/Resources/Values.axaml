@@ -45,7 +45,7 @@
     <sys:Double x:Key="BlockMinListBoxItemHeight">32</sys:Double>
     <sys:Double x:Key="BlockMinMenuFlyoutWidth">60</sys:Double>
     <sys:Double x:Key="BlockMinMenuItemHeight">32</sys:Double>
-    <sys:Double x:Key="BlockPopupPlacementFix">-12</sys:Double>
+    <sys:Double x:Key="BlockPopupPlacementFix">-14</sys:Double>
     <sys:Double x:Key="BlockPopupWidthFix">24</sys:Double>
     <sys:Double x:Key="BlockRadioButtonSize">28</sys:Double>
     <sys:Double x:Key="BlockScrollBarCompactThumbSize">4</sys:Double>

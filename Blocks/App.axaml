@@ -23,5 +23,6 @@
         <StyleInclude Source="Controls/AnimatedDot.axaml" />
         <StyleInclude Source="Controls/BlockButton.axaml" />
         <StyleInclude Source="Controls/BlockView.axaml" />
+        <StyleInclude Source="Controls/PlaceHolderStyles.axaml" />
     </Application.Styles>
 </Application>

@@ -20,7 +20,7 @@
                 <MenuItem Header="Input Gesture" InputGesture="Ctrl+G" />
                 <MenuItem Header="Disabled" IsEnabled="False" />
                 <MenuItem Header="-" />
-                <MenuItem Header="Parent" IsSubMenuOpen="True">
+                <MenuItem Header="Parent" IsSubMenuOpen="False">
                     <MenuItem Header="Child 1" />
                     <MenuItem Header="Child 2" />
                     <MenuItem Header="Child 3" />
@@ -50,9 +50,10 @@
     </Design.PreviewWith>
 
     <conv:PlatformKeyGestureConverter x:Key="KeyGestureConverter" />
-    <x:Double x:Key="MenuFlyoutSubItemPopupHorizontalOffset">-4</x:Double>
-    <Thickness x:Key="MenuIconPresenterMargin">0,0,12,0</Thickness>
-    <Thickness x:Key="MenuInputGestureTextMargin">24,0,0,0</Thickness>
+    <x:Double x:Key="BlockMenuFlyoutSubItemPopupHorizontalOffset">-4</x:Double>
+    <Thickness x:Key="BlockMenuIconPresenterMargin">0,0,12,0</Thickness>
+    <Thickness x:Key="BlockMenuChevronMargin">12,0,0,0</Thickness>
+    <Thickness x:Key="BlockMenuInputGestureTextMargin">24,0,0,0</Thickness>
 
     <ControlTheme x:Key="BlockMenuItemIconTheme"
                   TargetType="ContentControl">
@@ -101,14 +102,14 @@
                                         x:Name="PART_ToggleIconPresenter"
                                         IsVisible="False"
                                         Theme="{StaticResource BlockMenuItemIconTheme}"
-                                        Margin="{DynamicResource MenuIconPresenterMargin}" />
+                                        Margin="{DynamicResource BlockMenuIconPresenterMargin}" />
 
                         <ContentControl Grid.Column="1"
                                         x:Name="PART_IconPresenter"
                                         IsVisible="False"
                                         Theme="{StaticResource BlockMenuItemIconTheme}"
                                         Content="{TemplateBinding Icon}"
-                                        Margin="{DynamicResource MenuIconPresenterMargin}" />
+                                        Margin="{DynamicResource BlockMenuIconPresenterMargin}" />
 
                         <ContentPresenter Name="PART_HeaderPresenter"
                                           Content="{TemplateBinding Header}"
@@ -120,27 +121,26 @@
 
                         <TextBlock x:Name="PART_InputGestureText"
                                    Grid.Column="3"
-                                   Margin="{DynamicResource MenuInputGestureTextMargin}"
+                                   Margin="{DynamicResource BlockMenuInputGestureTextMargin}"
                                    Text="{TemplateBinding InputGesture, Converter={StaticResource KeyGestureConverter}}"
                                    HorizontalAlignment="Right"
                                    VerticalAlignment="Center"
-                                   Foreground="{DynamicResource MenuFlyoutItemKeyboardAcceleratorTextForeground}" />
+                                   Foreground="{DynamicResource BlockWindowForegroundBrush}"
+                                   Opacity="{DynamicResource BlockPlaceholderOpacity}"/>
 
-                        <PathIcon Name="PART_ChevronPath"
-                                  Width="{DynamicResource BlockIconSize}"
-                                  Height="{DynamicResource BlockIconSize}"
-                                  Data="{StaticResource BlockChevronRight}"
-                                  Foreground="{TemplateBinding Foreground}"
-                                  Opacity="{DynamicResource BlockDisabledOpacity}"
-                                  Margin="{DynamicResource MenuFlyoutItemChevronMargin}"
-                                  VerticalAlignment="Center"
-                                  Grid.Column="4" />
+                        <blk:AnimatedMenuIcon Name="PART_Chevron"
+                                              Grid.Column="4"
+                                              MenuIconStyle="RightChevron"
+                                              VerticalAlignment="Center"
+                                              Margin="{DynamicResource BlockMenuChevronMargin}"
+                                              Foreground="{TemplateBinding Foreground}"/>
                     </Grid>
 
                     <Popup Name="PART_Popup"
                            WindowManagerAddShadowHint="False"
                            Placement="RightEdgeAlignedTop"
-                           HorizontalOffset="{DynamicResource MenuFlyoutSubItemPopupHorizontalOffset}"
+                           VerticalOffset="{DynamicResource BlockPopupPlacementFix}"
+                           HorizontalOffset="{DynamicResource BlockMenuFlyoutSubItemPopupHorizontalOffset}"
                            IsLightDismissEnabled="False"
                            IsOpen="{TemplateBinding IsSubMenuOpen, Mode=TwoWay}">
                         <Border x:Name="PopupBorder"
@@ -194,11 +194,11 @@
             <Setter Property="Flat" Value="False" />
         </Style>
 
-        <Style Selector="^:open /template/ PathIcon#PART_ChevronPath">
-            <Setter Property="Opacity" Value="1" />
+        <Style Selector="^:open /template/ blk|AnimatedMenuIcon#PART_Chevron">
+            <Setter Property="DrawExpanded" Value="True" />
         </Style>
 
-        <Style Selector="^:empty /template/ PathIcon#PART_ChevronPath">
+        <Style Selector="^:empty /template/ blk|AnimatedMenuIcon#PART_Chevron">
             <Setter Property="IsVisible" Value="False" />
         </Style>
 

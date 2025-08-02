@@ -28,6 +28,7 @@ public class AnimatedMenuIcon : TemplatedControl
     public enum IconStyle
     {
         Burger,
-        Chevron
+        Chevron,
+        RightChevron,
     }
 }
