@@ -1,0 +1,88 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:conv="clr-namespace:Blocks.Converters">
+    <Design.PreviewWith>
+        <Border Background="{DynamicResource BlockWindowBackgroundBrush}" Padding="10" Width="300">
+            <!--<Border  Height="40">
+                <Border.OpacityMask>
+                    <LinearGradientBrush StartPoint="0%, 0%" EndPoint="100%, 0%">
+                        <LinearGradientBrush.GradientStops>
+                            <GradientStop Color="#00000000" Offset="0" />
+                            <GradientStop Color="White" 
+                                          Offset="{Binding $parent[Border].Bounds, 
+                                                   Converter={x:Static conv:HorizontalOpacityMaskOffsetConverter.Instance},
+                                                   ConverterParameter=40}" />
+                            <GradientStop Color="White" 
+                                          Offset="{Binding $parent[Border].Bounds, 
+                                                   Converter={x:Static conv:HorizontalOpacityMaskOffsetConverter.Instance},
+                                                   ConverterParameter=-40}"/>
+                            <GradientStop Color="#00000000" Offset="1" />
+                        </LinearGradientBrush.GradientStops>
+                    </LinearGradientBrush>
+                </Border.OpacityMask>
+                <Rectangle Fill="CornflowerBlue"></Rectangle>
+            </Border>-->
+            <ScrollBar Theme="{DynamicResource BlockHorizontalTabControlScrollBar}" 
+                       Width="200"
+                       Orientation="Horizontal"/>
+            
+        </Border>
+    </Design.PreviewWith>
+    
+    <ControlTheme x:Key="BlockHorizontalTabControlScrollBar" TargetType="ScrollBar">
+        
+        <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource BlockButtonForegroundBrush}" />
+        <Setter Property="ShowDelay" Value="0:0:0.001" />
+
+        <Style Selector="^:horizontal">
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Grid x:Name="Root">
+                        <Border x:Name="HorizontalRoot">
+                            <Grid ColumnDefinitions="Auto,*,Auto">
+                                
+                                <RepeatButton Name="PART_LineUpButton"
+                                              Grid.Column="0"
+                                              Background="{TemplateBinding Background}"
+                                              VerticalAlignment="Center"
+                                              Focusable="False"
+                                              Classes="flat"
+                                              CornerRadius="999"
+                                              Height="32" Width="32"
+                                              MinHeight="32" MinWidth="32"
+                                              Padding="0">
+                                    <PathIcon Data="{DynamicResource BlockArrowLeft5X8}"
+                                              Width="5"
+                                              Height="8"
+                                              Foreground="{TemplateBinding Foreground}" />
+                                </RepeatButton>
+                                
+                                <RepeatButton Name="PART_LineDownButton"
+                                              Background="{TemplateBinding Background}"
+                                              VerticalAlignment="Center"
+                                              Grid.Column="2"
+                                              Focusable="False"
+                                              Classes="flat"
+                                              CornerRadius="999"
+                                              Height="32" Width="32"
+                                              MinHeight="32" MinWidth="32"
+                                              Padding="0">
+                                    <PathIcon Data="{DynamicResource BlockArrowRight5X8}"
+                                              Width="5"
+                                              Height="8"
+                                              Foreground="{TemplateBinding Foreground}" />
+                                </RepeatButton>
+                               
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter>
+        </Style>
+
+        <Style Selector="^:disabled">
+            <Setter Property="Opacity" Value="{DynamicResource BlockDisabledOpacity}" />
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

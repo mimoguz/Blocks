@@ -138,8 +138,7 @@
                     <!-- Top-left -->
                     <TabControl Classes="demo" Grid.Row="0"
                                 TabStripPlacement="{Binding Dock}"
-                                blk:Block.ScrollBarVisibility="Auto"
-                                Padding="8, 16">
+                                blk:Block.ScrollBarVisibility="Auto">
                         <TabControl.Styles>
                             <Style Selector="TabControl[TabStripPlacement=Left] TabItem, TabControl[TabStripPlacement=Right] TabItem">
                                 <Setter Property="MinWidth" Value="140" />

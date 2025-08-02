@@ -1,0 +1,77 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:conv="clr-namespace:Blocks.Converters">
+
+    <Design.PreviewWith>
+        <Border Padding="20" Background="{DynamicResource BlockWindowBackgroundBrush}"
+                Width="300">
+            <ScrollViewer Height="64"
+                          HorizontalScrollBarVisibility="Auto"
+                          AllowAutoHide="False"
+                          Theme="{DynamicResource BlockHorizontalTabControlScrollViewer}">
+                <StackPanel Orientation="Horizontal" Spacing="2">
+                    <Button>Item 1</Button>
+                    <Button>Item 2</Button>
+                    <Button>Item 3</Button>
+                    <Button>Item 4</Button>
+                    <Button>Item 5</Button>
+                    <Button>Item 6</Button>
+                    <Button>Item 7</Button>
+                    <Button>Item 8</Button>
+                    <Button>Item 9</Button>
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
+    </Design.PreviewWith>
+    
+    <Thickness x:Key="BlockHorizontalTabControlScrollMargin">20,0</Thickness>
+    <Thickness x:Key="BlockThicknessZero">0</Thickness>
+
+    <ControlTheme x:Key="BlockHorizontalTabControlScrollViewer" TargetType="ScrollViewer">
+
+        <Setter Property="VerticalScrollBarVisibility" Value="Disabled" />
+        <Setter Property="HorizontalScrollBarVisibility" Value="Visible" />
+        <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource BlockWindowForegroundBrush}" />
+        <Setter Property="AllowAutoHide" Value="False" />
+
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel>
+                    <ScrollContentPresenter Name="PART_ContentPresenter"
+                                            HorizontalSnapPointsType="{TemplateBinding HorizontalSnapPointsType}"
+                                            HorizontalSnapPointsAlignment="{TemplateBinding HorizontalSnapPointsAlignment}"
+                                            ScrollViewer.IsScrollInertiaEnabled="{TemplateBinding IsScrollInertiaEnabled}">
+                        <ScrollContentPresenter.GestureRecognizers>
+                            <ScrollGestureRecognizer
+                                CanHorizontallyScroll="True"
+                                CanVerticallyScroll="False"
+                                IsScrollInertiaEnabled="{Binding (ScrollViewer.IsScrollInertiaEnabled), ElementName=PART_ContentPresenter}" />
+                        </ScrollContentPresenter.GestureRecognizers>
+                        <ScrollContentPresenter.Margin>
+                            <MultiBinding Converter="{x:Static conv:TernarySelector.Instance}">
+                                <Binding Path="#PART_HorizontalScrollBar.IsVisible" />
+                                <DynamicResource ResourceKey="BlockHorizontalTabControlScrollMargin" />
+                                <DynamicResource ResourceKey="BlockThicknessZero" />
+                            </MultiBinding>
+                        </ScrollContentPresenter.Margin>
+                        <ScrollContentPresenter.Transitions>
+                            <Transitions>
+                                <ThicknessTransition Property="Margin" Duration="{DynamicResource BlockLongStateTransitionDuration}" />
+                            </Transitions>
+                        </ScrollContentPresenter.Transitions>
+                    </ScrollContentPresenter>
+                    
+                    <ScrollBar Name="PART_HorizontalScrollBar"
+                               Margin="2,0"
+                               Orientation="Horizontal"
+                               Theme="{DynamicResource BlockHorizontalTabControlScrollBar}"
+                               Background="{TemplateBinding Background}"
+                               Foreground="{TemplateBinding Foreground}"
+                               HorizontalAlignment="Stretch"
+                               VerticalAlignment="Center" />
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+</ResourceDictionary>

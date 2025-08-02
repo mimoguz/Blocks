@@ -33,5 +33,7 @@
         <ResourceInclude Source="Controls/ToggleButton.axaml" />
         <ResourceInclude Source="Controls/ProgressBar.axaml" />
         <ResourceInclude Source="Controls/GridSplitter.axaml" />
+        <ResourceInclude Source="Controls/HorizontalTabControlScrollBar.axaml" />
+        <ResourceInclude Source="Controls/HorizontalTabControlScrollViewer.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

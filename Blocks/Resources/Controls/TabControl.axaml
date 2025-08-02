@@ -106,7 +106,6 @@
                         <Border Name="TabsBorder" DockPanel.Dock="Top" Background="{TemplateBinding Background}">
                             <!-- TODO: Better horizontal scrolling -->
                             <ScrollViewer Name="TabsScroll"
-                                          Background="{TemplateBinding Background}"
                                           Foreground="{TemplateBinding Foreground}"
                                           HorizontalScrollBarVisibility="Disabled"
                                           VerticalScrollBarVisibility="Disabled">
@@ -140,6 +139,7 @@
         <Style Selector="^[TabStripPlacement=Top]">
             <Style Selector="^ /template/ ScrollViewer#TabsScroll">
                 <Setter Property="HorizontalScrollBarVisibility" Value="{TemplateBinding blk:Block.ScrollBarVisibility}" />
+                <Setter Property="Theme" Value="{DynamicResource BlockHorizontalTabControlScrollViewer}" />
             </Style>
             <Style Selector="^ /template/ Border#TabsBorder">
                 <Setter Property="DockPanel.Dock" Value="Top" />
@@ -155,6 +155,7 @@
         <Style Selector="^[TabStripPlacement=Bottom]">
             <Style Selector="^ /template/ ScrollViewer#TabsScroll">
                 <Setter Property="HorizontalScrollBarVisibility" Value="{TemplateBinding blk:Block.ScrollBarVisibility}" />
+                <Setter Property="Theme" Value="{DynamicResource BlockHorizontalTabControlScrollViewer}" />
             </Style>
             <Style Selector="^ /template/ Border#TabsBorder">
                 <Setter Property="DockPanel.Dock" Value="Bottom" />
