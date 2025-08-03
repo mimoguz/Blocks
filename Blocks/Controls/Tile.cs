@@ -13,7 +13,7 @@ namespace Blocks.Controls;
 [TemplatePart("PART_LeftContent", typeof(ContentPresenter), IsRequired = false)]
 [TemplatePart("PART_RightContent", typeof(ContentPresenter), IsRequired = false)]
 [PseudoClasses(TileEmpty, TileEmptyLeft, TileEmptyRight)]
-public sealed class Tile : HeaderedContentControl
+public class Tile : HeaderedContentControl
 {
     private const string TileEmpty = ":empty";
     private const string TileEmptyLeft = ":emptyLeft";
@@ -95,7 +95,7 @@ public sealed class Tile : HeaderedContentControl
         UpdatePseudoClasses();
     }
     
-    private void UpdatePseudoClasses()
+    protected virtual void UpdatePseudoClasses()
     {
         PseudoClasses.Set(TileEmpty, Content == null);
         PseudoClasses.Set(TileEmptyLeft, LeftContent == null);

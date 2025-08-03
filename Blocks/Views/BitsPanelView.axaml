@@ -90,18 +90,11 @@
                                     <TextBlock IsVisible="{Binding !Active}">Not active</TextBlock>
                                 </Panel>
                             </blk:Tile>
-                            <blk:Tile Header="Tile" Classes="demo" HorizontalAlignment="Stretch">
-                                <blk:Tile.LeftContent>
-                                    <PathIcon Data="{DynamicResource BlockErrorIcon24}" Width="24" Height="24" />
-                                </blk:Tile.LeftContent>
+                            <Separator Height="1" />
+                            <blk:Tile Header="Only Header and Left" Classes="demo" HorizontalAlignment="Stretch">
                                 <blk:Tile.RightContent>
-                                    <ToggleSwitch OffContent="{x:Null}" OnContent="{x:Null}"
-                                                  IsChecked="{Binding Active}" />
+                                    <ToggleSwitch IsChecked="{Binding Active}" />
                                 </blk:Tile.RightContent>
-                                <Panel>
-                                    <TextBlock IsVisible="{Binding Active}">Active</TextBlock>
-                                    <TextBlock IsVisible="{Binding !Active}">Not active</TextBlock>
-                                </Panel>
                             </blk:Tile>
                             <Separator Height="1" />
                             <blk:CommandTile Header="Command Tile"

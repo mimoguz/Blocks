@@ -16,36 +16,13 @@ using Avalonia.VisualTree;
 
 namespace Blocks.Controls;
 
-[TemplatePart("PART_LeftContent", typeof(ContentPresenter), IsRequired = false)]
-[TemplatePart("PART_RightContent", typeof(ContentPresenter), IsRequired = false)]
-[PseudoClasses(TilePressed, TileEmpty, TileEmptyLeft, TileEmptyRight)]
-public sealed class CommandTile : HeaderedContentControl, ICommandSource
+[PseudoClasses(CommandTilePressed)]
+public sealed class CommandTile : Tile, ICommandSource
 {
-    private const string TilePressed = ":pressed";
-    private const string TileEmpty = ":empty";
-    private const string TileEmptyLeft = ":emptyLeft";
-    private const string TileEmptyRight = ":emptyRight";
+    private const string CommandTilePressed = ":pressed";
     
     private EventHandler? canExecuteChangeHandler;
     private EventHandler CanExecuteChangedHandler => canExecuteChangeHandler ??= new(CanExecuteChanged);
-
-    public static readonly StyledProperty<object?> LeftContentProperty =
-        AvaloniaProperty.Register<CommandTile, object?>(nameof(LeftContent));
-    
-    public static readonly StyledProperty<object?> RightContentProperty =
-        AvaloniaProperty.Register<CommandTile, object?>(nameof(RightContent));
-    
-    public static readonly StyledProperty<IDataTemplate?> LeftContentTemplateProperty =
-        AvaloniaProperty.Register<CommandTile, IDataTemplate?>(nameof(LeftContentTemplate));
-    
-    public static readonly StyledProperty<IDataTemplate?> RightContentTemplateProperty =
-        AvaloniaProperty.Register<CommandTile, IDataTemplate?>(nameof(RightContentTemplate));
-    
-    public static readonly StyledProperty<HorizontalAlignment> HorizontalHeaderAlignmentProperty =
-        AvaloniaProperty.Register<CommandTile, HorizontalAlignment>(nameof(HorizontalHeaderAlignment));
-    
-    public static readonly StyledProperty<VerticalAlignment> VerticalHeaderAlignmentProperty =
-        AvaloniaProperty.Register<CommandTile, VerticalAlignment>(nameof(VerticalHeaderAlignment));
     
     public static readonly StyledProperty<ICommand?> CommandProperty =
         AvaloniaProperty.Register<CommandTile, ICommand?>(nameof(Command), enableDataValidation: true);
@@ -65,42 +42,6 @@ public sealed class CommandTile : HeaderedContentControl, ICommandSource
     static CommandTile()
     {
         FocusableProperty.OverrideDefaultValue(typeof(CommandTile), true);
-    }
-    
-    public object? LeftContent
-    {
-        get => GetValue(LeftContentProperty);
-        set => SetValue(LeftContentProperty, value);
-    }
-    
-    public object? RightContent
-    {
-        get => GetValue(RightContentProperty);
-        set => SetValue(RightContentProperty, value);
-    }
-    
-    public IDataTemplate? LeftContentTemplate
-    {
-        get => GetValue(LeftContentTemplateProperty);
-        set => SetValue(LeftContentTemplateProperty, value);
-    }
-    
-    public IDataTemplate? RightContentTemplate
-    {
-        get => GetValue(RightContentTemplateProperty);
-        set => SetValue(RightContentTemplateProperty, value);
-    }
-
-    public VerticalAlignment VerticalHeaderAlignment
-    {
-        get => GetValue(VerticalHeaderAlignmentProperty);
-        set => SetValue(VerticalHeaderAlignmentProperty, value);
-    }
-    
-    public HorizontalAlignment HorizontalHeaderAlignment
-    {
-        get => GetValue(HorizontalHeaderAlignmentProperty);
-        set => SetValue(HorizontalHeaderAlignmentProperty, value);
     }
     
     public event EventHandler<RoutedEventArgs>? Click
@@ -212,7 +153,6 @@ public sealed class CommandTile : HeaderedContentControl, ICommandSource
     protected override void OnPointerPressed(PointerPressedEventArgs e)
     {
         base.OnPointerPressed(e);
-
         if (e.GetCurrentPoint(this).Properties.IsLeftButtonPressed)
         {
             IsPressed = true;
@@ -224,12 +164,10 @@ public sealed class CommandTile : HeaderedContentControl, ICommandSource
     protected override void OnPointerReleased(PointerReleasedEventArgs e)
     {
         base.OnPointerReleased(e);
-
         if (IsPressed && e.InitialPressMouseButton == MouseButton.Left)
         {
             IsPressed = false;
             e.Handled = true;
-
             if (this.GetVisualsAt(e.GetPosition(this)).Any(c => this == c || this.IsVisualAncestorOf(c)))
             {
                 OnClick();
@@ -241,7 +179,6 @@ public sealed class CommandTile : HeaderedContentControl, ICommandSource
     protected override void OnPointerCaptureLost(PointerCaptureLostEventArgs e)
     {
         base.OnPointerCaptureLost(e);
-
         IsPressed = false;
     }
 
@@ -249,7 +186,6 @@ public sealed class CommandTile : HeaderedContentControl, ICommandSource
     protected override void OnLostFocus(RoutedEventArgs e)
     {
         base.OnLostFocus(e);
-
         IsPressed = false;
     }
 
@@ -289,17 +225,7 @@ public sealed class CommandTile : HeaderedContentControl, ICommandSource
         }
         else if (change.Property == IsPressedProperty)
         {
-            PseudoClasses.Set(TilePressed, IsPressed);
-        } else if (change.Property == ContentProperty)
-        {
-            PseudoClasses.Set(TileEmpty, Content == null);;
-        }
-        else if (change.Property == LeftContentProperty)
-        {
-            PseudoClasses.Set(TileEmptyLeft, LeftContent == null);
-        } else if (change.Property == RightContentProperty)
-        {
-            PseudoClasses.Set(TileEmptyRight, RightContent == null);
+            PseudoClasses.Set(CommandTilePressed, IsPressed);
         }
     }
 
@@ -337,9 +263,7 @@ public sealed class CommandTile : HeaderedContentControl, ICommandSource
         {
             return;
         }
-
         var canExecute = command == null || command.CanExecute(parameter);
-
         if (canExecute != commandCanExecute)
         {
             commandCanExecute = canExecute;
@@ -347,10 +271,10 @@ public sealed class CommandTile : HeaderedContentControl, ICommandSource
         }
     }
     
-    private void UpdatePseudoClasses()
+    protected override void UpdatePseudoClasses()
     {
-        PseudoClasses.Set(TilePressed, IsPressed);
-        PseudoClasses.Set(TileEmpty, Content == null);
+        base.UpdatePseudoClasses();
+        PseudoClasses.Set(CommandTilePressed, IsPressed);
     }
 
     void ICommandSource.CanExecuteChanged(object sender, EventArgs e) => this.CanExecuteChanged(sender, e);
