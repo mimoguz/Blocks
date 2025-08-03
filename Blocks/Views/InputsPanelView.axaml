@@ -89,21 +89,13 @@
                             <Setter Property="Text" Value="{Binding Text, Mode=TwoWay}" />
                         </Style>
                         
-                        <Style Selector="NumericUpDown.demo">
-                            <Setter Property="Value" Value="{Binding CurrentDoubleValue, Mode=TwoWay}" />
-                            <Setter Property="Minimum" Value="{Binding MinDoubleValue, Mode=OneTime}" />
-                            <Setter Property="Maximum" Value="{Binding MaxDoubleValue, Mode=OneTime}" />
-                            <Setter Property="Increment" Value="0.5" />
+                        <Style Selector="AutoCompleteBox.demo">
+                            <Setter Property="ItemsSource" Value="{Binding StringValues}" />
                         </Style>
                         
                         <Style Selector="ComboBox.demo">
                             <Setter Property="ItemsSource" Value="{Binding StringValues}" />
                         </Style>
-                        
-                        <Style Selector="AutoCompleteBox.demo">
-                            <Setter Property="ItemsSource" Value="{Binding StringValues}" />
-                        </Style>
-                        
                         
                         <Style Selector="ListBox.demo">
                             <Setter Property="ItemsSource" Value="{Binding StringValues}" />
@@ -112,6 +104,13 @@
                             <Setter Property="Background" Value="{DynamicResource BlockTransparentViewBackgroundBrush}" />
                             <Setter Property="CornerRadius" Value="{DynamicResource BlockButtonCornerRadius}" />
                             <Setter Property="Padding" Value="6" />
+                        </Style>
+                        
+                        <Style Selector="NumericUpDown.demo">
+                            <Setter Property="Value" Value="{Binding CurrentDoubleValue, Mode=TwoWay}" />
+                            <Setter Property="Minimum" Value="{Binding MinDoubleValue, Mode=OneTime}" />
+                            <Setter Property="Maximum" Value="{Binding MaxDoubleValue, Mode=OneTime}" />
+                            <Setter Property="Increment" Value="0.5" />
                         </Style>
                         
                         <Style Selector="Slider.demo">
@@ -177,7 +176,9 @@
                         <CheckBox Classes="demo left-label">Left Label</CheckBox>
                         <CheckBox Classes="demo top-label">Top Label</CheckBox>
                         <CheckBox Classes="demo bottom-label">Bottom Label</CheckBox>
-
+                        
+                        <ToggleSwitch Classes="demo">Toggle Switch</ToggleSwitch>
+                        
                         <RadioButton Classes="demo" IsChecked="True">Radio Button</RadioButton>
                         <RadioButton Classes="demo left-label">Left Label</RadioButton>
                         <RadioButton Classes="demo top-label">Top Label</RadioButton>

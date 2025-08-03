@@ -38,7 +38,8 @@
                   TargetType="ToggleButton">
 
         <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource BlockBasePrimaryBrush}" />
+        <Setter Property="blk:Block.ActiveBackground" Value="{DynamicResource BlockBasePrimaryBrush}" />
+        <Setter Property="blk:Block.ActiveForeground" Value="{DynamicResource BlockOnPrimaryBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource BlockButtonForegroundBrush}" />
         <Setter Property="Padding" Value="{DynamicResource BlockButtonPadding}" />
         <Setter Property="CornerRadius" Value="{DynamicResource BlockButtonCornerRadius}" />
@@ -101,14 +102,14 @@
         <Style Selector="^.hide-checked"></Style>
 
         <Style Selector="^:checked:not(.hide-checked)">
-            <Setter Property="Foreground" Value="{DynamicResource BlockOnPrimaryBrush}" />
+            <Setter Property="Foreground" Value="{Binding Path=(blk:Block.ActiveForeground), RelativeSource={RelativeSource Self}}" />
             <Style Selector="^ /template/ blk|BlockButton#ButtonBackground">
                 <Setter Property="Opaque" Value="True" />
-                <Setter Property="Background" Value="{DynamicResource BlockBasePrimaryBrush}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource BlockOnPrimaryBrush}" />
+                <Setter Property="Background" Value="{TemplateBinding blk:Block.ActiveBackground}" />
+                <Setter Property="BorderBrush" Value="{TemplateBinding blk:Block.ActiveForeground}" />
             </Style>
             <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="Foreground" Value="{DynamicResource BlockOnPrimaryBrush}" />
+                <Setter Property="Foreground" Value="{TemplateBinding blk:Block.ActiveForeground}" />
             </Style>
         </Style>
 

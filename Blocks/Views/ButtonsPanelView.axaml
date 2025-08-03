@@ -250,7 +250,7 @@
                             Basic Split Button
                         </SplitButton>
                         <SplitButton blk:Block.MenuIconStyle="Burger"
-                                     blk:Block.ActiveIconForeground="DeepPink"
+                                     blk:Block.ActiveForeground="DeepPink"
                                      IsTabStop="False"
                                      Classes="demo">
                             <SplitButton.Flyout>

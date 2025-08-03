@@ -40,5 +40,6 @@
         <ResourceInclude Source="Controls/TreeView.axaml" />
         <ResourceInclude Source="Controls/CommandTile.axaml" />
         <ResourceInclude Source="Controls/Tile.axaml" />
+        <ResourceInclude Source="Controls/ToggleSwitch.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

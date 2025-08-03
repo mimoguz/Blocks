@@ -27,7 +27,9 @@ public abstract class Block : AvaloniaObject
     
     public static readonly AttachedProperty<IBrush?> ButtonBackgroundProperty = AvaloniaProperty.RegisterAttached<Block, Control, IBrush?>("ButtonBackground");
     
-    public static readonly AttachedProperty<IBrush?> ActiveIconForegroundProperty = AvaloniaProperty.RegisterAttached<Block, Control, IBrush?>("ActiveIconForeground");
+    public static readonly AttachedProperty<IBrush?> ActiveBackgroundProperty = AvaloniaProperty.RegisterAttached<Block, Control, IBrush?>("ActiveBackground");
+    
+    public static readonly AttachedProperty<IBrush?> ActiveForegroundProperty = AvaloniaProperty.RegisterAttached<Block, Control, IBrush?>("ActiveForeground");
     
     public static readonly AttachedProperty<bool> HideDecorationProperty = AvaloniaProperty.RegisterAttached<Block, Control, bool>("HideDecoration");
     
@@ -63,8 +65,11 @@ public abstract class Block : AvaloniaObject
     public static IBrush? GetButtonBackground(Control control) => control.GetValue(ButtonBackgroundProperty);
     public static void SetButtonBackground(Control control, IBrush? value) => control.SetValue(ButtonBackgroundProperty, value);
     
-    public static IBrush? GetActiveIconForeground(Control control) => control.GetValue(ActiveIconForegroundProperty);
-    public static void SetActiveIconForeground(Control control, IBrush? value) => control.SetValue(ActiveIconForegroundProperty, value);
+    public static IBrush? GetActiveBackground(Control control) => control.GetValue(ActiveBackgroundProperty);
+    public static void SetActiveBackground(Control control, IBrush? value) => control.SetValue(ActiveBackgroundProperty, value);
+    
+    public static IBrush? GetActiveForeground(Control control) => control.GetValue(ActiveForegroundProperty);
+    public static void SetActiveForeground(Control control, IBrush? value) => control.SetValue(ActiveForegroundProperty, value);
     
     public static bool GetHideDecoration(Control control) => control.GetValue(HideDecorationProperty);
     public static void SetHideDecoration(Control control, bool value) => control.SetValue(HideDecorationProperty, value);

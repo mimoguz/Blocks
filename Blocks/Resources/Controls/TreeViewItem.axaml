@@ -28,7 +28,7 @@
 
         <Setter Property="Foreground" Value="{DynamicResource BlockWindowForegroundBrush}" />
         <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
-        <Setter Property="blk:Block.ActiveIconForeground" Value="{DynamicResource BlockBasePrimaryBrush}" />
+        <Setter Property="blk:Block.ActiveForeground" Value="{DynamicResource BlockBasePrimaryBrush}" />
         <Setter Property="Width" Value="24" />
         <Setter Property="Height" Value="24" />
         <Setter Property="CornerRadius" Value="999" />
@@ -46,7 +46,7 @@
                             VerticalAlignment="Center" >
                     </Border>
                     <blk:AnimatedTreeIcon Background="{TemplateBinding Foreground}"
-                                          Foreground="{TemplateBinding blk:Block.ActiveIconForeground}"
+                                          Foreground="{TemplateBinding blk:Block.ActiveForeground}"
                                           HorizontalAlignment="Center"
                                           VerticalAlignment="Center" />
                 </Panel>
@@ -74,7 +74,7 @@
         <Setter Property="MinHeight" Value="{DynamicResource BlockMinListBoxItemHeight}" />
         <Setter Property="CornerRadius" Value="{DynamicResource BlockButtonCornerRadius}"></Setter>
         <Setter Property="blk:Block.GapSingle" Value="{DynamicResource BlockTreeViewItemGap}" />
-        <Setter Property="blk:Block.ActiveIconForeground" Value="{DynamicResource BlockBasePrimaryBrush}" />
+        <Setter Property="blk:Block.ActiveForeground" Value="{DynamicResource BlockBasePrimaryBrush}" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="Padding" Value="{DynamicResource BlockTreeViewItemPadding}" />
         <Setter Property="Focusable" Value="True" />
@@ -107,7 +107,7 @@
                                     <ToggleButton Name="PART_ExpandCollapseChevron"
                                                   Theme="{StaticResource BlockTreeViewItemStateToggleButton}"
                                                   Background="{TemplateBinding Background}"
-                                                  blk:Block.ActiveIconForeground="{TemplateBinding blk:Block.ActiveIconForeground}"
+                                                  blk:Block.ActiveForeground="{TemplateBinding blk:Block.ActiveForeground}"
                                                   Focusable="False"
                                                   IsChecked="{TemplateBinding IsExpanded, Mode=TwoWay}"
                                                   Margin="{TemplateBinding blk:Block.GapSingle, Converter={x:Static conv:BlockConverters.MakeRightThickness}}" />

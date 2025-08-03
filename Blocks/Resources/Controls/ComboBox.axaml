@@ -6,7 +6,7 @@
     <Design.PreviewWith>
         <Border Padding="20">
             <StackPanel Spacing="10">
-                <ComboBox PlaceholderText="Select an item" blk:Block.ActiveIconForeground="DeepPink">
+                <ComboBox PlaceholderText="Select an item" blk:Block.ActiveForeground="DeepPink">
                     <ComboBoxItem>Item 1</ComboBoxItem>
                     <ComboBoxItem>Item 2</ComboBoxItem>
                 </ComboBox>
@@ -45,7 +45,7 @@
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
         <Setter Property="MaxDropDownHeight" Value="{DynamicResource BlockMaxDropDownHeight}" />
         <Setter Property="blk:Block.MenuIconStyle" Value="Chevron" />
-        <Setter Property="blk:Block.ActiveIconForeground" Value="{DynamicResource BlockBasePrimaryBrush}" />
+        <Setter Property="blk:Block.ActiveForeground" Value="{DynamicResource BlockBasePrimaryBrush}" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="FocusAdorner" Value="{x:Null}" />
@@ -61,7 +61,7 @@
                         <blk:AnimatedMenuIcon Name="MenuIcon"
                                               Grid.Column="1"
                                               Background="{TemplateBinding Foreground}"
-                                              Foreground="{TemplateBinding blk:Block.ActiveIconForeground}"
+                                              Foreground="{TemplateBinding blk:Block.ActiveForeground}"
                                               Margin="0,0,8,0"
                                               MenuIconStyle="{TemplateBinding blk:Block.MenuIconStyle}" />
                         <TextBlock x:Name="PlaceholderTextBlock"

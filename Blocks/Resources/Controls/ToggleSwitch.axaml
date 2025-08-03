@@ -1,0 +1,198 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:blk="clr-namespace:Blocks.Controls"
+                    xmlns:conv="clr-namespace:Blocks.Converters">
+
+    <Design.PreviewWith>
+        <StackPanel Margin="20" Width="250" Spacing="24">
+            <StackPanel Spacing="12">
+                <ToggleSwitch />
+                <ToggleSwitch IsChecked="False" IsEnabled="False" />
+                <ToggleSwitch HorizontalContentAlignment="Left"
+                              Content="Header"
+                              OffContent="Off"
+                              OnContent="On" />
+                <ToggleSwitch Background="Yellow" />
+            </StackPanel>
+        </StackPanel>
+    </Design.PreviewWith>
+
+
+    <Thickness x:Key="BlockToggleSwitchTopHeaderMargin">0,0,0,6</Thickness>
+    <GridLength x:Key="BlockToggleSwitchPreContentMargin">4</GridLength>
+    <GridLength x:Key="BlockToggleSwitchPostContentMargin">4</GridLength>
+    <CornerRadius x:Key="BlockToggleSwitchOffCornerRadius">8</CornerRadius>
+    <x:Double x:Key="BlockToggleSwitchKnobSize">16</x:Double>
+    <x:Double x:Key="BlockToggleSwitchHeight">28</x:Double>
+    <x:Double x:Key="BlockToggleSwitchWidth">56</x:Double>
+
+    <ControlTheme x:Key="{x:Type ToggleSwitch}" TargetType="ToggleSwitch">
+
+        <Setter Property="Foreground" Value="{DynamicResource BlockWindowForegroundBrush}" />
+        <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="blk:Block.ActiveForeground" Value="{DynamicResource BlockOnPrimaryBrush}" />
+        <Setter Property="blk:Block.ActiveBackground" Value="{DynamicResource BlockBasePrimaryBrush}" />
+        <Setter Property="FocusAdorner" Value="{x:Null}" />
+
+        <Setter Property="KnobTransitions">
+            <Transitions>
+                <DoubleTransition
+                    Easing="CubicEaseOut"
+                    Property="Canvas.Left"
+                    Duration="0:0:0.2" />
+            </Transitions>
+        </Setter>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid Background="Transparent" RowDefinitions="Auto,*" Name="BaseContainer">
+
+                    <ContentPresenter x:Name="PART_ContentPresenter"
+                                      Grid.Row="0"
+                                      VerticalAlignment="Top"
+                                      Content="{TemplateBinding Content}"
+                                      ContentTemplate="{TemplateBinding ContentTemplate}"
+                                      Margin="{DynamicResource BlockToggleSwitchTopHeaderMargin}"
+                                      RecognizesAccessKey="True" />
+
+                    <Grid Grid.Row="1"
+                          MinWidth="{DynamicResource BlockToggleSwitchThemeMinWidth}"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Top">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="{DynamicResource BlockToggleSwitchPreContentMargin}" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="{DynamicResource BlockToggleSwitchPostContentMargin}" />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="12" MaxWidth="12" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid x:Name="SwitchAreaGrid"
+                              Grid.RowSpan="3"
+                              Grid.ColumnSpan="3"
+                              Margin="0,5"
+                              TemplatedControl.IsTemplateFocusTarget="True" />
+
+                        <ContentPresenter x:Name="PART_OffContentPresenter"
+                                          Grid.RowSpan="3"
+                                          Grid.Column="2"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          Content="{TemplateBinding OffContent}"
+                                          ContentTemplate="{TemplateBinding OffContentTemplate}" />
+
+                        <ContentPresenter x:Name="PART_OnContentPresenter"
+                                          Grid.RowSpan="3"
+                                          Grid.Column="2"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          Content="{TemplateBinding OnContent}"
+                                          ContentTemplate="{TemplateBinding OnContentTemplate}" />
+
+                        <blk:BlockButton Name="ToggleBackground"
+                                         Grid.Column="0" Grid.Row="1"
+                                         Width="{DynamicResource BlockToggleSwitchWidth}"
+                                         Height="{DynamicResource BlockToggleSwitchHeight}"
+                                         CornerRadius="14"
+                                         Background="{TemplateBinding Background}" />
+
+
+                        <Canvas x:Name="PART_SwitchKnob"
+                                Grid.Row="1"
+                                Width="{DynamicResource BlockToggleSwitchHeight}"
+                                Height="{DynamicResource BlockToggleSwitchHeight}"
+                                HorizontalAlignment="Left">
+
+                            <Grid x:Name="PART_MovingKnobs" Width="{DynamicResource BlockToggleSwitchHeight}"
+                                  Height="28">
+                                <Border Name="SwitchKnobVisual"
+                                        Width="{DynamicResource BlockToggleSwitchKnobSize}"
+                                        Height="{DynamicResource BlockToggleSwitchKnobSize}"
+                                        Margin="0"
+                                        CornerRadius="{DynamicResource BlockToggleSwitchOffCornerRadius}"
+                                        BorderThickness="2"
+                                        BorderBrush="{TemplateBinding Foreground}">
+                                    <Border.Transitions>
+                                        <Transitions>
+                                            <CornerRadiusTransition Property="CornerRadius"
+                                                                    Duration="{DynamicResource BlockLongStateTransitionDuration}"
+                                                                    Easing="CubicEaseOut" />
+                                            <DoubleTransition Property="Width"
+                                                              Duration="{DynamicResource BlockLongStateTransitionDuration}"
+                                                              Easing="CubicEaseOut" />
+                                            <ThicknessTransition Property="Margin"
+                                                                 Duration="{DynamicResource BlockLongStateTransitionDuration}"
+                                                                 Easing="CubicEaseOut" />
+                                            <BrushTransition Property="BorderBrush"
+                                                             Duration="{DynamicResource BlockLongStateTransitionDuration}"
+                                                             Easing="CubicEaseOut" />
+                                        </Transitions>
+                                    </Border.Transitions>
+                                </Border>
+                            </Grid>
+                        </Canvas>
+                    </Grid>
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter:empty">
+            <Setter Property="Margin" Value="0" />
+        </Style>
+
+        <!--  PointerOverState  -->
+        <Style Selector="^:pointerover /template/ blk|BlockButton#ToggleBackground">
+            <Setter Property="Highlighted" Value="True" />
+        </Style>
+
+        <!--  PressedState  -->
+        <Style Selector="^:pressed /template/ blk|BlockButton#ToggleBackground">
+            <Setter Property="Shaded" Value="True" />
+        </Style>
+
+        <!--  DisabledState  -->
+        <Style Selector="^:disabled /template/ Grid#BaseContainer">
+            <Setter Property="Opacity" Value="{DynamicResource BlockDisabledOpacity}" />
+        </Style>
+
+        <!--  Keyboard focus  -->
+        <Style Selector="^:focus-visible /template/ blk|BlockButton#ToggleBackground">
+            <Setter Property="Focused" Value="True" />
+        </Style>
+
+        <!--  CheckedState  -->
+        <Style Selector="^:checked /template/ Border#SwitchKnobVisual">
+            <Setter Property="CornerRadius" Value="0" />
+            <Setter Property="Width" Value="3" />
+            <Setter Property="Margin" Value="0,0,2,0" />
+            <Setter Property="BorderBrush" Value="{TemplateBinding blk:Block.ActiveForeground}" />
+        </Style>
+        <Style Selector="^:checked /template/ blk|BlockButton#ToggleBackground">
+            <Setter Property="Opaque" Value="True" />
+            <Setter Property="Background" Value="{TemplateBinding blk:Block.ActiveBackground}" />
+            <Setter Property="BorderBrush" Value="{TemplateBinding blk:Block.ActiveForeground}" />
+        </Style>
+        <Style Selector="^:checked /template/ ContentPresenter#PART_OffContentPresenter">
+            <Setter Property="Opacity" Value="0" />
+        </Style>
+        <Style Selector="^:checked /template/ ContentPresenter#PART_OnContentPresenter">
+            <Setter Property="Opacity" Value="1" />
+        </Style>
+
+        <!--  UncheckedState  -->
+        <Style Selector="^:unchecked /template/ ContentPresenter#PART_OffContentPresenter">
+            <Setter Property="Opacity" Value="1" />
+        </Style>
+        <Style Selector="^:unchecked /template/ ContentPresenter#PART_OnContentPresenter">
+            <Setter Property="Opacity" Value="0" />
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

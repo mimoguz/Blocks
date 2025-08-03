@@ -24,7 +24,7 @@
                           Background="HotPink"
                           blk:Block.ButtonBackground="Crimson"
                           Foreground="White"
-                          blk:Block.ActiveIconForeground="DeepPink">
+                          blk:Block.ActiveForeground="DeepPink">
                     <Border Padding="8" Background="{DynamicResource BlockWindowBackgroundColor}">
                         <TextBlock VerticalAlignment="Center" Foreground="{DynamicResource BlockWindowForegroundBrush}">
                             Expanded content
@@ -74,7 +74,7 @@
         <Setter Property="Foreground" Value="{DynamicResource BlockWindowForegroundBrush}" />
         <Setter Property="Padding" Value="{DynamicResource BlockExpanderHeaderPadding}" />
         <Setter Property="CornerRadius" Value="{DynamicResource BlockButtonCornerRadius}" />
-        <Setter Property="blk:Block.ActiveIconForeground" Value="{DynamicResource BlockBasePrimaryBrush}" />
+        <Setter Property="blk:Block.ActiveForeground" Value="{DynamicResource BlockBasePrimaryBrush}" />
         <Setter Property="blk:Block.Gap" Value="8"></Setter>
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
@@ -154,7 +154,7 @@
 
         <Style Selector="^[Tag=expanded] /template/ PathIcon#ExpandCollapseChevron">
             <Setter Property="RenderTransform" Value="rotate(-180deg)" />
-            <Setter Property="Foreground" Value="{TemplateBinding blk:Block.ActiveIconForeground}" />
+            <Setter Property="Foreground" Value="{TemplateBinding blk:Block.ActiveForeground}" />
         </Style>
     </ControlTheme>
 
@@ -191,7 +191,7 @@
         <Setter Property="IsTabStop" Value="False" />
         <Setter Property="MinHeight" Value="{DynamicResource BlockMinButtonSize}" />
         <Setter Property="Background" Value="{DynamicResource BlockRaisedBackgroundBrush}" />
-        <Setter Property="blk:Block.ActiveIconForeground" Value="{DynamicResource BlockBasePrimaryBrush}" />
+        <Setter Property="blk:Block.ActiveForeground" Value="{DynamicResource BlockBasePrimaryBrush}" />
         <Setter Property="blk:Block.ButtonBackground" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
         <Setter Property="Padding" Value="{DynamicResource BlockExpanderHeaderPadding}" />
         <Setter Property="HorizontalAlignment" Value="Left" />
@@ -233,7 +233,7 @@
                                                   FontWeight="{TemplateBinding FontWeight}"
                                                   Foreground="{TemplateBinding Foreground}"
                                                   Background="{TemplateBinding blk:Block.ButtonBackground}"
-                                                  blk:Block.ActiveIconForeground="{TemplateBinding blk:Block.ActiveIconForeground}" />
+                                                  blk:Block.ActiveForeground="{TemplateBinding blk:Block.ActiveForeground}" />
                                     <Border x:Name="ExpanderContent"
                                             IsVisible="{TemplateBinding IsExpanded, Mode=TwoWay}"
                                             HorizontalAlignment="Stretch"

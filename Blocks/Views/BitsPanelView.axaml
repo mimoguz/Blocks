@@ -104,6 +104,9 @@
                                 <blk:CommandTile.LeftContent>
                                     <PathIcon Data="{DynamicResource BlockErrorIcon24}" Width="24" Height="24" />
                                 </blk:CommandTile.LeftContent>
+                                <blk:CommandTile.RightContent>
+                                    <PathIcon Data="{DynamicResource BlockChevronRight}" />
+                                </blk:CommandTile.RightContent>
                                 <Panel>
                                     <TextBlock Text="{Binding CommandOutput}" />
                                 </Panel>
