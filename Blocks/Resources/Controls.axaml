@@ -37,5 +37,7 @@
         <ResourceInclude Source="Controls/TabControlScrollViewer.axaml" />
         <ResourceInclude Source="Controls/Group.axaml" />
         <ResourceInclude Source="Controls/TreeViewItem.axaml" />
+        <ResourceInclude Source="Controls/TreeView.axaml" />
+        <ResourceInclude Source="Controls/CommandTile.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

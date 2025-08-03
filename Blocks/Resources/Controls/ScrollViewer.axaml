@@ -27,11 +27,12 @@
     </Design.PreviewWith>
 
     <ControlTheme x:Key="{x:Type ScrollViewer}" TargetType="ScrollViewer">
-        
+
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="blk:Block.ScrollBarBackground" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
         <Setter Property="blk:Block.ScrollBarForeground" Value="{DynamicResource BlockButtonForegroundBrush}" />
-        
+        <Setter Property="Padding" Value="0" />
+
         <Setter Property="Template">
             <ControlTemplate>
                 <Grid ColumnDefinitions="*,Auto" RowDefinitions="*,Auto">
@@ -78,11 +79,11 @@
                 </Grid>
             </ControlTemplate>
         </Setter>
-        
+
         <Style Selector="^[IsExpanded=true] /template/ Panel#PART_ScrollBarsSeparator">
             <Setter Property="Opacity" Value="{DynamicResource BlockScrollBarTrackOpacity}" />
         </Style>
-        
+
         <Style Selector="^[AllowAutoHide=True] /template/ ScrollContentPresenter#PART_ContentPresenter">
             <Setter Property="Grid.ColumnSpan" Value="2" />
             <Setter Property="Grid.RowSpan" Value="2" />

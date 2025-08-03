@@ -52,7 +52,7 @@ public static class BlockConverters
     /// <summary>
     /// A value converter that takes a Thickness and leaves only the bottom values, clearing the others.
     /// </summary>
-    public static readonly SelectThicknessConverter SelectBottomThickness = new((t) => new Thickness(0.0, t.Top, 0.0, 0.0));
+    public static readonly SelectThicknessConverter SelectBottomThickness = new((t) => new Thickness(0.0, 0.0, 0.0, t.Bottom));
     
     /// <summary>
     /// A value converter that takes a Thickness and leaves only the left values, clearing the others.

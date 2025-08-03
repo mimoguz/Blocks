@@ -111,6 +111,7 @@
                             <Setter Property="Width" Value="240" />
                             <Setter Property="Background" Value="{DynamicResource BlockTransparentViewBackgroundBrush}" />
                             <Setter Property="CornerRadius" Value="{DynamicResource BlockButtonCornerRadius}" />
+                            <Setter Property="Padding" Value="6" />
                         </Style>
                         
                         <Style Selector="Slider.demo">

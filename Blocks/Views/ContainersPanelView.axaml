@@ -70,9 +70,11 @@
                     
                     <!-- <blk:PlaceHoleder Grid.Row="0" /> -->
                     
-                    <TreeView Classes="demo" Grid.Row="0" Padding="0,8"
+                    <TreeView Classes="demo" Grid.Row="0" Padding="6"
                               HorizontalAlignment="Stretch"
-                              VerticalAlignment="Stretch">
+                              VerticalAlignment="Stretch"
+                              Background="{DynamicResource BlockTransparentViewBackgroundBrush}"
+                              CornerRadius="{DynamicResource BlockViewCornerRadius}">
                         <TreeViewItem Header="Tree View Item">
                             <TreeViewItem Header="Tree View Item">
                                 <TreeViewItem Header="Tree View Item" />

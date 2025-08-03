@@ -67,6 +67,7 @@
     </ControlTheme>
 
     <ControlTheme x:Key="{x:Type TreeViewItem}" TargetType="TreeViewItem">
+        
         <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
         <Setter Property="BorderThickness" Value="{DynamicResource TreeViewItemBorderThemeThickness}" />
         <Setter Property="Foreground" Value="{DynamicResource TreeViewItemForeground}" />
@@ -77,6 +78,8 @@
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="Padding" Value="{DynamicResource BlockTreeViewItemPadding}" />
         <Setter Property="Focusable" Value="True" />
+        <Setter Property="FocusAdorner" Value="{x:Null}" />
+        
         <Setter Property="Template">
             <ControlTemplate>
                 <StackPanel>
@@ -136,12 +139,16 @@
         <Style Selector="^:pressed /template/ Panel#PART_LayoutRoot:pointerover blk|BlockButton#ItemBackground">
             <Setter Property="Shaded" Value="True" />
         </Style>
+        
+        <!--  Keyboard focus  -->
+        <Style Selector="^:focus-visible /template/  blk|BlockButton#ItemBackground">
+            <Setter Property="Focused" Value="True" />
+        </Style>
 
         <!--  Disabled state  -->
         <Style Selector="^:disabled /template/ Decorator#PART_Header">
             <Setter Property="Opacity" Value="{DynamicResource BlockDisabledOpacity}" />
         </Style>
-
 
         <!--  Selected state  -->
         <Style Selector="^:selected /template/ blk|BlockButton#ItemBackground">

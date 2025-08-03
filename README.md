@@ -6,11 +6,11 @@ A very WIP Avalonia UI theme. It sort of looks like GTK4/Adwaita, with some bits
 
 ### Buttons:
 
-![Screenshot: Buttons](.readme/buttons-2025-08-02.png)
+![Screenshot: Buttons](.readme/buttons-2025-08-03.png)
 
 ### Inputs & Selections:
 
-![Screenshot: Buttons](.readme/inputs-and-selections-2025-08-02.png)
+![Screenshot: Buttons](.readme/inputs-and-selections-2025-08-03.png)
 
 ### Views & Containers:
 
@@ -18,4 +18,4 @@ A very WIP Avalonia UI theme. It sort of looks like GTK4/Adwaita, with some bits
 
 ### Bits & Pieces:
 
-![Screenshot: Bits & Pieces](.readme/bits-and-pieces-2025-08-02.png)
+![Screenshot: Bits & Pieces](.readme/bits-and-pieces-2025-08-03.png)

@@ -3,17 +3,19 @@
 
     <Design.PreviewWith>
         <Border Padding="20">
-            <ListBox>
-                <ListBoxItem>Test</ListBoxItem>
-                <ListBoxItem>Test</ListBoxItem>
-                <ListBoxItem>Test</ListBoxItem>
-                <ListBoxItem>Test</ListBoxItem>
-            </ListBox>
+            <StackPanel Spacing="20">
+                <TreeView>
+                    <TreeViewItem Header="Root" IsExpanded="True">
+                        <TreeViewItem Header="Child1" />
+                        <TreeViewItem Header="Child2" />
+                    </TreeViewItem>
+                </TreeView>
+            </StackPanel>
         </Border>
     </Design.PreviewWith>
 
-    <ControlTheme x:Key="{x:Type ListBox}" TargetType="ListBox">
-        
+    <ControlTheme x:Key="{x:Type TreeView}" TargetType="TreeView">
+
         <Setter Property="Foreground" Value="{DynamicResource BlockWindowForegroundBrush}" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
@@ -21,7 +23,7 @@
         <Setter Property="ScrollViewer.IsScrollChainingEnabled" Value="True" />
         <Setter Property="ScrollViewer.IsScrollInertiaEnabled" Value="True" />
         <Setter Property="Padding" Value="0" />
-        
+
         <Setter Property="Template">
             <ControlTemplate>
                 <Border Name="border"
@@ -48,7 +50,7 @@
                 </Border>
             </ControlTemplate>
         </Setter>
-        
+
         <Setter Property="ItemsPanel">
             <Setter.Value>
                 <ItemsPanelTemplate>

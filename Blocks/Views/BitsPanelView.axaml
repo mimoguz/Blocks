@@ -3,6 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:Blocks.ViewModels"
+             xmlns:blk="clr-namespace:Blocks.Controls"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Blocks.Views.BitsPanelView"
              x:DataType="vm:BitsPanelViewModel">
@@ -67,11 +68,33 @@
                         <StackPanel Spacing="20">
                             <ProgressBar Classes="demo demo-determinate" />
                             <ProgressBar Classes="demo demo-indeterminate" />
-                            <ProgressBar Classes="demo demo-determinate"  ShowProgressText="True"/>
+                            <ProgressBar Classes="demo demo-determinate" ShowProgressText="True" />
                         </StackPanel>
+
                         <ProgressBar Classes="demo demo-determinate" Orientation="Vertical" />
                         <ProgressBar Classes="demo demo-indeterminate" Orientation="Vertical" />
-                        <ProgressBar Classes="demo demo-determinate" Orientation="Vertical" ShowProgressText="True"/>
+                        <ProgressBar Classes="demo demo-determinate" Orientation="Vertical" ShowProgressText="True" />
+
+                        <StackPanel Spacing="10">
+                            <blk:CommandTile Header="Command Tile"
+                                             Classes="demo"
+                                             Width="300"
+                                             Command="{Binding TileActionCommand}">
+                                <blk:CommandTile.LeftContent>
+                                    <PathIcon Data="{DynamicResource BlockErrorIcon24}" Width="24" Height="24" />
+                                </blk:CommandTile.LeftContent>
+                                <blk:CommandTile.RightContent>
+                                    <ToggleSwitch OffContent="{x:Null}" OnContent="{x:Null}" Name="Toggle"
+                                                  IsChecked="{Binding Active}" />
+                                </blk:CommandTile.RightContent>
+                                <Panel>
+                                    <TextBlock IsVisible="{Binding Active}">Active</TextBlock>
+                                    <TextBlock IsVisible="{Binding !Active}">Not active</TextBlock>
+                                </Panel>
+                            </blk:CommandTile>
+                            <TextBlock Text="{Binding CommandOutput}" 
+                                       FontStyle="Italic"/>
+                        </StackPanel>
                     </WrapPanel>
                 </StackPanel>
             </ScrollViewer>
