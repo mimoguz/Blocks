@@ -39,5 +39,6 @@
         <ResourceInclude Source="Controls/TreeViewItem.axaml" />
         <ResourceInclude Source="Controls/TreeView.axaml" />
         <ResourceInclude Source="Controls/CommandTile.axaml" />
+        <ResourceInclude Source="Controls/Tile.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

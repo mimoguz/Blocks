@@ -6,33 +6,36 @@
     <Design.PreviewWith>
         <Border Background="{DynamicResource BlockWindowBackgroundColor}" Padding="20">
             <StackPanel Width="300" Spacing="10">
-                <blk:CommandTile Header="Command Tile" HorizontalAlignment="Stretch">
-                    <blk:CommandTile.LeftContent>
+                <blk:Tile Header="Tile" HorizontalAlignment="Stretch">
+                    <blk:Tile.LeftContent>
                         <PathIcon Data="{DynamicResource BlockErrorIcon24}" Width="24" Height="24" />
-                    </blk:CommandTile.LeftContent>
-                    <blk:CommandTile.RightContent>
+                    </blk:Tile.LeftContent>
+                    <blk:Tile.RightContent>
                         <ToggleSwitch OffContent="{x:Null}" OnContent="{x:Null}" Name="Toggle" />
-                    </blk:CommandTile.RightContent>
+                    </blk:Tile.RightContent>
                     <Panel>
                         <TextBlock IsVisible="{Binding #Toggle.IsChecked}">Toggle is checked</TextBlock>
                         <TextBlock IsVisible="{Binding !#Toggle.IsChecked}">Toggle is not checked</TextBlock>
                     </Panel>
-                </blk:CommandTile>
+                </blk:Tile>
+                <blk:Tile Background="Aqua" Padding="0">
+                    <blk:Tile.Header><TextBlock Text="Empty" /></blk:Tile.Header>
+                </blk:Tile>
             </StackPanel>
         </Border>
     </Design.PreviewWith>
+    
+    <ControlTheme x:Key="{x:Type blk:Tile}"
+                  TargetType="blk:Tile">
 
-
-    <ControlTheme x:Key="{x:Type blk:CommandTile}"
-                  TargetType="blk:CommandTile">
-
-        <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource BlockButtonForegroundBrush}" />
         <Setter Property="Padding" Value="{DynamicResource BlockTilePadding}" />
         <Setter Property="CornerRadius" Value="0" />
         <Setter Property="blk:Block.Gap" Value="{DynamicResource BlockTileContentSpacing}" />
-        <Setter Property="VerticalContentAlignment" Value="Top" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalHeaderAlignment" Value="Center" />
+        <Setter Property="HorizontalHeaderAlignment" Value="Left" />
         <Setter Property="FocusAdorner" Value="{x:Null}" />
 
         <Setter Property="Template">
@@ -43,11 +46,8 @@
                        Width="{TemplateBinding Width}"
                        Height="{TemplateBinding Height}"
                        MinWidth="{TemplateBinding MinWidth}"
-                       MinHeight="{TemplateBinding MinHeight}">
-                    <blk:BlockButton Name="ButtonBackground"
-                                     Background="{TemplateBinding Background}"
-                                     CornerRadius="{TemplateBinding CornerRadius}"
-                                     Flat="True" />
+                       MinHeight="{TemplateBinding MinHeight}"
+                       Background="{TemplateBinding Background}">
                     <Grid ColumnDefinitions="Auto,*,Auto"
                           RowDefinitions="*, *"
                           Margin="{TemplateBinding Padding}">
@@ -78,14 +78,14 @@
                                           Margin="{TemplateBinding blk:Block.Gap, Converter={x:Static conv:BlockConverters.SelectBottomThickness}}"
                                           Content="{TemplateBinding Header}"
                                           ContentTemplate="{TemplateBinding HeaderTemplate}"
-                                          HorizontalContentAlignment="Stretch"
-                                          VerticalContentAlignment="Stretch" />
+                                          HorizontalAlignment="{TemplateBinding HorizontalHeaderAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalHeaderAlignment}" />
                         <ContentPresenter Name="PART_ContentPresenter"
                                           Grid.Column="1"
                                           Grid.Row="1"
                                           Margin="{TemplateBinding blk:Block.Gap, Converter={x:Static conv:BlockConverters.SelectTopThickness}}"
-                                          HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                          VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                           Content="{TemplateBinding Content}"
                                           ContentTemplate="{TemplateBinding ContentTemplate}"
                                           TextElement.Foreground="{TemplateBinding Foreground}" />
@@ -98,16 +98,8 @@
             <Setter Property="Highlighted" Value="True" />
         </Style>
 
-        <Style Selector="^:pressed /template/ blk|BlockButton#ButtonBackground">
-            <Setter Property="Shaded" Value="True" />
-        </Style>
-
         <Style Selector="^:disabled /template/ Panel#BaseContainer">
             <Setter Property="Opacity" Value="{DynamicResource BlockDisabledOpacity}" />
-        </Style>
-
-        <Style Selector="^:focus-visible /template/ blk|BlockButton#ButtonBackground">
-            <Setter Property="Focused" Value="True" />
         </Style>
         
         <Style Selector="^:empty">

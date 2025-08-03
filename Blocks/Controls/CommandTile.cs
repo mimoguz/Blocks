@@ -10,6 +10,7 @@ using Avalonia.Controls.Templates;
 using Avalonia.Data;
 using Avalonia.Input;
 using Avalonia.Interactivity;
+using Avalonia.Layout;
 using Avalonia.LogicalTree;
 using Avalonia.VisualTree;
 
@@ -17,10 +18,14 @@ namespace Blocks.Controls;
 
 [TemplatePart("PART_LeftContent", typeof(ContentPresenter), IsRequired = false)]
 [TemplatePart("PART_RightContent", typeof(ContentPresenter), IsRequired = false)]
-[PseudoClasses(TilePressed)]
-public class CommandTile : HeaderedContentControl, ICommandSource
+[PseudoClasses(TilePressed, TileEmpty, TileEmptyLeft, TileEmptyRight)]
+public sealed class CommandTile : HeaderedContentControl, ICommandSource
 {
     private const string TilePressed = ":pressed";
+    private const string TileEmpty = ":empty";
+    private const string TileEmptyLeft = ":emptyLeft";
+    private const string TileEmptyRight = ":emptyRight";
+    
     private EventHandler? canExecuteChangeHandler;
     private EventHandler CanExecuteChangedHandler => canExecuteChangeHandler ??= new(CanExecuteChanged);
 
@@ -35,6 +40,12 @@ public class CommandTile : HeaderedContentControl, ICommandSource
     
     public static readonly StyledProperty<IDataTemplate?> RightContentTemplateProperty =
         AvaloniaProperty.Register<CommandTile, IDataTemplate?>(nameof(RightContentTemplate));
+    
+    public static readonly StyledProperty<HorizontalAlignment> HorizontalHeaderAlignmentProperty =
+        AvaloniaProperty.Register<CommandTile, HorizontalAlignment>(nameof(HorizontalHeaderAlignment));
+    
+    public static readonly StyledProperty<VerticalAlignment> VerticalHeaderAlignmentProperty =
+        AvaloniaProperty.Register<CommandTile, VerticalAlignment>(nameof(VerticalHeaderAlignment));
     
     public static readonly StyledProperty<ICommand?> CommandProperty =
         AvaloniaProperty.Register<CommandTile, ICommand?>(nameof(Command), enableDataValidation: true);
@@ -80,25 +91,30 @@ public class CommandTile : HeaderedContentControl, ICommandSource
         set => SetValue(RightContentTemplateProperty, value);
     }
 
+    public VerticalAlignment VerticalHeaderAlignment
+    {
+        get => GetValue(VerticalHeaderAlignmentProperty);
+        set => SetValue(VerticalHeaderAlignmentProperty, value);
+    }
+    
+    public HorizontalAlignment HorizontalHeaderAlignment
+    {
+        get => GetValue(HorizontalHeaderAlignmentProperty);
+        set => SetValue(HorizontalHeaderAlignmentProperty, value);
+    }
     
     public event EventHandler<RoutedEventArgs>? Click
     {
         add => AddHandler(ClickEvent, value);
         remove => RemoveHandler(ClickEvent, value);
     }
-
-    /// <summary>
-    /// Gets or sets an <see cref="ICommand"/> to be invoked when the button is clicked.
-    /// </summary>
+    
     public ICommand? Command
     {
         get => GetValue(CommandProperty);
         set => SetValue(CommandProperty, value);
     }
-
-    /// <summary>
-    /// Gets or sets a parameter to be passed to the <see cref="Command"/>.
-    /// </summary>
+    
     public object? CommandParameter
     {
         get => GetValue(CommandParameterProperty);
@@ -131,7 +147,6 @@ public class CommandTile : HeaderedContentControl, ICommandSource
     protected override void OnDetachedFromLogicalTree(LogicalTreeAttachmentEventArgs e)
     {
         base.OnDetachedFromLogicalTree(e);
-
         if (Command is { } command)
         {
             command.CanExecuteChanged -= CanExecuteChangedHandler;
@@ -174,23 +189,22 @@ public class CommandTile : HeaderedContentControl, ICommandSource
         base.OnKeyUp(e);
     }
 
-    /// <summary>
-    /// Invokes the <see cref="Click"/> event.
-    /// </summary>
-    protected virtual void OnClick()
+    private void OnClick()
     {
-        if (IsEffectivelyEnabled)
+        if (!IsEffectivelyEnabled)
         {
-            var e = new RoutedEventArgs(ClickEvent);
-            RaiseEvent(e);
+            return;
+        }
 
-            var command = Command;
-            var parameter = CommandParameter;
-            if (!e.Handled && command is not null && command.CanExecute(parameter))
-            {
-                command.Execute(parameter);
-                e.Handled = true;
-            }
+        var e = new RoutedEventArgs(ClickEvent);
+        RaiseEvent(e);
+
+        var command = Command;
+        var parameter = CommandParameter;
+        if (!e.Handled && command is not null && command.CanExecute(parameter))
+        {
+            command.Execute(parameter);
+            e.Handled = true;
         }
     }
 
@@ -275,7 +289,17 @@ public class CommandTile : HeaderedContentControl, ICommandSource
         }
         else if (change.Property == IsPressedProperty)
         {
-            UpdatePseudoClasses();
+            PseudoClasses.Set(TilePressed, IsPressed);
+        } else if (change.Property == ContentProperty)
+        {
+            PseudoClasses.Set(TileEmpty, Content == null);;
+        }
+        else if (change.Property == LeftContentProperty)
+        {
+            PseudoClasses.Set(TileEmptyLeft, LeftContent == null);
+        } else if (change.Property == RightContentProperty)
+        {
+            PseudoClasses.Set(TileEmptyRight, RightContent == null);
         }
     }
 
@@ -326,6 +350,7 @@ public class CommandTile : HeaderedContentControl, ICommandSource
     private void UpdatePseudoClasses()
     {
         PseudoClasses.Set(TilePressed, IsPressed);
+        PseudoClasses.Set(TileEmpty, Content == null);
     }
 
     void ICommandSource.CanExecuteChanged(object sender, EventArgs e) => this.CanExecuteChanged(sender, e);

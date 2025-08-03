@@ -75,25 +75,46 @@
                         <ProgressBar Classes="demo demo-indeterminate" Orientation="Vertical" />
                         <ProgressBar Classes="demo demo-determinate" Orientation="Vertical" ShowProgressText="True" />
 
-                        <StackPanel Spacing="10">
-                            <blk:CommandTile Header="Command Tile"
-                                             Classes="demo"
-                                             Width="300"
-                                             Command="{Binding TileActionCommand}">
-                                <blk:CommandTile.LeftContent>
+                        <StackPanel Width="300">
+                            
+                            <blk:Tile Header="Tile" Classes="demo" HorizontalAlignment="Stretch">
+                                <blk:Tile.LeftContent>
                                     <PathIcon Data="{DynamicResource BlockErrorIcon24}" Width="24" Height="24" />
-                                </blk:CommandTile.LeftContent>
-                                <blk:CommandTile.RightContent>
-                                    <ToggleSwitch OffContent="{x:Null}" OnContent="{x:Null}" Name="Toggle"
+                                </blk:Tile.LeftContent>
+                                <blk:Tile.RightContent>
+                                    <ToggleSwitch OffContent="{x:Null}" OnContent="{x:Null}"
                                                   IsChecked="{Binding Active}" />
-                                </blk:CommandTile.RightContent>
+                                </blk:Tile.RightContent>
                                 <Panel>
                                     <TextBlock IsVisible="{Binding Active}">Active</TextBlock>
                                     <TextBlock IsVisible="{Binding !Active}">Not active</TextBlock>
                                 </Panel>
+                            </blk:Tile>
+                            <blk:Tile Header="Tile" Classes="demo" HorizontalAlignment="Stretch">
+                                <blk:Tile.LeftContent>
+                                    <PathIcon Data="{DynamicResource BlockErrorIcon24}" Width="24" Height="24" />
+                                </blk:Tile.LeftContent>
+                                <blk:Tile.RightContent>
+                                    <ToggleSwitch OffContent="{x:Null}" OnContent="{x:Null}"
+                                                  IsChecked="{Binding Active}" />
+                                </blk:Tile.RightContent>
+                                <Panel>
+                                    <TextBlock IsVisible="{Binding Active}">Active</TextBlock>
+                                    <TextBlock IsVisible="{Binding !Active}">Not active</TextBlock>
+                                </Panel>
+                            </blk:Tile>
+                            <Separator Height="1" />
+                            <blk:CommandTile Header="Command Tile"
+                                             Classes="demo"
+                                             HorizontalAlignment="Stretch"
+                                             Command="{Binding TileActionCommand}">
+                                <blk:CommandTile.LeftContent>
+                                    <PathIcon Data="{DynamicResource BlockErrorIcon24}" Width="24" Height="24" />
+                                </blk:CommandTile.LeftContent>
+                                <Panel>
+                                    <TextBlock Text="{Binding CommandOutput}" />
+                                </Panel>
                             </blk:CommandTile>
-                            <TextBlock Text="{Binding CommandOutput}" 
-                                       FontStyle="Italic"/>
                         </StackPanel>
                     </WrapPanel>
                 </StackPanel>

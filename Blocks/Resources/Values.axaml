@@ -65,6 +65,8 @@
     <sys:Double x:Key="BlockTabVerticalLineHeight">20</sys:Double>
     <sys:TimeSpan x:Key="BlockButtonStateTransitionDuration">0:0:0.1</sys:TimeSpan>
     <sys:TimeSpan x:Key="BlockLongStateTransitionDuration">0:0:0.2</sys:TimeSpan>
+    <Thickness x:Key="BlockTilePadding">8</Thickness>
+    <Thickness x:Key="BlockTileContentSpacing">16,4</Thickness>
 
 
     <ResourceDictionary.ThemeDictionaries>

@@ -10,7 +10,7 @@ public partial class BitsPanelViewModel : ViewModelBase
     [ObservableProperty] private double progress = 20.0;
     [ObservableProperty] private bool active;
 
-    private string commandOutput = "";
+    private string commandOutput = "Click me";
 
     public string CommandOutput
     {
@@ -21,6 +21,6 @@ public partial class BitsPanelViewModel : ViewModelBase
     [RelayCommand]
     private void TileAction()
     {
-        CommandOutput = $"Tile clicked at {DateTime.Now}";
+        CommandOutput = $"The tile clicked at {DateTime.Now:HH:mm:ss}";
     }
 }
