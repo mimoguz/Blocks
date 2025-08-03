@@ -1,6 +1,8 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:blk="using:Blocks.Controls">
+        xmlns:blk="clr-namespace:Blocks.Controls"
+        xmlns:conv="clr-namespace:Blocks.Converters">
+    
     <Design.PreviewWith>
         <StackPanel Spacing="4" Width="120">
             <blk:BlockView Width="36" Height="36" />
@@ -52,7 +54,7 @@
                                 </Transitions>
                             </Border.Transitions>
                             <Border.CornerRadius>
-                                <MultiBinding Converter="{StaticResource InnerRadius}">
+                                <MultiBinding Converter="{x:Static conv:BlockConverters.InnerRadius}">
                                     <TemplateBinding Property="CornerRadius" />
                                     <TemplateBinding Property="BorderThickness" />
                                 </MultiBinding>
@@ -72,7 +74,7 @@
                                 </Transitions>
                             </Border.Transitions>
                             <Border.CornerRadius>
-                                <MultiBinding Converter="{StaticResource InnerRadius}">
+                                <MultiBinding Converter="{x:Static conv:BlockConverters.InnerRadius}">
                                     <TemplateBinding Property="CornerRadius" />
                                     <TemplateBinding Property="BorderThickness" />
                                 </MultiBinding>

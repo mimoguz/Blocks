@@ -5,7 +5,6 @@
         <ResourceInclude Source="Brushes.axaml" />
         <ResourceInclude Source="Values.axaml" />
         <ResourceInclude Source="Geometry.axaml" />
-        <ResourceInclude Source="Converters.axaml" />
         <ResourceInclude Source="Controls.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

@@ -54,7 +54,7 @@
                                 IsScrollInertiaEnabled="{Binding (ScrollViewer.IsScrollInertiaEnabled), ElementName=PART_ContentPresenter}" />
                         </ScrollContentPresenter.GestureRecognizers>
                         <ScrollContentPresenter.Margin>
-                            <MultiBinding Converter="{x:Static conv:TernarySelector.Instance}">
+                            <MultiBinding Converter="{x:Static conv:BlockConverters.Ternary}">
                                 <Binding Path="#PART_HorizontalScrollBar.IsVisible" />
                                 <DynamicResource ResourceKey="BlockHorizontalTabControlScrollMargin" />
                                 <DynamicResource ResourceKey="BlockThicknessZero" />

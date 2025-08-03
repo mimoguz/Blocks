@@ -1,6 +1,7 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:blk="clr-namespace:Blocks.Controls">
+                    xmlns:blk="clr-namespace:Blocks.Controls"
+                    xmlns:conv="clr-namespace:Blocks.Converters">
 
     <Design.PreviewWith>
         <Border Padding="20" Background="{DynamicResource BlockWindowBackgroundBrush}">
@@ -54,7 +55,7 @@
                                               MinWidth="{Binding $self.Bounds.Height}"
                                               HorizontalContentAlignment="Center">
                                     <RepeatButton.CornerRadius>
-                                        <MultiBinding Converter="{StaticResource InnerRadius}">
+                                        <MultiBinding Converter="{x:Static conv:BlockConverters.InnerRadius}">
                                             <TemplateBinding Property="CornerRadius" />
                                             <TemplateBinding Property="BorderThickness" />
                                             <TemplateBinding Property="BorderThickness" />
@@ -75,7 +76,7 @@
                                               MinWidth="{Binding $self.Bounds.Height}"
                                               HorizontalContentAlignment="Center">
                                     <RepeatButton.CornerRadius>
-                                        <MultiBinding Converter="{StaticResource InnerRadius}">
+                                        <MultiBinding Converter="{x:Static conv:BlockConverters.InnerRadius}">
                                             <TemplateBinding Property="CornerRadius" />
                                             <TemplateBinding Property="BorderThickness" />
                                             <TemplateBinding Property="BorderThickness" />

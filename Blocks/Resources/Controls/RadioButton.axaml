@@ -1,6 +1,7 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:blk="clr-namespace:Blocks.Controls">
+                    xmlns:blk="clr-namespace:Blocks.Controls"
+                    xmlns:conv="clr-namespace:Blocks.Converters">
     <Design.PreviewWith>
         <Border Background="{DynamicResource BlockWindowBackgroundBrush}" Padding="20">
             <StackPanel Spacing="10">
@@ -43,7 +44,7 @@
                                              BackgroundOpacity="0.3"/>
                         </Panel>
                         <ContentPresenter Name="PART_ContentPresenter"
-                                          Margin="{TemplateBinding blk:Block.Gap, Converter={StaticResource LeftThickness}}"
+                                          Margin="{TemplateBinding blk:Block.Gap, Converter={x:Static conv:BlockConverters.SelectLeftThickness}}"
                                           VerticalAlignment="Center"
                                           HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
                                           Content="{TemplateBinding Content}"
@@ -82,7 +83,7 @@
             </Style>
             <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
                 <Setter Property="Margin"
-                        Value="{TemplateBinding blk:Block.Gap, Converter={StaticResource RightThickness}}" />
+                        Value="{TemplateBinding blk:Block.Gap, Converter={x:Static conv:BlockConverters.SelectRightThickness}}" />
             </Style>
         </Style>
 
@@ -92,7 +93,7 @@
             </Style>
             <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
                 <Setter Property="Margin"
-                        Value="{TemplateBinding blk:Block.Gap, Converter={StaticResource BottomThickness}}" />
+                        Value="{TemplateBinding blk:Block.Gap, Converter={x:Static conv:BlockConverters.SelectBottomThickness}}" />
             </Style>
         </Style>
 
@@ -102,7 +103,7 @@
             </Style>
             <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
                 <Setter Property="Margin"
-                        Value="{TemplateBinding blk:Block.Gap, Converter={StaticResource TopThickness}}" />
+                        Value="{TemplateBinding blk:Block.Gap, Converter={x:Static conv:BlockConverters.SelectTopThickness}}" />
             </Style>
         </Style>
     </ControlTheme>

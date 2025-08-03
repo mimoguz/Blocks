@@ -1,7 +1,8 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:generic="clr-namespace:System.Collections.Generic;assembly=mscorlib"
-                    xmlns:blk="clr-namespace:Blocks.Controls">
+                    xmlns:blk="clr-namespace:Blocks.Controls"
+                    xmlns:conv="clr-namespace:Blocks.Converters">
 
     <Design.PreviewWith>
         <Border Padding="20" Background="{DynamicResource BlockWindowBackgroundBrush}">
@@ -58,7 +59,7 @@
                            IsLightDismissEnabled="True"
                            PlacementTarget="{TemplateBinding}">
                         <Popup.MinWidth>
-                            <MultiBinding Converter="{StaticResource AddAll}">
+                            <MultiBinding Converter="{x:Static conv:BlockConverters.Sum}">
                                 <Binding Path="Bounds.Width" RelativeSource="{RelativeSource TemplatedParent}" />
                                 <DynamicResource ResourceKey="BlockPopupWidthFix" />
                             </MultiBinding>

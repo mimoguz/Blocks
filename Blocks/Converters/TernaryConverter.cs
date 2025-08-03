@@ -5,7 +5,7 @@ using Avalonia.Data.Converters;
 
 namespace Blocks.Converters;
 
-public class TernarySelector : IMultiValueConverter
+public class TernaryConverter : IMultiValueConverter
 {
     public object? Convert(IList<object?> values, Type targetType, object? parameter, CultureInfo culture)
     {
@@ -15,6 +15,4 @@ public class TernarySelector : IMultiValueConverter
         }
         return condition ? a : b;
     }
-    
-    public static TernarySelector Instance { get; } = new();
 }

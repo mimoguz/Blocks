@@ -1,7 +1,8 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="using:System"
-                    xmlns:blk="clr-namespace:Blocks.Controls">
+                    xmlns:blk="clr-namespace:Blocks.Controls"
+                    xmlns:conv="clr-namespace:Blocks.Converters">
     <Design.PreviewWith>
         <Border Padding="20">
             <StackPanel Spacing="10">
@@ -89,7 +90,7 @@
                            IsLightDismissEnabled="True"
                            InheritsTransform="True">
                         <Popup.MinWidth>
-                            <MultiBinding Converter="{StaticResource AddAll}">
+                            <MultiBinding Converter="{x:Static conv:BlockConverters.Sum}">
                                 <Binding Path="Bounds.Width" RelativeSource="{RelativeSource TemplatedParent}" />
                                 <DynamicResource ResourceKey="BlockPopupWidthFix" />
                             </MultiBinding>
@@ -157,7 +158,7 @@
 
         <Style Selector="^.pill-left /template/ blk|BlockButton#ButtonBackground">
             <Setter Property="CornerRadius"
-                    Value="{TemplateBinding CornerRadius, Converter={StaticResource LeftRadius}}">
+                    Value="{TemplateBinding CornerRadius, Converter={x:Static conv:BlockConverters.SelectLeftRadius}}">
             </Setter>
         </Style>
 
@@ -168,19 +169,19 @@
 
         <Style Selector="^.pill-right /template/ blk|BlockButton#ButtonBackground">
             <Setter Property="CornerRadius"
-                    Value="{TemplateBinding CornerRadius, Converter={StaticResource RightRadius}}">
+                    Value="{TemplateBinding CornerRadius, Converter={x:Static conv:BlockConverters.SelectRightRadius}}">
             </Setter>
         </Style>
 
         <Style Selector="^.pill-top /template/ blk|BlockButton#ButtonBackground">
             <Setter Property="CornerRadius"
-                    Value="{TemplateBinding CornerRadius, Converter={StaticResource TopRadius}}">
+                    Value="{TemplateBinding CornerRadius, Converter={x:Static conv:BlockConverters.SelectTopRadius}}">
             </Setter>
         </Style>
 
         <Style Selector="^.pill-bottom /template/ blk|BlockButton#ButtonBackground">
             <Setter Property="CornerRadius"
-                    Value="{TemplateBinding CornerRadius, Converter={StaticResource BottomRadius}}">
+                    Value="{TemplateBinding CornerRadius, Converter={x:Static conv:BlockConverters.SelectBottomRadius}}">
             </Setter>
         </Style>
     </ControlTheme>

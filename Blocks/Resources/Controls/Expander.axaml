@@ -1,6 +1,7 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:blk="clr-namespace:Blocks.Controls">
+                    xmlns:blk="clr-namespace:Blocks.Controls"
+                    xmlns:conv="clr-namespace:Blocks.Converters">
     <Design.PreviewWith>
         <Border Padding="20">
             <StackPanel Orientation="Vertical" Spacing="20" Width="350" Height="600">
@@ -112,7 +113,7 @@
                         <ContentPresenter x:Name="PART_ContentPresenter"
                                           Grid.Column="1"
                                           Margin="{TemplateBinding blk:Block.Gap, 
-                                                   Converter={StaticResource LeftThickness}}"
+                                                   Converter={x:Static conv:BlockConverters.SelectLeftThickness}}"
                                           Content="{TemplateBinding Content}"
                                           ContentTemplate="{TemplateBinding ContentTemplate}"
                                           HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
@@ -301,21 +302,21 @@
 
         <Style Selector="^[IsExpanded=True]:left /template/ ToggleButton#ExpanderHeader">
             <Setter Property="CornerRadius"
-                    Value="{TemplateBinding CornerRadius, Converter={StaticResource RightRadius}}" />
+                    Value="{TemplateBinding CornerRadius, Converter={x:Static conv:BlockConverters.SelectRightRadius}}" />
         </Style>
         <Style Selector="^[IsExpanded=True]:up /template/ ToggleButton#ExpanderHeader">
             <Setter Property="CornerRadius"
-                    Value="{TemplateBinding CornerRadius, Converter={StaticResource BottomRadius}}" />
+                    Value="{TemplateBinding CornerRadius, Converter={x:Static conv:BlockConverters.SelectBottomRadius}}" />
 
         </Style>
         <Style Selector="^[IsExpanded=True]:right /template/ ToggleButton#ExpanderHeader">
             <Setter Property="CornerRadius"
-                    Value="{TemplateBinding CornerRadius, Converter={StaticResource LeftRadius}}" />
+                    Value="{TemplateBinding CornerRadius, Converter={x:Static conv:BlockConverters.SelectLeftRadius}}" />
 
         </Style>
         <Style Selector="^[IsExpanded=True]:down /template/ ToggleButton#ExpanderHeader">
             <Setter Property="CornerRadius"
-                    Value="{TemplateBinding CornerRadius, Converter={StaticResource TopRadius}}" />
+                    Value="{TemplateBinding CornerRadius, Converter={x:Static conv:BlockConverters.SelectTopRadius}}" />
         </Style>
 
         <Style Selector="^:left /template/ Border#ExpanderContent">

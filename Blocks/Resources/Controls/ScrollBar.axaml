@@ -1,5 +1,7 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:conv="clr-namespace:Blocks.Converters">
+    
     <Design.PreviewWith>
         <Border Padding="20">
             <StackPanel Orientation="Horizontal" Spacing="20">
@@ -179,7 +181,7 @@
                                               Background="{TemplateBinding Background}"
                                               Grid.Row="0"
                                               Focusable="False"
-                                              CornerRadius="{TemplateBinding CornerRadius, Converter={StaticResource TopRadius}}"
+                                              CornerRadius="{TemplateBinding CornerRadius, Converter={x:Static conv:BlockConverters.SelectTopRadius}}"
                                               MinWidth="{DynamicResource BlockScrollBarThumbSize}"
                                               Height="{DynamicResource BlockScrollBarThumbSize}">
                                     <PathIcon Data="{DynamicResource BlockArrowUp8X5}"
@@ -220,7 +222,7 @@
                                 <RepeatButton Name="PART_LineDownButton"
                                               HorizontalAlignment="Center"
                                               Theme="{StaticResource BlockScrollBarLineButton}"
-                                              CornerRadius="{TemplateBinding CornerRadius, Converter={StaticResource BottomRadius}}"
+                                              CornerRadius="{TemplateBinding CornerRadius, Converter={x:Static conv:BlockConverters.SelectBottomRadius}}"
                                               Background="{TemplateBinding Background}"
                                               Grid.Row="2"
                                               Focusable="False"
@@ -261,7 +263,7 @@
                                 <RepeatButton Name="PART_LineUpButton"
                                               Theme="{StaticResource BlockScrollBarLineButton}"
                                               Background="{TemplateBinding Background}"
-                                              CornerRadius="{TemplateBinding CornerRadius, Converter={StaticResource LeftRadius}}"
+                                              CornerRadius="{TemplateBinding CornerRadius, Converter={x:Static conv:BlockConverters.SelectLeftRadius}}"
                                               VerticalAlignment="Center"
                                               Grid.Column="0"
                                               Focusable="False"
@@ -304,7 +306,7 @@
                                 <RepeatButton Name="PART_LineDownButton"
                                               Theme="{StaticResource BlockScrollBarLineButton}"
                                               Background="{TemplateBinding Background}"
-                                              CornerRadius="{TemplateBinding CornerRadius, Converter={StaticResource RightRadius}}"
+                                              CornerRadius="{TemplateBinding CornerRadius, Converter={x:Static conv:BlockConverters.SelectRightRadius}}"
                                               VerticalAlignment="Center"
                                               Grid.Column="2"
                                               Focusable="False"
