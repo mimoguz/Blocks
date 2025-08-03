@@ -14,7 +14,7 @@ A very WIP Avalonia UI theme. It sort of looks like GTK4/Adwaita, with some bits
 
 ### Views & Containers:
 
-![Screenshot: Views & Containers](.readme/views-and-containers-2025-08-02.png)
+![Screenshot: Views & Containers](.readme/views-and-containers-2025-08-03.png)
 
 ### Bits & Pieces:
 

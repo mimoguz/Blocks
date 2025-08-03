@@ -121,7 +121,7 @@
                             <StackPanel>
                                 <TextBlock Text="Group Item 1" Margin="8" />
                                 <Separator />
-                                <TextBlock Text="Group Item 1" Margin="8" />
+                                <TextBlock Text="Group Item 2" Margin="8" />
                             </StackPanel>
                         </blk:Group>
                         <Expander Classes="demo" Header="Expander"
