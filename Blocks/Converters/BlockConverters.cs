@@ -93,4 +93,19 @@ public static class BlockConverters
     /// A value converter that takes a Thickness and clears the right value.
     /// </summary>
     public static readonly SelectThicknessConverter ClearRightThickness = new((t) => new Thickness(t.Left, t.Top, 0.0, t.Bottom));
+    
+    /// <summary>
+    /// A value converter that takes a double and returns a Thickness with the left set to that value.
+    /// </summary>
+    public static readonly DoubleToThicknessConverter MakeLeftThickness = new((d) => new Thickness(d, 0.0, 0.0, 0.0));
+    
+    /// <summary>
+    /// A value converter that takes a double and returns a Thickness with the right set to that value.
+    /// </summary>
+    public static readonly DoubleToThicknessConverter MakeRightThickness = new((d) => new Thickness(0.0, 0.0, d, 0.0));
+    
+    /// <summary>
+    /// A multi-value converter to calculate tree view item margins.
+    /// </summary>
+    public static readonly IndentConverter Indent = new();
 }

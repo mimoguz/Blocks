@@ -36,5 +36,6 @@
         <ResourceInclude Source="Controls/HorizontalTabControlScrollBar.axaml" />
         <ResourceInclude Source="Controls/TabControlScrollViewer.axaml" />
         <ResourceInclude Source="Controls/Group.axaml" />
+        <ResourceInclude Source="Controls/TreeViewItem.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

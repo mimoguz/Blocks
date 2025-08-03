@@ -133,7 +133,7 @@
                                               MenuIconStyle="RightChevron"
                                               VerticalAlignment="Center"
                                               Margin="{DynamicResource BlockMenuChevronMargin}"
-                                              Foreground="{TemplateBinding Foreground}"/>
+                                              Background="{TemplateBinding Foreground}"/>
                     </Grid>
 
                     <Popup Name="PART_Popup"

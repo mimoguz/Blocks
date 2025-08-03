@@ -61,8 +61,10 @@
 
         <Style Selector="^:selected /template/ blk|BlockButton#ButtonBackground">
             <Setter Property="Flat" Value="False" />
+        </Style>
+        
+        <Style Selector="^:selected:focused, ^:selected:focus-within">
             <Setter Property="Background" Value="{DynamicResource BlockBasePrimaryBrush}" />
         </Style>
-
     </ControlTheme>
 </ResourceDictionary>

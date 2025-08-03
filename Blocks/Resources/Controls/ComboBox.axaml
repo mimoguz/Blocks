@@ -60,8 +60,8 @@
                           IsHitTestVisible="False">
                         <blk:AnimatedMenuIcon Name="MenuIcon"
                                               Grid.Column="1"
-                                              Foreground="{TemplateBinding Foreground}"
-                                              BorderBrush="{TemplateBinding blk:Block.ActiveIconForeground}"
+                                              Background="{TemplateBinding Foreground}"
+                                              Foreground="{TemplateBinding blk:Block.ActiveIconForeground}"
                                               Margin="0,0,8,0"
                                               MenuIconStyle="{TemplateBinding blk:Block.MenuIconStyle}" />
                         <TextBlock x:Name="PlaceholderTextBlock"

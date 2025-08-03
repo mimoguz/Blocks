@@ -24,5 +24,6 @@
         <StyleInclude Source="Controls/BlockButton.axaml" />
         <StyleInclude Source="Controls/BlockView.axaml" />
         <StyleInclude Source="Controls/PlaceHolderStyles.axaml" />
+        <StyleInclude Source="Controls/AnimatedTreeIcon.axaml" />
     </Application.Styles>
 </Application>

@@ -68,9 +68,8 @@
 
                     <!-- Top-left -->
                     
-                    <blk:PlaceHoleder Grid.Row="0" />
+                    <!-- <blk:PlaceHoleder Grid.Row="0" /> -->
                     
-                    <!--
                     <TreeView Classes="demo" Grid.Row="0" Padding="0,8"
                               HorizontalAlignment="Stretch"
                               VerticalAlignment="Stretch">
@@ -111,7 +110,6 @@
                             </TreeViewItem>
                         </TreeViewItem>
                     </TreeView>
-                    -->
 
                     <GridSplitter Grid.Row="1" ResizeDirection="Rows" Padding="0,8" />
 

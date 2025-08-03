@@ -1,0 +1,163 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:conv="clr-namespace:Blocks.Converters"
+                    xmlns:blk="clr-namespace:Blocks.Controls">
+
+    <Design.PreviewWith>
+        <Border Padding="20"
+                MinWidth="300">
+            <TreeView>
+                <TreeViewItem Header="Level 1" IsExpanded="True">
+                    <TreeViewItem Header="Level 2.1" IsSelected="True" IsExpanded="True">
+                        <TreeViewItem Header="Level 3.1" />
+                        <TreeViewItem Header="Level 3.2" IsSelected="True" IsEnabled="False">
+                            <TreeViewItem Header="Level 4" />
+                        </TreeViewItem>
+                    </TreeViewItem>
+                    <TreeViewItem Header="Level 2.2" IsEnabled="False" />
+                </TreeViewItem>
+            </TreeView>
+        </Border>
+    </Design.PreviewWith>
+
+    <x:Double x:Key="BlockTreeViewItemGap">8</x:Double>
+    <x:Double x:Key="BlockTreeViewItemIndent">28</x:Double>
+    <Thickness x:Key="BlockTreeViewItemPadding">6,2</Thickness>
+    
+    <ControlTheme x:Key="BlockTreeViewItemStateToggleButton" TargetType="ToggleButton">
+
+        <Setter Property="Foreground" Value="{DynamicResource BlockWindowForegroundBrush}" />
+        <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
+        <Setter Property="blk:Block.ActiveIconForeground" Value="{DynamicResource BlockBasePrimaryBrush}" />
+        <Setter Property="Width" Value="24" />
+        <Setter Property="Height" Value="24" />
+        <Setter Property="CornerRadius" Value="999" />
+
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel Background="Transparent">
+                    <Border Name="ButtonBorder"
+                            Width="{TemplateBinding Width}"
+                            Height="{TemplateBinding Height}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            Background="{TemplateBinding Background}"
+                            Opacity="0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center" >
+                    </Border>
+                    <blk:AnimatedTreeIcon Background="{TemplateBinding Foreground}"
+                                          Foreground="{TemplateBinding blk:Block.ActiveIconForeground}"
+                                          HorizontalAlignment="Center"
+                                          VerticalAlignment="Center" />
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^:checked /template/ blk|AnimatedTreeIcon">
+            <Setter Property="DrawExpanded" Value="True" />
+        </Style>
+
+        <Style Selector="^:pointerover /template/ Border#ButtonBorder">
+            <Setter Property="Opacity" Value="{DynamicResource BlockButtonHighlightOpacity}"/>
+        </Style>
+
+        <Style Selector="^:pressed /template/ Border#ButtonBorder">
+            <Setter Property="Opacity" Value="{DynamicResource BlockButtonShadeOpacity}"/>
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme x:Key="{x:Type TreeViewItem}" TargetType="TreeViewItem">
+        <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
+        <Setter Property="BorderThickness" Value="{DynamicResource TreeViewItemBorderThemeThickness}" />
+        <Setter Property="Foreground" Value="{DynamicResource TreeViewItemForeground}" />
+        <Setter Property="MinHeight" Value="{DynamicResource BlockMinListBoxItemHeight}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource BlockButtonCornerRadius}"></Setter>
+        <Setter Property="blk:Block.GapSingle" Value="{DynamicResource BlockTreeViewItemGap}" />
+        <Setter Property="blk:Block.ActiveIconForeground" Value="{DynamicResource BlockBasePrimaryBrush}" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Padding" Value="{DynamicResource BlockTreeViewItemPadding}" />
+        <Setter Property="Focusable" Value="True" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <StackPanel>
+                    <Panel Name="PART_LayoutRoot" 
+                           Background="Transparent" 
+                           MinHeight="{TemplateBinding MinHeight}">
+                        <blk:BlockButton Name="ItemBackground"
+                                         Flat="True"
+                                         Background="{TemplateBinding Background}"
+                                         CornerRadius="{TemplateBinding CornerRadius}"
+                                         IsHitTestVisible="False" />
+                        <Decorator Name="PART_Header">
+                            <Decorator.Margin>
+                                <MultiBinding Converter="{x:Static conv:BlockConverters.Indent}">
+                                    <Binding Path="Level" RelativeSource="{RelativeSource TemplatedParent}" />
+                                    <DynamicResource ResourceKey="BlockTreeViewItemIndent" />
+                                </MultiBinding>
+                            </Decorator.Margin>
+                            <Grid ColumnDefinitions="Auto, *" 
+                                  Margin="{TemplateBinding Padding}"
+                                  Name="Content">
+                                <Decorator Width="24" Height="24"
+                                           Grid.Column="0"
+                                           Margin="{TemplateBinding blk:Block.GapSingle, Converter={x:Static conv:BlockConverters.MakeRightThickness}}">
+                                    <ToggleButton Name="PART_ExpandCollapseChevron"
+                                                  Theme="{StaticResource BlockTreeViewItemStateToggleButton}"
+                                                  Background="{TemplateBinding Background}"
+                                                  blk:Block.ActiveIconForeground="{TemplateBinding blk:Block.ActiveIconForeground}"
+                                                  Focusable="False"
+                                                  IsChecked="{TemplateBinding IsExpanded, Mode=TwoWay}"
+                                                  Margin="{TemplateBinding blk:Block.GapSingle, Converter={x:Static conv:BlockConverters.MakeRightThickness}}" />
+                                </Decorator>
+                                <ContentPresenter Name="PART_HeaderPresenter"
+                                                  Grid.Column="1"
+                                                  Focusable="False"
+                                                  Background="Transparent"
+                                                  Content="{TemplateBinding Header}"
+                                                  ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                                  HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                                  VerticalAlignment="{TemplateBinding VerticalAlignment}" />
+                            </Grid>
+                        </Decorator>
+                    </Panel>
+                    <ItemsPresenter Name="PART_ItemsPresenter"
+                                    IsVisible="{TemplateBinding IsExpanded}"
+                                    ItemsPanel="{TemplateBinding ItemsPanel}" />
+                </StackPanel>
+            </ControlTemplate>
+        </Setter>
+
+        <!--  PointerOver state  -->
+        <Style Selector="^ /template/ Panel#PART_LayoutRoot:pointerover blk|BlockButton#ItemBackground">
+            <Setter Property="Highlighted" Value="True" />
+        </Style>
+
+        <!--  Pressed state  -->
+        <Style Selector="^:pressed /template/ Panel#PART_LayoutRoot:pointerover blk|BlockButton#ItemBackground">
+            <Setter Property="Shaded" Value="True" />
+        </Style>
+
+        <!--  Disabled state  -->
+        <Style Selector="^:disabled /template/ Decorator#PART_Header">
+            <Setter Property="Opacity" Value="{DynamicResource BlockDisabledOpacity}" />
+        </Style>
+
+
+        <!--  Selected state  -->
+        <Style Selector="^:selected /template/ blk|BlockButton#ItemBackground">
+            <Setter Property="Flat" Value="False" />
+        </Style>
+        <Style Selector="^:selected:focused, ^:selected:focus-within">
+            <Setter Property="Background" Value="{DynamicResource BlockBasePrimaryBrush}" />
+        </Style>
+        <Style Selector="^:selected:focus-visible /template/ blk|BlockButton#ItemBackground">
+            <Setter Property="Focused" Value="True" />
+        </Style>
+        
+        <!-- Leaf -->
+        <Style Selector="^:empty /template/ ToggleButton#PART_ExpandCollapseChevron">
+            <Setter Property="IsVisible" Value="False" />
+        </Style>
+    </ControlTheme>
+
+</ResourceDictionary>

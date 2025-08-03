@@ -14,14 +14,6 @@
                     </SplitButton.Flyout>
                     Split Button
                 </SplitButton>
-                <SplitButton VerticalAlignment="Top" Classes="split-toggle">
-                    <SplitButton.Flyout>
-                        <Flyout>
-                            <TextBlock Margin="10">Flyout</TextBlock>
-                        </Flyout>
-                    </SplitButton.Flyout>
-                    Split Toggle
-                </SplitButton>
                 <SplitButton VerticalAlignment="Top" Classes="flat" blk:Block.ActiveIconForeground="DeepPink">
                     <SplitButton.Flyout>
                         <Flyout>
@@ -100,8 +92,8 @@
                                 KeyboardNavigation.IsTabStop="{TemplateBinding IsTabStop}">
                             <blk:AnimatedMenuIcon Name="MenuIcon"
                                                   MenuIconStyle="{TemplateBinding blk:Block.MenuIconStyle}"
-                                                  Foreground="{TemplateBinding Foreground}"
-                                                  BorderBrush="{TemplateBinding blk:Block.ActiveIconForeground}" />
+                                                  Background="{TemplateBinding Foreground}"
+                                                  Foreground="{TemplateBinding blk:Block.ActiveIconForeground}" />
                         </Button>
                     </Grid>
                 </Border>
