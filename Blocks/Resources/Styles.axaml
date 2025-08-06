@@ -1,0 +1,12 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+        <StyleInclude Source="Styles/AnimatedDot.axaml" />
+        <StyleInclude Source="Styles/AnimatedMenuIcon.axaml" />
+        <StyleInclude Source="Styles/AnimatedTreeIcon.axaml" />
+        <StyleInclude Source="Styles/BlockButton.axaml" />
+        <StyleInclude Source="Styles/BlockView.axaml" />
+        <StyleInclude Source="Styles/CalendarIcon.axaml" />
+        <StyleInclude Source="Styles/PlaceHolder.axaml" />
+        
+</Styles>

@@ -4,7 +4,7 @@
                     xmlns:conv="clr-namespace:Blocks.Converters">
     <Design.PreviewWith>
         <Border Padding="20">
-            <Calendar DisplayDate="2000-01-01">
+            <Calendar DisplayDate="2025-08-01" IsTodayHighlighted="True">
                 <Calendar.BlackoutDates>
                     <CalendarDateRange>
                         <x:Arguments>
@@ -40,8 +40,7 @@
         <Setter Property="Template">
             <ControlTemplate>
                 <Panel>
-
-                    <Border Background="{TemplateBinding Background}"
+                    <Border Background="{DynamicResource BlockRaisedBackgroundBrush}"
                             CornerRadius="14"
                             ClipToBounds="True">
                         <!-- To keep the calendar from resizing when switching DisplayMode set the min width and min height
@@ -52,22 +51,10 @@
                               MinWidth="{DynamicResource BlockCalendarGridWidth}">
                             <Border Grid.Row="0" Background="{DynamicResource BlockCalendarItemHeaderBackground}" />
                             <Grid Grid.Row="0"
-                                  ColumnDefinitions="*,Auto,Auto" ColumnSpacing="2"
+                                  ColumnDefinitions="Auto, *, Auto" ColumnSpacing="2"
                                   Margin="{DynamicResource BlockFlyoutPadding}">
-                                <Button Name="PART_HeaderButton"
-                                        Classes="flat"
-                                        FontSize="{DynamicResource BlockFontSizeNormal}"
-                                        HorizontalContentAlignment="Left"
-                                        Padding="{DynamicResource BlockFlatButtonPadding}">
-                                    <Button.Styles>
-                                        <Style Selector="Button.flat">
-                                            <Setter Property="Foreground"
-                                                    Value="{DynamicResource BlockCalendarItemHeaderForeground}" />
-                                        </Style>
-                                    </Button.Styles>
-                                </Button>
                                 <Button Name="PART_PreviousButton"
-                                        Grid.Column="1"
+                                        Grid.Column="0"
                                         Classes="flat"
                                         Padding="1">
                                     <Button.Styles>
@@ -76,8 +63,20 @@
                                                     Value="{DynamicResource BlockCalendarItemHeaderForeground}" />
                                         </Style>
                                     </Button.Styles>
-                                    <PathIcon Data="{DynamicResource BlockChevronUp}"
+                                    <PathIcon Data="{DynamicResource BlockChevronLeft}"
                                               Foreground="{Binding $parent[Button].Foreground}" />
+                                </Button>
+                                <Button Name="PART_HeaderButton"
+                                        Grid.Column="1"
+                                        Classes="flat"
+                                        FontSize="{DynamicResource BlockFontSizeNormal}"
+                                        Padding="{DynamicResource BlockFlatButtonPadding}">
+                                    <Button.Styles>
+                                        <Style Selector="Button.flat">
+                                            <Setter Property="Foreground"
+                                                    Value="{DynamicResource BlockCalendarItemHeaderForeground}" />
+                                        </Style>
+                                    </Button.Styles>
                                 </Button>
                                 <Button Name="PART_NextButton"
                                         Grid.Column="2"
@@ -90,7 +89,7 @@
                                                     Value="{DynamicResource BlockCalendarItemHeaderForeground}" />
                                         </Style>
                                     </Button.Styles>
-                                    <PathIcon Data="{DynamicResource BlockChevronDown}"
+                                    <PathIcon Data="{DynamicResource BlockChevronRight}"
                                               Foreground="{Binding $parent[Button].Foreground}" />
                                 </Button>
                             </Grid>

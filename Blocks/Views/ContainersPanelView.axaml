@@ -68,8 +68,6 @@
 
                     <!-- Top-left -->
                     
-                    <!-- <blk:PlaceHoleder Grid.Row="0" /> -->
-                    
                     <TreeView Classes="demo" Grid.Row="0" Padding="6"
                               HorizontalAlignment="Stretch"
                               VerticalAlignment="Stretch"
@@ -171,22 +169,22 @@
                             </Style>
                         </TabControl.Styles>
                         <TabItem Header="Tab Item 1">
-                            <blk:PlaceHoleder Margin="8" StrokeBrush="#FA0050" />
+                            <blk:PlaceHolder Margin="8" StrokeBrush="#FA0050" />
                         </TabItem>
                         <TabItem Header="Tab Item 2 - Decorless" Classes="hide-decoration">
-                            <blk:PlaceHoleder Margin="8" StrokeBrush="DarkOrange" />
+                            <blk:PlaceHolder Margin="8" StrokeBrush="DarkOrange" />
                         </TabItem>
                         <TabItem Header="Tab Item 3">
-                            <blk:PlaceHoleder Margin="8" StrokeBrush="Gold" />
+                            <blk:PlaceHolder Margin="8" StrokeBrush="Gold" />
                         </TabItem>
                         <TabItem Header="Tab Item 4">
-                            <blk:PlaceHoleder Margin="8" StrokeBrush="LimeGreen" />
+                            <blk:PlaceHolder Margin="8" StrokeBrush="LimeGreen" />
                         </TabItem>
                         <TabItem Header="Tab Item 5">
-                            <blk:PlaceHoleder Margin="8" StrokeBrush="Turquoise" />
+                            <blk:PlaceHolder Margin="8" StrokeBrush="Turquoise" />
                         </TabItem>
                         <TabItem Header="Tab Item 6">
-                            <blk:PlaceHoleder Margin="8" StrokeBrush="DeepSkyBlue" />
+                            <blk:PlaceHolder Margin="8" StrokeBrush="DeepSkyBlue" />
                         </TabItem>
                     </TabControl>
 
@@ -194,7 +192,7 @@
 
                     <!-- Bottom-left -->
                     
-                    <blk:PlaceHoleder Grid.Row="2" />
+                    <blk:PlaceHolder Grid.Row="2" />
                     
                     <!--
                     <SplitView Classes="demo" Grid.Row="2"

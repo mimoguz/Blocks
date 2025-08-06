@@ -13,6 +13,7 @@
     <SolidColorBrush x:Key="BlockCalendarTodayBackground" Color="{DynamicResource BlockBasePrimaryColor}" />
     <SolidColorBrush x:Key="BlockCalendarTodayForeground" Color="{DynamicResource BlockOnPrimaryColor}" />
     <x:Double x:Key="BlockCalendarDayButtonSize">40</x:Double>
+    <CornerRadius x:Key="BlockCalendarDayButtonSelectedCornerRadius">20</CornerRadius>
 
     <ControlTheme x:Key="{x:Type CalendarDayButton}" TargetType="CalendarDayButton">
 
@@ -46,26 +47,22 @@
                             </Transitions>
                         </blk:BlockButton.Transitions>
                     </blk:BlockButton>
-                    <Ellipse Name="Mark"
-                             Stroke="{DynamicResource BlockCalendarMarkBrush}"
-                             StrokeThickness="{DynamicResource BlockCalendarButtonSelectionStrokeThickness}"
-                             Margin="2"
-                             Opacity="0">
-                        <Ellipse.Transitions>
-                            <Transitions>
-                                <DoubleTransition Property="Opacity"
-                                                  Duration="{DynamicResource BlockButtonStateTransitionDuration}"
-                                                  Easing="CubicEaseOut" />
-                            </Transitions>
-                        </Ellipse.Transitions>
-                    </Ellipse>
-                    <ContentPresenter Name="PART_ContentPresenter"
-                                      ContentTemplate="{TemplateBinding ContentTemplate}"
-                                      Content="{TemplateBinding Content}"
-                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                      Margin="{TemplateBinding Padding}">
-                    </ContentPresenter>
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-6,0, 0">
+                        <Ellipse Name="Today"
+                                 VerticalAlignment="Top"
+                                 HorizontalAlignment="Center"
+                                 Margin="0,0,0,2"
+                                 Width="4" Height="4"
+                                 Fill="{TemplateBinding Foreground}"
+                                 Opacity="0" />
+                        <ContentPresenter Name="PART_ContentPresenter"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          Content="{TemplateBinding Content}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          Margin="{TemplateBinding Padding}">
+                        </ContentPresenter>
+                    </StackPanel>
                     <Rectangle Name="Blackout"
                                Stroke="{DynamicResource BlockRedBrush}"
                                StrokeThickness="2"
@@ -86,22 +83,19 @@
         <Style Selector="^:pressed /template/ blk|BlockButton#ButtonBackground">
             <Setter Property="Shaded" Value="True" />
         </Style>
-
-        <Style Selector="^:selected /template/ Ellipse#Mark">
+        
+        <Style Selector="^:today /template/  Ellipse#Today">
             <Setter Property="Opacity" Value="1" />
         </Style>
-        <Style Selector="^:selected /template/  blk|BlockButton#ButtonBackground">
-            <Setter Property="CornerRadius" Value="100" />
-        </Style>
 
-        <Style Selector="^:today">
+        <Style Selector="^:selected">
             <Style Selector="^ /template/ blk|BlockButton#ButtonBackground">
                 <Setter Property="Opaque" Value="True" />
                 <Setter Property="Background" Value="{DynamicResource BlockCalendarTodayBackground}" />
                 <Setter Property="BorderBrush" Value="{DynamicResource BlockCalendarTodayForeground}" />
             </Style>
-            <Style Selector="^ /template/ Ellipse#Mark">
-                <Setter Property="Stroke" Value="{DynamicResource BlockCalendarTodayForeground}" />
+            <Style Selector="^ /template/ Ellipse#Today">
+                <Setter Property="Fill" Value="{DynamicResource BlockCalendarTodayForeground}" />
             </Style>
             <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
                 <Setter Property="Foreground" Value="{DynamicResource BlockCalendarTodayForeground}" />

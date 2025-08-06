@@ -19,11 +19,6 @@
 
     <Application.Styles>
         <FluentTheme />
-        <StyleInclude Source="Controls/AnimatedMenuIcon.axaml" />
-        <StyleInclude Source="Controls/AnimatedDot.axaml" />
-        <StyleInclude Source="Controls/BlockButton.axaml" />
-        <StyleInclude Source="Controls/BlockView.axaml" />
-        <StyleInclude Source="Controls/PlaceHolderStyles.axaml" />
-        <StyleInclude Source="Controls/AnimatedTreeIcon.axaml" />
+        <StyleInclude Source="Resources/Styles.axaml" />
     </Application.Styles>
 </Application>

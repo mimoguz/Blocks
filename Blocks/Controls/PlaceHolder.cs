@@ -6,13 +6,13 @@ using Avalonia.Media;
 
 namespace Blocks.Controls;
 
-public class PlaceHoleder : Control
+public class PlaceHolder : Control
 {
     public static readonly StyledProperty<IBrush?> StrokeBrushProperty =
-        AvaloniaProperty.Register<PlaceHoleder, IBrush?>(nameof(StrokeBrush));
+        AvaloniaProperty.Register<PlaceHolder, IBrush?>(nameof(StrokeBrush));
     
     public static readonly StyledProperty<double> StrokeThicknessProperty =
-        AvaloniaProperty.Register<PlaceHoleder, double>(nameof(StrokeThickness), 1.0);
+        AvaloniaProperty.Register<PlaceHolder, double>(nameof(StrokeThickness), 1.0);
 
     public IBrush? StrokeBrush
     {
