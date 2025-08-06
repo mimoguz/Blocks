@@ -1,0 +1,108 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:blk="clr-namespace:Blocks.Controls"
+        xmlns:conv="clr-namespace:Blocks.Converters">
+    
+    <Design.PreviewWith>
+        <StackPanel Spacing="4" Width="120">
+            <blk:BlockView Width="36" Height="36" />
+            <blk:BlockView Width="36" Height="36" Highlighted="True" />
+            <blk:BlockView Width="36" Height="36" Focused="True" />
+            <blk:BlockView Width="36" Height="36" Error="True" />
+            <blk:BlockView Width="36" Height="36" Focused="True" Error="True"/>
+            <blk:BlockView Width="36" Height="36" Highlighted="True" Error="True" />
+        </StackPanel>
+    </Design.PreviewWith>
+
+    <Style Selector="blk|BlockView">
+        
+        <Setter Property="Foreground" Value="{DynamicResource BlockWindowForegroundBrush}" />
+        <Setter Property="Background" Value="{DynamicResource BlockBaseViewBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BlockBaseViewBorderBrush}" />
+        <Setter Property="BorderThickness" Value="{DynamicResource BlockControlBorderThickness}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource BlockViewCornerRadius}" />
+        
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel Background="Transparent" IsHitTestVisible="True">
+                    
+                    <Border Name="ViewBorder"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Opacity="{DynamicResource BlockViewBorderOpacity}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            IsHitTestVisible="False">
+                            <Border.Transitions>
+                                <Transitions>
+                                    <DoubleTransition Property="Opacity"
+                                                      Duration="{DynamicResource BlockButtonStateTransitionDuration}" />
+                                    <BrushTransition Property="BorderBrush"
+                                                     Duration="{DynamicResource BlockButtonStateTransitionDuration}" />
+                                </Transitions>
+                            </Border.Transitions>
+                        </Border>
+                    
+                        <Border Name="ViewBackground"
+                                Background="{TemplateBinding Background}"
+                                Opacity="{DynamicResource BlockViewBackgroundOpacity}"
+                                Margin="{TemplateBinding BorderThickness}"
+                                IsHitTestVisible="False">
+                            <Border.Transitions>
+                                <Transitions>
+                                    <DoubleTransition Property="Opacity"
+                                                      Duration="{DynamicResource BlockButtonStateTransitionDuration}" />
+                                </Transitions>
+                            </Border.Transitions>
+                            <Border.CornerRadius>
+                                <MultiBinding Converter="{x:Static conv:BlockConverters.InnerRadius}">
+                                    <TemplateBinding Property="CornerRadius" />
+                                    <TemplateBinding Property="BorderThickness" />
+                                </MultiBinding>
+                            </Border.CornerRadius>
+                        </Border>
+                    
+                        <Border Name="FocusVisual"
+                                Opacity="0"
+                                Margin="{TemplateBinding BorderThickness}"
+                                BorderBrush="{DynamicResource BlockBaseFocusBrush}"
+                                BorderThickness="{DynamicResource BlockFocusBorderThickness}"
+                                IsHitTestVisible="False">
+                            <Border.Transitions>
+                                <Transitions>
+                                    <DoubleTransition Property="Opacity"
+                                                      Duration="{DynamicResource BlockButtonStateTransitionDuration}" />
+                                </Transitions>
+                            </Border.Transitions>
+                            <Border.CornerRadius>
+                                <MultiBinding Converter="{x:Static conv:BlockConverters.InnerRadius}">
+                                    <TemplateBinding Property="CornerRadius" />
+                                    <TemplateBinding Property="BorderThickness" />
+                                </MultiBinding>
+                            </Border.CornerRadius>
+                        </Border>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+        
+        <Style Selector="^[Highlighted=True] /template/ Border#ViewBorder">
+            <Setter Property="Opacity" Value="{DynamicResource BlockViewBorderHighlightOpacity}" />
+        </Style>
+
+        <Style Selector="^[Focused=True]">
+            <Style Selector="^ /template/ Border#FocusVisual">
+                <Setter Property="Opacity" Value="{DynamicResource BlockViewFocusOpacity}" />
+            </Style>
+        </Style>
+        
+        <Style Selector="^[Error=True]">
+            <Style Selector="^ /template/ Border#ViewBorder">
+                <Setter Property="BorderBrush" Value="{DynamicResource BlockRedBrush}" />
+                <Setter Property="Opacity" Value="{DynamicResource BlockViewErrorBorderOpacity}" />
+            </Style>
+            <Style Selector="^[Highlighted=True] /template/ Border#ViewBorder">
+                <Setter Property="Opacity" Value="{DynamicResource BlockViewErrorBorderHighlightOpacity}" />
+            </Style>
+        </Style>
+
+    </Style>
+</Styles>

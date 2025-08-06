@@ -1,0 +1,182 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:blk="using:Blocks.Controls"
+        xmlns:conv="using:Blocks.Converters">
+    <Design.PreviewWith>
+        <WrapPanel ItemSpacing="4" LineSpacing="4" Width="120">
+
+            <blk:BlockButton Width="36" Height="36" />
+            <blk:BlockButton Width="36" Height="36" Highlighted="True" />
+            <blk:BlockButton Width="36" Height="36" Shaded="True" />
+            <blk:BlockButton Width="36" Height="36" Focused="True" />
+            <blk:BlockButton Width="36" Height="36" Flat="True" />
+            <blk:BlockButton Width="36" Height="36" Flat="True" Highlighted="True" />
+            <blk:BlockButton Width="36" Height="36" Flat="True" Shaded="True" />
+            <blk:BlockButton Width="36" Height="36" Flat="True" Focused="True" />
+            <blk:BlockButton Width="36" Height="36" Opaque="True" />
+            <blk:BlockButton Width="36" Height="36" Opaque="True" Highlighted="True" />
+            <blk:BlockButton Width="36" Height="36" Opaque="True" Shaded="True" />
+            <blk:BlockButton Width="36" Height="36" Opaque="True" Focused="True" />
+
+        </WrapPanel>
+    </Design.PreviewWith>
+
+    <Style Selector="blk|BlockButton">
+
+        <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BlockBaseFocusBrush}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource BlockButtonCornerRadius}" />
+
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel Background="Transparent" IsHitTestVisible="True">
+                    <Border Name="BaseBorder"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            IsHitTestVisible="False">
+                        <Border.Transitions>
+                            <Transitions>
+                                <DoubleTransition Property="Opacity"
+                                                  Duration="{DynamicResource BlockButtonStateTransitionDuration}"
+                                                  Easing="CubicEaseOut" />
+                                <BrushTransition Property="Background"
+                                                 Duration="{DynamicResource BlockButtonStateTransitionDuration}"
+                                                 Easing="CubicEaseOut" />
+                            </Transitions>
+                        </Border.Transitions>
+                    </Border>
+                    <Border Name="EffectBorder"
+                            Background="Transparent"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            IsHitTestVisible="True">
+                        <Border.Transitions>
+                            <Transitions>
+                                <BrushTransition Property="Background"
+                                                 Duration="{DynamicResource BlockButtonStateTransitionDuration}"
+                                                 Easing="CubicEaseOut" />
+                            </Transitions>
+                        </Border.Transitions>
+                    </Border>
+                    <Border Name="FocusVisual"
+                            IsHitTestVisible="False"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{DynamicResource BlockFocusBorderThickness}">
+                        <Border.Transitions>
+                            <Transitions>
+                                <DoubleTransition Property="Opacity"
+                                                  Duration="{DynamicResource BlockButtonStateTransitionDuration}"
+                                                  Easing="CubicEaseOut" />
+                                <ThicknessTransition Property="Margin"
+                                                     Duration="{DynamicResource BlockButtonStateTransitionDuration}"
+                                                     Easing="CubicEaseOut" />
+                                <BrushTransition Property="BorderBrush"
+                                                 Duration="{DynamicResource BlockButtonStateTransitionDuration}"
+                                                 Easing="CubicEaseOut" />
+                            </Transitions>
+                        </Border.Transitions>
+                        <Border.CornerRadius>
+                            <MultiBinding Converter="{x:Static conv:BlockConverters.InnerRadius}">
+                                <TemplateBinding Property="CornerRadius" />
+                                <DynamicResource ResourceKey="BlockFocusBorderThickness" />
+                            </MultiBinding>
+                        </Border.CornerRadius>
+                    </Border>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^[Opaque=False][Flat=False]">
+            <Style Selector="^ /template/ Border#BaseBorder">
+                <Setter Property="Opacity" Value="{DynamicResource BlockButtonBackgroundOpacity}" />
+            </Style>
+            <Style Selector="^ /template/ Border#EffectBorder">
+                <Setter Property="IsVisible" Value="False" />
+            </Style>
+            <Style Selector="^ /template/ Border#FocusVisual">
+                <Setter Property="Opacity" Value="0" />
+                <Setter Property="CornerRadius" Value="{TemplateBinding CornerRadius}" />
+            </Style>
+
+            <Style Selector="^[Highlighted=True]">
+                <Style Selector="^ /template/ Border#BaseBorder">
+                    <Setter Property="Opacity" Value="{DynamicResource BlockButtonHighlightOpacity}" />
+                </Style>
+            </Style>
+
+            <Style Selector="^[Shaded=True]">
+                <Style Selector="^ /template/ Border#BaseBorder">
+                    <Setter Property="Opacity" Value="{DynamicResource BlockButtonShadeOpacity}" />
+                </Style>
+            </Style>
+
+            <Style Selector="^[Focused=True]">
+                <Style Selector="^ /template/ Border#FocusVisual">
+                    <Setter Property="Opacity" Value="{DynamicResource BlockButtonFocusOpacity}" />
+                </Style>
+            </Style>
+        </Style>
+
+        <Style Selector="^[Opaque=False][Flat=True]">
+            <Style Selector="^ /template/ Border#BaseBorder">
+                <Setter Property="Opacity" Value="0" />
+            </Style>
+            <Style Selector="^ /template/ Border#EffectBorder">
+                <Setter Property="IsVisible" Value="False" />
+            </Style>
+            <Style Selector="^ /template/ Border#FocusVisual">
+                <Setter Property="Opacity" Value="0" />
+                <Setter Property="CornerRadius" Value="{TemplateBinding CornerRadius}" />
+            </Style>
+
+            <Style Selector="^[Highlighted=True]">
+                <Style Selector="^ /template/ Border#BaseBorder">
+                    <Setter Property="Opacity" Value="{DynamicResource BlockFlatButtonHighlightOpacity}" />
+                </Style>
+            </Style>
+
+            <Style Selector="^[Shaded=True]">
+                <Style Selector="^ /template/ Border#BaseBorder">
+                    <Setter Property="Opacity" Value="{DynamicResource BlockFlatButtonShadeOpacity}" />
+                </Style>
+            </Style>
+
+            <Style Selector="^[Focused=True]">
+                <Style Selector="^ /template/ Border#FocusVisual">
+                    <Setter Property="Opacity" Value="{DynamicResource BlockButtonFocusOpacity}" />
+                </Style>
+            </Style>
+        </Style>
+
+        <Style Selector="^[Opaque=True]">
+            <Style Selector="^ /template/ Border#BaseBorder">
+                <Setter Property="Opacity" Value="1" />
+            </Style>
+            <Style Selector="^ /template/ Border#EffectBorder">
+                <Setter Property="IsVisible" Value="True" />
+            </Style>
+            <Style Selector="^ /template/ Border#FocusVisual">
+                <Setter Property="Opacity" Value="0" />
+                <Setter Property="Margin" Value="{DynamicResource BlockFocusBorderThickness}" />
+            </Style>
+
+            <Style Selector="^[Highlighted=True]">
+                <Style Selector="^ /template/ Border#EffectBorder">
+                    <Setter Property="Background" Value="{DynamicResource BlockTransparentHighlightBrush}" />
+                </Style>
+            </Style>
+
+            <Style Selector="^[Shaded=True]">
+                <Style Selector="^ /template/ Border#EffectBorder">
+                    <Setter Property="Background" Value="{DynamicResource BlockTransparentShadeBrush}" />
+                </Style>
+            </Style>
+
+            <Style Selector="^[Focused=True]">
+                <Style Selector="^ /template/ Border#FocusVisual">
+                    <Setter Property="Opacity" Value="{DynamicResource BlockButtonFocusOpacity}" />
+                </Style>
+            </Style>
+        </Style>
+
+    </Style>
+</Styles>
