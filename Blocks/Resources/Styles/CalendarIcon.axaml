@@ -8,21 +8,70 @@
     </Design.PreviewWith>
 
     <Style Selector="controls|CalendarIcon">
+
+        <Style.Resources>
+            <StreamGeometry x:Key="BlockCalendarGeom">
+                M 6 0
+                C 5.446 0 5 0.446 5 1
+                L 5 3
+                C 5 3.554 5.446 4 6 4
+                C 6.554 4 7 3.554 7 3
+                L 7 1
+                C 7 0.446 6.554 0 6 0
+                z
+                M 14 0
+                C 13.446 0 13 0.446 13 1
+                L 13 3
+                C 13 3.554 13.446 4 14 4
+                C 14.554 4 15 3.554 15 3
+                L 15 1
+                C 15 0.446 14.554 0 14 0
+                z
+                M 3 2
+                C 1.892 2 1 2.892 1 4
+                L 1 16.887
+                C 1 17.995 1.892 18.887 3 18.887
+                L 17.141 18.887
+                C 18.249 18.887 19.141 17.995 19.141 16.887
+                L 19.141 4
+                C 19.141 2.892 18.249 2 17.141 2
+                L 16 2
+                L 16 3
+                C 16 4.108 15.108 5 14 5
+                C 12.892 5 12 4.108 12 3
+                L 12 2
+                L 8 2
+                L 8 3
+                C 8 4.108 7.108 5 6 5
+                C 4.892 5 4 4.108 4 3
+                L 4 2
+                L 3 2
+                z
+                M 3 7
+                L 17 7
+                L 17 17
+                L 3 17
+                L 3 7
+                z
+            </StreamGeometry>
+        </Style.Resources>
+
         <Setter Property="Foreground" Value="{DynamicResource BlockButtonForegroundBrush}" />
-        <Setter Property="Padding" Value="2" />
-        <Setter Property="FontSize" Value="12" />
+        <Setter Property="Padding" Value="0,5,0,0" />
+        <Setter Property="FontSize" Value="10" />
         <Setter Property="Template">
             <ControlTemplate>
-                <StackPanel>
-                    <Ellipse Width="4" Height="4"
-                             Fill="{TemplateBinding Foreground}" 
-                             Margin="{TemplateBinding Padding, Converter={x:Static conv:BlockConverters.SelectBottomThickness}}"/>
-                    <TextBlock Text="{Binding Source={x:Static sys:DateTime.Today}, Path=Day}" 
+                <Panel>
+                    <Path Data="{StaticResource BlockCalendarGeom}" 
+                          Fill="{TemplateBinding Foreground}"
+                          Width="20" Height="20" Stretch="None"/>
+                    <TextBlock Text="{Binding Source={x:Static sys:DateTime.Today}, Path=Day}"
                                FontSize="{TemplateBinding FontSize}"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
-                               FontWeight="Bold"/>
-                </StackPanel>
+                               FontWeight="Black"
+                               Margin="{TemplateBinding Padding}"/>
+                </Panel>
             </ControlTemplate>
         </Setter>
     </Style>

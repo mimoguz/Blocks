@@ -11,17 +11,14 @@
     </Design.PreviewWith>
     
     <CornerRadius x:Key="BlockCalendarButtonCornerRadius">9</CornerRadius>
-    <x:Double x:Key="BlockCalendarButtonSize">52</x:Double>
-    <x:Double x:Key="BlockCalendarButtonSelectionStrokeThickness">2</x:Double>
+    <x:Double x:Key="BlockCalendarButtonSize">60</x:Double>
     <SolidColorBrush x:Key="BlockCalendarMarkBrush" Color="{DynamicResource BlockBasePrimaryColor}" />
-    <CornerRadius x:Key="BlockCalendarButtonSelectedCornerRadius">26</CornerRadius>
     
     <ControlTheme x:Key="{x:Type CalendarButton}" TargetType="CalendarButton">
 
         <Setter Property="ClickMode" Value="Release" />
         <Setter Property="MinWidth" Value="{DynamicResource BlockCalendarButtonSize}" />
         <Setter Property="MinHeight" Value="{DynamicResource BlockCalendarButtonSize}" />
-        <Setter Property="Margin" Value="1" />
         <Setter Property="Padding" Value="0" />
         <Setter Property="CornerRadius" Value="{DynamicResource BlockCalendarButtonCornerRadius}" />
         <Setter Property="Foreground" Value="{DynamicResource BlockButtonForegroundBrush}" />

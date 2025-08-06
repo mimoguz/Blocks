@@ -1,17 +1,21 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:blk="clr-namespace:Blocks.Controls">
+                    xmlns:blk="clr-namespace:Blocks.Controls"
+                    xmlns:conv="clr-namespace:Blocks.Converters">
     
     <Design.PreviewWith>
         <Border Margin="80, 20, 80, 400">
-            <CalendarDatePicker Width="200" />
+            <CalendarDatePicker Width="200" Foreground="Blue"
+                                Watermark="Select date"
+                                UseFloatingWatermark="True"/>
         </Border>
     </Design.PreviewWith>
 
-    <x:Double x:Key="BlockCalendarIconFontSize">12</x:Double>
-    <Thickness x:Key="BlockCalendarIconDotMargin">2</Thickness>
+    <x:Double x:Key="BlockCalendarIconFontSize">9</x:Double>
+    <Thickness x:Key="BlockCalendarIconDotMargin">0,4,0,0</Thickness>
 
     <ControlTheme x:Key="{x:Type CalendarDatePicker}" TargetType="CalendarDatePicker">
+        
         <Setter Property="Background" Value="{DynamicResource BlockBaseViewBackgroundBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource BlockWindowForegroundBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource BlockBaseViewBorderBrush}" />
@@ -23,59 +27,90 @@
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Padding" Value="{DynamicResource BlockInputPadding}" />
+        
         <Setter Property="Template">
             <ControlTemplate>
                 <DataValidationErrors>
                     <Panel x:Name="LayoutRoot"
                            HorizontalAlignment="Stretch"
                            VerticalAlignment="Stretch">
-                        <Panel>
-                            <TextBox Name="PART_TextBox"
-                                     Background="{TemplateBinding Background}"
-                                     BorderBrush="{TemplateBinding BorderBrush}"
-                                     BorderThickness="{TemplateBinding BorderThickness}"
-                                     Foreground="{TemplateBinding Foreground}"
-                                     CornerRadius="{TemplateBinding CornerRadius}"
-                                     Padding="{TemplateBinding Padding}"
-                                     Watermark="{TemplateBinding Watermark}"
-                                     UseFloatingWatermark="{TemplateBinding UseFloatingWatermark}"
-                                     HorizontalAlignment="Stretch"
-                                     VerticalAlignment="Stretch"
-                                     VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                                     HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}">
-                                <TextBox.InnerLeftContent>
-                                    <Button Name="PART_Button"
-                                            Classes="flat"
-                                            Padding="0"
-                                            MinHeight="0"
-                                            MinWidth="{Binding $self.Bounds.Height}"
-                                            Focusable="False">
-                                        <blk:CalendarIcon Foreground="{Binding $parent[TextBox].Foreground}"
-                                                          Padding="{DynamicResource BlockCalendarIconDotMargin}"
-                                                          FontSize="{DynamicResource BlockCalendarIconFontSize}"/>
-                                    </Button>
-                                </TextBox.InnerLeftContent>
-                            </TextBox>
-                            
-                            <Popup Name="PART_Popup"
-                                   PlacementTarget="{TemplateBinding}"
-                                   IsLightDismissEnabled="True">
-                                <Calendar Name="PART_Calendar"
-                                          FirstDayOfWeek="{TemplateBinding FirstDayOfWeek}"
-                                          IsTodayHighlighted="{TemplateBinding IsTodayHighlighted}"
-                                          SelectedDate="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SelectedDate, Mode=TwoWay}"
-                                          DisplayDate="{TemplateBinding DisplayDate}"
-                                          DisplayDateStart="{TemplateBinding DisplayDateStart}"
-                                          DisplayDateEnd="{TemplateBinding DisplayDateEnd}" />
-                            </Popup>
-                        </Panel>
+                        <blk:BlockView Name="ViewBackground"
+                                       CornerRadius="{TemplateBinding CornerRadius}"
+                                       BorderBrush="{TemplateBinding BorderBrush}"
+                                       BorderThickness="{TemplateBinding BorderThickness}"
+                                       Background="{TemplateBinding Background}" />
+                        <Decorator Margin="{TemplateBinding BorderThickness}">
+                            <DockPanel Margin="{TemplateBinding BorderThickness}">
+                                <TextBlock Name="FloatingWatermark" 
+                                           Text="{TemplateBinding Watermark}"
+                                           Opacity="{DynamicResource BlockPlaceholderOpacity}"
+                                           DockPanel.Dock="Top"
+                                           Padding="{TemplateBinding Padding, Converter={x:Static conv:BlockConverters.ClearBottomThickness}}">
+                                    <TextBlock.IsVisible>
+                                        <MultiBinding Converter="{x:Static BoolConverters.And}">
+                                            <TemplateBinding Property="UseFloatingWatermark" />
+                                            <Binding Path="$parent[CalendarDatePicker].Text" Converter="{x:Static StringConverters.IsNotNullOrEmpty}" />
+                                        </MultiBinding>
+                                    </TextBlock.IsVisible>
+                                </TextBlock>
+                                <Button Name="PART_Button"
+                                        DockPanel.Dock="Right"
+                                        Classes="flat"
+                                        Padding="0"
+                                        MinHeight="0"
+                                        MinWidth="{Binding $self.Bounds.Height}"
+                                        Focusable="False">
+                                    <blk:CalendarIcon Foreground="{TemplateBinding Foreground}"
+                                                      Padding="{DynamicResource BlockCalendarIconDotMargin}"
+                                                      FontSize="{DynamicResource BlockCalendarIconFontSize}"/>
+                                </Button>
+                                <TextBox Name="PART_TextBox"
+                                         Theme="{DynamicResource BlockEmbeddedTextBox}"
+                                         Background="{TemplateBinding Background}"
+                                         BorderBrush="{TemplateBinding BorderBrush}"
+                                         BorderThickness="{TemplateBinding BorderThickness}"
+                                         Foreground="{TemplateBinding Foreground}"
+                                         CornerRadius="{TemplateBinding CornerRadius}"
+                                         Padding="{TemplateBinding Padding}"
+                                         Watermark="{TemplateBinding Watermark}"
+                                         UseFloatingWatermark="False"
+                                         HorizontalAlignment="Stretch"
+                                         VerticalAlignment="Stretch"
+                                         VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                         HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}">
+                                </TextBox>
+                            </DockPanel>
+                        </Decorator>
+                        <Popup Name="PART_Popup"
+                               PlacementTarget="{TemplateBinding}"
+                               IsLightDismissEnabled="True">
+                            <Calendar Name="PART_Calendar"
+                                      FirstDayOfWeek="{TemplateBinding FirstDayOfWeek}"
+                                      IsTodayHighlighted="{TemplateBinding IsTodayHighlighted}"
+                                      SelectedDate="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SelectedDate, Mode=TwoWay}"
+                                      DisplayDate="{TemplateBinding DisplayDate}"
+                                      DisplayDateStart="{TemplateBinding DisplayDateStart}"
+                                      DisplayDateEnd="{TemplateBinding DisplayDateEnd}" />
+                        </Popup>
                     </Panel>
                 </DataValidationErrors>
             </ControlTemplate>
         </Setter>
         
-        <Style Selector="^.clearButton /template/ TextBox#PART_TextBox">
-            <Setter Property="blk:Block.ShowClearButton" Value="True" />
+        <Style Selector="^:disabled /template/ Panel#LayoutRoot">
+            <Setter Property="Opacity" Value="{DynamicResource BlockDisabledOpacity}" />
+        </Style>
+
+        <Style Selector="^:pointerover /template/ blk|BlockView#ViewBackground">
+            <Setter Property="Highlighted" Value="True" />
+        </Style>
+
+        <Style Selector="^:focus-visible /template/ blk|BlockView#ViewBackground">
+            <Setter Property="Focused" Value="True" />
+        </Style>
+
+        <Style Selector="^:error /template/ blk|BlockView#ViewBackground">
+            <Setter Property="Error" Value="True" />
         </Style>
     </ControlTheme>
 </ResourceDictionary>

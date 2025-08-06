@@ -13,14 +13,12 @@
     <SolidColorBrush x:Key="BlockCalendarTodayBackground" Color="{DynamicResource BlockBasePrimaryColor}" />
     <SolidColorBrush x:Key="BlockCalendarTodayForeground" Color="{DynamicResource BlockOnPrimaryColor}" />
     <x:Double x:Key="BlockCalendarDayButtonSize">40</x:Double>
-    <CornerRadius x:Key="BlockCalendarDayButtonSelectedCornerRadius">20</CornerRadius>
 
     <ControlTheme x:Key="{x:Type CalendarDayButton}" TargetType="CalendarDayButton">
 
         <Setter Property="ClickMode" Value="Release" />
         <Setter Property="MinWidth" Value="{DynamicResource BlockCalendarDayButtonSize}" />
         <Setter Property="MinHeight" Value="{DynamicResource BlockCalendarDayButtonSize}" />
-        <Setter Property="Margin" Value="1" />
         <Setter Property="Padding" Value="0" />
         <Setter Property="CornerRadius" Value="{DynamicResource BlockCalendarButtonCornerRadius}" />
         <Setter Property="Foreground" Value="{DynamicResource BlockButtonForegroundBrush}" />

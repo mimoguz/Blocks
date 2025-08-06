@@ -17,7 +17,7 @@
         </Border>
     </Design.PreviewWith>
 
-    <x:Double x:Key="BlockCalendarGridWidth">310</x:Double>
+    <x:Double x:Key="BlockCalendarGridWidth">306</x:Double>
     <x:Double x:Key="BlockCalendarGridHeight">290</x:Double>
     <SolidColorBrush x:Key="BlockCalendarItemHeaderBackground" Color="Transparent" />
     <SolidColorBrush x:Key="BlockCalendarItemHeaderForeground" Color="{DynamicResource BlockFlatButtonForegroundColor}" />
@@ -98,46 +98,22 @@
                                   Grid.Row="2"
                                   IsVisible="False"
                                   MinHeight="{DynamicResource BlockCalendarGridHeight}"
-                                  Margin="{DynamicResource BlockFlyoutPadding}">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="38" />
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
+                                  Margin="{DynamicResource BlockFlyoutPadding}"
+                                  ColumnSpacing="2" RowSpacing="2" 
+                                  RowDefinitions="38,Auto,Auto,Auto,Auto,Auto,Auto"
+                                  ColumnDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto">
                             </Grid>
                             <Panel MinHeight="{DynamicResource BlockCalendarGridHeight}"
                                    Grid.Row="2"
                                    Margin="{DynamicResource BlockFlyoutPadding}">
                                 <Grid Name="PART_YearView"
                                       IsVisible="False"
-                                      ColumnSpacing="8"
-                                      RowSpacing="20"
+                                      ColumnSpacing="2"
+                                      RowSpacing="2"
                                       HorizontalAlignment="Center"
-                                      VerticalAlignment="Center">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*" />
-                                        <RowDefinition Height="*" />
-                                        <RowDefinition Height="*" />
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
+                                      VerticalAlignment="Center" 
+                                      RowDefinitions="*,*,*" 
+                                      ColumnDefinitions="*,*,*,*">
                                 </Grid>
                             </Panel>
                         </Grid>
