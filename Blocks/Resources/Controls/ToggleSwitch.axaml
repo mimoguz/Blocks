@@ -4,7 +4,7 @@
                     xmlns:conv="clr-namespace:Blocks.Converters">
 
     <Design.PreviewWith>
-        <StackPanel Margin="20" Width="250" Spacing="24">
+        <StackPanel Margin="20" Width="250" Spacing="28">
             <StackPanel Spacing="12">
                 <ToggleSwitch />
                 <ToggleSwitch IsChecked="False" IsEnabled="False" />
@@ -19,12 +19,15 @@
 
 
     <Thickness x:Key="BlockToggleSwitchTopHeaderMargin">0,0,0,6</Thickness>
-    <GridLength x:Key="BlockToggleSwitchPreContentMargin">4</GridLength>
-    <GridLength x:Key="BlockToggleSwitchPostContentMargin">4</GridLength>
+    <GridLength x:Key="BlockToggleSwitchPreContentMargin">6</GridLength>
+    <GridLength x:Key="BlockToggleSwitchPostContentMargin">6</GridLength>
     <CornerRadius x:Key="BlockToggleSwitchOffCornerRadius">8</CornerRadius>
     <x:Double x:Key="BlockToggleSwitchKnobSize">16</x:Double>
     <x:Double x:Key="BlockToggleSwitchHeight">28</x:Double>
-    <x:Double x:Key="BlockToggleSwitchWidth">56</x:Double>
+    <x:Double x:Key="BlockToggleSwitchWidth">48</x:Double>
+    <SolidColorBrush x:Key="BlockToggleSwitchCheckedBackgroundBrush" Color="{DynamicResource BlockBasePrimaryColor}" />
+    <SolidColorBrush x:Key="BlockToggleSwitchCheckedForegroundBrush" Color="{DynamicResource BlockOnPrimaryColor}" />
+    <SolidColorBrush x:Key="BlockToggleSwitchForegroundBrush" Color="{DynamicResource BlockWindowBackgroundColor}" />
 
     <ControlTheme x:Key="{x:Type ToggleSwitch}" TargetType="ToggleSwitch">
 
@@ -59,7 +62,7 @@
                                       RecognizesAccessKey="True" />
 
                     <Grid Grid.Row="1"
-                          MinWidth="{DynamicResource BlockToggleSwitchThemeMinWidth}"
+                          MinWidth="56"
                           HorizontalAlignment="Left"
                           VerticalAlignment="Top">
 
@@ -99,43 +102,56 @@
 
                         <blk:BlockButton Name="ToggleBackground"
                                          Grid.Column="0" Grid.Row="1"
-                                         Width="{DynamicResource BlockToggleSwitchWidth}"
-                                         Height="{DynamicResource BlockToggleSwitchHeight}"
+                                         Width="56"
+                                         Height="28"
                                          CornerRadius="14"
                                          Background="{TemplateBinding Background}" />
 
 
                         <Canvas x:Name="PART_SwitchKnob"
-                                Grid.Row="1"
-                                Width="{DynamicResource BlockToggleSwitchHeight}"
-                                Height="{DynamicResource BlockToggleSwitchHeight}"
+                                Grid.Row="1" Grid.Column="0"
+                                Width="28"
+                                Height="28"
                                 HorizontalAlignment="Left">
 
-                            <Grid x:Name="PART_MovingKnobs" Width="{DynamicResource BlockToggleSwitchHeight}"
+                            <Grid x:Name="PART_MovingKnobs" Width="28"
                                   Height="28">
                                 <Border Name="SwitchKnobVisual"
-                                        Width="{DynamicResource BlockToggleSwitchKnobSize}"
-                                        Height="{DynamicResource BlockToggleSwitchKnobSize}"
+                                        Width="20"
+                                        Height="20"
                                         Margin="0"
-                                        CornerRadius="{DynamicResource BlockToggleSwitchOffCornerRadius}"
+                                        CornerRadius="999"
                                         BorderThickness="2"
-                                        BorderBrush="{TemplateBinding Foreground}">
+                                        Background="{TemplateBinding Foreground}">
                                     <Border.Transitions>
                                         <Transitions>
-                                            <CornerRadiusTransition Property="CornerRadius"
-                                                                    Duration="{DynamicResource BlockLongStateTransitionDuration}"
-                                                                    Easing="CubicEaseOut" />
-                                            <DoubleTransition Property="Width"
-                                                              Duration="{DynamicResource BlockLongStateTransitionDuration}"
-                                                              Easing="CubicEaseOut" />
-                                            <ThicknessTransition Property="Margin"
-                                                                 Duration="{DynamicResource BlockLongStateTransitionDuration}"
-                                                                 Easing="CubicEaseOut" />
                                             <BrushTransition Property="BorderBrush"
+                                                             Duration="{DynamicResource BlockLongStateTransitionDuration}"
+                                                             Easing="CubicEaseOut" />
+                                            <BrushTransition Property="Background"
                                                              Duration="{DynamicResource BlockLongStateTransitionDuration}"
                                                              Easing="CubicEaseOut" />
                                         </Transitions>
                                     </Border.Transitions>
+                                    <Border Name="SwitchKnobSymbol"
+                                            CornerRadius="10"
+                                            Width="12" Height="12"
+                                            Background="Transparent"
+                                            HorizontalAlignment="Center">
+                                        <Border.Transitions>
+                                            <Transitions>
+                                                <CornerRadiusTransition Property="CornerRadius"
+                                                                        Duration="{DynamicResource BlockStateTransitionDuration}"
+                                                                        Easing="CubicEaseOut" />
+                                                <DoubleTransition Property="Width"
+                                                                  Duration="{DynamicResource BlockButtonStateTransitionDuration}"
+                                                                  Easing="CubicEaseOut" />
+                                                <BrushTransition Property="Background"
+                                                                 Duration="{DynamicResource BlockLongStateTransitionDuration}"
+                                                                 Easing="CubicEaseOut" />
+                                            </Transitions>
+                                        </Border.Transitions>
+                                    </Border>
                                 </Border>
                             </Grid>
                         </Canvas>
@@ -170,15 +186,17 @@
 
         <!--  CheckedState  -->
         <Style Selector="^:checked /template/ Border#SwitchKnobVisual">
+            <Setter Property="Background" Value="{DynamicResource BlockToggleSwitchCheckedForegroundBrush}" />
+        </Style>
+        <Style Selector="^:checked /template/ Border#SwitchKnobSymbol">
             <Setter Property="CornerRadius" Value="0" />
-            <Setter Property="Width" Value="3" />
-            <Setter Property="Margin" Value="0,0,2,0" />
-            <Setter Property="BorderBrush" Value="{TemplateBinding blk:Block.ActiveForeground}" />
+            <Setter Property="Width" Value="2" />
+            <Setter Property="Background" Value="{DynamicResource BlockToggleSwitchCheckedBackgroundBrush}" />
         </Style>
         <Style Selector="^:checked /template/ blk|BlockButton#ToggleBackground">
             <Setter Property="Opaque" Value="True" />
-            <Setter Property="Background" Value="{TemplateBinding blk:Block.ActiveBackground}" />
-            <Setter Property="BorderBrush" Value="{TemplateBinding blk:Block.ActiveForeground}" />
+            <Setter Property="Background" Value="{DynamicResource BlockToggleSwitchCheckedBackgroundBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource BlockToggleSwitchCheckedForegroundBrush}" />
         </Style>
         <Style Selector="^:checked /template/ ContentPresenter#PART_OffContentPresenter">
             <Setter Property="Opacity" Value="0" />

@@ -1,0 +1,131 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:blk="clr-namespace:Blocks.Controls">
+
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <StackPanel Spacing="20">
+                <CalendarDayButton />
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+
+    <SolidColorBrush x:Key="BlockCalendarTodayBackground" Color="{DynamicResource BlockBasePrimaryColor}" />
+    <SolidColorBrush x:Key="BlockCalendarTodayForeground" Color="{DynamicResource BlockOnPrimaryColor}" />
+    <x:Double x:Key="BlockCalendarDayButtonSize">40</x:Double>
+
+    <ControlTheme x:Key="{x:Type CalendarDayButton}" TargetType="CalendarDayButton">
+
+        <Setter Property="ClickMode" Value="Release" />
+        <Setter Property="MinWidth" Value="{DynamicResource BlockCalendarDayButtonSize}" />
+        <Setter Property="MinHeight" Value="{DynamicResource BlockCalendarDayButtonSize}" />
+        <Setter Property="Margin" Value="1" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="CornerRadius" Value="{DynamicResource BlockCalendarButtonCornerRadius}" />
+        <Setter Property="Foreground" Value="{DynamicResource BlockButtonForegroundBrush}" />
+        <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BlockBasePrimaryBrush}" />
+        <Setter Property="ClipToBounds" Value="False" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="{DynamicResource BlockFontSizeNormal}" />
+
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel Name="BaseContainer" Background="Transparent">
+                    <blk:BlockButton Name="ButtonBackground"
+                                     Background="{TemplateBinding Background}"
+                                     BorderBrush="{TemplateBinding BorderBrush}"
+                                     CornerRadius="{TemplateBinding CornerRadius}"
+                                     Flat="True">
+                        <blk:BlockButton.Transitions>
+                            <Transitions>
+                                <CornerRadiusTransition Property="CornerRadius"
+                                                        Duration="{DynamicResource BlockButtonStateTransitionDuration}"
+                                                        Easing="CubicEaseOut" />
+                            </Transitions>
+                        </blk:BlockButton.Transitions>
+                    </blk:BlockButton>
+                    <Ellipse Name="Mark"
+                             Stroke="{DynamicResource BlockCalendarMarkBrush}"
+                             StrokeThickness="{DynamicResource BlockCalendarButtonSelectionStrokeThickness}"
+                             Margin="2"
+                             Opacity="0">
+                        <Ellipse.Transitions>
+                            <Transitions>
+                                <DoubleTransition Property="Opacity"
+                                                  Duration="{DynamicResource BlockButtonStateTransitionDuration}"
+                                                  Easing="CubicEaseOut" />
+                            </Transitions>
+                        </Ellipse.Transitions>
+                    </Ellipse>
+                    <ContentPresenter Name="PART_ContentPresenter"
+                                      ContentTemplate="{TemplateBinding ContentTemplate}"
+                                      Content="{TemplateBinding Content}"
+                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                      Margin="{TemplateBinding Padding}">
+                    </ContentPresenter>
+                    <Rectangle Name="Blackout"
+                               Stroke="{DynamicResource BlockRedBrush}"
+                               StrokeThickness="2"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Opacity="0.8"
+                               Height="2" Width="24"
+                               IsVisible="False">
+                    </Rectangle>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^:pointerover /template/ blk|BlockButton#ButtonBackground">
+            <Setter Property="Highlighted" Value="True" />
+        </Style>
+
+        <Style Selector="^:pressed /template/ blk|BlockButton#ButtonBackground">
+            <Setter Property="Shaded" Value="True" />
+        </Style>
+
+        <Style Selector="^:selected /template/ Ellipse#Mark">
+            <Setter Property="Opacity" Value="1" />
+        </Style>
+        <Style Selector="^:selected /template/  blk|BlockButton#ButtonBackground">
+            <Setter Property="CornerRadius" Value="100" />
+        </Style>
+
+        <Style Selector="^:today">
+            <Style Selector="^ /template/ blk|BlockButton#ButtonBackground">
+                <Setter Property="Opaque" Value="True" />
+                <Setter Property="Background" Value="{DynamicResource BlockCalendarTodayBackground}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource BlockCalendarTodayForeground}" />
+            </Style>
+            <Style Selector="^ /template/ Ellipse#Mark">
+                <Setter Property="Stroke" Value="{DynamicResource BlockCalendarTodayForeground}" />
+            </Style>
+            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Foreground" Value="{DynamicResource BlockCalendarTodayForeground}" />
+            </Style>
+        </Style>
+
+        <Style Selector="^:inactive /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Opacity" Value="{DynamicResource BlockPlaceholderOpacity}" />
+        </Style>
+
+        <Style Selector="^:blackout">
+            <Style Selector="^ /template/ blk|BlockButton#ButtonBackground">
+                <Setter Property="Flat" Value="True" />
+            </Style>
+            <Style Selector="^ /template/ Rectangle#Blackout">
+                <Setter Property="IsVisible" Value="True" />
+            </Style>
+            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Opacity" Value="{DynamicResource BlockDisabledOpacity}" />
+            </Style>
+        </Style>
+
+        <Style Selector="^:disabled /template/ Panel#BaseContainer">
+            <Setter Property="Opacity" Value="{DynamicResource BlockDisabledOpacity}" />
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

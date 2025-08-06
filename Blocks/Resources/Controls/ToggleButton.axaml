@@ -2,6 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:blk="clr-namespace:Blocks.Controls"
                     xmlns:conv="clr-namespace:Blocks.Converters">
+    
     <Design.PreviewWith>
         <Border Background="{DynamicResource BlockWindowBackgroundColor}" Padding="20">
             <WrapPanel Width="300" ItemSpacing="10" LineSpacing="10">
@@ -33,13 +34,14 @@
             </WrapPanel>
         </Border>
     </Design.PreviewWith>
-
+    
+    <SolidColorBrush x:Key="BlockToggleButtonCheckedBackgroundBrush" Color="{DynamicResource BlockBasePrimaryColor}" />
+    <SolidColorBrush x:Key="BlockToggleButtonCheckedForegroundBrush" Color="{DynamicResource BlockOnPrimaryColor}" />
+    
     <ControlTheme x:Key="{x:Type ToggleButton}"
                   TargetType="ToggleButton">
 
         <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
-        <Setter Property="blk:Block.ActiveBackground" Value="{DynamicResource BlockBasePrimaryBrush}" />
-        <Setter Property="blk:Block.ActiveForeground" Value="{DynamicResource BlockOnPrimaryBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource BlockButtonForegroundBrush}" />
         <Setter Property="Padding" Value="{DynamicResource BlockButtonPadding}" />
         <Setter Property="CornerRadius" Value="{DynamicResource BlockButtonCornerRadius}" />
@@ -102,14 +104,14 @@
         <Style Selector="^.hide-checked"></Style>
 
         <Style Selector="^:checked:not(.hide-checked)">
-            <Setter Property="Foreground" Value="{Binding Path=(blk:Block.ActiveForeground), RelativeSource={RelativeSource Self}}" />
+            <Setter Property="Foreground" Value="{DynamicResource BlockToggleButtonCheckedForegroundBrush}" />
             <Style Selector="^ /template/ blk|BlockButton#ButtonBackground">
                 <Setter Property="Opaque" Value="True" />
-                <Setter Property="Background" Value="{TemplateBinding blk:Block.ActiveBackground}" />
-                <Setter Property="BorderBrush" Value="{TemplateBinding blk:Block.ActiveForeground}" />
+                <Setter Property="Background" Value="{DynamicResource BlockToggleButtonCheckedBackgroundBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource BlockToggleButtonCheckedForegroundBrush}" />
             </Style>
             <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="Foreground" Value="{TemplateBinding blk:Block.ActiveForeground}" />
+                <Setter Property="Foreground" Value="{DynamicResource BlockToggleButtonCheckedForegroundBrush}" />
             </Style>
         </Style>
 

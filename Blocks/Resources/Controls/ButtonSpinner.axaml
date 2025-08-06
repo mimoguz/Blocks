@@ -21,6 +21,7 @@
     </Design.PreviewWith>
     <ControlTheme x:Key="{x:Type ButtonSpinner}"
                   TargetType="ButtonSpinner">
+        
         <Setter Property="Background" Value="{DynamicResource BlockBaseViewBackgroundBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource BlockBaseViewBorderBrush}" />
         <Setter Property="BorderThickness" Value="{DynamicResource BlockControlBorderThickness}" />

@@ -1,0 +1,153 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="using:System"
+                    xmlns:conv="clr-namespace:Blocks.Converters">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <Calendar DisplayDate="2000-01-01">
+                <Calendar.BlackoutDates>
+                    <CalendarDateRange>
+                        <x:Arguments>
+                            <sys:DateTime>2000-01-01</sys:DateTime>
+                            <sys:DateTime>2000-01-05</sys:DateTime>
+                        </x:Arguments>
+                    </CalendarDateRange>
+                </Calendar.BlackoutDates>
+            </Calendar>
+        </Border>
+    </Design.PreviewWith>
+
+    <x:Double x:Key="BlockCalendarGridWidth">310</x:Double>
+    <x:Double x:Key="BlockCalendarGridHeight">290</x:Double>
+    <SolidColorBrush x:Key="BlockCalendarItemHeaderBackground" Color="Transparent" />
+    <SolidColorBrush x:Key="BlockCalendarItemHeaderForeground" Color="{DynamicResource BlockFlatButtonForegroundColor}" />
+
+    <ControlTheme x:Key="{x:Type CalendarItem}" TargetType="CalendarItem">
+        <Setter Property="BorderThickness" Value="{DynamicResource BlockFlyoutBorderThickness}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BlockTransparentFlyoutBorderBrush}" />
+        <Setter Property="Background" Value="{DynamicResource BlockRaisedBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource BlockButtonForegroundBrush}" />
+
+        <Setter Property="DayTitleTemplate">
+            <Template x:DataType="x:String">
+                <TextBlock Text="{Binding}"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           FontSize="{DynamicResource BlockFontSizeSmall}" />
+            </Template>
+        </Setter>
+
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel>
+
+                    <Border Background="{TemplateBinding Background}"
+                            CornerRadius="14"
+                            ClipToBounds="True">
+                        <!-- To keep the calendar from resizing when switching DisplayMode set the min width and min height
+                         manually -->
+                        <Grid VerticalAlignment="Stretch"
+                              HorizontalAlignment="Stretch"
+                              RowDefinitions="Auto,Auto,*"
+                              MinWidth="{DynamicResource BlockCalendarGridWidth}">
+                            <Border Grid.Row="0" Background="{DynamicResource BlockCalendarItemHeaderBackground}" />
+                            <Grid Grid.Row="0"
+                                  ColumnDefinitions="*,Auto,Auto" ColumnSpacing="2"
+                                  Margin="{DynamicResource BlockFlyoutPadding}">
+                                <Button Name="PART_HeaderButton"
+                                        Classes="flat"
+                                        FontSize="{DynamicResource BlockFontSizeNormal}"
+                                        HorizontalContentAlignment="Left"
+                                        Padding="{DynamicResource BlockFlatButtonPadding}">
+                                    <Button.Styles>
+                                        <Style Selector="Button.flat">
+                                            <Setter Property="Foreground"
+                                                    Value="{DynamicResource BlockCalendarItemHeaderForeground}" />
+                                        </Style>
+                                    </Button.Styles>
+                                </Button>
+                                <Button Name="PART_PreviousButton"
+                                        Grid.Column="1"
+                                        Classes="flat"
+                                        Padding="1">
+                                    <Button.Styles>
+                                        <Style Selector="Button.flat">
+                                            <Setter Property="Foreground"
+                                                    Value="{DynamicResource BlockCalendarItemHeaderForeground}" />
+                                        </Style>
+                                    </Button.Styles>
+                                    <PathIcon Data="{DynamicResource BlockChevronUp}"
+                                              Foreground="{Binding $parent[Button].Foreground}" />
+                                </Button>
+                                <Button Name="PART_NextButton"
+                                        Grid.Column="2"
+                                        Classes="flat"
+                                        Foreground="{TemplateBinding Foreground}"
+                                        Padding="1">
+                                    <Button.Styles>
+                                        <Style Selector="Button.flat">
+                                            <Setter Property="Foreground"
+                                                    Value="{DynamicResource BlockCalendarItemHeaderForeground}" />
+                                        </Style>
+                                    </Button.Styles>
+                                    <PathIcon Data="{DynamicResource BlockChevronDown}"
+                                              Foreground="{Binding $parent[Button].Foreground}" />
+                                </Button>
+                            </Grid>
+                            <Separator Grid.Row="1" Height="1" />
+                            <Grid Name="PART_MonthView"
+                                  Grid.Row="2"
+                                  IsVisible="False"
+                                  MinHeight="{DynamicResource BlockCalendarGridHeight}"
+                                  Margin="{DynamicResource BlockFlyoutPadding}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="38" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                            </Grid>
+                            <Panel MinHeight="{DynamicResource BlockCalendarGridHeight}"
+                                   Grid.Row="2"
+                                   Margin="{DynamicResource BlockFlyoutPadding}">
+                                <Grid Name="PART_YearView"
+                                      IsVisible="False"
+                                      ColumnSpacing="8"
+                                      RowSpacing="20"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                </Grid>
+                            </Panel>
+                        </Grid>
+                    </Border>
+                    <Border BorderThickness="{TemplateBinding BorderThickness}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            CornerRadius="14"/>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+</ResourceDictionary>

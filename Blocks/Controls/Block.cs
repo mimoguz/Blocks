@@ -35,6 +35,8 @@ public abstract class Block : AvaloniaObject
     
     public static readonly AttachedProperty<double> GapSingleProperty = AvaloniaProperty.RegisterAttached<Block, Control, double>("GapSingle");
     
+    public static readonly AttachedProperty<TextDecorationCollection?> TextDecorationsProperty = AvaloniaProperty.RegisterAttached<Block, Control, TextDecorationCollection?>("TextDecorations");
+    
     public static Thickness? GetGap(Control control) => control.GetValue(GapProperty);
     public static void SetGap(Control control, Thickness? value) => control.SetValue(GapProperty, value);
 
@@ -76,4 +78,7 @@ public abstract class Block : AvaloniaObject
     
     public static double GetGapSingle(Control control) => control.GetValue(GapSingleProperty);
     public static void SetGapSingle(Control control, double value) => control.SetValue(GapSingleProperty, value);
+    
+    public static TextDecorationCollection? GetTextDecorations(Control control) => control.GetValue(TextDecorationsProperty);
+    public static void SetTextDecorations(Control control, TextDecorationCollection? value) => control.SetValue(TextDecorationsProperty, value);
 }

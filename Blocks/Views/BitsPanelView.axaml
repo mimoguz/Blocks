@@ -112,6 +112,7 @@
                                 </Panel>
                             </blk:CommandTile>
                         </StackPanel>
+                        <CalendarDatePicker Width="200"  IsTodayHighlighted="True"/>
                     </WrapPanel>
                 </StackPanel>
             </ScrollViewer>

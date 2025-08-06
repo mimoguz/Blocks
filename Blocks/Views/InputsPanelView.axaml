@@ -167,6 +167,7 @@
                             <Slider Classes="demo" Width="300" TickPlacement="TopLeft" />
                             <Slider Classes="demo" Width="300" TickPlacement="Outside" />
                         </StackPanel>
+                        <CalendarDatePicker IsTodayHighlighted="True" Width="160" />
                     </WrapPanel>
 
                     <Separator Classes="demo" />

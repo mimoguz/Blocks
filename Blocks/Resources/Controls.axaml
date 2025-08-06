@@ -41,5 +41,8 @@
         <ResourceInclude Source="Controls/CommandTile.axaml" />
         <ResourceInclude Source="Controls/Tile.axaml" />
         <ResourceInclude Source="Controls/ToggleSwitch.axaml" />
+        <ResourceInclude Source="Controls/CalendarDayButton.axaml" />
+        <ResourceInclude Source="Controls/CalendarButton.axaml" />
+        <ResourceInclude Source="Controls/CalendarItem.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
