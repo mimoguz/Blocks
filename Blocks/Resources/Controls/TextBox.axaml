@@ -9,8 +9,21 @@
                 <TextBox>Left</TextBox>
                 <TextBox TextAlignment="Center" IsEnabled="False">Center</TextBox>
                 <TextBox Classes="clearButton" Background="BlueViolet" Foreground="DeepPink" BorderBrush="DarkRed">Clear</TextBox>
-                <TextBox PasswordChar="*" Classes="revealPasswordButton">Reveal Password</TextBox>
-                <TextBox PasswordChar="*" Classes="revealPasswordButton" RevealPassword="True" Foreground="DarkOrchid">Password Revealed</TextBox>
+                <TextBox PasswordChar="*"
+                         Watermark="Reveal Password"
+                         UseFloatingWatermark="True"
+                         Classes="revealPasswordButton"
+                         Height="60">
+                    Password
+                </TextBox>
+                <TextBox PasswordChar="*" 
+                         Classes="revealPasswordButton" 
+                         Watermark="Reveal Password"
+                         UseFloatingWatermark="True"
+                         RevealPassword="True" 
+                         Foreground="DarkOrchid">
+                    Password Revealed
+                </TextBox>
                 <TextBox Watermark="Watermark" />
                 <TextBox Watermark="Watermark">
                     Error
@@ -33,6 +46,9 @@
             </StackPanel>
         </Border>
     </Design.PreviewWith>
+    
+    <Thickness x:Key="BlockEmbeddedButtonPadding">6,0</Thickness>
+    <x:Double x:Key="BlockEmbeddedButtonMinWidth">32</x:Double>
 
     <MenuFlyout x:Key="DefaultTextBoxContextFlyout" ShowMode="{OnFormFactor Desktop=Standard, Mobile=Transient}">
         <MenuItem Header="{DynamicResource StringTextFlyoutCutText}" Command="{Binding $parent[TextBox].Cut}"
@@ -55,11 +71,12 @@
                   IsEnabled="{Binding $parent[TextBox].CanPaste}" />
     </MenuFlyout>
 
-    <ControlTheme x:Key="BlockTextBoxButton" TargetType="Button">
+    <ControlTheme x:Key="BlockEmbeddedButton" TargetType="Button">
 
         <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource BlockButtonForegroundBrush}" />
-        <Setter Property="Padding" Value="0" />
+        <Setter Property="Padding" Value="{DynamicResource BlockEmbeddedButtonPadding}" />
+        <Setter Property="MinWidth" Value="{DynamicResource BlockEmbeddedButtonMinWidth}" />
         <Setter Property="MinHeight" Value="0" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
@@ -90,6 +107,20 @@
                                       Content="{TemplateBinding Content}"
                                       ContentTemplate="{TemplateBinding ContentTemplate}">
                     </ContentPresenter>
+                    <Border Name="FocusVisual" 
+                            BorderBrush="{DynamicResource BlockBaseFocusBrush}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            BorderThickness="{DynamicResource BlockFocusBorderThickness}"
+                            IsHitTestVisible="False"
+                            Opacity="0">
+                        <Border.Transitions>
+                            <Transitions>
+                                <DoubleTransition Property="Opacity"
+                                                  Duration="{DynamicResource BlockButtonStateTransitionDuration}"
+                                                  Easing="CubicEaseOut" />
+                            </Transitions>
+                        </Border.Transitions>
+                    </Border>
                 </Panel>
             </ControlTemplate>
         </Setter>
@@ -101,11 +132,15 @@
         <Style Selector="^:pressed /template/ Border#ButtonBackground">
             <Setter Property="Opacity" Value="{DynamicResource BlockButtonHighlightOpacity}" />
         </Style>
+        
+        <Style Selector="^:focus-visible /template/ Border#FocusVisual">
+            <Setter Property="Opacity" Value="{DynamicResource BlockViewFocusOpacity}" />
+        </Style>
     </ControlTheme>
 
-    <ControlTheme x:Key="BlockTextBoxToggleButton"
+    <ControlTheme x:Key="BlockEmbeddedToggleButton"
                   TargetType="ToggleButton"
-                  BasedOn="{StaticResource BlockTextBoxButton}" />
+                  BasedOn="{StaticResource BlockEmbeddedButton}" />
 
     <ControlTheme x:Key="{x:Type TextBox}" TargetType="TextBox">
 
@@ -135,7 +170,7 @@
                                        BorderThickness="{TemplateBinding BorderThickness}"
                                        Background="{TemplateBinding Background}" />
                         <Decorator Margin="{TemplateBinding BorderThickness}">
-                            <DockPanel Margin="{TemplateBinding BorderThickness}">
+                            <DockPanel Margin="{DynamicResource BlockFocusBorderThickness}">
 
                                 <TextBlock Name="PART_FloatingWatermark"
                                            Foreground="{TemplateBinding Foreground}"
@@ -242,17 +277,16 @@
             Selector="^[AcceptsReturn=False][IsReadOnly=False][(blk|Block.ShowClearButton)=True]:focus:not(TextBox:empty)">
             <Setter Property="InnerRightContent">
                 <Template>
-                    <Button Theme="{StaticResource BlockTextBoxButton}"
+                    <Button Theme="{StaticResource BlockEmbeddedButton}"
                             Command="{Binding $parent[TextBox].Clear}"
                             VerticalAlignment="Stretch"
-                            MinWidth="{Binding $self.Bounds.Height}"
                             Background="{Binding $parent[TextBox].Background}"
                             ClipToBounds="True">
                         <Button.CornerRadius>
                             <MultiBinding Converter="{x:Static conv:BlockConverters.InnerRadius}">
                                 <Binding Path="$parent[TextBox].CornerRadius" />
                                 <Binding Path="$parent[TextBox].BorderThickness" />
-                                <Binding Path="$parent[TextBox].BorderThickness" />
+                                <DynamicResource ResourceKey="BlockFocusBorderThickness" />
                             </MultiBinding>
                         </Button.CornerRadius>
                         <PathIcon Data="{StaticResource BlockCrossIcon}"
@@ -267,16 +301,16 @@
         <Style Selector="^.revealPasswordButton[AcceptsReturn=False][IsReadOnly=False]:not(TextBox:empty)">
             <Setter Property="InnerRightContent">
                 <Template>
-                    <ToggleButton Theme="{StaticResource BlockTextBoxToggleButton}"
+                    <ToggleButton Theme="{StaticResource BlockEmbeddedToggleButton}"
                                   IsChecked="{Binding $parent[TextBox].RevealPassword, Mode=TwoWay}"
-                                  MinWidth="{Binding $self.Bounds.Height}"
                                   Background="{Binding $parent[TextBox].Background}"
+                                  VerticalAlignment="Stretch"
                                   ClipToBounds="True">
                         <ToggleButton.CornerRadius>
                             <MultiBinding Converter="{x:Static conv:BlockConverters.InnerRadius}">
                                 <Binding Path="$parent[TextBox].CornerRadius" />
                                 <Binding Path="$parent[TextBox].BorderThickness" />
-                                <Binding Path="$parent[TextBox].BorderThickness" />
+                                <DynamicResource ResourceKey="BlockFocusBorderThickness" />
                             </MultiBinding>
                         </ToggleButton.CornerRadius>
                         <Panel>

@@ -168,9 +168,9 @@
                             <Slider Classes="demo" Width="300" TickPlacement="Outside" />
                         </StackPanel>
                         <CalendarDatePicker IsTodayHighlighted="True" 
-                                            UseFloatingWatermark="True"
                                             Watermark="Calendar Date Picker"
-                                            Classes="demo clearButton" Width="200" />
+                                            Classes="demo clearButton" 
+                                            Width="200" />
                     </WrapPanel>
 
                     <Separator Classes="demo" />

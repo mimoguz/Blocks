@@ -44,7 +44,7 @@
                                        BorderThickness="{TemplateBinding BorderThickness}"
                                        Background="{TemplateBinding Background}"/>
                         <Border Margin="{TemplateBinding BorderThickness}">
-                            <DockPanel Margin="{TemplateBinding BorderThickness}">
+                            <DockPanel Margin="{DynamicResource BlockFocusBorderThickness}">
                                 <RepeatButton Name="PART_IncreaseButton"
                                               Classes="flat"
                                               IsTabStop="{TemplateBinding IsTabStop}"
@@ -59,7 +59,7 @@
                                         <MultiBinding Converter="{x:Static conv:BlockConverters.InnerRadius}">
                                             <TemplateBinding Property="CornerRadius" />
                                             <TemplateBinding Property="BorderThickness" />
-                                            <TemplateBinding Property="BorderThickness" />
+                                            <DynamicResource ResourceKey="BlockFocusBorderThickness" />
                                         </MultiBinding>
                                     </RepeatButton.CornerRadius>
                                     <PathIcon Name="IncreaseIcon"
@@ -80,7 +80,7 @@
                                         <MultiBinding Converter="{x:Static conv:BlockConverters.InnerRadius}">
                                             <TemplateBinding Property="CornerRadius" />
                                             <TemplateBinding Property="BorderThickness" />
-                                            <TemplateBinding Property="BorderThickness" />
+                                            <DynamicResource ResourceKey="BlockFocusBorderThickness" />
                                         </MultiBinding>
                                     </RepeatButton.CornerRadius>
                                     <PathIcon Name="DecreaseIcon"

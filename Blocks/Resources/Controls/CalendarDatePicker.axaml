@@ -5,7 +5,8 @@
     
     <Design.PreviewWith>
         <Border Margin="80, 20, 80, 400">
-            <CalendarDatePicker Width="200" Foreground="Blue"
+            <CalendarDatePicker Width="200" Height="64"
+                                Foreground="Blue"
                                 Watermark="Select date"
                                 UseFloatingWatermark="True"/>
         </Border>
@@ -40,7 +41,7 @@
                                        BorderThickness="{TemplateBinding BorderThickness}"
                                        Background="{TemplateBinding Background}" />
                         <Decorator Margin="{TemplateBinding BorderThickness}">
-                            <DockPanel Margin="{TemplateBinding BorderThickness}">
+                            <DockPanel Margin="{DynamicResource BlockFocusBorderThickness}">
                                 <TextBlock Name="FloatingWatermark" 
                                            Text="{TemplateBinding Watermark}"
                                            Opacity="{DynamicResource BlockPlaceholderOpacity}"
@@ -55,11 +56,15 @@
                                 </TextBlock>
                                 <Button Name="PART_Button"
                                         DockPanel.Dock="Right"
-                                        Classes="flat"
-                                        Padding="0"
-                                        MinHeight="0"
-                                        MinWidth="{Binding $self.Bounds.Height}"
+                                        Theme="{DynamicResource BlockEmbeddedButton}"
                                         Focusable="False">
+                                    <Button.CornerRadius>
+                                        <MultiBinding Converter="{x:Static conv:BlockConverters.InnerRadius}">
+                                            <TemplateBinding Property="CornerRadius" />
+                                            <TemplateBinding Property="BorderThickness" />
+                                            <DynamicResource ResourceKey="BlockFocusBorderThickness" />
+                                        </MultiBinding>
+                                    </Button.CornerRadius>
                                     <blk:CalendarIcon Foreground="{TemplateBinding Foreground}"
                                                       Padding="{DynamicResource BlockCalendarIconDotMargin}"
                                                       FontSize="{DynamicResource BlockCalendarIconFontSize}"/>

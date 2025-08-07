@@ -51,7 +51,7 @@
                                  HorizontalAlignment="Center"
                                  Margin="0,0,0,2"
                                  Width="4" Height="4"
-                                 Fill="{TemplateBinding Foreground}"
+                                 Fill="{DynamicResource BlockCalendarMarkBrush}"
                                  Opacity="0" />
                         <ContentPresenter Name="PART_ContentPresenter"
                                           ContentTemplate="{TemplateBinding ContentTemplate}"
