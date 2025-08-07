@@ -34,16 +34,13 @@
         </Border>
     </Design.PreviewWith>
 
-    <Thickness x:Key="SliderTopHeaderMargin">0,0,0,4</Thickness>
-    <GridLength x:Key="SliderPreContentMargin">15</GridLength>
-    <GridLength x:Key="SliderPostContentMargin">15</GridLength>
-    <x:Double x:Key="SliderHorizontalHeight">32</x:Double>
-    <x:Double x:Key="SliderVerticalWidth">32</x:Double>
-    <CornerRadius x:Key="SliderThumbCornerRadius">10</CornerRadius>
-    <x:Double x:Key="SliderHorizontalThumbWidth">20</x:Double>
-    <x:Double x:Key="SliderHorizontalThumbHeight">20</x:Double>
-    <x:Double x:Key="SliderVerticalThumbWidth">20</x:Double>
-    <x:Double x:Key="SliderVerticalThumbHeight">20</x:Double>
+    <GridLength x:Key="BlockSliderPreContentMargin">15</GridLength>
+    <GridLength x:Key="BlockSliderPostContentMargin">15</GridLength>
+    <SolidColorBrush x:Key="BlockSliderValueBrush" Color="{DynamicResource BlockBasePrimaryColor}" />
+    <SolidColorBrush x:Key="BlockSliderRemainingBrush" Color="{DynamicResource BlockBaseButtonBackgroundColor}" />
+    <SolidColorBrush x:Key="BlockSliderTickBrush"
+                     Color="{DynamicResource BlockWindowForegroundColor}"
+                     Opacity="{DynamicResource BlockPlaceholderOpacity}" />
 
     <ControlTheme x:Key="BlockSliderHorizontalRepeatButton"
                   TargetType="RepeatButton">
@@ -86,15 +83,15 @@
                             CornerRadius="{TemplateBinding CornerRadius}"
                             Width="{DynamicResource BlockSliderTrackHeight}"
                             HorizontalAlignment="Center"
-                            Opacity="{DynamicResource BlockScrollBarThumbOpacity}" />
+                            Opacity="{DynamicResource BlockSliderTrackOpacity}" />
                 </Grid>
             </ControlTemplate>
         </Setter>
     </ControlTheme>
 
     <ControlTheme x:Key="BlockSliderThumbTheme" TargetType="Thumb">
-        <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
-        <Setter Property="Foreground" Value="{DynamicResource BlockBasePrimaryBrush}" />
+        <Setter Property="Background" Value="{DynamicResource BlockSliderRemainingBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource BlockSliderValueBrush}" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="Template">
             <ControlTemplate>
@@ -127,9 +124,9 @@
 
     <ControlTheme x:Key="{x:Type Slider}" TargetType="Slider">
 
-        <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
-        <Setter Property="Foreground" Value="{DynamicResource BlockBasePrimaryBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource BlockBasePrimaryBrush}"></Setter>
+        <Setter Property="Background" Value="{DynamicResource BlockSliderRemainingBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource BlockSliderValueBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BlockSliderTickBrush}" />
         <Setter Property="CornerRadius" Value="{DynamicResource BlockSliderTrackCornerRadius}" />
         <Setter Property="Focusable" Value="True" />
         <Setter Property="FocusAdorner" Value="{x:Null}" />
@@ -150,9 +147,9 @@
                                   ColumnDefinitions="Auto,Auto,*"
                                   ClipToBounds="False">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="{DynamicResource SliderPreContentMargin}" />
+                                    <RowDefinition Height="{DynamicResource BlockSliderPreContentMargin}" />
                                     <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="{DynamicResource SliderPostContentMargin}" />
+                                    <RowDefinition Height="{DynamicResource BlockSliderPostContentMargin}" />
                                 </Grid.RowDefinitions>
                                 <TickBar Name="TopTickBar"
                                          Grid.ColumnSpan="3"
@@ -168,8 +165,7 @@
                                          IsVisible="False"
                                          IsDirectionReversed="{TemplateBinding IsDirectionReversed}"
                                          Height="{DynamicResource BlockSliderTickHeight}"
-                                         Fill="{TemplateBinding Background}"
-                                         Opacity="{DynamicResource BlockPlaceholderOpacity}" />
+                                         Fill="{TemplateBinding BorderBrush}" />
                                 <TickBar Name="BottomTickBar"
                                          Grid.Row="2" Grid.Column="0"
                                          Grid.ColumnSpan="3"
@@ -184,8 +180,7 @@
                                          Placement="Bottom"
                                          IsVisible="False"
                                          IsDirectionReversed="{TemplateBinding IsDirectionReversed}"
-                                         Fill="{TemplateBinding Background}"
-                                         Opacity="{DynamicResource BlockPlaceholderOpacity}" />
+                                         Fill="{TemplateBinding BorderBrush}" />
                                 <Rectangle Height="{DynamicResource BlockSliderThumbDotDiameter}"
                                            Grid.Row="1" Grid.Column="0" />
                                 <Track Name="PART_Track"
@@ -243,9 +238,9 @@
                                   MinWidth="{DynamicResource BlockSliderHeight}"
                                   RowDefinitions="*,Auto,Auto">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="{DynamicResource SliderPreContentMargin}" />
+                                    <ColumnDefinition Width="{DynamicResource BlockSliderPreContentMargin}" />
                                     <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="{DynamicResource SliderPostContentMargin}" />
+                                    <ColumnDefinition Width="{DynamicResource BlockSliderPostContentMargin}" />
                                 </Grid.ColumnDefinitions>
                                 <TickBar Name="LeftTickBar"
                                          Grid.RowSpan="3"
@@ -261,25 +256,22 @@
                                          IsVisible="False"
                                          IsDirectionReversed="{TemplateBinding IsDirectionReversed}"
                                          Width="{DynamicResource BlockSliderTickHeight}"
-                                         Fill="{TemplateBinding Background}"
-                                         Opacity="{DynamicResource BlockPlaceholderOpacity}" />
-                                <TickBar
-                                    Name="RightTickBar"
-                                    Grid.RowSpan="3"
-                                    Grid.Column="2" Grid.Row="0"
-                                    Ticks="{TemplateBinding Ticks}"
-                                    TickFrequency="{TemplateBinding Slider.TickFrequency}"
-                                    Orientation="{TemplateBinding Slider.Orientation}"
-                                    Minimum="{TemplateBinding Slider.Minimum}"
-                                    Maximum="{TemplateBinding Slider.Maximum}"
-                                    Width="{DynamicResource BlockSliderTickHeight}"
-                                    Margin="4,0,0,0"
-                                    HorizontalAlignment="Left"
-                                    Placement="Right"
-                                    IsVisible="False"
-                                    IsDirectionReversed="{TemplateBinding IsDirectionReversed}"
-                                    Fill="{TemplateBinding Background}"
-                                    Opacity="{DynamicResource BlockPlaceholderOpacity}" />
+                                         Fill="{TemplateBinding BorderBrush}" />
+                                <TickBar Name="RightTickBar"
+                                         Grid.RowSpan="3"
+                                         Grid.Column="2" Grid.Row="0"
+                                         Ticks="{TemplateBinding Ticks}"
+                                         TickFrequency="{TemplateBinding Slider.TickFrequency}"
+                                         Orientation="{TemplateBinding Slider.Orientation}"
+                                         Minimum="{TemplateBinding Slider.Minimum}"
+                                         Maximum="{TemplateBinding Slider.Maximum}"
+                                         Width="{DynamicResource BlockSliderTickHeight}"
+                                         Margin="4,0,0,0"
+                                         HorizontalAlignment="Left"
+                                         Placement="Right"
+                                         IsVisible="False"
+                                         IsDirectionReversed="{TemplateBinding IsDirectionReversed}"
+                                         Fill="{TemplateBinding BorderBrush}" />
                                 <Rectangle Width="{DynamicResource BlockSliderThumbDotDiameter}"
                                            Grid.Column="1" Grid.Row="0" />
                                 <Track Name="PART_Track"
@@ -333,7 +325,7 @@
         </Style>
 
         <Style Selector="^:focus-visible /template/ Thumb">
-            <Setter Property="BorderBrush" Value="{TemplateBinding BorderBrush}" />
+            <Setter Property="BorderBrush" Value="{TemplateBinding Foreground}" />
         </Style>
 
         <!--  TickBar Placement States  -->

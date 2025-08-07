@@ -16,6 +16,8 @@
             </StackPanel>
         </StackPanel>
     </Design.PreviewWith>
+    
+    
 
 
     <Thickness x:Key="BlockToggleSwitchTopHeaderMargin">0,0,0,6</Thickness>
@@ -25,10 +27,11 @@
     <x:Double x:Key="BlockToggleSwitchKnobSize">16</x:Double>
     <x:Double x:Key="BlockToggleSwitchHeight">28</x:Double>
     <x:Double x:Key="BlockToggleSwitchWidth">48</x:Double>
+    
     <SolidColorBrush x:Key="BlockToggleSwitchCheckedBackgroundBrush" Color="{DynamicResource BlockBasePrimaryColor}" />
     <SolidColorBrush x:Key="BlockToggleSwitchCheckedForegroundBrush" Color="{DynamicResource BlockOnPrimaryColor}" />
     <SolidColorBrush x:Key="BlockToggleSwitchForegroundBrush" Color="{DynamicResource BlockWindowBackgroundColor}" />
-
+    
     <ControlTheme x:Key="{x:Type ToggleSwitch}" TargetType="ToggleSwitch">
 
         <Setter Property="Foreground" Value="{DynamicResource BlockWindowForegroundBrush}" />
@@ -37,8 +40,6 @@
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="blk:Block.ActiveForeground" Value="{DynamicResource BlockOnPrimaryBrush}" />
-        <Setter Property="blk:Block.ActiveBackground" Value="{DynamicResource BlockBasePrimaryBrush}" />
         <Setter Property="FocusAdorner" Value="{x:Null}" />
 
         <Setter Property="KnobTransitions">

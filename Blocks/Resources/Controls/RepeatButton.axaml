@@ -75,6 +75,11 @@
         <Style Selector="^:disabled /template/ Panel#BaseContainer">
             <Setter Property="Opacity" Value="{DynamicResource BlockDisabledOpacity}" />
         </Style>
+        
+        <!-- The embedding control should be handling the disabled state -->
+        <Style Selector="^.embedded:disabled /template/ Panel#BaseContainer">
+            <Setter Property="Opacity" Value="1" />
+        </Style>
 
         <Style Selector="^:focus-visible /template/ blk|BlockButton#ButtonBackground">
             <Setter Property="Focused" Value="True" />

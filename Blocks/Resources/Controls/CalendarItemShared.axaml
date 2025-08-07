@@ -1,0 +1,23 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <SolidColorBrush x:Key="BlockCalendarButtonForegroundBrush"
+                     Color="{DynamicResource BlockFlatButtonForegroundColor}"/>
+    
+    <SolidColorBrush x:Key="BlockCalendarButtonInactiveForegroundBrush"
+                     Color="{DynamicResource BlockButtonForegroundColor}"
+                     Opacity="{DynamicResource BlockPlaceholderOpacity}"/>
+    
+    <SolidColorBrush x:Key="BlockCalendarButtonSelectedForegroundBrush"
+                     Color="{DynamicResource BlockOnPrimaryColor}"/>
+    
+    <SolidColorBrush x:Key="BlockCalendarButtonSelectedBackgroundBrush"
+                     Color="{DynamicResource BlockBasePrimaryColor}"/>
+    
+    <SolidColorBrush x:Key="BlockCalendarButtonMarkBrush"
+                     Color="{DynamicResource BlockBasePrimaryColor}"/>
+    
+    <SolidColorBrush x:Key="BlockCalendarButtonBlackoutForegroundBrush"
+                     Color="{DynamicResource BlockRed}"/>
+    
+</ResourceDictionary>

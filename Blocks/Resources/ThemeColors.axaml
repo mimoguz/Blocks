@@ -4,6 +4,9 @@
         <ResourceDictionary x:Key="Default">
             <Color x:Key="BlockRed">#FF6B6B</Color>
             <Color x:Key="BlockYellow">#FFE66D</Color>
+            
+            <Color x:Key="BlockInvariantDarkColor">#000010</Color>
+            <Color x:Key="BlockInvariantLightColor">White</Color>
 
             <Color x:Key="BlockWindowBackgroundColor">#F7F7FF</Color>
             <Color x:Key="BlockRaisedBackgroundColor">#FAFAFF</Color>
@@ -16,6 +19,7 @@
             <Color x:Key="BlockBaseViewBorderColor">#203045</Color>
 
             <Color x:Key="BlockWindowForegroundColor">#203035</Color>
+            <Color x:Key="BlockViewForegroundColor">#152530</Color>
             <Color x:Key="BlockButtonForegroundColor">#102025</Color>
             <Color x:Key="BlockFlatButtonForegroundColor">#F0007FFF</Color>
             <Color x:Key="BlockOnPrimaryColor">#F0FFFFFF</Color>
@@ -33,6 +37,9 @@
         <ResourceDictionary x:Key="Dark">
             <Color x:Key="BlockRed">#FF6B6B</Color>
             <Color x:Key="BlockYellow">#FFE66D</Color>
+            
+            <Color x:Key="BlockInvariantDarkColor">#000010</Color>
+            <Color x:Key="BlockInvariantLightColor">White</Color>
 
             <Color x:Key="BlockWindowBackgroundColor">#222226</Color>
             <Color x:Key="BlockRaisedBackgroundColor">#2E2E32</Color> 
@@ -45,6 +52,7 @@
             <Color x:Key="BlockBaseViewBorderColor">#DCDCDF</Color>
 
             <Color x:Key="BlockWindowForegroundColor">#FCFCFF</Color>
+            <Color x:Key="BlockViewForegroundColor">#FEFEFF</Color>
             <Color x:Key="BlockButtonForegroundColor">#FCFCFF</Color>
             <Color x:Key="BlockFlatButtonForegroundColor">#5C99E3</Color>
             <Color x:Key="BlockOnPrimaryColor">#F0FFFFFF</Color>

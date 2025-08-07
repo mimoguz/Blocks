@@ -8,8 +8,8 @@
                 <Calendar.BlackoutDates>
                     <CalendarDateRange>
                         <x:Arguments>
-                            <sys:DateTime>2000-01-01</sys:DateTime>
-                            <sys:DateTime>2000-01-05</sys:DateTime>
+                            <sys:DateTime>2025-08-22</sys:DateTime>
+                            <sys:DateTime>2025-08-31</sys:DateTime>
                         </x:Arguments>
                     </CalendarDateRange>
                 </Calendar.BlackoutDates>
@@ -17,16 +17,35 @@
         </Border>
     </Design.PreviewWith>
 
+    <!-- ****************************************************** -->
+    <!-- ********************* Resources ********************** -->
+    <!-- ****************************************************** -->
+
+    <SolidColorBrush x:Key="BlockCalendarItemHeaderBackgroundBrush" Color="Transparent" />
+    <SolidColorBrush x:Key="BlockCalendarItemHeaderForegroundBrush"
+                     Color="{DynamicResource BlockFlatButtonForegroundColor}" />
+    <SolidColorBrush x:Key="BlockCalendarItemPopupBackgroundBrush"
+                     Color="{DynamicResource BlockRaisedBackgroundColor}" />
+    <SolidColorBrush x:Key="BlockCalendarItemPopupBorderBrush"
+                     Color="{DynamicResource BlockBaseViewBorderColor}"
+                     Opacity="{DynamicResource BlockFlyoutBorderOpacity}" />
+    <SolidColorBrush x:Key="BlockCalendarItemDayNameBrush" 
+                     Color="{DynamicResource BlockWindowForegroundColor}" />
+    <SolidColorBrush x:Key="BlockCalendarItemHeaderSeparatorBrush"
+                     Color="{DynamicResource BlockBaseViewBorderColor}" 
+                     Opacity="{DynamicResource BlockSeparatorOpacity}"/>
     <x:Double x:Key="BlockCalendarGridWidth">306</x:Double>
     <x:Double x:Key="BlockCalendarGridHeight">290</x:Double>
-    <SolidColorBrush x:Key="BlockCalendarItemHeaderBackground" Color="Transparent" />
-    <SolidColorBrush x:Key="BlockCalendarItemHeaderForeground" Color="{DynamicResource BlockFlatButtonForegroundColor}" />
 
+    <!-- ****************************************************** -->
+    <!-- ********************** Themes ************************ -->
+    <!-- ****************************************************** -->
+    
     <ControlTheme x:Key="{x:Type CalendarItem}" TargetType="CalendarItem">
         <Setter Property="BorderThickness" Value="{DynamicResource BlockFlyoutBorderThickness}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource BlockTransparentFlyoutBorderBrush}" />
-        <Setter Property="Background" Value="{DynamicResource BlockRaisedBackgroundBrush}" />
-        <Setter Property="Foreground" Value="{DynamicResource BlockButtonForegroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BlockCalendarItemPopupBorderBrush}" />
+        <Setter Property="Background" Value="{DynamicResource BlockCalendarItemPopupBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource BlockCalendarItemDayNameBrush}" />
 
         <Setter Property="DayTitleTemplate">
             <Template x:DataType="x:String">
@@ -49,7 +68,7 @@
                               HorizontalAlignment="Stretch"
                               RowDefinitions="Auto,Auto,*"
                               MinWidth="{DynamicResource BlockCalendarGridWidth}">
-                            <Border Grid.Row="0" Background="{DynamicResource BlockCalendarItemHeaderBackground}" />
+                            <Border Grid.Row="0" Background="{DynamicResource BlockCalendarItemHeaderBackgroundBrush}" />
                             <Grid Grid.Row="0"
                                   ColumnDefinitions="Auto, *, Auto" ColumnSpacing="2"
                                   Margin="{DynamicResource BlockFlyoutPadding}">
@@ -60,7 +79,7 @@
                                     <Button.Styles>
                                         <Style Selector="Button.flat">
                                             <Setter Property="Foreground"
-                                                    Value="{DynamicResource BlockCalendarItemHeaderForeground}" />
+                                                    Value="{DynamicResource BlockCalendarItemHeaderForegroundBrush}" />
                                         </Style>
                                     </Button.Styles>
                                     <PathIcon Data="{DynamicResource BlockChevronLeft}"
@@ -74,7 +93,7 @@
                                     <Button.Styles>
                                         <Style Selector="Button.flat">
                                             <Setter Property="Foreground"
-                                                    Value="{DynamicResource BlockCalendarItemHeaderForeground}" />
+                                                    Value="{DynamicResource BlockCalendarItemHeaderForegroundBrush}" />
                                         </Style>
                                     </Button.Styles>
                                 </Button>
@@ -86,20 +105,21 @@
                                     <Button.Styles>
                                         <Style Selector="Button.flat">
                                             <Setter Property="Foreground"
-                                                    Value="{DynamicResource BlockCalendarItemHeaderForeground}" />
+                                                    Value="{DynamicResource BlockCalendarItemHeaderForegroundBrush}" />
                                         </Style>
                                     </Button.Styles>
                                     <PathIcon Data="{DynamicResource BlockChevronRight}"
                                               Foreground="{Binding $parent[Button].Foreground}" />
                                 </Button>
                             </Grid>
-                            <Separator Grid.Row="1" Height="1" />
+                            <Separator Grid.Row="1" Height="1" 
+                                       BorderBrush="{DynamicResource BlockCalendarItemHeaderSeparatorBrush}"/>
                             <Grid Name="PART_MonthView"
                                   Grid.Row="2"
                                   IsVisible="False"
                                   MinHeight="{DynamicResource BlockCalendarGridHeight}"
                                   Margin="{DynamicResource BlockFlyoutPadding}"
-                                  ColumnSpacing="2" RowSpacing="2" 
+                                  ColumnSpacing="2" RowSpacing="2"
                                   RowDefinitions="38,Auto,Auto,Auto,Auto,Auto,Auto"
                                   ColumnDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto">
                             </Grid>
@@ -111,8 +131,8 @@
                                       ColumnSpacing="2"
                                       RowSpacing="2"
                                       HorizontalAlignment="Center"
-                                      VerticalAlignment="Center" 
-                                      RowDefinitions="*,*,*" 
+                                      VerticalAlignment="Center"
+                                      RowDefinitions="*,*,*"
                                       ColumnDefinitions="*,*,*,*">
                                 </Grid>
                             </Panel>
@@ -120,7 +140,7 @@
                     </Border>
                     <Border BorderThickness="{TemplateBinding BorderThickness}"
                             BorderBrush="{TemplateBinding BorderBrush}"
-                            CornerRadius="14"/>
+                            CornerRadius="14" />
                 </Panel>
             </ControlTemplate>
         </Setter>

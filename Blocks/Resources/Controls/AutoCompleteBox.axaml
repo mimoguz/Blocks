@@ -5,8 +5,8 @@
                     xmlns:conv="clr-namespace:Blocks.Converters">
 
     <Design.PreviewWith>
-        <Border Padding="20" Background="{DynamicResource BlockWindowBackgroundBrush}">
-            <AutoCompleteBox Width="200" Classes="clearButton">
+        <Border Padding="20" Height="400"   Background="{DynamicResource BlockWindowBackgroundBrush}">
+            <AutoCompleteBox Width="200" Classes="clearButton" VerticalAlignment="Top">
                 <AutoCompleteBox.ItemsSource>
                     <generic:List x:TypeArguments="x:String">
                         Alabama
@@ -22,15 +22,39 @@
             </AutoCompleteBox>
         </Border>
     </Design.PreviewWith>
-
+    
+    <!-- ****************************************************** -->
+    <!-- ********************* Resources ********************** -->
+    <!-- ****************************************************** -->
+    
+    <SolidColorBrush x:Key="BlockAutoCompleteBoxBaseBackgroundBrush" 
+                     Color="{DynamicResource BlockBaseViewBackgroundColor}" />
+    
+    <SolidColorBrush x:Key="BlockAutoCompleteBoxBaseBorderBrush"
+                     Color="{DynamicResource BlockBaseViewBorderColor}"/>
+    
+    <SolidColorBrush x:Key="BlockAutoCompleteBoxForegroundBrush"
+                     Color="{DynamicResource BlockViewForegroundColor}"/>
+    
+    <SolidColorBrush x:Key="BlockAutoCompleteBoxPopupBackgroundBrush" 
+                     Color="{DynamicResource BlockRaisedBackgroundColor}" />
+    
+    <SolidColorBrush x:Key="BlockAutoCompleteBoxPopupBorderBrush"
+                     Color="{DynamicResource BlockBaseViewBorderColor}"
+                     Opacity="{DynamicResource BlockFlyoutBorderOpacity}"/>
+    
+    <!-- ****************************************************** -->
+    <!-- ********************** Themes ************************ -->
+    <!-- ****************************************************** -->
+    
     <ControlTheme x:Key="{x:Type AutoCompleteBox}" TargetType="AutoCompleteBox">
         
         <Setter Property="VerticalAlignment" Value="Top" />
-        <Setter Property="Foreground" Value="{DynamicResource BlockWindowForegroundBrush}" />
-        <Setter Property="Background" Value="{DynamicResource BlockBaseViewBackgroundBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource BlockBaseViewBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource BlockAutoCompleteBoxForegroundBrush}" />
+        <Setter Property="Background" Value="{DynamicResource BlockAutoCompleteBoxBaseBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BlockAutoCompleteBoxBaseBorderBrush}" />
         <Setter Property="BorderThickness" Value="{DynamicResource BlockControlBorderThickness}" />
-        <Setter Property="CornerRadius" Value="{DynamicResource BlockViewCornerRadius}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource BlockInputCornerRadius}" />
         <Setter Property="Padding" Value="{DynamicResource BlockInputPadding}" />
         <Setter Property="MaxDropDownHeight" Value="{DynamicResource BlockMaxDropDownHeight}" />
         
@@ -65,16 +89,17 @@
                             </MultiBinding>
                         </Popup.MinWidth>
                         <Border x:Name="PopupBorder"
-                                BorderBrush="{DynamicResource BlockTransparentFlyoutBorderBrush}"
+                                BorderBrush="{DynamicResource BlockAutoCompleteBoxPopupBorderBrush}"
                                 BorderThickness="{DynamicResource BlockFlyoutBorderThickness}"
-                                Background="{DynamicResource BlockRaisedBackgroundBrush}"
+                                Background="{DynamicResource BlockAutoCompleteBoxPopupBackgroundBrush}"
                                 Padding="{DynamicResource BlockFlyoutPadding}"
                                 CornerRadius="{TemplateBinding CornerRadius}">
                             <ListBox Name="PART_SelectingItemsControl"
                                      BorderThickness="0"
                                      Background="Transparent"
                                      ItemTemplate="{TemplateBinding ItemTemplate}"
-                                     Margin="{DynamicResource AutoCompleteListPadding}" />
+                                     Margin="{DynamicResource AutoCompleteListPadding}" >
+                            </ListBox>
                         </Border>
                     </Popup>
                 </Grid>

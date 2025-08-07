@@ -10,8 +10,6 @@
         </Border>
     </Design.PreviewWith>
 
-    <SolidColorBrush x:Key="BlockCalendarTodayBackground" Color="{DynamicResource BlockBasePrimaryColor}" />
-    <SolidColorBrush x:Key="BlockCalendarTodayForeground" Color="{DynamicResource BlockOnPrimaryColor}" />
     <x:Double x:Key="BlockCalendarDayButtonSize">40</x:Double>
 
     <ControlTheme x:Key="{x:Type CalendarDayButton}" TargetType="CalendarDayButton">
@@ -20,10 +18,10 @@
         <Setter Property="MinWidth" Value="{DynamicResource BlockCalendarDayButtonSize}" />
         <Setter Property="MinHeight" Value="{DynamicResource BlockCalendarDayButtonSize}" />
         <Setter Property="Padding" Value="0" />
-        <Setter Property="CornerRadius" Value="{DynamicResource BlockCalendarButtonCornerRadius}" />
-        <Setter Property="Foreground" Value="{DynamicResource BlockButtonForegroundBrush}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource BlockButtonCornerRadius}" />
+        <Setter Property="Foreground" Value="{DynamicResource BlockCalendarButtonForegroundBrush}" />
         <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource BlockBasePrimaryBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BlockBaseFocusBrush}" />
         <Setter Property="ClipToBounds" Value="False" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
@@ -51,7 +49,7 @@
                                  HorizontalAlignment="Center"
                                  Margin="0,0,0,2"
                                  Width="4" Height="4"
-                                 Fill="{DynamicResource BlockCalendarMarkBrush}"
+                                 Fill="{TemplateBinding Foreground}"
                                  Opacity="0" />
                         <ContentPresenter Name="PART_ContentPresenter"
                                           ContentTemplate="{TemplateBinding ContentTemplate}"
@@ -61,24 +59,15 @@
                                           Margin="{TemplateBinding Padding}">
                         </ContentPresenter>
                     </StackPanel>
-                    <Rectangle Name="Blackout"
-                               Stroke="{DynamicResource BlockRedBrush}"
-                               StrokeThickness="2"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                               Opacity="0.8"
-                               Height="2" Width="24"
-                               IsVisible="False">
-                    </Rectangle>
                 </Panel>
             </ControlTemplate>
         </Setter>
 
-        <Style Selector="^:pointerover /template/ blk|BlockButton#ButtonBackground">
+        <Style Selector="^:pointerover:not(:blackout) /template/ blk|BlockButton#ButtonBackground">
             <Setter Property="Highlighted" Value="True" />
         </Style>
 
-        <Style Selector="^:pressed /template/ blk|BlockButton#ButtonBackground">
+        <Style Selector="^:pressed:not(:blackout) /template/ blk|BlockButton#ButtonBackground">
             <Setter Property="Shaded" Value="True" />
         </Style>
         
@@ -89,30 +78,25 @@
         <Style Selector="^:selected">
             <Style Selector="^ /template/ blk|BlockButton#ButtonBackground">
                 <Setter Property="Opaque" Value="True" />
-                <Setter Property="Background" Value="{DynamicResource BlockCalendarTodayBackground}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource BlockCalendarTodayForeground}" />
+                <Setter Property="Background" Value="{DynamicResource BlockCalendarButtonSelectedBackgroundBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource BlockCalendarButtonSelectedForegroundBrush}" />
             </Style>
             <Style Selector="^ /template/ Ellipse#Today">
-                <Setter Property="Fill" Value="{DynamicResource BlockCalendarTodayForeground}" />
+                <Setter Property="Fill" Value="{DynamicResource BlockCalendarButtonSelectedForegroundBrush}" />
             </Style>
             <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="Foreground" Value="{DynamicResource BlockCalendarTodayForeground}" />
+                <Setter Property="Foreground" Value="{DynamicResource BlockCalendarButtonSelectedForegroundBrush}" />
             </Style>
         </Style>
 
         <Style Selector="^:inactive /template/ ContentPresenter#PART_ContentPresenter">
-            <Setter Property="Opacity" Value="{DynamicResource BlockPlaceholderOpacity}" />
+            <Setter Property="Foreground" Value="{DynamicResource BlockCalendarButtonInactiveForegroundBrush}" />
         </Style>
 
         <Style Selector="^:blackout">
-            <Style Selector="^ /template/ blk|BlockButton#ButtonBackground">
-                <Setter Property="Flat" Value="True" />
-            </Style>
-            <Style Selector="^ /template/ Rectangle#Blackout">
-                <Setter Property="IsVisible" Value="True" />
-            </Style>
             <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
                 <Setter Property="Opacity" Value="{DynamicResource BlockDisabledOpacity}" />
+                <Setter Property="Foreground" Value="{DynamicResource BlockCalendarButtonBlackoutForegroundBrush}" />
             </Style>
         </Style>
 

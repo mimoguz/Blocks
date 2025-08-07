@@ -71,7 +71,7 @@
                             <ProgressBar Classes="demo demo-determinate" ShowProgressText="True" />
                         </StackPanel>
 
-                        <ProgressBar Classes="demo demo-determinate" Orientation="Vertical" />
+                        <ProgressBar Classes="demo demo-determinate" Orientation="Vertical" Foreground="MediumSeaGreen" />
                         <ProgressBar Classes="demo demo-indeterminate" Orientation="Vertical" />
                         <ProgressBar Classes="demo demo-determinate" Orientation="Vertical" ShowProgressText="True" />
 

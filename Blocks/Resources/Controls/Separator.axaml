@@ -1,8 +1,12 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:blk="clr-namespace:Blocks.Controls">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <SolidColorBrush x:Key="BlockSeparatorBrush" 
+                     Color="{DynamicResource BlockBaseViewBorderColor}"
+                     Opacity="{DynamicResource BlockSeparatorOpacity}" />
+    
     <ControlTheme x:Key="{x:Type Separator}" TargetType="Separator">
-        <Setter Property="BorderBrush" Value="{DynamicResource BlockTransparentViewBorderBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BlockSeparatorBrush}" />
         <Setter Property="Focusable" Value="False" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="VerticalAlignment" Value="Center"></Setter>

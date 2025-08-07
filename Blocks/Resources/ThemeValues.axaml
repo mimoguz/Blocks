@@ -1,0 +1,121 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Default">
+
+            <DropShadowEffect x:Key="BlockExpanderDropShadow"
+                              Color="Black"
+                              Opacity="0.333"
+                              BlurRadius="2"
+                              OffsetX="0" OffsetY="1" />
+
+            <DropShadowEffect x:Key="BlockPopupDropShadow"
+                              Color="Black"
+                              Opacity="0.15"
+                              BlurRadius="12"
+                              OffsetX="0" OffsetY="4" />
+
+            <!-- *************************************** -->
+            <!-- ************** Opacities ************** -->
+            <!-- *************************************** -->
+
+
+            <!-- Background -->
+            <x:Double x:Key="BlockButtonBackgroundOpacity">0.12</x:Double>
+            <x:Double x:Key="BlockViewBackgroundOpacity">0.06</x:Double>
+            <x:Double x:Key="BlockProgressBarBackgroundOpacity">0.1</x:Double>
+            <x:Double x:Key="BlockScrollBarTrackOpacity">0.06</x:Double>
+            <x:Double x:Key="BlockScrollBarThumbOpacity">0.35</x:Double>
+            <x:Double x:Key="BlockSliderTrackOpacity">0.75</x:Double>
+
+            <!-- Focus -->
+            <x:Double x:Key="BlockButtonFocusOpacity">0.90</x:Double>
+            <x:Double x:Key="BlockViewFocusOpacity">0.90</x:Double>
+
+            <!-- Border -->
+            <x:Double x:Key="BlockFlyoutBorderOpacity">0.08</x:Double>
+            <x:Double x:Key="BlockViewBorderOpacity">0.15</x:Double>
+            <x:Double x:Key="BlockViewErrorBorderOpacity">0.70</x:Double>
+
+            <!-- Highlight -->
+            <x:Double x:Key="BlockButtonHighlightOpacity">0.18</x:Double>
+            <x:Double x:Key="BlockFlatButtonHighlightOpacity">0.08</x:Double>
+            <x:Double x:Key="BlockScrollBarPageButtonHighlightOpacity">0.08</x:Double>
+            <x:Double x:Key="BlockScrollBarThumbHighlightOpacity">0.45</x:Double>
+            <x:Double x:Key="BlockViewBorderHighlightOpacity">0.30</x:Double>
+            <x:Double x:Key="BlockViewErrorBorderHighlightOpacity">1</x:Double>
+            <x:Double x:Key="BlockSliderTrackHighlightOpacity">0.88</x:Double>
+
+            <!-- Shade -->
+            <x:Double x:Key="BlockButtonShadeOpacity">0.28</x:Double>
+            <x:Double x:Key="BlockFlatButtonShadeOpacity">0.15</x:Double>
+            <x:Double x:Key="BlockScrollBarPageButtonShadeOpacity">0.12</x:Double>
+            <x:Double x:Key="BlockScrollBarThumbShadeOpacity">0.6</x:Double>
+            <x:Double x:Key="BlockSliderTrackShadeOpacity">1</x:Double>
+
+            <!-- Others -->
+            <x:Double x:Key="BlockDisabledOpacity">0.5</x:Double>
+            <x:Double x:Key="BlockPlaceholderOpacity">0.67</x:Double>
+            <x:Double x:Key="BlockSeparatorOpacity">0.15</x:Double>
+            <x:Double x:Key="BlockViewSelectionOpacity">0.2</x:Double>
+        </ResourceDictionary>
+
+        <ResourceDictionary x:Key="Dark">
+            
+            <DropShadowEffect x:Key="BlockExpanderDropShadow"
+                              Color="Black"
+                              Opacity="0.6"
+                              BlurRadius="2"
+                              OffsetX="0" OffsetY="1" />
+            
+            <DropShadowEffect x:Key="BlockPopupDropShadow"
+                              Color="Black"
+                              Opacity="0.33"
+                              BlurRadius="12"
+                              OffsetX="0" OffsetY="4" />
+
+            <!-- *************************************** -->
+            <!-- ************** Opacities ************** -->
+            <!-- *************************************** -->
+
+            <!-- Background -->
+            <x:Double x:Key="BlockButtonBackgroundOpacity">0.2</x:Double>
+            <x:Double x:Key="BlockViewBackgroundOpacity">0.08</x:Double>
+            <x:Double x:Key="BlockProgressBarBackgroundOpacity">0.1</x:Double>
+            <x:Double x:Key="BlockScrollBarTrackOpacity">0.08</x:Double>
+            <x:Double x:Key="BlockScrollBarThumbOpacity">0.50</x:Double>
+            <x:Double x:Key="BlockSliderTrackOpacity">0.75</x:Double>
+
+            <!-- Focus -->
+            <x:Double x:Key="BlockButtonFocusOpacity">0.90</x:Double>
+            <x:Double x:Key="BlockViewFocusOpacity">0.90</x:Double>
+
+            <!-- Border -->
+            <x:Double x:Key="BlockFlyoutBorderOpacity">0.1</x:Double>
+            <x:Double x:Key="BlockViewBorderOpacity">0.2</x:Double>
+            <x:Double x:Key="BlockViewErrorBorderOpacity">0.75</x:Double>
+
+            <!-- Highlight -->
+            <x:Double x:Key="BlockButtonHighlightOpacity">0.28</x:Double>
+            <x:Double x:Key="BlockScrollBarPageButtonHighlightOpacity">0.1</x:Double>
+            <x:Double x:Key="BlockScrollBarThumbHighlightOpacity">0.65</x:Double>
+            <x:Double x:Key="BlockViewBorderHighlightOpacity">0.35</x:Double>
+            <x:Double x:Key="BlockViewErrorBorderHighlightOpacity">1</x:Double>
+            <x:Double x:Key="BlockSliderTrackHighlightOpacity">0.88</x:Double>
+            <x:Double x:Key="BlockFlatButtonHighlightOpacity">0.08</x:Double>
+
+            <!-- Shade -->
+            <x:Double x:Key="BlockButtonShadeOpacity">0.40</x:Double>
+            <x:Double x:Key="BlockScrollBarPageButtonShadeOpacity">0.15</x:Double>
+            <x:Double x:Key="BlockScrollBarThumbShadeOpacity">0.8</x:Double>
+            <x:Double x:Key="BlockSliderTrackShadeOpacity">1</x:Double>
+            <x:Double x:Key="BlockFlatButtonShadeOpacity">0.12</x:Double>
+
+            <!-- Others -->
+            <x:Double x:Key="BlockDisabledOpacity">0.5</x:Double>
+            <x:Double x:Key="BlockPlaceholderOpacity">0.6</x:Double>
+            <x:Double x:Key="BlockSeparatorOpacity">0.2</x:Double>
+            <x:Double x:Key="BlockViewSelectionOpacity">0.3</x:Double>
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
+</ResourceDictionary>

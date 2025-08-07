@@ -19,17 +19,42 @@
             </StackPanel>
         </Border>
     </Design.PreviewWith>
+    
+    <!-- ****************************************************** -->
+    <!-- ********************* Resources ********************** -->
+    <!-- ****************************************************** -->
+    
+    <SolidColorBrush x:Key="BlockButtonSpinnerBaseBackgroundBrush" 
+                     Color="{DynamicResource BlockBaseViewBackgroundColor}" />
+    
+    <SolidColorBrush x:Key="BlockButtonSpinnerBaseBorderBrush"
+                     Color="{DynamicResource BlockBaseViewBorderColor}"/>
+    
+    <SolidColorBrush x:Key="BlockButtonSpinnerForegroundBrush"
+                     Color="{DynamicResource BlockViewForegroundColor}"/>
+    
+    <SolidColorBrush x:Key="BlockButtonSpinnerPopupBackgroundBrush" 
+                     Color="{DynamicResource BlockRaisedBackgroundColor}" />
+    
+    <SolidColorBrush x:Key="BlockButtonSpinnerPopupBorderBrush"
+                     Color="{DynamicResource BlockBaseViewBorderColor}"
+                     Opacity="{DynamicResource BlockFlyoutBorderOpacity}"/>
+    
+    <!-- ****************************************************** -->
+    <!-- ********************** Themes ************************ -->
+    <!-- ****************************************************** -->
+    
     <ControlTheme x:Key="{x:Type ButtonSpinner}"
                   TargetType="ButtonSpinner">
         
-        <Setter Property="Background" Value="{DynamicResource BlockBaseViewBackgroundBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource BlockBaseViewBorderBrush}" />
+        <Setter Property="Background" Value="{DynamicResource BlockButtonSpinnerBaseBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BlockButtonSpinnerBaseBorderBrush}" />
         <Setter Property="BorderThickness" Value="{DynamicResource BlockControlBorderThickness}" />
-        <Setter Property="Foreground" Value="{DynamicResource BlockWindowForegroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource BlockButtonSpinnerForegroundBrush}" />
         <Setter Property="CornerRadius" Value="{DynamicResource BlockViewCornerRadius}" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="MinHeight" Value="{DynamicResource BlockMinButtonSize}" />
+        <Setter Property="MinHeight" Value="{DynamicResource BlockMinInputSize}" />
         <Setter Property="Padding" Value="{DynamicResource BlockInputPadding}" />
         <Setter Property="Focusable" Value="True" />
         <Setter Property="FocusAdorner" Value="{x:Null}" />
@@ -46,7 +71,7 @@
                         <Border Margin="{TemplateBinding BorderThickness}">
                             <DockPanel Margin="{DynamicResource BlockFocusBorderThickness}">
                                 <RepeatButton Name="PART_IncreaseButton"
-                                              Classes="flat"
+                                              Classes="flat embedded"
                                               IsTabStop="{TemplateBinding IsTabStop}"
                                               Background="{TemplateBinding Background}"
                                               DockPanel.Dock="Right"
@@ -67,7 +92,7 @@
                                               Foreground="{TemplateBinding Foreground}" />
                                 </RepeatButton>
                                 <RepeatButton Name="PART_DecreaseButton"
-                                              Classes="flat"
+                                              Classes="flat embedded"
                                               Background="{TemplateBinding Background}"
                                               IsTabStop="{TemplateBinding IsTabStop}"
                                               DockPanel.Dock="Left"
@@ -114,13 +139,8 @@
             <Setter Property="Focused" Value="True" />
         </Style>
 
-        <Style Selector="^:disabled">
-            <Style Selector="^ /template/ blk|BlockView#ViewBackground">
-                <Setter Property="Opacity" Value="{DynamicResource BlockDisabledOpacity}" />
-            </Style>
-            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="Opacity" Value="{DynamicResource BlockDisabledOpacity}" />
-            </Style>
+        <Style Selector="^:disabled /template/ Panel#BaseContainer">
+            <Setter Property="Opacity" Value="{DynamicResource BlockDisabledOpacity}" />
         </Style>
 
         <Style Selector="^.vertical">

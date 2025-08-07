@@ -146,7 +146,12 @@
 
                             <AutoCompleteBox Classes="demo clearButton"
                                              SelectedItem="{Binding CurrentStringValue}"
-                                             Width="200" Watermark="Auto-Complete Box" />
+                                             Width="200" Watermark="Auto-Complete Box" >
+                                <!--<AutoCompleteBox.Resources>
+                                    <SolidColorBrush x:Key="BlockAutoCompleteBoxListItemBaseBackgroundBrush">DarkRed</SolidColorBrush>
+                                    <SolidColorBrush x:Key="BlockAutoCompleteBoxListItemForegroundBrush">DarkCyan</SolidColorBrush>
+                                </AutoCompleteBox.Resources>-->
+                            </AutoCompleteBox>
                         </StackPanel>
                         <ListBox Classes="demo" SelectedItem="{Binding CurrentStringValue}"/>
                     </WrapPanel>

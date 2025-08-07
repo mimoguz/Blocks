@@ -1,0 +1,37 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <FontWeight x:Key="BlockButtonFontWeight">Bold</FontWeight>
+    
+    <x:Double x:Key="BlockFontSizeLarge">15</x:Double>
+    <x:Double x:Key="BlockFontSizeNormal">13</x:Double>
+    <x:Double x:Key="BlockFontSizeSmall">11</x:Double>
+    
+    <Thickness x:Key="BlockControlBorderThickness">1</Thickness>
+    <Thickness x:Key="BlockFlyoutBorderThickness">1</Thickness>
+    
+    <CornerRadius x:Key="BlockButtonCornerRadius">9</CornerRadius>
+    <CornerRadius x:Key="BlockFlyoutCornerRadius">14</CornerRadius>
+    <CornerRadius x:Key="BlockInputCornerRadius">9</CornerRadius>
+    <CornerRadius x:Key="BlockListItemCornerRadius">9</CornerRadius>
+    <CornerRadius x:Key="BlockMenuItemCornerRadius">9</CornerRadius>
+    <CornerRadius x:Key="BlockViewCornerRadius">9</CornerRadius>
+    
+    <x:Double x:Key="BlockMaxDropDownHeight">490</x:Double>
+    <x:Double x:Key="BlockMaxFlyoutWidth">400</x:Double>
+    
+    <Thickness x:Key="BlockButtonPadding">16,8</Thickness>
+    <Thickness x:Key="BlockImageButtonPadding">8</Thickness>
+    <Thickness x:Key="BlockInputPadding">8,6</Thickness>
+    <Thickness x:Key="BlockListItemPadding">12,6</Thickness>
+    <Thickness x:Key="BlockMenuItemPadding">12,6</Thickness>
+    
+    <x:Double x:Key="BlockMinButtonSize">36</x:Double>
+    <x:Double x:Key="BlockMinInputSize">36</x:Double>
+    <x:Double x:Key="BlockMinListItemHeight">32</x:Double>
+    <x:Double x:Key="BlockMinMenuItemHeight">32</x:Double>
+    
+    <x:Double x:Key="BlockListItemSpacing">2</x:Double>
+    <x:Double x:Key="BlockMenuItemSpacing">2</x:Double>
+    
+</ResourceDictionary>

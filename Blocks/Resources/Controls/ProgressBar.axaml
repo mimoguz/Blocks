@@ -24,14 +24,20 @@
     </Design.PreviewWith>
 
     <converters:StringFormatConverter x:Key="StringFormatConverter" />
+    <SolidColorBrush x:Key="BlockProgressBarValueBrush" 
+                     Color="{DynamicResource BlockBasePrimaryColor}" />
+    <SolidColorBrush x:Key="BlockProgressBarRemainingBrush"
+                     Color="{DynamicResource BlockBaseButtonBackgroundColor}" />
+    <SolidColorBrush x:Key="BlockProgressBarTextBrush" 
+                     Color="{DynamicResource BlockWindowForegroundColor}"/>
 
     <ControlTheme x:Key="{x:Type ProgressBar}" TargetType="ProgressBar">
 
-        <Setter Property="Foreground" Value="{DynamicResource BlockWindowForegroundBrush}" />
-        <Setter Property="Background" Value="{DynamicResource BlockBaseViewBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource BlockProgressBarValueBrush}" />
+        <Setter Property="Background" Value="{DynamicResource BlockProgressBarRemainingBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BlockProgressBarTextBrush}" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="CornerRadius" Value="{DynamicResource BlockProgressBarCornerRadius}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource BlockBasePrimaryBrush}" />
         <Setter Property="MinHeight" Value="{DynamicResource ProgressBarThemeMinHeight}" />
         <Setter Property="VerticalAlignment" Value="Center" />
 
@@ -58,7 +64,7 @@
                                 <Border
                                     x:Name="PART_Indicator"
                                     Margin="{TemplateBinding Padding}"
-                                    Background="{TemplateBinding BorderBrush}" />
+                                    Background="{TemplateBinding Foreground}" />
                             </Panel>
                             <Panel x:Name="IndeterminateRoot" Opacity="0">
                                 <Panel.Transitions>
@@ -71,14 +77,14 @@
                                 <Border
                                     x:Name="IndeterminateProgressBarIndicator"
                                     Margin="{TemplateBinding Padding}"
-                                    Background="{TemplateBinding BorderBrush}" />
+                                    Background="{TemplateBinding Foreground}" />
                             </Panel>
                             <LayoutTransformControl
                                 x:Name="PART_LayoutTransformControl"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
                                 IsVisible="{TemplateBinding ShowProgressText}">
-                                <TextBlock Foreground="{TemplateBinding Foreground}">
+                                <TextBlock Foreground="{TemplateBinding BorderBrush}">
                                     <TextBlock.Text>
                                         <MultiBinding Converter="{StaticResource StringFormatConverter}">
                                             <TemplateBinding Property="ProgressTextFormat" />
