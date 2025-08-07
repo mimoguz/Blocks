@@ -167,10 +167,6 @@
                             <Slider Classes="demo" Width="300" TickPlacement="TopLeft" />
                             <Slider Classes="demo" Width="300" TickPlacement="Outside" />
                         </StackPanel>
-                        <CalendarDatePicker IsTodayHighlighted="True" 
-                                            Watermark="Calendar Date Picker"
-                                            Classes="demo clearButton" 
-                                            Width="200" />
                     </WrapPanel>
 
                     <Separator Classes="demo" />
@@ -221,6 +217,14 @@
                             </DataValidationErrors.Error>
                             Tooltip Error (Default)
                         </TextBox>
+                    </WrapPanel>
+                    
+                    <WrapPanel Classes="demo">
+                        <CalendarDatePicker IsTodayHighlighted="True" 
+                                            Watermark="Calendar Date Picker"
+                                            Classes="demo clearButton" 
+                                            UseFloatingWatermark="True"
+                                            Width="200" />
                     </WrapPanel>
                 </StackPanel>
             </ScrollViewer>
