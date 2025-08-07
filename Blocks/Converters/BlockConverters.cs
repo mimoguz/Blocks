@@ -108,4 +108,8 @@ public static class BlockConverters
     /// A multi-value converter to calculate tree view item margins.
     /// </summary>
     public static readonly IndentConverter Indent = new();
+    
+    public static readonly BoolToDoubleConverter BoolToDouble = new();
+    
+    public static readonly AndDoubleConverter AndDouble = new();
 }
