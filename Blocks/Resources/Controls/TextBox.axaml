@@ -46,9 +46,10 @@
         </Border>
     </Design.PreviewWith>
 
-    <Thickness x:Key="BlockEmbeddedButtonPadding">6,0</Thickness>
     <x:Double x:Key="BlockEmbeddedButtonMinWidth">30</x:Double>
-    <Thickness x:Key="BlockFloatingWatermarkPadding">0,0,0,2</Thickness>
+    <Thickness x:Key="BlockEmbeddedButtonPadding">6,0</Thickness>
+    <SolidColorBrush x:Key="BlockFloatingWatermarkBrush" 
+                     Color="{DynamicResource BlockBasePrimaryColor}" />
 
     <MenuFlyout x:Key="DefaultTextBoxContextFlyout" ShowMode="{OnFormFactor Desktop=Standard, Mobile=Transient}">
         <MenuItem Header="{DynamicResource StringTextFlyoutCutText}" Command="{Binding $parent[TextBox].Cut}"

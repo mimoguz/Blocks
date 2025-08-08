@@ -153,7 +153,18 @@
                                 </AutoCompleteBox.Resources>-->
                             </AutoCompleteBox>
                         </StackPanel>
+                        
                         <ListBox Classes="demo" SelectedItem="{Binding CurrentStringValue}"/>
+                        
+                        <CalendarDatePicker x:Name="DatePicker"
+                                            IsTodayHighlighted="True" 
+                                            Watermark="Calendar Date Picker"
+                                            Classes="demo clearButton" 
+                                            UseFloatingWatermark="True"
+                                            Width="200"
+                                            DisplayDate="{Binding Source={x:Static sys:DateTime.Today}, Path=Today}">
+                        </CalendarDatePicker>
+                        
                     </WrapPanel>
 
                     <Separator Classes="demo" />
@@ -222,14 +233,6 @@
                             </DataValidationErrors.Error>
                             Tooltip Error (Default)
                         </TextBox>
-                    </WrapPanel>
-                    
-                    <WrapPanel Classes="demo">
-                        <CalendarDatePicker IsTodayHighlighted="True" 
-                                            Watermark="Calendar Date Picker"
-                                            Classes="demo clearButton" 
-                                            UseFloatingWatermark="True"
-                                            Width="200" />
                     </WrapPanel>
                 </StackPanel>
             </ScrollViewer>

@@ -8,22 +8,50 @@
             <CalendarDatePicker Width="200"
                                 Foreground="Blue"
                                 Watermark="Select date"
-                                UseFloatingWatermark="True" />
+                                UseFloatingWatermark="True">
+                <CalendarDatePicker.Resources>
+                    <SolidColorBrush x:Key="BlockCalendarDatePickerFloatingWatermarkBrush" 
+                                     Color="OrangeRed"/>
+                </CalendarDatePicker.Resources>
+            </CalendarDatePicker>
         </Border>
     </Design.PreviewWith>
 
+    
+    
+    <!-- ****************************************************** -->
+    <!-- ********************* Resources ********************** -->
+    <!-- ****************************************************** -->
+    
+    <SolidColorBrush x:Key="BlockCalendarDatePickerBaseBackgroundBrush" 
+                     Color="{DynamicResource BlockBaseViewBackgroundColor}" />
+    
+    <SolidColorBrush x:Key="BlockCalendarDatePickerBaseBorderBrush"
+                     Color="{DynamicResource BlockBaseViewBorderColor}"/>
+    
+    <SolidColorBrush x:Key="BlockCalendarDatePickerForegroundBrush"
+                     Color="{DynamicResource BlockViewForegroundColor}"/>
+    
+    <SolidColorBrush x:Key="BlockCalendarDatePickerErrorForegroundBrush"
+                     Color="{DynamicResource BlockRed}"/>
+    
+    <SolidColorBrush x:Key="BlockCalendarDatePickerFloatingWatermarkBrush" 
+                     Color="{DynamicResource BlockBasePrimaryColor}" />
+    
     <x:Double x:Key="BlockCalendarIconFontSize">9</x:Double>
     <Thickness x:Key="BlockCalendarIconTextMargin">0,3,0,0</Thickness>
-    <SolidColorBrush x:Key="BlockFloatingWatermarkBrush" 
-                     Color="{DynamicResource BlockBasePrimaryColor}" />
+    
+    <!-- ****************************************************** -->
+    <!-- ********************** Themes ************************ -->
+    <!-- ****************************************************** -->
 
     <ControlTheme x:Key="{x:Type CalendarDatePicker}" TargetType="CalendarDatePicker">
 
-        <Setter Property="Background" Value="{DynamicResource BlockBaseViewBackgroundBrush}" />
-        <Setter Property="Foreground" Value="{DynamicResource BlockWindowForegroundBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource BlockBaseViewBorderBrush}" />
+        <Setter Property="Background" Value="{DynamicResource BlockCalendarDatePickerBaseBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource BlockCalendarDatePickerForegroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BlockCalendarDatePickerBaseBorderBrush}" />
         <Setter Property="BorderThickness" Value="{DynamicResource BlockControlBorderThickness}" />
-        <Setter Property="CornerRadius" Value="{DynamicResource BlockViewCornerRadius}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource BlockInputCornerRadius}" />
         <Setter Property="MinHeight" Value="{DynamicResource BlockMinInputSize}" />
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="VerticalAlignment" Value="Center" />
@@ -38,7 +66,7 @@
                         <TextBlock Name="FloatingWatermark"
                                    Text="{TemplateBinding Watermark}"
                                    DockPanel.Dock="Top"
-                                   Foreground="{DynamicResource BlockFloatingWatermarkBrush}"
+                                   Foreground="{DynamicResource BlockCalendarDatePickerFloatingWatermarkBrush}"
                                    Padding="{DynamicResource BlockFloatingWatermarkPadding}"
                                    FontSize="{DynamicResource BlockFontSizeSmall}"
                                    IsVisible="{TemplateBinding UseFloatingWatermark}">
@@ -133,6 +161,9 @@
 
         <Style Selector="^:error /template/ blk|BlockView#ViewBackground">
             <Setter Property="Error" Value="True" />
+        </Style>
+        <Style Selector="^:error /template/ TextBox#PART_TextBox">
+            <Setter Property="Foreground" Value="{DynamicResource BlockCalendarDatePickerErrorForegroundBrush}" />
         </Style>
     </ControlTheme>
 </ResourceDictionary>

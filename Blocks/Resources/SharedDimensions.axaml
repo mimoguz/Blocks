@@ -25,6 +25,7 @@
     <Thickness x:Key="BlockInputPadding">8,6</Thickness>
     <Thickness x:Key="BlockListItemPadding">12,6</Thickness>
     <Thickness x:Key="BlockMenuItemPadding">12,6</Thickness>
+    <Thickness x:Key="BlockFloatingWatermarkPadding">0,0,0,2</Thickness>
     
     <x:Double x:Key="BlockMinButtonSize">36</x:Double>
     <x:Double x:Key="BlockMinInputSize">36</x:Double>

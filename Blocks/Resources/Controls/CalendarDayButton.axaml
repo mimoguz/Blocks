@@ -74,6 +74,10 @@
         <Style Selector="^:today /template/  Ellipse#Today">
             <Setter Property="Opacity" Value="1" />
         </Style>
+        
+        <Style Selector="^:inactive /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Foreground" Value="{DynamicResource BlockCalendarButtonInactiveForegroundBrush}" />
+        </Style>
 
         <Style Selector="^:selected">
             <Style Selector="^ /template/ blk|BlockButton#ButtonBackground">
@@ -87,10 +91,6 @@
             <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
                 <Setter Property="Foreground" Value="{DynamicResource BlockCalendarButtonSelectedForegroundBrush}" />
             </Style>
-        </Style>
-
-        <Style Selector="^:inactive /template/ ContentPresenter#PART_ContentPresenter">
-            <Setter Property="Foreground" Value="{DynamicResource BlockCalendarButtonInactiveForegroundBrush}" />
         </Style>
 
         <Style Selector="^:blackout">

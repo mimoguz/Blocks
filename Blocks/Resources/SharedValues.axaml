@@ -4,7 +4,6 @@
     
     
     <CornerRadius x:Key="BlockBoxCornerRadius">0</CornerRadius>
-    <CornerRadius x:Key="BlockCheckBoxCornerRadius">6</CornerRadius>
     <CornerRadius x:Key="BlockProgressBarCornerRadius">9</CornerRadius>
     <CornerRadius x:Key="BlockScrollBarCompactThumbCornerRadius">9999</CornerRadius>
     <CornerRadius x:Key="BlockScrollBarCornerRadius">0</CornerRadius>
