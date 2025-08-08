@@ -29,15 +29,21 @@
             <TextBlock Text="Defined in XAML" Foreground="{DynamicResource BlockOnPrimaryBrush}"/>
         </Border>
     </Design.PreviewWith>
+    
+    <SolidColorBrush x:Key="BlockContextMenuBackgroundBrush" 
+                     Color="{DynamicResource BlockRaisedBackgroundColor}" />
+    <SolidColorBrush x:Key="BlockContextMenuBorderBrush" 
+                     Color="{DynamicResource BlockBaseViewBorderColor}"
+                     Opacity="{DynamicResource BlockFlyoutBorderOpacity}"/>
 
     <!--  Added missing resource  -->
     <Thickness x:Key="MenuFlyoutScrollerMargin">0,4,0,4</Thickness>
 
     <ControlTheme x:Key="{x:Type ContextMenu}" TargetType="ContextMenu">
         
-        <Setter Property="Background" Value="{DynamicResource BlockRaisedBackgroundBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource BlockBaseViewBorderBrush}" />
-        <Setter Property="BorderThickness" Value="{DynamicResource BlockControlBorderThickness}" />
+        <Setter Property="Background" Value="{DynamicResource BlockContextMenuBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BlockContextMenuBorderBrush}" />
+        <Setter Property="BorderThickness" Value="{DynamicResource BlockFlyoutBorderThickness}" />
         <Setter Property="Padding" Value="{DynamicResource BlockFlyoutPadding}" />
         <Setter Property="MaxWidth" Value="{DynamicResource BlockMaxFlyoutWidth}" />
         <Setter Property="MinHeight" Value="{DynamicResource BlockMinButtonSize}" />
@@ -52,31 +58,20 @@
             <ControlTemplate>
                 <Panel>
                     <Border x:Name="PopupBorder"
-                            BorderBrush="{DynamicResource BlockBaseViewBorderBrush}"
-                            BorderThickness="{DynamicResource BlockFlyoutBorderThickness}"
-                            Opacity="{DynamicResource BlockFlyoutBorderOpacity}"
-                            CornerRadius="{DynamicResource BlockFlyoutCornerRadius}" />
-                    <Border Name="BoxBackground"
-                            Margin="{DynamicResource BlockFlyoutBorderThickness}"
-                            Background="{DynamicResource BlockRaisedBackgroundBrush}"
-                            Padding="{DynamicResource BlockFlyoutPadding}">
-                        <Border.CornerRadius>
-                            <MultiBinding Converter="{x:Static conv:BlockConverters.InnerRadius}">
-                                <DynamicResource ResourceKey="BlockFlyoutCornerRadius" />
-                                <DynamicResource ResourceKey="BlockFlyoutBorderThickness" />
-                            </MultiBinding>
-                        </Border.CornerRadius>
-                        <ScrollViewer
-                            HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
-                            VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}"
-                            IsDeferredScrollingEnabled="{TemplateBinding (ScrollViewer.IsDeferredScrollingEnabled)}">
-                            <ItemsPresenter Name="PART_ItemsPresenter"
-                                            ItemsPanel="{TemplateBinding ItemsPanel}"
-                                            Margin="{DynamicResource MenuFlyoutScrollerMargin}"
-                                            KeyboardNavigation.TabNavigation="Continue"
-                                            Grid.IsSharedSizeScope="True" />
-                        </ScrollViewer>
-                    </Border>
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="{TemplateBinding CornerRadius}" />
+                    <ScrollViewer
+                        HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
+                        VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}"
+                        IsDeferredScrollingEnabled="{TemplateBinding (ScrollViewer.IsDeferredScrollingEnabled)}">
+                        <ItemsPresenter Name="PART_ItemsPresenter"
+                                        ItemsPanel="{TemplateBinding ItemsPanel}"
+                                        Margin="{DynamicResource MenuFlyoutScrollerMargin}"
+                                        KeyboardNavigation.TabNavigation="Continue"
+                                        Grid.IsSharedSizeScope="True" />
+                    </ScrollViewer>
                 </Panel>
             </ControlTemplate>
         </Setter>

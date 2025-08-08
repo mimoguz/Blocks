@@ -8,7 +8,7 @@
             <StackPanel Spacing="10">
                 <ButtonSpinner Width="200">Content</ButtonSpinner>
                 <ButtonSpinner Width="200" IsEnabled="False">Content</ButtonSpinner>
-                <ButtonSpinner Height="120" 
+                <ButtonSpinner Height="120"
                                Classes="vertical"
                                HorizontalAlignment="Center"
                                Background="ForestGreen"
@@ -19,34 +19,37 @@
             </StackPanel>
         </Border>
     </Design.PreviewWith>
-    
+
     <!-- ****************************************************** -->
     <!-- ********************* Resources ********************** -->
     <!-- ****************************************************** -->
-    
-    <SolidColorBrush x:Key="BlockButtonSpinnerBaseBackgroundBrush" 
+
+    <SolidColorBrush x:Key="BlockButtonSpinnerBaseBackgroundBrush"
                      Color="{DynamicResource BlockBaseViewBackgroundColor}" />
-    
+
     <SolidColorBrush x:Key="BlockButtonSpinnerBaseBorderBrush"
-                     Color="{DynamicResource BlockBaseViewBorderColor}"/>
-    
+                     Color="{DynamicResource BlockBaseViewBorderColor}" />
+
     <SolidColorBrush x:Key="BlockButtonSpinnerForegroundBrush"
-                     Color="{DynamicResource BlockViewForegroundColor}"/>
-    
-    <SolidColorBrush x:Key="BlockButtonSpinnerPopupBackgroundBrush" 
+                     Color="{DynamicResource BlockViewForegroundColor}" />
+
+    <SolidColorBrush x:Key="BlockButtonSpinnerErrorForegroundBrush"
+                     Color="{DynamicResource BlockRed}" />
+
+    <SolidColorBrush x:Key="BlockButtonSpinnerPopupBackgroundBrush"
                      Color="{DynamicResource BlockRaisedBackgroundColor}" />
-    
+
     <SolidColorBrush x:Key="BlockButtonSpinnerPopupBorderBrush"
                      Color="{DynamicResource BlockBaseViewBorderColor}"
-                     Opacity="{DynamicResource BlockFlyoutBorderOpacity}"/>
-    
+                     Opacity="{DynamicResource BlockFlyoutBorderOpacity}" />
+
     <!-- ****************************************************** -->
     <!-- ********************** Themes ************************ -->
     <!-- ****************************************************** -->
-    
+
     <ControlTheme x:Key="{x:Type ButtonSpinner}"
                   TargetType="ButtonSpinner">
-        
+
         <Setter Property="Background" Value="{DynamicResource BlockButtonSpinnerBaseBackgroundBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource BlockButtonSpinnerBaseBorderBrush}" />
         <Setter Property="BorderThickness" Value="{DynamicResource BlockControlBorderThickness}" />
@@ -58,16 +61,16 @@
         <Setter Property="Padding" Value="{DynamicResource BlockInputPadding}" />
         <Setter Property="Focusable" Value="True" />
         <Setter Property="FocusAdorner" Value="{x:Null}" />
-        
+
         <Setter Property="Template">
             <ControlTemplate>
                 <DataValidationErrors>
                     <Panel Name="BaseContainer">
-                        <blk:BlockView Name="ViewBackground" 
+                        <blk:BlockView Name="ViewBackground"
                                        CornerRadius="{TemplateBinding CornerRadius}"
                                        BorderBrush="{TemplateBinding BorderBrush}"
                                        BorderThickness="{TemplateBinding BorderThickness}"
-                                       Background="{TemplateBinding Background}"/>
+                                       Background="{TemplateBinding Background}" />
                         <Border Margin="{TemplateBinding BorderThickness}">
                             <DockPanel Margin="{DynamicResource BlockFocusBorderThickness}">
                                 <RepeatButton Name="PART_IncreaseButton"
@@ -134,13 +137,23 @@
         <Style Selector="^:focus-visible /template/ blk|BlockView#ViewBackground">
             <Setter Property="Focused" Value="True" />
         </Style>
-        
+
         <Style Selector="^[IsKeyboardFocusWithin=True]:focus-visible /template/ blk|BlockView#ViewBackground">
             <Setter Property="Focused" Value="True" />
         </Style>
 
         <Style Selector="^:disabled /template/ Panel#BaseContainer">
             <Setter Property="Opacity" Value="{DynamicResource BlockDisabledOpacity}" />
+        </Style>
+
+        <Style Selector="^:error">
+            <Style Selector="^ /template/ blk|BlockView#ViewBackground">
+                <Setter Property="Error" Value="True" />
+            </Style>
+            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Foreground" Value="{DynamicResource BlockButtonSpinnerErrorForegroundBrush}" />
+            </Style>
+            <Setter Property="Foreground" Value="{DynamicResource BlockButtonSpinnerErrorForegroundBrush}" />
         </Style>
 
         <Style Selector="^.vertical">

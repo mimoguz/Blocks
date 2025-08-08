@@ -212,27 +212,6 @@
                         <TextBox Classes="demo clearButton" Width="200" Watermark="With Clear Button" />
                         
                         <TextBox Classes="demo revealPasswordButton" PasswordChar="*" Width="200" Watermark="Password" />
-
-                        <TextBox Watermark="Error" Width="200" VerticalAlignment="Top"
-                                 IsEnabled="{Binding AllEnabled}">
-                            <TextBox.Styles>
-                                <Style Selector="DataValidationErrors">
-                                    <Setter Property="Theme" Value="{StaticResource ExpandedDataValidationErrors}" />
-                                </Style>
-                            </TextBox.Styles>
-                            <DataValidationErrors.Error>
-                                <sys:Exception />
-                            </DataValidationErrors.Error>
-                            Expanded Error
-                        </TextBox>
-
-                        <TextBox Watermark="Error" Width="200" VerticalAlignment="Top"
-                                 IsEnabled="{Binding AllEnabled}">
-                            <DataValidationErrors.Error>
-                                <sys:Exception />
-                            </DataValidationErrors.Error>
-                            Tooltip Error (Default)
-                        </TextBox>
                     </WrapPanel>
                 </StackPanel>
             </ScrollViewer>

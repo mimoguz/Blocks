@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:Blocks.ViewModels"
              xmlns:blk="clr-namespace:Blocks.Controls"
+             xmlns:sys="using:System"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Blocks.Views.BitsPanelView"
              x:DataType="vm:BitsPanelViewModel">
@@ -75,42 +76,65 @@
                         <ProgressBar Classes="demo demo-indeterminate" Orientation="Vertical" />
                         <ProgressBar Classes="demo demo-determinate" Orientation="Vertical" ShowProgressText="True" />
 
-                        <StackPanel Width="300">
-                            
-                            <blk:Tile Header="Tile" Classes="demo" HorizontalAlignment="Stretch">
-                                <blk:Tile.LeftContent>
-                                    <PathIcon Data="{DynamicResource BlockErrorIcon24}" Width="24" Height="24" />
-                                </blk:Tile.LeftContent>
-                                <blk:Tile.RightContent>
-                                    <ToggleSwitch OffContent="{x:Null}" OnContent="{x:Null}"
-                                                  IsChecked="{Binding Active}" />
-                                </blk:Tile.RightContent>
-                                <Panel>
-                                    <TextBlock IsVisible="{Binding Active}">Active</TextBlock>
-                                    <TextBlock IsVisible="{Binding !Active}">Not active</TextBlock>
-                                </Panel>
-                            </blk:Tile>
-                            <Separator Height="1" />
-                            <blk:Tile Header="Only Header and Left" Classes="demo" HorizontalAlignment="Stretch">
-                                <blk:Tile.RightContent>
-                                    <ToggleSwitch IsChecked="{Binding Active}" />
-                                </blk:Tile.RightContent>
-                            </blk:Tile>
-                            <Separator Height="1" />
-                            <blk:CommandTile Header="Command Tile"
-                                             Classes="demo"
-                                             HorizontalAlignment="Stretch"
-                                             Command="{Binding TileActionCommand}">
-                                <blk:CommandTile.LeftContent>
-                                    <PathIcon Data="{DynamicResource BlockErrorIcon24}" Width="24" Height="24" />
-                                </blk:CommandTile.LeftContent>
-                                <blk:CommandTile.RightContent>
-                                    <PathIcon Data="{DynamicResource BlockChevronRight}" />
-                                </blk:CommandTile.RightContent>
-                                <Panel>
-                                    <TextBlock Text="{Binding CommandOutput}" />
-                                </Panel>
-                            </blk:CommandTile>
+                        <blk:Group Width="350" Header="Group">
+                            <StackPanel>
+                                <blk:Tile Header="Tile" Classes="demo" HorizontalAlignment="Stretch">
+                                    <blk:Tile.LeftContent>
+                                        <PathIcon Data="{DynamicResource BlockErrorIcon24}" Width="24" Height="24" />
+                                    </blk:Tile.LeftContent>
+                                    <blk:Tile.RightContent>
+                                        <ToggleSwitch OffContent="{x:Null}" OnContent="{x:Null}"
+                                                      IsChecked="{Binding Active}" />
+                                    </blk:Tile.RightContent>
+                                    <Panel>
+                                        <TextBlock IsVisible="{Binding Active}">Active</TextBlock>
+                                        <TextBlock IsVisible="{Binding !Active}">Not active</TextBlock>
+                                    </Panel>
+                                </blk:Tile>
+                                <Separator Height="1" />
+                                <blk:Tile Header="Only Header and Left" Classes="demo" HorizontalAlignment="Stretch">
+                                    <blk:Tile.RightContent>
+                                        <ToggleSwitch IsChecked="{Binding Active}" />
+                                    </blk:Tile.RightContent>
+                                </blk:Tile>
+                                <Separator Height="1" />
+                                <blk:CommandTile Header="Command Tile"
+                                                 Classes="demo"
+                                                 HorizontalAlignment="Stretch"
+                                                 Command="{Binding TileActionCommand}">
+                                    <blk:CommandTile.LeftContent>
+                                        <PathIcon Data="{DynamicResource BlockErrorIcon24}" Width="24" Height="24" />
+                                    </blk:CommandTile.LeftContent>
+                                    <blk:CommandTile.RightContent>
+                                        <PathIcon Data="{DynamicResource BlockChevronRight}" />
+                                    </blk:CommandTile.RightContent>
+                                    <Panel>
+                                        <TextBlock Text="{Binding CommandOutput}" />
+                                    </Panel>
+                                </blk:CommandTile>
+                            </StackPanel>
+                        </blk:Group>
+
+                        <StackPanel Spacing="10">
+                            <TextBlock>Data Validation Errors</TextBlock>
+                            <TextBox Watermark="Error" Width="200" VerticalAlignment="Top"
+                                     IsEnabled="{Binding AllEnabled}">
+                                <DataValidationErrors.Error>
+                                    <sys:Exception />
+                                </DataValidationErrors.Error>
+                                Tooltip Error (Default)
+                            </TextBox>
+                            <ButtonSpinner Width="200" Classes="demo">
+                                <ButtonSpinner.Styles>
+                                    <Style Selector="DataValidationErrors">
+                                        <Setter Property="Theme" Value="{StaticResource ExpandedDataValidationErrors}" />
+                                    </Style>
+                                </ButtonSpinner.Styles>
+                                <DataValidationErrors.Error>
+                                    <sys:Exception />
+                                </DataValidationErrors.Error>
+                                Expanded Error
+                            </ButtonSpinner>
                         </StackPanel>
                     </WrapPanel>
                 </StackPanel>

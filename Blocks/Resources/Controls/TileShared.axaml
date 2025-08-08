@@ -1,0 +1,8 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <SolidColorBrush x:Key="BlockTileForegroundBrush" Color="{DynamicResource BlockButtonForegroundColor}" />
+    <Thickness x:Key="BlockTilePadding">8</Thickness>
+    <Thickness x:Key="BlockTileContentSpacing">16,4</Thickness>
+    
+</ResourceDictionary>

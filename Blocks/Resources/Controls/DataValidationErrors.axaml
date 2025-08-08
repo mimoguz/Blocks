@@ -1,6 +1,7 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="using:System"
-                    xmlns:collections="using:System.Collections">
+                    xmlns:collections="using:System.Collections"
+                    xmlns:conv="clr-namespace:Blocks.Converters">
 
     <Design.PreviewWith>
         <Border Padding="20">
@@ -23,10 +24,15 @@
             </StackPanel>
         </Border>
     </Design.PreviewWith>
-    
+
+    <SolidColorBrush x:Key="BlockDataValidationForegroundBrush" Color="{DynamicResource BlockRed}" />
+    <Thickness x:Key="BlockDataValidationMessageMargin">4</Thickness>
+
     <ControlTheme x:Key="{x:Type DataValidationErrors}"
                   TargetType="DataValidationErrors">
-        
+
+        <Setter Property="Padding" Value="{DynamicResource BlockDataValidationMessageMargin}" />
+
         <Setter Property="Template">
             <ControlTemplate TargetType="DataValidationErrors">
                 <DockPanel>
@@ -34,9 +40,9 @@
                                     ContentTemplate="{TemplateBinding ErrorTemplate}"
                                     DataContext="{TemplateBinding Owner}"
                                     DockPanel.Dock="Right"
+                                    Margin="{TemplateBinding Padding, Converter={x:Static conv:BlockConverters.SelectLeftThickness}}"
                                     IsVisible="{Binding (DataValidationErrors.HasErrors)}" />
                     <ContentPresenter Name="PART_ContentPresenter"
-                                      Padding="{TemplateBinding Padding}"
                                       Background="{TemplateBinding Background}"
                                       BorderBrush="{TemplateBinding BorderBrush}"
                                       BorderThickness="{TemplateBinding BorderThickness}"
@@ -46,14 +52,14 @@
                 </DockPanel>
             </ControlTemplate>
         </Setter>
-        
+
         <Setter Property="ErrorTemplate">
             <DataTemplate>
-                <Panel Name="ErrorTemplatePanel"  Background="Transparent" Margin="4,0,0,0">
+                <Panel Name="ErrorTemplatePanel" Background="Transparent">
                     <Panel.Styles>
                         <Style Selector="Panel#ErrorTemplatePanel ToolTip">
                             <Setter Property="BorderBrush"
-                                    Value="{DynamicResource BlockRedBrush}" />
+                                    Value="{DynamicResource BlockDataValidationForegroundBrush}" />
                         </Style>
                         <Style Selector="Panel#ErrorTemplatePanel ToolTip TextBlock">
                             <Setter Property="TextWrapping" Value="Wrap" />
@@ -63,9 +69,9 @@
                         <ItemsControl ItemsSource="{Binding}" x:DataType="collections:IEnumerable" />
                     </ToolTip.Tip>
                     <PathIcon Data="{DynamicResource BlockErrorIcon24}"
-                              Foreground="{DynamicResource BlockRedBrush}"
+                              Foreground="{DynamicResource BlockDataValidationForegroundBrush}"
                               Background="Transparent"
-                              Width="24" Height="24"/>
+                              Width="24" Height="24" />
                 </Panel>
             </DataTemplate>
         </Setter>
@@ -73,19 +79,20 @@
 
     <ControlTheme x:Key="ExpandedDataValidationErrors"
                   TargetType="DataValidationErrors">
-        
+
+        <Setter Property="Padding" Value="{DynamicResource BlockDataValidationMessageMargin}" />
+
         <Setter Property="Template">
             <ControlTemplate TargetType="DataValidationErrors">
                 <DockPanel LastChildFill="True">
                     <ContentControl x:Name="InlineDataValidationContentControl"
-                                    Margin="0,4,0,0"
+                                    Margin="{TemplateBinding Padding, Converter={x:Static conv:BlockConverters.SelectTopThickness}}"
                                     Content="{Binding (DataValidationErrors.Errors)}"
                                     ContentTemplate="{TemplateBinding ErrorTemplate}"
                                     DataContext="{TemplateBinding Owner}"
                                     DockPanel.Dock="Bottom"
                                     IsVisible="{Binding (DataValidationErrors.HasErrors)}" />
                     <ContentPresenter Name="PART_ContentPresenter"
-                                      Padding="{TemplateBinding Padding}"
                                       Background="{TemplateBinding Background}"
                                       BorderThickness="{TemplateBinding BorderThickness}"
                                       Content="{TemplateBinding Content}"
@@ -94,11 +101,11 @@
                 </DockPanel>
             </ControlTemplate>
         </Setter>
-        
+
         <Setter Property="ErrorTemplate">
             <DataTemplate>
                 <ItemsControl x:DataType="DataValidationErrors"
-                              Foreground="{DynamicResource BlockRedBrush}"
+                              Foreground="{DynamicResource BlockDataValidationForegroundBrush}"
                               ItemsSource="{Binding}">
                     <ItemsControl.Styles>
                         <Style Selector="TextBlock">

@@ -114,36 +114,26 @@
                     <GridSplitter Grid.Row="1" ResizeDirection="Rows" Padding="0,8" />
 
                     <!-- Bottom-left -->
-                    <DockPanel Grid.Row="2">
-                        <blk:Group Header="Group" Padding="0" DockPanel.Dock="Bottom" Margin="0,16,0,0">
-                            <StackPanel>
-                                <TextBlock Text="Group Item 1" Margin="8" />
-                                <Separator />
-                                <TextBlock Text="Group Item 2" Margin="8" />
-                            </StackPanel>
-                        </blk:Group>
-                        <Expander Classes="demo" Header="Expander"
-                                  ExpandDirection="Down"
-                                  HorizontalAlignment="Stretch" VerticalAlignment="Top">
-                            <Expander.Content>
-                                <ScrollViewer Margin="8" VerticalScrollBarVisibility="Auto"
-                                              VerticalAlignment="Stretch">
-                                    <StackPanel Spacing="16">
-                                        <TextBlock TextWrapping="Wrap"
-                                                   Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Proin tortor purus platea sit eu id nisi litora libero. Neque vulputate consequat ac amet augue blandit maximus aliquet congue. Pharetra vestibulum posuere ornare faucibus fusce dictumst orci aenean eu facilisis ut volutpat commodo senectus purus himenaeos fames primis convallis nisi." />
-                                        <TextBlock TextWrapping="Wrap"
-                                                   Text="Phasellus fermentum malesuada phasellus netus dictum aenean placerat egestas amet. Ornare taciti semper dolor tristique morbi. Sem leo tincidunt aliquet semper eu lectus scelerisque quis. Sagittis vivamus mollis nisi mollis enim fermentum laoreet." />
-                                        <TextBlock TextWrapping="Wrap"
-                                                   Text="Curabitur semper venenatis lectus viverra ex dictumst nulla maximus. Primis iaculis elementum conubia feugiat venenatis dolor augue ac blandit nullam ac phasellus turpis feugiat mollis. Duis lectus porta mattis imperdiet vivamus augue litora lectus arcu. Justo torquent pharetra volutpat ad blandit bibendum accumsan nec elit cras luctus primis ipsum gravida class congue." />
-                                        <TextBlock TextWrapping="Wrap"
-                                                   Text="Vehicula etiam elementum finibus enim duis feugiat commodo adipiscing tortor tempor elit. Et mollis consectetur habitant turpis tortor consectetur adipiscing vulputate dolor lectus iaculis convallis adipiscing. Nam hendrerit dignissim condimentum ullamcorper diam morbi eget consectetur odio in sagittis." />
-                                    </StackPanel>
-                                </ScrollViewer>
-                            </Expander.Content>
-                        </Expander>
-
-                        
-                    </DockPanel>
+                    <Expander Classes="demo" Header="Expander"
+                              Grid.Row="2"
+                              ExpandDirection="Down"
+                              HorizontalAlignment="Stretch" VerticalAlignment="Top">
+                        <Expander.Content>
+                            <ScrollViewer Margin="8" VerticalScrollBarVisibility="Auto"
+                                          VerticalAlignment="Stretch">
+                                <StackPanel Spacing="16">
+                                    <TextBlock TextWrapping="Wrap"
+                                               Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Proin tortor purus platea sit eu id nisi litora libero. Neque vulputate consequat ac amet augue blandit maximus aliquet congue. Pharetra vestibulum posuere ornare faucibus fusce dictumst orci aenean eu facilisis ut volutpat commodo senectus purus himenaeos fames primis convallis nisi." />
+                                    <TextBlock TextWrapping="Wrap"
+                                               Text="Phasellus fermentum malesuada phasellus netus dictum aenean placerat egestas amet. Ornare taciti semper dolor tristique morbi. Sem leo tincidunt aliquet semper eu lectus scelerisque quis. Sagittis vivamus mollis nisi mollis enim fermentum laoreet." />
+                                    <TextBlock TextWrapping="Wrap"
+                                               Text="Curabitur semper venenatis lectus viverra ex dictumst nulla maximus. Primis iaculis elementum conubia feugiat venenatis dolor augue ac blandit nullam ac phasellus turpis feugiat mollis. Duis lectus porta mattis imperdiet vivamus augue litora lectus arcu. Justo torquent pharetra volutpat ad blandit bibendum accumsan nec elit cras luctus primis ipsum gravida class congue." />
+                                    <TextBlock TextWrapping="Wrap"
+                                               Text="Vehicula etiam elementum finibus enim duis feugiat commodo adipiscing tortor tempor elit. Et mollis consectetur habitant turpis tortor consectetur adipiscing vulputate dolor lectus iaculis convallis adipiscing. Nam hendrerit dignissim condimentum ullamcorper diam morbi eget consectetur odio in sagittis." />
+                                </StackPanel>
+                            </ScrollViewer>
+                        </Expander.Content>
+                    </Expander>
                 </Grid>
 
                 <GridSplitter Grid.Column="1" Padding="8,0" ResizeDirection="Columns" />

@@ -138,8 +138,8 @@
                             </Panel>
                         </Grid>
                     </Border>
-                    <Border BorderThickness="{TemplateBinding BorderThickness}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
+                    <Border BorderThickness="{DynamicResource BlockFlyoutBorderThickness}"
+                            BorderBrush="{DynamicResource BlockCalendarItemPopupBorderBrush}"
                             CornerRadius="14" />
                 </Panel>
             </ControlTemplate>

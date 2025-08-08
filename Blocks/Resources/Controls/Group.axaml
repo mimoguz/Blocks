@@ -19,7 +19,7 @@
     <Thickness x:Key="BlockGroupHeaderShadowOffset">2,0,0,0</Thickness>
     <FontWeight x:Key="BlockGroupHeaderFontWeight">Bold</FontWeight>
     <sys:Double x:Key="BlockHeaderedControlHeaderFontSize">14</sys:Double>
-    <Thickness x:Key="BlockGroupPadding">8</Thickness>
+    <Thickness x:Key="BlockGroupPadding">0</Thickness>
 
     <ControlTheme x:Key="{x:Type blk:Group}" TargetType="blk:Group">
 

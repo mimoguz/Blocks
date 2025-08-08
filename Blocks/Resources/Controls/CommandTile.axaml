@@ -22,15 +22,17 @@
         </Border>
     </Design.PreviewWith>
 
+    <SolidColorBrush x:Key="BlockCommandTileBaseBackgroundBrush" Color="{DynamicResource BlockBaseButtonBackgroundColor}" />
+    
 
     <ControlTheme x:Key="{x:Type blk:CommandTile}"
                   TargetType="blk:CommandTile">
 
-        <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
-        <Setter Property="Foreground" Value="{DynamicResource BlockButtonForegroundBrush}" />
+        <Setter Property="Background" Value="{DynamicResource BlockCommandTileBaseBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource BlockTileForegroundBrush}" />
         <Setter Property="Padding" Value="{DynamicResource BlockTilePadding}" />
-        <Setter Property="CornerRadius" Value="0" />
         <Setter Property="blk:Block.Gap" Value="{DynamicResource BlockTileContentSpacing}" />
+        <Setter Property="CornerRadius" Value="0" />
         <Setter Property="VerticalContentAlignment" Value="Top" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="FocusAdorner" Value="{x:Null}" />
