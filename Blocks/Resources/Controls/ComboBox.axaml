@@ -8,7 +8,7 @@
             <StackPanel Spacing="10">
                 <ComboBox PlaceholderText="Select an item">
                     <ComboBox.Resources>
-                        <SolidColorBrush x:Key="BlockCheckBoxActiveChevronBrush" Color="LimeGreen" />
+                        <SolidColorBrush x:Key="BlockComboBoxActiveChevronBrush" Color="LimeGreen" />
                     </ComboBox.Resources>
                     <ComboBoxItem>Item 1</ComboBoxItem>
                     <ComboBoxItem>Item 2</ComboBoxItem>
@@ -68,10 +68,11 @@
                      Color="{DynamicResource BlockBaseViewBorderColor}"
                      Opacity="{DynamicResource BlockFlyoutBorderOpacity}" />
 
-    <SolidColorBrush x:Key="BlockCheckBoxActiveChevronBrush"
+    <SolidColorBrush x:Key="BlockComboBoxActiveChevronBrush"
                      Color="{DynamicResource BlockBasePrimaryColor}" />
 
     <Thickness x:Key="BlockComboBoxPadding">16,8</Thickness>
+    <Thickness x:Key="BlockDComboBoxnChevronMargin">0,0,8,0</Thickness>
     
     <blk:AnimatedMenuIconStyle x:Key="BlockComboBoxMenuIconStyle">Chevron</blk:AnimatedMenuIconStyle>
 
@@ -108,8 +109,8 @@
                         <blk:AnimatedMenuIcon Name="MenuIcon"
                                               Grid.Column="1"
                                               Background="{TemplateBinding Foreground}"
-                                              Foreground="{DynamicResource BlockCheckBoxActiveChevronBrush}"
-                                              Margin="0,0,8,0"
+                                              Foreground="{DynamicResource BlockComboBoxActiveChevronBrush}"
+                                              Margin="{DynamicResource BlockDComboBoxnChevronMargin}"
                                               MenuIconStyle="{DynamicResource BlockComboBoxMenuIconStyle}" />
                         <TextBlock x:Name="PlaceholderTextBlock"
                                    Grid.Column="0"

@@ -12,10 +12,6 @@
 
     <GridLength x:Key="BlockSliderContentMargin">16</GridLength>
 
-    
-    
-    <Thickness x:Key="BlockExpanderHeaderPadding">8,8,16,8</Thickness>
-    <Thickness x:Key="BlockExpanderShadowMargin">2,1,2,3</Thickness>
     <Thickness x:Key="BlockFlatButtonPadding">8</Thickness>
     <Thickness x:Key="BlockFlyoutPadding">6</Thickness>
     <Thickness x:Key="BlockFocusBorderThickness">2</Thickness>

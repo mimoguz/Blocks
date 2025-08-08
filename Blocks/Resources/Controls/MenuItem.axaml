@@ -130,7 +130,7 @@
 
                         <blk:AnimatedMenuIcon Name="PART_Chevron"
                                               Grid.Column="4"
-                                              MenuIconStyle="RightChevron"
+                                              MenuIconStyle="RightChevronHierarchical"
                                               VerticalAlignment="Center"
                                               Margin="{DynamicResource BlockMenuChevronMargin}"
                                               Background="{TemplateBinding Foreground}"/>

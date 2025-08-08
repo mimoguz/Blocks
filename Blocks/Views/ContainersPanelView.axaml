@@ -119,9 +119,9 @@
                               ExpandDirection="Down"
                               HorizontalAlignment="Stretch" VerticalAlignment="Top">
                         <Expander.Content>
-                            <ScrollViewer Margin="8" VerticalScrollBarVisibility="Auto"
+                            <ScrollViewer VerticalScrollBarVisibility="Auto"
                                           VerticalAlignment="Stretch">
-                                <StackPanel Spacing="16">
+                                <StackPanel Spacing="16" Margin="8">
                                     <TextBlock TextWrapping="Wrap"
                                                Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Proin tortor purus platea sit eu id nisi litora libero. Neque vulputate consequat ac amet augue blandit maximus aliquet congue. Pharetra vestibulum posuere ornare faucibus fusce dictumst orci aenean eu facilisis ut volutpat commodo senectus purus himenaeos fames primis convallis nisi." />
                                     <TextBlock TextWrapping="Wrap"

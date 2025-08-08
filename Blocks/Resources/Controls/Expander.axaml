@@ -22,9 +22,10 @@
                 </Expander>
                 <Expander ExpandDirection="Right" Header="Expand Right"
                           Background="HotPink"
-                          blk:Block.ButtonBackground="Crimson"
-                          Foreground="White"
-                          blk:Block.ActiveForeground="DeepPink">
+                          Foreground="White">
+                    <Expander.Resources>
+                        <SolidColorBrush x:Key="BlockExpanderActiveChevronBrush" Color="DarkRed" />
+                    </Expander.Resources>
                     <Border Padding="8" Background="{DynamicResource BlockWindowBackgroundColor}">
                         <TextBlock VerticalAlignment="Center" Foreground="{DynamicResource BlockWindowForegroundBrush}">
                             Expanded content
@@ -48,37 +49,50 @@
             </StackPanel>
         </Border>
     </Design.PreviewWith>
+    
+    <!-- ****************************************************** -->
+    <!-- ********************* Resources ********************** -->
+    <!-- ****************************************************** -->
 
-    <!-- Shared header/content -->
-    <x:Double x:Key="ExpanderMinHeight">48</x:Double>
+    <SolidColorBrush x:Key="BlockExpanderExpandButtonBaseBackgroundBrush"
+                     Color="{DynamicResource BlockBaseButtonBackgroundColor}" />
 
-    <!-- Header -->
-    <HorizontalAlignment x:Key="ExpanderHeaderHorizontalContentAlignment">Stretch</HorizontalAlignment>
-    <VerticalAlignment x:Key="ExpanderHeaderVerticalContentAlignment">Center</VerticalAlignment>
-    <Thickness x:Key="ExpanderHeaderPadding">16,0,0,0</Thickness>
-    <Thickness x:Key="ExpanderHeaderBorderThickness">1</Thickness>
-    <Thickness x:Key="ExpanderChevronBorderThickness">0</Thickness>
-    <Thickness x:Key="ExpanderChevronMargin">20,0,8,0</Thickness>
-    <x:Double x:Key="ExpanderChevronButtonSize">32</x:Double>
+    <SolidColorBrush x:Key="BlockExpanderExpandButtonForegroundBrush"
+                     Color="{DynamicResource BlockButtonForegroundColor}" />
+    
+    <SolidColorBrush x:Key="BlockExpanderBorderBrush"
+                     Color="{DynamicResource BlockBaseViewBorderColor}"
+                     Opacity="{DynamicResource BlockFlyoutBorderOpacity}"/>
+    
+    <SolidColorBrush x:Key="BlockExpanderContentForegroundBrush"
+                     Color="{DynamicResource BlockButtonForegroundColor}" />
 
-    <!-- Content -->
-    <Thickness x:Key="ExpanderContentPadding">16</Thickness>
-    <Thickness x:Key="ExpanderContentLeftBorderThickness">1,1,0,1</Thickness>
-    <Thickness x:Key="ExpanderContentUpBorderThickness">1,1,1,0</Thickness>
-    <Thickness x:Key="ExpanderContentRightBorderThickness">0,1,1,1</Thickness>
-    <Thickness x:Key="ExpanderContentDownBorderThickness">1,0,1,1</Thickness>
+    <SolidColorBrush x:Key="BlockExpanderBackgroundBrush"
+                     Color="{DynamicResource BlockRaisedBackgroundColor}" />
+
+    <SolidColorBrush x:Key="BlockExpanderActiveChevronBrush"
+                     Color="{DynamicResource BlockBasePrimaryColor}" />
+    
+    <HorizontalAlignment x:Key="BlockExpanderExpandButtonHorizontalContentAlignment">Stretch</HorizontalAlignment>
+    <VerticalAlignment x:Key="BlockExpanderExpandButtonVerticalContentAlignment">Center</VerticalAlignment>
+    <Thickness x:Key="BlockExpanderExpandButtonPadding">8,8,16,8</Thickness>
+    <Thickness x:Key="BlockExpanderContentPadding">0</Thickness>
+    <Thickness x:Key="BlockExpanderShadowMargin">2,1,2,3</Thickness>
+    <Thickness x:Key="BlockExpanderChevronMargin">8,0,0,0</Thickness>
+    
+    <!-- ****************************************************** -->
+    <!-- ********************** Themes ************************ -->
+    <!-- ****************************************************** -->
 
     <ControlTheme x:Key="BlockExpanderToggleButtonTheme" TargetType="ToggleButton">
 
-        <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
-        <Setter Property="Foreground" Value="{DynamicResource BlockWindowForegroundBrush}" />
-        <Setter Property="Padding" Value="{DynamicResource BlockExpanderHeaderPadding}" />
+        <Setter Property="Background" Value="{DynamicResource BlockExpanderExpandButtonBaseBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource BlockExpanderExpandButtonForegroundBrush}" />
+        <Setter Property="Padding" Value="{DynamicResource BlockExpanderExpandButtonPadding}" />
         <Setter Property="CornerRadius" Value="{DynamicResource BlockButtonCornerRadius}" />
-        <Setter Property="blk:Block.ActiveForeground" Value="{DynamicResource BlockBasePrimaryBrush}" />
-        <Setter Property="blk:Block.Gap" Value="8"></Setter>
         <Setter Property="HorizontalAlignment" Value="Stretch" />
-        <Setter Property="HorizontalContentAlignment" Value="Left" />
-        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="{DynamicResource BlockExpanderExpandButtonHorizontalContentAlignment}" />
+        <Setter Property="VerticalContentAlignment" Value="{DynamicResource BlockExpanderExpandButtonVerticalContentAlignment}" />
         <Setter Property="FocusAdorner" Value="{x:Null}" />
 
         <Setter Property="Template">
@@ -91,36 +105,22 @@
                                      HorizontalAlignment="Stretch"
                                      VerticalAlignment="Stretch"/>
 
-                    <Grid x:Name="ToggleButtonGrid"
-                          ColumnDefinitions="Auto,*" VerticalAlignment="Center"
-                          Margin="{TemplateBinding Padding}">
-
-                        <PathIcon Name="ExpandCollapseChevron"
-                                  Grid.Column="0"
-                                  Foreground="{TemplateBinding Foreground}"
-                                  Margin="4">
-                            <PathIcon.Transitions>
-                                <Transitions>
-                                    <TransformOperationsTransition Property="RenderTransform"
-                                                                   Duration="{DynamicResource BlockLongStateTransitionDuration}"
-                                                                   Easing="CubicEaseOut" />
-                                    <BrushTransition Property="Foreground"
-                                                     Duration="{DynamicResource BlockLongStateTransitionDuration}"
-                                                     Easing="CubicEaseOut" />
-                                </Transitions>
-                            </PathIcon.Transitions>
-                        </PathIcon>
-
+                    <Grid x:Name="ToggleButtonGrid" ColumnDefinitions="Auto,*" VerticalAlignment="Stretch">
+                        <blk:AnimatedMenuIcon Name="Chevron" 
+                                              Grid.Column="0" 
+                                              MenuIconStyle="RightChevronExpander" 
+                                              Margin="{DynamicResource BlockExpanderChevronMargin}"
+                                              Background="{TemplateBinding Foreground}"
+                                              Foreground="{DynamicResource BlockExpanderActiveChevronBrush}"/>
                         <ContentPresenter x:Name="PART_ContentPresenter"
                                           Grid.Column="1"
-                                          Margin="{TemplateBinding blk:Block.Gap, 
-                                                   Converter={x:Static conv:BlockConverters.SelectLeftThickness}}"
+                                          Margin="{TemplateBinding Padding}"
                                           Content="{TemplateBinding Content}"
                                           ContentTemplate="{TemplateBinding ContentTemplate}"
                                           HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                                           VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                                           Foreground="{TemplateBinding Foreground}"
-                                          FontWeight="{TemplateBinding FontWeight}" />
+                                          FontWeight="{DynamicResource BlockButtonFontWeight}" />
                     </Grid>
                 </Panel>
             </ControlTemplate>
@@ -152,53 +152,46 @@
             <Setter Property="Focused" Value="True" />
         </Style>
 
-        <Style Selector="^[Tag=expanded] /template/ PathIcon#ExpandCollapseChevron">
-            <Setter Property="RenderTransform" Value="rotate(-180deg)" />
-            <Setter Property="Foreground" Value="{TemplateBinding blk:Block.ActiveForeground}" />
+        <Style Selector="^[Tag=expanded] /template/ blk|AnimatedMenuIcon#Chevron">
+            <Setter Property="DrawExpanded" Value="True" />
         </Style>
     </ControlTheme>
 
     <ControlTheme x:Key="BlockExpanderToggleButtonUpTheme" TargetType="ToggleButton"
                   BasedOn="{StaticResource BlockExpanderToggleButtonTheme}">
-        <Style Selector="^ /template/ PathIcon#ExpandCollapseChevron">
-            <Setter Property="Data" Value="{DynamicResource BlockChevronUp}" />
+        <Style Selector="^ /template/ blk|AnimatedMenuIcon#Chevron">
+            <Setter Property="RenderTransform" Value="rotate(-90deg)" />
         </Style>
     </ControlTheme>
 
     <ControlTheme x:Key="BlockExpanderToggleButtonDownTheme" TargetType="ToggleButton"
                   BasedOn="{StaticResource BlockExpanderToggleButtonTheme}">
-        <Style Selector="^ /template/ PathIcon#ExpandCollapseChevron">
-            <Setter Property="Data" Value="{DynamicResource BlockChevronDown}" />
+        <Style Selector="^ /template/ blk|AnimatedMenuIcon#Chevron">
+            <Setter Property="RenderTransform" Value="rotate(90deg)" />
         </Style>
     </ControlTheme>
 
     <ControlTheme x:Key="BlockExpanderToggleButtonLeftTheme" TargetType="ToggleButton"
                   BasedOn="{StaticResource BlockExpanderToggleButtonTheme}">
-        <Style Selector="^ /template/ PathIcon#ExpandCollapseChevron">
-            <Setter Property="Data" Value="{DynamicResource BlockChevronLeft}" />
+        <Style Selector="^ /template/ blk|AnimatedMenuIcon#Chevron">
+            <Setter Property="RenderTransform" Value="rotate(180deg)" />
         </Style>
     </ControlTheme>
 
     <ControlTheme x:Key="BlockExpanderToggleButtonRightTheme" TargetType="ToggleButton"
                   BasedOn="{StaticResource BlockExpanderToggleButtonTheme}">
-        <Style Selector="^ /template/ PathIcon#ExpandCollapseChevron">
-            <Setter Property="Data" Value="{DynamicResource BlockChevronRight}" />
-        </Style>
     </ControlTheme>
 
     <ControlTheme x:Key="{x:Type Expander}" TargetType="Expander">
 
         <Setter Property="IsTabStop" Value="False" />
         <Setter Property="MinHeight" Value="{DynamicResource BlockMinButtonSize}" />
-        <Setter Property="Background" Value="{DynamicResource BlockRaisedBackgroundBrush}" />
-        <Setter Property="blk:Block.ActiveForeground" Value="{DynamicResource BlockBasePrimaryBrush}" />
-        <Setter Property="blk:Block.ButtonBackground" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
-        <Setter Property="Padding" Value="{DynamicResource BlockExpanderHeaderPadding}" />
+        <Setter Property="Background" Value="{DynamicResource BlockExpanderBackgroundBrush}" />
+        <Setter Property="Padding" Value="{DynamicResource BlockExpanderContentPadding}" />
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="CornerRadius" Value="{DynamicResource BlockViewCornerRadius}" />
-        <Setter Property="FontWeight" Value="{DynamicResource BlockButtonFontWeight}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource BlockTransparentFlyoutBorderBrush}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource BlockButtonCornerRadius}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BlockExpanderBorderBrush}" />
         <Setter Property="BorderThickness" Value="{DynamicResource BlockControlBorderThickness}" />
         <Setter Property="FocusAdorner" Value="{x:Null}" />
 
@@ -224,25 +217,22 @@
                                 <DockPanel MinWidth="{TemplateBinding MinWidth}"
                                            MaxWidth="{TemplateBinding MaxWidth}">
                                     <ToggleButton x:Name="ExpanderHeader"
-                                                  Padding="{TemplateBinding Padding}"
                                                   MinHeight="{TemplateBinding MinHeight}"
                                                   IsEnabled="{TemplateBinding IsEnabled}"
                                                   Content="{TemplateBinding Header}"
                                                   ContentTemplate="{TemplateBinding HeaderTemplate}"
                                                   IsChecked="{TemplateBinding IsExpanded, Mode=TwoWay}"
                                                   FontWeight="{TemplateBinding FontWeight}"
-                                                  Foreground="{TemplateBinding Foreground}"
-                                                  Background="{TemplateBinding blk:Block.ButtonBackground}"
-                                                  blk:Block.ActiveForeground="{TemplateBinding blk:Block.ActiveForeground}" />
+                                                  Foreground="{TemplateBinding Foreground}" />
                                     <Border x:Name="ExpanderContent"
                                             IsVisible="{TemplateBinding IsExpanded, Mode=TwoWay}"
                                             HorizontalAlignment="Stretch"
                                             VerticalAlignment="Stretch"
                                             ClipToBounds="True">
                                         <ContentPresenter x:Name="PART_ContentPresenter"
-                                                          FontWeight="Normal"
                                                           Content="{TemplateBinding Content}"
                                                           ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                          Padding="{TemplateBinding Padding}"
                                                           HorizontalAlignment="Stretch"
                                                           VerticalAlignment="Stretch"
                                                           Margin="-1"
@@ -260,10 +250,6 @@
                 </Border>
             </ControlTemplate>
         </Setter>
-
-        <Style Selector="^ /template/ ToggleButton#ExpanderHeader:pressed">
-            <Setter Property="RenderTransform" Value="{x:Null}" />
-        </Style>
 
         <Style Selector="^:left /template/ ToggleButton#ExpanderHeader, ^:right /template/ ToggleButton#ExpanderHeader">
             <Setter Property="VerticalAlignment" Value="Stretch" />

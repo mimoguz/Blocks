@@ -24,13 +24,12 @@ public class AnimatedMenuIcon : TemplatedControl
         get => GetValue(MenuIconStyleProperty);
         set => SetValue(MenuIconStyleProperty, value);
     }
-
-    
 }
 
 public enum AnimatedMenuIconStyle
 {
     Burger,
     Chevron,
-    RightChevron,
+    RightChevronHierarchical,
+    RightChevronExpander
 }

@@ -20,11 +20,19 @@
                                                    Foreground="{DynamicResource BlockOnPrimaryBrush}" />
                     </ToggleButton>
                     
-                    <controls:AnimatedMenuIcon DrawExpanded="False" MenuIconStyle="RightChevron" Background="#50000000" />
-                    <controls:AnimatedMenuIcon DrawExpanded="True" MenuIconStyle="RightChevron"/>
+                    <controls:AnimatedMenuIcon DrawExpanded="False" MenuIconStyle="RightChevronHierarchical" Background="#50000000" />
+                    <controls:AnimatedMenuIcon DrawExpanded="True" MenuIconStyle="RightChevronHierarchical"/>
                     <ToggleButton Classes="image-button">
                         <controls:AnimatedMenuIcon DrawExpanded="{Binding $parent[ToggleButton].IsChecked}"
-                                                   MenuIconStyle="RightChevron"
+                                                   MenuIconStyle="RightChevronHierarchical"
+                                                   Foreground="{DynamicResource BlockOnPrimaryBrush}" />
+                    </ToggleButton>
+                    
+                    <controls:AnimatedMenuIcon DrawExpanded="False" MenuIconStyle="RightChevronExpander" Background="#50000000" />
+                    <controls:AnimatedMenuIcon DrawExpanded="True" MenuIconStyle="RightChevronExpander"/>
+                    <ToggleButton Classes="image-button">
+                        <controls:AnimatedMenuIcon DrawExpanded="{Binding $parent[ToggleButton].IsChecked}"
+                                                   MenuIconStyle="RightChevronExpander"
                                                    Foreground="{DynamicResource BlockOnPrimaryBrush}" />
                     </ToggleButton>
                 </StackPanel>
@@ -193,7 +201,7 @@
             </Style>
         </Style>
 
-        <Style Selector="^[MenuIconStyle=RightChevron]">
+        <Style Selector="^[MenuIconStyle=RightChevronHierarchical]">
             <Setter Property="Template">
                 <ControlTemplate>
                     <Panel Width="16" Height="16">
@@ -266,6 +274,76 @@
                     <Setter Property="Margin" Value="4,0,0,4" />
                     <Setter Property="Width" Value="12"></Setter>
                     <Setter Property="RenderTransform" Value="rotate(0deg)" />
+                    <Setter Property="Fill" Value="{TemplateBinding Foreground}" />
+                </Style>
+            </Style>
+        </Style>
+        
+        <Style Selector="^[MenuIconStyle=RightChevronExpander]">
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Panel Width="16" Height="16">
+                        <Rectangle Name="Top"
+                                   Margin="4, 4,0, 0"
+                                   Width="10.6"
+                                   Height="2"
+                                   Fill="{TemplateBinding Background}"
+                                   VerticalAlignment="Top"
+                                   HorizontalAlignment="Left"
+                                   RenderTransform="rotate(45deg)"
+                                   UseLayoutRounding="False">
+                            <Rectangle.Transitions>
+                                <Transitions>
+                                    <BrushTransition Property="Fill"
+                                                     Duration="{DynamicResource BlockLongStateTransitionDuration}"
+                                                     Easing="CubicEaseOut" />
+                                    <ThicknessTransition Property="Margin"
+                                                         Duration="{DynamicResource BlockLongStateTransitionDuration}"
+                                                         Easing="CubicEaseOut" />
+                                    <TransformOperationsTransition Property="RenderTransform"
+                                                                   Duration="{DynamicResource BlockLongStateTransitionDuration}"
+                                                                   Easing="CubicEaseOut" />
+                                </Transitions>
+                            </Rectangle.Transitions>
+                        </Rectangle>
+                        <Rectangle Name="Bottom"
+                                   Margin="4.3,0,0,3.32"
+                                   Width="8.6"
+                                   Height="2"
+                                   Fill="{TemplateBinding Background}"
+                                   VerticalAlignment="Bottom"
+                                   HorizontalAlignment="Left"
+                                   RenderTransform="rotate(-45deg)"
+                                   UseLayoutRounding="False">
+                            <Rectangle.Transitions>
+                                <Transitions>
+                                    <BrushTransition Property="Fill"
+                                                     Duration="{DynamicResource BlockLongStateTransitionDuration}"
+                                                     Easing="CubicEaseOut" />
+                                    <ThicknessTransition Property="Margin"
+                                                         Duration="{DynamicResource BlockLongStateTransitionDuration}"
+                                                         Easing="CubicEaseOut" />
+                                    <TransformOperationsTransition Property="RenderTransform"
+                                                                   Duration="{DynamicResource BlockLongStateTransitionDuration}"
+                                                                   Easing="CubicEaseOut" />
+                                </Transitions>
+                            </Rectangle.Transitions>
+                        </Rectangle>
+                    </Panel>
+                </ControlTemplate>
+            </Setter>
+
+            <Style Selector="^[DrawExpanded=True]">
+                <Style Selector="^ /template/ Rectangle#Top">
+                    <Setter Property="IsVisible" Value="True" />
+                    <Setter Property="Margin" Value="1, 3.8,0, 0" />
+                    <Setter Property="RenderTransform" Value="rotate(-45deg)" />
+                    <Setter Property="Fill" Value="{TemplateBinding Foreground}" />
+                </Style>
+                <Style Selector="^ /template/ Rectangle#Bottom">
+                    <Setter Property="IsVisible" Value="True" />
+                    <Setter Property="Margin" Value="2.68,0,0,3.4" />
+                    <Setter Property="RenderTransform" Value="rotate(45deg)" />
                     <Setter Property="Fill" Value="{TemplateBinding Foreground}" />
                 </Style>
             </Style>
