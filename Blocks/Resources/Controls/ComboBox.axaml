@@ -30,12 +30,58 @@
         </Border>
     </Design.PreviewWith>
 
+    <!-- ****************************************************** -->
+    <!-- ********************* Resources ********************** -->
+    <!-- ****************************************************** -->
+
+    <SolidColorBrush x:Key="BlockComboBoxBaseBackgroundBrush"
+                     Color="{DynamicResource BlockBaseButtonBackgroundColor}" />
+
+    <SolidColorBrush x:Key="BlockComboBoxForegroundBrush"
+                     Color="{DynamicResource BlockButtonForegroundColor}" />
+
+    <SolidColorBrush x:Key="BlockComboBoxErrorForegroundBrush"
+                     Color="{DynamicResource BlockRed}" />
+
+    <SolidColorBrush x:Key="BlockComboBoxErrorPlaceholderForegroundBrush"
+                     Color="{DynamicResource BlockRed}"
+                     Opacity="{DynamicResource BlockPlaceholderOpacity}" />
+
+    <SolidColorBrush x:Key="BlockComboBoxPlaceholderForegroundBrush"
+                     Color="{DynamicResource BlockButtonForegroundColor}"
+                     Opacity="{DynamicResource BlockPlaceholderOpacity}" />
+
+    <SolidColorBrush x:Key="BlockComboBoxFlatForegroundBrush"
+                     Color="{DynamicResource BlockFlatButtonForegroundColor}" />
+
+    <SolidColorBrush x:Key="BlockComboBoxFlatPlaceholderForegroundBrush"
+                     Color="{DynamicResource BlockFlatButtonForegroundColor}"
+                     Opacity="{DynamicResource BlockPlaceholderOpacity}" />
+
+    <SolidColorBrush x:Key="BlockComboBoxPopupBackgroundBrush"
+                     Color="{DynamicResource BlockRaisedBackgroundColor}" />
+
+    <SolidColorBrush x:Key="BlockComboBoxPopupBorderBrush"
+                     Color="{DynamicResource BlockBaseViewBorderColor}"
+                     Opacity="{DynamicResource BlockFlyoutBorderOpacity}" />
+
+    <SolidColorBrush x:Key="BlockCheckBoxActiveChevronBrush"
+                     Color="{DynamicResource BlockBasePrimaryColor}" />
+
+    <Thickness x:Key="BlockComboBoxPadding">16,8</Thickness>
+    
+    <blk:AnimatedMenuIconStyle x:Key="BlockComboBoxMenuIconStyle">Chevron</blk:AnimatedMenuIconStyle>
+
+    <!-- ****************************************************** -->
+    <!-- ********************** Themes ************************ -->
+    <!-- ****************************************************** -->
+
 
     <ControlTheme x:Key="{x:Type ComboBox}" TargetType="ComboBox">
 
-        <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
-        <Setter Property="Foreground" Value="{DynamicResource BlockButtonForegroundBrush}" />
-        <Setter Property="PlaceholderForeground" Value="{DynamicResource BlockButtonForegroundBrush}" />
+        <Setter Property="Background" Value="{DynamicResource BlockComboBoxBaseBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource BlockComboBoxForegroundBrush}" />
+        <Setter Property="PlaceholderForeground" Value="{DynamicResource BlockComboBoxPlaceholderForegroundBrush}" />
         <Setter Property="Padding" Value="{DynamicResource BlockComboBoxPadding}" />
         <Setter Property="CornerRadius" Value="{DynamicResource BlockButtonCornerRadius}" />
         <Setter Property="FontWeight" Value="{DynamicResource BlockButtonFontWeight}" />
@@ -44,8 +90,6 @@
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
         <Setter Property="MaxDropDownHeight" Value="{DynamicResource BlockMaxDropDownHeight}" />
-        <Setter Property="blk:Block.MenuIconStyle" Value="Chevron" />
-        <Setter Property="blk:Block.ActiveForeground" Value="{DynamicResource BlockBasePrimaryBrush}" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="FocusAdorner" Value="{x:Null}" />
@@ -61,9 +105,9 @@
                         <blk:AnimatedMenuIcon Name="MenuIcon"
                                               Grid.Column="1"
                                               Background="{TemplateBinding Foreground}"
-                                              Foreground="{TemplateBinding blk:Block.ActiveForeground}"
+                                              Foreground="{DynamicResource BlockCheckBoxActiveChevronBrush}"
                                               Margin="0,0,8,0"
-                                              MenuIconStyle="{TemplateBinding blk:Block.MenuIconStyle}" />
+                                              MenuIconStyle="{DynamicResource BlockComboBoxMenuIconStyle}" />
                         <TextBlock x:Name="PlaceholderTextBlock"
                                    Grid.Column="0"
                                    Padding="{TemplateBinding Padding}"
@@ -71,7 +115,6 @@
                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                    Text="{TemplateBinding PlaceholderText}"
                                    Foreground="{TemplateBinding PlaceholderForeground}"
-                                   Opacity="{DynamicResource BlockPlaceholderOpacity}"
                                    IsVisible="{TemplateBinding SelectionBoxItem, Converter={x:Static ObjectConverters.IsNull}}" />
                         <ContentControl x:Name="ContentPresenter"
                                         Grid.Column="0"
@@ -96,9 +139,9 @@
                             </MultiBinding>
                         </Popup.MinWidth>
                         <Border x:Name="PopupBorder"
-                                BorderBrush="{DynamicResource BlockTransparentFlyoutBorderBrush}"
+                                BorderBrush="{DynamicResource BlockComboBoxPopupBorderBrush}"
                                 BorderThickness="{DynamicResource BlockFlyoutBorderThickness}"
-                                Background="{DynamicResource BlockRaisedBackgroundBrush}"
+                                Background="{DynamicResource BlockComboBoxPopupBackgroundBrush}"
                                 CornerRadius="{DynamicResource BlockFlyoutCornerRadius}"
                                 ClipToBounds="True"
                                 Padding="{DynamicResource BlockFlyoutPadding}">
@@ -133,6 +176,11 @@
             <Setter Property="Opacity" Value="{DynamicResource BlockDisabledOpacity}" />
         </Style>
 
+        <Style Selector="^:error">
+            <Setter Property="Foreground" Value="{DynamicResource BlockComboBoxErrorForegroundBrush}" />
+            <Setter Property="PlaceholderForeground" Value="{DynamicResource BlockComboBoxErrorPlaceholderForegroundBrush}" />
+        </Style>
+
         <Style Selector="^:focus-visible /template/ blk|BlockButton#ButtonBackground">
             <Setter Property="Focused" Value="True" />
         </Style>
@@ -152,8 +200,9 @@
             <Style Selector="^ /template/ blk|BlockButton#ButtonBackground">
                 <Setter Property="Flat" Value="True" />
             </Style>
-            <Setter Property="Foreground" Value="{DynamicResource BlockFlatButtonForegroundBrush}" />
-            <Setter Property="PlaceholderForeground" Value="{DynamicResource BlockFlatButtonForegroundBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource BlockCheckBoxForegroundBrush}" />
+            <Setter Property="PlaceholderForeground"
+                    Value="{DynamicResource BlockComboBoxFlatPlaceholderForegroundBrush}" />
         </Style>
 
         <Style Selector="^.pill-left /template/ blk|BlockButton#ButtonBackground">

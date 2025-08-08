@@ -13,7 +13,7 @@ public abstract class Block : AvaloniaObject
     
     public static readonly AttachedProperty<IBrush?> ScrollBarForegroundProperty = AvaloniaProperty.RegisterAttached<Block, Control, IBrush?>("ScrollBarForeground");
     
-    public static readonly AttachedProperty<AnimatedMenuIcon.IconStyle> MenuIconStyleProperty = AvaloniaProperty.RegisterAttached<Block, Control, AnimatedMenuIcon.IconStyle>("MenuIconStyle");
+    public static readonly AttachedProperty<AnimatedMenuIconStyle> MenuIconStyleProperty = AvaloniaProperty.RegisterAttached<Block, Control, AnimatedMenuIconStyle>("MenuIconStyle");
     
     public static readonly AttachedProperty<Stretch> StretchProperty = AvaloniaProperty.RegisterAttached<Block, Control, Stretch>("Stretch");
     
@@ -46,8 +46,8 @@ public abstract class Block : AvaloniaObject
     public static IBrush? GetScrollBarForeground(Control control) => control.GetValue(ScrollBarForegroundProperty);
     public static void SetScrollBarForeground(Control control, IBrush? value) => control.SetValue(ScrollBarForegroundProperty, value);
 
-    public static AnimatedMenuIcon.IconStyle GetMenuIconStyle(Control control) => control.GetValue(MenuIconStyleProperty);
-    public static void SetMenuIconStyle(Control control, AnimatedMenuIcon.IconStyle value) => control.SetValue(MenuIconStyleProperty, value);
+    public static AnimatedMenuIconStyle GetMenuIconStyle(Control control) => control.GetValue(MenuIconStyleProperty);
+    public static void SetMenuIconStyle(Control control, AnimatedMenuIconStyle value) => control.SetValue(MenuIconStyleProperty, value);
 
     public static Stretch GetStretch(Control control) => control.GetValue(StretchProperty);
     public static void SetStretch(Control control, Stretch value) => control.SetValue(StretchProperty, value);

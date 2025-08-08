@@ -16,19 +16,21 @@ public class AnimatedMenuIcon : TemplatedControl
         set => SetValue(DrawExpandedProperty, value);
     }
 
-    public static readonly StyledProperty<IconStyle> MenuIconStyleProperty =
-        AvaloniaProperty.Register<AnimatedMenuIcon, IconStyle>(nameof(MenuIconStyle));
+    public static readonly StyledProperty<AnimatedMenuIconStyle> MenuIconStyleProperty =
+        AvaloniaProperty.Register<AnimatedMenuIcon, AnimatedMenuIconStyle>(nameof(MenuIconStyle));
 
-    public IconStyle MenuIconStyle
+    public AnimatedMenuIconStyle MenuIconStyle
     {
         get => GetValue(MenuIconStyleProperty);
         set => SetValue(MenuIconStyleProperty, value);
     }
 
-    public enum IconStyle
-    {
-        Burger,
-        Chevron,
-        RightChevron,
-    }
+    
+}
+
+public enum AnimatedMenuIconStyle
+{
+    Burger,
+    Chevron,
+    RightChevron,
 }

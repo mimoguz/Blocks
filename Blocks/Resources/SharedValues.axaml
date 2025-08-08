@@ -14,7 +14,6 @@
 
     
     
-    <Thickness x:Key="BlockComboBoxPadding">16,8</Thickness>
     <Thickness x:Key="BlockExpanderHeaderPadding">8,8,16,8</Thickness>
     <Thickness x:Key="BlockExpanderShadowMargin">2,1,2,3</Thickness>
     <Thickness x:Key="BlockFlatButtonPadding">8</Thickness>
