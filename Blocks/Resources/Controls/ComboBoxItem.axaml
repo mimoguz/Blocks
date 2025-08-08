@@ -12,15 +12,34 @@
         </Border>
     </Design.PreviewWith>
 
+    <!-- ****************************************************** -->
+    <!-- ********************* Resources ********************** -->
+    <!-- ****************************************************** -->
+
+    <SolidColorBrush x:Key="BlockComboBoxItemBaseBackgroundBrush"
+                     Color="{DynamicResource BlockBaseButtonBackgroundColor}" />
+
+    <SolidColorBrush x:Key="BlockComboBoxItemForegroundBrush"
+                     Color="{DynamicResource BlockButtonForegroundColor}" />
+
+    <SolidColorBrush x:Key="BlockComboBoxItemSelectedBaseBackgroundBrush"
+                     Color="{DynamicResource BlockBasePrimaryColor}" />
+
+    <SolidColorBrush x:Key="BlockComboBoxItemSelectedForegroundBrush"
+                     Color="{DynamicResource BlockButtonForegroundColor}" />
+
+    <!-- ****************************************************** -->
+    <!-- ********************** Themes ************************ -->
+    <!-- ****************************************************** -->
+
     <ControlTheme x:Key="{x:Type ComboBoxItem}" TargetType="ComboBoxItem">
 
-        <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
-        <Setter Property="Foreground" Value="{DynamicResource BlockButtonForegroundBrush}" />
-        <Setter Property="Padding" Value="{DynamicResource BlockMenuItemPadding}" />
-        <Setter Property="CornerRadius" Value="{DynamicResource BlockButtonCornerRadius}" />
+        <Setter Property="Background" Value="{DynamicResource BlockComboBoxItemBaseBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource BlockComboBoxItemForegroundBrush}" />
+        <Setter Property="Padding" Value="{DynamicResource BlockListItemPadding}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource BlockListItemCornerRadius}" />
+        <Setter Property="MinHeight" Value="{DynamicResource BlockMinListItemHeight}" />
         <Setter Property="FontWeight" Value="Normal" />
-        <Setter Property="MinWidth" Value="{DynamicResource BlockMinButtonSize}" />
-        <Setter Property="MinHeight" Value="{DynamicResource BlockMinMenuItemHeight}" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="FocusAdorner" Value="{x:Null}" />
@@ -61,11 +80,14 @@
         <Style Selector="^:focus-visible /template/ blk|BlockButton#ButtonBackground">
             <Setter Property="Focused" Value="True" />
         </Style>
-        
+
         <Style Selector="^:selected /template/ blk|BlockButton#ButtonBackground">
             <Setter Property="Flat" Value="False" />
-            <Setter Property="Background" Value="{DynamicResource BlockBasePrimaryBrush}" />
+            <Setter Property="Background" Value="{DynamicResource BlockComboBoxItemSelectedBaseBackgroundBrush}" />
         </Style>
-
+        <Style Selector="^:selected /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Foreground" Value="{DynamicResource BlockComboBoxItemSelectedForegroundBrush}" />
+        </Style>
+        
     </ControlTheme>
 </ResourceDictionary>

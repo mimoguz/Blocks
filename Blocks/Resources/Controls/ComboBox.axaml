@@ -6,7 +6,10 @@
     <Design.PreviewWith>
         <Border Padding="20">
             <StackPanel Spacing="10">
-                <ComboBox PlaceholderText="Select an item" blk:Block.ActiveForeground="DeepPink">
+                <ComboBox PlaceholderText="Select an item">
+                    <ComboBox.Resources>
+                        <SolidColorBrush x:Key="BlockCheckBoxActiveChevronBrush" Color="LimeGreen" />
+                    </ComboBox.Resources>
                     <ComboBoxItem>Item 1</ComboBoxItem>
                     <ComboBoxItem>Item 2</ComboBoxItem>
                 </ComboBox>
