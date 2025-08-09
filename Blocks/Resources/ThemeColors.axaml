@@ -11,6 +11,7 @@
             <Color x:Key="BlockWindowBackgroundColor">#F7F7FF</Color>
             <Color x:Key="BlockRaisedBackgroundColor">#FAFAFF</Color>
             <Color x:Key="BlockPaneBackgroundColor">#DEE0E9</Color>
+            <Color x:Key="BlockOpaqueButtonBackgroundColor">#607080</Color>
             <Color x:Key="BlockBaseButtonBackgroundColor">#203045</Color>
             <Color x:Key="BlockBaseViewBackgroundColor">#203045</Color>
             <Color x:Key="BlockBaseDestructiveBackgroundColor">#FF3B3B</Color>
@@ -21,6 +22,7 @@
             <Color x:Key="BlockWindowForegroundColor">#203035</Color>
             <Color x:Key="BlockViewForegroundColor">#152530</Color>
             <Color x:Key="BlockButtonForegroundColor">#102025</Color>
+            <Color x:Key="BlockOpaqueButtonForegroundColor">#F0FFFFFF</Color>
             <Color x:Key="BlockFlatButtonForegroundColor">#F0007FFF</Color>
             <Color x:Key="BlockOnPrimaryColor">#F0FFFFFF</Color>
             <Color x:Key="BlockOnSecondaryColor">#F0FFFFFF</Color>
@@ -44,6 +46,7 @@
             <Color x:Key="BlockWindowBackgroundColor">#222226</Color>
             <Color x:Key="BlockRaisedBackgroundColor">#2E2E32</Color> 
             <Color x:Key="BlockPaneBackgroundColor">#353542</Color>
+            <Color x:Key="BlockOpaqueButtonBackgroundColor">#606065</Color>
             <Color x:Key="BlockBaseButtonBackgroundColor">#DCDCDF</Color>
             <Color x:Key="BlockBaseViewBackgroundColor">#DCDCDF</Color>
             <Color x:Key="BlockBaseDestructiveBackgroundColor">#FF8080</Color>
@@ -53,7 +56,8 @@
 
             <Color x:Key="BlockWindowForegroundColor">#FCFCFF</Color>
             <Color x:Key="BlockViewForegroundColor">#FEFEFF</Color>
-            <Color x:Key="BlockButtonForegroundColor">#FCFCFF</Color>
+            <Color x:Key="BlockButtonForegroundColor">#FEFEFF</Color>
+            <Color x:Key="BlockOpaqueButtonForegroundColor">#FEFEFF</Color>
             <Color x:Key="BlockFlatButtonForegroundColor">#5C99E3</Color>
             <Color x:Key="BlockOnPrimaryColor">#F0FFFFFF</Color>
             <Color x:Key="BlockDestructiveForegroundColor">#FFA0A0</Color>

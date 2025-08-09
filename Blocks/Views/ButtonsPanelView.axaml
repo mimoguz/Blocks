@@ -54,6 +54,9 @@
                                 Classes="demo">
                             Default Button
                         </Button>
+                        <Button Classes="demo opaque">
+                            Opaque Button
+                        </Button>
                         <Button Classes="demo destructive">
                             Destructive Button
                         </Button>

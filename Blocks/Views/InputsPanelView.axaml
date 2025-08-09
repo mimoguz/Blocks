@@ -99,7 +99,7 @@
                         
                         <Style Selector="ListBox.demo">
                             <Setter Property="ItemsSource" Value="{Binding StringValues}" />
-                            <Setter Property="Height" Value="200" />
+                            <Setter Property="Height" Value="244" />
                             <Setter Property="Width" Value="240" />
                             <Setter Property="Background" Value="{DynamicResource BlockTransparentViewBackgroundBrush}" />
                             <Setter Property="CornerRadius" Value="{DynamicResource BlockButtonCornerRadius}" />
@@ -139,6 +139,10 @@
                             <ComboBox Classes="demo"
                                       SelectedItem="{Binding CurrentStringValue}"
                                       Width="200" PlaceholderText="Combo Box" />
+                            
+                            <ComboBox Classes="demo opaque"
+                                      SelectedItem="{Binding CurrentStringValue}"
+                                      Width="200" PlaceholderText="Opaque Combo Box" />
 
                             <ComboBox Classes="demo flat"
                                       SelectedItem="{Binding CurrentStringValue}"

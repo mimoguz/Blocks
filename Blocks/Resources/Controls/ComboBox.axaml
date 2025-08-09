@@ -13,6 +13,10 @@
                     <ComboBoxItem>Item 1</ComboBoxItem>
                     <ComboBoxItem>Item 2</ComboBoxItem>
                 </ComboBox>
+                <ComboBox PlaceholderText="Select an item" Classes="opaque">
+                    <ComboBoxItem>Item 1</ComboBoxItem>
+                    <ComboBoxItem>Item 2</ComboBoxItem>
+                </ComboBox>
                 <ComboBox IsEnabled="False"
                           Width="200"
                           SelectedIndex="1"
@@ -54,12 +58,22 @@
                      Color="{DynamicResource BlockButtonForegroundColor}"
                      Opacity="{DynamicResource BlockPlaceholderOpacity}" />
 
-    <SolidColorBrush x:Key="BlockComboBoxFlatForegroundBrush"
+    <SolidColorBrush x:Key="BlockFlatComboBoxForegroundBrush"
                      Color="{DynamicResource BlockFlatButtonForegroundColor}" />
 
-    <SolidColorBrush x:Key="BlockComboBoxFlatPlaceholderForegroundBrush"
+    <SolidColorBrush x:Key="BlockFlatComboBoxPlaceholderForegroundBrush"
                      Color="{DynamicResource BlockFlatButtonForegroundColor}"
                      Opacity="{DynamicResource BlockPlaceholderOpacity}" />
+    
+    <SolidColorBrush x:Key="BlockOpaqueComboBoxBackgroundBrush" 
+                     Color="{DynamicResource BlockOpaqueButtonBackgroundColor}" />
+    
+    <SolidColorBrush x:Key="BlockOpaqueComboBoxForegroundBrush"
+                     Color="{DynamicResource BlockOpaqueButtonForegroundColor}"/>
+    
+    <SolidColorBrush x:Key="BlockOpaqueComboBoxPlaceholderForegroundBrush"
+                     Color="{DynamicResource BlockOpaqueButtonForegroundColor}"
+                     Opacity="{DynamicResource BlockPlaceholderOpacity}"/>
 
     <SolidColorBrush x:Key="BlockComboBoxPopupBackgroundBrush"
                      Color="{DynamicResource BlockRaisedBackgroundColor}" />
@@ -204,9 +218,23 @@
             <Style Selector="^ /template/ blk|BlockButton#ButtonBackground">
                 <Setter Property="Flat" Value="True" />
             </Style>
-            <Setter Property="Foreground" Value="{DynamicResource BlockCheckBoxForegroundBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource BlockFlatComboBoxForegroundBrush}" />
             <Setter Property="PlaceholderForeground"
-                    Value="{DynamicResource BlockComboBoxFlatPlaceholderForegroundBrush}" />
+                    Value="{DynamicResource BlockFlatComboBoxPlaceholderForegroundBrush}" />
+        </Style>
+        
+        <Style Selector="^.opaque">
+            <Setter Property="Foreground" Value="{DynamicResource BlockOpaqueComboBoxForegroundBrush}" />
+            <Setter Property="Background" Value="{DynamicResource BlockOpaqueComboBoxBackgroundBrush}" />
+            <Setter Property="PlaceholderForeground"
+                    Value="{DynamicResource BlockOpaqueComboBoxPlaceholderForegroundBrush}" />
+            <Style Selector="^ /template/ blk|BlockButton#ButtonBackground">
+                <Setter Property="Opaque" Value="True" />
+                <Setter Property="BorderBrush" Value="{TemplateBinding Foreground}" />
+            </Style>
+            <Style Selector="^ /template/ blk|AnimatedMenuIcon">
+                <Setter Property="Foreground" Value="{TemplateBinding Foreground}" />
+            </Style>
         </Style>
 
         <Style Selector="^.pill-left /template/ blk|BlockButton#ButtonBackground">

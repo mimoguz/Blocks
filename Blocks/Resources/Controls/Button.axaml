@@ -9,6 +9,7 @@
                 <Button Classes="flat">Flat Button</Button>
                 <Button Classes="destructive">Destructive Button</Button>
                 <Button Classes="flat destructive">Flat Destructive Button</Button>
+                <Button Classes="opaque">Opaque Button</Button>
                 <Button IsDefault="True">Default Button</Button>
                 <Button Classes="image-button">
                     <Path Data="{StaticResource BlockTestIcon}"
@@ -39,12 +40,47 @@
             </WrapPanel>
         </Border>
     </Design.PreviewWith>
+    
+    <!-- ****************************************************** -->
+    <!-- ********************* Resources ********************** -->
+    <!-- ****************************************************** -->
+    
+    <SolidColorBrush x:Key="BlockBtnBaseBackgroundBrush" 
+                     Color="{DynamicResource BlockBaseButtonBackgroundColor}" />
+    
+    <SolidColorBrush x:Key="BlockBtnForegroundBrush"
+                     Color="{DynamicResource BlockButtonForegroundColor}"/>
+    
+    <SolidColorBrush x:Key="BlockDefaultBtnBackgroundBrush" 
+                     Color="{DynamicResource BlockBaseSecondaryColor}" />
+    
+    <SolidColorBrush x:Key="BlockDefaultBtnForegroundBrush"
+                     Color="{DynamicResource BlockOnSecondaryColor}"/>
+    
+    <SolidColorBrush x:Key="BlockOpaqueBtnBackgroundBrush" 
+                     Color="{DynamicResource BlockOpaqueButtonBackgroundColor}" />
+    
+    <SolidColorBrush x:Key="BlockOpaqueBtnForegroundBrush"
+                     Color="{DynamicResource BlockOpaqueButtonForegroundColor}"/>
+    
+    <SolidColorBrush x:Key="BlockDestructiveBtnBaseBackgroundBrush" 
+                     Color="{DynamicResource BlockBaseDestructiveBackgroundColor}" />
+    
+    <SolidColorBrush x:Key="BlockDestructiveBtnForegroundBrush"
+                     Color="{DynamicResource BlockDestructiveForegroundColor}"/>
+
+    <SolidColorBrush x:Key="BlockFlatBtnForegroundBrush"
+                     Color="{DynamicResource BlockFlatButtonForegroundColor}"/>
+    
+    <!-- ****************************************************** -->
+    <!-- ********************** Themes ************************ -->
+    <!-- ****************************************************** -->
 
     <ControlTheme x:Key="{x:Type Button}"
                   TargetType="Button">
 
-        <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
-        <Setter Property="Foreground" Value="{DynamicResource BlockButtonForegroundBrush}" />
+        <Setter Property="Background" Value="{DynamicResource BlockBtnBaseBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource BlockBtnForegroundBrush}" />
         <Setter Property="Padding" Value="{DynamicResource BlockButtonPadding}" />
         <Setter Property="CornerRadius" Value="{DynamicResource BlockButtonCornerRadius}" />
         <Setter Property="FontWeight" Value="{DynamicResource BlockButtonFontWeight}" />
@@ -103,11 +139,20 @@
             <Setter Property="blk:Block.IsFlat" Value="True" />
         </Style>
         
+        <Style Selector="^.opaque">
+            <Setter Property="Foreground" Value="{DynamicResource BlockOpaqueBtnForegroundBrush}" />
+            <Setter Property="Background" Value="{DynamicResource BlockOpaqueBtnBackgroundBrush}" />
+            <Style Selector="^ /template/ blk|BlockButton#ButtonBackground">
+                <Setter Property="Opaque" Value="True" />
+                <Setter Property="BorderBrush" Value="{TemplateBinding Foreground}" />
+            </Style>
+        </Style>
+        
         <Style Selector="^[(blk|Block.IsFlat)=True]">
             <Style Selector="^ /template/ blk|BlockButton#ButtonBackground">
                 <Setter Property="Flat" Value="True" />
             </Style>
-            <Setter Property="Foreground" Value="{DynamicResource BlockFlatButtonForegroundBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource BlockFlatBtnForegroundBrush}" />
         </Style>
 
         <Style Selector="^.pill-left /template/ blk|BlockButton#ButtonBackground">
@@ -140,25 +185,25 @@
         </Style>
         
         <Style Selector="^.destructive">
-            <Setter Property="Foreground" Value="{DynamicResource BlockDestructiveForegroundBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource BlockDestructiveBtnForegroundBrush}" />
             <Style Selector="^ /template/ blk|BlockButton#ButtonBackground">
-                <Setter Property="Background" Value="{DynamicResource BlockBaseDestructiveBackgroundBrush}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource BlockBaseDestructiveBackgroundBrush}" />
+                <Setter Property="Background" Value="{DynamicResource BlockDestructiveBtnBaseBackgroundBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource BlockDestructiveBtnForegroundBrush}" />
             </Style>
             <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="Foreground" Value="{DynamicResource BlockDestructiveForegroundBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource BlockDestructiveBtnForegroundBrush}" />
             </Style>
         </Style>
         
         <Style Selector="^[IsDefault=True]">
-            <Setter Property="Foreground" Value="{DynamicResource BlockOnSecondaryBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource BlockDefaultBtnForegroundBrush}" />
             <Style Selector="^ /template/ blk|BlockButton#ButtonBackground">
                 <Setter Property="Opaque" Value="True" />
-                <Setter Property="Background" Value="{DynamicResource BlockBaseSecondaryBrush}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource BlockOnSecondaryBrush}" />
+                <Setter Property="Background" Value="{DynamicResource BlockDefaultBtnBackgroundBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource BlockDefaultBtnForegroundBrush}" />
             </Style>
             <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="Foreground" Value="{DynamicResource BlockOnSecondaryBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource BlockDefaultBtnForegroundBrush}" />
             </Style>
         </Style>
     </ControlTheme>
