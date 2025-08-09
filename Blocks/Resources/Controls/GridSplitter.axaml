@@ -32,38 +32,58 @@
         </Border>
     </Design.PreviewWith>
 
+    <!-- ****************************************************** -->
+    <!-- ********************* Resources ********************** -->
+    <!-- ****************************************************** -->
+
+    <SolidColorBrush x:Key="BlockGridSplitterBackgroundBrush"
+                     Color="Transparent" />
+
+    <SolidColorBrush x:Key="BlockGridSplitterBaseBorderBrush"
+                     Color="{DynamicResource BlockBaseViewBorderColor}" />
+
+    <SolidColorBrush x:Key="BlockGridSplitterFocusedBackgroundBrush"
+                     Color="{DynamicResource BlockBasePrimaryColor}"
+                     Opacity="{DynamicResource BlockFlatButtonHighlightOpacity}" />
+
+    <SolidColorBrush x:Key="BlockGridSplitterPreviewBrush"
+                     Color="{DynamicResource BlockBasePrimaryColor}"
+                     Opacity="{DynamicResource BlockPlaceholderOpacity}" />
+
+    <x:Double x:Key="BlockGridSplitterLineThickness">1</x:Double>
+    <x:Double x:Key="BlockGridSplitterMinSize">1</x:Double>
+
+    <!-- ****************************************************** -->
+    <!-- ********************** Themes ************************ -->
+    <!-- ****************************************************** -->
+
     <ControlTheme x:Key="{x:Type GridSplitter}" TargetType="GridSplitter">
 
-        <Setter Property="BorderBrush" Value="{DynamicResource BlockTransparentViewBorderBrush}" />
-        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BlockGridSplitterBaseBorderBrush}" />
+        <Setter Property="Background" Value="{DynamicResource BlockGridSplitterBackgroundBrush}" />
         <Setter Property="Focusable" Value="True" />
         <Setter Property="FocusAdorner" Value="{x:Null}" />
 
         <Setter Property="PreviewContent">
             <Template>
-                <Rectangle Fill="{DynamicResource BlockBasePrimaryBrush}" />
+                <Rectangle Fill="{DynamicResource BlockGridSplitterPreviewBrush}" />
             </Template>
         </Setter>
 
         <Setter Property="Template">
             <ControlTemplate>
-                <Panel Background="{TemplateBinding Background}">
-                    <Border Name="FocusVisual"
-                            Padding="{TemplateBinding Padding}"
-                            Background="{DynamicResource BlockBasePrimaryBrush}"
-                            Opacity="0"
-                            Cursor="{TemplateBinding Cursor}" 
-                            HorizontalAlignment="Stretch"
-                            VerticalAlignment="Stretch"/>
+                <Panel Name="BaseContainer"
+                       Background="{TemplateBinding Background}"
+                       Cursor="{TemplateBinding Cursor}">
                     <Border Name="Line"
-                            Background="{TemplateBinding BorderBrush}" />
-                    <Border Name="Overlay"
-                            Background="Transparent">
+                            Margin="{TemplateBinding Padding}"
+                            Background="{TemplateBinding BorderBrush}"
+                            Opacity="{DynamicResource BlockGridSplitterLineOpacity}">
                         <Border.Transitions>
                             <Transitions>
-                                <BrushTransition Property="Background"
-                                                 Duration="{DynamicResource BlockButtonStateTransitionDuration}"
-                                                 Easing="CubicEaseOut" />
+                                <DoubleTransition Property="Opacity"
+                                                  Duration="{DynamicResource BlockButtonStateTransitionDuration}"
+                                                  Easing="CubicEaseOut" />
                             </Transitions>
                         </Border.Transitions>
                     </Border>
@@ -76,10 +96,7 @@
                 <Setter Property="Height" Value="1" />
                 <Setter Property="HorizontalAlignment" Value="Stretch" />
             </Style>
-            <Style Selector="^ /template/ Border#Overlay">
-                <Setter Property="Height" Value="1" />
-                <Setter Property="HorizontalAlignment" Value="Stretch" />
-            </Style>
+            <Setter Property="MinHeight" Value="{DynamicResource BlockGridSplitterMinSize}" />
         </Style>
 
         <Style Selector="^[ResizeDirection=Columns]">
@@ -87,21 +104,14 @@
                 <Setter Property="Width" Value="1" />
                 <Setter Property="VerticalAlignment" Value="Stretch" />
             </Style>
-            <Style Selector="^ /template/ Border#Overlay">
-                <Setter Property="Width" Value="1" />
-                <Setter Property="VerticalAlignment" Value="Stretch" />
-            </Style>
+            <Setter Property="MinWidth" Value="{DynamicResource BlockGridSplitterMinSize}" />
         </Style>
 
-        <Style Selector="^:pointerover /template/ Border#Overlay">
-            <Setter Property="Background" Value="{DynamicResource BlockTransparentHighlightBrush}" />
+        <Style Selector="^:pointerover /template/ Border#Line, ^:pressed /template/ Border#Line">
+            <Setter Property="Opacity" Value="{DynamicResource BlockGridSplitterLineHighlightOpacity}" />
         </Style>
 
-        <Style Selector="^:pressed /template/ Border#Overlay">
-            <Setter Property="Background" Value="{DynamicResource BlockTransparentShadeBrush}" />
-        </Style>
-        
-        <Style Selector="^:focus-visible /template/ Border#FocusVisual">
+        <Style Selector="^:focus-visible /template/ Panel#BaseContainer">
             <Setter Property="Opacity" Value="{DynamicResource BlockButtonHighlightOpacity}" />
         </Style>
     </ControlTheme>

@@ -36,15 +36,18 @@
             <x:Double x:Key="BlockFlyoutBorderOpacity">0.08</x:Double>
             <x:Double x:Key="BlockViewBorderOpacity">0.15</x:Double>
             <x:Double x:Key="BlockViewErrorBorderOpacity">0.70</x:Double>
+            <x:Double x:Key="BlockGridSplitterLineOpacity">0.15</x:Double>
+            
 
             <!-- Highlight -->
             <x:Double x:Key="BlockButtonHighlightOpacity">0.18</x:Double>
             <x:Double x:Key="BlockFlatButtonHighlightOpacity">0.08</x:Double>
             <x:Double x:Key="BlockScrollBarPageButtonHighlightOpacity">0.08</x:Double>
             <x:Double x:Key="BlockScrollBarThumbHighlightOpacity">0.45</x:Double>
-            <x:Double x:Key="BlockViewBorderHighlightOpacity">0.30</x:Double>
+            <x:Double x:Key="BlockViewBorderHighlightOpacity">0.3</x:Double>
             <x:Double x:Key="BlockViewErrorBorderHighlightOpacity">1</x:Double>
             <x:Double x:Key="BlockSliderTrackHighlightOpacity">0.88</x:Double>
+            <x:Double x:Key="BlockGridSplitterLineHighlightOpacity">0.3</x:Double>
 
             <!-- Shade -->
             <x:Double x:Key="BlockButtonShadeOpacity">0.28</x:Double>
@@ -57,6 +60,7 @@
             <x:Double x:Key="BlockDisabledOpacity">0.5</x:Double>
             <x:Double x:Key="BlockPlaceholderOpacity">0.67</x:Double>
             <x:Double x:Key="BlockSeparatorOpacity">0.15</x:Double>
+            <x:Double x:Key="BlockDarkSeparatorOpacity">0.12</x:Double>
             <x:Double x:Key="BlockViewSelectionOpacity">0.2</x:Double>
         </ResourceDictionary>
 
@@ -83,17 +87,18 @@
             <x:Double x:Key="BlockViewBackgroundOpacity">0.08</x:Double>
             <x:Double x:Key="BlockProgressBarBackgroundOpacity">0.1</x:Double>
             <x:Double x:Key="BlockScrollBarTrackOpacity">0.08</x:Double>
-            <x:Double x:Key="BlockScrollBarThumbOpacity">0.50</x:Double>
+            <x:Double x:Key="BlockScrollBarThumbOpacity">0.5</x:Double>
             <x:Double x:Key="BlockSliderTrackOpacity">0.75</x:Double>
 
             <!-- Focus -->
-            <x:Double x:Key="BlockButtonFocusOpacity">0.90</x:Double>
-            <x:Double x:Key="BlockViewFocusOpacity">0.90</x:Double>
+            <x:Double x:Key="BlockButtonFocusOpacity">0.9</x:Double>
+            <x:Double x:Key="BlockViewFocusOpacity">0.9</x:Double>
 
             <!-- Border -->
             <x:Double x:Key="BlockFlyoutBorderOpacity">0.1</x:Double>
             <x:Double x:Key="BlockViewBorderOpacity">0.2</x:Double>
             <x:Double x:Key="BlockViewErrorBorderOpacity">0.75</x:Double>
+            <x:Double x:Key="BlockGridSplitterLineOpacity">0.2</x:Double>
 
             <!-- Highlight -->
             <x:Double x:Key="BlockButtonHighlightOpacity">0.28</x:Double>
@@ -103,6 +108,7 @@
             <x:Double x:Key="BlockViewErrorBorderHighlightOpacity">1</x:Double>
             <x:Double x:Key="BlockSliderTrackHighlightOpacity">0.88</x:Double>
             <x:Double x:Key="BlockFlatButtonHighlightOpacity">0.08</x:Double>
+            <x:Double x:Key="BlockGridSplitterLineHighlightOpacity">0.35</x:Double>
 
             <!-- Shade -->
             <x:Double x:Key="BlockButtonShadeOpacity">0.40</x:Double>
@@ -115,6 +121,7 @@
             <x:Double x:Key="BlockDisabledOpacity">0.5</x:Double>
             <x:Double x:Key="BlockPlaceholderOpacity">0.6</x:Double>
             <x:Double x:Key="BlockSeparatorOpacity">0.2</x:Double>
+            <x:Double x:Key="BlockDarkSeparatorOpacity">0.33</x:Double>
             <x:Double x:Key="BlockViewSelectionOpacity">0.3</x:Double>
         </ResourceDictionary>
     </ResourceDictionary.ThemeDictionaries>

@@ -6,6 +6,7 @@
     <x:Double x:Key="BlockFontSizeLarge">15</x:Double>
     <x:Double x:Key="BlockFontSizeNormal">13</x:Double>
     <x:Double x:Key="BlockFontSizeSmall">11</x:Double>
+    <x:Double x:Key="BlockHeaderedControlHeaderFontSize">13</x:Double>
     
     <Thickness x:Key="BlockControlBorderThickness">1</Thickness>
     <Thickness x:Key="BlockFlyoutBorderThickness">1</Thickness>

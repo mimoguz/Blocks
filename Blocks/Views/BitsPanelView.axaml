@@ -91,13 +91,13 @@
                                         <TextBlock IsVisible="{Binding !Active}">Not active</TextBlock>
                                     </Panel>
                                 </blk:Tile>
-                                <Separator Height="1" />
+                                <Separator Height="1"/>
                                 <blk:Tile Header="Only Header and Left" Classes="demo" HorizontalAlignment="Stretch">
                                     <blk:Tile.RightContent>
                                         <ToggleSwitch IsChecked="{Binding Active}" />
                                     </blk:Tile.RightContent>
                                 </blk:Tile>
-                                <Separator Height="1" />
+                                <Separator Height="1"/>
                                 <blk:CommandTile Header="Command Tile"
                                                  Classes="demo"
                                                  HorizontalAlignment="Stretch"

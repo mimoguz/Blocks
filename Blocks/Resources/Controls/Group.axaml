@@ -14,20 +14,40 @@
             </blk:Group>
         </StackPanel>
     </Design.PreviewWith>
-
+    
+    <!-- ****************************************************** -->
+    <!-- ********************* Resources ********************** -->
+    <!-- ****************************************************** -->
+    
+    <SolidColorBrush x:Key="BlockGroupBackgroundBrush" 
+                     Color="{DynamicResource BlockRaisedBackgroundColor}" />
+    
+    <SolidColorBrush x:Key="BlockGroupBorderBrush"
+                     Color="{DynamicResource BlockBaseViewBorderColor}"
+                     Opacity="{DynamicResource BlockFlyoutBorderOpacity}"/>
+    
+    <SolidColorBrush x:Key="BlockGroupContentForegroundBrush"
+                     Color="{DynamicResource BlockWindowForegroundColor}"/>
+    
+    <SolidColorBrush x:Key="BlockGroupHeaderForegroundBrush" 
+                     Color="{DynamicResource BlockWindowForegroundColor}" />
+    
     <Thickness x:Key="BlockGroupHeaderMargin">0,0,0,12</Thickness>
-    <Thickness x:Key="BlockGroupHeaderShadowOffset">2,0,0,0</Thickness>
+    <Thickness x:Key="BlockGroupHeaderShadowFix">2,0,0,0</Thickness>
     <FontWeight x:Key="BlockGroupHeaderFontWeight">Bold</FontWeight>
-    <sys:Double x:Key="BlockHeaderedControlHeaderFontSize">14</sys:Double>
     <Thickness x:Key="BlockGroupPadding">0</Thickness>
+    
+    <!-- ****************************************************** -->
+    <!-- ********************** Themes ************************ -->
+    <!-- ****************************************************** -->
 
     <ControlTheme x:Key="{x:Type blk:Group}" TargetType="blk:Group">
 
         <Setter Property="IsTabStop" Value="False" />
-        <Setter Property="MinHeight" Value="{DynamicResource BlockMinButtonSize}" />
-        <Setter Property="Background" Value="{DynamicResource BlockRaisedBackgroundBrush}" />
+        <Setter Property="Background" Value="{DynamicResource BlockGroupBackgroundBrush}" />
         <Setter Property="CornerRadius" Value="{DynamicResource BlockViewCornerRadius}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource BlockTransparentFlyoutBorderBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BlockGroupBorderBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource BlockGroupContentForegroundBrush}" />
         <Setter Property="BorderThickness" Value="{DynamicResource BlockControlBorderThickness}" />
         <Setter Property="Padding" Value="{DynamicResource BlockGroupPadding}" />
 
@@ -38,9 +58,10 @@
                                DockPanel.Dock="Top">
                         <ContentPresenter Name="PART_HeaderPresenter"
                                           IsVisible="{TemplateBinding Header, Converter={x:Static ObjectConverters.IsNotNull}}"
-                                          Margin="{DynamicResource BlockGroupHeaderShadowOffset}"
+                                          Margin="{DynamicResource BlockGroupHeaderShadowFix}"
                                           FontSize="{DynamicResource BlockHeaderedControlHeaderFontSize}"
                                           FontWeight="{DynamicResource BlockGroupHeaderFontWeight}"
+                                          Foreground="{DynamicResource BlockGroupHeaderForegroundBrush}"
                                           Content="{TemplateBinding Header}"
                                           RecognizesAccessKey="True"
                                           ContentTemplate="{TemplateBinding HeaderTemplate}" />
@@ -66,6 +87,7 @@
                                           ContentTemplate="{TemplateBinding ContentTemplate}"
                                           Content="{TemplateBinding Content}"
                                           RecognizesAccessKey="True"
+                                          Foreground="{TemplateBinding Foreground}"
                                           VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                                           HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" />
                     </Border>

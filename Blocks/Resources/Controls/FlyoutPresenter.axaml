@@ -1,13 +1,19 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <SolidColorBrush x:Key="BlockFlyoutBackgroundBrush"
+                     Color="{DynamicResource BlockRaisedBackgroundColor}" />
 
-
+    <SolidColorBrush x:Key="BlockFlyoutBorderBrush"
+                     Color="{DynamicResource BlockBaseViewBorderColor}"
+                     Opacity="{DynamicResource BlockFlyoutBorderOpacity}" />
+    
     <ControlTheme x:Key="{x:Type FlyoutPresenter}" TargetType="FlyoutPresenter">
 
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
-        <Setter Property="Background" Value="{DynamicResource BlockRaisedBackgroundBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource BlockTransparentFlyoutBorderBrush}" />
+        <Setter Property="Background" Value="{DynamicResource BlockFlyoutBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BlockFlyoutBorderBrush}" />
         <Setter Property="BorderThickness" Value="{DynamicResource BlockFlyoutBorderThickness}" />
         <Setter Property="Padding" Value="0" />
         <Setter Property="CornerRadius" Value="{DynamicResource BlockFlyoutCornerRadius}" />
