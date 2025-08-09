@@ -47,13 +47,14 @@
                     </Border>
                     <Border Name="EffectBorder"
                             Background="Transparent"
+                            IsVisible="False"
                             CornerRadius="{TemplateBinding CornerRadius}"
-                            IsHitTestVisible="True">
+                            IsHitTestVisible="False">
                         <Border.Transitions>
                             <Transitions>
                                 <BrushTransition Property="Background"
                                                  Duration="{DynamicResource BlockButtonStateTransitionDuration}"
-                                                 Easing="CubicEaseOut" />
+                                                 Easing="CubicEaseInOut" />
                             </Transitions>
                         </Border.Transitions>
                     </Border>
@@ -97,22 +98,16 @@
                 <Setter Property="CornerRadius" Value="{TemplateBinding CornerRadius}" />
             </Style>
 
-            <Style Selector="^[Highlighted=True]">
-                <Style Selector="^ /template/ Border#BaseBorder">
+            <Style Selector="^[Highlighted=True]  /template/ Border#BaseBorder">
                     <Setter Property="Opacity" Value="{DynamicResource BlockButtonHighlightOpacity}" />
-                </Style>
             </Style>
 
-            <Style Selector="^[Shaded=True]">
-                <Style Selector="^ /template/ Border#BaseBorder">
+            <Style Selector="^[Shaded=True] /template/ Border#BaseBorde">
                     <Setter Property="Opacity" Value="{DynamicResource BlockButtonShadeOpacity}" />
-                </Style>
             </Style>
 
-            <Style Selector="^[Focused=True]">
-                <Style Selector="^ /template/ Border#FocusVisual">
+            <Style Selector="^[Focused=True] /template/ Border#FocusVisual">
                     <Setter Property="Opacity" Value="{DynamicResource BlockButtonFocusOpacity}" />
-                </Style>
             </Style>
         </Style>
 
@@ -128,13 +123,13 @@
                 <Setter Property="CornerRadius" Value="{TemplateBinding CornerRadius}" />
             </Style>
 
-            <Style Selector="^[Highlighted=True]">
+            <Style Selector="^[Opaque=False][Highlighted=True]">
                 <Style Selector="^ /template/ Border#BaseBorder">
                     <Setter Property="Opacity" Value="{DynamicResource BlockFlatButtonHighlightOpacity}" />
                 </Style>
             </Style>
 
-            <Style Selector="^[Shaded=True]">
+            <Style Selector="^[Opaque=False][Shaded=True]">
                 <Style Selector="^ /template/ Border#BaseBorder">
                     <Setter Property="Opacity" Value="{DynamicResource BlockFlatButtonShadeOpacity}" />
                 </Style>

@@ -159,22 +159,22 @@
                             </Style>
                         </TabControl.Styles>
                         <TabItem Header="Tab Item 1">
-                            <blk:PlaceHolder Margin="8" StrokeBrush="#FA0050" />
+                            <blk:PlaceHolder Margin="8" StrokeBrush="#FA0050" Text="Tab 1" />
                         </TabItem>
                         <TabItem Header="Tab Item 2 - Decorless" Classes="hide-decoration">
-                            <blk:PlaceHolder Margin="8" StrokeBrush="DarkOrange" />
+                            <blk:PlaceHolder Margin="8" StrokeBrush="DarkOrange" Text="Tab 2" />
                         </TabItem>
                         <TabItem Header="Tab Item 3">
-                            <blk:PlaceHolder Margin="8" StrokeBrush="Gold" />
+                            <blk:PlaceHolder Margin="8" StrokeBrush="Gold" Text="Tab 3" />
                         </TabItem>
                         <TabItem Header="Tab Item 4">
-                            <blk:PlaceHolder Margin="8" StrokeBrush="LimeGreen" />
+                            <blk:PlaceHolder Margin="8" StrokeBrush="LimeGreen" Text="Tab 4" />
                         </TabItem>
                         <TabItem Header="Tab Item 5">
-                            <blk:PlaceHolder Margin="8" StrokeBrush="Turquoise" />
+                            <blk:PlaceHolder Margin="8" StrokeBrush="Turquoise" Text="Tab 5" />
                         </TabItem>
                         <TabItem Header="Tab Item 6">
-                            <blk:PlaceHolder Margin="8" StrokeBrush="DeepSkyBlue" />
+                            <blk:PlaceHolder Margin="8" StrokeBrush="DeepSkyBlue" Text="Tab 6" />
                         </TabItem>
                     </TabControl>
 

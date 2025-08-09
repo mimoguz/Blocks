@@ -14,6 +14,14 @@
                     </DropDownButton.Flyout>
                     Drop-down button
                 </DropDownButton>
+                <DropDownButton VerticalAlignment="Top" Classes="opaque">
+                    <DropDownButton.Flyout>
+                        <Flyout>
+                            <TextBlock Margin="10">Flyout</TextBlock>
+                        </Flyout>
+                    </DropDownButton.Flyout>
+                    Drop-down button
+                </DropDownButton>
                 <DropDownButton VerticalAlignment="Top" Classes="menu-button flat"
                                 blk:Block.ActiveForeground="DeepPink">
                     <DropDownButton.Flyout>
@@ -42,6 +50,12 @@
 
     <SolidColorBrush x:Key="BlockDropDownButtonActiveChevronBrush"
                      Color="{DynamicResource BlockBasePrimaryColor}" />
+    
+    <SolidColorBrush x:Key="BlockOpaqueDropDownButtonBackgroundBrush" 
+                     Color="{DynamicResource BlockOpaqueButtonBackgroundColor}" />
+    
+    <SolidColorBrush x:Key="BlockOpaqueDropDownButtonForegroundBrush"
+                     Color="{DynamicResource BlockOpaqueButtonForegroundColor}"/>
 
     <blk:AnimatedMenuIconStyle x:Key="BlockDropDownButtonMenuIconStyle">Chevron</blk:AnimatedMenuIconStyle>
     <Thickness x:Key="BlockDropDownButtonChevronMargin">0,0,8,0</Thickness>
@@ -116,6 +130,18 @@
         <!-- Classes -->
         <Style Selector="^.image-button">
             <Setter Property="Padding" Value="{DynamicResource BlockImageButtonPadding}" />
+        </Style>
+        
+        <Style Selector="^.opaque">
+            <Setter Property="Foreground" Value="{DynamicResource BlockOpaqueComboBoxForegroundBrush}" />
+            <Setter Property="Background" Value="{DynamicResource BlockOpaqueComboBoxBackgroundBrush}" />
+            <Style Selector="^ /template/ blk|BlockButton#ButtonBackground">
+                <Setter Property="Opaque" Value="True" />
+                <Setter Property="BorderBrush" Value="{TemplateBinding Foreground}" />
+            </Style>
+            <Style Selector="^ /template/ blk|AnimatedMenuIcon#MenuIcon">
+                <Setter Property="Foreground" Value="{TemplateBinding Foreground}" />
+            </Style>
         </Style>
 
         <Style Selector="^.flat">
