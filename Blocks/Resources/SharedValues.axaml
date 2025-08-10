@@ -20,7 +20,6 @@
     <Thickness x:Key="BlockPopupShadowMargin">12,8,12,16</Thickness>
     <Thickness x:Key="BlockRadioButtonGap">8,4</Thickness>
     <Thickness x:Key="BlockRadioButtonPadding">0,4</Thickness>
-    <Thickness x:Key="BlockTabItemPadding">9,8,20,8</Thickness>
     <Thickness x:Key="BlockVerticalInputPadding">6</Thickness>
     
     
@@ -51,7 +50,6 @@
     <sys:Double x:Key="BlockSplitButtonGap">1</sys:Double>
     <sys:Double x:Key="BlockTabLineThickness">3</sys:Double>
     <sys:Double x:Key="BlockTabSpacing">2</sys:Double>
-    <sys:Double x:Key="BlockTabVerticalLineHeight">20</sys:Double>
     
     <sys:TimeSpan x:Key="BlockButtonStateTransitionDuration">0:0:0.1</sys:TimeSpan>
     <sys:TimeSpan x:Key="BlockLongStateTransitionDuration">0:0:0.2</sys:TimeSpan>

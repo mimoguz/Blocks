@@ -3,17 +3,19 @@
                     xmlns:conv="clr-namespace:Blocks.Converters">
     <Design.PreviewWith>
         <Border Background="{DynamicResource BlockWindowBackgroundBrush}" Padding="10" Width="300">
-            <ScrollBar Theme="{DynamicResource BlockHorizontalTabControlScrollBar}" 
+            <ScrollBar Theme="{DynamicResource BlockHorizontalTabControlScrollBar}"
                        Width="200"
-                       Orientation="Horizontal"/>
-            
+                       Foreground="AliceBlue" Background="SlateGray"
+                       Orientation="Horizontal" />
+
         </Border>
     </Design.PreviewWith>
     
+    <x:Double x:Key="BlockHTabStripScrollBarRepeatButtonSize">32</x:Double>
+    <CornerRadius x:Key="BlockHTabStripScrollBarRepeatButtonCornerRadius">999</CornerRadius>
+    
     <ControlTheme x:Key="BlockHorizontalTabControlScrollBar" TargetType="ScrollBar">
-        
-        <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
-        <Setter Property="Foreground" Value="{DynamicResource BlockButtonForegroundBrush}" />
+
         <Setter Property="ShowDelay" Value="0:0:0.001" />
 
         <Style Selector="^:horizontal">
@@ -22,39 +24,43 @@
                     <Grid x:Name="Root">
                         <Border x:Name="HorizontalRoot">
                             <Grid ColumnDefinitions="Auto,*,Auto">
-                                
+
                                 <RepeatButton Name="PART_LineUpButton"
                                               Grid.Column="0"
                                               Background="{TemplateBinding Background}"
                                               VerticalAlignment="Center"
                                               Focusable="False"
                                               Classes="flat"
-                                              CornerRadius="999"
-                                              Height="32" Width="32"
-                                              MinHeight="32" MinWidth="32"
+                                              CornerRadius="{DynamicResource BlockHTabStripScrollBarRepeatButtonCornerRadius}"
+                                              Height="{DynamicResource BlockHTabStripScrollBarRepeatButtonSize}" 
+                                              Width="{DynamicResource BlockHTabStripScrollBarRepeatButtonSize}"
+                                              MinHeight="{DynamicResource BlockHTabStripScrollBarRepeatButtonSize}" 
+                                              MinWidth="{DynamicResource BlockHTabStripScrollBarRepeatButtonSize}"
                                               Padding="0">
                                     <PathIcon Data="{DynamicResource BlockArrowLeft5X8}"
                                               Width="5"
                                               Height="8"
                                               Foreground="{TemplateBinding Foreground}" />
                                 </RepeatButton>
-                                
+
                                 <RepeatButton Name="PART_LineDownButton"
                                               Background="{TemplateBinding Background}"
                                               VerticalAlignment="Center"
                                               Grid.Column="2"
                                               Focusable="False"
                                               Classes="flat"
-                                              CornerRadius="999"
-                                              Height="32" Width="32"
-                                              MinHeight="32" MinWidth="32"
+                                              CornerRadius="{DynamicResource BlockHTabStripScrollBarRepeatButtonCornerRadius}"
+                                              Height="{DynamicResource BlockHTabStripScrollBarRepeatButtonSize}" 
+                                              Width="{DynamicResource BlockHTabStripScrollBarRepeatButtonSize}"
+                                              MinHeight="{DynamicResource BlockHTabStripScrollBarRepeatButtonSize}" 
+                                              MinWidth="{DynamicResource BlockHTabStripScrollBarRepeatButtonSize}"
                                               Padding="0">
                                     <PathIcon Data="{DynamicResource BlockArrowRight5X8}"
                                               Width="5"
                                               Height="8"
                                               Foreground="{TemplateBinding Foreground}" />
                                 </RepeatButton>
-                               
+
                             </Grid>
                         </Border>
                     </Grid>

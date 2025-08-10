@@ -164,7 +164,7 @@
                         <TabItem Header="Tab Item 2 - Decorless" Classes="hide-decoration">
                             <blk:PlaceHolder Margin="8" StrokeBrush="DarkOrange" Text="Tab 2" />
                         </TabItem>
-                        <TabItem Header="Tab Item 3">
+                        <TabItem Header="Tab Item 3 - Opaque" Classes="opaque">
                             <blk:PlaceHolder Margin="8" StrokeBrush="Gold" Text="Tab 3" />
                         </TabItem>
                         <TabItem Header="Tab Item 4">

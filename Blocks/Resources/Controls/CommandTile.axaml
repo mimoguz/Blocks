@@ -22,8 +22,8 @@
         </Border>
     </Design.PreviewWith>
 
-    <SolidColorBrush x:Key="BlockCommandTileBaseBackgroundBrush" Color="{DynamicResource BlockBaseButtonBackgroundColor}" />
-    
+    <SolidColorBrush x:Key="BlockCommandTileBaseBackgroundBrush" 
+                     Color="{DynamicResource BlockBaseButtonBackgroundColor}" />
 
     <ControlTheme x:Key="{x:Type blk:CommandTile}"
                   TargetType="blk:CommandTile">

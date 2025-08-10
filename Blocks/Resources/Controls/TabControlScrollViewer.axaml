@@ -24,15 +24,28 @@
         </Border>
     </Design.PreviewWith>
 
+    <!-- ****************************************************** -->
+    <!-- ********************* Resources ********************** -->
+    <!-- ****************************************************** -->
+    
+    <SolidColorBrush x:Key="BlockTabControlScrollButtonBaseBackgroundBrush" 
+                     Color="{DynamicResource BlockBaseButtonBackgroundColor}"/>
+    <SolidColorBrush x:Key="BlockTabControlScrollButtonArrowBrush" 
+                     Color="{DynamicResource BlockWindowForegroundColor}"/>
+    
     <Thickness x:Key="BlockHorizontalTabControlScrollMargin">24,0</Thickness>
     <Thickness x:Key="BlockThicknessZero">0</Thickness>
+    
+    <!-- ****************************************************** -->
+    <!-- ********************** Themes ************************ -->
+    <!-- ****************************************************** -->
 
     <ControlTheme x:Key="BlockTabControlScrollViewer" TargetType="ScrollViewer">
 
         <Setter Property="VerticalScrollBarVisibility" Value="Disabled" />
         <Setter Property="HorizontalScrollBarVisibility" Value="Disabled" />
-        <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
-        <Setter Property="Foreground" Value="{DynamicResource BlockWindowForegroundBrush}" />
+        <Setter Property="Background" Value="{DynamicResource BlockTabControlScrollButtonBaseBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource BlockTabControlScrollButtonArrowBrush}" />
         <Setter Property="AllowAutoHide" Value="False" />
 
         <Setter Property="Template">

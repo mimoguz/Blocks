@@ -86,14 +86,13 @@
                      Color="{DynamicResource BlockBasePrimaryColor}" />
 
     <Thickness x:Key="BlockComboBoxPadding">16,8</Thickness>
-    <Thickness x:Key="BlockDComboBoxnChevronMargin">0,0,8,0</Thickness>
+    <Thickness x:Key="BlockComboBoxChevronMargin">0,0,8,0</Thickness>
     
     <blk:AnimatedMenuIconStyle x:Key="BlockComboBoxMenuIconStyle">Chevron</blk:AnimatedMenuIconStyle>
 
     <!-- ****************************************************** -->
     <!-- ********************** Themes ************************ -->
     <!-- ****************************************************** -->
-
 
     <ControlTheme x:Key="{x:Type ComboBox}" TargetType="ComboBox">
 
@@ -124,7 +123,7 @@
                                               Grid.Column="1"
                                               Background="{TemplateBinding Foreground}"
                                               Foreground="{DynamicResource BlockComboBoxActiveChevronBrush}"
-                                              Margin="{DynamicResource BlockDComboBoxnChevronMargin}"
+                                              Margin="{DynamicResource BlockComboBoxChevronMargin}"
                                               MenuIconStyle="{DynamicResource BlockComboBoxMenuIconStyle}" />
                         <TextBlock x:Name="PlaceholderTextBlock"
                                    Grid.Column="0"
