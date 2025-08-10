@@ -70,11 +70,28 @@
             </ControlTemplate>
         </Setter>
     </ControlTheme>
+    
+    <!-- ****************************************************** -->
+    <!-- ********************* Resources ********************** -->
+    <!-- ****************************************************** -->
+    
+    <SolidColorBrush x:Key="BlockMenuItemBaseBackgroundBrush" 
+                     Color="{DynamicResource BlockBaseButtonBackgroundColor}" />
+    
+    <SolidColorBrush x:Key="BlockMenuItemForegroundBrush"
+                     Color="{DynamicResource BlockWindowForegroundColor}"/>
+    
+    <SolidColorBrush x:Key="BlockMenuItemActiveChevronBrush"
+                     Color="{DynamicResource BlockBasePrimaryColor}" />
+    
+    <!-- ****************************************************** -->
+    <!-- ********************** Themes ************************ -->
+    <!-- ****************************************************** -->
 
     <ControlTheme x:Key="{x:Type MenuItem}" TargetType="MenuItem">
 
-        <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
-        <Setter Property="Foreground" Value="{DynamicResource BlockButtonForegroundBrush}" />
+        <Setter Property="Background" Value="{DynamicResource BlockMenuItemBaseBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource BlockMenuItemForegroundBrush}" />
         <Setter Property="Padding" Value="{DynamicResource BlockMenuItemPadding}" />
         <Setter Property="CornerRadius" Value="{DynamicResource BlockButtonCornerRadius}" />
         <Setter Property="FontWeight" Value="Normal" />
@@ -133,7 +150,8 @@
                                               MenuIconStyle="RightChevronHierarchical"
                                               VerticalAlignment="Center"
                                               Margin="{DynamicResource BlockMenuChevronMargin}"
-                                              Background="{TemplateBinding Foreground}"/>
+                                              Background="{TemplateBinding Foreground}"
+                                              Foreground="{DynamicResource BlockMenuItemActiveChevronBrush}"/>
                     </Grid>
 
                     <Popup Name="PART_Popup"
@@ -238,7 +256,7 @@
         </Style>
     </ControlTheme>
 
-    <ControlTheme x:Key="HorizontalMenuItem" TargetType="MenuItem" BasedOn="{StaticResource FluentTopLevelMenuItem}">
+    <ControlTheme x:Key="HorizontalMenuItem" TargetType="MenuItem" BasedOn="{StaticResource BlockTopLevelMenuItem}">
     </ControlTheme>
 
 </ResourceDictionary>

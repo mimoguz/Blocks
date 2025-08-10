@@ -11,11 +11,32 @@
             </Menu>
         </Border>
     </Design.PreviewWith>
+    
+    <!-- ****************************************************** -->
+    <!-- ********************* Resources ********************** -->
+    <!-- ****************************************************** -->
+
+    <SolidColorBrush x:Key="BlockTopLevelMenuItemBaseBackgroundBrush"
+                     Color="{DynamicResource BlockBaseButtonBackgroundColor}" />
+
+    <SolidColorBrush x:Key="BlockTopLevelMenuItemForegroundBrush"
+                     Color="{DynamicResource BlockWindowForegroundColor}" />
+    
+    <SolidColorBrush x:Key="BlockTopLevelMenuItemPopupBackgroundBrush"
+                     Color="{DynamicResource BlockRaisedBackgroundColor}" />
+
+    <SolidColorBrush x:Key="BlockTopLevelMenuItemPopupBorderBrush"
+                     Color="{DynamicResource BlockBaseViewBorderColor}"
+                     Opacity="{DynamicResource BlockFlyoutBorderOpacity}" />
+    
+    <!-- ****************************************************** -->
+    <!-- ********************** Themes ************************ -->
+    <!-- ****************************************************** -->
 
     <ControlTheme x:Key="BlockTopLevelMenuItem" TargetType="MenuItem">
 
-        <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
-        <Setter Property="Foreground" Value="{DynamicResource BlockButtonForegroundBrush}" />
+        <Setter Property="Background" Value="{DynamicResource BlockTopLevelMenuItemBaseBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource BlockTopLevelMenuItemForegroundBrush}" />
         <Setter Property="Padding" Value="{DynamicResource BlockMenuItemPadding}" />
         <Setter Property="CornerRadius" Value="{DynamicResource BlockButtonCornerRadius}" />
         <Setter Property="FontWeight" Value="Normal" />
@@ -49,10 +70,10 @@
                            IsLightDismissEnabled="False"
                            IsOpen="{TemplateBinding IsSubMenuOpen, Mode=TwoWay}">
                         <Border x:Name="PopupBorder"
-                                BorderBrush="{DynamicResource BlockTransparentFlyoutBorderBrush}"
+                                BorderBrush="{DynamicResource BlockTopLevelMenuItemPopupBorderBrush}"
                                 BorderThickness="{DynamicResource BlockFlyoutBorderThickness}"
                                 CornerRadius="{DynamicResource BlockFlyoutCornerRadius}"
-                                Background="{DynamicResource BlockRaisedBackgroundBrush}"
+                                Background="{DynamicResource BlockTopLevelMenuItemPopupBackgroundBrush}"
                                 Padding="{DynamicResource BlockFlyoutPadding}"
                                 ClipToBounds="True">
                             <ScrollViewer
@@ -94,10 +115,7 @@
         <Style Selector="^[IsSubMenuOpen=True] /template/ blk|BlockButton#ButtonBackground">
             <Setter Property="Flat" Value="False" />
         </Style>
-
-        <Style Selector="^:open /template/ PathIcon#PART_ChevronPath">
-            <Setter Property="Opacity" Value="1" />
-        </Style>
+        
     </ControlTheme>
 
     <ControlTheme x:Key="{x:Type Menu}" TargetType="Menu">
