@@ -150,12 +150,12 @@
         </Style>
 
         <Style Selector="^.opaque /template/ blk|BlockButton#ButtonBackground">
-                <Setter Property="Background" Value="{DynamicResource BlockOpaqueTabItemSelectedBackgroundBrush}" />
-                <Style Selector="^ /template/ Rectangle#Mark">
-                    <Setter Property="Fill" Value="{TemplateBinding Foreground}" />
-                </Style>
+            <Style Selector="^ /template/ Rectangle#Mark">
+                <Setter Property="Fill" Value="{TemplateBinding Foreground}" />
+            </Style>
         </Style>
         <Style Selector="^.opaque:selected">
+            <Setter Property="Background" Value="{DynamicResource BlockOpaqueTabItemSelectedBackgroundBrush}" />
             <Setter Property="Foreground" Value="{DynamicResource BlockOpaqueTabItemSelectedForegroundBrush}" />
             <Style Selector="^.opaque /template/ blk|BlockButton#ButtonBackground">
                 <Setter Property="Opaque" Value="True" />

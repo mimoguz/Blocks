@@ -20,7 +20,7 @@
                      Color="{DynamicResource BlockBaseButtonBackgroundColor}" />
 
     <SolidColorBrush x:Key="BlockComboBoxItemForegroundBrush"
-                     Color="{DynamicResource BlockButtonForegroundColor}" />
+                     Color="{DynamicResource BlockWindowForegroundColor}" />
 
     <SolidColorBrush x:Key="BlockComboBoxItemSelectedBaseBackgroundBrush"
                      Color="{DynamicResource BlockBasePrimaryColor}" />
@@ -81,13 +81,13 @@
             <Setter Property="Focused" Value="True" />
         </Style>
 
-        <Style Selector="^:selected /template/ blk|BlockButton#ButtonBackground">
-            <Setter Property="Flat" Value="False" />
-            <Setter Property="Background" Value="{DynamicResource BlockComboBoxItemSelectedBaseBackgroundBrush}" />
-        </Style>
-        <Style Selector="^:selected /template/ ContentPresenter#PART_ContentPresenter">
+        <Style Selector="^:selected">
             <Setter Property="Foreground" Value="{DynamicResource BlockComboBoxItemSelectedForegroundBrush}" />
+            <Style Selector="^ /template/ blk|BlockButton#ButtonBackground">
+                <Setter Property="Flat" Value="False" />
+                <Setter Property="Background" Value="{DynamicResource BlockComboBoxItemSelectedBaseBackgroundBrush}" />
+            </Style>
         </Style>
-        
+
     </ControlTheme>
 </ResourceDictionary>
