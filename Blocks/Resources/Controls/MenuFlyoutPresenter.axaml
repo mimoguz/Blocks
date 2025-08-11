@@ -1,11 +1,26 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     
+    <!-- ****************************************************** -->
+    <!-- ********************* Resources ********************** -->
+    <!-- ****************************************************** -->
+
+    <SolidColorBrush x:Key="BlockMenuFlyoutBackgroundBrush"
+                     Color="{DynamicResource BlockRaisedBackgroundColor}" />
+
+    <SolidColorBrush x:Key="BlockMenuFlyoutBorderBrush"
+                     Color="{DynamicResource BlockBaseViewBorderColor}"
+                     Opacity="{DynamicResource BlockFlyoutBorderOpacity}" />
+
+    <!-- ****************************************************** -->
+    <!-- ********************** Themes ************************ -->
+    <!-- ****************************************************** -->
+    
     <ControlTheme x:Key="{x:Type MenuFlyoutPresenter}" TargetType="MenuFlyoutPresenter">
         
-        <Setter Property="Background" Value="{DynamicResource BlockRaisedBackgroundBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource BlockTransparentFlyoutBorderBrush}" />
-        <Setter Property="BorderThickness" Value="{DynamicResource BlockControlBorderThickness}" />
+        <Setter Property="Background" Value="{DynamicResource BlockMenuFlyoutBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BlockMenuFlyoutBorderBrush}" />
+        <Setter Property="BorderThickness" Value="{DynamicResource BlockFlyoutBorderThickness}" />
         <Setter Property="Padding" Value="{DynamicResource BlockFlyoutPadding}" />
         <Setter Property="MaxWidth" Value="{DynamicResource BlockMaxFlyoutWidth}" />
         <Setter Property="MinHeight" Value="{DynamicResource BlockMinButtonSize}" />

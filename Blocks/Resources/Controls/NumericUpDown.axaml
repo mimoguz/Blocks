@@ -55,13 +55,30 @@
             </StackPanel>
         </Border>
     </Design.PreviewWith>
+    
+    <!-- ****************************************************** -->
+    <!-- ********************* Resources ********************** -->
+    <!-- ****************************************************** -->
+
+    <SolidColorBrush x:Key="BlockNumericUpDownBaseBackgroundBrush"
+                     Color="{DynamicResource BlockBaseViewBackgroundColor}" />
+
+    <SolidColorBrush x:Key="BlockNumericUpDownBaseBorderBrush"
+                     Color="{DynamicResource BlockBaseViewBorderColor}" />
+
+    <SolidColorBrush x:Key="BlockNumericUpDownForegroundBrush"
+                     Color="{DynamicResource BlockViewForegroundColor}" />
+
+    <!-- ****************************************************** -->
+    <!-- ********************** Themes ************************ -->
+    <!-- ****************************************************** -->
 
     <ControlTheme x:Key="{x:Type NumericUpDown}" TargetType="NumericUpDown">
 
-        <Setter Property="Background" Value="{DynamicResource BlockBaseViewBackgroundBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource BlockBaseViewBorderBrush}" />
+        <Setter Property="Background" Value="{DynamicResource BlockNumericUpDownBaseBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BlockNumericUpDownBaseBorderBrush}" />
         <Setter Property="BorderThickness" Value="{DynamicResource BlockControlBorderThickness}" />
-        <Setter Property="Foreground" Value="{DynamicResource BlockWindowForegroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource BlockNumericUpDownForegroundBrush}" />
         <Setter Property="CornerRadius" Value="{DynamicResource BlockViewCornerRadius}" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
