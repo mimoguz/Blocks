@@ -6,6 +6,7 @@
         <Border Background="{DynamicResource BlockWindowBackgroundColor}" Padding="20">
             <WrapPanel Width="300" ItemSpacing="10" LineSpacing="10">
                 <RepeatButton>Basic Repeat Button</RepeatButton>
+                <RepeatButton Classes="opaque">Opaque</RepeatButton>
                 <RepeatButton Classes="image-button">
                     <Path Data="{StaticResource BlockTestIcon}"
                           Width="{DynamicResource BlockIconSize}"
@@ -28,12 +29,35 @@
             </WrapPanel>
         </Border>
     </Design.PreviewWith>
+    
+    <!-- ****************************************************** -->
+    <!-- ********************* Resources ********************** -->
+    <!-- ****************************************************** -->
+    
+    <SolidColorBrush x:Key="BlockRepeatButtonBaseBackgroundBrush" 
+                     Color="{DynamicResource BlockBaseButtonBackgroundColor}" />
+    
+    <SolidColorBrush x:Key="BlockRepeatButtonForegroundBrush"
+                     Color="{DynamicResource BlockButtonForegroundColor}"/>
+    
+    <SolidColorBrush x:Key="BlockOpaqueRepeatButtonBackgroundBrush" 
+                     Color="{DynamicResource BlockOpaqueButtonBackgroundColor}" />
+    
+    <SolidColorBrush x:Key="BlockOpaqueRepeatButtonForegroundBrush"
+                     Color="{DynamicResource BlockOpaqueButtonForegroundColor}"/>
+
+    <SolidColorBrush x:Key="BlockFlatRepeatButtonForegroundBrush"
+                     Color="{DynamicResource BlockFlatButtonForegroundColor}"/>
+    
+    <!-- ****************************************************** -->
+    <!-- ********************** Themes ************************ -->
+    <!-- ****************************************************** -->
 
     <ControlTheme x:Key="{x:Type RepeatButton}"
                   TargetType="RepeatButton">
 
-        <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
-        <Setter Property="Foreground" Value="{DynamicResource BlockButtonForegroundBrush}" />
+        <Setter Property="Background" Value="{DynamicResource BlockRepeatButtonBaseBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource BlockRepeatButtonForegroundBrush}" />
         <Setter Property="Padding" Value="{DynamicResource BlockButtonPadding}" />
         <Setter Property="CornerRadius" Value="{DynamicResource BlockButtonCornerRadius}" />
         <Setter Property="FontWeight" Value="{DynamicResource BlockButtonFontWeight}" />
@@ -89,12 +113,21 @@
         <Style Selector="^.image-button">
             <Setter Property="Padding" Value="{DynamicResource BlockImageButtonPadding}" />
         </Style>
+        
+        <Style Selector="^.opaque">
+            <Setter Property="Foreground" Value="{DynamicResource BlockOpaqueRepeatButtonForegroundBrush}" />
+            <Setter Property="Background" Value="{DynamicResource BlockOpaqueRepeatButtonBackgroundBrush}" />
+            <Style Selector="^ /template/ blk|BlockButton#ButtonBackground">
+                <Setter Property="Opaque" Value="True" />
+                <Setter Property="BorderBrush" Value="{TemplateBinding Foreground}" />
+            </Style>
+        </Style>
 
         <Style Selector="^.flat">
             <Style Selector="^ /template/ blk|BlockButton#ButtonBackground">
                 <Setter Property="Flat" Value="True" />
             </Style>
-            <Setter Property="Foreground" Value="{DynamicResource BlockFlatButtonForegroundBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource BlockFlatBtnForegroundBrush}" />
         </Style>
 
         <Style Selector="^.pill-left /template/ blk|BlockButton#ButtonBackground">

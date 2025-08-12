@@ -22,19 +22,31 @@
             </StackPanel>
         </Border>
     </Design.PreviewWith>
-
+    
+    <!-- ****************************************************** -->
+    <!-- ********************* Resources ********************** -->
+    <!-- ****************************************************** -->
+    
     <converters:StringFormatConverter x:Key="StringFormatConverter" />
-    <SolidColorBrush x:Key="BlockProgressBarValueBrush" 
+    
+    <SolidColorBrush x:Key="BlockProgressBarProgressBrush" 
                      Color="{DynamicResource BlockBasePrimaryColor}" />
-    <SolidColorBrush x:Key="BlockProgressBarRemainingBrush"
-                     Color="{DynamicResource BlockBaseButtonBackgroundColor}" />
+    
+    <SolidColorBrush x:Key="BlockProgressBarFillBrush"
+                     Color="{DynamicResource BlockBaseButtonBackgroundColor}" 
+                     Opacity="{DynamicResource BlockProgressBarBackgroundOpacity}"/>
+    
     <SolidColorBrush x:Key="BlockProgressBarTextBrush" 
-                     Color="{DynamicResource BlockWindowForegroundColor}"/>
+                     Color="{DynamicResource BlockButtonForegroundColor}"/>
+    
+    <!-- ****************************************************** -->
+    <!-- ********************** Themes ************************ -->
+    <!-- ****************************************************** -->
 
     <ControlTheme x:Key="{x:Type ProgressBar}" TargetType="ProgressBar">
 
-        <Setter Property="Foreground" Value="{DynamicResource BlockProgressBarValueBrush}" />
-        <Setter Property="Background" Value="{DynamicResource BlockProgressBarRemainingBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource BlockProgressBarProgressBrush}" />
+        <Setter Property="Background" Value="{DynamicResource BlockProgressBarFillBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource BlockProgressBarTextBrush}" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="CornerRadius" Value="{DynamicResource BlockProgressBarCornerRadius}" />
@@ -45,7 +57,6 @@
             <ControlTemplate TargetType="ProgressBar">
                 <Panel Name="BaseContainer">
                     <Border Background="{TemplateBinding Background}"
-                            Opacity="{DynamicResource BlockProgressBarBackgroundOpacity}"
                             CornerRadius="{TemplateBinding CornerRadius}" />
                     <Border
                         x:Name="ProgressBarRoot"

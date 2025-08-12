@@ -12,13 +12,34 @@
             </StackPanel>
         </Border>
     </Design.PreviewWith>
+    
+    <!-- ****************************************************** -->
+    <!-- ********************* Resources ********************** -->
+    <!-- ****************************************************** -->
+
+    <SolidColorBrush x:Key="BlockRadioButtonBaseBackgroundBrush"
+                     Color="{DynamicResource BlockBaseButtonBackgroundColor}" />
+
+    <SolidColorBrush x:Key="BlockRadioButtonForegroundBrush"
+                     Color="{DynamicResource BlockWindowForegroundColor}" />
+    
+    <SolidColorBrush x:Key="BlockRadioButtonDotBackgroundBrush"
+                     Color="{DynamicResource BlockBaseDotBackgroundBrush}"
+                     Opacity="{DynamicResource BlockPlaceholderOpacity}"/>
+    
+    <SolidColorBrush x:Key="BlockRadioButtonDotForegroundBrush"
+                     Color="{DynamicResource BlockBasePrimaryColor}" />
+
+    <!-- ****************************************************** -->
+    <!-- ********************** Themes ************************ -->
+    <!-- ****************************************************** -->
+    
     <ControlTheme x:Key="{x:Type RadioButton}"
                   TargetType="RadioButton">
 
         <Setter Property="BorderThickness" Value="{DynamicResource BlockControlBorderThickness}" />
-        <Setter Property="Foreground" Value="{DynamicResource BlockWindowForegroundBrush}" />
-        <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource BlockBasePrimaryBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource BlockRadioButtonForegroundBrush}" />
+        <Setter Property="Background" Value="{DynamicResource BlockRadioButtonBaseBackgroundBrush}" />
         <Setter Property="blk:Block.Gap" Value="{DynamicResource BlockRadioButtonGap}" />
         <Setter Property="Padding" Value="{DynamicResource BlockRadioButtonPadding}" />
         <Setter Property="FocusAdorner" Value="{x:Null}" />
@@ -39,8 +60,8 @@
                                              Background="{TemplateBinding Background}"
                                              CornerRadius="999" />
                             <blk:AnimatedDot Name="Dot"
-                                             Foreground="{TemplateBinding BorderBrush}"
-                                             Background="{DynamicResource BlockBaseDotBackgroundBrush}"
+                                             Foreground="{DynamicResource BlockRadioButtonDotForegroundBrush}"
+                                             Background="{DynamicResource BlockRadioButtonDotBackgroundBrush}"
                                              BackgroundOpacity="0.3"/>
                         </Panel>
                         <ContentPresenter Name="PART_ContentPresenter"
