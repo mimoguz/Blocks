@@ -1,6 +1,7 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:conv="clr-namespace:Blocks.Converters">
+                    xmlns:conv="clr-namespace:Blocks.Converters"
+                    xmlns:sys="using:System">
     
     <Design.PreviewWith>
         <Border Padding="20">
@@ -28,9 +29,30 @@
             </StackPanel>
         </Border>
     </Design.PreviewWith>
+    
+    <!-- ****************************************************** -->
+    <!-- ********************* Resources ********************** -->
+    <!-- ****************************************************** -->
+    
+    <SolidColorBrush x:Key="BlockScrollBarBaseBackgroundBrush" 
+                     Color="{DynamicResource BlockBaseButtonBackgroundColor}" />
+    
+    <SolidColorBrush x:Key="BlockScrollBarArrowBrush"
+                     Color="{DynamicResource BlockButtonForegroundColor}"/>
+    
+    <CornerRadius x:Key="BlockScrollBarCompactThumbCornerRadius">9999</CornerRadius>
+    <CornerRadius x:Key="BlockScrollBarCornerRadius">0</CornerRadius>
+    <CornerRadius x:Key="BlockScrollBarThumbCornerRadius">0</CornerRadius>
+    <x:Double x:Key="BlockScrollBarCompactThumbSize">4</x:Double>
+    <x:Double x:Key="BlockScrollBarThumbSize">16</x:Double>
+    <sys:TimeSpan x:Key="BlockScrollBarShowDelay">0:0:0.001</sys:TimeSpan>
+    
+    <!-- ****************************************************** -->
+    <!-- ********************** Themes ************************ -->
+    <!-- ****************************************************** -->
 
     <ControlTheme x:Key="BlockScrollBarThumb" TargetType="Thumb">
-        <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
+        <Setter Property="Background" Value="{DynamicResource BlockScrollBarBaseBackgroundBrush}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
@@ -71,13 +93,10 @@
         <Style Selector="^:pressed  /template/ Border">
             <Setter Property="Opacity" Value="{DynamicResource BlockScrollBarThumbShadeOpacity}" />
         </Style>
-        <Style Selector="^:disabled  /template/ Border">
-            <Setter Property="Opacity" Value="{DynamicResource BlockScrollBarThumbOpacity}" />
-        </Style>
     </ControlTheme>
 
     <ControlTheme x:Key="BlockScrollBarPageButton" TargetType="RepeatButton">
-        <Setter Property="Background" Value="{DynamicResource BlockBaseViewBackgroundBrush}" />
+        <Setter Property="Background" Value="{DynamicResource BlockScrollBarBaseBackgroundBrush}" />
         <Setter Property="VerticalAlignment" Value="Stretch" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="Opacity" Value="0" />
@@ -108,7 +127,7 @@
 
     <ControlTheme x:Key="BlockScrollBarLineButton" TargetType="RepeatButton">
         <Setter Property="Opacity" Value="0" />
-        <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
+        <Setter Property="Background" Value="{DynamicResource BlockScrollBarBaseBackgroundBrush}" />
         <Setter Property="Template">
             <ControlTemplate>
                 <Panel>
@@ -149,10 +168,10 @@
         
         <Setter Property="MinWidth" Value="{DynamicResource BlockScrollBarThumbSize}" />
         <Setter Property="MinHeight" Value="{DynamicResource BlockScrollBarThumbSize}" />
-        <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
-        <Setter Property="Foreground" Value="{DynamicResource BlockButtonForegroundBrush}" />
+        <Setter Property="Background" Value="{DynamicResource BlockScrollBarBaseBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource BlockScrollBarArrowBrush}" />
         <Setter Property="CornerRadius" Value="{DynamicResource BlockScrollBarCornerRadius}" />
-        <Setter Property="ShowDelay" Value="0:0:0.001" />
+        <Setter Property="ShowDelay" Value="{DynamicResource BlockScrollBarShowDelay}" />
 
         <Style Selector="^:vertical">
             <Setter Property="Template">
@@ -347,7 +366,7 @@
             </Style>
         </Style>
 
-        <Style Selector="^:disabled">
+        <Style Selector="^:disabled /template/ Grid#Root">
             <Setter Property="Opacity" Value="{DynamicResource BlockDisabledOpacity}" />
         </Style>
     </ControlTheme>

@@ -39,6 +39,8 @@
     <SolidColorBrush x:Key="BlockProgressBarTextBrush" 
                      Color="{DynamicResource BlockButtonForegroundColor}"/>
     
+    <CornerRadius x:Key="BlockProgressBarCornerRadius">9</CornerRadius>
+    
     <!-- ****************************************************** -->
     <!-- ********************** Themes ************************ -->
     <!-- ****************************************************** -->

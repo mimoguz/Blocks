@@ -29,6 +29,8 @@
                      Color="{DynamicResource BlockBaseViewBorderColor}"
                      Opacity="{DynamicResource BlockFlyoutBorderOpacity}" />
     
+    <x:Double x:Key="BlockMenuBarHeight">40</x:Double>
+    
     <!-- ****************************************************** -->
     <!-- ********************** Themes ************************ -->
     <!-- ****************************************************** -->
