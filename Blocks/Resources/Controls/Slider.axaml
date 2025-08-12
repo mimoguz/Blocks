@@ -54,6 +54,9 @@
                      Color="{DynamicResource BlockWindowForegroundColor}"
                      Opacity="{DynamicResource BlockPlaceholderOpacity}" />
     
+    <SolidColorBrush x:Key="BlockSliderBaseErrorBrush" 
+                     Color="{DynamicResource BlockRed}" />
+    
     <!-- ****************************************************** -->
     <!-- ********************** Themes ************************ -->
     <!-- ****************************************************** -->
@@ -336,8 +339,7 @@
         </Style>
 
         <Style Selector="^:error">
-            <Setter Property="Foreground" Value="{DynamicResource BlockRedBrush}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource BlockRedBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource BlockSliderBaseErrorBrush}" />
         </Style>
 
         <Style Selector="^:focus-visible /template/ Thumb">
