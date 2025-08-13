@@ -45,11 +45,40 @@
             </StackPanel>
         </Border>
     </Design.PreviewWith>
+    
+    <!-- ****************************************************** -->
+    <!-- ********************* Resources ********************** -->
+    <!-- ****************************************************** -->
 
+    <SolidColorBrush x:Key="BlockTextBoxBaseBackgroundBrush"
+                     Color="{DynamicResource BlockBaseViewBackgroundColor}" />
+
+    <SolidColorBrush x:Key="BlockTextBoxBaseBorderBrush"
+                     Color="{DynamicResource BlockBaseViewBorderColor}" />
+
+    <SolidColorBrush x:Key="BlockTextBoxForegroundBrush"
+                     Color="{DynamicResource BlockViewForegroundColor}" />
+    
+    <SolidColorBrush x:Key="BlockTextBoxSelectionBrush"
+                     Color="{DynamicResource BlockBasePrimaryColor}"
+                     Opacity="{DynamicResource BlockViewSelectionOpacity}" />
+
+    <SolidColorBrush x:Key="BlockTextBoxErrorForegroundBrush"
+                     Color="{DynamicResource BlockRed}" />
+    
+    <SolidColorBrush x:Key="BlockTextBoxFloatingWatermarkBrush" 
+                     Color="{DynamicResource BlockBasePrimaryColor}" />
+    
+    <SolidColorBrush x:Key="BlockTextBoxPasswordVisibleIconBrush" 
+                     Color="{DynamicResource BlockRed}" />
+    
     <x:Double x:Key="BlockEmbeddedButtonMinWidth">30</x:Double>
     <Thickness x:Key="BlockEmbeddedButtonPadding">6,0</Thickness>
-    <SolidColorBrush x:Key="BlockFloatingWatermarkBrush" 
-                     Color="{DynamicResource BlockBasePrimaryColor}" />
+    
+
+    <!-- ****************************************************** -->
+    <!-- ********************** Themes ************************ -->
+    <!-- ****************************************************** -->
 
     <MenuFlyout x:Key="DefaultTextBoxContextFlyout" ShowMode="{OnFormFactor Desktop=Standard, Mobile=Transient}">
         <MenuItem Header="{DynamicResource StringTextFlyoutCutText}" Command="{Binding $parent[TextBox].Cut}"
@@ -74,8 +103,6 @@
 
     <ControlTheme x:Key="BlockEmbeddedButton" TargetType="Button">
 
-        <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
-        <Setter Property="Foreground" Value="{DynamicResource BlockButtonForegroundBrush}" />
         <Setter Property="Padding" Value="{DynamicResource BlockEmbeddedButtonPadding}" />
         <Setter Property="MinWidth" Value="{DynamicResource BlockEmbeddedButtonMinWidth}" />
         <Setter Property="MinHeight" Value="0" />
@@ -145,15 +172,15 @@
 
     <ControlTheme x:Key="{x:Type TextBox}" TargetType="TextBox">
 
-        <Setter Property="Foreground" Value="{DynamicResource BlockWindowForegroundBrush}" />
-        <Setter Property="Background" Value="{DynamicResource BlockBaseViewBackgroundBrush}" />
-        <Setter Property="CaretBrush" Value="{DynamicResource BlockWindowForegroundBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource BlockBaseViewBorderBrush}" />
-        <Setter Property="SelectionBrush" Value="{DynamicResource BlockTransparentSelectionBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource BlockTextBoxForegroundBrush}" />
+        <Setter Property="Background" Value="{DynamicResource BlockTextBoxBaseBackgroundBrush}" />
+        <Setter Property="CaretBrush" Value="{DynamicResource BlockTextBoxForegroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BlockTextBoxBaseBorderBrush}" />
+        <Setter Property="SelectionBrush" Value="{DynamicResource BlockTextBoxSelectionBrush}" />
         <Setter Property="BorderThickness" Value="{DynamicResource BlockControlBorderThickness}" />
-        <Setter Property="CornerRadius" Value="{DynamicResource BlockViewCornerRadius}" />
-        <Setter Property="MinHeight" Value="{DynamicResource BlockMinButtonSize}" />
-        <Setter Property="MinWidth" Value="{DynamicResource BlockMinButtonSize}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource BlockInputCornerRadius}" />
+        <Setter Property="MinHeight" Value="{DynamicResource BlockMinInputSize}" />
+        <Setter Property="MinWidth" Value="{DynamicResource BlockMinInputSize}" />
         <Setter Property="Padding" Value="{DynamicResource BlockInputPadding}" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="FocusAdorner" Value="{x:Null}" />
@@ -169,7 +196,7 @@
                         <TextBlock Name="PART_FloatingWatermark"
                                    Text="{TemplateBinding Watermark}"
                                    DockPanel.Dock="Top"
-                                   Foreground="{DynamicResource BlockFloatingWatermarkBrush}"
+                                   Foreground="{DynamicResource BlockTextBoxFloatingWatermarkBrush}"
                                    Padding="{DynamicResource BlockFloatingWatermarkPadding}"
                                    IsVisible="{TemplateBinding UseFloatingWatermark}"
                                    FontSize="{DynamicResource BlockFontSizeSmall}"
@@ -280,6 +307,9 @@
         <Style Selector="^:error /template/ blk|BlockView#ViewBackground">
             <Setter Property="Error" Value="True" />
         </Style>
+        <Style Selector="^:error">
+            <Setter Property="Foreground" Value="{DynamicResource BlockTextBoxErrorForegroundBrush}" />
+        </Style>
 
         <Style Selector="^[UseFloatingWatermark=true]:not(:empty) /template/ TextBlock#PART_FloatingWatermark">
             <Setter Property="Opacity" Value="1" />
@@ -333,7 +363,7 @@
                             <PathIcon Data="{StaticResource BlockEyeOpenIcon}"
                                       Height="{DynamicResource BlockIconSize}"
                                       Width="{DynamicResource BlockIconSize}"
-                                      Foreground="{DynamicResource BlockRedBrush}"
+                                      Foreground="{DynamicResource BlockTextBoxPasswordVisibleIconBrush}"
                                       IsVisible="{Binding $parent[ToggleButton].IsChecked}" />
                             <PathIcon Data="{StaticResource BlockEyeClosedIcon}"
                                       Height="{DynamicResource BlockIconSize}"
@@ -352,7 +382,7 @@
         <Setter Property="Foreground" Value="{DynamicResource BlockWindowForegroundBrush}" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="CaretBrush" Value="{DynamicResource BlockWindowForegroundBrush}" />
-        <Setter Property="SelectionBrush" Value="{DynamicResource BlockTransparentSelectionBrush}" />
+        <Setter Property="SelectionBrush" Value="{DynamicResource BlockTextBoxSelectionBrush}" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="FocusAdorner" Value="{x:Null}" />
         <Setter Property="ScrollViewer.IsScrollChainingEnabled" Value="True" />

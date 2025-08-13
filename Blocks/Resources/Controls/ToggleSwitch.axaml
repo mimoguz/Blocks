@@ -17,8 +17,6 @@
         </StackPanel>
     </Design.PreviewWith>
     
-    
-
 
     <Thickness x:Key="BlockToggleSwitchTopHeaderMargin">0,0,0,6</Thickness>
     <GridLength x:Key="BlockToggleSwitchPreContentMargin">6</GridLength>
