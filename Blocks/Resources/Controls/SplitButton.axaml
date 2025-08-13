@@ -14,6 +14,15 @@
                     </SplitButton.Flyout>
                     Split Button
                 </SplitButton>
+                <SplitButton VerticalAlignment="Top"
+                             Classes="opaque burger">
+                    <SplitButton.Flyout>
+                        <Flyout>
+                            <TextBlock Margin="10">Flyout</TextBlock>
+                        </Flyout>
+                    </SplitButton.Flyout>
+                    Split Button
+                </SplitButton>
                 <SplitButton VerticalAlignment="Top" Classes="flat" blk:Block.ActiveForeground="DeepPink">
                     <SplitButton.Flyout>
                         <Flyout>
@@ -25,19 +34,49 @@
             </WrapPanel>
         </Border>
     </Design.PreviewWith>
+    
+    <!-- ****************************************************** -->
+    <!-- ********************* Resources ********************** -->
+    <!-- ****************************************************** -->
+
+    <SolidColorBrush x:Key="BlockSplitButtonBaseBackgroundBrush"
+                     Color="{DynamicResource BlockBaseButtonBackgroundColor}" />
+
+    <SolidColorBrush x:Key="BlockSplitButtonForegroundBrush"
+                     Color="{DynamicResource BlockButtonForegroundColor}" />
+
+    <SolidColorBrush x:Key="BlockFlatSplitButtonForegroundBrush"
+                     Color="{DynamicResource BlockFlatButtonForegroundColor}" />
+    
+    <SolidColorBrush x:Key="BlockSplitButtonActiveChevronBrush"
+                     Color="{DynamicResource BlockBasePrimaryColor}" />
+
+    <SolidColorBrush x:Key="BlockFlatSplitButtonDividerBrush"
+                     Color="{DynamicResource BlockBaseButtonBackgroundColor}"
+                     Opacity="{DynamicResource BlockSeparatorOpacity}" />
+    
+    <SolidColorBrush x:Key="BlockOpaqueSplitButtonBackgroundBrush" 
+                     Color="{DynamicResource BlockOpaqueButtonBackgroundColor}" />
+    
+    <SolidColorBrush x:Key="BlockOpaqueSplitButtonForegroundBrush"
+                     Color="{DynamicResource BlockOpaqueButtonForegroundColor}"/>
+    
+    <x:Double x:Key="BlockSplitButtonGap">1</x:Double>
+    <blk:AnimatedMenuIconStyle x:Key="BlockSplitButtonMenuIconStyle">Chevron</blk:AnimatedMenuIconStyle>
+
+    <!-- ****************************************************** -->
+    <!-- ********************** Themes ************************ -->
+    <!-- ****************************************************** -->
 
     <ControlTheme x:Key="{x:Type SplitButton}" TargetType="SplitButton">
 
-        <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
-        <Setter Property="BorderThickness" Value="{DynamicResource BlockControlBorderThickness}" />
-        <Setter Property="Foreground" Value="{DynamicResource BlockButtonForegroundBrush}" />
+        <Setter Property="Background" Value="{DynamicResource BlockSplitButtonBaseBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource BlockSplitButtonForegroundBrush}" />
         <Setter Property="Padding" Value="{DynamicResource BlockButtonPadding}" />
         <Setter Property="CornerRadius" Value="{DynamicResource BlockButtonCornerRadius}" />
         <Setter Property="FontWeight" Value="{DynamicResource BlockButtonFontWeight}" />
         <Setter Property="MinWidth" Value="{DynamicResource BlockMinButtonSize}" />
         <Setter Property="MinHeight" Value="{DynamicResource BlockMinButtonSize}" />
-        <Setter Property="blk:Block.MenuIconStyle" Value="Chevron" />
-        <Setter Property="blk:Block.ActiveForeground" Value="{DynamicResource BlockBasePrimaryBrush}" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="FocusAdorner" Value="{x:Null}" />
@@ -74,8 +113,7 @@
 
                         <Rectangle x:Name="SeparatorBorder"
                                    Grid.Column="1"
-                                   Fill="{TemplateBinding Background}"
-                                   Opacity="0"
+                                   Fill="Transparent"
                                    Width="{DynamicResource BlockSplitButtonGap}" />
 
                         <Button x:Name="PART_SecondaryButton"
@@ -91,9 +129,9 @@
                                 VerticalAlignment="Stretch"
                                 KeyboardNavigation.IsTabStop="{TemplateBinding IsTabStop}">
                             <blk:AnimatedMenuIcon Name="MenuIcon"
-                                                  MenuIconStyle="{TemplateBinding blk:Block.MenuIconStyle}"
+                                                  MenuIconStyle="{DynamicResource BlockSplitButtonMenuIconStyle}"
                                                   Background="{TemplateBinding Foreground}"
-                                                  Foreground="{TemplateBinding blk:Block.ActiveForeground}" />
+                                                  Foreground="{DynamicResource BlockSplitButtonActiveChevronBrush}" />
                         </Button>
                     </Grid>
                 </Border>
@@ -105,7 +143,7 @@
         <Style Selector="^.flat">
             <Setter Property="Foreground" Value="{DynamicResource BlockFlatButtonForegroundBrush}" />
             <Style Selector="^ /template/ Rectangle#SeparatorBorder">
-                <Setter Property="Opacity" Value="{DynamicResource BlockButtonBackgroundOpacity}" />
+                <Setter Property="Fill" Value="{DynamicResource BlockFlatSplitButtonDividerBrush}" />
             </Style>
             <Style Selector="^ /template/ Button#PART_PrimaryButton">
                 <Setter Property="blk:Block.IsFlat" Value="True" />
@@ -124,6 +162,21 @@
 
         <Style Selector="^.image-button">
             <Setter Property="Padding" Value="{DynamicResource BlockImageButtonPadding}" />
+        </Style>
+        
+        <Style Selector="^.burger /template/ blk|AnimatedMenuIcon#MenuIcon">
+            <Setter Property="MenuIconStyle" Value="Burger" />
+        </Style>
+        
+        <Style Selector="^.opaque">
+            <Setter Property="Foreground" Value="{DynamicResource BlockOpaqueComboBoxForegroundBrush}" />
+            <Setter Property="Background" Value="{DynamicResource BlockOpaqueComboBoxBackgroundBrush}" />
+            <Style Selector="^ /template/ Button#PART_PrimaryButton, ^ /template/ Button#PART_SecondaryButton">
+                <Setter Property="blk:Block.IsOpaque" Value="True" />
+            </Style>
+            <Style Selector="^ /template/ blk|AnimatedMenuIcon">
+                <Setter Property="Foreground" Value="{TemplateBinding Foreground}" />
+            </Style>
         </Style>
     </ControlTheme>
 </ResourceDictionary>

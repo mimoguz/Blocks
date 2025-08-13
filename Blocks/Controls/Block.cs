@@ -23,6 +23,8 @@ public abstract class Block : AvaloniaObject
     
     public static readonly AttachedProperty<bool> IsFlatProperty = AvaloniaProperty.RegisterAttached<Block, Control, bool>("IsFlat");
     
+    public static readonly AttachedProperty<bool> IsOpaqueProperty = AvaloniaProperty.RegisterAttached<Block, Control, bool>("IsOpaque");
+    
     public static readonly AttachedProperty<bool> ShowClearButtonProperty = AvaloniaProperty.RegisterAttached<Block, Control, bool>("ShowClearButton");
     
     public static readonly AttachedProperty<IBrush?> ButtonBackgroundProperty = AvaloniaProperty.RegisterAttached<Block, Control, IBrush?>("ButtonBackground");
@@ -60,6 +62,9 @@ public abstract class Block : AvaloniaObject
     
     public static bool GetIsFlat(Control control) => control.GetValue(IsFlatProperty);
     public static void SetIsFlat(Control control, bool value) => control.SetValue(IsFlatProperty, value);
+    
+    public static bool GetIsOpaque(Control control) => control.GetValue(IsOpaqueProperty);
+    public static void SetIsOpaque(Control control, bool value) => control.SetValue(IsOpaqueProperty, value);
     
     public static bool GetShowClearButton(Control control) => control.GetValue(ShowClearButtonProperty);
     public static void SetShowClearButton(Control control, bool value) => control.SetValue(ShowClearButtonProperty, value);

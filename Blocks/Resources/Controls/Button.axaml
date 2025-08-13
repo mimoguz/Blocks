@@ -135,17 +135,21 @@
             <Setter Property="Padding" Value="{DynamicResource BlockImageButtonPadding}" />
         </Style>
 
-        <Style Selector="^.flat">
-            <Setter Property="blk:Block.IsFlat" Value="True" />
+        <Style Selector="^.opaque">
+            <Setter Property="blk:Block.IsOpaque" Value="True" />
         </Style>
         
-        <Style Selector="^.opaque">
+        <Style Selector="^[(blk|Block.IsOpaque)=True]">
             <Setter Property="Foreground" Value="{DynamicResource BlockOpaqueBtnForegroundBrush}" />
             <Setter Property="Background" Value="{DynamicResource BlockOpaqueBtnBackgroundBrush}" />
             <Style Selector="^ /template/ blk|BlockButton#ButtonBackground">
                 <Setter Property="Opaque" Value="True" />
                 <Setter Property="BorderBrush" Value="{TemplateBinding Foreground}" />
             </Style>
+        </Style>
+        
+        <Style Selector="^.flat">
+            <Setter Property="blk:Block.IsFlat" Value="True" />
         </Style>
         
         <Style Selector="^[(blk|Block.IsFlat)=True]">

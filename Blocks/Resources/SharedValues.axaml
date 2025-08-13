@@ -37,7 +37,6 @@
     <sys:Double x:Key="BlockSliderThumbDotDiameter">16</sys:Double>
     <sys:Double x:Key="BlockSliderTickHeight">4</sys:Double>
     <sys:Double x:Key="BlockSliderTrackHeight">4</sys:Double>
-    <sys:Double x:Key="BlockSplitButtonGap">1</sys:Double>
     <sys:Double x:Key="BlockTabLineThickness">3</sys:Double>
     <sys:Double x:Key="BlockTabSpacing">2</sys:Double>
     
