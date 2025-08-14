@@ -54,6 +54,7 @@
             <x:Double x:Key="BlockShadeOpacity">0.4</x:Double>
             <x:Double x:Key="BlockButtonShadeOpacity">0.28</x:Double>
             <x:Double x:Key="BlockFlatButtonShadeOpacity">0.15</x:Double>
+            <x:Double x:Key="BlockOutlinedButtonShadeOpacity">0.08</x:Double>
             <x:Double x:Key="BlockScrollBarPageButtonShadeOpacity">0.12</x:Double>
             <x:Double x:Key="BlockScrollBarThumbShadeOpacity">0.6</x:Double>
             <x:Double x:Key="BlockSliderTrackShadeOpacity">1</x:Double>
@@ -116,10 +117,11 @@
             <!-- Shade -->
             <x:Double x:Key="BlockShadeOpacity">0.50</x:Double>
             <x:Double x:Key="BlockButtonShadeOpacity">0.40</x:Double>
+            <x:Double x:Key="BlockFlatButtonShadeOpacity">0.12</x:Double>
+            <x:Double x:Key="BlockOutlinedButtonShadeOpacity">0.08</x:Double>
             <x:Double x:Key="BlockScrollBarPageButtonShadeOpacity">0.15</x:Double>
             <x:Double x:Key="BlockScrollBarThumbShadeOpacity">0.8</x:Double>
             <x:Double x:Key="BlockSliderTrackShadeOpacity">1</x:Double>
-            <x:Double x:Key="BlockFlatButtonShadeOpacity">0.12</x:Double>
 
             <!-- Others -->
             <x:Double x:Key="BlockDisabledOpacity">0.5</x:Double>
