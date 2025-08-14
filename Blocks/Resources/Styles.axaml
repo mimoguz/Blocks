@@ -5,6 +5,7 @@
         <StyleInclude Source="Styles/AnimatedMenuIcon.axaml" />
         <StyleInclude Source="Styles/AnimatedTreeIcon.axaml" />
         <StyleInclude Source="Styles/BlockButton.axaml" />
+        <StyleInclude Source="Styles/BlockButtonBackground.axaml" />
         <StyleInclude Source="Styles/BlockView.axaml" />
         <StyleInclude Source="Styles/CalendarIcon.axaml" />
         <StyleInclude Source="Styles/PlaceHolder.axaml" />

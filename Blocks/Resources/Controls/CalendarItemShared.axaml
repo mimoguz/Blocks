@@ -4,6 +4,9 @@
     <SolidColorBrush x:Key="BlockCalendarButtonForegroundBrush"
                      Color="{DynamicResource BlockFlatButtonForegroundColor}"/>
     
+    <SolidColorBrush x:Key="BlockCalendarButtonBaseBackgroundBrush"
+                     Color="{DynamicResource BlockBaseButtonBackgroundColor}"/>
+    
     <SolidColorBrush x:Key="BlockCalendarButtonInactiveForegroundBrush"
                      Color="{DynamicResource BlockButtonForegroundColor}"
                      Opacity="{DynamicResource BlockPlaceholderOpacity}"/>

@@ -35,10 +35,10 @@
             <!-- Border -->
             <x:Double x:Key="BlockFlyoutBorderOpacity">0.08</x:Double>
             <x:Double x:Key="BlockViewBorderOpacity">0.15</x:Double>
+            <x:Double x:Key="BlockOutlinedButtonBorderOpacity">0.45</x:Double>
             <x:Double x:Key="BlockViewErrorBorderOpacity">0.7</x:Double>
             <x:Double x:Key="BlockGridSplitterLineOpacity">0.15</x:Double>
             
-
             <!-- Highlight -->
             <x:Double x:Key="BlockHighlightOpacity">0.25</x:Double>
             <x:Double x:Key="BlockButtonHighlightOpacity">0.18</x:Double>
@@ -46,6 +46,7 @@
             <x:Double x:Key="BlockScrollBarPageButtonHighlightOpacity">0.08</x:Double>
             <x:Double x:Key="BlockScrollBarThumbHighlightOpacity">0.45</x:Double>
             <x:Double x:Key="BlockViewBorderHighlightOpacity">0.3</x:Double>
+            <x:Double x:Key="BlockOutlinedButtonBorderHighlightOpacity">0.8</x:Double>
             <x:Double x:Key="BlockViewErrorBorderHighlightOpacity">1</x:Double>
             <x:Double x:Key="BlockSliderTrackHighlightOpacity">0.88</x:Double>
             <x:Double x:Key="BlockGridSplitterLineHighlightOpacity">0.3</x:Double>
@@ -100,6 +101,7 @@
             <!-- Border -->
             <x:Double x:Key="BlockFlyoutBorderOpacity">0.1</x:Double>
             <x:Double x:Key="BlockViewBorderOpacity">0.2</x:Double>
+            <x:Double x:Key="BlockOutlinedButtonBorderOpacity">0.5</x:Double>
             <x:Double x:Key="BlockViewErrorBorderOpacity">0.75</x:Double>
             <x:Double x:Key="BlockGridSplitterLineOpacity">0.2</x:Double>
 
@@ -109,6 +111,7 @@
             <x:Double x:Key="BlockScrollBarPageButtonHighlightOpacity">0.1</x:Double>
             <x:Double x:Key="BlockScrollBarThumbHighlightOpacity">0.65</x:Double>
             <x:Double x:Key="BlockViewBorderHighlightOpacity">0.35</x:Double>
+            <x:Double x:Key="BlockOutlinedButtonBorderHighlightOpacity">0.85</x:Double>
             <x:Double x:Key="BlockViewErrorBorderHighlightOpacity">1</x:Double>
             <x:Double x:Key="BlockSliderTrackHighlightOpacity">0.88</x:Double>
             <x:Double x:Key="BlockFlatButtonHighlightOpacity">0.08</x:Double>

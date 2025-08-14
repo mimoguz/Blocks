@@ -9,9 +9,9 @@
             </StackPanel>
         </Border>
     </Design.PreviewWith>
-    
+
     <x:Double x:Key="BlockCalendarButtonSize">60</x:Double>
-    
+
     <ControlTheme x:Key="{x:Type CalendarButton}" TargetType="CalendarButton">
 
         <Setter Property="ClickMode" Value="Release" />
@@ -19,7 +19,7 @@
         <Setter Property="MinHeight" Value="{DynamicResource BlockCalendarButtonSize}" />
         <Setter Property="CornerRadius" Value="{DynamicResource BlockButtonCornerRadius}" />
         <Setter Property="Foreground" Value="{DynamicResource BlockCalendarButtonForegroundBrush}" />
-        <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
+        <Setter Property="Background" Value="{DynamicResource BlockCalendarButtonBaseBackgroundBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource BlockBaseFocusBrush}" />
         <Setter Property="Padding" Value="0" />
         <Setter Property="ClipToBounds" Value="False" />
@@ -30,19 +30,19 @@
         <Setter Property="Template">
             <ControlTemplate>
                 <Panel Name="BaseContainer" Background="Transparent">
-                    <blk:BlockButton Name="ButtonBackground"
-                                     Background="{TemplateBinding Background}"
-                                     BorderBrush="{TemplateBinding BorderBrush}"
-                                     CornerRadius="{TemplateBinding CornerRadius}"
-                                     Flat="True">
-                        <blk:BlockButton.Transitions>
+                    <blk:BlockButtonBackground Name="ButtonBackground"
+                                               Background="{TemplateBinding Background}"
+                                               FocusBrush="{TemplateBinding BorderBrush}"
+                                               CornerRadius="{TemplateBinding CornerRadius}"
+                                               ButtonStyle="Flat">
+                        <blk:BlockButtonBackground.Transitions>
                             <Transitions>
                                 <CornerRadiusTransition Property="CornerRadius"
                                                         Duration="{DynamicResource BlockButtonStateTransitionDuration}"
                                                         Easing="CubicEaseOut" />
                             </Transitions>
-                        </blk:BlockButton.Transitions>
-                    </blk:BlockButton>
+                        </blk:BlockButtonBackground.Transitions>
+                    </blk:BlockButtonBackground>
                     <ContentPresenter Name="PART_ContentPresenter"
                                       ContentTemplate="{TemplateBinding ContentTemplate}"
                                       Content="{TemplateBinding Content}"
@@ -54,19 +54,19 @@
             </ControlTemplate>
         </Setter>
 
-        <Style Selector="^:pointerover:not(:blackout) /template/ blk|BlockButton#ButtonBackground">
+        <Style Selector="^:pointerover:not(:blackout) /template/ blk|BlockButtonBackground#ButtonBackground">
             <Setter Property="Highlighted" Value="True" />
         </Style>
 
-        <Style Selector="^:pressed:not(:blackout) /template/ blk|BlockButton#ButtonBackground">
+        <Style Selector="^:pressed:not(:blackout) /template/ blk|BlockButtonBackground#ButtonBackground">
             <Setter Property="Shaded" Value="True" />
         </Style>
 
         <Style Selector="^:selected">
-            <Style Selector="^ /template/ blk|BlockButton#ButtonBackground">
-                <Setter Property="Opaque" Value="True" />
+            <Style Selector="^ /template/ blk|BlockButtonBackground#ButtonBackground">
+                <Setter Property="ButtonStyle" Value="Opaque" />
                 <Setter Property="Background" Value="{DynamicResource BlockCalendarButtonSelectedBackgroundBrush}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource BlockCalendarButtonSelectedForegroundBrush}" />
+                <Setter Property="FocusBrush" Value="{DynamicResource BlockCalendarButtonSelectedForegroundBrush}" />
             </Style>
             <Style Selector="^ /template/ Ellipse#Today">
                 <Setter Property="Fill" Value="{DynamicResource BlockCalendarButtonSelectedForegroundBrush}" />
