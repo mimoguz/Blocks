@@ -220,8 +220,6 @@
             <Setter Property="Opacity" Value="{DynamicResource BlockDisabledOpacity}" />
         </Style>
 
-        
-
         <Style Selector="^:focus-visible /template/ blk|BlockButtonBackground#ButtonBackground">
             <Setter Property="Focused" Value="True" />
         </Style>
@@ -234,8 +232,6 @@
                 <Setter Property="Highlighted" Value="True" />
             </Style>
         </Style>
-
-        <!-- Classes -->
 
         <Style Selector="^.flat">
             <Setter Property="blk:Block.ButtonStyle" Value="Flat" />

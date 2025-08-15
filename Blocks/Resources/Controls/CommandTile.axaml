@@ -22,7 +22,7 @@
         </Border>
     </Design.PreviewWith>
 
-    <SolidColorBrush x:Key="BlockCommandTileBaseBackgroundBrush" 
+    <SolidColorBrush x:Key="BlockCommandTileBaseBackgroundBrush"
                      Color="{DynamicResource BlockBaseButtonBackgroundColor}" />
 
     <ControlTheme x:Key="{x:Type blk:CommandTile}"
@@ -46,10 +46,11 @@
                        Height="{TemplateBinding Height}"
                        MinWidth="{TemplateBinding MinWidth}"
                        MinHeight="{TemplateBinding MinHeight}">
-                    <blk:BlockButton Name="ButtonBackground"
-                                     Background="{TemplateBinding Background}"
-                                     CornerRadius="{TemplateBinding CornerRadius}"
-                                     Flat="True" />
+                    <blk:BlockButtonBackground Name="ButtonBackground"
+                                               Background="{TemplateBinding Background}"
+                                               CornerRadius="{TemplateBinding CornerRadius}"
+                                               ButtonStyle="Flat"
+                                               FocusBrush="{DynamicResource BlockBaseFocusBrush}" />
                     <Grid ColumnDefinitions="Auto,*,Auto"
                           RowDefinitions="*, *"
                           Margin="{TemplateBinding Padding}">
@@ -96,11 +97,11 @@
             </ControlTemplate>
         </Setter>
 
-        <Style Selector="^:pointerover /template/ blk|BlockButton#ButtonBackground">
+        <Style Selector="^:pointerover /template/ blk|BlockButtonBackground#ButtonBackground">
             <Setter Property="Highlighted" Value="True" />
         </Style>
 
-        <Style Selector="^:pressed /template/ blk|BlockButton#ButtonBackground">
+        <Style Selector="^:pressed /template/ blk|BlockButtonBackground#ButtonBackground">
             <Setter Property="Shaded" Value="True" />
         </Style>
 
@@ -108,10 +109,10 @@
             <Setter Property="Opacity" Value="{DynamicResource BlockDisabledOpacity}" />
         </Style>
 
-        <Style Selector="^:focus-visible /template/ blk|BlockButton#ButtonBackground">
+        <Style Selector="^:focus-visible /template/ blk|BlockButtonBackground#ButtonBackground">
             <Setter Property="Focused" Value="True" />
         </Style>
-        
+
         <Style Selector="^:empty">
             <Style Selector="^ /template/ ContentPresenter#PART_HeaderPresenter">
                 <Setter Property="Margin" Value="0" />
@@ -125,7 +126,7 @@
         <Style Selector="^:emptyLeft /template/ ContentPresenter#PART_LeftPresenter">
             <Setter Property="IsVisible" Value="False" />
         </Style>
-        
+
         <Style Selector="^:emptyRight /template/ ContentPresenter#PART_RightPresenter">
             <Setter Property="IsVisible" Value="False" />
         </Style>
@@ -140,7 +141,7 @@
                 <Setter Property="Grid.ColumnSpan" Value="2" />
             </Style>
         </Style>
-        
+
         <Style Selector="^:emptyRight">
             <Style Selector="^ /template/ ContentPresenter#PART_HeaderPresenter">
                 <Setter Property="Grid.ColumnSpan" Value="2" />
@@ -149,7 +150,7 @@
                 <Setter Property="Grid.ColumnSpan" Value="2" />
             </Style>
         </Style>
-        
+
         <Style Selector="^:emptyLeft:emptyRight">
             <Style Selector="^ /template/ ContentPresenter#PART_HeaderPresenter">
                 <Setter Property="Grid.Column" Value="0"></Setter>

@@ -12,29 +12,29 @@
             </StackPanel>
         </Border>
     </Design.PreviewWith>
-    
+
     <!-- ****************************************************** -->
     <!-- ********************* Resources ********************** -->
     <!-- ****************************************************** -->
-    
-    <SolidColorBrush x:Key="BlockListBoxItemBaseBackgroundBrush" 
+
+    <SolidColorBrush x:Key="BlockListBoxItemBaseBackgroundBrush"
                      Color="{DynamicResource BlockBaseButtonBackgroundColor}" />
-    
+
     <SolidColorBrush x:Key="BlockListBoxItemForegroundBrush"
-                     Color="{DynamicResource BlockWindowForegroundColor}"/>
-    
-    <SolidColorBrush x:Key="BlockSelectedListBoxItemBaseBackgroundBrush" 
+                     Color="{DynamicResource BlockWindowForegroundColor}" />
+
+    <SolidColorBrush x:Key="BlockSelectedListBoxItemBaseBackgroundBrush"
                      Color="{DynamicResource BlockBasePrimaryColor}" />
-    
+
     <SolidColorBrush x:Key="BlockSelectedListBoxItemForegroundBrush"
-                     Color="{DynamicResource BlockButtonForegroundColor}"/>
-    
+                     Color="{DynamicResource BlockButtonForegroundColor}" />
+
     <!-- ****************************************************** -->
     <!-- ********************** Themes ************************ -->
     <!-- ****************************************************** -->
 
     <ControlTheme x:Key="{x:Type ListBoxItem}" TargetType="ListBoxItem">
-        
+
         <Setter Property="Background" Value="{DynamicResource BlockListBoxItemBaseBackgroundBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource BlockListBoxItemForegroundBrush}" />
         <Setter Property="Padding" Value="{DynamicResource BlockListBoxItemPadding}" />
@@ -49,16 +49,16 @@
         <Setter Property="Template">
             <ControlTemplate>
                 <Panel Name="BaseContainer">
-                    <blk:BlockButton Name="ButtonBackground"
-                                     Background="{TemplateBinding Background}"
-                                     CornerRadius="{TemplateBinding CornerRadius}"
-                                     Flat="True" />
+                    <blk:BlockButtonBackground Name="ButtonBackground"
+                                               Background="{TemplateBinding Background}"
+                                               CornerRadius="{TemplateBinding CornerRadius}"
+                                               ButtonStyle="Flat" />
                     <ContentPresenter Name="PART_ContentPresenter"
                                       ContentTemplate="{TemplateBinding ContentTemplate}"
                                       Content="{TemplateBinding Content}"
                                       Padding="{TemplateBinding Padding}"
                                       VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                                      HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" >
+                                      HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}">
                         <ContentPresenter.Transitions>
                             <Transitions>
                                 <BrushTransition Property="Foreground"
@@ -70,12 +70,12 @@
                 </Panel>
             </ControlTemplate>
         </Setter>
-        
-        <Style Selector="^:pointerover /template/ blk|BlockButton#ButtonBackground">
+
+        <Style Selector="^:pointerover /template/ blk|BlockButtonBackground#ButtonBackground">
             <Setter Property="Highlighted" Value="True" />
         </Style>
 
-        <Style Selector="^:pressed /template/ blk|BlockButton#ButtonBackground">
+        <Style Selector="^:pressed /template/ blk|BlockButtonBackground#ButtonBackground">
             <Setter Property="Shaded" Value="True" />
         </Style>
 
@@ -83,17 +83,17 @@
             <Setter Property="Opacity" Value="{DynamicResource BlockDisabledOpacity}" />
         </Style>
 
-        <Style Selector="^:focus-visible /template/ blk|BlockButton#ButtonBackground">
+        <Style Selector="^:focus-visible /template/ blk|BlockButtonBackground#ButtonBackground">
             <Setter Property="Focused" Value="True" />
         </Style>
 
         <Style Selector="^:selected">
             <Setter Property="Foreground" Value="{DynamicResource BlockSelectedListBoxItemForegroundBrush}" />
-            <Style Selector="^:selected /template/ blk|BlockButton#ButtonBackground">
-                <Setter Property="Flat" Value="False" />
+            <Style Selector="^:selected /template/ blk|BlockButtonBackground#ButtonBackground">
+                <Setter Property="ButtonStyle" Value="Semitransparent" />
             </Style>
         </Style>
-        
+
         <Style Selector="^:selected:focused, ^:selected:focus-within">
             <Setter Property="Background" Value="{DynamicResource BlockSelectedListBoxItemBaseBackgroundBrush}" />
         </Style>

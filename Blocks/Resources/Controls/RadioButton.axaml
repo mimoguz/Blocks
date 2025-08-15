@@ -7,12 +7,12 @@
             <StackPanel Spacing="10">
                 <RadioButton>Radio</RadioButton>
                 <RadioButton IsChecked="True" Background="BlueViolet" Classes="left-label" HorizontalAlignment="Left">Checked</RadioButton>
-                <RadioButton IsEnabled="False"  GroupName="Disabled" Classes="top-label">Disabled</RadioButton>
+                <RadioButton IsEnabled="False" GroupName="Disabled" Classes="top-label">Disabled</RadioButton>
                 <RadioButton IsChecked="True" IsEnabled="False" GroupName="Disabled" Classes="bottom-label">Disabled - Checked</RadioButton>
             </StackPanel>
         </Border>
     </Design.PreviewWith>
-    
+
     <!-- ****************************************************** -->
     <!-- ********************* Resources ********************** -->
     <!-- ****************************************************** -->
@@ -22,18 +22,18 @@
 
     <SolidColorBrush x:Key="BlockRadioButtonForegroundBrush"
                      Color="{DynamicResource BlockWindowForegroundColor}" />
-    
+
     <SolidColorBrush x:Key="BlockRadioButtonDotBackgroundBrush"
                      Color="{DynamicResource BlockBaseDotBackgroundBrush}"
-                     Opacity="{DynamicResource BlockPlaceholderOpacity}"/>
-    
+                     Opacity="{DynamicResource BlockPlaceholderOpacity}" />
+
     <SolidColorBrush x:Key="BlockRadioButtonDotForegroundBrush"
                      Color="{DynamicResource BlockBasePrimaryColor}" />
 
     <!-- ****************************************************** -->
     <!-- ********************** Themes ************************ -->
     <!-- ****************************************************** -->
-    
+
     <ControlTheme x:Key="{x:Type RadioButton}"
                   TargetType="RadioButton">
 
@@ -47,8 +47,8 @@
 
         <Setter Property="Template">
             <ControlTemplate>
-                <Border Name="BaseContainer" 
-                        Background="Transparent" 
+                <Border Name="BaseContainer"
+                        Background="Transparent"
                         Padding="{TemplateBinding Padding}">
                     <DockPanel Background="Transparent">
                         <Panel Name="Radio"
@@ -56,13 +56,13 @@
                                Width="{DynamicResource BlockRadioButtonSize}"
                                Height="{DynamicResource BlockRadioButtonSize}"
                                HorizontalAlignment="{TemplateBinding HorizontalAlignment}">
-                            <blk:BlockButton Name="ButtonBackground"
-                                             Background="{TemplateBinding Background}"
-                                             CornerRadius="999" />
+                            <blk:BlockButtonBackground Name="ButtonBackground"
+                                                       Background="{TemplateBinding Background}"
+                                                       CornerRadius="999" />
                             <blk:AnimatedDot Name="Dot"
                                              Foreground="{DynamicResource BlockRadioButtonDotForegroundBrush}"
                                              Background="{DynamicResource BlockRadioButtonDotBackgroundBrush}"
-                                             BackgroundOpacity="0.3"/>
+                                             BackgroundOpacity="0.3" />
                         </Panel>
                         <ContentPresenter Name="PART_ContentPresenter"
                                           Margin="{TemplateBinding blk:Block.Gap, Converter={x:Static conv:BlockConverters.SelectLeftThickness}}"
@@ -76,11 +76,11 @@
             </ControlTemplate>
         </Setter>
 
-        <Style Selector="^:pointerover /template/ blk|BlockButton#ButtonBackground">
+        <Style Selector="^:pointerover /template/ blk|BlockButtonBackground#ButtonBackground">
             <Setter Property="Highlighted" Value="True" />
         </Style>
 
-        <Style Selector="^:pressed /template/ blk|BlockButton#ButtonBackground">
+        <Style Selector="^:pressed /template/ blk|BlockButtonBackground#ButtonBackground">
             <Setter Property="Shaded" Value="True" />
         </Style>
 
@@ -88,7 +88,7 @@
             <Setter Property="Opacity" Value="{DynamicResource BlockDisabledOpacity}" />
         </Style>
 
-        <Style Selector="^:focus-visible /template/ blk|BlockButton#ButtonBackground">
+        <Style Selector="^:focus-visible /template/ blk|BlockButtonBackground#ButtonBackground">
             <Setter Property="Focused" Value="True" />
         </Style>
 

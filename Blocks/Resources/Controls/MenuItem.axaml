@@ -70,20 +70,20 @@
             </ControlTemplate>
         </Setter>
     </ControlTheme>
-    
+
     <!-- ****************************************************** -->
     <!-- ********************* Resources ********************** -->
     <!-- ****************************************************** -->
-    
-    <SolidColorBrush x:Key="BlockMenuItemBaseBackgroundBrush" 
+
+    <SolidColorBrush x:Key="BlockMenuItemBaseBackgroundBrush"
                      Color="{DynamicResource BlockBaseButtonBackgroundColor}" />
-    
+
     <SolidColorBrush x:Key="BlockMenuItemForegroundBrush"
-                     Color="{DynamicResource BlockWindowForegroundColor}"/>
-    
+                     Color="{DynamicResource BlockWindowForegroundColor}" />
+
     <SolidColorBrush x:Key="BlockMenuItemActiveChevronBrush"
                      Color="{DynamicResource BlockBasePrimaryColor}" />
-    
+
     <!-- ****************************************************** -->
     <!-- ********************** Themes ************************ -->
     <!-- ****************************************************** -->
@@ -102,10 +102,10 @@
         <Setter Property="Template">
             <ControlTemplate>
                 <Panel Name="PART_LayoutRoot">
-                    <blk:BlockButton Name="ButtonBackground"
-                                     Background="{TemplateBinding Background}"
-                                     CornerRadius="{TemplateBinding CornerRadius}"
-                                     Flat="True" />
+                    <blk:BlockButtonBackground Name="ButtonBackground"
+                                               Background="{TemplateBinding Background}"
+                                               CornerRadius="{TemplateBinding CornerRadius}"
+                                               ButtonStyle="Flat" />
                     <Grid Margin="{TemplateBinding Padding}" IsHitTestVisible="False">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" SharedSizeGroup="ToggleIcon" />
@@ -143,7 +143,7 @@
                                    HorizontalAlignment="Right"
                                    VerticalAlignment="Center"
                                    Foreground="{DynamicResource BlockWindowForegroundBrush}"
-                                   Opacity="{DynamicResource BlockPlaceholderOpacity}"/>
+                                   Opacity="{DynamicResource BlockPlaceholderOpacity}" />
 
                         <blk:AnimatedMenuIcon Name="PART_Chevron"
                                               Grid.Column="4"
@@ -151,7 +151,7 @@
                                               VerticalAlignment="Center"
                                               Margin="{DynamicResource BlockMenuChevronMargin}"
                                               Background="{TemplateBinding Foreground}"
-                                              Foreground="{DynamicResource BlockMenuItemActiveChevronBrush}"/>
+                                              Foreground="{DynamicResource BlockMenuItemActiveChevronBrush}" />
                     </Grid>
 
                     <Popup Name="PART_Popup"
@@ -192,11 +192,11 @@
             <Setter Property="IsVisible" Value="True" />
         </Style>
 
-        <Style Selector="^:pointerover /template/ blk|BlockButton#ButtonBackground">
+        <Style Selector="^:pointerover /template/ blk|BlockButtonBackground#ButtonBackground">
             <Setter Property="Highlighted" Value="True" />
         </Style>
 
-        <Style Selector="^:pressed /template/ blk|BlockButton#ButtonBackground:pointerover">
+        <Style Selector="^:pressed /template/ blk|BlockButtonBackground#ButtonBackground:pointerover">
             <Setter Property="Shaded" Value="True" />
         </Style>
 
@@ -204,12 +204,12 @@
             <Setter Property="Opacity" Value="{DynamicResource BlockDisabledOpacity}" />
         </Style>
 
-        <Style Selector="^:focus-visible /template/ blk|BlockButton#ButtonBackground">
+        <Style Selector="^:focus-visible /template/ blk|BlockButtonBackground#ButtonBackground">
             <Setter Property="Focused" Value="True" />
         </Style>
 
-        <Style Selector="^:selected /template/ blk|BlockButton#ButtonBackground">
-            <Setter Property="Flat" Value="False" />
+        <Style Selector="^:selected /template/ blk|BlockButtonBackground#ButtonBackground">
+            <Setter Property="ButtonStyle" Value="Semitransparent" />
         </Style>
 
         <Style Selector="^:open /template/ blk|AnimatedMenuIcon#PART_Chevron">

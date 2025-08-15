@@ -22,6 +22,14 @@
                     </DropDownButton.Flyout>
                     Drop-down button
                 </DropDownButton>
+                <DropDownButton VerticalAlignment="Top" Classes="outlined">
+                    <DropDownButton.Flyout>
+                        <Flyout>
+                            <TextBlock Margin="10">Flyout</TextBlock>
+                        </Flyout>
+                    </DropDownButton.Flyout>
+                    Drop-down button
+                </DropDownButton>
                 <DropDownButton VerticalAlignment="Top" Classes="menu-button flat"
                                 blk:Block.ActiveForeground="DeepPink">
                     <DropDownButton.Flyout>
@@ -50,12 +58,21 @@
 
     <SolidColorBrush x:Key="BlockDropDownButtonActiveChevronBrush"
                      Color="{DynamicResource BlockBasePrimaryColor}" />
-    
-    <SolidColorBrush x:Key="BlockOpaqueDropDownButtonBackgroundBrush" 
+
+    <SolidColorBrush x:Key="BlockOpaqueDropDownButtonBackgroundBrush"
                      Color="{DynamicResource BlockOpaqueButtonBackgroundColor}" />
-    
+
     <SolidColorBrush x:Key="BlockOpaqueDropDownButtonForegroundBrush"
-                     Color="{DynamicResource BlockOpaqueButtonForegroundColor}"/>
+                     Color="{DynamicResource BlockOpaqueButtonForegroundColor}" />
+
+    <SolidColorBrush x:Key="BlockOutlinedDropDownButtonBaseBackgroundBrush"
+                     Color="{DynamicResource BlockBaseButtonBackgroundColor}" />
+
+    <SolidColorBrush x:Key="BlockOutlinedDropDownButtonBaseBorderBrush"
+                     Color="{DynamicResource BlockBaseButtonBackgroundColor}" />
+
+    <SolidColorBrush x:Key="BlockOutlinedDropDownButtonForegroundBrush"
+                     Color="{DynamicResource BlockWindowForegroundColor}" />
 
     <blk:AnimatedMenuIconStyle x:Key="BlockDropDownButtonMenuIconStyle">Chevron</blk:AnimatedMenuIconStyle>
     <Thickness x:Key="BlockDropDownButtonChevronMargin">0,0,8,0</Thickness>
@@ -69,7 +86,8 @@
 
         <Setter Property="Background" Value="{DynamicResource BlockDropDownButtonBaseBackgroundBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource BlockDropDownButtonForegroundBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource BlockDropDownButtonActiveChevronBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BlockOutlinedDropDownButtonBaseBorderBrush}" />
+        <Setter Property="BorderThickness" Value="{DynamicResource BlockControlBorderThickness}" />
         <Setter Property="Padding" Value="{DynamicResource BlockButtonPadding}" />
         <Setter Property="CornerRadius" Value="{DynamicResource BlockButtonCornerRadius}" />
         <Setter Property="FontWeight" Value="{DynamicResource BlockButtonFontWeight}" />
@@ -79,19 +97,23 @@
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="FocusAdorner" Value="{x:Null}" />
+        <Setter Property="blk:Block.ButtonStyle" Value="Semitransparent" />
 
         <Setter Property="Template">
             <ControlTemplate>
                 <Panel Name="BaseContainer">
-                    <blk:BlockButton Name="ButtonBackground"
-                                     Background="{TemplateBinding Background}"
-                                     CornerRadius="{TemplateBinding CornerRadius}" />
+                    <blk:BlockButtonBackground Name="ButtonBackground"
+                                               Background="{TemplateBinding Background}"
+                                               FocusBrush="{DynamicResource BlockBaseFocusBrush}"
+                                               CornerRadius="{TemplateBinding CornerRadius}" 
+                                               BorderThickness="{TemplateBinding BorderThickness}"
+                                               BorderBrush="{TemplateBinding BorderBrush}" />
                     <Grid ColumnDefinitions="*, Auto"
                           IsHitTestVisible="False">
                         <blk:AnimatedMenuIcon Name="MenuIcon"
                                               Grid.Column="1"
                                               Background="{TemplateBinding Foreground}"
-                                              Foreground="{TemplateBinding BorderBrush}"
+                                              Foreground="{DynamicResource BlockDropDownButtonActiveChevronBrush}"
                                               Margin="{DynamicResource BlockDropDownButtonChevronMargin}"
                                               MenuIconStyle="{TemplateBinding blk:Block.MenuIconStyle}" />
                         <ContentPresenter Name="PART_ContentPresenter"
@@ -111,11 +133,11 @@
             </ControlTemplate>
         </Setter>
 
-        <Style Selector="^:pointerover /template/ blk|BlockButton#ButtonBackground">
+        <Style Selector="^:pointerover /template/ blk|BlockButtonBackground#ButtonBackground">
             <Setter Property="Highlighted" Value="True" />
         </Style>
 
-        <Style Selector="^:pressed /template/ blk|BlockButton#ButtonBackground">
+        <Style Selector="^:pressed /template/ blk|BlockButtonBackground#ButtonBackground">
             <Setter Property="Shaded" Value="True" />
         </Style>
 
@@ -123,58 +145,77 @@
             <Setter Property="Opacity" Value="{DynamicResource BlockDisabledOpacity}" />
         </Style>
 
-        <Style Selector="^:focus-visible /template/ blk|BlockButton#ButtonBackground">
+        <Style Selector="^:focus-visible /template/ blk|BlockButtonBackground#ButtonBackground">
             <Setter Property="Focused" Value="True" />
         </Style>
 
-        <!-- Classes -->
+       
         <Style Selector="^.image-button">
             <Setter Property="Padding" Value="{DynamicResource BlockImageButtonPadding}" />
         </Style>
         
-        <Style Selector="^.opaque">
-            <Setter Property="Foreground" Value="{DynamicResource BlockOpaqueComboBoxForegroundBrush}" />
-            <Setter Property="Background" Value="{DynamicResource BlockOpaqueComboBoxBackgroundBrush}" />
-            <Style Selector="^ /template/ blk|BlockButton#ButtonBackground">
-                <Setter Property="Opaque" Value="True" />
-                <Setter Property="BorderBrush" Value="{TemplateBinding Foreground}" />
-            </Style>
-            <Style Selector="^ /template/ blk|AnimatedMenuIcon#MenuIcon">
-                <Setter Property="Foreground" Value="{TemplateBinding Foreground}" />
-            </Style>
-        </Style>
-
         <Style Selector="^.flat">
-            <Style Selector="^ /template/ blk|BlockButton#ButtonBackground">
-                <Setter Property="Flat" Value="True" />
+            <Setter Property="blk:Block.ButtonStyle" Value="Flat" />
+        </Style>
+        
+        <Style Selector="^[(blk|Block.ButtonStyle)=Flat]">
+            <Style Selector="^ /template/ blk|BlockButtonBackground#ButtonBackground">
+                <Setter Property="ButtonStyle" Value="Flat" />
             </Style>
             <Setter Property="Foreground" Value="{DynamicResource BlockDropDownButtonFlatForegroundBrush}" />
         </Style>
 
-        <Style Selector="^.pill-left /template/ blk|BlockButton#ButtonBackground">
+        <Style Selector="^.pill-left /template/ blk|BlockButtonBackground#ButtonBackground">
             <Setter Property="CornerRadius"
                     Value="{TemplateBinding CornerRadius, Converter={x:Static conv:BlockConverters.SelectLeftRadius}}">
             </Setter>
         </Style>
+        
+        <Style Selector="^.outlined">
+            <Setter Property="blk:Block.ButtonStyle" Value="Outlined" />
+        </Style>
+        
+        <Style Selector="^[(blk|Block.ButtonStyle)=Outlined]">
+            <Style Selector="^ /template/ blk|BlockButtonBackground#ButtonBackground">
+                <Setter Property="ButtonStyle" Value="Outlined" />
+            </Style>
+            <Setter Property="Foreground" Value="{DynamicResource BlockOutlinedDropDownButtonForegroundBrush}" />
+        </Style>
+        
+        <Style Selector="^.opaque">
+            <Setter Property="blk:Block.ButtonStyle" Value="Opaque" />
+        </Style>
 
-        <Style Selector="^.pill-center /template/ blk|BlockButton#ButtonBackground">
+        <Style Selector="^[(blk|Block.ButtonStyle)=Opaque]">
+            <Setter Property="Foreground" Value="{DynamicResource BlockOpaqueDropDownButtonForegroundBrush}" />
+            <Setter Property="Background" Value="{DynamicResource BlockOpaqueDropDownButtonBackgroundBrush}" />
+            <Style Selector="^ /template/ blk|BlockButtonBackground#ButtonBackground">
+                <Setter Property="ButtonStyle" Value="Opaque" />
+                <Setter Property="FocusBrush" Value="{TemplateBinding Foreground}" />
+            </Style>
+            <Style Selector="^ /template/ blk|AnimatedMenuIcon">
+                <Setter Property="Foreground" Value="{TemplateBinding Foreground}" />
+            </Style>
+        </Style>
+
+        <Style Selector="^.pill-center /template/ blk|BlockButtonBackground#ButtonBackground">
             <Setter Property="CornerRadius" Value="0">
             </Setter>
         </Style>
 
-        <Style Selector="^.pill-right /template/ blk|BlockButton#ButtonBackground">
+        <Style Selector="^.pill-right /template/ blk|BlockButtonBackground#ButtonBackground">
             <Setter Property="CornerRadius"
                     Value="{TemplateBinding CornerRadius, Converter={x:Static conv:BlockConverters.SelectRightRadius}}">
             </Setter>
         </Style>
 
-        <Style Selector="^.pill-top /template/ blk|BlockButton#ButtonBackground">
+        <Style Selector="^.pill-top /template/ blk|BlockButtonBackground#ButtonBackground">
             <Setter Property="CornerRadius"
                     Value="{TemplateBinding CornerRadius, Converter={x:Static conv:BlockConverters.SelectTopRadius}}">
             </Setter>
         </Style>
 
-        <Style Selector="^.pill-bottom /template/ blk|BlockButton#ButtonBackground">
+        <Style Selector="^.pill-bottom /template/ blk|BlockButtonBackground#ButtonBackground">
             <Setter Property="CornerRadius"
                     Value="{TemplateBinding CornerRadius, Converter={x:Static conv:BlockConverters.SelectBottomRadius}}">
             </Setter>
@@ -184,8 +225,8 @@
             <Style Selector="^ /template/ blk|AnimatedMenuIcon">
                 <Setter Property="DrawExpanded" Value="True" />
             </Style>
-            <Style Selector="^ /template/ blk|BlockButton#ButtonBackground">
-                <Setter Property="Shaded" Value="True" />
+            <Style Selector="^ /template/ blk|BlockButtonBackground#ButtonBackground">
+                <Setter Property="Highlighted" Value="True" />
             </Style>
         </Style>
 
