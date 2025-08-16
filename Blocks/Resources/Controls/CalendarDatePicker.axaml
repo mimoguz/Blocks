@@ -110,7 +110,7 @@
                                         </Button.CornerRadius>
                                         <blk:CalendarIcon Foreground="{TemplateBinding Foreground}"
                                                           Padding="{DynamicResource BlockCalendarIconTextMargin}"
-                                                          FontSize="{DynamicResource BlockCalendarIconFontSize}" />
+                                                          FontSize="{DynamicResource BlockCalendarIconFontSize}"/>
                                     </Button>
                                     <TextBox Name="PART_TextBox"
                                              Grid.Column="0"

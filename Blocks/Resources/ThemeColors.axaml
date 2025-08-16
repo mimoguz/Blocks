@@ -24,6 +24,7 @@
             <Color x:Key="BlockButtonForegroundColor">#102025</Color>
             <Color x:Key="BlockOpaqueButtonForegroundColor">#F0FFFFFF</Color>
             <Color x:Key="BlockFlatButtonForegroundColor">#F0007FFF</Color>
+            <Color x:Key="BlockOutlinedButtonForegroundColor">#F0007FFF</Color>
             <Color x:Key="BlockOnPrimaryColor">#F0FFFFFF</Color>
             <Color x:Key="BlockOnSecondaryColor">#F0FFFFFF</Color>
             <Color x:Key="BlockDestructiveForegroundColor">DarkRed</Color>
@@ -59,6 +60,7 @@
             <Color x:Key="BlockButtonForegroundColor">#FEFEFF</Color>
             <Color x:Key="BlockOpaqueButtonForegroundColor">#FEFEFF</Color>
             <Color x:Key="BlockFlatButtonForegroundColor">#5C99E3</Color>
+            <Color x:Key="BlockOutlinedButtonForegroundColor">#5C99E3</Color>
             <Color x:Key="BlockOnPrimaryColor">#F0FFFFFF</Color>
             <Color x:Key="BlockDestructiveForegroundColor">#FFA0A0</Color>
 

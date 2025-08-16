@@ -62,7 +62,7 @@
                      Color="{DynamicResource BlockBaseButtonBackgroundColor}" />
 
     <SolidColorBrush x:Key="BlockOutlinedToggleButtonForegroundBrush"
-                     Color="{DynamicResource BlockWindowForegroundColor}" />
+                     Color="{DynamicResource BlockOutlinedButtonForegroundColor}" />
 
     <SolidColorBrush x:Key="BlockToggleButtonCheckedBackgroundBrush"
                      Color="{DynamicResource BlockBasePrimaryColor}" />

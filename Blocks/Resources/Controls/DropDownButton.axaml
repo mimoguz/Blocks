@@ -72,7 +72,7 @@
                      Color="{DynamicResource BlockBaseButtonBackgroundColor}" />
 
     <SolidColorBrush x:Key="BlockOutlinedDropDownButtonForegroundBrush"
-                     Color="{DynamicResource BlockWindowForegroundColor}" />
+                     Color="{DynamicResource BlockOutlinedButtonForegroundColor}" />
 
     <blk:AnimatedMenuIconStyle x:Key="BlockDropDownButtonMenuIconStyle">Chevron</blk:AnimatedMenuIconStyle>
     <Thickness x:Key="BlockDropDownButtonChevronMargin">0,0,8,0</Thickness>

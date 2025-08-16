@@ -85,7 +85,7 @@
                      Color="{DynamicResource BlockFlatButtonForegroundColor}" />
 
     <SolidColorBrush x:Key="BlockOutlinedBtnForegroundBrush"
-                     Color="{DynamicResource BlockWindowForegroundColor}" />
+                     Color="{DynamicResource BlockOutlinedButtonForegroundColor}" />
 
     <!-- ****************************************************** -->
     <!-- ********************** Themes ************************ -->

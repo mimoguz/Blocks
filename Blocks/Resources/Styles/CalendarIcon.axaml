@@ -50,12 +50,12 @@
             </StreamGeometry>
         </Style.Resources>
 
-        <Setter Property="Foreground" Value="{DynamicResource BlockButtonForegroundBrush}" />
+        <Setter Property="Foreground" Value="Black" />
         <Setter Property="Padding" Value="0,3,0,0" />
         <Setter Property="FontSize" Value="10" />
         <Setter Property="Template">
             <ControlTemplate>
-                <Panel>
+                <Panel UseLayoutRounding="False">
                     <Path Data="{StaticResource BlockCalendarGeom}" 
                           Fill="{TemplateBinding Foreground}"
                           Width="20" Height="20" Stretch="None"/>
@@ -64,7 +64,7 @@
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
                                FontWeight="Black"
-                               Margin="{TemplateBinding Padding}"/>
+                               Margin="{TemplateBinding Padding}" />
                 </Panel>
             </ControlTemplate>
         </Setter>
