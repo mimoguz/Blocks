@@ -23,6 +23,15 @@
                     </SplitButton.Flyout>
                     Split Button
                 </SplitButton>
+                <SplitButton VerticalAlignment="Top"
+                             Classes="outlined">
+                    <SplitButton.Flyout>
+                        <Flyout>
+                            <TextBlock Margin="10">Flyout</TextBlock>
+                        </Flyout>
+                    </SplitButton.Flyout>
+                    Split Button
+                </SplitButton>
                 <SplitButton VerticalAlignment="Top" Classes="flat" blk:Block.ActiveForeground="DeepPink">
                     <SplitButton.Flyout>
                         <Flyout>
@@ -61,6 +70,15 @@
     <SolidColorBrush x:Key="BlockOpaqueSplitButtonForegroundBrush"
                      Color="{DynamicResource BlockOpaqueButtonForegroundColor}"/>
     
+    <SolidColorBrush x:Key="BlockOutlinedSplitButtonBaseBackgroundBrush"
+                     Color="{DynamicResource BlockBaseButtonBackgroundColor}" />
+
+    <SolidColorBrush x:Key="BlockOutlinedSplitButtonBaseBorderBrush"
+                     Color="{DynamicResource BlockBaseButtonBackgroundColor}" />
+
+    <SolidColorBrush x:Key="BlockOutlinedSplitButtonForegroundBrush"
+                     Color="{DynamicResource BlockWindowForegroundColor}" />
+    
     <x:Double x:Key="BlockSplitButtonGap">1</x:Double>
     <blk:AnimatedMenuIconStyle x:Key="BlockSplitButtonMenuIconStyle">Chevron</blk:AnimatedMenuIconStyle>
 
@@ -72,6 +90,8 @@
 
         <Setter Property="Background" Value="{DynamicResource BlockSplitButtonBaseBackgroundBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource BlockSplitButtonForegroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BlockOutlinedSplitButtonBaseBorderBrush}" />
+        <Setter Property="BorderThickness" Value="{DynamicResource BlockControlBorderThickness}" />
         <Setter Property="Padding" Value="{DynamicResource BlockButtonPadding}" />
         <Setter Property="CornerRadius" Value="{DynamicResource BlockButtonCornerRadius}" />
         <Setter Property="FontWeight" Value="{DynamicResource BlockButtonFontWeight}" />
@@ -81,6 +101,7 @@
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="FocusAdorner" Value="{x:Null}" />
         <Setter Property="IsTabStop" Value="True" />
+        <Setter Property="blk:Block.ButtonStyle" Value="Semitransparent" />
 
         <Setter Property="Template">
             <ControlTemplate>
@@ -94,6 +115,8 @@
                         <Button x:Name="PART_PrimaryButton"
                                 Grid.Column="0"
                                 Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness, Converter={x:Static conv:BlockConverters.ClearRightThickness}}"
                                 Command="{TemplateBinding Command}"
                                 CommandParameter="{TemplateBinding CommandParameter}"
                                 CornerRadius="{TemplateBinding CornerRadius, Converter={x:Static conv:BlockConverters.SelectLeftRadius}}"
@@ -120,6 +143,7 @@
                                 Grid.Column="2"
                                 MinWidth="{Binding $self.Bounds.Height}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness, Converter={x:Static conv:BlockConverters.ClearLeftThickness}}"
                                 Foreground="{TemplateBinding Foreground}"
                                 Background="{TemplateBinding Background}"
                                 CornerRadius="{TemplateBinding CornerRadius, Converter={x:Static conv:BlockConverters.SelectRightRadius}}"
@@ -138,18 +162,20 @@
             </ControlTemplate>
         </Setter>
 
-        <!-- Classes -->
-
         <Style Selector="^.flat">
+            <Setter Property="blk:Block.ButtonStyle" Value="Flat" />
+        </Style>
+        
+        <Style Selector="^^[(blk|Block.ButtonStyle)=Flat]">
             <Setter Property="Foreground" Value="{DynamicResource BlockFlatButtonForegroundBrush}" />
             <Style Selector="^ /template/ Rectangle#SeparatorBorder">
                 <Setter Property="Fill" Value="{DynamicResource BlockFlatSplitButtonDividerBrush}" />
             </Style>
             <Style Selector="^ /template/ Button#PART_PrimaryButton">
-                <Setter Property="blk:Block.IsFlat" Value="True" />
+                <Setter Property="blk:Block.ButtonStyle" Value="Flat" />
             </Style>
             <Style Selector="^ /template/ Button#PART_SecondaryButton">
-                <Setter Property="blk:Block.IsFlat" Value="True" />
+                <Setter Property="blk:Block.ButtonStyle" Value="Flat" />
             </Style>
         </Style>
 
@@ -169,13 +195,33 @@
         </Style>
         
         <Style Selector="^.opaque">
-            <Setter Property="Foreground" Value="{DynamicResource BlockOpaqueComboBoxForegroundBrush}" />
-            <Setter Property="Background" Value="{DynamicResource BlockOpaqueComboBoxBackgroundBrush}" />
+            <Setter Property="blk:Block.ButtonStyle" Value="Opaque" />
+        </Style>
+        
+        <Style Selector="^^[(blk|Block.ButtonStyle)=Opaque]">
+            <Setter Property="Foreground" Value="{DynamicResource BlockOpaqueSplitButtonForegroundBrush}" />
+            <Setter Property="Background" Value="{DynamicResource BlockOpaqueSplitButtonBackgroundBrush}" />
             <Style Selector="^ /template/ Button#PART_PrimaryButton, ^ /template/ Button#PART_SecondaryButton">
-                <Setter Property="blk:Block.IsOpaque" Value="True" />
+                <Setter Property="blk:Block.ButtonStyle" Value="Opaque" />
             </Style>
             <Style Selector="^ /template/ blk|AnimatedMenuIcon">
                 <Setter Property="Foreground" Value="{TemplateBinding Foreground}" />
+            </Style>
+        </Style>
+        
+        <Style Selector="^.outlined">
+            <Setter Property="blk:Block.ButtonStyle" Value="Outlined" />
+        </Style>
+        
+        <Style Selector="^[(blk|Block.ButtonStyle)=Outlined]">
+            <Setter Property="Foreground" Value="{DynamicResource BlockOutlinedSplitButtonForegroundBrush}" />
+            <Setter Property="Background" Value="{DynamicResource BlockOutlinedSplitButtonBaseBackgroundBrush}" />
+            <Style Selector="^ /template/ Button#PART_PrimaryButton, ^ /template/ Button#PART_SecondaryButton">
+                <Setter Property="blk:Block.ButtonStyle" Value="Outlined" />
+            </Style>
+            <Style Selector="^ /template/ Rectangle#SeparatorBorder">
+                <Setter Property="Fill" Value="{TemplateBinding BorderBrush}" />
+                <Setter Property="Opacity" Value="{DynamicResource BlockOutlinedButtonBorderOpacity}" />
             </Style>
         </Style>
     </ControlTheme>

@@ -61,7 +61,7 @@
 
         <Setter Property="Background" Value="{DynamicResource BlockTabItemBaseBackgroundBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource BlockTabItemForegroundBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource BlockTabItemLineBrush}" />
+        <Setter Property="BorderThickness" Value="{DynamicResource BlockControlBorderThickness}" />
         <Setter Property="Padding" Value="{DynamicResource BlockTabItemPadding}" />
         <Setter Property="CornerRadius" Value="{DynamicResource BlockButtonCornerRadius}" />
         <Setter Property="FontWeight" Value="{DynamicResource BlockTabITemFontWeight}" />
@@ -74,10 +74,10 @@
         <Setter Property="Template">
             <ControlTemplate>
                 <Panel Name="BaseContainer">
-                    <blk:BlockButton Name="ButtonBackground"
-                                     Background="{TemplateBinding Background}"
-                                     CornerRadius="{TemplateBinding CornerRadius}"
-                                     Flat="True" />
+                    <blk:BlockButtonBackground Name="ButtonBackground"
+                                               Background="{TemplateBinding Background}"
+                                               CornerRadius="{TemplateBinding CornerRadius}"
+                                               ButtonStyle="Flat" />
                     <DockPanel>
                         <Decorator Name="Decoration"
                                    DockPanel.Dock="Left"
@@ -89,7 +89,7 @@
                                        HorizontalAlignment="Left"
                                        Height="0"
                                        Width="{DynamicResource BlockTabLineThickness}"
-                                       Fill="{TemplateBinding BorderBrush}"
+                                       Fill="{DynamicResource BlockTabItemLineBrush}"
                                        Opacity="0.9">
                                 <Rectangle.Transitions>
                                     <Transitions>
@@ -123,11 +123,11 @@
         </Setter>
 
 
-        <Style Selector="^:pointerover /template/ blk|BlockButton#ButtonBackground">
+        <Style Selector="^:pointerover /template/ blk|BlockButtonBackground#ButtonBackground">
             <Setter Property="Highlighted" Value="True" />
         </Style>
 
-        <Style Selector="^:pressed /template/ blk|BlockButton#ButtonBackground">
+        <Style Selector="^:pressed /template/ blk|BlockButtonBackground#ButtonBackground">
             <Setter Property="Shaded" Value="True" />
         </Style>
 
@@ -135,7 +135,7 @@
             <Setter Property="Opacity" Value="{DynamicResource BlockDisabledOpacity}" />
         </Style>
 
-        <Style Selector="^:focus-visible /template/ blk|BlockButton#ButtonBackground">
+        <Style Selector="^:focus-visible /template/ blk|BlockButtonBackground#ButtonBackground">
             <Setter Property="Focused" Value="True" />
         </Style>
 
@@ -144,24 +144,26 @@
             <Style Selector="^ /template/ Rectangle#Mark">
                 <Setter Property="Height" Value="{DynamicResource BlockTabItemLineHeight}" />
             </Style>
-            <Style Selector="^ /template/ blk|BlockButton#ButtonBackground">
-                <Setter Property="Flat" Value="False" />
+            <Style Selector="^ /template/ blk|BlockButtonBackground#ButtonBackground">
+                <Setter Property="ButtonStyle" Value="Semitransparent" />
+            </Style>
+            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Foreground" Value="{DynamicResource BlockSelectedTabItemForegroundBrush}" />
             </Style>
         </Style>
 
-        <Style Selector="^.opaque /template/ blk|BlockButton#ButtonBackground">
-            <Style Selector="^ /template/ Rectangle#Mark">
-                <Setter Property="Fill" Value="{TemplateBinding Foreground}" />
-            </Style>
+        <Style Selector="^.opaque /template/ Rectangle#Mark">
+            <Setter Property="Fill" Value="{DynamicResource BlockOpaqueTabItemSelectedForegroundBrush}" />
         </Style>
         <Style Selector="^.opaque:selected">
-            <Setter Property="Background" Value="{DynamicResource BlockOpaqueTabItemSelectedBackgroundBrush}" />
             <Setter Property="Foreground" Value="{DynamicResource BlockOpaqueTabItemSelectedForegroundBrush}" />
-            <Style Selector="^.opaque /template/ blk|BlockButton#ButtonBackground">
-                <Setter Property="Opaque" Value="True" />
+            <Style Selector="^ /template/ blk|BlockButtonBackground#ButtonBackground">
+                <Setter Property="Background" Value="{DynamicResource BlockOpaqueTabItemSelectedBackgroundBrush}" />
+                <Setter Property="FocusBrush" Value="{DynamicResource BlockOpaqueTabItemSelectedForegroundBrush}" />
+                <Setter Property="ButtonStyle" Value="Opaque" />
             </Style>
-            <Style Selector="^ /template/ Rectangle#Mark">
-                <Setter Property="Fill" Value="{TemplateBinding Foreground}" />
+            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Foreground" Value="{DynamicResource BlockOpaqueTabItemSelectedForegroundBrush}" />
             </Style>
         </Style>
 

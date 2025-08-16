@@ -8,9 +8,9 @@
             <Color x:Key="BlockInvariantDarkColor">#000010</Color>
             <Color x:Key="BlockInvariantLightColor">White</Color>
 
-            <Color x:Key="BlockWindowBackgroundColor">#F7F7FF</Color>
-            <Color x:Key="BlockRaisedBackgroundColor">#FAFAFF</Color>
-            <Color x:Key="BlockPaneBackgroundColor">#DEE0E9</Color>
+            <Color x:Key="BlockWindowBackgroundColor">#FAFAFB</Color>
+            <Color x:Key="BlockRaisedBackgroundColor">White</Color>
+            <Color x:Key="BlockPaneBackgroundColor">#EBEBED</Color>
             <Color x:Key="BlockOpaqueButtonBackgroundColor">#607080</Color>
             <Color x:Key="BlockBaseButtonBackgroundColor">#203045</Color>
             <Color x:Key="BlockBaseViewBackgroundColor">#203045</Color>

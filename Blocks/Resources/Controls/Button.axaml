@@ -149,7 +149,7 @@
         </Style>
 
         <Style Selector="^[Tag=flyout-open] /template/ blk|BlockButtonBackground#ButtonBackground">
-            <Setter Property="Shaded" Value="True" />
+            <Setter Property="Highlighted" Value="True" />
         </Style>
 
         <!-- Classes -->

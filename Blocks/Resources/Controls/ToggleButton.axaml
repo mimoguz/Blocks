@@ -2,11 +2,12 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:blk="clr-namespace:Blocks.Controls"
                     xmlns:conv="clr-namespace:Blocks.Converters">
-    
+
     <Design.PreviewWith>
         <Border Background="{DynamicResource BlockWindowBackgroundColor}" Padding="20">
             <WrapPanel Width="300" ItemSpacing="10" LineSpacing="10">
-                <ToggleButton>Basic Toggle Button</ToggleButton>
+                <ToggleButton Background="Brown">Basic Toggle Button</ToggleButton>
+                <ToggleButton Classes="outlined">Basic Toggle Button</ToggleButton>
                 <ToggleButton Classes="image-button">
                     <Path Data="{StaticResource BlockTestIcon}"
                           Width="{DynamicResource BlockIconSize}"
@@ -34,15 +35,55 @@
             </WrapPanel>
         </Border>
     </Design.PreviewWith>
-    
-    <SolidColorBrush x:Key="BlockToggleButtonCheckedBackgroundBrush" Color="{DynamicResource BlockBasePrimaryColor}" />
-    <SolidColorBrush x:Key="BlockToggleButtonCheckedForegroundBrush" Color="{DynamicResource BlockOnPrimaryColor}" />
-    
+
+    <!-- ****************************************************** -->
+    <!-- ********************* Resources ********************** -->
+    <!-- ****************************************************** -->
+
+    <SolidColorBrush x:Key="BlockToggleButtonBaseBackgroundBrush"
+                     Color="{DynamicResource BlockBaseButtonBackgroundColor}" />
+
+    <SolidColorBrush x:Key="BlockToggleButtonForegroundBrush"
+                     Color="{DynamicResource BlockButtonForegroundColor}" />
+
+    <SolidColorBrush x:Key="BlockToggleButtonFlatForegroundBrush"
+                     Color="{DynamicResource BlockFlatButtonForegroundColor}" />
+
+    <SolidColorBrush x:Key="BlockOpaqueToggleButtonBackgroundBrush"
+                     Color="{DynamicResource BlockOpaqueButtonBackgroundColor}" />
+
+    <SolidColorBrush x:Key="BlockOpaqueToggleButtonForegroundBrush"
+                     Color="{DynamicResource BlockOpaqueButtonForegroundColor}" />
+
+    <SolidColorBrush x:Key="BlockOutlinedToggleButtonBaseBackgroundBrush"
+                     Color="{DynamicResource BlockBaseButtonBackgroundColor}" />
+
+    <SolidColorBrush x:Key="BlockOutlinedToggleButtonBaseBorderBrush"
+                     Color="{DynamicResource BlockBaseButtonBackgroundColor}" />
+
+    <SolidColorBrush x:Key="BlockOutlinedToggleButtonForegroundBrush"
+                     Color="{DynamicResource BlockWindowForegroundColor}" />
+
+    <SolidColorBrush x:Key="BlockToggleButtonCheckedBackgroundBrush"
+                     Color="{DynamicResource BlockBasePrimaryColor}" />
+
+    <SolidColorBrush x:Key="BlockToggleButtonCheckedForegroundBrush"
+                     Color="{DynamicResource BlockOnPrimaryColor}" />
+
+    <blk:AnimatedMenuIconStyle x:Key="BlockToggleButtonMenuIconStyle">Chevron</blk:AnimatedMenuIconStyle>
+    <Thickness x:Key="BlockToggleButtonChevronMargin">0,0,8,0</Thickness>
+
+    <!-- ****************************************************** -->
+    <!-- ********************** Themes ************************ -->
+    <!-- ****************************************************** -->
+
     <ControlTheme x:Key="{x:Type ToggleButton}"
                   TargetType="ToggleButton">
 
-        <Setter Property="Background" Value="{DynamicResource BlockBaseButtonBackgroundBrush}" />
-        <Setter Property="Foreground" Value="{DynamicResource BlockButtonForegroundBrush}" />
+        <Setter Property="Background" Value="{DynamicResource BlockToggleButtonBaseBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource BlockToggleButtonForegroundBrush}" />
+        <Setter Property="BorderThickness" Value="{DynamicResource BlockControlBorderThickness}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BlockOutlinedToggleButtonBaseBorderBrush}" />
         <Setter Property="Padding" Value="{DynamicResource BlockButtonPadding}" />
         <Setter Property="CornerRadius" Value="{DynamicResource BlockButtonCornerRadius}" />
         <Setter Property="FontWeight" Value="{DynamicResource BlockButtonFontWeight}" />
@@ -51,13 +92,16 @@
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="FocusAdorner" Value="{x:Null}" />
+        <Setter Property="blk:Block.ButtonStyle" Value="Semitransparent" />
 
         <Setter Property="Template">
             <ControlTemplate>
                 <Panel Name="BaseContainer">
-                    <blk:BlockButton Name="ButtonBackground"
-                                     Background="{TemplateBinding Background}"
-                                     CornerRadius="{TemplateBinding CornerRadius}" />
+                    <blk:BlockButtonBackground Name="ButtonBackground"
+                                               Background="{TemplateBinding Background}"
+                                               CornerRadius="{TemplateBinding CornerRadius}"
+                                               BorderBrush="{TemplateBinding BorderBrush}"
+                                               BorderThickness="{TemplateBinding BorderThickness}" />
                     <ContentPresenter Name="PART_ContentPresenter"
                                       IsHitTestVisible="False"
                                       CornerRadius="{TemplateBinding CornerRadius}"
@@ -73,11 +117,11 @@
             </ControlTemplate>
         </Setter>
 
-        <Style Selector="^:pointerover /template/ blk|BlockButton#ButtonBackground">
+        <Style Selector="^:pointerover /template/ blk|BlockButtonBackground#ButtonBackground">
             <Setter Property="Highlighted" Value="True" />
         </Style>
 
-        <Style Selector="^:pressed /template/ blk|BlockButton#ButtonBackground">
+        <Style Selector="^:pressed /template/ blk|BlockButtonBackground#ButtonBackground">
             <Setter Property="Shaded" Value="True" />
         </Style>
 
@@ -85,60 +129,89 @@
             <Setter Property="Opacity" Value="{DynamicResource BlockDisabledOpacity}" />
         </Style>
 
-        <Style Selector="^:focus-visible /template/ blk|BlockButton#ButtonBackground">
+        <Style Selector="^:focus-visible /template/ blk|BlockButtonBackground#ButtonBackground">
             <Setter Property="Focused" Value="True" />
         </Style>
 
-        <!-- Classes -->
         <Style Selector="^.image-button">
             <Setter Property="Padding" Value="{DynamicResource BlockImageButtonPadding}" />
         </Style>
 
+
         <Style Selector="^.flat">
-            <Style Selector="^ /template/ blk|BlockButton#ButtonBackground">
-                <Setter Property="Flat" Value="True" />
+            <Setter Property="blk:Block.ButtonStyle" Value="Flat" />
+        </Style>
+
+        <Style Selector="^[(blk|Block.ButtonStyle)=Flat]">
+            <Style Selector="^ /template/ blk|BlockButtonBackground#ButtonBackground">
+                <Setter Property="ButtonStyle" Value="Flat" />
             </Style>
-            <Setter Property="Foreground" Value="{DynamicResource BlockFlatButtonForegroundBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource BlockToggleButtonFlatForegroundBrush}" />
+        </Style>
+
+        <Style Selector="^.outlined">
+            <Setter Property="blk:Block.ButtonStyle" Value="Outlined" />
+        </Style>
+
+        <Style Selector="^[(blk|Block.ButtonStyle)=Outlined]">
+            <Style Selector="^ /template/ blk|BlockButtonBackground#ButtonBackground">
+                <Setter Property="ButtonStyle" Value="Outlined" />
+            </Style>
+            <Setter Property="Foreground" Value="{DynamicResource BlockOutlinedToggleButtonForegroundBrush}" />
+        </Style>
+
+        <Style Selector="^.opaque">
+            <Setter Property="blk:Block.ButtonStyle" Value="Opaque" />
+        </Style>
+
+        <Style Selector="^[(blk|Block.ButtonStyle)=Opaque]">
+            <Setter Property="Foreground" Value="{DynamicResource BlockOpaqueToggleButtonForegroundBrush}" />
+            <Setter Property="Background" Value="{DynamicResource BlockOpaqueToggleButtonBackgroundBrush}" />
+            <Style Selector="^ /template/ blk|BlockButtonBackground#ButtonBackground">
+                <Setter Property="ButtonStyle" Value="Opaque" />
+                <Setter Property="FocusBrush" Value="{TemplateBinding Foreground}" />
+            </Style>
         </Style>
 
         <Style Selector="^.hide-checked"></Style>
 
         <Style Selector="^:checked:not(.hide-checked)">
             <Setter Property="Foreground" Value="{DynamicResource BlockToggleButtonCheckedForegroundBrush}" />
-            <Style Selector="^ /template/ blk|BlockButton#ButtonBackground">
-                <Setter Property="Opaque" Value="True" />
+            <Setter Property="Background" Value="{DynamicResource BlockToggleButtonCheckedBackgroundBrush}" />
+            <Style Selector="^ /template/ blk|BlockButtonBackground#ButtonBackground">
+                <Setter Property="ButtonStyle" Value="Opaque" />
                 <Setter Property="Background" Value="{DynamicResource BlockToggleButtonCheckedBackgroundBrush}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource BlockToggleButtonCheckedForegroundBrush}" />
+                <Setter Property="FocusBrush" Value="{TemplateBinding Foreground}" />
             </Style>
             <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
                 <Setter Property="Foreground" Value="{DynamicResource BlockToggleButtonCheckedForegroundBrush}" />
             </Style>
         </Style>
 
-        <Style Selector="^.pill-left /template/ blk|BlockButton#ButtonBackground">
+        <Style Selector="^.pill-left /template/ blk|BlockButtonBackground#ButtonBackground">
             <Setter Property="CornerRadius"
                     Value="{TemplateBinding CornerRadius, Converter={x:Static conv:BlockConverters.SelectLeftRadius}}">
             </Setter>
         </Style>
 
-        <Style Selector="^.pill-center /template/ blk|BlockButton#ButtonBackground">
+        <Style Selector="^.pill-center /template/ blk|BlockButtonBackground#ButtonBackground">
             <Setter Property="CornerRadius" Value="0">
             </Setter>
         </Style>
 
-        <Style Selector="^.pill-right /template/ blk|BlockButton#ButtonBackground">
+        <Style Selector="^.pill-right /template/ blk|BlockButtonBackground#ButtonBackground">
             <Setter Property="CornerRadius"
                     Value="{TemplateBinding CornerRadius, Converter={x:Static conv:BlockConverters.SelectRightRadius}}">
             </Setter>
         </Style>
 
-        <Style Selector="^.pill-top /template/ blk|BlockButton#ButtonBackground">
+        <Style Selector="^.pill-top /template/ blk|BlockButtonBackground#ButtonBackground">
             <Setter Property="CornerRadius"
                     Value="{TemplateBinding CornerRadius, Converter={x:Static conv:BlockConverters.SelectTopRadius}}">
             </Setter>
         </Style>
 
-        <Style Selector="^.pill-bottom /template/ blk|BlockButton#ButtonBackground">
+        <Style Selector="^.pill-bottom /template/ blk|BlockButtonBackground#ButtonBackground">
             <Setter Property="CornerRadius"
                     Value="{TemplateBinding CornerRadius, Converter={x:Static conv:BlockConverters.SelectBottomRadius}}">
             </Setter>
