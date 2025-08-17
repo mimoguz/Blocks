@@ -1,0 +1,168 @@
+<!--
+// (c) Copyright Microsoft Corporation.
+// This source is subject to the Microsoft Public License (Ms-PL).
+// Please see https://go.microsoft.com/fwlink/?LinkID=131993 for details.
+// All other rights reserved.
+-->
+
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:blk="clr-namespace:Blocks.Controls">
+
+    <Design.PreviewWith>
+        <Border Padding="20" Width="200">
+            <StackPanel Spacing="20">
+                <ListBoxItem Theme="{DynamicResource BlockDateTimePickerItem}">Standard Item</ListBoxItem>
+                <ListBoxItem Theme="{DynamicResource BlockDateTimePickerItem}"
+                             IsSelected="True">
+                    Selected Standard Item
+                </ListBoxItem>
+                <ListBoxItem Theme="{DynamicResource BlockDateTimePickerItem}" Classes="MonthItem">Month Item</ListBoxItem>
+                <RepeatButton Theme="{DynamicResource BlockDtPickerRepeatButton}">
+                    Button
+                </RepeatButton>
+                <RepeatButton IsVisible="True"
+                              Theme="{DynamicResource BlockDtPickerRepeatButton}">
+                    <PathIcon Theme="{DynamicResource BlockDtPickerUpIcon}" />
+                </RepeatButton>
+                <RepeatButton IsVisible="True"
+                              Theme="{DynamicResource BlockDtPickerRepeatButton}">
+                    <PathIcon Theme="{DynamicResource BlockDtPickerDownIcon}" />
+                </RepeatButton>
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+
+    <!-- ****************************************************** -->
+    <!-- ********************* Resources ********************** -->
+    <!-- ****************************************************** -->
+    
+    <SolidColorBrush x:Key="BlockDtPickerBaseButtonBackgroundBrush"
+                     Color="{DynamicResource BlockBaseButtonBackgroundColor}" />
+
+    <SolidColorBrush x:Key="BlockDtPickerButtonForegroundBrush"
+                     Color="{DynamicResource BlockButtonForegroundColor}" />
+
+    <SolidColorBrush x:Key="BlockOpaqueDtPickerButtonBackgroundBrush"
+                     Color="{DynamicResource BlockOpaqueButtonBackgroundColor}" />
+
+    <SolidColorBrush x:Key="BlockOpaqueDtPickerButtonForegroundBrush"
+                     Color="{DynamicResource BlockOpaqueButtonForegroundColor}" />
+
+    <SolidColorBrush x:Key="BlockFlatDtPickerBaseButtonBackgroundBrush"
+                     Color="{DynamicResource BlockBaseButtonBackgroundColor}" />
+    
+    <SolidColorBrush x:Key="BlockFlatDtPickerButtonForegroundBrush"
+                     Color="{DynamicResource BlockFlatButtonForegroundColor}" />
+
+    <SolidColorBrush x:Key="BlockOutlinedDtPickerBaseButtonBackgroundBrush"
+                     Color="{DynamicResource BlockBaseButtonBackgroundColor}" />
+
+    <SolidColorBrush x:Key="BlockOutlinedDtPickerBaseButtonBorderBrush"
+                     Color="{DynamicResource BlockBaseButtonBackgroundColor}" />
+
+    <SolidColorBrush x:Key="BlockOutlinedDtPickerButtonForegroundBrush"
+                     Color="{DynamicResource BlockWindowForegroundColor}" />
+    
+    <SolidColorBrush x:Key="BlockFlatDtPickerButtonDividerBrush"
+                     Color="{DynamicResource BlockBaseButtonBackgroundColor}"
+                     Opacity="{DynamicResource BlockSeparatorOpacity}" />
+    
+    <SolidColorBrush x:Key="BlockOutlinedDtPickerButtonDividerBrush"
+                     Color="{DynamicResource BlockBaseButtonBackgroundColor}"
+                     Opacity="{DynamicResource BlockOutlinedButtonBorderOpacity}" />
+    
+    <SolidColorBrush x:Key="BlockDtPickerBaseItemBackgroundBrush"
+                     Color="{DynamicResource BlockBaseButtonBackgroundColor}" />
+
+    <SolidColorBrush x:Key="BlockDtPickerItemForegroundBrush"
+                     Color="{DynamicResource BlockWindowForegroundColor}" />
+
+    <SolidColorBrush x:Key="BlockDtPickerSelectedItemBackgroundBrush"
+                     Color="{DynamicResource BlockBasePrimaryColor}" />
+
+    <SolidColorBrush x:Key="BlockDtPickerSelectedItemForegroundBrush"
+                     Color="{DynamicResource BlockOnPrimaryColor}" />
+
+    <SolidColorBrush x:Key="BlockDtPickerBackgroundBrush"
+                     Color="{DynamicResource BlockRaisedBackgroundColor}" />
+
+    <SolidColorBrush x:Key="BlockDtPickerBorderBrush"
+                     Color="{DynamicResource BlockBaseViewBorderColor}"
+                     Opacity="{DynamicResource BlockFlyoutBorderOpacity}" />
+
+    <SolidColorBrush x:Key="BlockDtPickerSeparatorBrush"
+                     Color="{DynamicResource BlockBaseViewBorderColor}"
+                     Opacity="{DynamicResource BlockSeparatorOpacity}" />
+    
+    <LinearGradientBrush x:Key="BlockDtPickerOpacityMask" 
+                         StartPoint="0%,0%"
+                         EndPoint="0%,100%">
+        <GradientStops>
+            <GradientStop Color="#90000000" Offset="0" />
+            <GradientStop Color="#F0000000" Offset="0.4" />
+            <GradientStop Color="#F0000000" Offset="0.6" />
+            <GradientStop Color="#90000000" Offset="1" />
+        </GradientStops>
+    </LinearGradientBrush>
+
+    <Thickness x:Key="BlockToggleButtonChevronMargin">0,0,8,0</Thickness>
+    <Thickness x:Key="BlockDtPickerRepeatButtonPadding">12</Thickness>
+    <Thickness x:Key="BlockDtPickerButtonDividerMargin">0,6</Thickness>
+    <Thickness x:Key="BlockDtPickerButtonSectionPadding">8</Thickness>
+    <x:Double x:Key="BlockDtPickerItemHeight">36</x:Double>
+    
+    <!-- ****************************************************** -->
+    <!-- ********************** Themes ************************ -->
+    <!-- ****************************************************** -->
+
+    <ControlTheme x:Key="BlockDateTimePickerItem" TargetType="ListBoxItem"
+                  BasedOn="{StaticResource {x:Type ListBoxItem}}">
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="Background" Value="{DynamicResource BlockDtPickerBaseItemBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource BlockDtPickerItemForegroundBrush}" />
+        <Setter Property="CornerRadius" Value="0" />
+        <Setter Property="MinHeight" Value="{DynamicResource BlockDtPickerItemHeight}" />
+
+        <Style Selector="^:selected, ^:selected:focused, ^:selected:focus-within">
+            <Setter Property="IsHitTestVisible" Value="False" />
+            <Setter Property="Background" Value="Transparent" />
+            <Style Selector="^ /template/ blk|BlockButtonBackground">
+                <Setter Property="ButtonStyle" Value="Flat" />
+            </Style>
+            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Foreground" Value="{DynamicResource BlockDtPickerSelectedItemForegroundBrush}" />
+                <Setter Property="FontWeight" Value="Bold" />
+            </Style>
+        </Style>
+        
+        <Style Selector="^.MonthItem">
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme x:Key="BlockDtPickerUpIcon"
+                  TargetType="PathIcon"
+                  BasedOn="{StaticResource {x:Type PathIcon}}">
+        <Setter Property="Data" Value="{DynamicResource BlockArrowUp8X5}" />
+        <Setter Property="Width" Value="8" />
+        <Setter Property="Height" Value="5" />
+    </ControlTheme>
+
+    <ControlTheme x:Key="BlockDtPickerDownIcon"
+                  TargetType="PathIcon"
+                  BasedOn="{StaticResource {x:Type PathIcon}}">
+        <Setter Property="Data" Value="{DynamicResource BlockArrowDown8X5}" />
+        <Setter Property="Width" Value="8" />
+        <Setter Property="Height" Value="5" />
+    </ControlTheme>
+
+    <ControlTheme x:Key="BlockDtPickerRepeatButton"
+                  TargetType="RepeatButton"
+                  BasedOn="{StaticResource {x:Type RepeatButton}}">
+        <Setter Property="Padding" Value="{DynamicResource BlockDtPickerRepeatButtonPadding}" />
+        <Setter Property="CornerRadius" Value="0" />
+        <Setter Property="MinHeight" Value="0" />
+        <Setter Property="blk:Block.ButtonStyle" Value="Flat" />
+    </ControlTheme>
+</ResourceDictionary>

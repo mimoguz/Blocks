@@ -112,4 +112,6 @@ public static class BlockConverters
     public static readonly BoolToDoubleConverter BoolToDouble = new();
     
     public static readonly AndDoubleConverter AndDouble = new();
+    
+    public static readonly DateTimeConverter DateTimeToOffset = new();
 }

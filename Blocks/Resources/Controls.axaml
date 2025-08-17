@@ -47,5 +47,7 @@
         <ResourceInclude Source="Controls/CalendarItem.axaml" />
         <ResourceInclude Source="Controls/CalendarDatePicker.axaml" />
         <ResourceInclude Source="Controls/TileShared.axaml" />
+        <ResourceInclude Source="Controls/DateTimePickerShared.axaml" />
+        <ResourceInclude Source="Controls/DatePicker.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

@@ -138,7 +138,6 @@
                         </Border>
                         <Rectangle Name="Divider"
                                    Fill="{TemplateBinding BorderBrush}"
-                                   Opacity="{DynamicResource BlockViewBorderOpacity}"
                                    DockPanel.Dock="Top" />
                         <ContentPresenter Name="PART_SelectedContentHost"
                                           Content="{TemplateBinding SelectedContent}"

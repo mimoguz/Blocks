@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:Blocks.ViewModels"
              xmlns:sys="using:System"
+             xmlns:conv="clr-namespace:Blocks.Converters"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="800"
              x:Class="Blocks.Views.InputsPanelView"
              x:DataType="vm:InputsPanelViewModel">
@@ -172,9 +173,12 @@
                                             Classes="demo clearButton"
                                             UseFloatingWatermark="True"
                                             Width="200"
-                                            DisplayDate="{Binding Source={x:Static sys:DateTime.Today}, Path=Today}">
+                                            SelectedDate="{Binding CurrentDate}"
+                                            DisplayDate="{Binding Source={x:Static sys:DateTime.Today}, Path=Today}" >
                         </CalendarDatePicker>
-
+                        <DatePicker Classes="demo"
+                                    SelectedDate="{Binding CurrentDate, 
+                                                   Converter={x:Static conv:BlockConverters.DateTimeToOffset}}"/>
                     </WrapPanel>
 
                     <Separator Classes="demo" />
