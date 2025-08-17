@@ -133,16 +133,16 @@
                             <ComboBox Classes="demo opaque"
                                       SelectedItem="{Binding CurrentStringValue}"
                                       Width="200" PlaceholderText="Opaque Combo Box" />
-                            
+
                             <ComboBox Classes="demo outlined"
                                       SelectedItem="{Binding CurrentStringValue}"
                                       Width="200" PlaceholderText="Outlined Combo Box" />
-                            
+
                             <ComboBox Classes="demo flat"
                                       SelectedItem="{Binding CurrentStringValue}"
                                       Width="200" PlaceholderText="Flat Combo Box" />
                         </StackPanel>
-                        
+
                         <StackPanel Spacing="16">
                             <ButtonSpinner Classes="demo" Width="200"
                                            Spin="Spinner_OnSpin"
@@ -167,18 +167,23 @@
 
                         <ListBox Classes="demo" SelectedItem="{Binding CurrentStringValue}" />
 
-                        <CalendarDatePicker x:Name="DatePicker"
-                                            IsTodayHighlighted="True"
-                                            Watermark="Calendar Date Picker"
-                                            Classes="demo clearButton"
-                                            UseFloatingWatermark="True"
-                                            Width="200"
-                                            SelectedDate="{Binding CurrentDate}"
-                                            DisplayDate="{Binding Source={x:Static sys:DateTime.Today}, Path=Today}" >
-                        </CalendarDatePicker>
-                        <DatePicker Classes="demo"
-                                    SelectedDate="{Binding CurrentDate, 
-                                                   Converter={x:Static conv:BlockConverters.DateTimeToOffset}}"/>
+                        <StackPanel Spacing="16">
+
+                            <CalendarDatePicker x:Name="DatePicker"
+                                                IsTodayHighlighted="True"
+                                                Watermark="Calendar Date Picker"
+                                                Classes="demo clearButton"
+                                                UseFloatingWatermark="True"
+                                                Width="200"
+                                                SelectedDate="{Binding CurrentDate}"
+                                                DisplayDate="{Binding Source={x:Static sys:DateTime.Today}, Path=Today}">
+                            </CalendarDatePicker>
+                            <DatePicker Classes="demo"
+                                        Margin="0"
+                                        SelectedDate="{Binding CurrentDate, 
+                                                   Converter={x:Static conv:BlockConverters.DateTimeToOffset}}" />
+                            <TimePicker Classes="demo outlined" />
+                        </StackPanel>
                     </WrapPanel>
 
                     <Separator Classes="demo" />

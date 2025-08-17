@@ -86,6 +86,10 @@
 
     <SolidColorBrush x:Key="BlockDtPickerBackgroundBrush"
                      Color="{DynamicResource BlockRaisedBackgroundColor}" />
+    
+    <SolidColorBrush x:Key="BlockDtPickerBackgroundOverlayBrush"
+                     Color="{DynamicResource BlockRaisedBackgroundColor}" 
+                     Opacity="0.6"/>
 
     <SolidColorBrush x:Key="BlockDtPickerBorderBrush"
                      Color="{DynamicResource BlockBaseViewBorderColor}"
@@ -111,6 +115,8 @@
     <Thickness x:Key="BlockDtPickerButtonDividerMargin">0,6</Thickness>
     <Thickness x:Key="BlockDtPickerButtonSectionPadding">8</Thickness>
     <x:Double x:Key="BlockDtPickerItemHeight">36</x:Double>
+    <x:Double x:Key="BlockDtPickerMaxFlyoutHeight">400</x:Double>
+    <x:Double x:Key="BlockDtPickerFlyoutWidth">296</x:Double>
     
     <!-- ****************************************************** -->
     <!-- ********************** Themes ************************ -->
