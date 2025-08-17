@@ -11,7 +11,7 @@
             <Color x:Key="BlockWindowBackgroundColor">#FAFAFB</Color>
             <Color x:Key="BlockRaisedBackgroundColor">White</Color>
             <Color x:Key="BlockPaneBackgroundColor">#EBEBED</Color>
-            <Color x:Key="BlockOpaqueButtonBackgroundColor">#607080</Color>
+            <Color x:Key="BlockOpaqueButtonBackgroundColor">#8A9198</Color>
             <Color x:Key="BlockBaseButtonBackgroundColor">#203045</Color>
             <Color x:Key="BlockBaseViewBackgroundColor">#203045</Color>
             <Color x:Key="BlockBaseDestructiveBackgroundColor">#FF3B3B</Color>
@@ -19,15 +19,15 @@
 
             <Color x:Key="BlockBaseViewBorderColor">#203045</Color>
 
-            <Color x:Key="BlockWindowForegroundColor">#203035</Color>
-            <Color x:Key="BlockViewForegroundColor">#152530</Color>
-            <Color x:Key="BlockButtonForegroundColor">#102025</Color>
+            <Color x:Key="BlockWindowForegroundColor">#F0000010</Color>
+            <Color x:Key="BlockViewForegroundColor">#F0000010</Color>
+            <Color x:Key="BlockButtonForegroundColor">#F0000010</Color>
             <Color x:Key="BlockOpaqueButtonForegroundColor">#F0FFFFFF</Color>
             <Color x:Key="BlockFlatButtonForegroundColor">#F0007FFF</Color>
             <Color x:Key="BlockOutlinedButtonForegroundColor">#F0007FFF</Color>
             <Color x:Key="BlockOnPrimaryColor">#F0FFFFFF</Color>
             <Color x:Key="BlockOnSecondaryColor">#F0FFFFFF</Color>
-            <Color x:Key="BlockDestructiveForegroundColor">DarkRed</Color>
+            <Color x:Key="BlockDestructiveForegroundColor">#FFC03000</Color>
 
             <Color x:Key="BlockBasePrimaryColor">#007FFF</Color>
             <Color x:Key="BlockBaseSecondaryColor">DarkOrchid</Color>
@@ -38,7 +38,7 @@
         </ResourceDictionary>
         
         <ResourceDictionary x:Key="Dark">
-            <Color x:Key="BlockRed">#FF6B6B</Color>
+            <Color x:Key="BlockRed">#FF8080</Color>
             <Color x:Key="BlockYellow">#FFE66D</Color>
             
             <Color x:Key="BlockInvariantDarkColor">#000010</Color>
@@ -50,19 +50,19 @@
             <Color x:Key="BlockOpaqueButtonBackgroundColor">#606065</Color>
             <Color x:Key="BlockBaseButtonBackgroundColor">#DCDCDF</Color>
             <Color x:Key="BlockBaseViewBackgroundColor">#DCDCDF</Color>
-            <Color x:Key="BlockBaseDestructiveBackgroundColor">#FF8080</Color>
+            <Color x:Key="BlockBaseDestructiveBackgroundColor">#FF3B3B</Color>
             <Color x:Key="BlockBaseDotBackgroundBrush">Black</Color>
 
             <Color x:Key="BlockBaseViewBorderColor">#DCDCDF</Color>
 
-            <Color x:Key="BlockWindowForegroundColor">#FCFCFF</Color>
-            <Color x:Key="BlockViewForegroundColor">#FEFEFF</Color>
-            <Color x:Key="BlockButtonForegroundColor">#FEFEFF</Color>
-            <Color x:Key="BlockOpaqueButtonForegroundColor">#FEFEFF</Color>
-            <Color x:Key="BlockFlatButtonForegroundColor">#5C99E3</Color>
-            <Color x:Key="BlockOutlinedButtonForegroundColor">#5C99E3</Color>
+            <Color x:Key="BlockWindowForegroundColor">#F0FEFEFF</Color>
+            <Color x:Key="BlockViewForegroundColor">#F0FFFFFF</Color>
+            <Color x:Key="BlockButtonForegroundColor">#F0FFFFFF</Color>
+            <Color x:Key="BlockOpaqueButtonForegroundColor">#F0FFFFFF</Color>
+            <Color x:Key="BlockFlatButtonForegroundColor">#F03584E4</Color>
+            <Color x:Key="BlockOutlinedButtonForegroundColor">#F03584E4</Color>
             <Color x:Key="BlockOnPrimaryColor">#F0FFFFFF</Color>
-            <Color x:Key="BlockDestructiveForegroundColor">#FFA0A0</Color>
+            <Color x:Key="BlockDestructiveForegroundColor">#F0FFFFFF</Color>
 
             <Color x:Key="BlockBasePrimaryColor">#3584E4</Color>
             <Color x:Key="BlockBaseSecondaryColor">DarkOrchid</Color>

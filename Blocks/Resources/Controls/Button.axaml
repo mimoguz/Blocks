@@ -78,6 +78,9 @@
     <SolidColorBrush x:Key="BlockDestructiveBtnForegroundBrush"
                      Color="{DynamicResource BlockDestructiveForegroundColor}" />
     
+    <SolidColorBrush x:Key="BlockOpaqueDestructiveBtnBackgroundBrush"
+                     Color="{DynamicResource BlockBaseDestructiveBackgroundColor}" />
+    
     <SolidColorBrush x:Key="BlockOpaqueDestructiveBtnForegroundBrush"
                      Color="{DynamicResource BlockOpaqueButtonForegroundColor}" />
 
@@ -234,6 +237,7 @@
         <Style Selector="^[(blk|Block.ButtonStyle)=Opaque].destructive">
             <Setter Property="Foreground" Value="{DynamicResource BlockOpaqueDestructiveBtnForegroundBrush}" />
             <Setter Property="BorderBrush" Value="{DynamicResource BlockDestructiveBtnForegroundBrush}" />
+            <Setter Property="Background" Value="{DynamicResource BlockOpaqueDestructiveBtnBackgroundBrush}" />
             <Style Selector="^ /template/ blk|BlockButtonBackground#ButtonBackground">
                 <Setter Property="FocusBrush" Value="{DynamicResource BlockOpaqueBtnForegroundBrush}" />
             </Style>

@@ -50,5 +50,7 @@
         <ResourceInclude Source="Controls/ToggleSwitch.axaml" />
         <ResourceInclude Source="Controls/TreeView.axaml" />
         <ResourceInclude Source="Controls/TreeViewItem.axaml" />
+        <ResourceInclude Source="Controls/Window.axaml" />
+        <ResourceInclude Source="Controls/TitleBar.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
