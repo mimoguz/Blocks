@@ -100,6 +100,7 @@
                                             Grid.Column="1"
                                             DockPanel.Dock="Right"
                                             Theme="{DynamicResource BlockEmbeddedButton}"
+                                            Background="{TemplateBinding Background}"
                                             Focusable="False">
                                         <Button.CornerRadius>
                                             <MultiBinding Converter="{x:Static conv:BlockConverters.InnerRadius}">
