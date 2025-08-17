@@ -27,18 +27,20 @@
             <Separator DockPanel.Dock="Top" />
             <ScrollViewer HorizontalScrollBarVisibility="Disabled">
                 <StackPanel Margin="8">
+
                     <StackPanel.Styles>
                         <Style Selector="WrapPanel.demo">
                             <Setter Property="ItemSpacing" Value="10" />
                             <Setter Property="LineSpacing" Value="20" />
                         </Style>
-                        <Style Selector="Separator.demo">
-                            <Setter Property="Margin" Value="0,8" />
-                        </Style>
                         <Style Selector=":is(Control).demo">
                             <Setter Property="HorizontalAlignment" Value="Left" />
                             <Setter Property="VerticalAlignment" Value="Top" />
                             <Setter Property="IsEnabled" Value="{Binding AllEnabled}" />
+                        </Style>
+                        <Style Selector="Separator.demo">
+                            <Setter Property="Margin" Value="0,12" />
+                            <Setter Property="HorizontalAlignment" Value="Stretch" />
                         </Style>
                         <Style Selector="ToggleButton.demo">
                             <Setter Property="IsChecked" Value="{Binding AllChecked, Mode=TwoWay}" />
@@ -50,16 +52,52 @@
                         <Button Classes="demo">
                             Basic Button
                         </Button>
+                        <Button Classes="demo image-button">
+                            <Path Data="{StaticResource BlockTestIcon}"
+                                  Width="{DynamicResource BlockIconSize}"
+                                  Height="{DynamicResource BlockIconSize}"
+                                  Stretch="Uniform"
+                                  Fill="{Binding $parent[Button].Foreground}" />
+                        </Button>
+
                         <Button Classes="demo opaque">
                             Opaque Button
                         </Button>
+                        <Button Classes="demo opaque image-button">
+                            <Path Data="{StaticResource BlockTestIcon}"
+                                  Width="{DynamicResource BlockIconSize}"
+                                  Height="{DynamicResource BlockIconSize}"
+                                  Stretch="Uniform"
+                                  Fill="{Binding $parent[Button].Foreground}" />
+                        </Button>
+
                         <Button Classes="demo outlined">
                             Outlined Button
                         </Button>
+                        <Button Classes="demo outlined image-button">
+                            <Path Data="{StaticResource BlockTestIcon}"
+                                  Width="{DynamicResource BlockIconSize}"
+                                  Height="{DynamicResource BlockIconSize}"
+                                  Stretch="Uniform"
+                                  Fill="{Binding $parent[Button].Foreground}" />
+                        </Button>
+
                         <Button Classes="demo flat"
                                 Padding="{DynamicResource BlockFlatButtonPadding}">
                             Flat Button
                         </Button>
+                        <Button Classes="demo flat image-button">
+                            <Path Data="{StaticResource BlockTestIcon}"
+                                  Width="{DynamicResource BlockIconSize}"
+                                  Height="{DynamicResource BlockIconSize}"
+                                  Stretch="Uniform"
+                                  Fill="{Binding $parent[Button].Foreground}" />
+                        </Button>
+                    </WrapPanel>
+
+                    <Separator Classes="demo" />
+
+                    <WrapPanel Classes="demo">
                         <Button IsDefault="True"
                                 Classes="demo">
                             Default Button
@@ -76,34 +114,6 @@
                         <Button Padding="{DynamicResource BlockFlatButtonPadding}"
                                 Classes="demo destructive flat">
                             Destructive Flat Button
-                        </Button>
-                        <Button Classes="demo image-button">
-                            <Path Data="{StaticResource BlockTestIcon}"
-                                  Width="{DynamicResource BlockIconSize}"
-                                  Height="{DynamicResource BlockIconSize}"
-                                  Stretch="Uniform"
-                                  Fill="{Binding $parent[Button].Foreground}" />
-                        </Button>
-                        <Button Classes="demo opaque image-button">
-                            <Path Data="{StaticResource BlockTestIcon}"
-                                  Width="{DynamicResource BlockIconSize}"
-                                  Height="{DynamicResource BlockIconSize}"
-                                  Stretch="Uniform"
-                                  Fill="{Binding $parent[Button].Foreground}" />
-                        </Button>
-                        <Button Classes="demo outlined image-button">
-                            <Path Data="{StaticResource BlockTestIcon}"
-                                  Width="{DynamicResource BlockIconSize}"
-                                  Height="{DynamicResource BlockIconSize}"
-                                  Stretch="Uniform"
-                                  Fill="{Binding $parent[Button].Foreground}" />
-                        </Button>
-                        <Button Classes="demo flat image-button">
-                            <Path Data="{StaticResource BlockTestIcon}"
-                                  Width="{DynamicResource BlockIconSize}"
-                                  Height="{DynamicResource BlockIconSize}"
-                                  Stretch="Uniform"
-                                  Fill="{Binding $parent[Button].Foreground}" />
                         </Button>
                     </WrapPanel>
 
@@ -124,13 +134,6 @@
                                       Padding="{DynamicResource BlockFlatButtonPadding}">
                             Flat Repeat Button
                         </RepeatButton>
-                        <RepeatButton Classes="demo image-button">
-                            <Path Data="{StaticResource BlockTestIcon}"
-                                  Width="{DynamicResource BlockIconSize}"
-                                  Height="{DynamicResource BlockIconSize}"
-                                  Stretch="Uniform"
-                                  Fill="{Binding $parent[Button].Foreground}" />
-                        </RepeatButton>
                     </WrapPanel>
 
                     <Separator Classes="demo" />
@@ -140,16 +143,6 @@
                         <ToggleButton Classes="demo">
                             Basic Toggle Button
                         </ToggleButton>
-                        <ToggleButton Classes="demo opaque">
-                            Opaque Toggle Button
-                        </ToggleButton>
-                        <ToggleButton Classes="demo outlined">
-                            Outlined Toggle Button
-                        </ToggleButton>
-                        <ToggleButton Classes="demo flat"
-                                      Padding="{DynamicResource BlockFlatButtonPadding}">
-                            Flat Toggle Button
-                        </ToggleButton>
                         <ToggleButton Classes="demo image-button">
                             <Path Data="{StaticResource BlockTestIcon}"
                                   Width="{DynamicResource BlockIconSize}"
@@ -157,6 +150,20 @@
                                   Stretch="Uniform"
                                   Fill="{Binding $parent[Button].Foreground}" />
                         </ToggleButton>
+                        
+                        <ToggleButton Classes="demo opaque">
+                            Opaque Toggle Button
+                        </ToggleButton>
+                        
+                        <ToggleButton Classes="demo outlined">
+                            Outlined Toggle Button
+                        </ToggleButton>
+                        
+                        <ToggleButton Classes="demo flat"
+                                      Padding="{DynamicResource BlockFlatButtonPadding}">
+                            Flat Toggle Button
+                        </ToggleButton>
+                       
                         <ToggleButton Classes="demo hide-checked" Width="200">
                             <Panel>
                                 <TextBlock Text="Hidden - Unchecked"
@@ -168,6 +175,7 @@
                                            TextAlignment="Center" />
                             </Panel>
                         </ToggleButton>
+                        
                         <ToggleButton Classes="demo image-button flat hide-checked">
                             <Panel>
                                 <Path Data="{StaticResource BlockTestIcon}"
@@ -244,6 +252,11 @@
                                 </Flyout>
                             </DropDownButton.Flyout>
                         </DropDownButton>
+                    </WrapPanel>
+
+                    <Separator Classes="demo" />
+
+                    <WrapPanel Classes="demo">
                         <SplitButton Classes="demo">
                             <SplitButton.Flyout>
                                 <Flyout>

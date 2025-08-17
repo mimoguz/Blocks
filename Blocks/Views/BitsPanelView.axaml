@@ -46,14 +46,15 @@
                             <Setter Property="LineSpacing" Value="24" />
                         </Style>
 
-                        <Style Selector="Separator.demo">
-                            <Setter Property="Margin" Value="0,8" />
-                        </Style>
-
                         <Style Selector=":is(Control).demo">
                             <Setter Property="HorizontalAlignment" Value="Left" />
                             <Setter Property="VerticalAlignment" Value="Top" />
                             <Setter Property="IsEnabled" Value="{Binding AllEnabled}" />
+                        </Style>
+                        
+                        <Style Selector="Separator.demo">
+                            <Setter Property="Margin" Value="0,12" />
+                            <Setter Property="HorizontalAlignment" Value="Stretch" />
                         </Style>
 
                         <Style Selector="ProgressBar.demo-determinate">
