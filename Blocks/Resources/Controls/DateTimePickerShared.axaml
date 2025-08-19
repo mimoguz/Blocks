@@ -79,10 +79,11 @@
                      Color="{DynamicResource BlockWindowForegroundColor}" />
 
     <SolidColorBrush x:Key="BlockDtPickerSelectedItemBackgroundBrush"
-                     Color="{DynamicResource BlockBasePrimaryColor}" />
+                     Color="{DynamicResource BlockBasePrimaryColor}"
+                     Opacity="{DynamicResource BlockViewSelectionOpacity}"/>
 
     <SolidColorBrush x:Key="BlockDtPickerSelectedItemForegroundBrush"
-                     Color="{DynamicResource BlockOnPrimaryColor}" />
+                     Color="{DynamicResource BlockWindowForegroundColor}" />
 
     <SolidColorBrush x:Key="BlockDtPickerBackgroundBrush"
                      Color="{DynamicResource BlockRaisedBackgroundColor}" />
