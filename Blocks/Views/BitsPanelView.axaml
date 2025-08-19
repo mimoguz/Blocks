@@ -77,7 +77,7 @@
                         <ProgressBar Classes="demo demo-indeterminate" Orientation="Vertical" />
                         <ProgressBar Classes="demo demo-determinate" Orientation="Vertical" ShowProgressText="True" />
 
-                        <blk:Group Width="350" Header="Group">
+                        <blk:Group Width="350" Header="Group" Description="Group Description">
                             <StackPanel>
                                 <blk:Tile Header="Tile" Classes="demo" HorizontalAlignment="Stretch">
                                     <blk:Tile.LeftContent>

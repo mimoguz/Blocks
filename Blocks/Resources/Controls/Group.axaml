@@ -5,7 +5,7 @@
     <Design.PreviewWith>
         <StackPanel Spacing="20" Width="300">
 
-            <blk:Group Header="Header">
+            <blk:Group Header="Header" Description="Description">
                 <TextBlock>Group Content</TextBlock>
             </blk:Group>
 
@@ -14,29 +14,34 @@
             </blk:Group>
         </StackPanel>
     </Design.PreviewWith>
-    
+
     <!-- ****************************************************** -->
     <!-- ********************* Resources ********************** -->
     <!-- ****************************************************** -->
-    
-    <SolidColorBrush x:Key="BlockGroupBackgroundBrush" 
+
+    <SolidColorBrush x:Key="BlockGroupBackgroundBrush"
                      Color="{DynamicResource BlockRaisedBackgroundColor}" />
-    
+
     <SolidColorBrush x:Key="BlockGroupBorderBrush"
                      Color="{DynamicResource BlockBaseViewBorderColor}"
-                     Opacity="{DynamicResource BlockFlyoutBorderOpacity}"/>
-    
+                     Opacity="{DynamicResource BlockFlyoutBorderOpacity}" />
+
     <SolidColorBrush x:Key="BlockGroupContentForegroundBrush"
-                     Color="{DynamicResource BlockWindowForegroundColor}"/>
-    
-    <SolidColorBrush x:Key="BlockGroupHeaderForegroundBrush" 
                      Color="{DynamicResource BlockWindowForegroundColor}" />
-    
+
+    <SolidColorBrush x:Key="BlockGroupHeaderForegroundBrush"
+                     Color="{DynamicResource BlockWindowForegroundColor}" />
+
+    <SolidColorBrush x:Key="BlockGroupDescriptionForegroundBrush"
+                     Color="{DynamicResource BlockWindowForegroundColor}"
+                     Opacity="{DynamicResource BlockPlaceholderOpacity}"/>
+
     <Thickness x:Key="BlockGroupHeaderMargin">0,0,0,12</Thickness>
+    <Thickness x:Key="BlockGroupDescriptionMargin">0,6,0,0</Thickness>
     <Thickness x:Key="BlockGroupHeaderShadowFix">2,0,0,0</Thickness>
     <FontWeight x:Key="BlockGroupHeaderFontWeight">Bold</FontWeight>
     <Thickness x:Key="BlockGroupPadding">0</Thickness>
-    
+
     <!-- ****************************************************** -->
     <!-- ********************** Themes ************************ -->
     <!-- ****************************************************** -->
@@ -54,8 +59,8 @@
         <Setter Property="Template">
             <ControlTemplate>
                 <DockPanel Name="BaseContainer">
-                    <Decorator Margin="{DynamicResource BlockGroupHeaderMargin}"
-                               DockPanel.Dock="Top">
+                    <StackPanel Margin="{DynamicResource BlockGroupHeaderMargin}"
+                                DockPanel.Dock="Top">
                         <ContentPresenter Name="PART_HeaderPresenter"
                                           IsVisible="{TemplateBinding Header, Converter={x:Static ObjectConverters.IsNotNull}}"
                                           Margin="{DynamicResource BlockGroupHeaderShadowFix}"
@@ -63,9 +68,17 @@
                                           FontWeight="{DynamicResource BlockGroupHeaderFontWeight}"
                                           Foreground="{DynamicResource BlockGroupHeaderForegroundBrush}"
                                           Content="{TemplateBinding Header}"
-                                          RecognizesAccessKey="True"
                                           ContentTemplate="{TemplateBinding HeaderTemplate}" />
-                    </Decorator>
+                        <Decorator Margin="{DynamicResource BlockGroupHeaderShadowFix}"
+                                   Name="DescriptionDecorator"
+                                   IsVisible="{TemplateBinding Description, Converter={x:Static ObjectConverters.IsNotNull}}">
+                            <ContentPresenter Name="PART_DescriptionPresenter"
+                                              Margin="{DynamicResource BlockGroupDescriptionMargin}"
+                                              Foreground="{DynamicResource BlockGroupDescriptionForegroundBrush}"
+                                              Content="{TemplateBinding Description}"
+                                              ContentTemplate="{TemplateBinding DescriptionTemplate}" />
+                        </Decorator>
+                    </StackPanel>
                     <Border Name="ContentContainer"
                             CornerRadius="{TemplateBinding CornerRadius}"
                             Margin="{DynamicResource BlockExpanderShadowMargin}"
@@ -100,6 +113,9 @@
             <Setter Property="Effect" Value="{x:Null}" />
         </Style>
         <Style Selector="^.flat /template/ ContentPresenter#PART_HeaderPresenter">
+            <Setter Property="Margin" Value="0" />
+        </Style>
+        <Style Selector="^.flat /template/ Decorator#DescriptionDecorator">
             <Setter Property="Margin" Value="0" />
         </Style>
     </ControlTheme>
