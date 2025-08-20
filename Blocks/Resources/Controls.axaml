@@ -52,5 +52,7 @@
         <ResourceInclude Source="Controls/TreeViewItem.axaml" />
         <ResourceInclude Source="Controls/Window.axaml" />
         <ResourceInclude Source="Controls/TitleBar.axaml" />
+        <ResourceInclude Source="Controls/TabStripItem.axaml" />
+        <ResourceInclude Source="Controls/TabStrip.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

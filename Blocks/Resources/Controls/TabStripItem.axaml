@@ -1,22 +1,21 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:blk="clr-namespace:Blocks.Controls">
+    
     <Design.PreviewWith>
         <Border Background="{DynamicResource BlockWindowBackgroundColor}" Padding="20">
             <WrapPanel Width="300" ItemSpacing="10" LineSpacing="10">
-                <TabItem Header="Tab Item" />
-                <TabItem Header="Tab Item" IsSelected="True" />
-                <TabItem>
-                    <TabItem.Header>
+                <TabStripItem>Tab Strip Item</TabStripItem>
+                <TabStripItem IsSelected="True">Tab Strip Item</TabStripItem>
+                <TabStripItem>
                         <Path Data="{StaticResource BlockTestIcon}"
                               Width="{DynamicResource BlockIconSize}"
                               Height="{DynamicResource BlockIconSize}"
                               Stretch="Uniform"
-                              Fill="{Binding $parent[TabItem].Foreground}" />
-                    </TabItem.Header>
-                </TabItem>
-                <TabItem Header="Opaque Tab Item" Classes="opaque" />
-                <TabItem Header="Opaque Tab Item" IsSelected="True" Classes="opaque" />
+                              Fill="{Binding $parent[TabStripItem].Foreground}" />
+                </TabStripItem>
+                <TabStripItem Classes="opaque">Tab Strip Item</TabStripItem>
+                <TabStripItem Classes="opaque" IsSelected="True">Tab Strip Item</TabStripItem>
             </WrapPanel>
         </Border>
     </Design.PreviewWith>
@@ -25,44 +24,44 @@
     <!-- ********************* Resources ********************** -->
     <!-- ****************************************************** -->
 
-    <SolidColorBrush x:Key="BlockTabItemBaseBackgroundBrush"
+    <SolidColorBrush x:Key="BlockTabStripItemBaseBackgroundBrush"
                      Color="{DynamicResource BlockBaseButtonBackgroundColor}" />
 
-    <SolidColorBrush x:Key="BlockTabItemForegroundBrush"
+    <SolidColorBrush x:Key="BlockTabStripItemForegroundBrush"
                      Color="{DynamicResource BlockWindowForegroundColor}"
                      Opacity="0.8" />
 
-    <SolidColorBrush x:Key="BlockSelectedTabItemForegroundBrush"
+    <SolidColorBrush x:Key="BlockSelectedTabStripItemForegroundBrush"
                      Color="{DynamicResource BlockButtonForegroundColor}" />
 
-    <SolidColorBrush x:Key="BlockOpaqueTabItemSelectedBackgroundBrush"
+    <SolidColorBrush x:Key="BlockOpaqueTabStripItemSelectedBackgroundBrush"
                      Color="{DynamicResource BlockOpaqueButtonBackgroundColor}" />
 
-    <SolidColorBrush x:Key="BlockOpaqueTabItemSelectedForegroundBrush"
+    <SolidColorBrush x:Key="BlockOpaqueTabStripItemSelectedForegroundBrush"
                      Color="{DynamicResource BlockOpaqueButtonForegroundColor}" />
 
-    <SolidColorBrush x:Key="BlockTabItemPopupBackgroundBrush"
+    <SolidColorBrush x:Key="BlockTabStripItemPopupBackgroundBrush"
                      Color="{DynamicResource BlockRaisedBackgroundColor}" />
 
-    <SolidColorBrush x:Key="BlockTabItemLineBrush"
+    <SolidColorBrush x:Key="BlockTabStripItemLineBrush"
                      Color="{DynamicResource BlockBasePrimaryColor}" />
 
-    <Thickness x:Key="BlockTabItemPadding">9,8,20,8</Thickness>
-    <Thickness x:Key="BlockTabItemLineMargin">8,0,0,0</Thickness>
-    <x:Double x:Key="BlockTabItemLineHeight">20</x:Double>
+    <Thickness x:Key="BlockTabStripItemPadding">9,8,20,8</Thickness>
+    <Thickness x:Key="BlockTabStripItemLineMargin">8,0,0,0</Thickness>
+    <x:Double x:Key="BlockTabStripItemLineHeight">20</x:Double>
     <FontWeight x:Key="BlockTabITemFontWeight">Bold</FontWeight>
 
     <!-- ****************************************************** -->
     <!-- ********************** Themes ************************ -->
     <!-- ****************************************************** -->
 
-    <ControlTheme x:Key="{x:Type TabItem}"
-                  TargetType="TabItem">
+    <ControlTheme x:Key="{x:Type TabStripItem}"
+                  TargetType="TabStripItem">
 
-        <Setter Property="Background" Value="{DynamicResource BlockTabItemBaseBackgroundBrush}" />
-        <Setter Property="Foreground" Value="{DynamicResource BlockTabItemForegroundBrush}" />
+        <Setter Property="Background" Value="{DynamicResource BlockTabStripItemBaseBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource BlockTabStripItemForegroundBrush}" />
         <Setter Property="BorderThickness" Value="{DynamicResource BlockControlBorderThickness}" />
-        <Setter Property="Padding" Value="{DynamicResource BlockTabItemPadding}" />
+        <Setter Property="Padding" Value="{DynamicResource BlockTabStripItemPadding}" />
         <Setter Property="CornerRadius" Value="{DynamicResource BlockButtonCornerRadius}" />
         <Setter Property="FontWeight" Value="{DynamicResource BlockTabITemFontWeight}" />
         <Setter Property="MinWidth" Value="{DynamicResource BlockMinButtonSize}" />
@@ -81,7 +80,7 @@
                     <DockPanel>
                         <Decorator Name="Decoration"
                                    DockPanel.Dock="Left"
-                                   Margin="{DynamicResource BlockTabItemLineMargin}"
+                                   Margin="{DynamicResource BlockTabStripItemLineMargin}"
                                    Height="{DynamicResource BlockTabVerticalLineHeight}"
                                    Width="{DynamicResource BlockTabLineThickness}">
                             <Rectangle Name="Mark"
@@ -89,7 +88,7 @@
                                        HorizontalAlignment="Left"
                                        Height="0"
                                        Width="{DynamicResource BlockTabLineThickness}"
-                                       Fill="{DynamicResource BlockTabItemLineBrush}"
+                                       Fill="{DynamicResource BlockTabStripItemLineBrush}"
                                        Opacity="0.9">
                                 <Rectangle.Transitions>
                                     <Transitions>
@@ -105,8 +104,8 @@
                                           Padding="{TemplateBinding Padding}"
                                           HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                                           VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                                          Content="{TemplateBinding Header}"
-                                          ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                          Content="{TemplateBinding Content}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
                                           RecognizesAccessKey="True"
                                           TextElement.Foreground="{TemplateBinding Foreground}">
                             <ContentPresenter.Transitions>
@@ -140,30 +139,30 @@
         </Style>
 
         <Style Selector="^:selected">
-            <Setter Property="Foreground" Value="{DynamicResource BlockSelectedTabItemForegroundBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource BlockSelectedTabStripItemForegroundBrush}" />
             <Style Selector="^ /template/ Rectangle#Mark">
-                <Setter Property="Height" Value="{DynamicResource BlockTabItemLineHeight}" />
+                <Setter Property="Height" Value="{DynamicResource BlockTabStripItemLineHeight}" />
             </Style>
             <Style Selector="^ /template/ blk|BlockButtonBackground#ButtonBackground">
                 <Setter Property="ButtonStyle" Value="Semitransparent" />
             </Style>
             <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="Foreground" Value="{DynamicResource BlockSelectedTabItemForegroundBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource BlockSelectedTabStripItemForegroundBrush}" />
             </Style>
         </Style>
 
         <Style Selector="^.opaque /template/ Rectangle#Mark">
-            <Setter Property="Fill" Value="{DynamicResource BlockOpaqueTabItemSelectedForegroundBrush}" />
+            <Setter Property="Fill" Value="{DynamicResource BlockOpaqueTabStripItemSelectedForegroundBrush}" />
         </Style>
         <Style Selector="^.opaque:selected">
-            <Setter Property="Foreground" Value="{DynamicResource BlockOpaqueTabItemSelectedForegroundBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource BlockOpaqueTabStripItemSelectedForegroundBrush}" />
             <Style Selector="^ /template/ blk|BlockButtonBackground#ButtonBackground">
-                <Setter Property="Background" Value="{DynamicResource BlockOpaqueTabItemSelectedBackgroundBrush}" />
-                <Setter Property="FocusBrush" Value="{DynamicResource BlockOpaqueTabItemSelectedForegroundBrush}" />
+                <Setter Property="Background" Value="{DynamicResource BlockOpaqueTabStripItemSelectedBackgroundBrush}" />
+                <Setter Property="FocusBrush" Value="{DynamicResource BlockOpaqueTabStripItemSelectedForegroundBrush}" />
                 <Setter Property="ButtonStyle" Value="Opaque" />
             </Style>
             <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="Foreground" Value="{DynamicResource BlockOpaqueTabItemSelectedForegroundBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource BlockOpaqueTabStripItemSelectedForegroundBrush}" />
             </Style>
         </Style>
 

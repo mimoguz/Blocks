@@ -5,7 +5,7 @@
         <Border Background="{DynamicResource BlockWindowBackgroundColor}" Padding="20">
             <StackPanel Spacing="20">
 
-                <TabControl Width="300" 
+                <TabControl Width="300"
                             blk:Block.ScrollBarVisibility="Auto"
                             Padding="8,16">
                     <TabControl.Items>
@@ -23,7 +23,7 @@
 
                 <Separator />
 
-                <TabControl Width="300" 
+                <TabControl Width="300"
                             TabStripPlacement="Bottom">
                     <TabControl.Items>
                         <TabItem Header="Tab Item">
@@ -41,7 +41,7 @@
                 <Separator />
 
                 <TabControl Width="300" Height="200"
-                            TabStripPlacement="Left" 
+                            TabStripPlacement="Left"
                             Background="Cornsilk"
                             BorderBrush="Crimson"
                             blk:Block.ScrollBarVisibility="Auto">
@@ -91,75 +91,134 @@
             </StackPanel>
         </Border>
     </Design.PreviewWith>
-    
+
     <!-- ****************************************************** -->
     <!-- ********************* Resources ********************** -->
     <!-- ****************************************************** -->
-    
+
     <SolidColorBrush x:Key="BlockTabControlSeparatorBrush" Color="{DynamicResource BlockBaseViewBorderColor}"
                      Opacity="{DynamicResource BlockSeparatorOpacity}" />
-    
-    <SolidColorBrush x:Key="BlockTabControlForegroundBrush" 
-                     Color="{DynamicResource BlockWindowForegroundColor}" />
-    
+
     <x:Double x:Key="BlockTabControlSeparatorThickness">1</x:Double>
     <Thickness x:Key="BlockTabControlTabStripPadding">8</Thickness>
     <ScrollBarVisibility x:Key="BlockTabControlScrollBarVisibility">Auto</ScrollBarVisibility>
-    
+
     <!-- ****************************************************** -->
     <!-- ********************** Themes ************************ -->
     <!-- ****************************************************** -->
 
     <ControlTheme x:Key="{x:Type TabControl}"
                   TargetType="TabControl">
-        
+
         <Setter Property="Padding" Value="{DynamicResource BlockTabControlTabStripPadding}" />
         <Setter Property="BorderBrush" Value="{DynamicResource BlockTabControlSeparatorBrush}" />
-        <Setter Property="Foreground" Value="{DynamicResource BlockTabControlForegroundBrush}" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="blk:Block.ScrollBarVisibility" Value="{DynamicResource BlockTabControlScrollBarVisibility}" />
-        
-        <Setter Property="Template">
-            <ControlTemplate>
-                <Border Background="{TemplateBinding Background}"
-                        CornerRadius="{TemplateBinding CornerRadius}">
-                    <DockPanel>
-                        <Border Name="TabsBorder" DockPanel.Dock="Top" Background="{TemplateBinding Background}">
-                            <!-- TODO: Better horizontal scrolling -->
-                            <ScrollViewer Name="TabsScroll"
-                                          Theme="{DynamicResource BlockTabControlScrollViewer}"
-                                          Foreground="{TemplateBinding Foreground}"
-                                          HorizontalScrollBarVisibility="Disabled"
-                                          VerticalScrollBarVisibility="Disabled">
+
+        <!-- With scroll bars -->
+        <Style Selector="^[(blk|Block.ScrollBarVisibility)=Auto], ^[(blk|Block.ScrollBarVisibility)=Visible]">
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border Background="{TemplateBinding Background}"
+                            CornerRadius="{TemplateBinding CornerRadius}">
+                        <DockPanel>
+                            <Border Name="TabsBorder" DockPanel.Dock="Top" Background="{TemplateBinding Background}">
+                                <ScrollViewer Name="TabsScroll"
+                                              Theme="{DynamicResource BlockTabControlScrollViewer}"
+                                              Foreground="{TemplateBinding Foreground}"
+                                              HorizontalScrollBarVisibility="Disabled"
+                                              VerticalScrollBarVisibility="Disabled">
+                                    <ItemsPresenter Name="PART_ItemsPresenter"
+                                                    Margin="{TemplateBinding Padding}"
+                                                    ItemsPanel="{TemplateBinding ItemsPanel}" />
+                                </ScrollViewer>
+                            </Border>
+                            <Rectangle Name="Divider"
+                                       Fill="{TemplateBinding BorderBrush}"
+                                       DockPanel.Dock="Top" />
+                            <ContentPresenter Name="PART_SelectedContentHost"
+                                              Content="{TemplateBinding SelectedContent}"
+                                              ContentTemplate="{TemplateBinding SelectedContentTemplate}"
+                                              VerticalContentAlignment="Stretch"
+                                              HorizontalContentAlignment="Stretch" />
+                        </DockPanel>
+                    </Border>
+                </ControlTemplate>
+            </Setter>
+
+            <!-- Show scroll bars -->
+
+            <Style Selector="^[TabStripPlacement=Top], ^[TabStripPlacement=Bottom]">
+                <Style Selector="^ /template/ ScrollViewer#TabsScroll">
+                    <Setter Property="HorizontalScrollBarVisibility"
+                            Value="{TemplateBinding blk:Block.ScrollBarVisibility}" />
+                </Style>
+                <Setter Property="ItemsPanel">
+                    <ItemsPanelTemplate>
+                        <StackPanel Spacing="{DynamicResource BlockTabSpacing}"
+                                    Orientation="Horizontal"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
+                    </ItemsPanelTemplate>
+                </Setter>
+            </Style>
+
+            <Style Selector="^[TabStripPlacement=Left], ^[TabStripPlacement=Right]">
+                <Style Selector="^ /template/ ScrollViewer#TabsScroll">
+                    <Setter Property="VerticalScrollBarVisibility"
+                            Value="{TemplateBinding blk:Block.ScrollBarVisibility}" />
+                    <Setter Property="AllowAutoHide" Value="True" />
+                </Style>
+                <Setter Property="ItemsPanel">
+                    <ItemsPanelTemplate>
+                        <StackPanel Spacing="{DynamicResource BlockTabSpacing}"
+                                    Orientation="Vertical"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
+                    </ItemsPanelTemplate>
+                </Setter>
+            </Style>
+        </Style>
+
+        <!-- Without scroll bars -->
+        <Style Selector="^[(blk|Block.ScrollBarVisibility)=Hidden], ^[(blk|Block.ScrollBarVisibility)=Disabled]">
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border Background="{TemplateBinding Background}"
+                            CornerRadius="{TemplateBinding CornerRadius}">
+                        <DockPanel>
+                            <Border Name="TabsBorder" DockPanel.Dock="Top" Background="{TemplateBinding Background}">
                                 <ItemsPresenter Name="PART_ItemsPresenter"
                                                 Margin="{TemplateBinding Padding}"
                                                 ItemsPanel="{TemplateBinding ItemsPanel}" />
-                            </ScrollViewer>
-                        </Border>
-                        <Rectangle Name="Divider"
-                                   Fill="{TemplateBinding BorderBrush}"
-                                   DockPanel.Dock="Top" />
-                        <ContentPresenter Name="PART_SelectedContentHost"
-                                          Content="{TemplateBinding SelectedContent}"
-                                          ContentTemplate="{TemplateBinding SelectedContentTemplate}"
-                                          VerticalContentAlignment="Stretch"
-                                          HorizontalContentAlignment="Stretch" />
-                    </DockPanel>
-                </Border>
-            </ControlTemplate>
-        </Setter>
-        <Setter Property="ItemsPanel">
-            <ItemsPanelTemplate>
-                <WrapPanel ItemSpacing="{DynamicResource BlockTabSpacing}"
-                           LineSpacing="{DynamicResource BlockTabSpacing}"
-                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
-            </ItemsPanelTemplate>
-        </Setter>
-        
+                            </Border>
+                            <Rectangle Name="Divider"
+                                       Fill="{TemplateBinding BorderBrush}"
+                                       DockPanel.Dock="Top" />
+                            <ContentPresenter Name="PART_SelectedContentHost"
+                                              Content="{TemplateBinding SelectedContent}"
+                                              ContentTemplate="{TemplateBinding SelectedContentTemplate}"
+                                              VerticalContentAlignment="Stretch"
+                                              HorizontalContentAlignment="Stretch" />
+                        </DockPanel>
+                    </Border>
+                </ControlTemplate>
+            </Setter>
+
+            <Setter Property="ItemsPanel">
+                <ItemsPanelTemplate>
+                    <WrapPanel ItemSpacing="{DynamicResource BlockTabSpacing}"
+                               LineSpacing="{DynamicResource BlockTabSpacing}"
+                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
+                </ItemsPanelTemplate>
+            </Setter>
+        </Style>
+
         <Style Selector="^[TabStripPlacement=Top]">
             <Style Selector="^ /template/ ScrollViewer#TabsScroll">
-                <Setter Property="HorizontalScrollBarVisibility" Value="{TemplateBinding blk:Block.ScrollBarVisibility}" />
+                <Setter Property="HorizontalScrollBarVisibility"
+                        Value="{TemplateBinding blk:Block.ScrollBarVisibility}" />
             </Style>
             <Style Selector="^ /template/ Border#TabsBorder">
                 <Setter Property="DockPanel.Dock" Value="Top" />
@@ -170,11 +229,8 @@
 
             </Style>
         </Style>
-        
+
         <Style Selector="^[TabStripPlacement=Bottom]">
-            <Style Selector="^ /template/ ScrollViewer#TabsScroll">
-                <Setter Property="HorizontalScrollBarVisibility" Value="{TemplateBinding blk:Block.ScrollBarVisibility}" />
-            </Style>
             <Style Selector="^ /template/ Border#TabsBorder">
                 <Setter Property="DockPanel.Dock" Value="Bottom" />
             </Style>
@@ -183,30 +239,22 @@
                 <Setter Property="Height" Value="{DynamicResource BlockTabControlSeparatorThickness}" />
             </Style>
         </Style>
-        
+
         <Style Selector="^[TabStripPlacement=Left]">
-            <Style Selector="^ /template/ ScrollViewer#TabsScroll">
-                <Setter Property="VerticalScrollBarVisibility" Value="{TemplateBinding blk:Block.ScrollBarVisibility}" />
-                <Setter Property="AllowAutoHide" Value="True" />
-            </Style>
             <Style Selector="^ /template/ Border#TabsBorder">
                 <Setter Property="DockPanel.Dock" Value="Left" />
             </Style>
             <Style Selector="^ /template/ Rectangle#Divider">
                 <Setter Property="DockPanel.Dock" Value="Left" />
-                <Setter Property="Width" Value="{DynamicResource BlockTabControlSeparatorThickness}"/>
+                <Setter Property="Width" Value="{DynamicResource BlockTabControlSeparatorThickness}" />
             </Style>
         </Style>
-        
+
         <Style Selector="^[TabStripPlacement=Left] /template/ ItemsPresenter#PART_ItemsPresenter > WrapPanel">
             <Setter Property="Orientation" Value="Vertical" />
         </Style>
-        
+
         <Style Selector="^[TabStripPlacement=Right]">
-            <Style Selector="^ /template/ ScrollViewer#TabsScroll">
-                <Setter Property="VerticalScrollBarVisibility" Value="{TemplateBinding blk:Block.ScrollBarVisibility}" />
-                <Setter Property="AllowAutoHide" Value="True" />
-            </Style>
             <Style Selector="^ /template/ Border#TabsBorder">
                 <Setter Property="DockPanel.Dock" Value="Right" />
             </Style>
@@ -215,7 +263,7 @@
                 <Setter Property="Width" Value="{DynamicResource BlockTabControlSeparatorThickness}" />
             </Style>
         </Style>
-        
+
         <Style Selector="^[TabStripPlacement=Right] /template/ ItemsPresenter#PART_ItemsPresenter > WrapPanel">
             <Setter Property="Orientation" Value="Vertical" />
         </Style>
