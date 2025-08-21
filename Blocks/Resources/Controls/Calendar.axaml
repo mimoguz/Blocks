@@ -13,16 +13,35 @@
         </Border>
     </Design.PreviewWith>
 
+    <!-- ****************************************************** -->
+    <!-- ********************* Resources ********************** -->
+    <!-- ****************************************************** -->
+
+    <SolidColorBrush x:Key="BlockCalendarItemPopupBackgroundBrush"
+                     Color="{DynamicResource BlockRaisedBackgroundColor}" />
+
+    <SolidColorBrush x:Key="BlockCalendarItemPopupBorderBrush"
+                     Color="{DynamicResource BlockBaseViewBorderColor}"
+                     Opacity="{DynamicResource BlockFlyoutBorderOpacity}" />
+
+    <SolidColorBrush x:Key="BlockCalendarItemDayNameBrush"
+                     Color="{DynamicResource BlockWindowForegroundColor}" />
+
+    <!-- ****************************************************** -->
+    <!-- ********************** Themes ************************ -->
+    <!-- ****************************************************** -->
+
     <ControlTheme x:Key="{x:Type Calendar}" TargetType="Calendar">
-        
+
         <Setter Property="Foreground" Value="{DynamicResource BlockCalendarItemDayNameBrush}" />
-        <Setter Property="Background" Value="{DynamicResource BlockCalendarBackgroundBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource BlockCalendarBorderBrush}" />
-        <Setter Property="BorderThickness" Value="{DynamicResource BlockControlBorderThickness}" />
-        <Setter Property="CornerRadius" Value="{DynamicResource BlockInputCornerRadius}" />
+        <Setter Property="Background" Value="{DynamicResource BlockCalendarItemPopupBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BlockCalendarItemPopupBorderBrush}" />
+        <Setter Property="BorderThickness" Value="{DynamicResource BlockFlyoutBorderThickness}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource BlockFlyoutCornerRadius}" />
+        <Setter Property="Padding" Value="{DynamicResource BlockFlyoutPadding}" />
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="VerticalAlignment" Value="Center" />
-        
+
         <Setter Property="Template">
             <ControlTemplate>
                 <StackPanel
@@ -35,15 +54,8 @@
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
                         CornerRadius="{TemplateBinding CornerRadius}"
-                        HeaderBackground="{TemplateBinding HeaderBackground}" >
-                        <CalendarItem.Resources>
-                            <SolidColorBrush x:Key="BlockCalendarItemPopupBackgroundBrush"
-                                             Color="{DynamicResource BlockBaseViewBackgroundColor}"
-                                             Opacity="{DynamicResource BlockViewBackgroundOpacity}"/>
-                            <SolidColorBrush x:Key="BlockCalendarItemPopupBorderBrush"
-                                             Color="{DynamicResource BlockBaseViewBorderColor}"
-                                             Opacity="{DynamicResource BlockViewBorderOpacity}" />
-                        </CalendarItem.Resources>
+                        HeaderBackground="{TemplateBinding HeaderBackground}"
+                        Padding="{TemplateBinding Padding}">
                     </CalendarItem>
                 </StackPanel>
             </ControlTemplate>

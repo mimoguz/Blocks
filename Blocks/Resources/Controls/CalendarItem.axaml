@@ -22,18 +22,16 @@
     <!-- ****************************************************** -->
 
     <SolidColorBrush x:Key="BlockCalendarItemHeaderBackgroundBrush" Color="Transparent" />
+    
     <SolidColorBrush x:Key="BlockCalendarItemHeaderForegroundBrush"
                      Color="{DynamicResource BlockFlatButtonForegroundColor}" />
-    <SolidColorBrush x:Key="BlockCalendarItemPopupBackgroundBrush"
-                     Color="{DynamicResource BlockRaisedBackgroundColor}" />
-    <SolidColorBrush x:Key="BlockCalendarItemPopupBorderBrush"
-                     Color="{DynamicResource BlockBaseViewBorderColor}"
-                     Opacity="{DynamicResource BlockFlyoutBorderOpacity}" />
-    <SolidColorBrush x:Key="BlockCalendarItemDayNameBrush" 
-                     Color="{DynamicResource BlockWindowForegroundColor}" />
+    
+    
+    
     <SolidColorBrush x:Key="BlockCalendarItemHeaderSeparatorBrush"
                      Color="{DynamicResource BlockBaseViewBorderColor}" 
                      Opacity="{DynamicResource BlockSeparatorOpacity}"/>
+    
     <x:Double x:Key="BlockCalendarGridWidth">306</x:Double>
     <x:Double x:Key="BlockCalendarGridHeight">290</x:Double>
 
@@ -44,9 +42,6 @@
     <ControlTheme x:Key="{x:Type CalendarItem}" TargetType="CalendarItem">
         
         <Setter Property="BorderThickness" Value="{DynamicResource BlockFlyoutBorderThickness}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource BlockCalendarItemPopupBorderBrush}" />
-        <Setter Property="Background" Value="{DynamicResource BlockCalendarItemPopupBackgroundBrush}" />
-        <Setter Property="Foreground" Value="{DynamicResource BlockCalendarItemDayNameBrush}" />
 
         <Setter Property="DayTitleTemplate">
             <Template x:DataType="x:String">
@@ -60,8 +55,8 @@
         <Setter Property="Template">
             <ControlTemplate>
                 <Panel>
-                    <Border Background="{DynamicResource BlockCalendarItemPopupBackgroundBrush}"
-                            CornerRadius="14"
+                    <Border Background="{TemplateBinding Background}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
                             ClipToBounds="True">
                         <!-- To keep the calendar from resizing when switching DisplayMode set the min width and min height
                          manually -->
@@ -72,7 +67,7 @@
                             <Border Grid.Row="0" Background="{DynamicResource BlockCalendarItemHeaderBackgroundBrush}" />
                             <Grid Grid.Row="0"
                                   ColumnDefinitions="Auto, *, Auto" ColumnSpacing="2"
-                                  Margin="{DynamicResource BlockFlyoutPadding}">
+                                  Margin="{TemplateBinding Padding}">
                                 <Button Name="PART_PreviousButton"
                                         Grid.Column="0"
                                         Classes="flat"
@@ -139,9 +134,9 @@
                             </Panel>
                         </Grid>
                     </Border>
-                    <Border BorderThickness="{DynamicResource BlockFlyoutBorderThickness}"
-                            BorderBrush="{DynamicResource BlockCalendarItemPopupBorderBrush}"
-                            CornerRadius="14" />
+                    <Border BorderThickness="{TemplateBinding BorderThickness}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            CornerRadius="{TemplateBinding CornerRadius}" />
                 </Panel>
             </ControlTemplate>
         </Setter>
