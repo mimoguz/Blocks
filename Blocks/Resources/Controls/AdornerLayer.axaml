@@ -1,0 +1,18 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <SolidColorBrush x:Key="BlockFocusAdornerBrush" Color="{DynamicResource BlockBaseFocusColor}"
+                     Opacity="{DynamicResource BlockViewFocusOpacity}" />
+
+    <Thickness x:Key="BlockFocusAdornerMargin">0</Thickness>
+
+    <ControlTheme x:Key="{x:Type AdornerLayer}" TargetType="AdornerLayer">
+        <Setter Property="DefaultFocusAdorner">
+            <FocusAdornerTemplate>
+                <Border BorderThickness="{DynamicResource BlockFocusBorderThickness}"
+                        BorderBrush="{DynamicResource BlockFocusAdornerBrush}"
+                        Margin="{DynamicResource BlockFocusAdornerMargin}" />
+            </FocusAdornerTemplate>
+        </Setter>
+    </ControlTheme>
+</ResourceDictionary>

@@ -42,6 +42,7 @@
     <!-- ****************************************************** -->
     
     <ControlTheme x:Key="{x:Type CalendarItem}" TargetType="CalendarItem">
+        
         <Setter Property="BorderThickness" Value="{DynamicResource BlockFlyoutBorderThickness}" />
         <Setter Property="BorderBrush" Value="{DynamicResource BlockCalendarItemPopupBorderBrush}" />
         <Setter Property="Background" Value="{DynamicResource BlockCalendarItemPopupBackgroundBrush}" />
@@ -59,7 +60,7 @@
         <Setter Property="Template">
             <ControlTemplate>
                 <Panel>
-                    <Border Background="{DynamicResource BlockRaisedBackgroundBrush}"
+                    <Border Background="{DynamicResource BlockCalendarItemPopupBackgroundBrush}"
                             CornerRadius="14"
                             ClipToBounds="True">
                         <!-- To keep the calendar from resizing when switching DisplayMode set the min width and min height
