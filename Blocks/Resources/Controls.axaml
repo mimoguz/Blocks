@@ -56,5 +56,6 @@
         <ResourceInclude Source="Controls/TabStrip.axaml" />
         <ResourceInclude Source="Controls/AdornerLayer.axaml" />
         <ResourceInclude Source="Controls/Calendar.axaml" />
+        <ResourceInclude Source="Controls/CaptionButtons.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
