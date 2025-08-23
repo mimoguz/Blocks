@@ -57,5 +57,10 @@
         <ResourceInclude Source="Controls/AdornerLayer.axaml" />
         <ResourceInclude Source="Controls/Calendar.axaml" />
         <ResourceInclude Source="Controls/CaptionButtons.axaml" />
+        <ResourceInclude Source="Controls/Carousel.axaml" />
+        <ResourceInclude Source="Controls/EmbeddableControlRoot.axaml" />
+        <ResourceInclude Source="Controls/HyperlinkButton.axaml" />
+        <ResourceInclude Source="Controls/ItemsControl.axaml" />
+        <ResourceInclude Source="Controls/Label.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

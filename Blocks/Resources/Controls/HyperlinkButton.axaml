@@ -1,0 +1,82 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:blk="clr-namespace:Blocks.Controls">
+
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <StackPanel Spacing="20">
+                <HyperlinkButton Content="Click Me!" />
+                <HyperlinkButton Content="Click Me!" IsVisited="True" />
+                <HyperlinkButton Content="Click Me!" IsEnabled="False"/>
+                <HyperlinkButton Content="Click Me!" IsVisited="True" IsEnabled="False"/>
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+
+    <Thickness x:Key="BlockHyperlinkButtonUnderlineThickness">1</Thickness>
+
+    <SolidColorBrush x:Key="BlockHyperlinkButtonBaseBackgroundBrush"
+                     Color="{DynamicResource BlockBaseButtonBackgroundColor}" />
+    <SolidColorBrush x:Key="BlockHyperlinkButtonForegroundBrush"
+                     Color="{DynamicResource BlockFlatButtonForegroundColor}" />
+    <SolidColorBrush x:Key="BlockHyperlinkButtonVisitedForegroundBrush"
+                     Color="{DynamicResource BlockBaseSecondaryColor}" />
+
+    <ControlTheme x:Key="{x:Type HyperlinkButton}" TargetType="HyperlinkButton">
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Background" Value="{DynamicResource BlockHyperlinkButtonBaseBackgroundBrush}" />
+        <Setter Property="BackgroundSizing" Value="OuterBorderEdge" />
+        <Setter Property="Foreground" Value="{DynamicResource BlockHyperlinkButtonForegroundBrush}" />
+        <Setter Property="BorderThickness" Value="{DynamicResource BlockControlBorderThickness}" />
+        <!-- Use for the visited color, since it's otherwise unused -->
+        <Setter Property="BorderBrush" Value="{DynamicResource BlockHyperlinkButtonVisitedForegroundBrush}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource BlockButtonCornerRadius}" />
+        <Setter Property="Padding" Value="{DynamicResource BlockFlatButtonPadding}" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="TextBlock.TextDecorations" Value="Underline" />
+        <Setter Property="Transitions">
+            <Transitions>
+                <TransformOperationsTransition Property="RenderTransform" Duration="0:0:.075" />
+            </Transitions>
+        </Setter>
+
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel Name="BaseContainer">
+                    <blk:BlockButtonBackground Name="ButtonBackground"
+                                               Background="{TemplateBinding Background}"
+                                               CornerRadius="{TemplateBinding CornerRadius}"
+                                               BorderThickness="{TemplateBinding BorderThickness}"
+                                               ButtonStyle="Flat" />
+                    <ContentPresenter x:Name="PART_ContentPresenter"
+                                      BackgroundSizing="{TemplateBinding BackgroundSizing}"
+                                      CornerRadius="{TemplateBinding CornerRadius}"
+                                      Content="{TemplateBinding Content}"
+                                      ContentTemplate="{TemplateBinding ContentTemplate}"
+                                      Padding="{TemplateBinding Padding}"
+                                      RecognizesAccessKey="True"
+                                      HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                      VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^:pointerover /template/ blk|BlockButtonBackground#ButtonBackground">
+            <Setter Property="Highlighted" Value="True" />
+        </Style>
+
+        <Style Selector="^:pressed /template/ blk|BlockButtonBackground#ButtonBackground">
+            <Setter Property="Shaded" Value="True" />
+        </Style>
+        
+        <Style Selector="^:disabled /template/ Panel#BaseContainer">
+            <Setter Property="Opacity" Value="{DynamicResource BlockDisabledOpacity}" />
+        </Style>
+
+        <Style Selector="^:visited /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Foreground" Value="{TemplateBinding BorderBrush}" />
+        </Style>
+
+    </ControlTheme>
+</ResourceDictionary>
