@@ -77,7 +77,10 @@
                     <DockPanel>
                         <ListBox x:Name="PART_QuickLinks" DockPanel.Dock="Left" ItemsSource="{Binding QuickLinks}"
                                  SelectedIndex="{Binding QuickLinksSelectedIndex}" Focusable="False"
-                                 MaxWidth="200">
+                                 MaxWidth="240" Width="200"
+                                 BorderThickness="0" CornerRadius="0"
+                                 Padding="8"
+                                 Background="{DynamicResource BlockPaneBackgroundBrush}">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Spacing="8" Orientation="Horizontal" Background="Transparent">
@@ -92,84 +95,98 @@
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
                         </ListBox>
-                        <DockPanel x:Name="NavBar" DockPanel.Dock="Top" Margin="8,5,8,0" VerticalAlignment="Center">
-                            <Rectangle Fill="{DynamicResource SystemControlHighlightAltBaseMediumLowBrush}" Height="1"
-                                       Margin="0,5,0,0" DockPanel.Dock="Bottom" />
-                            <DockPanel Margin="4,0">
+                        <DockPanel x:Name="NavBar" DockPanel.Dock="Top" Margin="8,8,8,0" VerticalAlignment="Center">
+                            <Separator DockPanel.Dock="Bottom" Height="1" Margin="0,8, 0, 2" />
+                            <DockPanel>
                                 <Button Command="{Binding GoUp}"
                                         DockPanel.Dock="Left"
-                                        Margin="0,0,8,0"
-                                        Classes="image-button"
-                                        MinWidth="0">
+                                        Classes="image-button flat"
+                                        MinWidth="{Binding $self.Bounds.Height}">
                                     <Path Fill="{CompiledBinding $parent[Button].Foreground}"
                                           Width="16" Height="16"
                                           Data="M 8 0.586 L 1.293 7.293 L 2.707 8.707 L 7 4.414 V 15 H 9 V 4.414 L 13.293 8.707 L 14.707 7.293 Z"
                                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                 </Button>
-                                <Button Command="{Binding Refresh}" DockPanel.Dock="Right" Margin="8,0,0,0">
+                                <Button Command="{Binding Refresh}" 
+                                        DockPanel.Dock="Right"
+                                        Classes="image-button flat"
+                                        MinWidth="{Binding $self.Bounds.Height}">
                                     <Path Fill="{CompiledBinding $parent[Button].Foreground}"
                                           Width="16" Height="16"
-                                          Data="M 1 2 V 8 H 7 V 6 H 4.535 A 4 4 0 0 1 8 4 A 4 4 0 0 1 12 8 A 4 4 0 0 1 8 12 A 4 4 0 0 1 4.377 9.695 L 2.564 10.543 A 6 6 0 0 0 8 14 A 6 6 0 0 0 14 8 A 6 6 0 0 0 8 2 A 6 6 0 0 0 3 4.686 V 2 Z"
+                                          Data="M 1 1 H 3 V 3.848 A 6.5 6.5 0 0 1 8 1.5 A 6.5 6.5 0 0 1 14.5 8 A 6.5 6.5 0 0 1 8 14.5 A 6.5 6.5 0 0 1 1.75 9.785 L 3.674 9.236 A 4.5 4.5 0 0 0 8 12.5 A 4.5 4.5 0 0 0 12.5 8 A 4.5 4.5 0 0 0 8 3.5 A 4.5 4.5 0 0 0 4.646 5 H 7 V 7 H 1 V 1 Z"
                                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                 </Button>
-                                <TextBox x:Name="Location" Text="{Binding Location}">
+                                <TextBox x:Name="Location" Text="{Binding Location}"
+                                         Margin="8,0">
                                     <TextBox.KeyBindings>
                                         <KeyBinding Command="{Binding EnterPressed}" Gesture="Enter" />
                                     </TextBox.KeyBindings>
                                 </TextBox>
                             </DockPanel>
                         </DockPanel>
-                        <DockPanel Margin="8,0,8,5" DockPanel.Dock="Bottom">
-                            <Rectangle Fill="{DynamicResource SystemControlHighlightAltBaseMediumLowBrush}" Height="1"
-                                       Margin="0,0,0,5" DockPanel.Dock="Top" />
+                        <DockPanel Margin="8,0,8,8" DockPanel.Dock="Bottom">
+                            <Separator Margin="0,8" Height="1" DockPanel.Dock="Top" />
                             <DockPanel Margin="4,0">
-                                <DockPanel DockPanel.Dock="Top" Margin="0,0,0,4">
-                                    <ComboBox DockPanel.Dock="Right"
+                                
+                                <!-- With filter -->
+                                <Grid DockPanel.Dock="Top" 
+                                      Margin="0,0,0,8"
+                                      IsVisible="{Binding ShowFilters}"
+                                      ColumnSpacing="8"
+                                      ColumnDefinitions="7*,3*">
+                                    <TextBox Grid.Column="0" 
+                                             Text="{Binding FileName}"
+                                             Watermark="{DynamicResource StringManagedFileChooserFileNameWatermark}"
+                                             IsVisible="{Binding !SelectingFolder}" />
+                                    <ComboBox Grid.Column="1"
                                               IsVisible="{Binding ShowFilters}"
                                               ItemsSource="{Binding Filters}"
                                               SelectedItem="{Binding SelectedFilter}" />
+                                </Grid>
+                                
+                                <!-- Without filter -->
+                                <Decorator IsVisible="{Binding !ShowFilters}"
+                                           DockPanel.Dock="Top">
                                     <TextBox Text="{Binding FileName}"
                                              Watermark="{DynamicResource StringManagedFileChooserFileNameWatermark}"
-                                             IsVisible="{Binding !SelectingFolder}" />
-                                </DockPanel>
+                                             IsVisible="{Binding !SelectingFolder}"
+                                             Margin="0,0,0,4"/>
+                                </Decorator>
+                                
                                 <CheckBox IsChecked="{Binding ShowHiddenFiles}"
                                           Content="{DynamicResource StringManagedFileChooserShowHiddenFilesText}"
                                           DockPanel.Dock="Left" />
                                 <UniformGrid x:Name="Finalize" HorizontalAlignment="Right" Rows="1">
-                                    <Button Command="{Binding Ok}" MinWidth="80"
-                                            Content="{DynamicResource StringManagedFileChooserOkText}" />
-                                    <Button Command="{Binding Cancel}" MinWidth="80"
-                                            Content="{DynamicResource StringManagedFileChooserCancelText}" />
+                                    <Button Command="{Binding Ok}" MinWidth="100"
+                                            Content="{DynamicResource StringManagedFileChooserOkText}" 
+                                            IsDefault="True" />
+                                    <Button Command="{Binding Cancel}" MinWidth="100"
+                                            Content="{DynamicResource StringManagedFileChooserCancelText}"
+                                            IsCancel="True" />
                                 </UniformGrid>
                             </DockPanel>
                         </DockPanel>
 
                         <DockPanel Grid.IsSharedSizeScope="True">
-                            <Grid DockPanel.Dock="Top" Margin="15 5 0 0" HorizontalAlignment="Stretch">
+                            <Grid DockPanel.Dock="Top" Margin="16,2" HorizontalAlignment="Stretch">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="20" SharedSizeGroup="Icon" />
+                                    <ColumnDefinition Width="24" SharedSizeGroup="Icon" />
                                     <ColumnDefinition Width="275" SharedSizeGroup="Name" />
-                                    <ColumnDefinition Width="16" SharedSizeGroup="Splitter" />
+                                    <ColumnDefinition Width="17" SharedSizeGroup="Splitter" />
                                     <ColumnDefinition Width="200" SharedSizeGroup="Modified" />
-                                    <ColumnDefinition Width="16" SharedSizeGroup="Splitter" />
+                                    <ColumnDefinition Width="17" SharedSizeGroup="Splitter" />
                                     <ColumnDefinition Width="150" SharedSizeGroup="Type" />
-                                    <ColumnDefinition Width="16" SharedSizeGroup="Splitter" />
+                                    <ColumnDefinition Width="17" SharedSizeGroup="Splitter" />
                                     <ColumnDefinition Width="200" SharedSizeGroup="Size" />
-                                    <ColumnDefinition Width="16" SharedSizeGroup="Splitter" />
+                                    <ColumnDefinition Width="17" SharedSizeGroup="Splitter" />
                                 </Grid.ColumnDefinitions>
+                                <Grid.Resources>
+                                    <x:Double x:Key="BlockGridSplitterLineThickness">1</x:Double>
+                                </Grid.Resources>
                                 <Grid.Styles>
                                     <Style Selector="GridSplitter">
-                                        <Setter Property="Background"
-                                                Value="{DynamicResource SystemControlHighlightAltBaseMediumLowBrush}" />
-                                        <Setter Property="Template">
-                                            <ControlTemplate>
-                                                <Border VerticalAlignment="Stretch" BorderThickness="0"
-                                                        Background="#01000000">
-                                                    <Rectangle Width="1" VerticalAlignment="Stretch"
-                                                               Fill="{TemplateBinding Background}" />
-                                                </Border>
-                                            </ControlTemplate>
-                                        </Setter>
+                                        <Setter Property="ResizeDirection" Value="Columns" />
+                                        <Setter Property="Padding" Value="8,0" />
                                     </Style>
                                 </Grid.Styles>
                                 <TextBlock Grid.Column="1" Text="{DynamicResource StringManagedFileChooserNameColumn}" />
@@ -184,7 +201,7 @@
                             </Grid>
                             <ListBox x:Name="PART_Files"
                                      ItemsSource="{Binding Items}"
-                                     Margin="0 5"
+                                     Padding="8"
                                      SelectionMode="{Binding SelectionMode}"
                                      SelectedItems="{Binding SelectedItems}"
                                      Background="Transparent"
@@ -230,81 +247,11 @@
                 </Border>
             </ControlTemplate>
         </Setter>
-        <Style Selector="^ /template/ ListBox#QuickLinks">
-            <Setter Property="Margin" Value="0" />
-            <Setter Property="Background" Value="{DynamicResource SystemControlBackgroundChromeMediumBrush}" />
-            <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="Width" Value="240" />
-            <Setter Property="Padding" Value="0,20" />
-            <Setter Property="Template">
-                <ControlTemplate>
-                    <Border Name="border" BoxShadow="inset -6 0 3 -3 #20000000"
-                            Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}">
-                        <ScrollViewer Name="PART_ScrollViewer"
-                                      HorizontalScrollBarVisibility="{TemplateBinding (ScrollViewer.HorizontalScrollBarVisibility)}"
-                                      VerticalScrollBarVisibility="{TemplateBinding (ScrollViewer.VerticalScrollBarVisibility)}">
-                            <ItemsPresenter Name="PART_ItemsPresenter"
-                                            ItemsPanel="{TemplateBinding ItemsPanel}"
-                                            Margin="{TemplateBinding Padding}" />
-                        </ScrollViewer>
-                    </Border>
-                </ControlTemplate>
-            </Setter>
-            <Setter Property="ItemContainerTheme">
-                <ControlTheme TargetType="ListBoxItem">
-                    <Setter Property="Height" Value="32" />
-                    <Setter Property="Padding" Value="30,6" />
-                    <Setter Property="Template">
-                        <ControlTemplate>
-                            <Border x:Name="LayoutRoot" CornerRadius="2" Margin="10,0">
-                                <Panel>
-                                    <Border x:Name="SelectedLine" HorizontalAlignment="Left" Margin="2,6"
-                                            CornerRadius="0.5" Width="3"
-                                            Background="{DynamicResource SystemControlHighlightAccentBrush}"
-                                            IsVisible="{TemplateBinding IsSelected}" />
-                                    <ContentPresenter Name="PART_ContentPresenter"
-                                                      Background="Transparent"
-                                                      BorderBrush="Transparent"
-                                                      BorderThickness="0"
-                                                      ContentTemplate="{TemplateBinding ContentTemplate}"
-                                                      Content="{TemplateBinding Content}"
-                                                      Padding="{TemplateBinding Padding}"
-                                                      VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                                                      HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" />
-
-                                </Panel>
-                            </Border>
-                        </ControlTemplate>
-                    </Setter>
-
-                    <Style Selector="^:pointerover /template/ Border#LayoutRoot">
-                        <Setter Property="Background" Value="{DynamicResource SystemControlBackgroundAltMediumBrush}" />
-                    </Style>
-                    <Style Selector="^:selected /template/ Border#LayoutRoot">
-                        <Setter Property="Background"
-                                Value="{DynamicResource SystemControlBackgroundAltMediumHighBrush}" />
-                    </Style>
-                </ControlTheme>
-            </Setter>
-        </Style>
-
-        <Style Selector="^ /template/ DockPanel#NavBar Button, ^ /template/ DockPanel#NavBar TextBox">
-            <Setter Property="Height" Value="30" />
-        </Style>
-        <Style Selector="^ /template/ DockPanel#NavBar Button">
-            <Setter Property="VerticalAlignment" Value="Stretch" />
-            <Setter Property="Width" Value="40" />
-            <Setter Property="BorderThickness" Value="0" />
-        </Style>
-        <Style Selector="^ /template/ DockPanel#NavBar Button:not(:pointerover):not(:pressed)">
-            <Setter Property="Background" Value="Transparent" />
-        </Style>
 
         <Style Selector="^ /template/ UniformGrid#Finalize > Button">
             <Setter Property="HorizontalContentAlignment" Value="Center" />
             <Setter Property="HorizontalAlignment" Value="Stretch" />
-            <Setter Property="Margin" Value="4,0,0,0" />
+            <Setter Property="Margin" Value="8,0,0,0" />
         </Style>
     </ControlTheme>
 
@@ -351,5 +298,6 @@
                 </Border>
             </ControlTemplate>
         </Setter>
+        
     </ControlTheme>
 </ResourceDictionary>

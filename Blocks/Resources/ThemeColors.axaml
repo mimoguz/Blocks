@@ -46,7 +46,7 @@
 
             <Color x:Key="BlockWindowBackgroundColor">#222226</Color>
             <Color x:Key="BlockRaisedBackgroundColor">#2E2E32</Color> 
-            <Color x:Key="BlockPaneBackgroundColor">#353542</Color>
+            <Color x:Key="BlockPaneBackgroundColor">#2E2E32</Color>
             <Color x:Key="BlockOpaqueButtonBackgroundColor">#606065</Color>
             <Color x:Key="BlockBaseButtonBackgroundColor">#DCDCDF</Color>
             <Color x:Key="BlockBaseViewBackgroundColor">#DCDCDF</Color>
