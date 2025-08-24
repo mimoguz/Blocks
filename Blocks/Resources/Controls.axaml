@@ -62,5 +62,6 @@
         <ResourceInclude Source="Controls/HyperlinkButton.axaml" />
         <ResourceInclude Source="Controls/ItemsControl.axaml" />
         <ResourceInclude Source="Controls/Label.axaml" />
+        <ResourceInclude Source="Controls/ManagedFileChooser.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

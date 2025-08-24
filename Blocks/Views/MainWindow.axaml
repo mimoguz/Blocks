@@ -20,7 +20,7 @@
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="_File">
                     <MenuItem Header="New" InputGesture="Ctrl+N" />
-                    <MenuItem Header="Open" InputGesture="Ctrl+O" />
+                    <MenuItem Header="Open" InputGesture="Ctrl+O" Command="{Binding OpenFileCommand}"/>
                     <MenuItem Header="Open Recent">
                         <MenuItem Header="File really finished.dat" />
                         <MenuItem Header="File finished.dat" />
