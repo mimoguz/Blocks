@@ -2,7 +2,8 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:dialogs="using:Avalonia.Dialogs"
                     xmlns:internal="using:Avalonia.Dialogs.Internal"
-                    xmlns:converters="clr-namespace:Avalonia.Controls.Converters;assembly=Avalonia.Controls">
+                    xmlns:converters="clr-namespace:Avalonia.Controls.Converters;assembly=Avalonia.Controls"
+                    xmlns:conv="clr-namespace:Blocks.Converters">
     <Design.PreviewWith>
         <Border Padding="20" Width="800" Height="500">
             <dialogs:ManagedFileChooser />
@@ -22,6 +23,48 @@
                     <GeometryDrawing Brush="{DynamicResource BlockFileChooserSymbolicIconForegroundBrush}"
                                      Geometry="M 8 0.586 L 2.293 6.293 L 3.707 7.707 L 7 4.414 V 15 H 9 V 4.414 l 3.293 3.293 l 1.414 -1.414 Z" />
                 </DrawingGroup>
+
+                <conv:ResourceSelectorConverter x:Key="SymbolicIcons">
+                    <DrawingGroup x:Key="Light_Icon_Folder">
+                        <GeometryDrawing Geometry="M 0 0 L 16 16" />
+                        <GeometryDrawing
+                            Geometry="M 2 1 C 1.446 1 1 1.446 1 2 V 14 C 1 14.554 1.446 15 2 15 H 14 C 14.554 15 15 14.554 15 14 V 4 C 15 3.446 14.554 3 14 3 H 9 L 7 1 Z M 6.172 3 L 8.172 5 L 12.994 5.004 V 12.994 H 3.006 V 3.004 Z"
+                            Brush="#F0000010" />
+                    </DrawingGroup>
+                    <DrawingGroup x:Key="Light_Icon_File">
+                        <GeometryDrawing Geometry="M 0 0 L 16 16" />
+                        <GeometryDrawing
+                            Geometry="M 4 1 C 2.892 1 2 1.892 2 3 V 13 C 2 14.108 2.892 15 4 15 H 12 C 13.108 15 14 14.108 14 13 V 6 L 9 1 H 8 Z M 4 3 H 8 V 5 C 8 6.108 8.892 7 10 7 H 12 V 13 H 4 Z"
+                            Brush="#F0000010" />
+                    </DrawingGroup>
+                    <!-- TODO: A better icon -->
+                    <DrawingGroup x:Key="Light_Icon_Volume">
+                        <GeometryDrawing Geometry="M 0 0 L 16 16" />
+                        <GeometryDrawing
+                            Geometry="M 8 3 A 4 4 0 0 0 8 11 A 4 4 0 0 0 8 3 Z M 8 5 A 2 2 0 0 1 8 9 A 2 2 0 0 1 8 5 Z M 3 1 C 2.446 1 2 1.446 2 2 v 12 c 0 0.554 0.446 1 1 1 h 10 c 0.554 0 1 -0.446 1 -1 V 2 C 14 1.446 13.554 1 13 1 Z m 1 2 h 8 V 13 H 4 Z"
+                            Brush="#F0000010" />
+                    </DrawingGroup>
+
+                    <DrawingGroup x:Key="Dark_Icon_Folder">
+                        <GeometryDrawing Geometry="M 0 0 L 16 16" />
+                        <GeometryDrawing
+                            Geometry="M 2 1 C 1.446 1 1 1.446 1 2 V 14 C 1 14.554 1.446 15 2 15 H 14 C 14.554 15 15 14.554 15 14 V 4 C 15 3.446 14.554 3 14 3 H 9 L 7 1 Z M 6.172 3 L 8.172 5 L 12.994 5.004 V 12.994 H 3.006 V 3.004 Z"
+                            Brush="#F0FEFEFF" />
+                    </DrawingGroup>
+                    <DrawingGroup x:Key="Dark_Icon_File">
+                        <GeometryDrawing Geometry="M 0 0 L 16 16" />
+                        <GeometryDrawing
+                            Geometry="M 4 1 C 2.892 1 2 1.892 2 3 V 13 C 2 14.108 2.892 15 4 15 H 12 C 13.108 15 14 14.108 14 13 V 6 L 9 1 H 8 Z M 4 3 H 8 V 5 C 8 6.108 8.892 7 10 7 H 12 V 13 H 4 Z"
+                            Brush="#F0FEFEFF" />
+                    </DrawingGroup>
+                    <DrawingGroup x:Key="Dark_Icon_Volume">
+                        <GeometryDrawing Geometry="M 0 0 L 16 16" />
+                        <GeometryDrawing
+                            Geometry="M 8 3 A 4 4 0 0 0 8 11 A 4 4 0 0 0 8 3 Z M 8 5 A 2 2 0 0 1 8 9 A 2 2 0 0 1 8 5 Z M 3 1 C 2.446 1 2 1.446 2 2 v 12 c 0 0.554 0.446 1 1 1 h 10 c 0.554 0 1 -0.446 1 -1 V 2 C 14 1.446 13.554 1 13 1 Z m 1 2 h 8 V 13 H 4 Z"
+                            Brush="#F0FEFEFF" />
+                    </DrawingGroup>
+                </conv:ResourceSelectorConverter>
+
                 <internal:ResourceSelectorConverter x:Key="Icons">
                     <DrawingGroup x:Key="Icon_Folder">
                         <GeometryDrawing Geometry="M 0 0 L 16 16" />
@@ -43,7 +86,7 @@
                         <GeometryDrawing Geometry="M 3 8 H 8 V 13 H 3 Z"
                                          Brush="#3584E4" />
                     </DrawingGroup>
-                    <!-- TODO: A better icon -->
+
                     <DrawingGroup x:Key="Icon_Volume">
                         <GeometryDrawing Geometry="M 0 0 L 16 16" />
                         <GeometryDrawing
@@ -87,7 +130,7 @@
                                         <Image Width="16" Height="16">
                                             <Image.Source>
                                                 <DrawingImage
-                                                    Drawing="{Binding IconKey, Converter={StaticResource Icons}}" />
+                                                    Drawing="{Binding IconKey, Converter={StaticResource SymbolicIcons}}" />
                                             </Image.Source>
                                         </Image>
                                         <TextBlock Text="{Binding DisplayName}" />
@@ -105,16 +148,16 @@
                                     <Path Fill="{CompiledBinding $parent[Button].Foreground}"
                                           Width="16" Height="16"
                                           Data="M 8 0.586 L 1.293 7.293 L 2.707 8.707 L 7 4.414 V 15 H 9 V 4.414 L 13.293 8.707 L 14.707 7.293 Z"
-                                          HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                          HorizontalAlignment="Center" VerticalAlignment="Center" />
                                 </Button>
-                                <Button Command="{Binding Refresh}" 
+                                <Button Command="{Binding Refresh}"
                                         DockPanel.Dock="Right"
                                         Classes="image-button flat"
                                         MinWidth="{Binding $self.Bounds.Height}">
                                     <Path Fill="{CompiledBinding $parent[Button].Foreground}"
                                           Width="16" Height="16"
                                           Data="M 1 1 H 3 V 3.848 A 6.5 6.5 0 0 1 8 1.5 A 6.5 6.5 0 0 1 14.5 8 A 6.5 6.5 0 0 1 8 14.5 A 6.5 6.5 0 0 1 1.75 9.785 L 3.674 9.236 A 4.5 4.5 0 0 0 8 12.5 A 4.5 4.5 0 0 0 12.5 8 A 4.5 4.5 0 0 0 8 3.5 A 4.5 4.5 0 0 0 4.646 5 H 7 V 7 H 1 V 1 Z"
-                                          HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                          HorizontalAlignment="Center" VerticalAlignment="Center" />
                                 </Button>
                                 <TextBox x:Name="Location" Text="{Binding Location}"
                                          Margin="8,0">
@@ -127,14 +170,14 @@
                         <DockPanel Margin="8,0,8,8" DockPanel.Dock="Bottom">
                             <Separator Margin="0,8" Height="1" DockPanel.Dock="Top" />
                             <DockPanel Margin="4,0">
-                                
+
                                 <!-- With filter -->
-                                <Grid DockPanel.Dock="Top" 
+                                <Grid DockPanel.Dock="Top"
                                       Margin="0,0,0,8"
                                       IsVisible="{Binding ShowFilters}"
                                       ColumnSpacing="8"
                                       ColumnDefinitions="7*,3*">
-                                    <TextBox Grid.Column="0" 
+                                    <TextBox Grid.Column="0"
                                              Text="{Binding FileName}"
                                              Watermark="{DynamicResource StringManagedFileChooserFileNameWatermark}"
                                              IsVisible="{Binding !SelectingFolder}" />
@@ -143,22 +186,22 @@
                                               ItemsSource="{Binding Filters}"
                                               SelectedItem="{Binding SelectedFilter}" />
                                 </Grid>
-                                
+
                                 <!-- Without filter -->
                                 <Decorator IsVisible="{Binding !ShowFilters}"
                                            DockPanel.Dock="Top">
                                     <TextBox Text="{Binding FileName}"
                                              Watermark="{DynamicResource StringManagedFileChooserFileNameWatermark}"
                                              IsVisible="{Binding !SelectingFolder}"
-                                             Margin="0,0,0,4"/>
+                                             Margin="0,0,0,4" />
                                 </Decorator>
-                                
+
                                 <CheckBox IsChecked="{Binding ShowHiddenFiles}"
                                           Content="{DynamicResource StringManagedFileChooserShowHiddenFilesText}"
                                           DockPanel.Dock="Left" />
                                 <UniformGrid x:Name="Finalize" HorizontalAlignment="Right" Rows="1">
                                     <Button Command="{Binding Ok}" MinWidth="100"
-                                            Content="{DynamicResource StringManagedFileChooserOkText}" 
+                                            Content="{DynamicResource StringManagedFileChooserOkText}"
                                             IsDefault="True" />
                                     <Button Command="{Binding Cancel}" MinWidth="100"
                                             Content="{DynamicResource StringManagedFileChooserCancelText}"
@@ -298,6 +341,6 @@
                 </Border>
             </ControlTemplate>
         </Setter>
-        
+
     </ControlTheme>
 </ResourceDictionary>
