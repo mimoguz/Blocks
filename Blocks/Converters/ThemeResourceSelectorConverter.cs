@@ -7,7 +7,7 @@ using Avalonia.Styling;
 
 namespace Blocks.Converters;
 
-public class ResourceSelectorConverter : ResourceDictionary, IValueConverter
+public class ThemeResourceSelectorConverter : ResourceDictionary, IValueConverter
 {
     public object? Convert(object? key, Type targetType, object? parameter, CultureInfo culture)
     {
