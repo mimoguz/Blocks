@@ -23,11 +23,13 @@
                 </RepeatButton>
                 <RepeatButton IsVisible="True"
                               Theme="{DynamicResource BlockDtPickerRepeatButton}">
-                    <PathIcon Theme="{DynamicResource BlockDtPickerUpIcon}" />
+                    <PathIcon Theme="{DynamicResource BlockDtPickerUpIcon}"
+                              Classes="block-icon" />
                 </RepeatButton>
                 <RepeatButton IsVisible="True"
                               Theme="{DynamicResource BlockDtPickerRepeatButton}">
-                    <PathIcon Theme="{DynamicResource BlockDtPickerDownIcon}" />
+                    <PathIcon Theme="{DynamicResource BlockDtPickerDownIcon}"
+                              Classes="block-icon" />
                 </RepeatButton>
             </StackPanel>
         </Border>
@@ -36,7 +38,7 @@
     <!-- ****************************************************** -->
     <!-- ********************* Resources ********************** -->
     <!-- ****************************************************** -->
-    
+
     <SolidColorBrush x:Key="BlockDtPickerBaseButtonBackgroundBrush"
                      Color="{DynamicResource BlockBaseButtonBackgroundColor}" />
 
@@ -51,7 +53,7 @@
 
     <SolidColorBrush x:Key="BlockFlatDtPickerBaseButtonBackgroundBrush"
                      Color="{DynamicResource BlockBaseButtonBackgroundColor}" />
-    
+
     <SolidColorBrush x:Key="BlockFlatDtPickerButtonForegroundBrush"
                      Color="{DynamicResource BlockFlatButtonForegroundColor}" />
 
@@ -63,15 +65,15 @@
 
     <SolidColorBrush x:Key="BlockOutlinedDtPickerButtonForegroundBrush"
                      Color="{DynamicResource BlockWindowForegroundColor}" />
-    
+
     <SolidColorBrush x:Key="BlockFlatDtPickerButtonDividerBrush"
                      Color="{DynamicResource BlockBaseButtonBackgroundColor}"
                      Opacity="{DynamicResource BlockSeparatorOpacity}" />
-    
+
     <SolidColorBrush x:Key="BlockOutlinedDtPickerButtonDividerBrush"
                      Color="{DynamicResource BlockBaseButtonBackgroundColor}"
                      Opacity="{DynamicResource BlockOutlinedButtonBorderOpacity}" />
-    
+
     <SolidColorBrush x:Key="BlockDtPickerBaseItemBackgroundBrush"
                      Color="{DynamicResource BlockBaseButtonBackgroundColor}" />
 
@@ -80,17 +82,17 @@
 
     <SolidColorBrush x:Key="BlockDtPickerSelectedItemBackgroundBrush"
                      Color="{DynamicResource BlockBasePrimaryColor}"
-                     Opacity="{DynamicResource BlockViewSelectionOpacity}"/>
+                     Opacity="{DynamicResource BlockViewSelectionOpacity}" />
 
     <SolidColorBrush x:Key="BlockDtPickerSelectedItemForegroundBrush"
                      Color="{DynamicResource BlockWindowForegroundColor}" />
 
     <SolidColorBrush x:Key="BlockDtPickerBackgroundBrush"
                      Color="{DynamicResource BlockRaisedBackgroundColor}" />
-    
+
     <SolidColorBrush x:Key="BlockDtPickerBackgroundOverlayBrush"
-                     Color="{DynamicResource BlockRaisedBackgroundColor}" 
-                     Opacity="0.6"/>
+                     Color="{DynamicResource BlockRaisedBackgroundColor}"
+                     Opacity="0.6" />
 
     <SolidColorBrush x:Key="BlockDtPickerBorderBrush"
                      Color="{DynamicResource BlockBaseViewBorderColor}"
@@ -99,14 +101,14 @@
     <SolidColorBrush x:Key="BlockDtPickerSeparatorBrush"
                      Color="{DynamicResource BlockBaseViewBorderColor}"
                      Opacity="{DynamicResource BlockSeparatorOpacity}" />
-    
-    <LinearGradientBrush x:Key="BlockDtPickerOpacityMask" 
+
+    <LinearGradientBrush x:Key="BlockDtPickerOpacityMask"
                          StartPoint="0%,0%"
                          EndPoint="0%,100%">
         <GradientStops>
             <GradientStop Color="#90000000" Offset="0" />
-            <GradientStop Color="#F0000000" Offset="0.4" />
-            <GradientStop Color="#F0000000" Offset="0.6" />
+            <GradientStop Color="#FF000000" Offset="0.4" />
+            <GradientStop Color="#FF000000" Offset="0.6" />
             <GradientStop Color="#90000000" Offset="1" />
         </GradientStops>
     </LinearGradientBrush>
@@ -116,9 +118,9 @@
     <Thickness x:Key="BlockDtPickerButtonDividerMargin">0,6</Thickness>
     <Thickness x:Key="BlockDtPickerButtonSectionPadding">8</Thickness>
     <x:Double x:Key="BlockDtPickerItemHeight">36</x:Double>
-    <x:Double x:Key="BlockDtPickerMaxFlyoutHeight">400</x:Double>
+    <x:Double x:Key="BlockDtPickerMaxFlyoutHeight">392</x:Double>
     <x:Double x:Key="BlockDtPickerFlyoutWidth">296</x:Double>
-    
+
     <!-- ****************************************************** -->
     <!-- ********************** Themes ************************ -->
     <!-- ****************************************************** -->
@@ -143,7 +145,7 @@
                 <Setter Property="FontWeight" Value="Bold" />
             </Style>
         </Style>
-        
+
         <Style Selector="^.MonthItem">
         </Style>
     </ControlTheme>
