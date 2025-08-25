@@ -9,21 +9,32 @@
                         <Setter Property="Background" Value="Bisque" />
                     </Style>
                 </WrapPanel.Styles>
-                <PathIcon Data="{DynamicResource BlockCheckMark}" />
-                <PathIcon Data="{DynamicResource BlockChevronDown}" />
-                <PathIcon Data="{DynamicResource BlockChevronUp}" />
-                <PathIcon Data="{DynamicResource BlockChevronLeft}" />
-                <PathIcon Data="{DynamicResource BlockChevronRight}" />
-                <PathIcon Data="{DynamicResource BlockArrowUp8X5}" Width="8" Height="5" />
-                <PathIcon Data="{DynamicResource BlockArrowDown8X5}" Width="8" Height="5" />
-                <PathIcon Data="{DynamicResource BlockArrowRight5X8}" Width="5" Height="8" />
-                <PathIcon Data="{DynamicResource BlockArrowLeft5X8}" Width="5" Height="8" />
-                <PathIcon Data="{DynamicResource BlockCrossIcon}" />
-                <PathIcon Data="{DynamicResource BlockEyeOpenIcon}" />
-                <PathIcon Data="{DynamicResource BlockEyeClosedIcon}" />
-                <PathIcon Data="{DynamicResource BlockErrorIcon24}" Width="24" Height="24" />
-                <Rectangle Fill="{DynamicResource BlockSpripedPrimaryBrush}" 
-                          Width="80" Height="12" />
+                <PathIcon Data="{DynamicResource BlockCheckMark}"
+                          Classes="block-icon" />
+                <PathIcon Data="{DynamicResource BlockChevronDown}"
+                          Classes="block-icon" />
+                <PathIcon Data="{DynamicResource BlockChevronUp}"
+                          Classes="block-icon" />
+                <PathIcon Data="{DynamicResource BlockChevronLeft}"
+                          Classes="block-icon" />
+                <PathIcon Data="{DynamicResource BlockChevronRight}"
+                          Classes="block-icon" />
+                <PathIcon Data="{DynamicResource BlockArrowUp8X5}" Width="8" Height="5"
+                          blk:Block.Stretch="None" />
+                <PathIcon Data="{DynamicResource BlockArrowDown8X5}" Width="8" Height="5"
+                          blk:Block.Stretch="None" />
+                <PathIcon Data="{DynamicResource BlockArrowRight5X8}" Width="5" Height="8"
+                          blk:Block.Stretch="None" />
+                <PathIcon Data="{DynamicResource BlockArrowLeft5X8}" Width="5" Height="8"
+                          blk:Block.Stretch="None" />
+                <PathIcon Data="{DynamicResource BlockCrossIcon}"  
+                                      Classes="block-icon" />
+                <PathIcon Data="{DynamicResource BlockEyeOpenIcon}"  
+                                      Classes="block-icon" />
+                <PathIcon Data="{DynamicResource BlockEyeClosedIcon}"  
+                                      Classes="block-icon" />
+                <PathIcon Data="{DynamicResource BlockErrorIcon24}" Width="24" Height="24" 
+                          blk:Block.Stretch="None"/>
             </WrapPanel>
         </Border>
     </Design.PreviewWith>

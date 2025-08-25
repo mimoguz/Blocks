@@ -23,25 +23,25 @@
             </StackPanel>
         </Border>
     </Design.PreviewWith>
-    
+
     <!-- ****************************************************** -->
     <!-- ********************* Resources ********************** -->
     <!-- ****************************************************** -->
-    
-    <SolidColorBrush x:Key="BlockCheckBoxBaseBackgroundBrush" 
+
+    <SolidColorBrush x:Key="BlockCheckBoxBaseBackgroundBrush"
                      Color="{DynamicResource BlockBaseButtonBackgroundColor}" />
-    
+
     <SolidColorBrush x:Key="BlockCheckBoxIndeterminateMarkBrush"
-                     Color="{DynamicResource BlockButtonForegroundColor}"/>
-    
+                     Color="{DynamicResource BlockButtonForegroundColor}" />
+
     <SolidColorBrush x:Key="BlockCheckBoxCheckMarkBrush"
-                     Color="{DynamicResource BlockBasePrimaryColor}"/>
-    
+                     Color="{DynamicResource BlockBasePrimaryColor}" />
+
     <SolidColorBrush x:Key="BlockCheckBoxForegroundBrush"
-                     Color="{DynamicResource BlockWindowForegroundColor}"/>
-    
+                     Color="{DynamicResource BlockWindowForegroundColor}" />
+
     <CornerRadius x:Key="BlockCheckBoxCornerRadius">6</CornerRadius>
-    
+
     <!-- ****************************************************** -->
     <!-- ********************** Themes ************************ -->
     <!-- ****************************************************** -->
@@ -57,12 +57,12 @@
         <Setter Property="Padding" Value="{DynamicResource BlockRadioButtonPadding}" />
         <Setter Property="FocusAdorner" Value="{x:Null}" />
         <Setter Property="HorizontalAlignment" Value="Left" />
-        
+
         <Setter Property="blk:Block.Gap" Value="{DynamicResource BlockRadioButtonGap}" />
 
         <Setter Property="Template">
             <ControlTemplate>
-                <Border Background="Transparent" 
+                <Border Background="Transparent"
                         Padding="{TemplateBinding Padding}"
                         Name="BaseContainer">
                     <DockPanel Background="Transparent">
@@ -72,12 +72,13 @@
                                Height="{DynamicResource BlockRadioButtonSize}"
                                HorizontalAlignment="{TemplateBinding HorizontalAlignment}">
                             <blk:BlockButtonBackground Name="ButtonBackground"
-                                             Background="{TemplateBinding Background}"
-                                             CornerRadius="{TemplateBinding CornerRadius}" />
+                                                       Background="{TemplateBinding Background}"
+                                                       CornerRadius="{TemplateBinding CornerRadius}" />
                             <PathIcon Name="CheckMark"
                                       Data="{DynamicResource BlockCheckMark}"
                                       Foreground="{DynamicResource BlockCheckBoxCheckMarkBrush}"
                                       Opacity="0"
+                                      Classes="block-icon"
                                       RenderTransform="skewX(20deg)">
                                 <PathIcon.Transitions>
                                     <Transitions>

@@ -81,7 +81,9 @@
                             <StackPanel>
                                 <blk:Tile Header="Tile" Classes="demo" HorizontalAlignment="Stretch">
                                     <blk:Tile.LeftContent>
-                                        <PathIcon Data="{DynamicResource BlockErrorIcon24}" Width="24" Height="24" />
+                                        <PathIcon Data="{DynamicResource BlockErrorIcon24}" 
+                                                  Width="24" Height="24"
+                                                  blk:Block.Stretch="None" />
                                     </blk:Tile.LeftContent>
                                     <blk:Tile.RightContent>
                                         <ToggleSwitch OffContent="{x:Null}" OnContent="{x:Null}"
@@ -104,10 +106,13 @@
                                                  HorizontalAlignment="Stretch"
                                                  Command="{Binding TileActionCommand}">
                                     <blk:CommandTile.LeftContent>
-                                        <PathIcon Data="{DynamicResource BlockErrorIcon24}" Width="24" Height="24" />
+                                        <PathIcon Data="{DynamicResource BlockErrorIcon24}" 
+                                                  Width="24" Height="24" 
+                                                  blk:Block.Stretch="None"/>
                                     </blk:CommandTile.LeftContent>
                                     <blk:CommandTile.RightContent>
-                                        <PathIcon Data="{DynamicResource BlockChevronRight}" />
+                                        <PathIcon Data="{DynamicResource BlockChevronRight}"  
+                                                  Classes="block-icon" />
                                     </blk:CommandTile.RightContent>
                                     <Panel>
                                         <TextBlock Text="{Binding CommandOutput}" />

@@ -239,9 +239,8 @@
             <Setter Property="Content">
                 <Template>
                     <PathIcon Foreground="{Binding $parent[MenuItem].Foreground}"
-                              Width="{DynamicResource BlockIconSize}"
-                              Height="{DynamicResource BlockIconSize}"
-                              Data="{StaticResource BlockCheckMark}" />
+                              Data="{StaticResource BlockCheckMark}"
+                              Classes="block-icon" />
                 </Template>
             </Setter>
         </Style>

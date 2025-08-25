@@ -154,7 +154,7 @@
                                 KeyboardNavigation.IsTabStop="{TemplateBinding IsTabStop}">
                             <blk:AnimatedMenuIcon Name="MenuIcon"
                                                   MenuIconStyle="{DynamicResource BlockSplitButtonMenuIconStyle}"
-                                                  Background="{TemplateBinding Foreground}"
+                                                  Background="{Binding $parent[Button].Foreground}"
                                                   Foreground="{DynamicResource BlockSplitButtonActiveChevronBrush}" />
                         </Button>
                     </Grid>

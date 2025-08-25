@@ -26,10 +26,12 @@
                     <Panel>
                         <PathIcon Data="{StaticResource BlockTestIcon}"
                                   Foreground="{Binding $parent[ToggleButton].Foreground}"
-                                  IsVisible="{Binding $parent[ToggleButton].IsChecked}" />
+                                  IsVisible="{Binding $parent[ToggleButton].IsChecked}"  
+                                  Classes="block-icon" />
                         <PathIcon Data="{StaticResource BlockTestIconH}"
                                   Foreground="{Binding $parent[ToggleButton].Foreground}"
-                                  IsVisible="{Binding !$parent[ToggleButton].IsChecked}" />
+                                  IsVisible="{Binding !$parent[ToggleButton].IsChecked}"  
+                                  Classes="block-icon" />
                     </Panel>
                 </ToggleButton>
             </WrapPanel>

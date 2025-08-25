@@ -1,6 +1,6 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:conv="clr-namespace:Blocks.Converters">
+                    xmlns:blk="clr-namespace:Blocks.Controls">
     <Design.PreviewWith>
         <Border Background="{DynamicResource BlockWindowBackgroundBrush}" Padding="10" Width="300">
             <ScrollBar Theme="{DynamicResource BlockHorizontalTabControlScrollBar}"
@@ -40,7 +40,8 @@
                                     <PathIcon Data="{DynamicResource BlockArrowLeft5X8}"
                                               Width="5"
                                               Height="8"
-                                              Foreground="{TemplateBinding Foreground}" />
+                                              Foreground="{TemplateBinding Foreground}"
+                                              blk:Block.Stretch="None"/>
                                 </RepeatButton>
 
                                 <RepeatButton Name="PART_LineDownButton"
@@ -58,7 +59,8 @@
                                     <PathIcon Data="{DynamicResource BlockArrowRight5X8}"
                                               Width="5"
                                               Height="8"
-                                              Foreground="{TemplateBinding Foreground}" />
+                                              Foreground="{TemplateBinding Foreground}" 
+                                              blk:Block.Stretch="None"/>
                                 </RepeatButton>
 
                             </Grid>

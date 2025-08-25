@@ -8,7 +8,9 @@
             <StackPanel Width="300" Spacing="10">
                 <blk:CommandTile Header="Command Tile" HorizontalAlignment="Stretch">
                     <blk:CommandTile.LeftContent>
-                        <PathIcon Data="{DynamicResource BlockErrorIcon24}" Width="24" Height="24" />
+                        <PathIcon Data="{DynamicResource BlockErrorIcon24}"
+                                  Width="24" Height="24"
+                                  blk:Block.Stretch="None" />
                     </blk:CommandTile.LeftContent>
                     <blk:CommandTile.RightContent>
                         <ToggleSwitch OffContent="{x:Null}" OnContent="{x:Null}" Name="Toggle" />

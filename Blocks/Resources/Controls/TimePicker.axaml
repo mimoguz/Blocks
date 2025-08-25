@@ -222,7 +222,8 @@
                                         <RepeatButton Name="PART_HourUpButton"
                                                       Theme="{StaticResource BlockDtPickerRepeatButton}"
                                                       IsVisible="True">
-                                            <PathIcon Theme="{DynamicResource BlockDtPickerUpIcon}" />
+                                            <PathIcon Theme="{DynamicResource BlockDtPickerUpIcon}"  
+                                                      Classes="block-icon" />
                                         </RepeatButton>
                                     </Border>
                                     <Border Background="{DynamicResource BlockDtPickerBackgroundOverlayBrush}"
@@ -230,7 +231,8 @@
                                         <RepeatButton Name="PART_HourDownButton"
                                                       Theme="{StaticResource BlockDtPickerRepeatButton}"
                                                       IsVisible="True">
-                                            <PathIcon Theme="{DynamicResource BlockDtPickerDownIcon}" />
+                                            <PathIcon Theme="{DynamicResource BlockDtPickerDownIcon}" 
+                                                      Classes="block-icon" />
                                         </RepeatButton>
                                     </Border>
                                 </Panel>
@@ -249,7 +251,8 @@
                                         <RepeatButton Name="PART_MinuteUpButton"
                                                       Theme="{StaticResource BlockDtPickerRepeatButton}"
                                                       IsVisible="True">
-                                            <PathIcon Theme="{DynamicResource BlockDtPickerUpIcon}" />
+                                            <PathIcon Theme="{DynamicResource BlockDtPickerUpIcon}"  
+                                                      Classes="block-icon" />
                                         </RepeatButton>
                                     </Border>
                                     <Border Background="{DynamicResource BlockDtPickerBackgroundOverlayBrush}"
@@ -257,7 +260,8 @@
                                         <RepeatButton Name="PART_MinuteDownButton"
                                                       Theme="{StaticResource BlockDtPickerRepeatButton}"
                                                       IsVisible="True">
-                                            <PathIcon Theme="{DynamicResource BlockDtPickerDownIcon}" />
+                                            <PathIcon Theme="{DynamicResource BlockDtPickerDownIcon}"  
+                                                      Classes="block-icon" />
                                         </RepeatButton>
                                     </Border>
                                 </Panel>
@@ -276,7 +280,8 @@
                                         <RepeatButton Name="PART_SecondUpButton"
                                                       Theme="{StaticResource BlockDtPickerRepeatButton}"
                                                       IsVisible="True">
-                                            <PathIcon Theme="{DynamicResource BlockDtPickerUpIcon}" />
+                                            <PathIcon Theme="{DynamicResource BlockDtPickerUpIcon}" 
+                                                      Classes="block-icon" />
                                         </RepeatButton>
                                     </Border>
                                     <Border Background="{DynamicResource BlockDtPickerBackgroundOverlayBrush}"
@@ -284,7 +289,8 @@
                                         <RepeatButton Name="PART_SecondDownButton"
                                                       Theme="{StaticResource BlockDtPickerRepeatButton}"
                                                       IsVisible="True">
-                                            <PathIcon Theme="{DynamicResource BlockDtPickerDownIcon}" />
+                                            <PathIcon Theme="{DynamicResource BlockDtPickerDownIcon}" 
+                                                      Classes="block-icon" />
                                         </RepeatButton>
                                     </Border>
                                 </Panel>
@@ -303,7 +309,8 @@
                                         <RepeatButton Name="PART_PeriodUpButton"
                                                       Theme="{StaticResource BlockDtPickerRepeatButton}"
                                                       IsVisible="True">
-                                            <PathIcon Theme="{DynamicResource BlockDtPickerUpIcon}" />
+                                            <PathIcon Theme="{DynamicResource BlockDtPickerUpIcon}"  
+                                                      Classes="block-icon" />
                                         </RepeatButton>
                                     </Border>
                                     <Border Background="{DynamicResource BlockDtPickerBackgroundOverlayBrush}"
@@ -311,7 +318,8 @@
                                         <RepeatButton Name="PART_PeriodDownButton"
                                                       Theme="{StaticResource BlockDtPickerRepeatButton}"
                                                       IsVisible="True">
-                                            <PathIcon Theme="{DynamicResource BlockDtPickerDownIcon}" />
+                                            <PathIcon Theme="{DynamicResource BlockDtPickerDownIcon}"  
+                                                      Classes="block-icon" />
                                         </RepeatButton>
                                     </Border>
                                 </Panel>
@@ -350,7 +358,8 @@
                                         Classes="flat"
                                         VerticalAlignment="Stretch">
                                     <PathIcon Foreground="{Binding $parent[Button].Foreground}"
-                                              Data="{DynamicResource BlockCheckMark}" />
+                                              Data="{DynamicResource BlockCheckMark}"  
+                                              Classes="block-icon" />
                                 </Button>
                                 
                                 <Button Name="PART_DismissButton"
@@ -359,7 +368,8 @@
                                         HorizontalAlignment="Stretch"
                                         VerticalAlignment="Stretch">
                                     <PathIcon Foreground="{Binding $parent[Button].Foreground}"
-                                              Data="{DynamicResource BlockCrossIcon}" />
+                                              Data="{DynamicResource BlockCrossIcon}"  
+                                              Classes="block-icon" />
                                 </Button>
                             </Grid>
                         </Grid>

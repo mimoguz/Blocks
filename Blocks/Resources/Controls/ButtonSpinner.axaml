@@ -84,6 +84,7 @@
                                         </MultiBinding>
                                     </RepeatButton.CornerRadius>
                                     <PathIcon Name="IncreaseIcon"
+                                              Classes="block-icon"
                                               Data="{StaticResource BlockChevronRight}"
                                               Foreground="{TemplateBinding Foreground}" />
                                 </RepeatButton>
@@ -105,6 +106,7 @@
                                         </MultiBinding>
                                     </RepeatButton.CornerRadius>
                                     <PathIcon Name="DecreaseIcon"
+                                              Classes="block-icon"
                                               Data="{StaticResource BlockChevronLeft}"
                                               Foreground="{TemplateBinding Foreground}" />
                                 </RepeatButton>

@@ -1,7 +1,8 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="using:System"
                     xmlns:collections="using:System.Collections"
-                    xmlns:conv="clr-namespace:Blocks.Converters">
+                    xmlns:conv="clr-namespace:Blocks.Converters"
+                    xmlns:blk="clr-namespace:Blocks.Controls">
 
     <Design.PreviewWith>
         <Border Padding="20">
@@ -70,6 +71,7 @@
                     </ToolTip.Tip>
                     <PathIcon Data="{DynamicResource BlockErrorIcon24}"
                               Foreground="{DynamicResource BlockDataValidationForegroundBrush}"
+                              blk:Block.Stretch="None"
                               Background="Transparent"
                               Width="24" Height="24" />
                 </Panel>

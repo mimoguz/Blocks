@@ -38,14 +38,14 @@
                          AcceptsReturn="False"
                          UseFloatingWatermark="True">
                     <TextBox.InnerRightContent>
-                        <PathIcon Data="{DynamicResource BlockTestIcon}" />
+                        <PathIcon Data="{DynamicResource BlockTestIcon}" Classes="block-icon" />
                     </TextBox.InnerRightContent>
                     Embedded
                 </TextBox>
             </StackPanel>
         </Border>
     </Design.PreviewWith>
-    
+
     <!-- ****************************************************** -->
     <!-- ********************* Resources ********************** -->
     <!-- ****************************************************** -->
@@ -58,23 +58,23 @@
 
     <SolidColorBrush x:Key="BlockTextBoxForegroundBrush"
                      Color="{DynamicResource BlockViewForegroundColor}" />
-    
+
     <SolidColorBrush x:Key="BlockTextBoxSelectionBrush"
                      Color="{DynamicResource BlockBasePrimaryColor}"
                      Opacity="{DynamicResource BlockViewSelectionOpacity}" />
 
     <SolidColorBrush x:Key="BlockTextBoxErrorForegroundBrush"
                      Color="{DynamicResource BlockRed}" />
-    
-    <SolidColorBrush x:Key="BlockTextBoxFloatingWatermarkBrush" 
+
+    <SolidColorBrush x:Key="BlockTextBoxFloatingWatermarkBrush"
                      Color="{DynamicResource BlockBasePrimaryColor}" />
-    
-    <SolidColorBrush x:Key="BlockTextBoxPasswordVisibleIconBrush" 
+
+    <SolidColorBrush x:Key="BlockTextBoxPasswordVisibleIconBrush"
                      Color="{DynamicResource BlockRed}" />
-    
+
     <x:Double x:Key="BlockEmbeddedButtonMinWidth">30</x:Double>
     <Thickness x:Key="BlockEmbeddedButtonPadding">6,0</Thickness>
-    
+
 
     <!-- ****************************************************** -->
     <!-- ********************** Themes ************************ -->
@@ -209,7 +209,7 @@
                                 </Transitions>
                             </TextBlock.Transitions>
                         </TextBlock>
-                        
+
                         <Panel MinHeight="{TemplateBinding MinHeight}"
                                HorizontalAlignment="Stretch"
                                VerticalAlignment="Stretch">
@@ -338,7 +338,8 @@
                         <PathIcon Data="{StaticResource BlockCrossIcon}"
                                   Height="{DynamicResource BlockIconSize}"
                                   Width="{DynamicResource BlockIconSize}"
-                                  Foreground="{Binding $parent[TextBox].Foreground}" />
+                                  Foreground="{Binding $parent[TextBox].Foreground}"
+                                  Classes="block-icon" />
                     </Button>
                 </Template>
             </Setter>
@@ -361,15 +362,13 @@
                         </ToggleButton.CornerRadius>
                         <Panel>
                             <PathIcon Data="{StaticResource BlockEyeOpenIcon}"
-                                      Height="{DynamicResource BlockIconSize}"
-                                      Width="{DynamicResource BlockIconSize}"
                                       Foreground="{DynamicResource BlockTextBoxPasswordVisibleIconBrush}"
-                                      IsVisible="{Binding $parent[ToggleButton].IsChecked}" />
+                                      IsVisible="{Binding $parent[ToggleButton].IsChecked}" 
+                                      Classes="block-icon" />
                             <PathIcon Data="{StaticResource BlockEyeClosedIcon}"
-                                      Height="{DynamicResource BlockIconSize}"
-                                      Width="{DynamicResource BlockIconSize}"
                                       Foreground="{Binding $parent[TextBox].Foreground}"
-                                      IsVisible="{Binding !$parent[ToggleButton].IsChecked}" />
+                                      IsVisible="{Binding !$parent[ToggleButton].IsChecked}" 
+                                      Classes="block-icon" />
                         </Panel>
                     </ToggleButton>
                 </Template>

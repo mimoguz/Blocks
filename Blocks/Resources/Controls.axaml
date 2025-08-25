@@ -63,5 +63,6 @@
         <ResourceInclude Source="Controls/ItemsControl.axaml" />
         <ResourceInclude Source="Controls/Label.axaml" />
         <ResourceInclude Source="Controls/ManagedFileChooser.axaml" />
+        <ResourceInclude Source="Controls/OverlayPopupHost.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

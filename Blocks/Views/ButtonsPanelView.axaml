@@ -238,9 +238,8 @@
                                 </Flyout>
                             </DropDownButton.Flyout>
                             <PathIcon Data="{StaticResource BlockTestIcon}"
-                                      Width="{DynamicResource BlockIconSize}"
-                                      Height="{DynamicResource BlockIconSize}"
-                                      Foreground="{Binding $parent[Button].Foreground}" />
+                                      Foreground="{Binding $parent[Button].Foreground}"  
+                                      Classes="block-icon" />
                         </DropDownButton>
                         <DropDownButton Classes="demo flat menu-button"
                                         Padding="0"

@@ -1,7 +1,8 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:conv="clr-namespace:Blocks.Converters"
-                    xmlns:sys="using:System">
+                    xmlns:sys="using:System"
+                    xmlns:blk="clr-namespace:Blocks.Controls">
     
     <Design.PreviewWith>
         <Border Padding="20">
@@ -206,7 +207,8 @@
                                     <PathIcon Data="{DynamicResource BlockArrowUp8X5}"
                                               Width="8"
                                               Height="5"
-                                              Foreground="{TemplateBinding Foreground}" />
+                                              Foreground="{TemplateBinding Foreground}"
+                                              blk:Block.Stretch="None"/>
                                 </RepeatButton>
 
                                 <Track Grid.Row="1"
@@ -250,7 +252,8 @@
                                     <PathIcon Data="{DynamicResource BlockArrowDown8X5}"
                                               Width="8"
                                               Height="5"
-                                              Foreground="{TemplateBinding Foreground}" />
+                                              Foreground="{TemplateBinding Foreground}"
+                                              blk:Block.Stretch="None"/>
                                 </RepeatButton>
                             </Grid>
                         </Border>
@@ -291,7 +294,8 @@
                                     <PathIcon Data="{DynamicResource BlockArrowLeft5X8}"
                                               Width="5"
                                               Height="8"
-                                              Foreground="{TemplateBinding Foreground}" />
+                                              Foreground="{TemplateBinding Foreground}" 
+                                              blk:Block.Stretch="None"/>
                                 </RepeatButton>
 
                                 <Track Grid.Column="1"
@@ -334,7 +338,8 @@
                                     <PathIcon Data="{DynamicResource BlockArrowRight5X8}"
                                               Width="5"
                                               Height="8"
-                                              Foreground="{TemplateBinding Foreground}" />
+                                              Foreground="{TemplateBinding Foreground}" 
+                                              blk:Block.Stretch="None"/>
                                 </RepeatButton>
                             </Grid>
                         </Border>
