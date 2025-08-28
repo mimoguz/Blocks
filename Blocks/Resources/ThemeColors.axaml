@@ -3,7 +3,8 @@
     <ResourceDictionary.ThemeDictionaries>
         <ResourceDictionary x:Key="Default">
             <Color x:Key="BlockRed">#FF6B6B</Color>
-            <Color x:Key="BlockYellow">#FFE66D</Color>
+            <Color x:Key="BlockYellow">#C88800</Color>
+            <Color x:Key="BlockGreen">#15772E</Color>
             
             <Color x:Key="BlockInvariantDarkColor">#000010</Color>
             <Color x:Key="BlockInvariantLightColor">White</Color>
@@ -39,7 +40,8 @@
         
         <ResourceDictionary x:Key="Dark">
             <Color x:Key="BlockRed">#FF8080</Color>
-            <Color x:Key="BlockYellow">#FFE66D</Color>
+            <Color x:Key="BlockYellow">#FFC057</Color>
+            <Color x:Key="BlockGreen">#8DE698</Color>
             
             <Color x:Key="BlockInvariantDarkColor">#000010</Color>
             <Color x:Key="BlockInvariantLightColor">White</Color>

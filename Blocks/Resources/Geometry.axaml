@@ -33,6 +33,12 @@
                                       Classes="block-icon" />
                 <PathIcon Data="{DynamicResource BlockEyeClosedIcon}"  
                                       Classes="block-icon" />
+                <PathIcon Data="{DynamicResource BlockWarningIcon24}" Width="24" Height="24" 
+                          blk:Block.Stretch="None"/>
+                <PathIcon Data="{DynamicResource BlockSuccessIcon24}" Width="24" Height="24" 
+                          blk:Block.Stretch="None"/>
+                <PathIcon Data="{DynamicResource BlockInfoIcon24}" Width="24" Height="24" 
+                          blk:Block.Stretch="None"/>
                 <PathIcon Data="{DynamicResource BlockErrorIcon24}" Width="24" Height="24" 
                           blk:Block.Stretch="None"/>
             </WrapPanel>
@@ -106,7 +112,7 @@
         A 3 3 0 0 1 5.293 6.707
         z
     </StreamGeometry>
-    <StreamGeometry x:Key="BlockErrorIcon24">
+    <StreamGeometry x:Key="BlockWarningIcon24">
         M 12 1.213
         A 1.043 1.043 0 0 0 11.074 1.773
         L 0.926 21.227
@@ -132,41 +138,17 @@
         A 1.5 1.5 0 0 1 12 17.5
         Z
     </StreamGeometry>
-    <StreamGeometry x:Key="BlockStripePattern36X120">
-        M 0,0
-        V 12
-        L 12,0
-        Z
-        M 18,0 0,18
-        V 30
-        L 30,0
-        Z
-        M 36,0 0,36
-        V 48
-        L 36,12
-        Z
-        M 36,18 0,54
-        V 66
-        L 36,30
-        Z
-        M 36,36 0,72
-        V 84
-        L 36,48
-        Z
-        M 36,54 0,90
-        v 12
-        L 36,66
-        Z
-        m 0,18 -36,36
-        v 12
-        L 36,84
-        Z
-        m 0,18 -30,30
-        h 12
-        l 18,-18
-        z
-        m 0,18 -12,12
-        h 12
-        z
+    <StreamGeometry x:Key="BlockSuccessIcon24">
+        M1 12A1 1 0 0023 12 1 1 0 001 12Z
+        M18.227 6.367 19.774 7.633 10.008 19.57 4.233 12.64 5 12 5.768 11.359 9.995 16.429 18.227 6.367Z
+    </StreamGeometry>
+    <StreamGeometry x:Key="BlockInfoIcon24">
+        M1 12A1 1 0 0023 12 1 1 0 001 12Z
+        M12.531 6.384c.673 0 1.219.546 1.219 1.219s-.546 1.219-1.219 1.219-1.219-.546-1.219-1.219c0-.673.546-1.219 1.219-1.219Z
+        M11.285 10h2l-1.027 7h-2Z
+    </StreamGeometry>
+    <StreamGeometry x:Key="BlockErrorIcon24">
+        M1 12A1 1 0 0023 12 1 1 0 001 12Z
+        M5.293 6.707 10.586 12 5.293 17.293 6.707 18.707 12 13.414 17.293 18.707 18.707 17.293 13.414 12 18.707 6.707 17.293 5.293 12 10.586 6.707 5.293Z
     </StreamGeometry>
 </ResourceDictionary>

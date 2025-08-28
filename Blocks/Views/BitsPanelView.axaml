@@ -142,6 +142,25 @@
                                 Expanded Error
                             </ButtonSpinner>
                         </StackPanel>
+                        
+                        <StackPanel Spacing="10">
+                            <Button Classes="demo" Click="ShowInformationNotification"
+                                    HorizontalAlignment="Stretch">
+                                Show Info Notification
+                            </Button>
+                            <Button Classes="demo" Click="ShowSuccessNotification" 
+                                    HorizontalAlignment="Stretch">
+                                Show Success Notification
+                            </Button>
+                            <Button Classes="demo" Click="ShowWarningNotification"
+                                    HorizontalAlignment="Stretch">
+                                Show Warning Notification
+                            </Button>
+                            <Button Classes="demo" Click="ShowErrorNotification"
+                                    HorizontalAlignment="Stretch">
+                                Show Error Notification
+                            </Button>
+                        </StackPanel>
                     </WrapPanel>
                 </StackPanel>
             </ScrollViewer>

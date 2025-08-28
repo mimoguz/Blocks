@@ -12,7 +12,6 @@ public class ThemeResourceSelectorConverter : ResourceDictionary, IValueConverte
     public object? Convert(object? key, Type targetType, object? parameter, CultureInfo culture)
     {
         var themeKey = $"{Application.Current?.ActualThemeVariant ?? ThemeVariant.Light}_{key!}";
-        Console.WriteLine(themeKey);
         TryGetResource(themeKey, null, out var value);
         return value;
     }

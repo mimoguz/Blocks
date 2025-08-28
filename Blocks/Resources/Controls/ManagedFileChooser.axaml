@@ -29,38 +29,38 @@
                         <GeometryDrawing Geometry="M 0 0 L 16 16" />
                         <GeometryDrawing
                             Geometry="M 2 0 C 0.892 0 0 0.892 0 2 V 13 C 0 14.108 0.892 15 2 15 H 14 C 15.108 15 16 14.108 16 13 V 5 C 16 3.892 15.108 3 14 3 H 10 L 8.645 0.967 C 8.242 0.363 7.564 0 6.838 0 Z M 2.023 2.004 L 6.863 2.057 L 7.531 3 H 2.047 C 2.036 3 2.026 3 2.016 3 Z M 2 5 H 14 V 13 H 2 Z"
-                            Brush="#F0000010" />
+                            Brush="#D0000010" />
                     </DrawingGroup>
                     <DrawingGroup x:Key="Light_Icon_File">
                         <GeometryDrawing Geometry="M 0 0 L 16 16" />
                         <GeometryDrawing
                             Geometry="M 3 0 C 1.892 0 1 0.892 1 2 L 1 14 C 1 15.108 1.892 16 3 16 L 13 16 C 14.108 16 15 15.108 15 14 L 15 5 L 10 0 L 9 0 L 3 0 Z M 3 2 L 9 2 L 9 4 C 9 5.108 9.892 6 11 6 L 13 6 L 13 14 L 3 14 L 3 2 Z M 4 4 L 4 6 L 8 6 L 8 4 L 4 4 Z M 4 7 L 4 12 L 8 12 L 8 7 L 4 7 Z M 9 7 L 9 9 L 12 9 L 12 7 L 9 7 Z M 9 10 L 9 12 L 12 12 L 12 10 L 9 10 Z"
-                            Brush="#F0000010" />
+                            Brush="#D0000010" />
                     </DrawingGroup>
                     <DrawingGroup x:Key="Light_Icon_Volume">
                         <GeometryDrawing Geometry="M 0 0 L 16 16" />
                         <GeometryDrawing
                             Geometry="M 3 0 C 1.892 0 1 0.892 1 2 L 1 14 C 1 15.108 1.892 16 3 16 L 13 16 C 14.108 16 15 15.108 15 14 L 15 2 C 15 0.892 14.108 0 13 0 L 3 0 Z M 3 2 L 13 2 L 13 13 L 3 13 L 3 2 Z M 8 3 C 5.791 3 4 4.791 4 7 L 4 11 L 8 11 C 10.209 11 12 9.209 12 7 C 12 4.791 10.209 3 8 3 Z M 8 5 C 9.105 5 10 5.895 10 7 C 10 8.105 9.105 9 8 9 C 6.895 9 6 8.105 6 7 C 6 5.895 6.895 5 8 5 Z M 10 14 L 13 14 L 13 15 L 10 15 L 10 14 Z"
-                            Brush="#F0000010" />
+                            Brush="#D0000010" />
                     </DrawingGroup>
 
                     <DrawingGroup x:Key="Dark_Icon_Folder">
                         <GeometryDrawing Geometry="M 0 0 L 16 16" />
                         <GeometryDrawing
                             Geometry="M 2 0 C 0.892 0 0 0.892 0 2 V 13 C 0 14.108 0.892 15 2 15 H 14 C 15.108 15 16 14.108 16 13 V 5 C 16 3.892 15.108 3 14 3 H 10 L 8.645 0.967 C 8.242 0.363 7.564 0 6.838 0 Z M 2.023 2.004 L 6.863 2.057 L 7.531 3 H 2.047 C 2.036 3 2.026 3 2.016 3 Z M 2 5 H 14 V 13 H 2 Z"
-                            Brush="#F0FEFEFF" />
+                            Brush="#D0FEFEFF" />
                     </DrawingGroup>
                     <DrawingGroup x:Key="Dark_Icon_File">
                         <GeometryDrawing Geometry="M 0 0 L 16 16" />
                         <GeometryDrawing
                             Geometry="M 3 0 C 1.892 0 1 0.892 1 2 L 1 14 C 1 15.108 1.892 16 3 16 L 13 16 C 14.108 16 15 15.108 15 14 L 15 5 L 10 0 L 9 0 L 3 0 Z M 3 2 L 9 2 L 9 4 C 9 5.108 9.892 6 11 6 L 13 6 L 13 14 L 3 14 L 3 2 Z M 4 4 L 4 6 L 8 6 L 8 4 L 4 4 Z M 4 7 L 4 12 L 8 12 L 8 7 L 4 7 Z M 9 7 L 9 9 L 12 9 L 12 7 L 9 7 Z M 9 10 L 9 12 L 12 12 L 12 10 L 9 10 Z"
-                            Brush="#F0FEFEFF" />
+                            Brush="#D0FEFEFF" />
                     </DrawingGroup>
                     <DrawingGroup x:Key="Dark_Icon_Volume">
                         <GeometryDrawing Geometry="M 0 0 L 16 16" />
                         <GeometryDrawing
                             Geometry="M 3 0 C 1.892 0 1 0.892 1 2 L 1 14 C 1 15.108 1.892 16 3 16 L 13 16 C 14.108 16 15 15.108 15 14 L 15 2 C 15 0.892 14.108 0 13 0 L 3 0 Z M 3 2 L 13 2 L 13 13 L 3 13 L 3 2 Z M 8 3 C 5.791 3 4 4.791 4 7 L 4 11 L 8 11 C 10.209 11 12 9.209 12 7 C 12 4.791 10.209 3 8 3 Z M 8 5 C 9.105 5 10 5.895 10 7 C 10 8.105 9.105 9 8 9 C 6.895 9 6 8.105 6 7 C 6 5.895 6.895 5 8 5 Z M 10 14 L 13 14 L 13 15 L 10 15 L 10 14 Z"
-                            Brush="#F0FEFEFF" />
+                            Brush="#D0FEFEFF" />
                     </DrawingGroup>
                 </conv:ThemeResourceSelectorConverter>
 
