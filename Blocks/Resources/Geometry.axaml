@@ -41,6 +41,8 @@
                           blk:Block.Stretch="None"/>
                 <PathIcon Data="{DynamicResource BlockErrorIcon24}" Width="24" Height="24" 
                           blk:Block.Stretch="None"/>
+                <PathIcon Data="{DynamicResource BlockRefreshIcon24}" Width="24" Height="24" 
+                          blk:Block.Stretch="None"/>
             </WrapPanel>
         </Border>
     </Design.PreviewWith>
@@ -144,11 +146,18 @@
     </StreamGeometry>
     <StreamGeometry x:Key="BlockInfoIcon24">
         M1 12A1 1 0 0023 12 1 1 0 001 12Z
-        M12.531 6.384c.673 0 1.219.546 1.219 1.219s-.546 1.219-1.219 1.219-1.219-.546-1.219-1.219c0-.673.546-1.219 1.219-1.219Z
+        M12.531 6.384c.673 0 1.219.546 1.219 1.219s-.546 1.219-1.219 
+        1.219-1.219-.546-1.219-1.219c0-.673.546-1.219 1.219-1.219Z
         M11.285 10h2l-1.027 7h-2Z
     </StreamGeometry>
     <StreamGeometry x:Key="BlockErrorIcon24">
         M1 12A1 1 0 0023 12 1 1 0 001 12Z
-        M5.293 6.707 10.586 12 5.293 17.293 6.707 18.707 12 13.414 17.293 18.707 18.707 17.293 13.414 12 18.707 6.707 17.293 5.293 12 10.586 6.707 5.293Z
+        M5.293 6.707 10.586 12 5.293 17.293 6.707 18.707 12 13.414 17.293 18.707 18.707 17.293 13.414 
+        12 18.707 6.707 17.293 5.293 12 10.586 6.707 5.293Z
+    </StreamGeometry>
+    <StreamGeometry x:Key="BlockRefreshIcon24">
+        M12 2C8.855 2 5.892 3.468 4 5.963V3.008H2V10H9V8H5.057C6.481 5.527 9.131 4 12 4 16.419 4 20 7.557 20 11.945 
+        19.999 16.332 16.418 19.888 12 19.888 7.604 19.889 4.031 16.366 4 12H1.986C2.017 17.47 6.492 21.889 12 21.889 
+        17.53 21.889 22.013 17.437 22.014 11.945 22.014 6.453 17.531 2 12 2Z
     </StreamGeometry>
 </ResourceDictionary>

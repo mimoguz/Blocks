@@ -45,6 +45,8 @@
         <ResourceInclude Source="Controls/PopupRoot.axaml" />
         <ResourceInclude Source="Controls/ProgressBar.axaml" />
         <ResourceInclude Source="Controls/RadioButton.axaml" />
+        <ResourceInclude Source="Controls/RefreshContainer.axaml" />
+        <ResourceInclude Source="Controls/RefreshVisualizer.axaml" />
         <ResourceInclude Source="Controls/RepeatButton.axaml" />
         <ResourceInclude Source="Controls/ScrollBar.axaml" />
         <ResourceInclude Source="Controls/ScrollViewer.axaml" />
@@ -57,6 +59,7 @@
         <ResourceInclude Source="Controls/TabStrip.axaml" />
         <ResourceInclude Source="Controls/TabStripItem.axaml" />
         <ResourceInclude Source="Controls/TextBox.axaml" />
+        <ResourceInclude Source="Controls/TextSelectionHandle.axaml" />
         <ResourceInclude Source="Controls/Tile.axaml" />
         <ResourceInclude Source="Controls/TileShared.axaml" />
         <ResourceInclude Source="Controls/TimePicker.axaml" />

@@ -1,0 +1,34 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <SolidColorBrush x:Key="BlockRefreshVisualizerForeground" Color="{DynamicResource BlockWindowForegroundColor}" />
+    <SolidColorBrush x:Key="BlockRefreshVisualizerBackground" Color="Transparent" />
+    <x:Double x:Key="BlockRefreshVisualizerIndicatorSize">24</x:Double>
+
+    <ControlTheme x:Key="{x:Type RefreshVisualizer}"
+                  TargetType="RefreshVisualizer">
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="IsHitTestVisible" Value="False" />
+        <Setter Property="Height"
+                Value="100" />
+        <Setter Property="Background"
+                Value="{DynamicResource BlockRefreshVisualizerBackground}" />
+        <Setter Property="Foreground"
+                Value="{DynamicResource BlockRefreshVisualizerForeground}" />
+        <Setter Property="Content">
+            <Template>
+                <PathIcon Name="PART_Icon"
+                          Data="{DynamicResource BlockRefreshIcon24}"
+                          Width="{DynamicResource BlockRefreshVisualizerIndicatorSize}"
+                          Height="{DynamicResource BlockRefreshVisualizerIndicatorSize}" />
+            </Template>
+        </Setter>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid Name="PART_Root"
+                      MinHeight="80"
+                      Background="{TemplateBinding Background}" />
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+</ResourceDictionary>

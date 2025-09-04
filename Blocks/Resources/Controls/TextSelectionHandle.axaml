@@ -1,0 +1,55 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Design.PreviewWith>
+        <Border Padding="10">
+            <StackPanel Spacing="10">
+                <PathIcon Data="{DynamicResource BlockTextSelectionHandlePath}"
+                          Height="{DynamicResource BlockTextSelectHandleSize}"
+                          HorizontalAlignment="Stretch"
+                          Foreground="{DynamicResource BlockTextControlSelectionHighlightBrush}" />
+                <PathIcon Data="{DynamicResource BlockTextCaretHandlePath}"
+                          Height="{DynamicResource BlockTextSelectHandleSize}"
+                          HorizontalAlignment="Stretch" 
+                          Foreground="{DynamicResource BlockTextControlSelectionHighlightBrush}"/>
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+    
+    <x:Double x:Key="BlockTextSelectHandleSize">24</x:Double>
+    <StreamGeometry x:Key="BlockTextSelectionHandlePath">
+        M7 12C4.2 12 2 14.2 2 17S4.2 22 7 22 12 19.8 12 17 9.8 12 7 12ZM2 0V12.1C3.3 10.8 5.1 10 7 10 10.9 10 14 13.1 14
+        17S10.9 24 7 24C3.7 24 .9 21.7.2 18.5 0 17.7 0 16.3 0 15.4V0ZM4 17A1 1 0 0010 17 1 1 0 004 17Z
+    </StreamGeometry>
+    <StreamGeometry x:Key="BlockTextCaretHandlePath" >
+        M6 0 6 10.1A7 7 0 000 17 7 7 0 007 24 7 7 0 0014 17 7 7 0 008 10.1L8 0 6 0ZM7 12A5 5 0 0112 17 5 5 0 017 22 5 5 
+        0 012 17 5 5 0 017 12ZM4 17A1 1 0 0010 17 1 1 0 004 17Z
+    </StreamGeometry>
+    <SolidColorBrush x:Key="BlockTextControlSelectionHighlightBrush" Color="{DynamicResource BlockBasePrimaryColor}" />
+    
+    <ControlTheme x:Key="{x:Type TextSelectionHandle}"
+                  TargetType="TextSelectionHandle">
+        <Setter Property="Background"
+                Value="{DynamicResource BlockTextControlSelectionHighlightBrush}" />
+        <Setter Property="HorizontalAlignment"
+                Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Grid>
+                        <PathIcon
+                            Cursor="Arrow"
+                            Name="PART_HandlePathIcon"
+                            HorizontalAlignment="Stretch"
+                            Height="{DynamicResource BlockTextSelectHandleSize}"
+                            Foreground="{TemplateBinding Background}"
+                            Data="{DynamicResource BlockTextSelectionHandlePath}" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style Selector="^.caret /template/ PathIcon#PART_HandlePathIcon">
+            <Setter Property="Data" Value="{DynamicResource BlockTextCaretHandlePath}" />
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>
