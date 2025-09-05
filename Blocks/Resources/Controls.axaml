@@ -60,6 +60,7 @@
         <ResourceInclude Source="Controls/TabStripItem.axaml" />
         <ResourceInclude Source="Controls/TextBox.axaml" />
         <ResourceInclude Source="Controls/TextSelectionHandle.axaml" />
+        <ResourceInclude Source="Controls/ThemeVariantScope.axaml" />
         <ResourceInclude Source="Controls/Tile.axaml" />
         <ResourceInclude Source="Controls/TileShared.axaml" />
         <ResourceInclude Source="Controls/TimePicker.axaml" />
@@ -69,5 +70,6 @@
         <ResourceInclude Source="Controls/TreeView.axaml" />
         <ResourceInclude Source="Controls/TreeViewItem.axaml" />
         <ResourceInclude Source="Controls/Window.axaml" />
+        <ResourceInclude Source="Controls/ToolTip.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

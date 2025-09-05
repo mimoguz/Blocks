@@ -1,0 +1,79 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="using:System">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <StackPanel Spacing="20">
+                <ToolTip Opacity="1">Text Content</ToolTip>
+                <ToolTip Opacity="1">Very long text content which should exceed the maximum with of the tooltip and wrap.</ToolTip>
+                <ToolTip Opacity="1">
+                    <StackPanel>
+                        <TextBlock>Multi-line</TextBlock>
+                        <TextBlock>Control Content</TextBlock>
+                    </StackPanel>
+                </ToolTip>
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+    
+    <!-- ****************************************************** -->
+    <!-- ********************* Resources ********************** -->
+    <!-- ****************************************************** -->
+
+    <SolidColorBrush x:Key="BlockToolTipBackgroundBrush"
+                     Color="{DynamicResource BlockInvariantDarkColor}" />
+
+    <SolidColorBrush x:Key="BlockToolTipBorderBrush"
+                     Color="{DynamicResource BlockBaseViewBorderColor}"
+                     Opacity="{DynamicResource BlockFlyoutBorderOpacity}" />
+    
+    <SolidColorBrush x:Key="BlockToolTipForegroundBrush"
+                     Color="{DynamicResource BlockInvariantLightColor}" 
+                     Opacity="0.8"/>
+
+    <sys:Double x:Key="BlockToolTipContentMaxWidth">320</sys:Double>
+    
+    <Thickness x:Key="BlockToolTipPadding">12,10</Thickness>
+    
+    <!-- ****************************************************** -->
+    <!-- ********************** Themes ************************ -->
+    <!-- ****************************************************** -->
+
+
+    <ControlTheme x:Key="{x:Type ToolTip}" TargetType="ToolTip">
+        <Setter Property="Foreground" Value="{DynamicResource BlockToolTipForegroundBrush}" />
+        <Setter Property="Background" Value="{DynamicResource BlockToolTipBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BlockToolTipBorderBrush}" />
+        <Setter Property="BorderThickness" Value="{DynamicResource BlockFlyoutBorderThickness}" />
+        <Setter Property="FontSize" Value="{DynamicResource ToolTipContentThemeFontSize}" />
+        <Setter Property="Padding" Value="{DynamicResource BlockToolTipPadding}" />
+        <Setter Property="MaxWidth" Value="{DynamicResource BlockToolTipContentMaxWidth}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource BlockFlyoutCornerRadius}" />
+        <Setter Property="Opacity" Value="0" />
+        <Setter Property="Transitions">
+            <Transitions>
+                <DoubleTransition Property="Opacity" Duration="0:0:0.15" />
+            </Transitions>
+        </Setter>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Name="PART_LayoutRoot"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        Padding="{TemplateBinding Padding}"
+                        CornerRadius="{TemplateBinding CornerRadius}">
+                    <ContentPresenter Name="PART_ContentPresenter"
+                                      MaxWidth="{TemplateBinding MaxWidth}"
+                                      Content="{TemplateBinding Content}"
+                                      ContentTemplate="{TemplateBinding ContentTemplate}"
+                                      TextBlock.TextWrapping="Wrap" />
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^:open">
+            <Setter Property="Opacity" Value="1" />
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

@@ -161,6 +161,18 @@
                                 Show Error Notification
                             </Button>
                         </StackPanel>
+                        
+                        <Panel Classes="demo">
+                            <Rectangle Fill="{DynamicResource BlockBaseSecondaryColor}" 
+                                       Width="220"
+                                       Height="50"
+                                       ToolTip.Tip="A tool tip"/>
+                            <TextBlock HorizontalAlignment="Center" 
+                                       VerticalAlignment="Center" 
+                                       Text="Hover to see a tool tip"
+                                       Foreground="{DynamicResource BlockOnSecondaryColor}"
+                                       IsHitTestVisible="False"/>
+                        </Panel>
                     </WrapPanel>
                 </StackPanel>
             </ScrollViewer>
