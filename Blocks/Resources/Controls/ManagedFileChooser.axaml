@@ -324,8 +324,7 @@
                         <StackPanel HorizontalAlignment="Right"
                                     Spacing="10"
                                     Orientation="Horizontal">
-                            <Button Classes="accent"
-                                    Content="{DynamicResource StringManagedFileChooserOverwritePromptConfirmText}"
+                            <Button Content="{DynamicResource StringManagedFileChooserOverwritePromptConfirmText}"
                                     MinWidth="80"
                                     HorizontalContentAlignment="Center"
                                     IsDefault="True"

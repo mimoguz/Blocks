@@ -11,6 +11,7 @@
     </Application.DataTemplates>
   
     <Application.Styles>
+        <FluentTheme />
         <blk:BlocksTheme />
     </Application.Styles>
 </Application>
