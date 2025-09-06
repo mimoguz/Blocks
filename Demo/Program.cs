@@ -3,7 +3,7 @@ using System;
 using System.Runtime.InteropServices;
 using Avalonia.Dialogs;
 
-namespace Blocks;
+namespace Blocks.Demo;
 
 sealed class Program
 {
