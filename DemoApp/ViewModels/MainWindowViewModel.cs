@@ -3,7 +3,7 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Platform.Storage;
 using CommunityToolkit.Mvvm.Input;
 
-namespace Blocks.ViewModels;
+namespace Blocks.DemoApp.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase
 {

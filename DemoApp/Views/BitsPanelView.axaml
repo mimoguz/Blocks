@@ -2,11 +2,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:vm="clr-namespace:Blocks.ViewModels"
-             xmlns:blk="clr-namespace:Blocks.Controls"
+             xmlns:blk="clr-namespace:Blocks.Controls;assembly=Blocks"
+             xmlns:vm="clr-namespace:Blocks.DemoApp.ViewModels"
              xmlns:sys="using:System"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="Blocks.Views.BitsPanelView"
+             x:Class="Blocks.DemoApp.Views.BitsPanelView"
              x:DataType="vm:BitsPanelViewModel">
     <Design.DataContext>
         <vm:BitsPanelViewModel />
@@ -81,7 +81,7 @@
                             <StackPanel>
                                 <blk:Tile Header="Tile" Classes="demo" HorizontalAlignment="Stretch">
                                     <blk:Tile.LeftContent>
-                                        <PathIcon Data="{DynamicResource BlockErrorIcon24}" 
+                                        <PathIcon Data="{DynamicResource BlockTestIcon}" 
                                                   Width="24" Height="24"
                                                   blk:Block.Stretch="None" />
                                     </blk:Tile.LeftContent>
@@ -106,7 +106,7 @@
                                                  HorizontalAlignment="Stretch"
                                                  Command="{Binding TileActionCommand}">
                                     <blk:CommandTile.LeftContent>
-                                        <PathIcon Data="{DynamicResource BlockErrorIcon24}" 
+                                        <PathIcon Data="{DynamicResource BlockTestIcon}" 
                                                   Width="24" Height="24" 
                                                   blk:Block.Stretch="None"/>
                                     </blk:CommandTile.LeftContent>
@@ -133,7 +133,7 @@
                             <ButtonSpinner Width="200" Classes="demo">
                                 <ButtonSpinner.Styles>
                                     <Style Selector="DataValidationErrors">
-                                        <Setter Property="Theme" Value="{StaticResource ExpandedDataValidationErrors}" />
+                                        <Setter Property="Theme" Value="{DynamicResource ExpandedDataValidationErrors}" />
                                     </Style>
                                 </ButtonSpinner.Styles>
                                 <DataValidationErrors.Error>

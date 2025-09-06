@@ -4,7 +4,7 @@ using System.Linq;
 using Avalonia.Controls;
 using CommunityToolkit.Mvvm.ComponentModel;
 
-namespace Blocks.ViewModels;
+namespace Blocks.DemoApp.ViewModels;
 
 public partial class ContainersPanelViewModel : ViewModelBase
 {

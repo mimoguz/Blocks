@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
 using Avalonia.Controls;
-using Avalonia.Controls.Primitives;
 using CommunityToolkit.Mvvm.ComponentModel;
 
-namespace Blocks.ViewModels;
+namespace Blocks.DemoApp.ViewModels;
 
 public partial class InputsPanelViewModel : ViewModelBase
 {

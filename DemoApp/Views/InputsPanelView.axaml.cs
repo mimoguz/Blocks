@@ -1,10 +1,7 @@
-using System;
-using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Markup.Xaml;
-using Blocks.ViewModels;
+using InputsPanelViewModel = Blocks.DemoApp.ViewModels.InputsPanelViewModel;
 
-namespace Blocks.Views;
+namespace Blocks.DemoApp.Views;
 
 public partial class InputsPanelView : UserControl
 {

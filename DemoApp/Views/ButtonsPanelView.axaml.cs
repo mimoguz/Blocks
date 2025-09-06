@@ -1,9 +1,7 @@
-using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Markup.Xaml;
-using Blocks.ViewModels;
+using Blocks.DemoApp.ViewModels;
 
-namespace Blocks.Views;
+namespace Blocks.DemoApp.Views;
 
 public partial class ButtonsPanelView : UserControl
 {

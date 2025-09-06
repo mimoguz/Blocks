@@ -1,10 +1,7 @@
-using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Interactivity;
-using Avalonia.Markup.Xaml;
-using Blocks.ViewModels;
+using ContainersPanelViewModel = Blocks.DemoApp.ViewModels.ContainersPanelViewModel;
 
-namespace Blocks.Views;
+namespace Blocks.DemoApp.Views;
 
 public partial class ContainersPanelView : UserControl
 {

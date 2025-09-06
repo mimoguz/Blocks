@@ -1,12 +1,9 @@
-using System;
-using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Notifications;
 using Avalonia.Interactivity;
-using Avalonia.Markup.Xaml;
-using Blocks.ViewModels;
+using Blocks.DemoApp.ViewModels;
 
-namespace Blocks.Views;
+namespace Blocks.DemoApp.Views;
 
 public partial class BitsPanelView : UserControl
 {

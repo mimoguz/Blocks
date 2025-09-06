@@ -1,13 +1,12 @@
+using System.Linq;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
-using Avalonia.Data.Core;
 using Avalonia.Data.Core.Plugins;
-using System.Linq;
 using Avalonia.Markup.Xaml;
-using Blocks.ViewModels;
-using Blocks.Views;
+using Blocks.DemoApp.ViewModels;
+using Blocks.DemoApp.Views;
 
-namespace Blocks;
+namespace Blocks.DemoApp;
 
 public partial class App : Application
 {

@@ -1,9 +1,7 @@
-﻿using Avalonia;
-using System;
-using System.Runtime.InteropServices;
-using Avalonia.Dialogs;
+﻿using System;
+using Avalonia;
 
-namespace Blocks.Demo;
+namespace Blocks.DemoApp;
 
 sealed class Program
 {
@@ -16,16 +14,8 @@ sealed class Program
 
     // Avalonia configuration, don't remove; also used by visual designer.
     public static AppBuilder BuildAvaloniaApp()
-    {
-        var builder = AppBuilder.Configure<App>()
+        => AppBuilder.Configure<App>()
             .UsePlatformDetect()
             .WithInterFont()
             .LogToTrace();
-        
-        if (OperatingSystem.IsWindows() || OperatingSystem.IsLinux() || OperatingSystem.IsMacOS())
-        {
-            builder.UseManagedSystemDialogs();
-        }
-        return builder;
-    }
 }
